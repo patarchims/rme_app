@@ -1,0 +1,307 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
+import 'package:hms_app/domain/bloc/dashboard/pasien/pasien_bloc.dart';
+import 'package:hms_app/domain/bloc/user/auth/auth_bloc.dart';
+import 'package:hms_app/presentation/component/component.dart';
+import 'package:hms_app/presentation/component/extenstion/date_helper.dart';
+import 'package:hms_app/presentation/component/qr_code/qr_code_widget.dart';
+import 'package:hms_app/presentation/pages/bangsal/bloc/cppt_sbar_bangsal/cppt_sbar_bangsal_bloc.dart';
+import 'package:hms_app/presentation/report/component/header_report_widget.dart';
+import 'package:sizer/sizer.dart';
+import 'package:table_desk/table_desk.dart';
+
+class ReportCatatanKeperawatanPageWidget extends StatefulWidget {
+  const ReportCatatanKeperawatanPageWidget({super.key});
+
+  @override
+  State<ReportCatatanKeperawatanPageWidget> createState() =>
+      _ReportCatatanKeperawatanPageWidgetState();
+}
+
+class _ReportCatatanKeperawatanPageWidgetState
+    extends State<ReportCatatanKeperawatanPageWidget> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  Widget build(BuildContext context) {
+    PasienState pasienState = context.watch<PasienBloc>().state;
+    final singlePasien = pasienState.listPasienModel
+        .where((element) => element.mrn == pasienState.normSelected);
+
+    AuthState authState = context.watch<AuthBloc>().state;
+
+    return BlocBuilder<CpptSbarBangsalBloc, CpptSbarBangsalState>(
+      builder: (context, state) {
+        return Scaffold(
+          backgroundColor: ThemeColor.transparentColor,
+          body: Container(
+            width: Get.width,
+            height: Get.height,
+            margin: EdgeInsets.all(2.sp),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(
+                  color: Colors.black,
+                  width: 1,
+                  style: BorderStyle.solid,
+                )),
+            child: RawScrollbar(
+              thumbColor: ThemeColor.darkColor,
+              thumbVisibility: true,
+              interactive: true,
+              thickness: 5.sp,
+              controller: _scrollController,
+              trackVisibility: false,
+              radius: Radius.circular(5.sp),
+              child: SingleChildScrollView(
+                controller: _scrollController,
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 5.sp),
+                        child: Text("RM-R1.13",
+                            textAlign: TextAlign.right,
+                            style: blackTextStyle.copyWith(
+                                fontWeight: FontWeight.bold)),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric(horizontal: 5.sp),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(
+                            color: Colors.black,
+                            width: 1,
+                            style: BorderStyle.solid,
+                          )),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // TAMPILKAN DATA // TAMPILKAN HEADER
+                          Padding(
+                            padding: EdgeInsets.all(8.sp),
+                            child: const HeaderAllWidget(),
+                          ),
+
+                          Center(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "CATATAN KEPERAWATAN",
+                                textAlign: TextAlign.center,
+                                style: blackTextStyle.copyWith(
+                                    fontSize: 10.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+
+                          if (authState is Authenticated) ...[
+                            Container(
+                              color: Colors.white,
+                              padding: EdgeInsets.symmetric(horizontal: 5.sp),
+                              child: TableDesk(
+                                shape: const RoundedRectangleBorder(
+                                  side:
+                                      BorderSide(color: Colors.black, width: 1),
+                                ),
+                                child: TableDeskRow(
+                                  border: const BorderSide(
+                                      width: 1, color: Colors.black),
+                                  gaps: [
+                                    TableGap.weight(),
+                                    TableGap.weight(),
+                                  ],
+                                  children: [
+                                    Container(
+                                      color: Colors.white,
+                                      padding: const EdgeInsets.all(8),
+                                      child:
+                                          (singlePasien.first.tglLahir.length >
+                                                  10)
+                                              ? Text(
+                                                  "Nama Pasien         :      ${singlePasien.first.namaPasien}  \nTanggal Lahir        :       ${tglIndo(singlePasien.first.tglLahir.substring(0, 10))}",
+                                                  style: blackTextStyle
+                                                      .copyWith(fontSize: 6.sp),
+                                                  textAlign: TextAlign.left,
+                                                )
+                                              : Text(
+                                                  "Nama Pasien         :      ${singlePasien.first.namaPasien}   \nTanggal Lahir        :      ${singlePasien.first.tglLahir} ",
+                                                  style: blackTextStyle
+                                                      .copyWith(fontSize: 6.sp),
+                                                  textAlign: TextAlign.left,
+                                                ),
+                                    ),
+                                    Container(
+                                      color: Colors.white,
+                                      padding: const EdgeInsets.all(8),
+                                      child: Text(
+                                        "Nomor Rekam Medis           :     ${singlePasien.first.mrn}   \nRuangan                                :      ${authState.user.bagian}",
+                                        style: blackTextStyle.copyWith(
+                                            fontSize: 6.sp),
+                                        textAlign: TextAlign.left,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+
+                          SizedBox(
+                            height: 5.sp,
+                          ),
+
+                          Container(
+                            color: Colors.white,
+                            padding: EdgeInsets.symmetric(horizontal: 5.sp),
+                            child: TableDesk(
+                              shape: const RoundedRectangleBorder(
+                                side: BorderSide(color: Colors.black, width: 1),
+                              ),
+                              child: TableDeskRow(
+                                border: const BorderSide(
+                                    width: 1, color: Colors.black),
+                                gaps: [
+                                  TableGap.width(150),
+                                  TableGap.weight(),
+                                  TableGap.width(200),
+                                ],
+                                children: [
+                                  Container(
+                                    color: Colors.white,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8),
+                                      child: Center(
+                                        child: Text(
+                                          "Tgl/Jam",
+                                          style: blackTextStyle.copyWith(
+                                              fontWeight: FontWeight.bold),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    color: Colors.white,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8),
+                                      child: Center(
+                                        child: Text(
+                                          "Catatan Keperawatan",
+                                          style: blackTextStyle.copyWith(
+                                              fontWeight: FontWeight.bold),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    color: Colors.white,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8),
+                                      child: Center(
+                                        child: Text(
+                                          "Nama Perawat",
+                                          style: blackTextStyle.copyWith(
+                                              fontWeight: FontWeight.bold),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+
+                          SizedBox(
+                            height: 5.sp,
+                          ),
+
+                          ...state.catatanKeperawatan.map(
+                            (e) => Container(
+                              color: Colors.white,
+                              padding: EdgeInsets.symmetric(horizontal: 5.sp),
+                              child: TableDesk(
+                                shape: const RoundedRectangleBorder(
+                                  side:
+                                      BorderSide(color: Colors.black, width: 1),
+                                ),
+                                child: TableDeskRow(
+                                  border: const BorderSide(
+                                      width: 1, color: Colors.black),
+                                  gaps: [
+                                    TableGap.width(150),
+                                    TableGap.weight(),
+                                    TableGap.width(200),
+                                  ],
+                                  children: [
+                                    Container(
+                                      color: Colors.white,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8),
+                                        child: Center(
+                                          child: Text(
+                                            "Tgl : ${tglIndo(e.insertDttm.substring(0, 10))} / Jam ${e.insertDttm.substring(11, 19)}",
+                                            style: blackTextStyle.copyWith(
+                                                fontSize: 5.sp),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      color: Colors.white,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8),
+                                        child: Text(
+                                          e.catatan,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 5.sp),
+                                          textAlign: TextAlign.left,
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      color: Colors.white,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8),
+                                        child: Center(
+                                          child: Column(
+                                            children: [
+                                              BarcodeGreenWidget(
+                                                  dataBarcode: e.karyawan.nama),
+                                              Text(
+                                                e.karyawan.nama,
+                                                style: blackTextStyle.copyWith(
+                                                    fontSize: 5.sp),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}

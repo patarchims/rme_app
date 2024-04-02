@@ -1,0 +1,210 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+part of 'asesmen_bayi_bloc.dart';
+
+enum AsesmenBayiStatus {
+  initial,
+  loading,
+  loaded,
+  error,
+
+  isLoadingAsesmen,
+  isLoadedAsesmen,
+  isLoadingSave,
+}
+
+class AsesmenBayiState extends Equatable {
+  final AsesmenBayiStatus status;
+  final TindakLajutModel tindakLajut;
+  final ResponseAsesmenPerinaModel asesmen;
+  final AsesmenBayiResponseModel asmenBayiResponse;
+  final Option<Either<ApiFailureResult, ApiSuccessResult>>
+      saveTindakLajutResult;
+  final Option<Either<ApiFailureResult, ApiSuccessResult>> saveResult;
+  const AsesmenBayiState({
+    required this.status,
+    required this.asesmen,
+    required this.tindakLajut,
+    required this.saveResult,
+    required this.asmenBayiResponse,
+    required this.saveTindakLajutResult,
+  });
+
+  @override
+  List<Object?> get props =>
+      [status, asesmen, saveResult, tindakLajut, saveTindakLajutResult];
+
+  static AsesmenBayiState initial() => AsesmenBayiState(
+      saveTindakLajutResult: none(),
+      tindakLajut: TindakLajutModel(
+          tindakanOperas: "", tindakLajut: "", kontrolUlang: ""),
+      saveResult: none(),
+      status: AsesmenBayiStatus.initial,
+      asmenBayiResponse: AsesmenBayiResponseModel(
+          karyawan: KaryawanModel(nama: "", jk: ""),
+          fisikPerina: FisikPerinaModel(
+              tonickNeck: "",
+              gcsE: "",
+              gcsM: "",
+              gcsV: "",
+              kesadaran: "",
+              kepala: "",
+              wajah: "",
+              telinga: "",
+              hidung: "",
+              mulut: "",
+              refleks: "",
+              leherDahBahu: "",
+              dada: "",
+              abdomen: "",
+              punggung: "",
+              integumen: "",
+              ekstremitas: "",
+              genetalia: "",
+              anus: ""),
+          vitalSignModel: VitalSignPerinaModel(
+              td: "",
+              hr: "",
+              rr: "",
+              spo2: "",
+              bb: "",
+              tb: "",
+              lingkarKepala: "",
+              lingkarLengan: "",
+              lingkarDada: "",
+              lingkarPerut: ""),
+          downScoreModel: DownScoreModelResponse(
+              nifas: 0,
+              sianosis: 0,
+              retraksi: 0,
+              airEntry: 0,
+              merintih: 0,
+              total: 0),
+          apgarScore: [],
+          asesmenBayiModel: AsesmenBayiPerinaModel(
+              tanggal: "",
+              obatObatanYangDikomsumsi: "",
+              dokterObgyn: "",
+              pendarahanPrenatal: "",
+              dokterAnak: "",
+              namaAyah: "",
+              riwayatPenyakitAyah: "",
+              pekerjaanAyah: "",
+              perkawinanAyah: "",
+              usiaKehamilan: "",
+              namaIbu: "",
+              pekerjaanIbu: "",
+              perkawinanIbu: "",
+              penyakitIbu: "",
+              namaPjawab: "",
+              usiaPjawab: "",
+              prenatalKebiasaanIbu: "",
+              pekerjaanPjawab: "",
+              usiaPersalinan: "",
+              tglLahir: "",
+              lahirDengan: "",
+              menangis: "",
+              jenisKelamin: "",
+              jumlahHari: "",
+              keterangan: "",
+              prenatalUsiaKehamilan: "",
+              prenatalKomplikasi: "",
+              prenatalHis: "",
+              prenatalTtp: "",
+              prenatalKetuban: "",
+              prenatalJam: "",
+              rwtUsiaPersalinan: "",
+              rwtLahirDengan: "",
+              rwtJenisKelamin: "",
+              rwtKelahiranBayi: "",
+              rwtMenangis: "",
+              rwtKeterangan: "",
+              prenatalUsiaPersalinan: "",
+              natalPersalinan: "",
+              natalKpd: "",
+              natalKeadaan: "",
+              natalTindakanDiberikan: "",
+              natalPost: "",
+              natalPrestasi: "",
+              natalDitolongOleh: "",
+              natalKetuban: "",
+              natalLetak: "",
+              natalLahirUmur: "",
+              natalVolume: "",
+              natalKomplikasi: "",
+              prenatalRiwayatPersalinan: ""),
+          riwayatKelahiranModel: []),
+      asesmen: ResponseAsesmenPerinaModel(
+          asesmenBayi: AsesmenBayiModel(
+              pendarahanPrenatal: "",
+              obatObatanYangdikomsumsi: "",
+              prenatalJam: "",
+              natalKomplikasi: "",
+              natalVolume: "",
+              pekerjaanIbu: "",
+              riwayatPenyakitAyah: "",
+              namaAyah: "",
+              dokterObgyn: "",
+              dokterAnak: "",
+              pekerjaanAyah: "",
+              perkawinanAyah: "",
+              usiaKehamilan: "",
+              namaIbu: "",
+              perkawinanIbu: "",
+              penyakitIbu: "",
+              namaPjawab: "",
+              usiaPjawab: "",
+              pekerjaanPjawab: "",
+              usiaPersalinan: "",
+              rwtTglLahir: "",
+              prenatalJumlahHari: "",
+              menangis: "",
+              jenisKelamin: "",
+              rwtPersalinan: "",
+              keterangan: "",
+              prenatalUsiaKehamilan: "",
+              rwtPrenatalPersalinan: "",
+              prenatalKomplikasi: "",
+              prenatalHis: "",
+              prenatalTtp: "",
+              prenatalKetuban: "",
+              prenatalPersalinan: "",
+              rwtUsiaPersalinan: "",
+              rwtLahirDengan: "",
+              rwtJenisKelamin: "",
+              rwtKelahiranBayi: "",
+              rwtMenangis: "",
+              rwtKeterangan: "",
+              prenatalUsiaPersalinan: "",
+              natalPersalinan: "",
+              natalKpd: "",
+              natalKeadaan: "",
+              natalTindakanDiberikan: "",
+              natalPost: "",
+              natalPrestasi: "",
+              natalDitolongOleh: "",
+              prenatalKebiasaanIbu: "",
+              natalKetuban: "",
+              natalLetak: "",
+              natalLahirUmur: ""),
+          dokter: [],
+          riwayatKehamilan: []));
+
+  AsesmenBayiState copyWith(
+      {AsesmenBayiStatus? status,
+      TindakLajutModel? tindakLajut,
+      Option<Either<ApiFailureResult, ApiSuccessResult>>? saveResult,
+      ResponseAsesmenPerinaModel? asesmen,
+      AsesmenBayiResponseModel? asmenBayiResponse,
+      Option<Either<ApiFailureResult, ApiSuccessResult>>?
+          saveTindakLajutResult}) {
+    return AsesmenBayiState(
+      saveTindakLajutResult:
+          saveTindakLajutResult ?? this.saveTindakLajutResult,
+      tindakLajut: tindakLajut ?? this.tindakLajut,
+      asmenBayiResponse: asmenBayiResponse ?? this.asmenBayiResponse,
+      saveResult: saveResult ?? this.saveResult,
+      status: status ?? this.status,
+      asesmen: asesmen ?? this.asesmen,
+    );
+  }
+}
