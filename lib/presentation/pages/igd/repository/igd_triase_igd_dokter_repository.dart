@@ -717,12 +717,12 @@ class RiwayatKeluarga {
 
   factory RiwayatKeluarga.fromJson(Map<String, dynamic> json) =>
       RiwayatKeluarga(
-        noRm: json["no_rm"].tos,
-        kelompok: json["kelompok"].tos,
-        insertDttm: json["insert_dttm"].tos,
-        alergi: json["alergi"].tos,
-        namaUser: json["nama_user"].tos,
-        bagian: json["bagian"].tos,
+        noRm: json["no_rm"].toString(),
+        kelompok: json["kelompok"].toString(),
+        insertDttm: json["insert_dttm"].toString(),
+        alergi: json["alergi"].toString(),
+        namaUser: json["nama_user"].toString(),
+        bagian: json["bagian"].toString(),
       );
 
   Map<String, dynamic> toJson() => {

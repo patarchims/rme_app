@@ -344,17 +344,16 @@ class _KeluhanUtamaKeperawatanWidgetState
                         padding: EdgeInsets.symmetric(horizontal: 5.sp),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                              backgroundColor: ThemeColor.primaryColor,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(5.sp))),
-                          child: const Icon(
-                            FontAwesomeIcons.plus,
-                            color: Colors.white,
-                          ),
+                          child: const Icon(FontAwesomeIcons.plus,
+                              color: Colors.white),
                           onPressed: () {
                             CustomDialogWidget.getDialog(
                                 widget: Container(
                                   width: Get.width / 1.5,
-                                 height: 65.sp,
+                                  height: 65.sp,
                                   decoration:
                                       const BoxDecoration(color: Colors.white),
                                   child: Column(
@@ -468,6 +467,7 @@ class _KeluhanUtamaKeperawatanWidgetState
                                                   width: 100.sp,
                                                   height: 20.sp,
                                                   child: Card(
+                                                    color: ThemeColor.darkColor,
                                                     child: ListTile(
                                                         trailing: IconButton(
                                                           onPressed: () {

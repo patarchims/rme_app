@@ -11,9 +11,9 @@ import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
 class AnamnesaRawatInapDokterWidget extends StatelessWidget {
   final bool enableEdit;
   const AnamnesaRawatInapDokterWidget({
-    Key? key,
+    super.key,
     required this.enableEdit,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

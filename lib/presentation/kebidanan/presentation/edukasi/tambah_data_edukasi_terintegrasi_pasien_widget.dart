@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_spinbox/flutter_spinbox.dart';
@@ -100,8 +101,8 @@ class _TambahDataEdukasiTerintegrasiPasienWidgetState
       // ===== //
       builder: (context, state) {
         return Container(
-          height: Get.height / 1.7,
-          width: Get.width / 1.2,
+          height: Get.height / 1.4,
+          width: Get.width,
           decoration: BoxDecoration(
             color: ThemeColor.bgColor,
           ),
@@ -155,548 +156,700 @@ class _TambahDataEdukasiTerintegrasiPasienWidgetState
                           Container(
                               padding: EdgeInsets.only(
                                   top: 0, left: 5.sp, right: 5.sp),
-                              child:
-                                  Table(border: TableBorder.all(), children: [
-                                TableRow(children: [
-                                  Container(
-                                    height: 65.sp,
-                                    margin: EdgeInsets.all(2.sp),
-                                    padding: EdgeInsets.all(2.sp),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(2.sp),
-                                      color: ThemeColor.primaryColor,
-                                    ),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        SizedBox(
-                                          height: 20.sp,
-                                          width: Get.width,
-                                          child: ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            2.sp)),
-                                                backgroundColor:
-                                                    (kategori == "Dewasa")
-                                                        ? ThemeColor.greenColor
-                                                            .withOpacity(0.5)
-                                                        : ThemeColor.darkColor),
-                                            onPressed: () {
-                                              setState(() {
-                                                kategori = "Dewasa";
-                                              });
-                                            },
-                                            child: Text(
-                                              "Dewasa",
-                                              style: whiteTextStyle.copyWith(
-                                                  fontSize: 4.sp),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 20.sp,
-                                          width: Get.width,
-                                          child: ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            2.sp)),
-                                                backgroundColor:
-                                                    (kategori == "Anak")
-                                                        ? ThemeColor.greenColor
-                                                            .withOpacity(0.5)
-                                                        : ThemeColor.darkColor),
-                                            onPressed: () {
-                                              setState(() {
-                                                kategori = "Anak";
-                                              });
-                                            },
-                                            child: Text(
-                                              "Anak",
-                                              style: whiteTextStyle.copyWith(
-                                                  fontSize: 4.sp),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    height: 65.sp,
-                                    margin: EdgeInsets.all(2.sp),
-                                    padding: EdgeInsets.all(2.sp),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(2.sp),
-                                      color: ThemeColor.primaryColor,
-                                    ),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        SizedBox(
-                                          height: 15.sp,
-                                          width: Get.width,
-                                          child: ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            2.sp)),
-                                                backgroundColor:
-                                                    (tingkatKesadaran ==
-                                                            "Alert")
-                                                        ? ThemeColor.greenColor
-                                                            .withOpacity(0.5)
-                                                        : ThemeColor.darkColor),
-                                            onPressed: () {
-                                              setState(() {
-                                                tingkatKesadaran = "Alert";
-                                              });
-                                            },
-                                            child: Text(
-                                              "Alert",
-                                              style: whiteTextStyle.copyWith(
-                                                  fontSize: 4.sp),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 15.sp,
-                                          width: Get.width,
-                                          child: ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            2.sp)),
-                                                backgroundColor:
-                                                    (tingkatKesadaran ==
-                                                            "Voice")
-                                                        ? ThemeColor.greenColor
-                                                            .withOpacity(0.5)
-                                                        : ThemeColor.darkColor),
-                                            onPressed: () {
-                                              setState(() {
-                                                tingkatKesadaran = "Voice";
-                                              });
-                                            },
-                                            child: Text(
-                                              "Voice",
-                                              style: whiteTextStyle.copyWith(
-                                                  fontSize: 4.sp),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 15.sp,
-                                          width: Get.width,
-                                          child: ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            2.sp)),
-                                                backgroundColor:
-                                                    (tingkatKesadaran == "Pain")
-                                                        ? ThemeColor.greenColor
-                                                            .withOpacity(0.5)
-                                                        : ThemeColor.darkColor),
-                                            onPressed: () {
-                                              setState(() {
-                                                tingkatKesadaran = "Pain";
-                                              });
-                                            },
-                                            child: Text(
-                                              "Pain",
-                                              style: whiteTextStyle.copyWith(
-                                                  fontSize: 4.sp),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 15.sp,
-                                          width: Get.width,
-                                          child: ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            2.sp)),
-                                                backgroundColor:
-                                                    (tingkatKesadaran ==
-                                                            "Unreponsiv")
-                                                        ? ThemeColor.greenColor
-                                                            .withOpacity(0.5)
-                                                        : ThemeColor.darkColor),
-                                            onPressed: () {
-                                              setState(() {
-                                                tingkatKesadaran = "Unreponsiv";
-                                              });
-                                            },
-                                            child: Text(
-                                              "Unreponsiv",
-                                              style: whiteTextStyle.copyWith(
-                                                  fontSize: 4.sp),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    height: 65.sp,
-                                    margin: EdgeInsets.all(2.sp),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(2.sp),
-                                      color: ThemeColor.primaryColor,
-                                    ),
-                                    child: CupertinoSpinBox(
-                                      textStyle: whiteTextStyle,
-                                      min: 1,
-                                      max: 100,
-                                      value: td.toDouble(),
-                                      direction: Axis.vertical,
-                                      decoration: BoxDecoration(
+                              child: Table(
+                                  columnWidths: const {
+                                    2: FlexColumnWidth(1.2),
+                                  },
+                                  border: TableBorder.all(),
+                                  children: [
+                                    TableRow(children: [
+                                      Container(
+                                        height: 65.sp,
+                                        margin: EdgeInsets.all(2.sp),
+                                        padding: EdgeInsets.all(2.sp),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(2.sp),
                                           color: ThemeColor.primaryColor,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(2.sp))),
-                                      onChanged: (value) {
-                                        setState(() {
-                                          td = value.toInt();
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                  Container(
-                                    height: 65.sp,
-                                    margin: EdgeInsets.all(2.sp),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(2.sp),
-                                      color: ThemeColor.primaryColor,
-                                    ),
-                                    child: CupertinoSpinBox(
-                                      textStyle: whiteTextStyle,
-                                      min: 1,
-                                      max: 100,
-                                      value: nadi.toDouble(),
-                                      direction: Axis.vertical,
-                                      decoration: BoxDecoration(
-                                          color: ThemeColor.primaryColor,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(2.sp))),
-                                      onChanged: (value) {
-                                        setState(() {
-                                          nadi = value.toInt();
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                  Container(
-                                    height: 65.sp,
-                                    margin: EdgeInsets.all(2.sp),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(2.sp),
-                                      color: ThemeColor.primaryColor,
-                                    ),
-                                    child: CupertinoSpinBox(
-                                      textStyle: whiteTextStyle,
-                                      min: 1,
-                                      max: 100,
-                                      value: pernapasan.toDouble(),
-                                      direction: Axis.vertical,
-                                      decoration: BoxDecoration(
-                                          color: ThemeColor.primaryColor,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(2.sp))),
-                                      onChanged: (value) {
-                                        setState(() {
-                                          pernapasan = value.toInt();
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                  Container(
-                                    height: 65.sp,
-                                    margin: EdgeInsets.all(2.sp),
-                                    padding: EdgeInsets.all(2.sp),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(2.sp),
-                                      color: ThemeColor.primaryColor,
-                                    ),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        SizedBox(
-                                            width: Get.width,
-                                            child: ElevatedButton(
-                                              style: ElevatedButton.styleFrom(
-                                                  shape: RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              2.sp)),
-                                                  backgroundColor:
-                                                      (reaksiOtot == "Berat")
-                                                          ? ThemeColor
-                                                              .greenColor
-                                                              .withOpacity(0.5)
-                                                          : ThemeColor
-                                                              .darkColor),
-                                              onPressed: () {
-                                                setState(() {
-                                                  reaksiOtot = "Berat";
-                                                });
-                                              },
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            SizedBox(
+                                              height: 20.sp,
+                                              width: Get.width,
+                                              child: ElevatedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(2
+                                                                        .sp)),
+                                                    backgroundColor:
+                                                        (kategori == "Dewasa")
+                                                            ? ThemeColor
+                                                                .greenColor
+                                                                .withOpacity(
+                                                                    0.5)
+                                                            : ThemeColor
+                                                                .darkColor),
+                                                onPressed: () {
+                                                  setState(() {
+                                                    kategori = "Dewasa";
+                                                  });
+                                                },
                                                 child: Text(
-                                                  "Berat",
+                                                  "Dewasa",
                                                   style: whiteTextStyle
                                                       .copyWith(fontSize: 4.sp),
                                                 ),
                                               ),
-                                            )),
-                                        SizedBox(
-                                          height: 5.sp,
-                                        ),
-                                        SizedBox(
-                                          width: Get.width,
-                                          child: ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            2.sp)),
-                                                backgroundColor:
-                                                    (reaksiOtot == "Sedang")
-                                                        ? ThemeColor.greenColor
-                                                            .withOpacity(0.5)
-                                                        : ThemeColor.darkColor),
-                                            onPressed: () {
-                                              setState(() {
-                                                reaksiOtot = "Sedang";
-                                              });
-                                            },
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Text(
-                                                "Sedang",
-                                                style: whiteTextStyle.copyWith(
-                                                    fontSize: 4.sp),
+                                            ),
+                                            SizedBox(
+                                              height: 20.sp,
+                                              width: Get.width,
+                                              child: ElevatedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(2
+                                                                        .sp)),
+                                                    backgroundColor:
+                                                        (kategori == "Anak")
+                                                            ? ThemeColor
+                                                                .greenColor
+                                                                .withOpacity(
+                                                                    0.5)
+                                                            : ThemeColor
+                                                                .darkColor),
+                                                onPressed: () {
+                                                  setState(() {
+                                                    kategori = "Anak";
+                                                  });
+                                                },
+                                                child: Text(
+                                                  "Anak",
+                                                  style: whiteTextStyle
+                                                      .copyWith(fontSize: 4.sp),
+                                                ),
                                               ),
                                             ),
-                                          ),
+                                          ],
                                         ),
-                                        SizedBox(
-                                          height: 5.sp,
+                                      ),
+                                      Container(
+                                        height: 65.sp,
+                                        margin: EdgeInsets.all(2.sp),
+                                        padding: EdgeInsets.all(2.sp),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(2.sp),
+                                          color: ThemeColor.primaryColor,
                                         ),
-                                        SizedBox(
-                                          width: Get.width,
-                                          child: ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            2.sp)),
-                                                backgroundColor:
-                                                    (reaksiOtot == "Ringan")
-                                                        ? ThemeColor.greenColor
-                                                            .withOpacity(0.5)
-                                                        : ThemeColor.darkColor),
-                                            onPressed: () {
-                                              setState(() {
-                                                reaksiOtot = "Ringan";
-                                              });
-                                            },
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Text(
-                                                "Ringan",
-                                                style: whiteTextStyle.copyWith(
-                                                    fontSize: 4.sp),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            SizedBox(
+                                              height: 15.sp,
+                                              width: Get.width,
+                                              child: ElevatedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(2
+                                                                        .sp)),
+                                                    backgroundColor:
+                                                        (tingkatKesadaran ==
+                                                                "Alert")
+                                                            ? ThemeColor
+                                                                .greenColor
+                                                                .withOpacity(
+                                                                    0.5)
+                                                            : ThemeColor
+                                                                .darkColor),
+                                                onPressed: () {
+                                                  setState(() {
+                                                    tingkatKesadaran = "Alert";
+                                                  });
+                                                },
+                                                child: Text(
+                                                  "Alert",
+                                                  style:
+                                                      whiteTextStyle.copyWith(
+                                                          fontSize: 3.5.sp),
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    height: 65.sp,
-                                    margin: EdgeInsets.all(2.sp),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(2.sp),
-                                      color: ThemeColor.primaryColor,
-                                    ),
-                                    child: CupertinoSpinBox(
-                                      textStyle: whiteTextStyle,
-                                      min: 1,
-                                      max: 100,
-                                      value: suhu.toDouble(),
-                                      direction: Axis.vertical,
-                                      decoration: BoxDecoration(
-                                          color: ThemeColor.primaryColor,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(2.sp))),
-                                      onChanged: (value) {
-                                        setState(() {
-                                          suhu = value.toInt();
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                  Container(
-                                    height: 65.sp,
-                                    margin: EdgeInsets.all(2.sp),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(2.sp),
-                                      color: ThemeColor.primaryColor,
-                                    ),
-                                    child: CupertinoSpinBox(
-                                      textStyle: whiteTextStyle,
-                                      min: 1,
-                                      max: 100,
-                                      value: spo2.toDouble(),
-                                      direction: Axis.vertical,
-                                      decoration: BoxDecoration(
-                                          color: ThemeColor.primaryColor,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(2.sp))),
-                                      onChanged: (value) {
-                                        setState(() {
-                                          spo2 = value.toInt();
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                  Container(
-                                    height: 65.sp,
-                                    margin: EdgeInsets.all(2.sp),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(2.sp),
-                                      color: ThemeColor.primaryColor,
-                                    ),
-                                    child: CupertinoSpinBox(
-                                      textStyle: whiteTextStyle,
-                                      min: 1,
-                                      max: 100,
-                                      value: crt.toDouble(),
-                                      direction: Axis.vertical,
-                                      decoration: BoxDecoration(
-                                          color: ThemeColor.primaryColor,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(2.sp))),
-                                      onChanged: (value) {
-                                        setState(() {
-                                          crt = value.toInt();
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                  Container(
-                                    height: 65.sp,
-                                    margin: EdgeInsets.all(2.sp),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(2.sp),
-                                      color: ThemeColor.primaryColor,
-                                    ),
-                                    child: CupertinoSpinBox(
-                                      textStyle: whiteTextStyle,
-                                      min: 1,
-                                      max: 100,
-                                      value: skalaNyeri.toDouble(),
-                                      direction: Axis.vertical,
-                                      decoration: BoxDecoration(
-                                          color: ThemeColor.primaryColor,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(2.sp))),
-                                      onChanged: (value) {
-                                        setState(() {
-                                          skalaNyeri = value.toInt();
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                  Container(
-                                    height: 65.sp,
-                                    margin: EdgeInsets.all(2.sp),
-                                    padding: EdgeInsets.all(2.sp),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(2.sp),
-                                      color: ThemeColor.primaryColor,
-                                    ),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        SizedBox(
-                                          height: 15.sp,
-                                          width: Get.width,
-                                          child: ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            2.sp)),
-                                                backgroundColor:
-                                                    (obsigenTambahan == "Ya")
-                                                        ? ThemeColor.greenColor
-                                                            .withOpacity(0.5)
-                                                        : ThemeColor.darkColor),
-                                            onPressed: () {
-                                              setState(() {
-                                                obsigenTambahan = "Ya";
-                                              });
-                                            },
-                                            child: Text(
-                                              "Ya",
-                                              style: whiteTextStyle.copyWith(
-                                                  fontSize: 4.sp),
+                                            SizedBox(
+                                              height: 15.sp,
+                                              width: Get.width,
+                                              child: ElevatedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(2
+                                                                        .sp)),
+                                                    backgroundColor:
+                                                        (tingkatKesadaran ==
+                                                                "Voice")
+                                                            ? ThemeColor
+                                                                .greenColor
+                                                                .withOpacity(
+                                                                    0.5)
+                                                            : ThemeColor
+                                                                .darkColor),
+                                                onPressed: () {
+                                                  setState(() {
+                                                    tingkatKesadaran = "Voice";
+                                                  });
+                                                },
+                                                child: Text(
+                                                  "Voice",
+                                                  style:
+                                                      whiteTextStyle.copyWith(
+                                                          fontSize: 3.5.sp),
+                                                ),
+                                              ),
                                             ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 15.sp,
-                                          width: Get.width,
-                                          child: ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            2.sp)),
-                                                backgroundColor:
-                                                    (obsigenTambahan == "Tidak")
-                                                        ? ThemeColor.greenColor
-                                                            .withOpacity(0.5)
-                                                        : ThemeColor.darkColor),
-                                            onPressed: () {
-                                              setState(() {
-                                                obsigenTambahan = "Tidak";
-                                              });
-                                            },
-                                            child: Text(
-                                              "Tidak",
-                                              style: whiteTextStyle.copyWith(
-                                                  fontSize: 4.sp),
+                                            SizedBox(
+                                              height: 15.sp,
+                                              width: Get.width,
+                                              child: ElevatedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        2.sp)),
+                                                    backgroundColor:
+                                                        (tingkatKesadaran ==
+                                                                "Pain")
+                                                            ? ThemeColor
+                                                                .greenColor
+                                                                .withOpacity(
+                                                                    0.5)
+                                                            : ThemeColor
+                                                                .darkColor),
+                                                onPressed: () {
+                                                  setState(() {
+                                                    tingkatKesadaran = "Pain";
+                                                  });
+                                                },
+                                                child: Text(
+                                                  "Pain",
+                                                  style:
+                                                      whiteTextStyle.copyWith(
+                                                          fontSize: 3.5.sp),
+                                                ),
+                                              ),
                                             ),
-                                          ),
+                                            SizedBox(
+                                              height: 15.sp,
+                                              width: Get.width,
+                                              child: ElevatedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        2.sp)),
+                                                    backgroundColor:
+                                                        (tingkatKesadaran ==
+                                                                "Unreponsiv")
+                                                            ? ThemeColor
+                                                                .greenColor
+                                                                .withOpacity(
+                                                                    0.5)
+                                                            : ThemeColor
+                                                                .darkColor),
+                                                onPressed: () {
+                                                  setState(() {
+                                                    tingkatKesadaran =
+                                                        "Unreponsiv";
+                                                  });
+                                                },
+                                                child: Text(
+                                                  "Unreponsiv",
+                                                  style:
+                                                      whiteTextStyle.copyWith(
+                                                          fontSize: 3.5.sp),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                      ],
-                                    ),
-                                  ),
+                                      ),
+                                      Container(
+                                        height: 65.sp,
+                                        margin: EdgeInsets.all(2.sp),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(2.sp),
+                                          color: ThemeColor.transparentColor,
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              height: 65.sp / 2 - 35,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(2.sp),
+                                                color: ThemeColor.primaryColor,
+                                              ),
+                                              child: CupertinoSpinBox(
+                                                textStyle: whiteTextStyle,
+                                                min: 1,
+                                                max: 500,
+                                                value: td.toDouble(),
+                                                direction: Axis.horizontal,
+                                                decoration: BoxDecoration(
+                                                    color:
+                                                        ThemeColor.primaryColor,
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                2.sp))),
+                                                onChanged: (value) {
+                                                  setState(() {
+                                                    td = value.toInt();
+                                                  });
+                                                },
+                                              ),
+                                            ),
+                                            Text(
+                                              "/",
+                                              style: blackTextStyle,
+                                            ),
+                                            Container(
+                                              height: 65.sp / 2 - 35,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(2.sp),
+                                                color: ThemeColor.primaryColor,
+                                              ),
+                                              child: CupertinoSpinBox(
+                                                textStyle: whiteTextStyle,
+                                                min: 1,
+                                                max: 500,
+                                                value: td.toDouble(),
+                                                direction: Axis.horizontal,
+                                                decoration: BoxDecoration(
+                                                    color:
+                                                        ThemeColor.primaryColor,
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                2.sp))),
+                                                onChanged: (value) {
+                                                  setState(() {
+                                                    td = value.toInt();
+                                                  });
+                                                },
+                                              ),
+                                            ),
+                                            Text(
+                                              "mmHg",
+                                              style: blackTextStyle,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 65.sp,
+                                        margin: EdgeInsets.all(2.sp),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(2.sp),
+                                          color: ThemeColor.primaryColor,
+                                        ),
+                                        child: CupertinoSpinBox(
+                                          textStyle: whiteTextStyle,
+                                          min: 1,
+                                          max: 500,
+                                          value: nadi.toDouble(),
+                                          direction: Axis.vertical,
+                                          decoration: BoxDecoration(
+                                              color: ThemeColor.primaryColor,
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(2.sp))),
+                                          onChanged: (value) {
+                                            setState(() {
+                                              nadi = value.toInt();
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 65.sp,
+                                        margin: EdgeInsets.all(2.sp),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(2.sp),
+                                          color: ThemeColor.primaryColor,
+                                        ),
+                                        child: CupertinoSpinBox(
+                                          textStyle: whiteTextStyle,
+                                          min: 1,
+                                          max: 500,
+                                          value: pernapasan.toDouble(),
+                                          direction: Axis.vertical,
+                                          decoration: BoxDecoration(
+                                              color: ThemeColor.primaryColor,
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(2.sp))),
+                                          onChanged: (value) {
+                                            setState(() {
+                                              pernapasan = value.toInt();
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 65.sp,
+                                        margin: EdgeInsets.all(2.sp),
+                                        padding: EdgeInsets.all(2.sp),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(2.sp),
+                                          color: ThemeColor.primaryColor,
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            SizedBox(
+                                                width: Get.width,
+                                                child: ElevatedButton(
+                                                  style: ElevatedButton.styleFrom(
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(2
+                                                                          .sp)),
+                                                      backgroundColor:
+                                                          (reaksiOtot ==
+                                                                  "Berat")
+                                                              ? ThemeColor
+                                                                  .greenColor
+                                                                  .withOpacity(
+                                                                      0.5)
+                                                              : ThemeColor
+                                                                  .darkColor),
+                                                  onPressed: () {
+                                                    setState(() {
+                                                      reaksiOtot = "Berat";
+                                                    });
+                                                  },
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Text(
+                                                      "Berat",
+                                                      style: whiteTextStyle
+                                                          .copyWith(
+                                                              fontSize: 4.sp),
+                                                    ),
+                                                  ),
+                                                )),
+                                            SizedBox(
+                                              height: 5.sp,
+                                            ),
+                                            SizedBox(
+                                              width: Get.width,
+                                              child: ElevatedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(2
+                                                                        .sp)),
+                                                    backgroundColor:
+                                                        (reaksiOtot ==
+                                                                "Sedang")
+                                                            ? ThemeColor
+                                                                .greenColor
+                                                                .withOpacity(
+                                                                    0.5)
+                                                            : ThemeColor
+                                                                .darkColor),
+                                                onPressed: () {
+                                                  setState(() {
+                                                    reaksiOtot = "Sedang";
+                                                  });
+                                                },
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Text(
+                                                    "Sedang",
+                                                    style:
+                                                        whiteTextStyle.copyWith(
+                                                            fontSize: 4.sp),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 5.sp,
+                                            ),
+                                            SizedBox(
+                                              width: Get.width,
+                                              child: ElevatedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(2
+                                                                        .sp)),
+                                                    backgroundColor:
+                                                        (reaksiOtot ==
+                                                                "Ringan")
+                                                            ? ThemeColor
+                                                                .greenColor
+                                                                .withOpacity(
+                                                                    0.5)
+                                                            : ThemeColor
+                                                                .darkColor),
+                                                onPressed: () {
+                                                  setState(() {
+                                                    reaksiOtot = "Ringan";
+                                                  });
+                                                },
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Text(
+                                                    "Ringan",
+                                                    style:
+                                                        whiteTextStyle.copyWith(
+                                                            fontSize: 4.sp),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 65.sp,
+                                        margin: EdgeInsets.all(2.sp),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(2.sp),
+                                          color: ThemeColor.primaryColor,
+                                        ),
+                                        child: CupertinoSpinBox(
+                                          textStyle: whiteTextStyle,
+                                          min: 1,
+                                          max: 500,
+                                          value: suhu.toDouble(),
+                                          direction: Axis.vertical,
+                                          decoration: BoxDecoration(
+                                              color: ThemeColor.primaryColor,
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(2.sp))),
+                                          onChanged: (value) {
+                                            setState(() {
+                                              suhu = value.toInt();
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 65.sp,
+                                        margin: EdgeInsets.all(2.sp),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(2.sp),
+                                          color: ThemeColor.primaryColor,
+                                        ),
+                                        child: CupertinoSpinBox(
+                                          textStyle: whiteTextStyle,
+                                          min: 1,
+                                          max: 500,
+                                          value: spo2.toDouble(),
+                                          direction: Axis.vertical,
+                                          decoration: BoxDecoration(
+                                              color: ThemeColor.primaryColor,
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(2.sp))),
+                                          onChanged: (value) {
+                                            setState(() {
+                                              spo2 = value.toInt();
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 65.sp,
+                                        margin: EdgeInsets.all(2.sp),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(2.sp),
+                                          color: ThemeColor.primaryColor,
+                                        ),
+                                        child: CupertinoSpinBox(
+                                          textStyle: whiteTextStyle,
+                                          min: 1,
+                                          max: 500,
+                                          value: crt.toDouble(),
+                                          direction: Axis.vertical,
+                                          decoration: BoxDecoration(
+                                              color: ThemeColor.primaryColor,
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(2.sp))),
+                                          onChanged: (value) {
+                                            setState(() {
+                                              crt = value.toInt();
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 65.sp,
+                                        margin: EdgeInsets.all(2.sp),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(2.sp),
+                                          color: ThemeColor.primaryColor,
+                                        ),
+                                        child: CupertinoSpinBox(
+                                          textStyle: whiteTextStyle,
+                                          min: 1,
+                                          max: 500,
+                                          value: skalaNyeri.toDouble(),
+                                          direction: Axis.vertical,
+                                          decoration: BoxDecoration(
+                                              color: ThemeColor.primaryColor,
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(2.sp))),
+                                          onChanged: (value) {
+                                            setState(() {
+                                              skalaNyeri = value.toInt();
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 65.sp,
+                                        margin: EdgeInsets.all(2.sp),
+                                        padding: EdgeInsets.all(2.sp),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(2.sp),
+                                          color: ThemeColor.primaryColor,
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            SizedBox(
+                                              height: 15.sp,
+                                              width: Get.width,
+                                              child: ElevatedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        2.sp)),
+                                                    backgroundColor:
+                                                        (obsigenTambahan ==
+                                                                "Ya")
+                                                            ? ThemeColor
+                                                                .greenColor
+                                                                .withOpacity(
+                                                                    0.5)
+                                                            : ThemeColor
+                                                                .darkColor),
+                                                onPressed: () {
+                                                  setState(() {
+                                                    obsigenTambahan = "Ya";
+                                                  });
+                                                },
+                                                child: Text(
+                                                  "Ya",
+                                                  style: whiteTextStyle
+                                                      .copyWith(fontSize: 4.sp),
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 15.sp,
+                                              width: Get.width,
+                                              child: ElevatedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        2.sp)),
+                                                    backgroundColor:
+                                                        (obsigenTambahan ==
+                                                                "Tidak")
+                                                            ? ThemeColor
+                                                                .greenColor
+                                                                .withOpacity(
+                                                                    0.5)
+                                                            : ThemeColor
+                                                                .darkColor),
+                                                onPressed: () {
+                                                  setState(() {
+                                                    obsigenTambahan = "Tidak";
+                                                  });
+                                                },
+                                                child: Text(
+                                                  "Tidak",
+                                                  style: whiteTextStyle
+                                                      .copyWith(fontSize: 4.sp),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ]),
+                                  ])),
+                          Container(
+                              padding: EdgeInsets.only(
+                                  top: 0, left: 5.sp, right: 5.sp),
+                              child:
+                                  Table(border: TableBorder.all(), children: [
+                                TableRow(children: [
+                                  Padding(
+                                    padding: EdgeInsets.all(5.sp),
+                                    child: FormWidget.textArea(
+                                        hinText: "Keterangan",
+                                        enabled: true,
+                                        maxLines: 3),
+                                  )
                                 ]),
                               ])),
                           Container(
@@ -1065,7 +1218,7 @@ class _TambahDataEdukasiTerintegrasiPasienWidgetState
                                     child: CupertinoSpinBox(
                                       textStyle: whiteTextStyle,
                                       min: 1,
-                                      max: 100,
+                                      max: 500,
                                       value: td.toDouble(),
                                       direction: Axis.vertical,
                                       decoration: BoxDecoration(
@@ -1089,7 +1242,7 @@ class _TambahDataEdukasiTerintegrasiPasienWidgetState
                                     child: CupertinoSpinBox(
                                       textStyle: whiteTextStyle,
                                       min: 1,
-                                      max: 100,
+                                      max: 500,
                                       value: nadi.toDouble(),
                                       direction: Axis.vertical,
                                       decoration: BoxDecoration(
@@ -1113,7 +1266,7 @@ class _TambahDataEdukasiTerintegrasiPasienWidgetState
                                     child: CupertinoSpinBox(
                                       textStyle: whiteTextStyle,
                                       min: 1,
-                                      max: 100,
+                                      max: 500,
                                       value: pernapasan.toDouble(),
                                       direction: Axis.vertical,
                                       decoration: BoxDecoration(
@@ -1248,7 +1401,7 @@ class _TambahDataEdukasiTerintegrasiPasienWidgetState
                                     child: CupertinoSpinBox(
                                       textStyle: whiteTextStyle,
                                       min: 1,
-                                      max: 100,
+                                      max: 500,
                                       value: suhu.toDouble(),
                                       direction: Axis.vertical,
                                       decoration: BoxDecoration(
@@ -1272,7 +1425,7 @@ class _TambahDataEdukasiTerintegrasiPasienWidgetState
                                     child: CupertinoSpinBox(
                                       textStyle: whiteTextStyle,
                                       min: 1,
-                                      max: 100,
+                                      max: 500,
                                       value: spo2.toDouble(),
                                       direction: Axis.vertical,
                                       decoration: BoxDecoration(
@@ -1296,7 +1449,7 @@ class _TambahDataEdukasiTerintegrasiPasienWidgetState
                                     child: CupertinoSpinBox(
                                       textStyle: whiteTextStyle,
                                       min: 1,
-                                      max: 100,
+                                      max: 500,
                                       value: crt.toDouble(),
                                       direction: Axis.vertical,
                                       decoration: BoxDecoration(
@@ -1320,7 +1473,7 @@ class _TambahDataEdukasiTerintegrasiPasienWidgetState
                                     child: CupertinoSpinBox(
                                       textStyle: whiteTextStyle,
                                       min: 1,
-                                      max: 100,
+                                      max: 500,
                                       value: skalaNyeri.toDouble(),
                                       direction: Axis.vertical,
                                       decoration: BoxDecoration(

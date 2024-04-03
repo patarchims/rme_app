@@ -520,6 +520,24 @@ abstract class DTO {
     return {"no_reg": noReg};
   }
 
+  static Map<String, String> getFisikICU({
+    required String noReg,
+    required String person,
+  }) {
+    return {"noreg": noReg, "person": person};
+  }
+
+  // static Map<String, dynamic> onSavePemeriksaanFisikICU({
+  //   required String noReg,
+  //   required String person,
+  // }) {
+  //   return {
+  //     "device_id": deviceID,
+  //     "noreg": noReg,
+  //     "person": person,
+  //   };
+  // }
+
   static Map<String, String> onValidasiAnalisaData({
     required String noReg,
     required String tanggal,

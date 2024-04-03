@@ -9,6 +9,7 @@ import 'package:hms_app/domain/models/response/report/report_pengkajian_rawat_in
 import 'package:hms_app/domain/models/response/report/report_ringkasan_pulang_response_model.dart';
 import 'package:hms_app/domain/models/response/report/report_triase_response_model.dart';
 import 'package:hms_app/domain/services/library_services.dart';
+import 'package:hms_app/presentation/kebidanan/presentation/asesmen/add_riwayat_kehamilan_widget.dart';
 import 'package:hms_app/presentation/report/repository/intervensi_pasien_response_model.dart';
 import 'package:hms_app/presentation/report/repository/response_cppt_pasien_mode.dart';
 part 'report_event.dart';
@@ -77,8 +78,6 @@ class ReportBloc extends Bloc<ReportEvent, ReportState> {
       // === //
       ReportPengkajianAwalRawatInapModel datas =
           ReportPengkajianAwalRawatInapModel.fromMap(data["response"]);
-
-      log(datas.toString());
 
       emit(state.copyWith(
           reportPengkajianAwalMedis: datas,

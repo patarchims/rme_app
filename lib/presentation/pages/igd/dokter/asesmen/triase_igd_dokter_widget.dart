@@ -111,7 +111,7 @@ class _TriaseIGDState extends State<TriaseIGD> {
                         person: toPerson(person: authState.user.person),
                         pelayanan:
                             toPelayanan(poliklinik: authState.user.poliklinik),
-                        devicesID: "ID - ${data['id']} - ${data['device']}}",
+                        devicesID: "ID:${data['id']}-${data['device']}",
                         kategori: toPerson(person: authState.user.person),
                         triase: state.triaseIgdDokterModel.copyWith(
                             gangguanPerilaku: _ngangguanPerilakuController.text,

@@ -82,6 +82,12 @@ class _RencanaTindakLanjutIGDWigetState
 
                         return shouldPop ?? false;
                       }
+                      if (e.meta.code == 202) {
+                        final shouldPop = await Alert.warningMessage(context,
+                            subTitle: e.meta.message.toString(),
+                            title: "Peringatan");
+                        return shouldPop ?? false;
+                      }
                     }),
                 (r) => r.maybeMap(
                     orElse: () {},

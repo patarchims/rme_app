@@ -422,8 +422,6 @@ class _DeskripsiLuaranSlkiContentWidgetState
                           width: 20.sp,
                           child: ElevatedButton(
                             onPressed: () {
-                              log("Index Elemen ${indexSlki.key}");
-                              log("Index Menurun ${list.key}");
                               context.read<DeskripsiLuaranSlkiBloc>().add(
                                   OnSelectedSLKIEvent(
                                       indexSLKI: indexSlki.key,
@@ -439,7 +437,7 @@ class _DeskripsiLuaranSlkiContentWidgetState
                                   ? Colors.green
                                   : ThemeColor.primaryColor,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5.sp),
+                                borderRadius: BorderRadius.circular(2.sp),
                               ),
                             ),
                             child: (list.value.isSelected)
@@ -488,12 +486,10 @@ class _DeskripsiLuaranSlkiContentWidgetState
                                         color: ThemeColor.primaryColor,
                                         borderRadius:
                                             BorderRadius.circular(10)),
-
-                                    // dropdown below..
                                     child: DropdownButton<String>(
+                                      dropdownColor: ThemeColor.darkColor,
                                       value: list.value.waktu.toString(),
                                       onChanged: (e) {
-                                        // TODO : ON SELECTION WAKTU
                                         context
                                             .read<DeskripsiLuaranSlkiBloc>()
                                             .add(OnSelectionWaktuEvent(
@@ -510,12 +506,16 @@ class _DeskripsiLuaranSlkiContentWidgetState
                                               (String value) =>
                                                   DropdownMenuItem<String>(
                                                     value: value,
-                                                    child: Text(value),
+                                                    child: Text(
+                                                      value,
+                                                      style: whiteTextStyle,
+                                                    ),
                                                   ))
                                           .toList(),
-
-                                      // add extra sugar..
-                                      icon: const Icon(Icons.arrow_drop_down),
+                                      icon: const Icon(
+                                        Icons.arrow_drop_down,
+                                        color: ThemeColor.primaryColor,
+                                      ),
                                       iconSize: 42,
                                       underline: const SizedBox(),
                                     ),

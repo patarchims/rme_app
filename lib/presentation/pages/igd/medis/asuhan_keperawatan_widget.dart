@@ -138,7 +138,6 @@ class AsuhanKeperawatanWidget extends StatelessWidget {
                     duration: const Duration(seconds: 2)));
               }
               if (state.selectionSIKI != null) {
-                // LAKUKAN // SIMPAN DATA
                 context.read<AsesmenKeperawatanBidanBloc>().add(
                     AsesmenKeperawatanBidanEvent.saveAsuhanKeperawatan(
                         noReg: singlePasien.first.noreg));
@@ -168,8 +167,6 @@ class AsuhanKeperawatanWidget extends StatelessWidget {
                                 ],
                                 if (state.pilihDiagnosaKeperawatan ==
                                     PilihDiagnosaKeperawatan.intervensi) ...[
-                                  // ======== //
-                                  // TODO => INTERVENSI KEPERAWATAN
                                   SizedBox(
                                       height: 250.sp,
                                       width: Get.width,

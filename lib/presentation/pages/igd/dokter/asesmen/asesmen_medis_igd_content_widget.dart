@@ -209,6 +209,7 @@ class _AsesmenMedisIGdContentWidgetState
                         padding: EdgeInsets.symmetric(horizontal: 5.sp),
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                              backgroundColor: ThemeColor.primaryColor,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(5.sp))),
                           child: const Icon(
@@ -238,6 +239,32 @@ class _AsesmenMedisIGdContentWidgetState
                                                 onFieldSubmitted: (value) {
                                                   // TODO : SIMPAN DATA KELUARGA
 
+                                                  if (authState
+                                                      is Authenticated) {
+                                                    context.read<KeluhanUtamaBloc>().add(
+                                                        OnSaveRiwayatKeluargaEvent(
+                                                            value:
+                                                                _riwayatPenyakitKeluarga
+                                                                    .text,
+                                                            noRM: singlePasien
+                                                                .first.mrn,
+                                                            noReg: singlePasien
+                                                                .first.noreg,
+                                                            tanggal:
+                                                                DateTime.now()
+                                                                    .toString()
+                                                                    .substring(
+                                                                        0, 10),
+                                                            person: toPerson(
+                                                                person: authState
+                                                                    .user
+                                                                    .person),
+                                                            pelayanan: toPelayanan(
+                                                                poliklinik:
+                                                                    authState
+                                                                        .user
+                                                                        .poliklinik)));
+                                                  }
                                                   Get.back();
                                                 },
                                                 controller:
@@ -323,6 +350,7 @@ class _AsesmenMedisIGdContentWidgetState
                                       .map((e) => SizedBox(
                                             width: 120.sp,
                                             child: Card(
+                                              color: ThemeColor.darkColor,
                                               child: ListTile(
                                                   trailing: IconButton(
                                                     onPressed: () {

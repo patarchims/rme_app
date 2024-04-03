@@ -1,5 +1,5 @@
 class ReportTriaseResponseModel {
-  final Pasien pasien;
+  final PasienTriase pasien;
   final SkalaFlacc skalaFlacc;
   final ImageLokalis imageLokais;
   final Nyeri nyeri;
@@ -25,7 +25,7 @@ class ReportTriaseResponseModel {
         tandaVital: TandaVital.fromJson(json["tanda_vital"]),
         pemeriksaanFisik:
             PemeriksaanFisikModel.fromJson(json["pemeriksaan_fisik"]),
-        pasien: Pasien.fromJson(json["pasien"]),
+        pasien: PasienTriase.fromJson(json["pasien"]),
         skalaFlacc: SkalaFlacc.fromJson(json["skalaFlacc"]),
         nyeri: Nyeri.fromMap(json["nyeri"]),
         imageLokais: ImageLokalis.fromMap(json["image_lokalis"]),
@@ -537,14 +537,14 @@ class ImageLokalis {
   }
 }
 
-class Pasien {
+class PasienTriase {
   final String nik;
   final String id;
   final String firstname;
   final String jenisKelamin;
   final String tglLahir;
 
-  Pasien({
+  PasienTriase({
     required this.nik,
     required this.id,
     required this.firstname,
@@ -552,7 +552,7 @@ class Pasien {
     required this.tglLahir,
   });
 
-  factory Pasien.fromJson(Map<String, dynamic> json) => Pasien(
+  factory PasienTriase.fromJson(Map<String, dynamic> json) => PasienTriase(
         nik: json["nik"],
         id: json["id"],
         firstname: json["firstname"],

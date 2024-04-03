@@ -41,6 +41,7 @@ class _ReportFormulirTriaseWidgetState
             body: Loading.expandedLoading(),
           );
         }
+
         return Scaffold(
           backgroundColor: ThemeColor.transparentColor,
           body: Container(
