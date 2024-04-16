@@ -20,6 +20,8 @@ class ResikoJatuhReportBloc
     on<OnGetResikoJatuhAnakEvent>(_onGetResikoJatuhAnakReport);
     on<OnGetReportResikoJatuhMorseEvent>(_onGetResikoJatuhMorseReport);
     on<OnGetRisikoJatuhDewasaEvent>(_onGetResikoJatuhDewasaEvent);
+    on<OnGetReAsesmenResikoJatuhAnakEvent>(
+        _onGetReAsesmenResikoJatuhAnakReport);
   }
 
   Future<void> _onGetIntervensiReport(
@@ -32,9 +34,6 @@ class ResikoJatuhReportBloc
 
     final data = await libraryService.intervensiResikoJatuhReport(
         noRM: event.noRM, noReg: event.noReg);
-
-    log("GET DATA REPORT");
-    log(data.toString());
 
     data.fold(
         (l) => l.maybeMap(
@@ -145,9 +144,6 @@ class ResikoJatuhReportBloc
 
     final data = await libraryService.resikoJatuhAnak(noReg: event.noReg);
 
-    log("GET DATA REPORT");
-    log(data.toString());
-
     data.fold(
         (l) => l.maybeMap(
             orElse: () {},
@@ -165,6 +161,47 @@ class ResikoJatuhReportBloc
                     ReportResikoJatuhAnak.fromJson(data.value["response"]);
 
                 log(datas.toJson().toString());
+
+                emit(state.copyWith(
+                  status: ReportResikoJatuhStatus.loadedResikoAnak,
+                  reportIntervensiResikoModel:
+                      state.reportIntervensiResikoModel,
+                  reportResikoJatuhAnak: datas,
+                ));
+              } catch (e) {
+                emit(state.copyWith(
+                    status: ReportResikoJatuhStatus.error,
+                    reportResikoJatuhAnak: null,
+                    reportIntervensiResikoModel:
+                        state.reportIntervensiResikoModel));
+              }
+            }));
+  }
+
+  Future<void> _onGetReAsesmenResikoJatuhAnakReport(
+    OnGetReAsesmenResikoJatuhAnakEvent event,
+    Emitter<ResikoReportJatuhState> emit,
+  ) async {
+    emit(state.copyWith(
+        status: ReportResikoJatuhStatus.isLoadingGetResikoJatuhPasienAnak,
+        reportIntervensiResikoModel: null));
+
+    final data = await libraryService.resikoJatuhAnak(noReg: event.noReg);
+
+    data.fold(
+        (l) => l.maybeMap(
+            orElse: () {},
+            failure: (e) {
+              emit(state.copyWith(
+                  status: ReportResikoJatuhStatus.error,
+                  reportIntervensiResikoModel: null));
+            }),
+        (r) => r.maybeMap(
+            orElse: () {},
+            loaded: (data) {
+              try {
+                ReportResikoJatuhAnak datas =
+                    ReportResikoJatuhAnak.fromJson(data.value["response"]);
 
                 emit(state.copyWith(
                   status: ReportResikoJatuhStatus.loadedResikoAnak,

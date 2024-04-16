@@ -12,9 +12,9 @@ import 'package:hms_app/presentation/pages/modul/hasil_penunjang/riwayat_radiolo
 class HasilPenunjangOldDBWidgetContent extends StatefulWidget {
   final List<String> menu;
   const HasilPenunjangOldDBWidgetContent({
-    Key? key,
+    super.key,
     required this.menu,
-  }) : super(key: key);
+  });
 
   @override
   State<HasilPenunjangOldDBWidgetContent> createState() =>

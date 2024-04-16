@@ -24,7 +24,6 @@ class _AsesmenAwalNyeriWongBakerFaceScalePageState
   @override
   Widget build(BuildContext context) {
     PasienState pasienState = context.watch<PasienBloc>().state;
-
     final singlePasien = pasienState.listPasienModel
         .where((element) => element.mrn == pasienState.normSelected);
 

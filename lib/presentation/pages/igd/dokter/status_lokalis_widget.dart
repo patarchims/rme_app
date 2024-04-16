@@ -10,7 +10,6 @@ import 'package:hms_app/domain/bloc/dashboard/pasien/pasien_bloc.dart';
 import 'package:hms_app/domain/bloc/user/auth/auth_bloc.dart';
 import 'package:hms_app/domain/models/devices_info/device_info_model.dart';
 import 'package:hms_app/domain/models/users/user_model.dart';
-import 'package:hms_app/presentation/component/fonts/font_helper.dart';
 import 'package:hms_app/presentation/component/shimer/shimer_loading.dart';
 import 'package:image_painter/image_painter.dart';
 import 'package:path_provider/path_provider.dart';
@@ -90,7 +89,6 @@ class _StatusLokalisWidgetState extends State<StatusLokalisWidget> {
                 (l) => l.maybeMap(
                       orElse: () {},
                       failure: (e) async {
-                        log("ERROR FAILURE $e");
                         // TAMPILKAN PESAN KESALAHAN
                         final shouldPop = await Alert.warningMessage(context,
                             subTitle: e.meta.message.toString());
@@ -127,7 +125,7 @@ class _StatusLokalisWidgetState extends State<StatusLokalisWidget> {
                         CustomDialogWidget.getDialog(
                             widget: SizedBox(
                           width: 200.sp,
-                          height: 65.sp,
+                          height: 85.sp,
                           child: Padding(
                             padding: EdgeInsets.symmetric(
                                 horizontal: 5.sp, vertical: 5.sp),
@@ -138,7 +136,7 @@ class _StatusLokalisWidgetState extends State<StatusLokalisWidget> {
                                 FormWidget.textArea(
                                     enabled: true,
                                     hinText: "Tambahkan keterangan gambar",
-                                    maxLines: 3,
+                                    maxLines: 5,
                                     onChanged: (value) {
                                       setState(() {
                                         keteranganStr = value.toString();
@@ -148,6 +146,12 @@ class _StatusLokalisWidgetState extends State<StatusLokalisWidget> {
                                   width: Get.width,
                                   height: 15.sp,
                                   child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          backgroundColor:
+                                              ThemeColor.primaryColor,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(2.sp))),
                                       onPressed: () {
                                         setState(() {
                                           keteranganStr = "";

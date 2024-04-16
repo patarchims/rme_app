@@ -4,7 +4,6 @@ import 'package:flutter_bootstrap5/flutter_bootstrap5.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hms_app/core/setting/theme_builder.dart';
 import 'package:hms_app/di/injection.dart';
 import 'package:hms_app/domain/bloc/bloc.dart';
 import 'package:hms_app/domain/bloc/dashboard/alergi/alergi_bloc.dart';

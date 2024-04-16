@@ -35,11 +35,6 @@ class _ReAsessmenResikoJatuhPadaPasienDewasaState
 
     return BlocConsumer<ResikoJatuhDewasaBloc, ResikoJatuhDewasaState>(
       listener: (context, state) {
-        // TODO: implement listener
-
-        log("TOTAL");
-        log(state.total.toString());
-
         // === === //
         if (state.status == ResikoJatuhDewasaStatus.isLoadingSave) {
           EasyLoading.show(maskType: EasyLoadingMaskType.black);

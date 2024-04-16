@@ -345,61 +345,6 @@ class _InformasiKeluhanAsesmenIgdContentWidgetState
                             // ==============
                             // =============================== CARA MASUK
                             TitleWidget.titleContainer(
-                                title: "Berat Badan & Tinggi Badan"),
-
-                            Padding(
-                              padding: EdgeInsets.all(5.sp),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Berat Badan :  ",
-                                    style: blackTextStyle,
-                                  ),
-                                  SizedBox(
-                                    width: 40.sp,
-                                    child: FormWidget.numberForm(
-                                        enable: true,
-                                        value: state
-                                            .asemenKeluhanIGDModel.beratBedan,
-                                        onChanged: (value) {
-                                          context.read<AsesmenIgdBloc>().add(
-                                              AsesmenIgdEvent
-                                                  .beratBadanOnchanged(
-                                                      value: value));
-                                        }),
-                                  ),
-                                  Text("  Kg", style: blackTextStyle),
-                                  SizedBox(width: 10.sp),
-                                  Text(
-                                    "Tinggi Badan :  ",
-                                    style: blackTextStyle,
-                                  ),
-                                  SizedBox(
-                                    width: 40.sp,
-                                    child: FormWidget.numberForm(
-                                        enable: true,
-                                        value: state
-                                            .asemenKeluhanIGDModel.tinggiBadan,
-                                        onChanged: (value) {
-                                          context.read<AsesmenIgdBloc>().add(
-                                              AsesmenIgdEvent
-                                                  .tinggiBadanOnchanged(
-                                                      value: value));
-                                        }),
-                                  ),
-                                  Text(
-                                    "  Cm",
-                                    style: blackTextStyle,
-                                  ),
-                                ],
-                              ),
-                            ),
-
-                            // ==============
-                            // =============================== CARA MASUK
-                            TitleWidget.titleContainer(
                                 title: "Riwayat Penyakit Sekarang"),
                             Container(
                               padding: EdgeInsets.symmetric(
@@ -423,6 +368,65 @@ class _InformasiKeluhanAsesmenIgdContentWidgetState
                             // =============================== CARA MASUK
                             TitleWidget.titleContainer(
                                 title: "Riwayat Pengobatan Sebelumnya"),
+
+                            Container(
+                              width: Get.width,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 5.sp, vertical: 5.sp),
+                              child: Wrap(
+                                runAlignment: WrapAlignment.start,
+                                runSpacing: 1.sp,
+                                spacing: 1.sp,
+                                alignment: WrapAlignment.start,
+                                children: ListConstants.yaAtauTidak.map((e) {
+                                  return TitleWidget.boxChoose(
+                                      backgroundColor: ThemeColor.primaryColor,
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        FontAwesomeIcons.check,
+                                        color: ThemeColor.whiteColor,
+                                      ),
+                                      title: e);
+                                }
+
+                                    // TitleWidget.boxChoose(
+                                    //     icon: (state.asemenKeluhanIGDModel
+                                    //                 .asalMasuk ==
+                                    //             e)
+                                    //         ? const Icon(
+                                    //             FontAwesomeIcons.check,
+                                    //             color: Colors.white,
+                                    //           )
+                                    //         : const Icon(
+                                    //             FontAwesomeIcons.xmark,
+                                    //             color: Colors.white,
+                                    //           ),
+                                    //     backgroundColor: (state
+                                    //                 .asemenKeluhanIGDModel
+                                    //                 .asalMasuk ==
+                                    //             e)
+                                    //         ? Colors.green
+                                    //         : ThemeColor.primaryColor,
+                                    //     onPressed: () {
+                                    //       context.read<AsesmenIgdBloc>().add(
+                                    //           AsesmenIgdEvent
+                                    //               .asalMasukOnchanged(
+                                    //                   value: e));
+
+                                    //       // ignore: unrelated_type_equality_checks
+                                    //       if (e != ListConstants.asalMasuk) {
+                                    //         context
+                                    //             .read<AsesmenIgdBloc>()
+                                    //             .add(const AsesmenIgdEvent
+                                    //                 .asalMasukDetailOnchanged(
+                                    //                 value: ""));
+                                    //       }
+                                    //     },
+                                    //     title: e),
+                                    ).toList(),
+                              ),
+                            ),
+
                             Container(
                               padding: EdgeInsets.symmetric(
                                   horizontal: 5.sp, vertical: 2.sp),
@@ -501,13 +505,13 @@ class _InformasiKeluhanAsesmenIgdContentWidgetState
                             ),
 
                             const Divider(),
+
                             Padding(
-                              padding: EdgeInsets.all(6.sp),
-                              child: Text(
-                                "1.  Tidak Seimbang/Sempoyongan/Limbung\n2. Jalan Dengan Menggunakan Alat bantu (Tongkat & Tripot, Kursi Roda, Orang Lain)",
-                                style: blackTextStyle,
-                              ),
-                            ),
+                                padding: EdgeInsets.all(6.sp),
+                                child: Text(
+                                  "1.  Tidak Seimbang/Sempoyongan/Limbung\n2. Jalan Dengan Menggunakan Alat bantu (Tongkat & Tripot, Kursi Roda, Orang Lain)",
+                                  style: blackTextStyle,
+                                )),
 
                             Container(
                                 width: Get.width,

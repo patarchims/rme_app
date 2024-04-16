@@ -107,8 +107,8 @@ class _PeresepanPasienWidgetState extends State<PeresepanPasienWidget> {
                       noReg: singlePasien.first.noreg,
                       noRM: singlePasien.first.mrn,
                       catatan: state.informasiResep,
-                      keterangan: "",
-                      deviceID: "ID - ${data['id']} - ${data['device']}}",
+                      keterangan: state.informasiResep,
+                      deviceID: "ID - ${data['id']} - ${data['device']}",
                       namaUser: authState.user.nama,
                       selectionResep: state.ktaripObatSelection));
                 }
@@ -189,7 +189,10 @@ class _PeresepanPasienWidgetState extends State<PeresepanPasienWidget> {
                                 alignment: WrapAlignment.start,
                                 runSpacing: 2,
                                 children: state.ktaripObatSelection.map((e) {
-                                  return SizedBox(
+                                  return Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(5.sp)),
                                     width: 100.sp,
                                     child: ListTile(
                                       enabled: true,

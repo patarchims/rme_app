@@ -23,9 +23,9 @@ import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
 class CpptWidgetBangsal extends StatefulWidget {
   final bool isENableAdd;
   const CpptWidgetBangsal({
-    Key? key,
+    super.key,
     this.isENableAdd = true,
-  }) : super(key: key);
+  });
 
   @override
   State<CpptWidgetBangsal> createState() => _CpptWidgetBangsalState();
@@ -92,7 +92,8 @@ class _CpptWidgetBangsalState extends State<CpptWidgetBangsal> {
                     orElse: () {},
                     failure: (e) async {
                       log("ERROR FAILURE $e");
-                      // TAMPILKAN PESAN KESALAHAN
+                      // TAMPILKAN
+                      // PESAN KESALAHAN
                       final shouldPop = await Alert.warningMessage(context,
                           subTitle: e.meta.message.toString());
                       return shouldPop ?? false;
@@ -106,7 +107,6 @@ class _CpptWidgetBangsalState extends State<CpptWidgetBangsal> {
                       context.read<CpptBloc>().add(CpptEvent.onGetCPPTPasien(
                           noRM: singlePasien.first.mrn));
                     })));
-
         //=====//
       },
       builder: (context, state) {

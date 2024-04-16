@@ -83,7 +83,7 @@ class _IntervensiRisikoJaatuhPasienDewasaContentWidgetState
                     person: toPerson(person: authState.user.person),
                     kategori: toKategoriString(
                         spesiliasasi: authState.user.spesialisasi),
-                    deviceID: "ID - ${data['id']} - ${data['device']}}",
+                    deviceID: "ID-${data['id']}-${data['device']}",
                     pelayanan:
                         toPelayanan(poliklinik: authState.user.poliklinik),
                     resikoJatuh: state.resikoJatuh));

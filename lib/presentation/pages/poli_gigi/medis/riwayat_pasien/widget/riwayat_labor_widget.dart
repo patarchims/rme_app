@@ -8,9 +8,9 @@ import 'package:sizer/sizer.dart';
 class RiwayatLaborWidget extends StatelessWidget {
   final String tanggal;
   const RiwayatLaborWidget({
-    Key? key,
+    super.key,
     required this.tanggal,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

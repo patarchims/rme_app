@@ -467,8 +467,8 @@ class DRadilogiModel {
   });
 
   factory DRadilogiModel.fromJson(Map<String, dynamic> json) => DRadilogiModel(
-        tanggal: json["tanggal"],
-        namaKelompok: json["nama_kelompok"],
+        tanggal: json["tanggal"].toString(),
+        namaKelompok: json["nama_kelompok"].toString(),
         radiologi: List<Radiologi>.from(
             json["radiologi"].map((x) => Radiologi.fromJson(x))),
       );

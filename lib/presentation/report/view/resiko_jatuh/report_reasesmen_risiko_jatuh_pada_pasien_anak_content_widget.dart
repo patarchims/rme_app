@@ -12,30 +12,31 @@ import 'package:table_desk/table_desk.dart';
 
 import 'package:hms_app/presentation/component/component.dart';
 
-class ReAsesmenRisikoJatuhPadaPasienDewasaWidget extends StatefulWidget {
-  const ReAsesmenRisikoJatuhPadaPasienDewasaWidget({super.key});
+class ReAsesmenResikoJatuhAnakReport extends StatefulWidget {
+  const ReAsesmenResikoJatuhAnakReport({super.key});
 
   @override
-  State<ReAsesmenRisikoJatuhPadaPasienDewasaWidget> createState() =>
+  State<ReAsesmenResikoJatuhAnakReport> createState() =>
       _ReAsesmenRisikoJatuhPadaPasienDewasaWidgetState();
 }
 
 class _ReAsesmenRisikoJatuhPadaPasienDewasaWidgetState
-    extends State<ReAsesmenRisikoJatuhPadaPasienDewasaWidget> {
+    extends State<ReAsesmenResikoJatuhAnakReport> {
   final ScrollController _scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ResikoJatuhReportBloc, ResikoReportJatuhState>(
       builder: (context, state) {
-        // === RE-ASESMEN RESIKO JATUH --
         if (state.status ==
-            ReportResikoJatuhStatus.isLoadingResikoJatuhPasienDewasa) {
+            ReportResikoJatuhStatus.isLoadingGetResikoJatuhPasienAnak) {
           return Scaffold(
-              backgroundColor: ThemeColor.transparentColor,
-              body: SizedBox(
-                  width: Get.width,
-                  height: Get.height,
-                  child: Loading.expandedLoading()));
+            backgroundColor: ThemeColor.transparentColor,
+            body: SizedBox(
+              width: Get.width,
+              height: Get.height,
+              child: Loading.expandedLoading(),
+            ),
+          );
         }
 
         if (state.status ==
@@ -100,7 +101,7 @@ class _ReAsesmenRisikoJatuhPadaPasienDewasaWidgetState
                           const Divider(),
                           Center(
                             child: Text(
-                              "RE-ASESMEN RISIKO JATUH PASIEN DEWASA",
+                              "RE-ASESMEN RISIKO JATUH PASIEN ANAK",
                               textAlign: TextAlign.center,
                               style: blackTextStyle.copyWith(
                                   fontWeight: FontWeight.bold, fontSize: 8.sp),
@@ -520,7 +521,7 @@ class _ReAsesmenRisikoJatuhPadaPasienDewasaWidgetState
                         const Divider(),
                         Center(
                           child: Text(
-                            "RE-ASESMEN RISIKO JATUH PASIEN DEWASA",
+                            "RE-ASESMEN RISIKO JATUH PASIEN ANAK",
                             textAlign: TextAlign.center,
                             style: blackTextStyle.copyWith(
                                 fontWeight: FontWeight.bold, fontSize: 8.sp),

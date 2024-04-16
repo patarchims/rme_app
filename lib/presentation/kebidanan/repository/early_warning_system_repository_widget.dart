@@ -4,6 +4,7 @@ class EarlyWarningSystem {
   final String tingkatKesadaran;
   final String noreg;
   final int td;
+  final int td2;
   final int nadi;
   final int pernapasan;
   final String reaksiOtot;
@@ -19,6 +20,7 @@ class EarlyWarningSystem {
     required this.tingkatKesadaran,
     required this.noreg,
     required this.td,
+    required this.td2,
     required this.nadi,
     required this.pernapasan,
     required this.reaksiOtot,
@@ -31,6 +33,7 @@ class EarlyWarningSystem {
 
   factory EarlyWarningSystem.fromJson(Map<String, dynamic> json) =>
       EarlyWarningSystem(
+        td2: json["td2"] as int,
         waktu: json["waktu"].toString(),
         idEws: json["id_ews"] as int,
         tingkatKesadaran: json["tingkat_kesadaran"].toString(),

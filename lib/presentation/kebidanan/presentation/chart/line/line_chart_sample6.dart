@@ -1,5 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hms_app/presentation/component/loading/loading.dart';
+import 'package:hms_app/presentation/kebidanan/bloc/eary_warning_system/early_warning_system_bloc.dart';
 import 'package:hms_app/presentation/kebidanan/presentation/resources/app_resources.dart';
 import 'package:hms_app/presentation/kebidanan/presentation/util/extensions/color_extensions.dart';
 
@@ -117,116 +120,141 @@ class LineChartSample6 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 22, bottom: 20),
-      child: AspectRatio(
-        aspectRatio: 2,
-        child: LineChart(
-          LineChartData(
-            lineTouchData: LineTouchData(enabled: false),
-            lineBarsData: [
-              LineChartBarData(
-                gradient: LinearGradient(
-                  colors: [
-                    line1Color1,
-                    line1Color2,
-                  ],
-                ),
-                spots: reverseSpots(spots, minSpotY, maxSpotY),
-                isCurved: true,
-                isStrokeCapRound: true,
-                barWidth: 10,
-                belowBarData: BarAreaData(
-                  show: false,
-                ),
-                dotData: FlDotData(
-                  show: true,
-                  getDotPainter: (spot, percent, barData, index) =>
-                      FlDotCirclePainter(
-                    radius: 12,
-                    color: Colors.transparent,
-                    strokeColor: AppColors.mainTextColor2,
+    return BlocBuilder<EarlyWarningSystemBloc, EarlyWarningSystemState>(
+      builder: (context, state) {
+        if (state.status == EarlyWarningSystemStatus.isLoadingGetData) {
+          return Scaffold(
+            body: Loading.expandedLoading(),
+          );
+        }
+
+        return Padding(
+          padding: const EdgeInsets.only(right: 22, bottom: 20),
+          child: AspectRatio(
+            aspectRatio: 2,
+            child: LineChart(
+              LineChartData(
+                lineTouchData: const LineTouchData(enabled: false),
+                lineBarsData: [
+                  LineChartBarData(
+                    gradient: LinearGradient(
+                      colors: [
+                        line1Color1,
+                        line1Color2,
+                      ],
+                    ),
+                    spots: reverseSpots(
+                        state.earlyWarningSystem
+                            .asMap()
+                            .entries
+                            .map((e) =>
+                                FlSpot(e.key.toDouble(), e.value.td.toDouble()))
+                            .toList(),
+                        minSpotY,
+                        maxSpotY),
+                    isCurved: true,
+                    isStrokeCapRound: true,
+                    barWidth: 10,
+                    belowBarData: BarAreaData(show: false),
+                    dotData: FlDotData(
+                      show: true,
+                      getDotPainter: (spot, percent, barData, index) =>
+                          FlDotCirclePainter(
+                        radius: 12,
+                        color: Colors.transparent,
+                        strokeColor: AppColors.mainTextColor2,
+                      ),
+                    ),
+                  ),
+                  LineChartBarData(
+                    gradient: LinearGradient(
+                      colors: [
+                        line2Color1,
+                        line2Color2,
+                      ],
+                    ),
+                    spots: reverseSpots(
+                        state.earlyWarningSystem
+                            .asMap()
+                            .entries
+                            .map((e) => FlSpot(
+                                e.key.toDouble(), e.value.td2.toDouble()))
+                            .toList(),
+                        minSpotY,
+                        maxSpotY),
+                    isCurved: true,
+                    isStrokeCapRound: true,
+                    barWidth: 10,
+                    belowBarData: BarAreaData(
+                      show: false,
+                    ),
+                    dotData: FlDotData(
+                      show: true,
+                      getDotPainter: (spot, percent, barData, index) =>
+                          FlDotCirclePainter(
+                        radius: 12,
+                        color: Colors.transparent,
+                        strokeColor: AppColors.mainTextColor2,
+                      ),
+                    ),
+                  ),
+                ],
+                minY: 0,
+                maxY: maxSpotY + minSpotY,
+                titlesData: FlTitlesData(
+                  leftTitles: AxisTitles(
+                    sideTitles: SideTitles(
+                      showTitles: true,
+                      getTitlesWidget: leftTitleWidgets,
+                      reservedSize: 38,
+                    ),
+                  ),
+                  rightTitles: AxisTitles(
+                    sideTitles: SideTitles(
+                      showTitles: true,
+                      getTitlesWidget: rightTitleWidgets,
+                      reservedSize: 30,
+                    ),
+                  ),
+                  bottomTitles: const AxisTitles(
+                    sideTitles: SideTitles(showTitles: false),
+                  ),
+                  topTitles: AxisTitles(
+                    sideTitles: SideTitles(
+                      showTitles: true,
+                      reservedSize: 32,
+                      getTitlesWidget: topTitleWidgets,
+                    ),
                   ),
                 ),
-              ),
-              LineChartBarData(
-                gradient: LinearGradient(
-                  colors: [
-                    line2Color1,
-                    line2Color2,
-                  ],
-                ),
-                spots: reverseSpots(spots2, minSpotY, maxSpotY),
-                isCurved: true,
-                isStrokeCapRound: true,
-                barWidth: 10,
-                belowBarData: BarAreaData(
-                  show: false,
-                ),
-                dotData: FlDotData(
+                gridData: FlGridData(
                   show: true,
-                  getDotPainter: (spot, percent, barData, index) =>
-                      FlDotCirclePainter(
-                    radius: 12,
-                    color: Colors.transparent,
-                    strokeColor: AppColors.mainTextColor2,
+                  drawVerticalLine: true,
+                  checkToShowHorizontalLine: (value) {
+                    final intValue =
+                        reverseY(value, minSpotY, maxSpotY).toInt();
+
+                    if (intValue == (maxSpotY + minSpotY).toInt()) {
+                      return false;
+                    }
+
+                    return true;
+                  },
+                ),
+                borderData: FlBorderData(
+                  show: true,
+                  border: const Border(
+                    left: BorderSide(color: AppColors.borderColor),
+                    top: BorderSide(color: AppColors.borderColor),
+                    bottom: BorderSide(color: Colors.transparent),
+                    right: BorderSide(color: Colors.transparent),
                   ),
                 ),
-              ),
-            ],
-            minY: 0,
-            maxY: maxSpotY + minSpotY,
-            titlesData: FlTitlesData(
-              leftTitles: AxisTitles(
-                sideTitles: SideTitles(
-                  showTitles: true,
-                  getTitlesWidget: leftTitleWidgets,
-                  reservedSize: 38,
-                ),
-              ),
-              rightTitles: AxisTitles(
-                sideTitles: SideTitles(
-                  showTitles: true,
-                  getTitlesWidget: rightTitleWidgets,
-                  reservedSize: 30,
-                ),
-              ),
-              bottomTitles: AxisTitles(
-                sideTitles: SideTitles(showTitles: false),
-              ),
-              topTitles: AxisTitles(
-                sideTitles: SideTitles(
-                  showTitles: true,
-                  reservedSize: 32,
-                  getTitlesWidget: topTitleWidgets,
-                ),
-              ),
-            ),
-            gridData: FlGridData(
-              show: true,
-              drawVerticalLine: true,
-              checkToShowHorizontalLine: (value) {
-                final intValue = reverseY(value, minSpotY, maxSpotY).toInt();
-
-                if (intValue == (maxSpotY + minSpotY).toInt()) {
-                  return false;
-                }
-
-                return true;
-              },
-            ),
-            borderData: FlBorderData(
-              show: true,
-              border: const Border(
-                left: BorderSide(color: AppColors.borderColor),
-                top: BorderSide(color: AppColors.borderColor),
-                bottom: BorderSide(color: Colors.transparent),
-                right: BorderSide(color: Colors.transparent),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 

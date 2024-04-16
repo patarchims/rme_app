@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -19,7 +17,6 @@ import 'package:hms_app/presentation/pages/bangsal/bloc/pengkajian_awal_keperawa
 import 'package:hms_app/presentation/pages/bangsal/perawat/riwayat_alergi_keperawatan/riwayat_alergi_keperawatan_widget_content.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
 import 'package:sizer/sizer.dart';
-
 import '../../../../../domain/bloc/user/auth/auth_bloc.dart';
 import '../../../../../domain/models/response/alergi/riwayat_alergi_pasien_model.dart';
 
@@ -34,7 +31,6 @@ class KeluhanUtamaKeperawatanWidget extends StatefulWidget {
 class _KeluhanUtamaKeperawatanWidgetState
     extends State<KeluhanUtamaKeperawatanWidget> {
   final ScrollController _scrollController = ScrollController();
-
   late TextEditingController _searchController = TextEditingController();
   late TextEditingController _riwayatPenyakitKeluargaController =
       TextEditingController();
@@ -44,6 +40,7 @@ class _KeluhanUtamaKeperawatanWidgetState
   late Iterable<Alergi> obat = [];
   late Iterable<Alergi> makanan = [];
   late Iterable<Alergi> lain = [];
+
   @override
   void initState() {
     _searchController = TextEditingController();
@@ -81,6 +78,7 @@ class _KeluhanUtamaKeperawatanWidgetState
         if (state.status == PengkajianAwalKeperawatanStatus.isLoadingSave) {
           EasyLoading.show();
         }
+
         if (state.status != PengkajianAwalKeperawatanStatus.isLoadingSave) {
           EasyLoading.dismiss();
         }
@@ -112,7 +110,7 @@ class _KeluhanUtamaKeperawatanWidgetState
         if (state.status == PengkajianAwalKeperawatanStatus.isLoadingGet) {
           return HeaderContentWidget(
               isENableAdd: false,
-              onPressed: null,
+              onPressed: () {},
               widget: Loading.expandedLoading());
         }
         return HeaderContentWidget(
@@ -154,9 +152,7 @@ class _KeluhanUtamaKeperawatanWidgetState
                     children: [
                       TitleWidget.titleContainer(title: "Jenis Anamnesa"),
                       Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 5.sp,
-                        ),
+                        padding: EdgeInsets.symmetric(horizontal: 5.sp),
                         child: Table(
                           border: TableBorder.all(color: ThemeColor.bgColor),
                           columnWidths: const {
@@ -194,6 +190,16 @@ class _KeluhanUtamaKeperawatanWidgetState
                                             backgroundColor:
                                                 ThemeColor.greenColor,
                                             onPressed: () {
+                                              if (e.value ==
+                                                  jenisPengkajian[1]) {
+                                                context
+                                                    .read<
+                                                        PengkajianAwalKeperawatanBloc>()
+                                                    .add(
+                                                        OnChangedDetailJenisAnamnesa(
+                                                            value: ""));
+                                              }
+
                                               context
                                                   .read<
                                                       PengkajianAwalKeperawatanBloc>()
@@ -211,6 +217,14 @@ class _KeluhanUtamaKeperawatanWidgetState
                                           backgroundColor:
                                               ThemeColor.primaryColor,
                                           onPressed: () {
+                                            if (e.value == jenisPengkajian[1]) {
+                                              context
+                                                  .read<
+                                                      PengkajianAwalKeperawatanBloc>()
+                                                  .add(
+                                                      OnChangedDetailJenisAnamnesa(
+                                                          value: ""));
+                                            }
                                             context
                                                 .read<
                                                     PengkajianAwalKeperawatanBloc>()
@@ -218,13 +232,14 @@ class _KeluhanUtamaKeperawatanWidgetState
                                                     value: e.value));
                                           },
                                           icon: const Icon(
-                                            FontAwesomeIcons.check,
-                                            color: Colors.white,
-                                          ),
+                                              FontAwesomeIcons.check,
+                                              color: Colors.white),
                                           title: e.value,
                                         );
                                       }).toList(),
                                     ),
+
+                                    //====//
                                     if (state.pengkajianKeperawatanResponseModel
                                             .pengkajian.jenpel ==
                                         jenisPengkajian.last) ...[
@@ -274,6 +289,7 @@ class _KeluhanUtamaKeperawatanWidgetState
                       ),
                       TitleWidget.titleContainer(
                           title: "Riwayat Penyakit Sekarang"),
+
                       Padding(
                         padding: EdgeInsets.all(5.sp),
                         child: FormWidget.textArea(
@@ -303,6 +319,7 @@ class _KeluhanUtamaKeperawatanWidgetState
                                   OnChangedRiwayatPenyakitDahulu(value: value));
                             }),
                       ),
+
                       TitleWidget.titleContainer(
                           title: "Riwayat Pengobatan Sebelumnya"),
 
@@ -335,8 +352,10 @@ class _KeluhanUtamaKeperawatanWidgetState
                                 ],
                         ),
                       ),
+
                       TitleWidget.titleContainer(
                           title: "Riwayat Penyakit Keluarga"),
+
                       const SizedBox(height: 10),
                       Container(
                         width: Get.width,
@@ -385,8 +404,6 @@ class _KeluhanUtamaKeperawatanWidgetState
                                               width: Get.width,
                                               child: IconButton(
                                                   onPressed: () {
-                                                    log("SIMPAN DATA PENYAKIT KELUARGA");
-
                                                     if (authState
                                                         is Authenticated) {
                                                       // ==== //
@@ -472,8 +489,6 @@ class _KeluhanUtamaKeperawatanWidgetState
                                                         trailing: IconButton(
                                                           onPressed: () {
                                                             // === //
-                                                            // TAMPILKAN PESAN DELETE RIWAYAT ALEG
-                                                            // todo : delete alergi
                                                             CustomDialogWidget.getDialog(
                                                                 widget: MessageAlert.deleteAlert(
                                                                     mesage: "Apakah Anda yakin menghapus data ${e.alergi} init ?",

@@ -18,6 +18,7 @@ class RiwayatPengobatanDirumahKeperawatanWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+        backgroundColor: ThemeColor.primaryColor,
         onPressed: () {
           // ADD RIWAYAT KEHAMILAN
           CustomDialogWidget.getDialog(

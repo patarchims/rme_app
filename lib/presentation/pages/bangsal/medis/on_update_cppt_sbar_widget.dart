@@ -13,9 +13,9 @@ import 'package:hms_app/presentation/pages/bangsal/repository/cppt_sbar_bangsal_
 class OnUpdateCpptSbarWidget extends StatefulWidget {
   final CpptSbarDokterModel cpptSbarDokterModel;
   const OnUpdateCpptSbarWidget({
-    Key? key,
+    super.key,
     required this.cpptSbarDokterModel,
-  }) : super(key: key);
+  });
 
   @override
   State<OnUpdateCpptSbarWidget> createState() => _OnUpdateCpptSbarWidgetState();

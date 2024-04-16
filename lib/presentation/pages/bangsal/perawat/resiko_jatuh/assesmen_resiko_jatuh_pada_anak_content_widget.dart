@@ -82,7 +82,7 @@ class _AsesmenResikoJatuhPadaAnakState
                   person: toPerson(person: authState.user.person),
                   kategori: toKategoriString(
                       spesiliasasi: authState.user.spesialisasi),
-                  deviceID: "ID - ${data['id']} - ${data['device']}}",
+                  deviceID: "ID-${data['id']}-${data['device']}",
                   skor: state.total!,
                   jenis: "Anak",
                   pelayanan:

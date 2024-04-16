@@ -4,38 +4,25 @@ import 'package:get/get.dart';
 import 'package:hms_app/domain/bloc/dashboard/pasien/pasien_bloc.dart';
 import 'package:hms_app/presentation/component/component.dart';
 import 'package:hms_app/presentation/component/extenstion/date_helper.dart';
-import 'package:hms_app/presentation/component/loading/loading.dart';
 import 'package:hms_app/presentation/component/qr_code/qr_code_widget.dart';
-import 'package:hms_app/presentation/pages/bangsal/bloc/asesmen_nyeri/asesmen_nyeri_bloc.dart';
+import 'package:hms_app/presentation/kebidanan/bloc/eary_warning_system/early_warning_system_bloc.dart';
 import 'package:hms_app/presentation/report/component/header_report_widget.dart';
 import 'package:sizer/sizer.dart';
 import 'package:table_desk/table_desk.dart';
 
-class ReportAsesmenNyeriNumbericScalePage extends StatefulWidget {
-  const ReportAsesmenNyeriNumbericScalePage({super.key});
+class KontrolIstimewaPasienWidgetPage extends StatelessWidget {
+  const KontrolIstimewaPasienWidgetPage({super.key});
 
-  @override
-  State<ReportAsesmenNyeriNumbericScalePage> createState() =>
-      _ReportAsesmenNyeriNumbericScalePageState();
-}
-
-class _ReportAsesmenNyeriNumbericScalePageState
-    extends State<ReportAsesmenNyeriNumbericScalePage> {
-  final ScrollController _scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
     PasienState pasienState = context.watch<PasienBloc>().state;
     final singlePasien = pasienState.listPasienModel
         .where((element) => element.mrn == pasienState.normSelected);
 
-    return BlocBuilder<AsesmenNyeriBloc, AsesmenNyeriState>(
+    final ScrollController _scrollController = ScrollController();
+
+    return BlocBuilder<EarlyWarningSystemBloc, EarlyWarningSystemState>(
       builder: (context, state) {
-        if (state.status == AsesmenNyeriStatus.isLoadingGet) {
-          return Scaffold(
-            backgroundColor: ThemeColor.transparentColor,
-            body: Loading.circleLoading(),
-          );
-        }
         return Scaffold(
           backgroundColor: ThemeColor.transparentColor,
           body: Container(
@@ -58,13 +45,12 @@ class _ReportAsesmenNyeriNumbericScalePageState
               trackVisibility: false,
               radius: Radius.circular(5.sp),
               child: ListView(
-                controller: _scrollController,
                 children: [
                   Align(
                     alignment: Alignment.centerRight,
                     child: Padding(
                       padding: EdgeInsets.only(right: 5.sp),
-                      child: Text("RM. 06 I.2",
+                      child: Text("RM. 15 A",
                           textAlign: TextAlign.right,
                           style: blackTextStyle.copyWith(
                               fontWeight: FontWeight.bold)),
@@ -92,7 +78,7 @@ class _ReportAsesmenNyeriNumbericScalePageState
                           padding: EdgeInsets.symmetric(horizontal: 5.sp),
                           child: TableDesk(
                             shape: const RoundedRectangleBorder(
-                              side: BorderSide(color: Colors.white, width: 1),
+                              side: BorderSide(color: Colors.black, width: 1),
                             ),
                             child: TableDeskRow(
                               border: const BorderSide(
@@ -114,7 +100,7 @@ class _ReportAsesmenNyeriNumbericScalePageState
                                         CrossAxisAlignment.center,
                                     children: [
                                       Text(
-                                        "Asesmen Awal Nyeri\n NUMERIC SCALE",
+                                        "KONTROL ISTIMEWA",
                                         textAlign: TextAlign.center,
                                         style: blackTextStyle.copyWith(
                                             fontWeight: FontWeight.bold,
@@ -124,9 +110,8 @@ class _ReportAsesmenNyeriNumbericScalePageState
                                   ),
                                 ),
                                 Container(
-                                  color: Colors.white,
-                                  child: const VerticalDivider(),
-                                ),
+                                    color: Colors.white,
+                                    child: const VerticalDivider()),
                                 Container(
                                   decoration:
                                       const BoxDecoration(color: Colors.white),
@@ -159,18 +144,6 @@ class _ReportAsesmenNyeriNumbericScalePageState
                             ),
                           ),
                         ),
-                        const Divider(),
-                        Container(
-                          padding: EdgeInsets.all(5.sp),
-                          child: Center(
-                            child: Text(
-                              "Assesmen Nyeri Dewasa & Anak berusia >3 tahun yang tidak dapat\nmenggambarkan Intensitas Nyerinya dengan Angka",
-                              textAlign: TextAlign.center,
-                              style: blackTextStyle.copyWith(
-                                  fontSize: 9.sp, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
                         Container(
                           color: Colors.white,
                           padding: EdgeInsets.symmetric(horizontal: 5.sp),
@@ -182,7 +155,11 @@ class _ReportAsesmenNyeriNumbericScalePageState
                               border: const BorderSide(
                                   width: 1, color: Colors.black),
                               gaps: [
-                                TableGap.width(880),
+                                TableGap.width(150),
+                                TableGap.weight(),
+                                TableGap.weight(),
+                                TableGap.weight(),
+                                TableGap.weight(),
                                 TableGap.weight(),
                               ],
                               children: [
@@ -192,7 +169,7 @@ class _ReportAsesmenNyeriNumbericScalePageState
                                     padding: const EdgeInsets.all(8),
                                     child: Center(
                                       child: Text(
-                                        "KATEGORI",
+                                        "Tgl/Jam",
                                         style: blackTextStyle.copyWith(
                                             fontWeight: FontWeight.bold),
                                         textAlign: TextAlign.center,
@@ -206,7 +183,63 @@ class _ReportAsesmenNyeriNumbericScalePageState
                                     padding: const EdgeInsets.all(8),
                                     child: Center(
                                       child: Text(
-                                        "SKOR",
+                                        "Suhu",
+                                        style: blackTextStyle.copyWith(
+                                            fontWeight: FontWeight.bold),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  color: Colors.white,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8),
+                                    child: Center(
+                                      child: Text(
+                                        "Nadi",
+                                        style: blackTextStyle.copyWith(
+                                            fontWeight: FontWeight.bold),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  color: Colors.white,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8),
+                                    child: Center(
+                                      child: Text(
+                                        "TD",
+                                        style: blackTextStyle.copyWith(
+                                            fontWeight: FontWeight.bold),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  color: Colors.white,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8),
+                                    child: Center(
+                                      child: Text(
+                                        "Keterangan",
+                                        style: blackTextStyle.copyWith(
+                                            fontWeight: FontWeight.bold),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  color: Colors.white,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8),
+                                    child: Center(
+                                      child: Text(
+                                        "Perawat",
                                         style: blackTextStyle.copyWith(
                                             fontWeight: FontWeight.bold),
                                         textAlign: TextAlign.center,
@@ -218,147 +251,125 @@ class _ReportAsesmenNyeriNumbericScalePageState
                             ),
                           ),
                         ),
-                        asesmenNyeri(
-                            title: "Tidak Nyeri",
-                            subTitle: "0",
-                            color: (state.skalaNyeri.skalaNyeri == 0)
-                                ? ThemeColor.greenColor
-                                : Colors.white),
-                        asesmenNyeri(
-                            title: "Nyeri Ringan",
-                            subTitle: "1-2",
-                            color: (state.skalaNyeri.skalaNyeri >= 1 &&
-                                    state.skalaNyeri.skalaNyeri <= 2)
-                                ? ThemeColor.greenColor
-                                : Colors.white),
-                        asesmenNyeri(
-                            title: "Nyeri Sedang",
-                            subTitle: "4-6",
-                            color: (state.skalaNyeri.skalaNyeri >= 4 &&
-                                    state.skalaNyeri.skalaNyeri <= 6)
-                                ? ThemeColor.greenColor
-                                : Colors.white),
-                        asesmenNyeri(
-                            title: "Nyeri Berat",
-                            subTitle: "7-10",
-                            color: (state.skalaNyeri.skalaNyeri >= 7)
-                                ? ThemeColor.greenColor
-                                : Colors.white),
-                        Container(
-                          color: Colors.white,
-                          padding: EdgeInsets.symmetric(horizontal: 5.sp),
-                          child: TableDesk(
-                            shape: const RoundedRectangleBorder(
-                              side: BorderSide(color: Colors.black, width: 1),
-                            ),
-                            child: TableDeskRow(
-                              border: const BorderSide(
-                                  width: 1, color: Colors.black),
-                              gaps: [
-                                TableGap.width(880),
-                                TableGap.weight(),
-                              ],
-                              children: [
-                                Container(
-                                  color: Colors.white,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8),
-                                    child: Center(
-                                      child: Text(
-                                        "NAMA & PARAF",
-                                        style: blackTextStyle.copyWith(
-                                            fontWeight: FontWeight.bold),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  color: Colors.white,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8),
-                                    child: Center(
-                                        child: Column(
-                                      children: [
-                                        BarcodeGreenWidget(
-                                          height: 35.sp,
-                                          dataBarcode: state
-                                              .reportSkalaNyeri.karyawan.nama,
-                                        ),
-                                        Text(
-                                          state.reportSkalaNyeri.karyawan.nama,
-                                          style: blackTextStyle.copyWith(
-                                              fontWeight: FontWeight.bold),
+                        ...state.earlyWarningSystem.map((e) {
+                          return Container(
+                            color: Colors.white,
+                            padding: EdgeInsets.symmetric(horizontal: 5.sp),
+                            child: TableDesk(
+                              shape: const RoundedRectangleBorder(
+                                side: BorderSide(color: Colors.black, width: 1),
+                              ),
+                              child: TableDeskRow(
+                                border: const BorderSide(
+                                    width: 1, color: Colors.black),
+                                gaps: [
+                                  TableGap.width(150),
+                                  TableGap.weight(),
+                                  TableGap.weight(),
+                                  TableGap.weight(),
+                                  TableGap.weight(),
+                                  TableGap.weight(),
+                                ],
+                                children: [
+                                  Container(
+                                    color: Colors.white,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8),
+                                      child: Center(
+                                        child: Text(
+                                          "${tglIndo(e.waktu.substring(0, 10))} - ${e.waktu.substring(11, 19)}",
+                                          style: blackTextStyle.copyWith(),
                                           textAlign: TextAlign.center,
                                         ),
-                                      ],
-                                    )),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                  Container(
+                                    color: Colors.white,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8),
+                                      child: Center(
+                                        child: Text(
+                                          "${e.suhu} °C",
+                                          style: blackTextStyle.copyWith(),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    color: Colors.white,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8),
+                                      child: Center(
+                                        child: Text(
+                                          "${e.nadi}",
+                                          style: blackTextStyle.copyWith(),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    color: Colors.white,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8),
+                                      child: Center(
+                                        child: Text(
+                                          "${e.td}/${e.td2} mmHg",
+                                          style: blackTextStyle.copyWith(),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    color: Colors.white,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8),
+                                      child: Center(
+                                        child: Text(
+                                          "Keterangan",
+                                          style: blackTextStyle.copyWith(),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    color: Colors.white,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8),
+                                      child: Center(
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              e.karyawan.nama,
+                                              style: blackTextStyle.copyWith(),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            BarcodeGreenWidget(
+                                                height: 35.sp,
+                                                dataBarcode: e.karyawan.nama)
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 15.sp,
-                        ),
+                          );
+                        }),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
           ),
         );
       },
-    );
-  }
-
-  Container asesmenNyeri(
-      {required String title, required String subTitle, Color? color}) {
-    return Container(
-      color: Colors.white,
-      padding: EdgeInsets.symmetric(horizontal: 5.sp),
-      child: TableDesk(
-        shape: const RoundedRectangleBorder(
-          side: BorderSide(color: Colors.black, width: 1),
-        ),
-        child: TableDeskRow(
-          border: const BorderSide(width: 1, color: Colors.black),
-          gaps: [
-            TableGap.width(880),
-            TableGap.weight(),
-          ],
-          children: [
-            Container(
-              color: color ?? Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: Center(
-                  child: Text(
-                    title,
-                    style: blackTextStyle.copyWith(fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              color: color ?? Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: Center(
-                  child: Text(
-                    subTitle,
-                    style: blackTextStyle.copyWith(fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

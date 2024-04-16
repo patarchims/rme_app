@@ -39,11 +39,6 @@ class _CariDiagnosaKeperawatanWidgetState
 
   @override
   Widget build(BuildContext context) {
-    // PasienState pasienState = context.watch<PasienBloc>().state;
-    // final singlePasien = pasienState.listPasienModel
-    //     .where((element) => element.mrn == pasienState.normSelected);
-    // AuthState authState = context.watch<AuthBloc>().state;
-
     return Container(
         width: Get.width / 1.5,
         height: 155.sp,
@@ -84,52 +79,63 @@ class _CariDiagnosaKeperawatanWidgetState
                                       .where((element) => element.value.judul
                                           .toLowerCase()
                                           .contains(valueSearch))
-                                      .map((e) => Card(
-                                            elevation: 1,
-                                            color: ThemeColor.softBlue,
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: ListTile(
-                                                trailing: SizedBox(
-                                                  height: 25.sp,
-                                                  width: 25.sp,
-                                                  child: IconButton(
-                                                      onPressed: () {
-                                                        //  ADD TO SELECTED LIST
-                                                        context
-                                                            .read<AnalisaBloc>()
-                                                            .add(OnAddDiagnosaKeperawatan(
-                                                                diagnosa:
-                                                                    e.value));
+                                      .map((e) => InkWell(
+                                            onTap: () {
+                                              context.read<AnalisaBloc>().add(
+                                                  OnAddDiagnosaKeperawatan(
+                                                      diagnosa: e.value));
 
-                                                        Get.back();
-                                                      },
-                                                      style: ElevatedButton.styleFrom(
-                                                          backgroundColor:
-                                                              ThemeColor
-                                                                  .primaryColor,
-                                                          shape: RoundedRectangleBorder(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(2
-                                                                          .sp))),
-                                                      color:
-                                                          ThemeColor.whiteColor,
-                                                      icon: const Icon(
-                                                        FontAwesomeIcons
-                                                            .circleArrowRight,
-                                                        color: Colors.white,
-                                                      )),
-                                                ),
-                                                enabled: true,
-                                                title: Text(
-                                                  "${e.value.kode} -${e.value.judul}",
-                                                  style:
-                                                      blackTextStyle.copyWith(
-                                                          fontSize: 6.sp,
-                                                          fontWeight:
-                                                              FontWeight.bold),
+                                              Get.back();
+                                            },
+                                            child: Card(
+                                              elevation: 1,
+                                              color: ThemeColor.softBlue,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: ListTile(
+                                                  trailing: SizedBox(
+                                                    height: 25.sp,
+                                                    width: 25.sp,
+                                                    child: IconButton(
+                                                        onPressed: () {
+                                                          //  ADD TO SELECTED LIST
+                                                          context
+                                                              .read<
+                                                                  AnalisaBloc>()
+                                                              .add(OnAddDiagnosaKeperawatan(
+                                                                  diagnosa:
+                                                                      e.value));
+
+                                                          Get.back();
+                                                        },
+                                                        style: ElevatedButton.styleFrom(
+                                                            backgroundColor:
+                                                                ThemeColor
+                                                                    .primaryColor,
+                                                            shape: RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(2
+                                                                            .sp))),
+                                                        color: ThemeColor
+                                                            .whiteColor,
+                                                        icon: const Icon(
+                                                          FontAwesomeIcons
+                                                              .circleArrowRight,
+                                                          color: Colors.white,
+                                                        )),
+                                                  ),
+                                                  enabled: true,
+                                                  title: Text(
+                                                    "${e.value.kode} -${e.value.judul}",
+                                                    style:
+                                                        blackTextStyle.copyWith(
+                                                            fontSize: 6.sp,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                  ),
                                                 ),
                                               ),
                                             ),

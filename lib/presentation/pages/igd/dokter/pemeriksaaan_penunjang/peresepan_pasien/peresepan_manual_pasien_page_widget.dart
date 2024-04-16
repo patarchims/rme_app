@@ -24,7 +24,7 @@ class PeresepanManualPasienPageWidget extends StatelessWidget {
                   },
                   hinText: "Tambahkan deskripsi Resep Manual",
                   maxLines: 20,
-                  value: "state.informasiResep",
+                  value: "",
                   enabled: true),
             ),
           ],

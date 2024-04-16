@@ -52,7 +52,9 @@ class _TriaseIGDDokterWidgetContentState
           }
 
           if (e.key == 1) {
-            return const TandaVitalDanGannguanPerilakuWidgetContent();
+            return const TandaVitalDanGannguanPerilakuWidgetContent(
+              isENableAdd: true,
+            );
           }
 
           if (e.key == 2) {

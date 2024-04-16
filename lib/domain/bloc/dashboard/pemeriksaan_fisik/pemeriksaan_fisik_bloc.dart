@@ -1023,8 +1023,8 @@ class PemeriksaanFisikBloc
               isLoadingGetPemeriksaanFisikIgd: true,
               saveAsesmenPemeriksaanFisikResult: none()));
 
-          final data =
-              await librariRepositori.getPemeriksaanFisikIGD(noReg: e.noReg, person: e.person);
+          final data = await librariRepositori.getPemeriksaanFisikIGD(
+              noReg: e.noReg, person: e.person);
 
           log("GET PEMERIKSAAN ${data.toString()}");
 

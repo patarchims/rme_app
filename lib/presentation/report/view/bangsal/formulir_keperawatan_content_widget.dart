@@ -14,6 +14,7 @@ import 'package:hms_app/presentation/perina/bloc/report_asesmen_bayi/report_ases
 import 'package:hms_app/presentation/perina/pages/report/report_analisa_data_page_widget.dart';
 import 'package:hms_app/presentation/perina/pages/report/report_asesmen_awal_nyeri_keperawatan.dart';
 import 'package:hms_app/presentation/perina/pages/report/report_early_warning_system_ews_page_widget.dart';
+import 'package:hms_app/presentation/perina/pages/report/view_control_istimewa_pasien_widget_page.dart';
 import 'package:hms_app/presentation/perina/pages/report/view_report_icu_page.dart';
 import 'package:hms_app/presentation/report/view/bangsal/report_pelaksanaan_keperawatan_dan_perkembangan_pasien_widget.dart';
 
@@ -93,6 +94,11 @@ class FormulirKeperawatanWidgetContent extends StatelessWidget {
             // REPORT ICU
             return const ViewReportICUPage();
           }
+          if (e.key == 7) {
+            // REPORT ICU
+            return const KontrolIstimewaPasienWidgetPage();
+          }
+
           return Container();
         }).toList());
   }
@@ -105,5 +111,6 @@ List<String> menu = [
   "Analisa Data",
   "Asesmen Nyeri",
   "Early Warning System",
-  "ICU"
+  "ICU",
+  "Kontrol Istimewa"
 ];

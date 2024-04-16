@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hms_app/domain/bloc/dashboard/pasien/pasien_bloc.dart';
-import 'package:hms_app/domain/bloc/dashboard/resiko_jatuh/reassesmen_resiko_jatuh/reassesmen_resiko_jatuh_bloc.dart';
+import 'package:hms_app/domain/bloc/dashboard/resiko_jatuh/resiko_jatuh_dewasa/resiko_jatuh_dewasa_bloc.dart';
 import 'package:hms_app/domain/bloc/user/auth/auth_bloc.dart';
 import 'package:hms_app/domain/models/devices_info/device_info_model.dart';
 import 'package:hms_app/domain/models/meta/meta_model.dart';
 import 'package:hms_app/domain/models/users/user_model.dart';
-import 'package:hms_app/presentation/component/component.dart';
+import 'package:hms_app/presentation/component/alert/alert.dart';
+import 'package:hms_app/presentation/component/color/color_helper.dart';
+import 'package:hms_app/presentation/component/fonts/font_helper.dart';
+import 'package:hms_app/presentation/component/title/title_component.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
 import 'package:sizer/sizer.dart';
 
-class ReAsessmentResikoJatuhContentWidget extends StatefulWidget {
-  const ReAsessmentResikoJatuhContentWidget({super.key});
+class ReasessenResikoJatuhPadaAnakContentWidget extends StatefulWidget {
+  const ReasessenResikoJatuhPadaAnakContentWidget({super.key});
 
   @override
-  State<ReAsessmentResikoJatuhContentWidget> createState() =>
-      _ReAsessmentResikoJatuhContentWidgetState();
+  State<ReasessenResikoJatuhPadaAnakContentWidget> createState() =>
+      _ReasessenResikoJatuhPadaAnakContentWidgetState();
 }
 
-class _ReAsessmentResikoJatuhContentWidgetState
-    extends State<ReAsessmentResikoJatuhContentWidget> {
+class _ReasessenResikoJatuhPadaAnakContentWidgetState
+    extends State<ReasessenResikoJatuhPadaAnakContentWidget> {
   final ScrollController _scrollController = ScrollController();
 
   @override
@@ -32,14 +34,15 @@ class _ReAsessmentResikoJatuhContentWidgetState
         .where((element) => element.mrn == pasienState.normSelected);
     AuthState authState = context.watch<AuthBloc>().state;
 
-    return BlocConsumer<ReassesmenResikoJatuhBloc, ReassesmenResikoJatuhState>(
+    return BlocConsumer<ResikoJatuhDewasaBloc, ResikoJatuhDewasaState>(
       listener: (context, state) {
+        // TODO: implement listener
         // === === //
-        if (state.status == ReassesmenResikoJatuhStatus.isLoadingSave) {
+        if (state.status == ResikoJatuhDewasaStatus.isLoadingSave) {
           EasyLoading.show(maskType: EasyLoadingMaskType.black);
         }
 
-        if (state.status != ReassesmenResikoJatuhStatus.isLoadingSave) {
+        if (state.status != ResikoJatuhDewasaStatus.isLoadingSave) {
           EasyLoading.dismiss();
         }
 
@@ -66,32 +69,33 @@ class _ReAsessmentResikoJatuhContentWidgetState
                       return shouldPop ?? false;
                     })));
 
-        // ==============
+        // ==
       },
       builder: (context, state) {
         return HeaderContentWidget(
           isENableAdd: true,
+          title: "Simpan",
           onPressed: () async {
+            // SIMPAN DATA ASESEMEN RESIKO JATUH ANAK
             // ===================== //
             dynamic data = await deviceInfo.initPlatformState();
 
             if (authState is Authenticated) {
               // ignore: use_build_context_synchronously
-              context.read<ReassesmenResikoJatuhBloc>().add(
-                  OnSaveReAssesmenResikoJatuh(
+              context.read<ResikoJatuhDewasaBloc>().add(
+                  OnSaveResikoJatuhDewasaEvent(
                       resikoJatuh: state.resikoJatuh,
                       noreg: singlePasien.first.noreg,
                       person: toPerson(person: authState.user.person),
                       kategori: toKategoriString(
                           spesiliasasi: authState.user.spesialisasi),
                       deviceID: "ID-${data['id']}-${data['device']}",
-                      skor: state.total,
-                      jenis: "Morse",
+                      skor: (state.total == 0) ? 0 : state.total,
+                      jenis: "ReAsesmen-Anak",
                       pelayanan:
                           toPelayanan(poliklinik: authState.user.poliklinik)));
             }
           },
-          title: "Simpan",
           widget: RawScrollbar(
             thumbColor: ThemeColor.darkColor,
             thumbVisibility: true,
@@ -103,31 +107,17 @@ class _ReAsessmentResikoJatuhContentWidgetState
             child: SingleChildScrollView(
               controller: _scrollController,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   TitleWidget.titleContainer(
-                      title: "RE ASSESMEN RESIKO JATUH PASIEN DEWASA"),
-
-                  Padding(
-                    padding: EdgeInsets.all(8.sp),
-                    child: Text(
-                      "BERDASARKAN RENILAIAN Skala Jatuh Morse / Morse Falls Scale (MFS)",
-                      style:
-                          blackTextStyle.copyWith(fontWeight: FontWeight.bold),
-                    ),
-                  ),
+                      title: "RE-ASSESMEN RISIKO JATUH PADA PASIEN ANAK"),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: RichText(
-                      text: TextSpan(
-                        text:
-                            "Lakukan pengkajian ( Skoring ) resiko jatuh pada saat terjadi perubahan kondisi pasien, therapi, saat pasien pindah ruanga lain, pasien resiko tinggi dikaji setiap 24 jam atau sesaat setelah terjadi kasus jatuh",
-                        style: blackTextStyle,
-                      ),
-                    ),
+                        text: TextSpan(
+                            text:
+                                'Lakukan pengkajian ( skoring ) risiko jatuh pada saat terjadi perubahan kondisi pasien/therapi, saat pasien pindah ruangan lain, pasien risiko tinggi dikasi setiap 24 jam atau sesaat setelah terjadi kasus jatuh.',
+                            style: blackTextStyle)),
                   ),
-
                   Container(
                     padding: EdgeInsets.all(5.sp),
                     width: Get.width,
@@ -143,7 +133,7 @@ class _ReAsessmentResikoJatuhContentWidgetState
                           children: [
                             TextSpan(
                                 text:
-                                    '   Kategori Resiko : ${(state.total <= 24) ? "Resiko Rendah" : (state.total <= 44) ? "Resiko Sedang" : "Resiko Tinggi"}',
+                                    '   Kategori Resiko : ${(state.total <= 5) ? "Resiko Rendah ( RR )" : (state.total <= 13) ? "Resiko Sedang ( RS )" : "Resiko Tinggi  ( RT )"}',
                                 style: blackTextStyle.copyWith(
                                     fontWeight: FontWeight.bold)),
                           ]),
@@ -154,8 +144,7 @@ class _ReAsessmentResikoJatuhContentWidgetState
                     SizedBox(
                       child: Column(
                         children: state.resikoJatuh.map((resiko) {
-                          return Container(
-                            padding: EdgeInsets.symmetric(vertical: 5.sp),
+                          return SizedBox(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -176,8 +165,7 @@ class _ReAsessmentResikoJatuhContentWidgetState
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  padding: EdgeInsets.symmetric(vertical: 5.sp),
+                                SizedBox(
                                   child: Column(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
@@ -207,15 +195,15 @@ class _ReAsessmentResikoJatuhContentWidgetState
                                                       ),
                                                     ),
                                                     SizedBox(
-                                                      height: 20.sp,
-                                                      width: 40.sp,
+                                                      height: 15.sp,
+                                                      width: 20.sp,
                                                       child: ElevatedButton(
                                                         onPressed: () {
                                                           // ONN PRESS
                                                           context
                                                               .read<
-                                                                  ReassesmenResikoJatuhBloc>()
-                                                              .add(OnCheclistReAsesmenResikoJatuh(
+                                                                  ResikoJatuhDewasaBloc>()
+                                                              .add(OnCheckIntervensiResikoJatuhDewasa(
                                                                   faktorIndex:
                                                                       resiko
                                                                           .noUrut,
@@ -241,18 +229,9 @@ class _ReAsessmentResikoJatuhContentWidgetState
                                                                         5.sp),
                                                           ),
                                                         ),
-                                                        child: const Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceAround,
-                                                          children: [
-                                                            Icon(
-                                                              FontAwesomeIcons
-                                                                  .check,
-                                                              color:
-                                                                  Colors.white,
-                                                            ),
-                                                          ],
+                                                        child: Text(
+                                                          e.skor.toString(),
+                                                          style: whiteTextStyle,
                                                         ),
                                                       ),
                                                     )
@@ -263,17 +242,18 @@ class _ReAsessmentResikoJatuhContentWidgetState
                                             ))
                                         .toList(),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 20.sp,
                                 )
                               ],
                             ),
                           );
                         }).toList(),
                       ),
-                    )
+                    ),
                   ],
+
+                  SizedBox(
+                    height: 20.sp,
+                  )
                 ],
               ),
             ),

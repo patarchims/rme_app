@@ -41,6 +41,7 @@ class _ReportPengkajianAwalKebidananRawatInapState
             body: Loading.expandedLoading(),
           );
         }
+
         return Scaffold(
           backgroundColor: ThemeColor.transparentColor,
           body: Container(
@@ -149,15 +150,15 @@ class _ReportPengkajianAwalKebidananRawatInapState
                                           title: "Nama",
                                           subTitle:
                                               singlePasien.first.namaPasien),
-                                      titleText(
-                                          title: "Tanggal Lahir",
-                                          subTitle: (singlePasien
-                                                      .first.tglLahir.length >
-                                                  6)
-                                              ? tglIndo(singlePasien
-                                                  .first.tglLahir
-                                                  .substring(0, 10))
-                                              : ""),
+                                      // titleText(
+                                      //     title: "Tanggal Lahir",
+                                      //     subTitle: (singlePasien
+                                      //                 .first.tglLahir.length >
+                                      //             6)
+                                      //         ? tglIndo(singlePasien
+                                      //             .first.tglLahir
+                                      //             .substring(0, 10))
+                                      //         : ""),
                                     ],
                                   ),
                                 )
@@ -177,57 +178,58 @@ class _ReportPengkajianAwalKebidananRawatInapState
                           ),
                         ),
 
-                        if (authState is Authenticated) ...[
-                          Container(
-                            color: Colors.white,
-                            padding: EdgeInsets.symmetric(horizontal: 5.sp),
-                            child: TableDesk(
-                              shape: const RoundedRectangleBorder(
-                                side: BorderSide(color: Colors.white, width: 1),
-                              ),
-                              child: TableDeskRow(
-                                border: const BorderSide(
-                                    width: 1, color: Colors.white),
-                                gaps: [
-                                  TableGap.weight(),
-                                  TableGap.weight(),
-                                ],
-                                children: [
-                                  Container(
-                                    color: Colors.white,
-                                    padding: const EdgeInsets.all(8),
-                                    child: (state.reportPengkajianAwalMedis
-                                                .asesmenDokter.tglMasuk.length >
-                                            10)
-                                        ? Text(
-                                            "Tanggal         :       ${tglIndo(state.reportPengkajianAwalMedis.asesmenDokter.tglMasuk.substring(0, 10))}",
-                                            style: blackTextStyle.copyWith(
-                                                fontSize: 6.sp),
-                                            textAlign: TextAlign.left,
-                                          )
-                                        : Text(
-                                            "Tanggal         :      ${(state.reportPengkajianAwalMedis.asesmenDokter.tglMasuk.length > 10) ? tglIndo(state.reportPengkajianAwalMedis.asesmenDokter.tglMasuk.substring(0, 10)) : state.reportPengkajianAwalMedis.asesmenDokter.tglMasuk} ",
-                                            style: blackTextStyle.copyWith(
-                                                fontSize: 6.sp),
-                                            textAlign: TextAlign.left,
-                                          ),
-                                  ),
-                                  Container(
-                                    color: Colors.white,
-                                    padding: const EdgeInsets.all(8),
-                                    child: Text(
-                                      "Jam                                :      "
-                                      "${state.reportPengkajianAwalMedis.asesmenDokter.jamMasuk}",
-                                      style: blackTextStyle.copyWith(
-                                          fontSize: 6.sp),
-                                      textAlign: TextAlign.left,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
+                        // if (authState is Authenticated) ...[
+                        //   Container(
+                        //     color: Colors.white,
+                        //     padding: EdgeInsets.symmetric(horizontal: 5.sp),
+                        //     child: TableDesk(
+                        //       shape: const RoundedRectangleBorder(
+                        //         side: BorderSide(color: Colors.white, width: 1),
+                        //       ),
+                        //       child: TableDeskRow(
+                        //         border: const BorderSide(
+                        //             width: 1, color: Colors.white),
+                        //         gaps: [
+                        //           TableGap.weight(),
+                        //           TableGap.weight(),
+                        //         ],
+                        //         children: [
+                        //           Container(
+                        //             color: Colors.white,
+                        //             padding: const EdgeInsets.all(8),
+                        //             child: (state.reportPengkajianAwalMedis
+                        //                         .asesmenDokter.tglMasuk.length >
+                        //                     10)
+                        //                 ? Text(
+                        //                     "Tanggal Masuk         :       ${tglIndo(state.reportPengkajianAwalMedis.asesmenDokter.tglMasuk.substring(0, 10))}\nTanggal Asesmen         :       ${tglIndo(state.reportPengkajianAwalMedis.asesmenDokter.insertDttm.substring(0, 10))}",
+                        //                     style: blackTextStyle.copyWith(
+                        //                         fontSize: 6.sp),
+                        //                     textAlign: TextAlign.left,
+                        //                   )
+                        //                 : Text(
+                        //                     "Tanggal Masuk        :      ${(state.reportPengkajianAwalMedis.asesmenDokter.tglMasuk.length > 10) ? tglIndo(state.reportPengkajianAwalMedis.asesmenDokter.tglMasuk.substring(0, 10)) : state.reportPengkajianAwalMedis.asesmenDokter.tglMasuk}\nTanggal Asesmen         :       ${tglIndo(state.reportPengkajianAwalMedis.asesmenDokter.insertDttm.substring(0, 10))}",
+                        //                     style: blackTextStyle.copyWith(
+                        //                         fontSize: 6.sp),
+                        //                     textAlign: TextAlign.left,
+                        //                   ),
+                        //           ),
+                        //           Container(
+                        //             color: Colors.white,
+                        //             padding: const EdgeInsets.all(8),
+                        //             child: Text(
+                        //               "Jam                                :      "
+                        //               "${state.reportPengkajianAwalMedis.asesmenDokter.jamMasuk}",
+                        //               style: blackTextStyle.copyWith(
+                        //                   fontSize: 6.sp),
+                        //               textAlign: TextAlign.left,
+                        //             ),
+                        //           ),
+                        //         ],
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ],
+
                         SizedBox(
                           height: 5.sp,
                         ),

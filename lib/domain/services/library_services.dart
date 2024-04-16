@@ -263,6 +263,15 @@ class LibraryService {
         data: DTO.report(noReg: noReg));
   }
 
+  // ====================== RESIKO JATUH ANAK
+  Future<Either<ApiFailureResult, ApiSuccessResult>> reAsesmenResikoJatuhAnak({
+    required String noReg,
+  }) {
+    return MyDio().postDataWithToken(
+        endPoint: EndPoint.reportReAsesmenResikoJatuhAnak,
+        data: DTO.report(noReg: noReg));
+  }
+
   Future<dynamic> onGetResikoJatuhMorse({required String noReg}) {
     return MyDio().postAndToken(
         endPoint: EndPoint.reportResikoJatuhMorse,

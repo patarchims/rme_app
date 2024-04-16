@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hms_app/presentation/component/color/color_helper.dart';
 import 'package:hms_app/presentation/component/component.dart';
 import 'package:hms_app/presentation/component/header/tabbar_without_expanded_widget.dart';
 import 'package:hms_app/presentation/kebidanan/presentation/edukasi/tambah_data_edukasi_terintegrasi_pasien_widget.dart';
 import 'package:hms_app/presentation/kebidanan/presentation/ews_system/ews_system_page_widget.dart';
+import 'package:hms_app/presentation/kebidanan/presentation/kontrol_pasien/kontrol_istimewa_pasien_widget_page.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
 
 class KontrolPasienPageWidget extends StatelessWidget {
@@ -25,7 +25,7 @@ class KontrolPasienPageWidget extends StatelessWidget {
         children: [
           Positioned.fill(
               child: Container(
-            color: Colors.red,
+            color: ThemeColor.bgColor,
             child: TabbarWithoutExpandexWidget(
                 backgroundColor: ThemeColor.bgColor,
                 menu: menu,
@@ -35,7 +35,7 @@ class KontrolPasienPageWidget extends StatelessWidget {
                   }
 
                   if (e.key == 1) {
-                    return Container();
+                    return const KontrolPasienIstimewaPageWidget();
                   }
 
                   return Container();

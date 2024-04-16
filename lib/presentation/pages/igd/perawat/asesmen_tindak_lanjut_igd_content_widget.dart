@@ -66,6 +66,8 @@ class _AsesmenTindakLanjutIGDContentWidgetState
                           subTitle: meta.message, title: "Pesan");
                       return shouldPop ?? false;
                     })));
+
+        //=====//
       },
       builder: (context, state) {
         // =============================== //
@@ -83,7 +85,7 @@ class _AsesmenTindakLanjutIGDContentWidgetState
                             tindakLanjut: state.tindakLanjutIGDModel,
                             noreg: singlePasien.first.noreg,
                             person: toPerson(person: authState.user.person),
-                            deviceID: "ID - ${data['id']} - ${data['device']}}",
+                            deviceID: "ID - ${data['id']} - ${data['device']}",
                             pelayanan: toPelayanan(
                                 poliklinik: authState.user.poliklinik)));
                   }

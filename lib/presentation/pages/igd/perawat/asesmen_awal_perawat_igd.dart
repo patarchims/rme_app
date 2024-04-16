@@ -56,34 +56,24 @@ class AsesmenKeperawatanIGDContentWidget extends StatelessWidget {
         }
       },
       children: menuAsesmen.asMap().entries.map((e) {
-        // ====== TAMPILKAN INFORMASI INDEX 1
         if (e.key == 0) {
           return const InformasiKeluhanAsesmenIgdContentWidget();
         }
-
-        // ======= TAMPILKAN SKRINING NYERI
         if (e.key == 1) {
           return const SkriningNyeriPerawatContentWidget();
         }
-
-        // =================  TAMPILKAN RIWAYAT KEHAMILAN WIDGET//
         if (e.key == 2) {
           return const RiwayatKehamilanContentWidget();
         }
-
-        // ==================== TAMPILKAN SKRINING RESIKO DEKUBITUS
         if (e.key == 3) {
           return const SkriningDekubitusIGdContentWidget();
         }
-
         if (e.key == 4) {
           return const AsesmenTindakLanjutIGDContentWidget();
         }
-
         if (e.key == 5) {
           return const AsesmenPerawatSkriningPasienWidget();
         }
-
         return Container();
       }).toList(),
     );

@@ -861,7 +861,6 @@ class ReportPengkajianRawatInapMedical extends StatelessWidget {
                     children: [
                       // TAMPILKAN DATA
                       // TAMPILKAN HEADER
-
                       Container(
                         padding: EdgeInsets.symmetric(horizontal: 5.sp),
                         width: Get.width,

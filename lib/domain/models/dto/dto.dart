@@ -964,18 +964,27 @@ abstract class DTO {
     required String kesadaran,
     required String noreg,
     required int td,
+    required int td2,
     required int nadi,
     required int pernapasan,
     required String reaksiOtot,
+    required String obsigenTambahan,
+    required String keterangan,
+    required String kategori,
     required int suhu,
     required int spo2,
     required int crt,
     required int skalaNyeri,
+    required int totalSkor,
   }) {
     return {
       "noreg": noreg,
       "kesadaran": kesadaran,
+      "kategori": kategori,
       "td": td,
+      "td2": td2,
+      "keterangan": keterangan,
+      "obsigen_tambahan": obsigenTambahan,
       "pernapasan": pernapasan,
       "reaksi_otot": reaksiOtot,
       "suhu": suhu,
@@ -983,6 +992,7 @@ abstract class DTO {
       "crt": crt,
       "nadi": nadi,
       "skala_nyeri": skalaNyeri,
+      "total_skor": totalSkor,
     };
   }
 

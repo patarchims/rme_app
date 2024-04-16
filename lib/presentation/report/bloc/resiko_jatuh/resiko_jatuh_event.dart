@@ -27,6 +27,13 @@ class OnGetResikoJatuhAnakEvent extends ResikoJatuhEvent {
   });
 }
 
+class OnGetReAsesmenResikoJatuhAnakEvent extends ResikoJatuhEvent {
+  final String noReg;
+  OnGetReAsesmenResikoJatuhAnakEvent({
+    required this.noReg,
+  });
+}
+
 class OnGetReportResikoJatuhMorseEvent extends ResikoJatuhEvent {
   final String noreg;
   OnGetReportResikoJatuhMorseEvent({

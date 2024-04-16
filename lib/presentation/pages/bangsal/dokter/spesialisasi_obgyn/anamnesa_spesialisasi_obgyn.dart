@@ -133,37 +133,6 @@ class AnamnesaSpesialisasiObgyn extends StatelessWidget {
                                   maxLines: 5,
                                 ),
                               ),
-                              // TitleWidget.titleContainer(title: "Alergi"),
-                              // Padding(
-                              //   padding: EdgeInsets.all(3.sp),
-                              //   child: FormWidget.textArea(
-                              //     value: state.asesmentDokter.riwayatAlergi,
-                              //     enabled: true,
-                              //     onChanged: (value) {
-                              //       context.read<AsesmenDokterBloc>().add(
-                              //           AsesmenDokterEvent
-                              //               .riwayatAlergiOnchanged(
-                              //                   value: value));
-                              //     },
-                              //     maxLines: 5,
-                              //   ),
-                              // ),
-                              // TitleWidget.titleContainer(
-                              //     title: "Riwayat Penyakit Keluarga"),
-                              // Padding(
-                              //   padding: EdgeInsets.all(3.sp),
-                              //   child: FormWidget.textArea(
-                              //     value: state.asesmentDokter.riwayatKeluarga,
-                              //     enabled: true,
-                              //     onChanged: (value) {
-                              //       context.read<AsesmenDokterBloc>().add(
-                              //           AsesmenDokterEvent
-                              //               .riwayatKeluargaOnchanged(
-                              //                   value: value));
-                              //     },
-                              //     maxLines: 5,
-                              //   ),
-                              // ),
                               TitleWidget.titleContainer(
                                   title: "Riwayat Pengobatan"),
                               Padding(

@@ -16,7 +16,9 @@ import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
 import 'package:sizer/sizer.dart';
 
 class TandaVitalDanGannguanPerilakuWidgetContent extends StatelessWidget {
-  const TandaVitalDanGannguanPerilakuWidgetContent({super.key});
+  final bool isENableAdd;
+  const TandaVitalDanGannguanPerilakuWidgetContent(
+      {super.key, required this.isENableAdd});
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +69,7 @@ class TandaVitalDanGannguanPerilakuWidgetContent extends StatelessWidget {
         if (state.status == TandaVitalIgdDokterStatus.isLoadingGet) {
           return HeaderContentWidget(
               title: "Simpan",
-              isENableAdd: false,
+              isENableAdd: isENableAdd,
               widget: SizedBox(
                 width: Get.width,
                 height: Get.height,
@@ -79,23 +81,27 @@ class TandaVitalDanGannguanPerilakuWidgetContent extends StatelessWidget {
 
         return HeaderContentWidget(
             title: "Simpan",
-            onPressed: () async {
-              // ======================================================= //
-              // SIMPAN DATA GANGGUAN PERILAKU //
-              dynamic data = await deviceInfo.initPlatformState();
-              if (authState is Authenticated) {
-                // ignore: use_build_context_synchronously
-                context.read<TandaVitalIgdDokterBloc>().add(
-                    OnSaveTandaVitalIGDDokter(
-                        deviceId: "ID - ${data['id']} - ${data['device']}}",
-                        noReg: singlePasien.first.noreg,
-                        pelayanan:
-                            toPelayanan(poliklinik: authState.user.poliklinik),
-                        person: toPerson(person: authState.user.person),
-                        tandaVital: state.tandaVitalIgdDokter));
-                // SIMPAN SEBAGAI DOKTER
-              }
-            },
+            isENableAdd: isENableAdd,
+            onPressed: (isENableAdd)
+                ? () async {
+                    // ======================================================= //
+                    // SIMPAN DATA GANGGUAN PERILAKU //
+                    dynamic data = await deviceInfo.initPlatformState();
+                    if (authState is Authenticated) {
+                      // ignore: use_build_context_synchronously
+                      context.read<TandaVitalIgdDokterBloc>().add(
+                          OnSaveTandaVitalIGDDokter(
+                              deviceId:
+                                  "ID - ${data['id']} - ${data['device']}}",
+                              noReg: singlePasien.first.noreg,
+                              pelayanan: toPelayanan(
+                                  poliklinik: authState.user.poliklinik),
+                              person: toPerson(person: authState.user.person),
+                              tandaVital: state.tandaVitalIgdDokter));
+                      // SIMPAN SEBAGAI DOKTER
+                    }
+                  }
+                : null,
             widget: ListView(
               children: [
                 titleContainer(title: "Tanda Tanda Vital"),

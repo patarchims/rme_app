@@ -5,6 +5,7 @@ import 'package:hms_app/presentation/component/color/color_helper.dart';
 import 'package:hms_app/presentation/component/header/tabbar_header_content_widget.dart';
 import 'package:hms_app/presentation/report/bloc/resiko_jatuh/resiko_jatuh_bloc.dart';
 import 'package:hms_app/presentation/report/view/resiko_jatuh/report_intervensi_resiko_jatuh_widget.dart';
+import 'package:hms_app/presentation/report/view/resiko_jatuh/report_reasesmen_risiko_jatuh_pada_pasien_anak_content_widget.dart';
 import 'package:hms_app/presentation/report/view/resiko_jatuh/report_reasesmen_risiko_jatuh_pada_pasien_dewasa_report_widget.dart';
 import 'package:hms_app/presentation/report/view/resiko_jatuh/report_reasesmen_risiko_jatuh_pasien_dewasa_content_widget.dart';
 import 'package:hms_app/presentation/report/view/resiko_jatuh/report_resiko_jatuh_anak_widget.dart';
@@ -46,6 +47,12 @@ class ReportHasilResikoJatuhWidget extends StatelessWidget {
             context.read<ResikoJatuhReportBloc>().add(
                 OnGetResikoJatuhAnakEvent(noReg: singlePasien.first.noreg));
           }
+
+          if (index == 4) {
+            context.read<ResikoJatuhReportBloc>().add(
+                OnGetReAsesmenResikoJatuhAnakEvent(
+                    noReg: singlePasien.first.noreg));
+          }
         },
         children: menu.asMap().entries.map((e) {
           if (e.value ==
@@ -65,6 +72,10 @@ class ReportHasilResikoJatuhWidget extends StatelessWidget {
             return const ReportResikoJatuhAnakWidget();
           }
 
+          if (e.value == "Re-Assesmen Resiko\nJatuh Pada Anak") {
+            return const ReAsesmenResikoJatuhAnakReport();
+          }
+
           return const Text("data");
         }).toList());
   }
@@ -76,4 +87,5 @@ List<String> menu = [
   "Intervensi Risiko\nJatuh Pasien",
   "Re-Assesmen Resiko\nJatuh Pada Pasien Dewasa",
   "Assesmen Pasien\nResiko Jatuh Pada Anak",
+  "Re-Assesmen Resiko\nJatuh Pada Anak"
 ];

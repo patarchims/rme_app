@@ -30,6 +30,7 @@ class TandaVitalIgdDokterBloc
     on<OnChangedTinggiBadanEvent>(_onChangedTinggiBadan);
     on<OnChangedPupilEvent>(_onChangedPupil);
     on<OnChangedAkralEvent>(_onChangedAkral);
+    on<OnGetTandaVitalIGDPerawat>(_onGetTandaVitalIGDPerawat);
   }
 
   Future<void> _onGetTandaVitalIGDDokter(
@@ -43,6 +44,33 @@ class TandaVitalIgdDokterBloc
 
     try {
       final getData = await igdServices.onGetTandaVitalIGDDokter(
+          pelayanan: event.pelayanan, noReg: event.noReg, person: event.person);
+
+      TandaVitalIgdDokter data =
+          TandaVitalIgdDokter.fromJson(getData["response"]);
+
+      emit(state.copyWith(
+        status: TandaVitalIgdDokterStatus.isLoadedGet,
+        tandaVitalIgdDokter: data,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+          status: TandaVitalIgdDokterStatus.loaded,
+          tandaVitalIgdDokter: state.tandaVitalIgdDokter));
+    }
+  }
+
+  Future<void> _onGetTandaVitalIGDPerawat(
+    OnGetTandaVitalIGDPerawat event,
+    Emitter<TandaVitalIgdDokterState> emit,
+  ) async {
+    // REPLACE LIST ON LIST
+    emit(state.copyWith(
+        status: TandaVitalIgdDokterStatus.isLoadingGet,
+        tandaVitalIgdDokter: state.tandaVitalIgdDokter));
+
+    try {
+      final getData = await igdServices.onGetTandaVitalIGDPerawat(
           pelayanan: event.pelayanan, noReg: event.noReg, person: event.person);
 
       TandaVitalIgdDokter data =

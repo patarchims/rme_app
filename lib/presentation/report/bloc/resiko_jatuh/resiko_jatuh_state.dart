@@ -17,7 +17,9 @@ enum ReportResikoJatuhStatus {
 
   // Resiko Jatuh Pasien dewasa
   isLoadingResikoJatuhPasienDewasa,
-  isLoadedResikoJatuhPasienDewasa
+  isLoadedResikoJatuhPasienDewasa,
+
+  isLoadingGetResikoJatuhPasienAnak,
 }
 
 class ResikoReportJatuhState extends Equatable {

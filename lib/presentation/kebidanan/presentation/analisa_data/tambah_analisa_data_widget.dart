@@ -113,6 +113,7 @@ class _TambahAnalisaDataWidgetState extends State<TambahAnalisaDataWidget> {
                                     backgroundColor: ThemeColor.darkGreyColor
                                         .withOpacity(0.2),
                                     floatingActionButton: FloatingActionButton(
+                                      backgroundColor: ThemeColor.primaryColor,
                                       onPressed: () {
                                         // ADD DIAGNOSA KEPERAWTAN
                                         CustomDialogWidget.getDialog(

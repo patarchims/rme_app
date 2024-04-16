@@ -10,9 +10,9 @@ import 'package:hms_app/presentation/pages/igd/medis/asuhan_widget_content.dart'
 class AsesmenKeperawatanBidanContentWidget extends StatelessWidget {
   final List<String> menu;
   const AsesmenKeperawatanBidanContentWidget({
-    Key? key,
+    super.key,
     required this.menu,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

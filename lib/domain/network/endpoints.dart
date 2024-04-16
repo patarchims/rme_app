@@ -97,6 +97,8 @@ abstract class EndPoint {
   static String reportResikoJatuhMorse = "/v1/report-resiko-jatuh-morse";
   static String reportResikoJatuhDewasa = "/v1/report-resiko-jatuh-dewasa";
   static String reportResikoJatuhAnak = "/v1/report-resiko-jatuh-anak";
+  static String reportReAsesmenResikoJatuhAnak =
+      "/v1/report-resiko-jatuh-reasesmen-anak";
 
   // RIWAYAT ALERGI
   static String riwayatAlergi = '/v1/riwayat-alergi';
@@ -142,6 +144,9 @@ abstract class EndPoint {
   static String riwayatPenyakitKeluargaIGD =
       '/v1/riwayat-penyakit-keluarga-dokter-igd';
   static String pemeriksaanFisikIGDDokter = '/v1/pemeriksaan-fisik-dokter-igd';
+
+  static String pemeriksaanFisikIGDPerawat =
+      '/v1/pemeriksaan-fisik-perawat-igd';
   static String pemeriksaanFisikIGDDokterMethodist =
       '/v1/pemeriksaan-fisik-dokter-igd-methodist';
   static String pemeriksaanFisikBangsal = '/v1/pemeriksaan-fisik-bangsal';
@@ -149,6 +154,7 @@ abstract class EndPoint {
   static String pengkajianPersistemKeperawatan =
       '/v1/pengkajian-persistem-keperawatan';
   static String tandaVitalIGDDokter = '/v1/tanda-vital-igd-dokter';
+  static String tandaVitalIGDPerawat = '/v1/tanda-vital-igd-perawat';
   static String pengkajianAwalKeperawatan = '/v1/pengkajian-awal-perawat';
   static String riwayatPenyakitKeluarga =
       '/v1/riwayat-penyakit-keluarga-bangsal';

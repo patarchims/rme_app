@@ -1,9 +1,13 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:searchfield/searchfield.dart';
+import 'package:sizer/sizer.dart';
+
 import 'package:hms_app/domain/bloc/dashboard/pasien/pasien_bloc.dart';
 import 'package:hms_app/domain/bloc/user/auth/auth_bloc.dart';
 import 'package:hms_app/domain/models/devices_info/device_info_model.dart';
@@ -13,11 +17,13 @@ import 'package:hms_app/presentation/component/component.dart';
 import 'package:hms_app/presentation/component/loading/loading.dart';
 import 'package:hms_app/presentation/pages/igd/bloc/pemeriksaan_fisik_igd/pemeriksaan_fisik_igd_bloc.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
-import 'package:searchfield/searchfield.dart';
-import 'package:sizer/sizer.dart';
 
 class PemeriksaanFisikIGDDokterWidget extends StatefulWidget {
-  const PemeriksaanFisikIGDDokterWidget({super.key});
+  final bool isENableAdd;
+  const PemeriksaanFisikIGDDokterWidget({
+    super.key,
+    required this.isENableAdd,
+  });
 
   @override
   State<PemeriksaanFisikIGDDokterWidget> createState() =>
@@ -105,52 +111,55 @@ class _PemeriksaanFisikIGDDokterWidgetState
       builder: (context, state) {
         if (state.status == PemeriksaanFisikIgdStatus.isLoadingGet) {
           return HeaderContentWidget(
-              isENableAdd: true,
+              isENableAdd: widget.isENableAdd,
               title: "Simpan",
               widget: Loading.expandedLoading());
         }
         return HeaderContentWidget(
-          onPressed: () async {
-            dynamic data = await deviceInfo.initPlatformState();
-            if (authState is Authenticated) {
-              // ignore: use_build_context_synchronously
-              context.read<PemeriksaanFisikIgdBloc>().add(
-                  OnSavePemeriksaanFisikIGDDokter(
-                      pemeriksaanFisik: state.pemeriksaanFisikIgdDokter
-                          .copyWith(
-                              abdomen: _abdomenController.text,
-                              gigi: _gigiController.text,
-                              kepala: _kepalaController.text,
-                              alatKelamin: _alatKelaminController.text,
-                              anggotaGerak: _anggotaGerakController.text,
-                              dada: _dadaController.text,
-                              getahBening: _getahBeningController.text,
-                              ginjal: _ginjalController.text,
-                              hati: _hatiController.text,
-                              jantung: _jantungController.text,
-                              kekuatanOtot: _kekuatanOtotController.text,
-                              kulit: _kulitController.text,
-                              leher: _leherController.text,
-                              limpa: _limpaController.text,
-                              mata: _mataController.text,
-                              mulut: _mulutController.text,
-                              paru: _paruController.text,
-                              perut: _perutController.text,
-                              refleks: _reflekController.text,
-                              rtvt: _rtRVController.text,
-                              hidung: _hidungController.text,
-                              telinga: _telingaController.text,
-                              tht: _thtController.text,
-                              jalanNafas: _jalanNafasController.text,
-                              sirkulasi: _sirkulasiController.text),
-                      deviceID: "ID - ${data['id']} - ${data['device']}}",
-                      pelayanan:
-                          toPelayanan(poliklinik: authState.user.poliklinik),
-                      noReg: singlePasien.first.noreg,
-                      person: toPerson(person: authState.user.person)));
-            }
-          },
-          isENableAdd: true,
+          backgroundColor: ThemeColor.whiteColor,
+          onPressed: widget.isENableAdd
+              ? () async {
+                  dynamic data = await deviceInfo.initPlatformState();
+                  if (authState is Authenticated) {
+                    // ignore: use_build_context_synchronously
+                    context.read<PemeriksaanFisikIgdBloc>().add(
+                        OnSavePemeriksaanFisikIGDDokter(
+                            pemeriksaanFisik: state.pemeriksaanFisikIgdDokter
+                                .copyWith(
+                                    abdomen: _abdomenController.text,
+                                    gigi: _gigiController.text,
+                                    kepala: _kepalaController.text,
+                                    alatKelamin: _alatKelaminController.text,
+                                    anggotaGerak: _anggotaGerakController.text,
+                                    dada: _dadaController.text,
+                                    getahBening: _getahBeningController.text,
+                                    ginjal: _ginjalController.text,
+                                    hati: _hatiController.text,
+                                    jantung: _jantungController.text,
+                                    kekuatanOtot: _kekuatanOtotController.text,
+                                    kulit: _kulitController.text,
+                                    leher: _leherController.text,
+                                    limpa: _limpaController.text,
+                                    mata: _mataController.text,
+                                    mulut: _mulutController.text,
+                                    paru: _paruController.text,
+                                    perut: _perutController.text,
+                                    refleks: _reflekController.text,
+                                    rtvt: _rtRVController.text,
+                                    hidung: _hidungController.text,
+                                    telinga: _telingaController.text,
+                                    tht: _thtController.text,
+                                    jalanNafas: _jalanNafasController.text,
+                                    sirkulasi: _sirkulasiController.text),
+                            deviceID: "ID - ${data['id']} - ${data['device']}}",
+                            pelayanan: toPelayanan(
+                                poliklinik: authState.user.poliklinik),
+                            noReg: singlePasien.first.noreg,
+                            person: toPerson(person: authState.user.person)));
+                  }
+                }
+              : null,
+          isENableAdd: widget.isENableAdd,
           title: "Simpan",
           widget: RawScrollbar(
               thumbColor: ThemeColor.darkColor,

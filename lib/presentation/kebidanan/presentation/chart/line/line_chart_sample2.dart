@@ -57,19 +57,19 @@ class _LineChartSample2State extends State<LineChartSample2> {
                     horizontalInterval: 1,
                     verticalInterval: 1,
                     getDrawingHorizontalLine: (value) {
-                      return FlLine(
+                      return const FlLine(
                         color: AppColors.mainGridLineColor,
                         strokeWidth: 1,
                       );
                     },
                     getDrawingVerticalLine: (value) {
-                      return FlLine(
+                      return const FlLine(
                         color: AppColors.mainGridLineColor,
                         strokeWidth: 1,
                       );
                     },
                   ),
-                  titlesData: FlTitlesData(
+                  titlesData: const FlTitlesData(
                     show: true,
                     rightTitles: AxisTitles(
                       sideTitles: SideTitles(showTitles: false),
@@ -111,7 +111,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
                       ),
                       barWidth: 5,
                       isStrokeCapRound: true,
-                      dotData: FlDotData(
+                      dotData: const FlDotData(
                         show: false,
                       ),
                       belowBarData: BarAreaData(
@@ -196,13 +196,13 @@ class _LineChartSample2State extends State<LineChartSample2> {
         horizontalInterval: 1,
         verticalInterval: 1,
         getDrawingHorizontalLine: (value) {
-          return FlLine(
+          return const FlLine(
             color: AppColors.mainGridLineColor,
             strokeWidth: 1,
           );
         },
         getDrawingVerticalLine: (value) {
-          return FlLine(
+          return const FlLine(
             color: AppColors.mainGridLineColor,
             strokeWidth: 1,
           );
@@ -210,10 +210,10 @@ class _LineChartSample2State extends State<LineChartSample2> {
       ),
       titlesData: FlTitlesData(
         show: true,
-        rightTitles: AxisTitles(
+        rightTitles: const AxisTitles(
           sideTitles: SideTitles(showTitles: false),
         ),
-        topTitles: AxisTitles(
+        topTitles: const AxisTitles(
           sideTitles: SideTitles(showTitles: false),
         ),
         bottomTitles: AxisTitles(

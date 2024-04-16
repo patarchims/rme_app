@@ -35,6 +35,7 @@ class PemeriksaanFisikIgdBloc
     on<AnggotaGerakOnChanged>(_anggotaGerakOnChanged);
     on<RefleksOnChanged>(_refleksOnChanged);
     on<KekuatanOtotOnChanged>(_kekuatanOtotOnChanged);
+    on<OnGetPemeriksaanFisikPerawatIGD>(_onGetPemeriksaanFisikIGDPerawat);
     on<KulitOnChanged>(_kulitOnChanged);
     on<GetahBeningOnChanged>(_getahBeningOnChanged);
     on<RtRVOnChanged>(_rtVTOnChanged);
@@ -58,6 +59,34 @@ class PemeriksaanFisikIgdBloc
 
     try {
       final fisik = await igdServices.onGetPemeriksaanFisikIGDokter(
+          person: event.person, noReg: event.noReg);
+
+      PemeriksaanFisikIgdDokter pemeriksaanFisikIgdDokter =
+          PemeriksaanFisikIgdDokter.fromJson(fisik["response"]);
+
+      emit(state.copyWith(
+          pemeriksaanFisikIgdDokter: pemeriksaanFisikIgdDokter,
+          saveResultFailure: none(),
+          status: PemeriksaanFisikIgdStatus.loaded));
+    } catch (e) {
+      emit(state.copyWith(
+          pemeriksaanFisikIgdDokter: state.pemeriksaanFisikIgdDokter,
+          saveResultFailure: none(),
+          status: PemeriksaanFisikIgdStatus.error));
+    }
+  }
+
+  Future<void> _onGetPemeriksaanFisikIGDPerawat(
+    OnGetPemeriksaanFisikPerawatIGD event,
+    Emitter<PemeriksaanFisikIgdState> emit,
+  ) async {
+    emit(state.copyWith(
+        pemeriksaanFisikIgdDokter: state.pemeriksaanFisikIgdDokter,
+        saveResultFailure: none(),
+        status: PemeriksaanFisikIgdStatus.isLoadingGet));
+
+    try {
+      final fisik = await igdServices.onGetPemeriksaanFisikIGDPerawat(
           person: event.person, noReg: event.noReg);
 
       PemeriksaanFisikIgdDokter pemeriksaanFisikIgdDokter =

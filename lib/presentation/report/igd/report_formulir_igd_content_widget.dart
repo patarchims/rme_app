@@ -94,6 +94,8 @@ class ReportFormulirIGDContentWidget extends StatelessWidget {
           if (e.value == "Skrining Pasien") {
             return const ReportFormulirSkriningPasienWidget();
           }
+
+          //====//
           if (e.value == "Triase") {
             // TRIASE IGD
             if (authState is Authenticated) {

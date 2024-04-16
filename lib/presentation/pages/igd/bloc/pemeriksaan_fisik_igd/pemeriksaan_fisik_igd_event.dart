@@ -22,6 +22,15 @@ class OnGetPemeriksaanFisikMethodist extends PemeriksaanFisikIgdEvent {
   });
 }
 
+class OnGetPemeriksaanFisikPerawatIGD extends PemeriksaanFisikIgdEvent {
+  final String noReg;
+  final String person;
+  OnGetPemeriksaanFisikPerawatIGD({
+    required this.noReg,
+    required this.person,
+  });
+}
+
 class OnGetPemeriksaanFisikBangsalEvent extends PemeriksaanFisikIgdEvent {
   final String noReg;
   final String person;

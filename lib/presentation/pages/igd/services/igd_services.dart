@@ -234,6 +234,21 @@ class IGDServices {
     );
   }
 
+  Future<dynamic> onGetTandaVitalIGDPerawat({
+    required String noReg,
+    required String person,
+    required String pelayanan,
+  }) {
+    return MyDio().getAndToken(
+      endPoint: EndPoint.tandaVitalIGDPerawat,
+      data: DTO.onGetTandaVitalIGDDokter(
+        noReg: noReg,
+        pelayanan: pelayanan,
+        person: person,
+      ),
+    );
+  }
+
   Future<Either<ApiFailureResult, ApiSuccessResult>> onSaveTandaVitalIGDDokter({
     required String noReg,
     required String person,
@@ -281,6 +296,19 @@ class IGDServices {
   }) {
     return MyDio().getAndToken(
       endPoint: EndPoint.pemeriksaanFisikIGDDokter,
+      data: DTO.onGetPemeriksaanFisikIGDDokter(
+        noReg: noReg,
+        person: person,
+      ),
+    );
+  }
+
+  Future<dynamic> onGetPemeriksaanFisikIGDPerawat({
+    required String person,
+    required String noReg,
+  }) {
+    return MyDio().getAndToken(
+      endPoint: EndPoint.pemeriksaanFisikIGDPerawat,
       data: DTO.onGetPemeriksaanFisikIGDDokter(
         noReg: noReg,
         person: person,

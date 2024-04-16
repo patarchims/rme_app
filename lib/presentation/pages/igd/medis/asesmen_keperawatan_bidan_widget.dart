@@ -1053,8 +1053,6 @@ class _AsesmenKeperawatanBidanState
                                           setState(() {
                                             _currentNyeri = value;
                                           });
-                                          // log(value.toString());
-                                          // log(_currentNyeri.toString());
                                         },
                                       ),
                                     ),

@@ -36,7 +36,7 @@ class AsesmenIntensivePageWidget extends StatelessWidget {
         },
         children: menu.asMap().entries.map((e) {
           if (menu.first == e.value) {
-            return const RiwayatKeperawatanPageWidget();
+            return const RiwayatKeperawatanIntensivePageWidget();
           }
 
           if (e.value == "Pemeriksaan Fisik") {

@@ -65,10 +65,7 @@ abstract class ListConstants {
     "Dirujuk",
     "Ditransfer"
   ];
-  static const List<String> pemeriksaanFisik = [
-    "TAK",
-    "Lainnya"
-  ];
+  static const List<String> pemeriksaanFisik = ["TAK", "Lainnya"];
 
   static const List<String> frekuensiNyeriChoose = [
     "Jarang",
@@ -147,8 +144,8 @@ abstract class ListConstants {
     Constants.lainnya
   ];
   static const List<String> informasiDidapatDariIGD = [
-    "Auto-anamnesa",
-    "Hetero-anamnesa",
+    "Autoanamnese",
+    "Alloanamnese"
   ];
 
   static const List<String> keadaanUmum = [
@@ -180,6 +177,8 @@ abstract class ListConstants {
     "Non Rujukan",
     "Rujukan",
   ];
+
+  static const List<String> yaAtauTidak = ["Ya", "Tidak"];
 
   // =========================== END PILIHAN DARI ASESMEN IGD
 
