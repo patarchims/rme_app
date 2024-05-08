@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -30,17 +28,13 @@ class ReportAsesmenMedisIgdDokterBloc
           noRM: event.noRM,
           tanggal: event.tanggal);
 
-      log(getData.toString());
-
       ReponseReportIgdAsesmenMedis datas =
           ReponseReportIgdAsesmenMedis.fromJson(getData["response"]);
 
       emit(state.copyWith(status: AsesmenMedisStatus.loaded, reportIGD: datas));
     } catch (e) {
-      log(e.toString());
       emit(state.copyWith(
           status: AsesmenMedisStatus.loaded, reportIGD: state.reportIGD));
-      log(e.toString());
     }
   }
 }

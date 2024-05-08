@@ -411,13 +411,9 @@ class _AssessmentKebutuhanEdukasiGigiPageState
       },
       child: BlocBuilder<PasienBloc, PasienState>(
         builder: (context, state) {
-          // final singlePasien = state.listPasienModel
-          //     .where((element) => element.mrn == state.normSelected);
           return Expanded(
             child: HeaderContentWidget(
-              onPressed: () {
-                // TODO SIMPAN DATA
-              },
+              onPressed: () {},
               widget: SingleChildScrollView(
                 child: Column(
                   children: [

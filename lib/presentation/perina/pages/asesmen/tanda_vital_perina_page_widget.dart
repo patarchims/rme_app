@@ -140,7 +140,7 @@ class _TandaVitalPerinaWidgetPageState
               dynamic data = await deviceInfo.initPlatformState();
 
               if (authState is Authenticated) {
-                // TODO : SIMPAN DATA DVITAL SIGN
+                // SIMPAN DATA DVITAL SIGN
                 // ignore: use_build_context_synchronously
                 context.read<PemeriksaanFisikPerinaBloc>().add(
                     OnSaveDVitalSignFisikPerina(

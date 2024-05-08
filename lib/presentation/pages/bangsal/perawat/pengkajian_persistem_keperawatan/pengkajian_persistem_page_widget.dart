@@ -289,10 +289,8 @@ class _PengkajianPersistemPageWidgetState
           backgroundColor: ThemeColor.softBlue,
           isENableAdd: true,
           onPressed: () async {
-            // TODO SIMPAN DATA
             if (authState is Authenticated) {
               dynamic data = await deviceInfo.initPlatformState();
-
               // ignore: use_build_context_synchronously
               context.read<PengkajianPersistemKeperawatanBloc>().add(
                   OnSavePengkajianPersistemKeperawatan(
@@ -353,7 +351,7 @@ class _PengkajianPersistemPageWidgetState
                       person: toPerson(person: authState.user.person),
                       pelayanan:
                           toPelayanan(poliklinik: authState.user.poliklinik),
-                      devicesID: "ID - ${data['id']} - ${data['device']}}"));
+                      devicesID: "ID-${data['id']}-${data['device']}"));
             }
           },
           title: "Simpan",
@@ -410,9 +408,8 @@ class _PengkajianPersistemPageWidgetState
                       onSaved: (a) {},
                       searchInputDecoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.black.withOpacity(0.8),
-                          ),
+                          borderSide:
+                              BorderSide(color: Colors.black.withOpacity(0.8)),
                         ),
                         border: const OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.red),
@@ -424,6 +421,7 @@ class _PengkajianPersistemPageWidgetState
                   const Divider(),
 
                   TitleWidget.headerTitle(title: "ELIMINASI DAN PELEPASAN"),
+
                   TitleWidget.boxPemeriksaanFisikSugestion(
                     width: 100.sp,
                     widget: SearchField(
@@ -473,6 +471,7 @@ class _PengkajianPersistemPageWidgetState
                     title: "Eliminasi BAK",
                   ),
                   const Divider(),
+
                   TitleWidget.boxPemeriksaanFisikSugestion(
                     width: 100.sp,
                     widget: SearchField(
@@ -574,6 +573,7 @@ class _PengkajianPersistemPageWidgetState
                   ),
 
                   const Divider(),
+
                   TitleWidget.boxPemeriksaanFisikSugestion(
                     width: 100.sp,
                     widget: SearchField(

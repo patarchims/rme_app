@@ -32,7 +32,6 @@ class _AnalisaDataPageWidgetState extends State<AnalisaDataPageWidget> {
 
     return BlocConsumer<AnalisaBloc, AnalisaState>(
       listener: (context, state) {
-        // TODO: implement listener
         state.onDelete.fold(
             () => null,
             (a) => a.fold(
@@ -69,7 +68,6 @@ class _AnalisaDataPageWidgetState extends State<AnalisaDataPageWidget> {
                 isENableAdd: true,
                 backgroundColor: ThemeColor.bgColor,
                 onPressed: () {
-                  // TODO ON PRESS
                   CustomDialogWidget.getDialog(
                       widget: const TambahAnalisaDataWidget(),
                       color: ThemeColor.blueColor);
@@ -237,7 +235,6 @@ class _AnalisaDataPageWidgetState extends State<AnalisaDataPageWidget> {
                                               ),
                                               ElevatedButton(
                                                 onPressed: () {
-                                                  // TODO : HAPUS
                                                   CustomDialogWidget.getDialog(
                                                       widget:
                                                           HapusAnalisaDataWidget(

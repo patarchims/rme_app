@@ -11,10 +11,10 @@ import 'package:hms_app/presentation/pages/poli_dalam/hasil_penunjang_medik/riwa
 
 class HasilPenunjangContentWidget extends StatefulWidget {
   final List<String> menu;
-  const HasilPenunjangContentWidget({
-    Key? key,
+  const  HasilPenunjangContentWidget({
+    super.key,
     required this.menu,
-  }) : super(key: key);
+  });
 
   @override
   State<HasilPenunjangContentWidget> createState() =>

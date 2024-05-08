@@ -9,12 +9,12 @@ class TabbarHeaderContentWidget extends StatelessWidget {
   final List<Widget> children;
   final Color? backgroundColor;
   const TabbarHeaderContentWidget({
-    Key? key,
+    super.key,
     required this.menu,
     this.backgroundColor,
     this.onTap,
     required this.children,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

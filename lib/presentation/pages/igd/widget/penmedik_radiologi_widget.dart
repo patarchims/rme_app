@@ -87,6 +87,7 @@ class _PemedikRadiologiWidgetState extends State<PemedikRadiologiWidget> {
                             .read<AsesmenIgdBloc>()
                             .add(const AsesmenIgdEvent.clearRadiologi());
                         return shouldPop ?? false;
+                        // ignore: empty_catches
                       } catch (e) {}
                     })));
       },
@@ -284,12 +285,10 @@ class _PemedikRadiologiWidgetState extends State<PemedikRadiologiWidget> {
                                             child: const Icon(
                                                 FontAwesomeIcons.trash)),
                                         iconColor: Colors.amber,
-                                        title: Text(
-                                          e.value.deskripsi,
-                                        ),
+                                        title: Text(e.value.deskripsi),
                                         trailing:
                                             Text(e.value.tarip.toString()),
-                                        children: []),
+                                        children: const []),
                                   );
                                 }).toList(),
                               ),
@@ -313,17 +312,12 @@ class _PemedikRadiologiWidgetState extends State<PemedikRadiologiWidget> {
                   } else {
                     if (authState is Authenticated) {
                       dynamic data = await deviceInfo.initPlatformState();
-                      // final deviceID = data['id'];
-                      // final deviceName =
-                      //     "${data['brand']} - ${deviceID} - ${data['device']}}";
-
-                      // INPUT PEMERIKSAAN LABOR
 
                       InputPenunjangModel penunjangModel = InputPenunjangModel(
                           jenisPenunjang: "RADIOLOGI",
                           umurPasien: singlePasien.first.umur,
                           noReg: singlePasien.first.noreg,
-                          deviceID: "ID - ${data['id']} - ${data['device']}}",
+                          deviceID: "ID-${data['id']}-${data['device']}",
                           dokterPengirim: authState.user.nama,
                           kdPoli: authState.user.kodePoli,
                           ketPoli: authState.user.poliklinik.name,
@@ -333,9 +327,6 @@ class _PemedikRadiologiWidgetState extends State<PemedikRadiologiWidget> {
 
                       log("INPUT PENMEDIK  ${penunjangModel.toMap()}");
 
-                      // SIMPAN
-                      // PEMERIKSAAN
-                      // PENUNJANG
                       // ignore: use_build_context_synchronously
                       context.read<AsesmenIgdBloc>().add(
                           AsesmenIgdEvent.saveRadiologi(

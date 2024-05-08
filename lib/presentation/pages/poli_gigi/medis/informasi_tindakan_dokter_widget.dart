@@ -12,9 +12,9 @@ import 'package:hms_app/presentation/pages/poli_gigi/medis/rincian_informasi_wid
 class InformasiTindakanDokterWidget extends StatelessWidget {
   final List<String> menu;
   const InformasiTindakanDokterWidget({
-    Key? key,
+    super.key,
     required this.menu,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +40,10 @@ class InformasiTindakanDokterWidget extends StatelessWidget {
             indicatorColor: ThemeColor.primaryColor,
             onTap: (index) {
               if (index == 1) {
-                log("INDEX TAB " + index.toString());
+                log("INDEX TAB $index");
                 context
                     .read<RincianInformasiBloc>()
-                    .add(RincianInformasiEvent.getModelDiagnosa());
+                    .add(const RincianInformasiEvent.getModelDiagnosa());
               }
 
               if (index == 2) {
@@ -71,14 +71,14 @@ class InformasiTindakanDokterWidget extends StatelessWidget {
         body: TabBarView(
             children: menu.asMap().entries.map((e) {
           if (e.key == 1) {
-            return RincianInformasiWidget();
+            return const RincianInformasiWidget();
           }
           if (e.key == 2) {
-            return InputDignosaWidget(
+            return const InputDignosaWidget(
               enableEdit: false,
             );
           }
-          return Container(
+          return SizedBox(
             child: Center(
               child: Text(e.toString()),
             ),

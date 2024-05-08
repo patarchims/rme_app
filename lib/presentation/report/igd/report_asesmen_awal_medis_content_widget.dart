@@ -7,6 +7,8 @@ import 'package:hms_app/presentation/component/component.dart';
 import 'package:hms_app/presentation/component/extenstion/date_helper.dart';
 import 'package:hms_app/presentation/component/loading/loading.dart';
 import 'package:hms_app/presentation/component/qr_code/custom_qr_widget.dart';
+import 'package:hms_app/presentation/component/resources/app_config.dart';
+import 'package:hms_app/presentation/component/resources/app_constant.dart';
 import 'package:hms_app/presentation/report/bloc/asesmen_medis_igd_dokter/asesmen_medis_igd_dokter_bloc.dart';
 import 'package:hms_app/presentation/report/component/header_report_widget.dart';
 import 'package:sizer/sizer.dart';
@@ -146,7 +148,6 @@ class ReportAsesmenAwalMedisContentWidget extends StatelessWidget {
                             ),
                           ),
 
-                          // TODO : KETERANGAN TENTANG TANGGAL DAN JAM
                           Container(
                             decoration: const BoxDecoration(
                               color: Colors.white,
@@ -202,7 +203,6 @@ class ReportAsesmenAwalMedisContentWidget extends StatelessWidget {
                             ),
                           ),
 
-                          // TODO : KELUHAN UTAMA
                           Container(
                             decoration: const BoxDecoration(
                               color: Colors.white,
@@ -238,7 +238,6 @@ class ReportAsesmenAwalMedisContentWidget extends StatelessWidget {
                             ),
                           ),
 
-                          // TODO : KELUHAN UTAMA
                           Container(
                             decoration: const BoxDecoration(
                               color: Colors.white,
@@ -274,7 +273,7 @@ class ReportAsesmenAwalMedisContentWidget extends StatelessWidget {
                               ),
                             ),
                           ),
-                          // TODO : RIWAYAT PENYAKIT DAHULU
+
                           Container(
                             decoration: const BoxDecoration(
                               color: Colors.white,
@@ -345,7 +344,7 @@ class ReportAsesmenAwalMedisContentWidget extends StatelessWidget {
                               ),
                             ),
                           ),
-                          // TODO : RIWAYAT PENYAKIT DAHULU
+
                           Container(
                             decoration: const BoxDecoration(
                               color: Colors.white,
@@ -414,9 +413,8 @@ class ReportAsesmenAwalMedisContentWidget extends StatelessWidget {
                           ),
 
                           Container(
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                            ),
+                            decoration:
+                                const BoxDecoration(color: Colors.white),
                             child: TableDesk(
                               shape: const RoundedRectangleBorder(
                                 side: BorderSide(color: Colors.black, width: 1),
@@ -463,8 +461,8 @@ class ReportAsesmenAwalMedisContentWidget extends StatelessWidget {
                                             children: [
                                               pemeriksaanFisikTableUGD(
                                                   judul1: "GCS",
-                                                  value1: state
-                                                      .reportIGD.fisik.kepala,
+                                                  value1:
+                                                      "E : ${state.reportIGD.fisik.gcsE} M : ${state.reportIGD.fisik.gcsM} M : ${state.reportIGD.fisik.gcsM}",
                                                   judul2: "Kesadaran",
                                                   value2: state.reportIGD.fisik
                                                       .kesadaran),
@@ -498,140 +496,274 @@ class ReportAsesmenAwalMedisContentWidget extends StatelessWidget {
                             ),
                           ),
 
-                          // OBJEKTIF TANDA TANDA VITAL
-
-                          Container(
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                            ),
-                            child: TableDesk(
-                              shape: const RoundedRectangleBorder(
-                                side: BorderSide(color: Colors.black, width: 1),
-                              ),
-                              child: Container(
+                          // if(AppConstant.appSetup)
+                          if (AppConstant.appSetup == AppSetup.methodist) ...[
+                            Container(
+                              decoration: const BoxDecoration(
                                 color: Colors.white,
-                                child: TableDeskRow(
-                                  border: const BorderSide(
-                                      width: 1, color: Colors.white),
-                                  gaps: [
-                                    TableGap.weight(),
-                                  ],
-                                  children: [
-                                    // ROW PERTAMA
-                                    Column(
-                                      children: [
-                                        Container(
-                                          padding: EdgeInsets.all(5.sp),
-                                          color: Colors.white,
-                                          child: Align(
-                                            alignment: Alignment.centerLeft,
-                                            child: Text(
-                                              "PEMERIKSAAN FISIK",
-                                              textAlign: TextAlign.left,
-                                              style: blackTextStyle.copyWith(
-                                                  fontSize: 6.sp),
+                              ),
+                              child: TableDesk(
+                                shape: const RoundedRectangleBorder(
+                                  side:
+                                      BorderSide(color: Colors.black, width: 1),
+                                ),
+                                child: Container(
+                                  color: Colors.white,
+                                  child: TableDeskRow(
+                                    border: const BorderSide(
+                                        width: 1, color: Colors.white),
+                                    gaps: [
+                                      TableGap.weight(),
+                                    ],
+                                    children: [
+                                      // ROW PERTAMA
+                                      Column(
+                                        children: [
+                                          Container(
+                                            padding: EdgeInsets.all(5.sp),
+                                            color: Colors.white,
+                                            child: Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(
+                                                "PEMERIKSAAN FISIK",
+                                                textAlign: TextAlign.left,
+                                                style: blackTextStyle.copyWith(
+                                                    fontSize: 6.sp),
+                                              ),
                                             ),
                                           ),
-                                        ),
 
-                                        //  TABLE
-                                        Container(
-                                          padding: EdgeInsets.all(5.sp),
-                                          width: Get.width,
-                                          child: Table(
-                                            border: TableBorder.all(
-                                                color: ThemeColor.whiteColor),
-                                            columnWidths: const {
-                                              0: FlexColumnWidth(0.2),
-                                              1: FlexColumnWidth(0.6),
-                                              2: FlexColumnWidth(0.3),
-                                              3: FlexColumnWidth(0.6),
-                                            },
-                                            children: [
-                                              pemeriksaanFisikTableUGD(
-                                                  judul1: "Kepala",
-                                                  value1: state
-                                                      .reportIGD.fisik.kepala,
-                                                  value2: state
-                                                      .reportIGD.fisik.limpa,
-                                                  judul2: "Limpa"),
-                                              pemeriksaanFisikTableUGD(
-                                                  value1: state
-                                                      .reportIGD.fisik.mata,
-                                                  value2: state
-                                                      .reportIGD.fisik.ginjal,
-                                                  judul1: "Mata",
-                                                  judul2: "Ginjal"),
-                                              pemeriksaanFisikTableUGD(
-                                                  judul1: "THT",
-                                                  value1:
-                                                      state.reportIGD.fisik.tht,
-                                                  value2: state.reportIGD.fisik
-                                                      .alatKelamin,
-                                                  judul2: "Alat Kelamin"),
-                                              pemeriksaanFisikTableUGD(
-                                                  value1: state
-                                                      .reportIGD.fisik.mulut,
-                                                  value2: state.reportIGD.fisik
-                                                      .anggotaGerak,
-                                                  judul1: "Mulut",
-                                                  judul2: "Anggota Gerak"),
-                                              pemeriksaanFisikTableUGD(
-                                                  judul1: "Leher",
-                                                  value1: state
-                                                      .reportIGD.fisik.leher,
-                                                  judul2: "Refleks",
-                                                  value2: state
-                                                      .reportIGD.fisik.refleks),
-                                              pemeriksaanFisikTableUGD(
-                                                  judul1: "Dada",
-                                                  value1: state
-                                                      .reportIGD.fisik.dada,
-                                                  value2: state.reportIGD.fisik
-                                                      .kekuatanOtot,
-                                                  judul2: "Kekuatan Otot"),
-                                              pemeriksaanFisikTableUGD(
-                                                  judul1: "Jantung",
-                                                  value1: state
-                                                      .reportIGD.fisik.jantung,
-                                                  value2: state
-                                                      .reportIGD.fisik.kulit,
-                                                  judul2: "Kulit"),
-                                              pemeriksaanFisikTableUGD(
-                                                  judul1: "Paru",
-                                                  value1: state
-                                                      .reportIGD.fisik.paru,
-                                                  value2: state.reportIGD.fisik
-                                                      .getahBening,
-                                                  judul2:
-                                                      "Kelenjar Getah Bening"),
-                                              pemeriksaanFisikTableUGD(
-                                                  value1: state
-                                                      .reportIGD.fisik.perut,
-                                                  judul1: "Perut",
-                                                  value2: state
-                                                      .reportIGD.fisik.rtvt,
-                                                  judul2: "RT/VT"),
-                                              pemeriksaanFisikTableUGD2(
-                                                  judul1: "Hati",
-                                                  judul2: state
-                                                      .reportIGD.fisik.hati),
-                                            ],
+                                          //  TABLE
+                                          Container(
+                                            padding: EdgeInsets.all(5.sp),
+                                            width: Get.width,
+                                            child: Table(
+                                              border: TableBorder.all(
+                                                  color: ThemeColor.whiteColor),
+                                              columnWidths: const {
+                                                0: FlexColumnWidth(0.2),
+                                                1: FlexColumnWidth(0.6),
+                                                2: FlexColumnWidth(0.3),
+                                                3: FlexColumnWidth(0.6),
+                                              },
+                                              children: [
+                                                pemeriksaanFisikTableUGD(
+                                                    judul1: "Kepala",
+                                                    value1: state
+                                                        .reportIGD.fisik.kepala,
+                                                    value2: state
+                                                        .reportIGD.fisik.paru,
+                                                    judul2: "Paru"),
+                                                pemeriksaanFisikTableUGD(
+                                                    value1: state
+                                                        .reportIGD.fisik.mata,
+                                                    value2: state
+                                                        .reportIGD.fisik.perut,
+                                                    judul1: "Mata",
+                                                    judul2: "Perut"),
+                                                pemeriksaanFisikTableUGD(
+                                                    judul1: "THT",
+                                                    value1: state
+                                                        .reportIGD.fisik.tht,
+                                                    value2: state
+                                                        .reportIGD.fisik.hati,
+                                                    judul2: "Hati"),
+                                                pemeriksaanFisikTableUGD(
+                                                    value1: state
+                                                        .reportIGD.fisik.mulut,
+                                                    value2: state
+                                                        .reportIGD.fisik.limpa,
+                                                    judul1: "Mulut",
+                                                    judul2: "Limpa"),
+                                                pemeriksaanFisikTableUGD(
+                                                    judul1: "Gigi",
+                                                    value1: state
+                                                        .reportIGD.fisik.gigi,
+                                                    judul2: "Usus",
+                                                    value2: state
+                                                        .reportIGD.fisik.usus),
+                                                pemeriksaanFisikTableUGD(
+                                                    judul1: "Leher",
+                                                    value1: state
+                                                        .reportIGD.fisik.leher,
+                                                    value2: state.reportIGD
+                                                        .fisik.abdomenLainnya,
+                                                    judul2: "Lain-lain"),
+                                                pemeriksaanFisikTableUGD(
+                                                    judul1:
+                                                        "Kelenjar Getah Bening",
+                                                    value1: state.reportIGD
+                                                        .fisik.getahBening,
+                                                    value2: state
+                                                        .reportIGD.fisik.ginjal,
+                                                    judul2: "Ginjal"),
+                                                pemeriksaanFisikTableUGD(
+                                                    judul1: "Dada",
+                                                    value1: state
+                                                        .reportIGD.fisik.dada,
+                                                    value2: state.reportIGD
+                                                        .fisik.alatKelamin,
+                                                    judul2: "Alat Kelamin"),
+                                                pemeriksaanFisikTableUGD(
+                                                    judul1: "Jantung",
+                                                    value1: state.reportIGD
+                                                        .fisik.jantung,
+                                                    value2: state
+                                                        .reportIGD.fisik.anus,
+                                                    judul2: "Anus"),
+                                                pemeriksaanFisikTableUGD(
+                                                    judul1:
+                                                        "Ekstremitas Superior",
+                                                    value1: state.reportIGD
+                                                        .fisik.superior,
+                                                    value2: state.reportIGD
+                                                        .fisik.inferior,
+                                                    judul2:
+                                                        "Ekstremitas Inferior"),
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
+                          ],
+                          if (AppConstant.appSetup != AppSetup.methodist) ...[
+                            Container(
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                              ),
+                              child: TableDesk(
+                                shape: const RoundedRectangleBorder(
+                                  side:
+                                      BorderSide(color: Colors.black, width: 1),
+                                ),
+                                child: Container(
+                                  color: Colors.white,
+                                  child: TableDeskRow(
+                                    border: const BorderSide(
+                                        width: 1, color: Colors.white),
+                                    gaps: [
+                                      TableGap.weight(),
+                                    ],
+                                    children: [
+                                      // ROW PERTAMA
+                                      Column(
+                                        children: [
+                                          Container(
+                                            padding: EdgeInsets.all(5.sp),
+                                            color: Colors.white,
+                                            child: Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(
+                                                "PEMERIKSAAN FISIK",
+                                                textAlign: TextAlign.left,
+                                                style: blackTextStyle.copyWith(
+                                                    fontSize: 6.sp),
+                                              ),
+                                            ),
+                                          ),
 
-                          // STATUS LOKALIS
-                          Container(
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
+                                          //  TABLE
+                                          Container(
+                                            padding: EdgeInsets.all(5.sp),
+                                            width: Get.width,
+                                            child: Table(
+                                              border: TableBorder.all(
+                                                  color: ThemeColor.whiteColor),
+                                              columnWidths: const {
+                                                0: FlexColumnWidth(0.2),
+                                                1: FlexColumnWidth(0.6),
+                                                2: FlexColumnWidth(0.3),
+                                                3: FlexColumnWidth(0.6),
+                                              },
+                                              children: [
+                                                pemeriksaanFisikTableUGD(
+                                                    judul1: "Kepala",
+                                                    value1: state
+                                                        .reportIGD.fisik.kepala,
+                                                    value2: state
+                                                        .reportIGD.fisik.limpa,
+                                                    judul2: "Limpa"),
+                                                pemeriksaanFisikTableUGD(
+                                                    value1: state
+                                                        .reportIGD.fisik.mata,
+                                                    value2: state
+                                                        .reportIGD.fisik.ginjal,
+                                                    judul1: "Mata",
+                                                    judul2: "Ginjal"),
+                                                pemeriksaanFisikTableUGD(
+                                                    judul1: "THT",
+                                                    value1: state
+                                                        .reportIGD.fisik.tht,
+                                                    value2: state.reportIGD
+                                                        .fisik.alatKelamin,
+                                                    judul2: "Alat Kelamin"),
+                                                pemeriksaanFisikTableUGD(
+                                                    value1: state
+                                                        .reportIGD.fisik.mulut,
+                                                    value2: state.reportIGD
+                                                        .fisik.anggotaGerak,
+                                                    judul1: "Mulut",
+                                                    judul2: "Anggota Gerak"),
+                                                pemeriksaanFisikTableUGD(
+                                                    judul1: "Leher",
+                                                    value1: state
+                                                        .reportIGD.fisik.leher,
+                                                    judul2: "Refleks",
+                                                    value2: state.reportIGD
+                                                        .fisik.refleks),
+                                                pemeriksaanFisikTableUGD(
+                                                    judul1: "Dada",
+                                                    value1: state
+                                                        .reportIGD.fisik.dada,
+                                                    value2: state.reportIGD
+                                                        .fisik.kekuatanOtot,
+                                                    judul2: "Kekuatan Otot"),
+                                                pemeriksaanFisikTableUGD(
+                                                    judul1: "Jantung",
+                                                    value1: state.reportIGD
+                                                        .fisik.jantung,
+                                                    value2: state
+                                                        .reportIGD.fisik.kulit,
+                                                    judul2: "Kulit"),
+                                                pemeriksaanFisikTableUGD(
+                                                    judul1: "Paru",
+                                                    value1: state
+                                                        .reportIGD.fisik.paru,
+                                                    value2: state
+                                                        .reportIGD.fisik.anus,
+                                                    judul2:
+                                                        "Kelenjar Getah Bening"),
+                                                pemeriksaanFisikTableUGD(
+                                                    value1: state
+                                                        .reportIGD.fisik.perut,
+                                                    judul1: "Perut",
+                                                    value2: state
+                                                        .reportIGD.fisik.rtvt,
+                                                    judul2: "RT/VT"),
+                                                pemeriksaanFisikTableUGD2(
+                                                    judul1: "Hati",
+                                                    judul2: state
+                                                        .reportIGD.fisik.hati),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
                             ),
+                          ],
+
+                          Container(
+                            decoration:
+                                const BoxDecoration(color: Colors.white),
                             child: TableDesk(
                               shape: const RoundedRectangleBorder(
                                 side: BorderSide(color: Colors.black, width: 1),
@@ -777,11 +909,9 @@ class ReportAsesmenAwalMedisContentWidget extends StatelessWidget {
                             ),
                           ),
 
-                          // ===== // PEMERIKSAAN FISIK
                           Container(
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                            ),
+                            decoration:
+                                const BoxDecoration(color: Colors.white),
                             child: TableDesk(
                               shape: const RoundedRectangleBorder(
                                 side: BorderSide(color: Colors.black, width: 1),
@@ -1054,9 +1184,8 @@ class ReportAsesmenAwalMedisContentWidget extends StatelessWidget {
                           ),
 
                           Container(
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                            ),
+                            decoration:
+                                const BoxDecoration(color: Colors.white),
                             child: TableDesk(
                               shape: const RoundedRectangleBorder(
                                 side: BorderSide(color: Colors.black, width: 1),
@@ -1139,9 +1268,8 @@ class ReportAsesmenAwalMedisContentWidget extends StatelessWidget {
                           ),
 
                           Container(
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                            ),
+                            decoration:
+                                const BoxDecoration(color: Colors.white),
                             child: TableDesk(
                               shape: const RoundedRectangleBorder(
                                 side: BorderSide(color: Colors.black, width: 1),
@@ -1186,9 +1314,8 @@ class ReportAsesmenAwalMedisContentWidget extends StatelessWidget {
                           ),
 
                           Container(
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                            ),
+                            decoration:
+                                const BoxDecoration(color: Colors.white),
                             child: TableDesk(
                               shape: const RoundedRectangleBorder(
                                 side: BorderSide(color: Colors.black, width: 1),

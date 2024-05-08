@@ -7,8 +7,6 @@ part 'report_icu_state.dart';
 
 class ReportIcuBloc extends Bloc<ReportIcuEvent, ReportIcuState> {
   ReportIcuBloc() : super(ReportIcuState.initial()) {
-    on<ReportIcuEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<ReportIcuEvent>((event, emit) {});
   }
 }

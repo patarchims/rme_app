@@ -22,9 +22,9 @@ enum Kategori {
 class BankDataSearhWidget extends StatefulWidget {
   final Kategori kategori;
   const BankDataSearhWidget({
-    Key? key,
+    super.key,
     required this.kategori,
-  }) : super(key: key);
+  });
 
   @override
   State<BankDataSearhWidget> createState() => _BankDataSearhWidgetState();

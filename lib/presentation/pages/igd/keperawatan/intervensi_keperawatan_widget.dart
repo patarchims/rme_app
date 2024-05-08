@@ -79,7 +79,6 @@ class IntervensiKeperawatanWidget extends StatelessWidget {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(4.sp))),
                             onPressed: () {
-                              // TODO :
                               // CEK APAKAH SIKI SUDAH DIPILIH ATAU TIDAK
                               if (state.selectionSIKI == null) {
                                 Get.showSnackbar(
@@ -299,7 +298,6 @@ class IntervensiKeperawatanWidget extends StatelessWidget {
                                                 height: Get.height,
                                                 child: ElevatedButton(
                                                   onPressed: () {
-                                                    // TODO: PILIH SIKI
                                                     context
                                                         .read<
                                                             AsesmenKeperawatanBidanBloc>()

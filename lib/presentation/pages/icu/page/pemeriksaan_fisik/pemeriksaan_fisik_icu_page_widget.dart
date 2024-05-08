@@ -158,13 +158,15 @@ class _PemeriksaanFisikIcuPageWidgetState
                       }
                     }),
                 (r) => r.maybeMap(
-                    orElse: () {},
-                    loaded: (e) async {
-                      MetaModel meta = MetaModel.fromJson(e.value["metadata"]);
-                      final shouldPop = await Alert.loaded(context,
-                          subTitle: meta.message, title: "Pesan");
-                      return shouldPop ?? false;
-                    })));
+                      orElse: () {},
+                      loaded: (e) async {
+                        MetaModel meta =
+                            MetaModel.fromJson(e.value["metadata"]);
+                        final shouldPop = await Alert.loaded(context,
+                            subTitle: meta.message, title: "Pesan");
+                        return shouldPop ?? false;
+                      },
+                    )));
       },
       builder: (context, state) {
         if (state.status == PemeriksaanFisikIcuStatus.isLoadingGet) {

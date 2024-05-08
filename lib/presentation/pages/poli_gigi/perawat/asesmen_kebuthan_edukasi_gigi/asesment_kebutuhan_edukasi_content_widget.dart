@@ -6,9 +6,9 @@ import 'package:hms_app/presentation/component/color/color_helper.dart';
 class AsesmenKebutuhanEdukasiWidget extends StatelessWidget {
   final List<String> menu;
   const AsesmenKebutuhanEdukasiWidget({
-    Key? key,
+    super.key,
     required this.menu,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

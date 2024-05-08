@@ -12,6 +12,7 @@ import 'package:hms_app/presentation/kebidanan/repository/diagnosa_kebidanan_mod
 import 'package:hms_app/presentation/kebidanan/repository/diagnosa_kebidanan_model_response.dart';
 import 'package:hms_app/presentation/kebidanan/repository/pengkajian_response_persistem_kebidanan_model.dart';
 import 'package:hms_app/presentation/kebidanan/repository/resiko_jatuh_kebidanan_response_model.dart';
+import 'package:hms_app/presentation/pages/icu/repository/pengkajian_persistem_icu_repository.dart';
 import 'package:hms_app/presentation/pages/igd/repository/igd_triase_igd_dokter_repository.dart';
 import 'package:hms_app/presentation/pages/igd/repository/ktaripobat_repository.dart';
 import 'package:hms_app/presentation/pages/igd/repository/pemeriksaan_fisik_repository.dart';
@@ -215,6 +216,87 @@ abstract class DTO {
       "device_id": deviceID,
       "pelayanan": pelayanan
     });
+  }
+
+  static Map<String, dynamic> onSavePengkajianPersistemICU({
+    required String noReg,
+    required String person,
+    required String deviceID,
+    required String pelayanan,
+    required String kodeDokter,
+    required PengkajianPersistemIcuModel penkajianPersistemICU,
+  }) {
+    return {
+      "noreg": noReg,
+      "pelayanan": pelayanan,
+      "person": person,
+      "insert_pc": deviceID,
+      "kode_dokter": kodeDokter,
+      "airway": penkajianPersistemICU.airway,
+      "breathing": penkajianPersistemICU.breathing,
+      "circulation": penkajianPersistemICU.circulation,
+      "nutrisi": penkajianPersistemICU.nutrisi,
+      "makan": penkajianPersistemICU.makan,
+      "pada_bayi": penkajianPersistemICU.padaBayi,
+      "minum": penkajianPersistemICU.minum,
+      "eliminasi_bak": penkajianPersistemICU.eliminasiBak,
+      "eliminasi_bab": penkajianPersistemICU.eliminasiBab,
+      "aktivitas_istirahat": penkajianPersistemICU.bahasaIsyarat,
+      "aktivitas": penkajianPersistemICU.aktivitas,
+      "berjalan": penkajianPersistemICU.berjalan,
+      "penggunaan_alat_bantu": penkajianPersistemICU.penggunaanAlatBantu,
+      "perfusi_serebral": penkajianPersistemICU.perfusiSerebral,
+      "pupil": penkajianPersistemICU.pupil,
+      "refleks_cahaya": penkajianPersistemICU.refleksCahaya,
+      "perfusi_renal": penkajianPersistemICU.perfusiRenal,
+      "pefusi_gastroinestinal": penkajianPersistemICU.pefusiGastroinestinal,
+      "abdomen": penkajianPersistemICU.abdomen,
+      "thermoregulasi": penkajianPersistemICU.thermoregulasi,
+      "kenyamanan": penkajianPersistemICU.kenyamanan,
+      "kualitas": penkajianPersistemICU.kualitas,
+      "pola": penkajianPersistemICU.pola,
+      "nyeri_mempengaruhi": penkajianPersistemICU.nyeriMempengaruhi,
+      "status_mental": penkajianPersistemICU.statusMental,
+      "kejang": penkajianPersistemICU.kejang,
+      "pasang_pengaman_tempat_tidur":
+          penkajianPersistemICU.pasangPengamanTempatTidur,
+      "bel_muda_dijangkau": penkajianPersistemICU.belMudaDijangkau,
+      "penglihatan": penkajianPersistemICU.penglihatan,
+      "pendengaran": penkajianPersistemICU.pendengaran,
+      "hamil": penkajianPersistemICU.hamil,
+      "pemeriksaan_cervix_terakhir":
+          penkajianPersistemICU.pemeriksaanCervixTerakhir,
+      "pemeriksaan_payudara_sendiri":
+          penkajianPersistemICU.pemeriksaanPayudaraSendiri,
+      "mamografi_terakhir_tanggal":
+          penkajianPersistemICU.mamografiTerakhirTanggal,
+      "penggunaan_alat_kontrasepsi":
+          penkajianPersistemICU.penggunaanAlatKontrasepsi,
+      "bicara": penkajianPersistemICU.bicara,
+      "bahasa_sehari_hari": penkajianPersistemICU.bahasaSehariHari,
+      "perlu_penerjemah": penkajianPersistemICU.perluPenerjemah,
+      "bahasa_isyarat": penkajianPersistemICU.bahasaIsyarat,
+      "hambatan_belajar": penkajianPersistemICU.hambatanBelajar,
+      "cara_belajar_disukai": penkajianPersistemICU.caraBelajarDisukai,
+      "tingkat_pendidikan": penkajianPersistemICU.tingkatPendidikan,
+      "potensial_kebutuhan_pembelajaran":
+          penkajianPersistemICU.potensialKebutuhanPembelajaran,
+      "response_emosi": penkajianPersistemICU.responseEmosi,
+      "sistem_sosial": penkajianPersistemICU.sistemSosial,
+      "tingkat_bersama": penkajianPersistemICU.tingkatBersama,
+      "kondisi_lingkungan_dirumah":
+          penkajianPersistemICU.kondisiLingkunganDirumah,
+      "nilai_kepercayaan": penkajianPersistemICU.nilaiKepercayaan,
+      "menjalankan_ibadah": penkajianPersistemICU.menjalankanIbadah,
+      "presepsi_terhadap_sakit": penkajianPersistemICU.presepsiTerhadapSakit,
+      "kunjungan_pemimpin": penkajianPersistemICU.kunjunganPemimpin,
+      "nilai_aturan_khusus": penkajianPersistemICU.nilaiAturanKhusus,
+      "sistem_eliminasi": penkajianPersistemICU.sistemEliminasi,
+      "sistem_berpakaian": penkajianPersistemICU.berpakaian,
+      "sistem_mandi": penkajianPersistemICU.mandi,
+      "sistem_mobilisasi": penkajianPersistemICU.sistemMobilisasi,
+      "masalah_dengan_nutrisi": penkajianPersistemICU.sistemMasalahDenganNutrisi
+    };
   }
 
   static Future<FormData> saveIdentitasBayi({
@@ -527,16 +609,142 @@ abstract class DTO {
     return {"noreg": noReg, "person": person};
   }
 
-  // static Map<String, dynamic> onSavePemeriksaanFisikICU({
-  //   required String noReg,
-  //   required String person,
-  // }) {
-  //   return {
-  //     "device_id": deviceID,
-  //     "noreg": noReg,
-  //     "person": person,
-  //   };
-  // }
+  static Map<String, dynamic> onSaveAsesmenNyeriICU({
+    required String kdDokter,
+    required String devicesID,
+    required String pelayanan,
+    required String person,
+    required String noReg,
+    required String kategori,
+    required int nyeri,
+    required String lokasiNyeri,
+    required String frekuensiNyeri,
+    required String nyeriMenjalar,
+    required String kualitasNyeri,
+  }) {
+    return {
+      "kd_dokter": kdDokter,
+      "device_id": devicesID,
+      "pelayanan": pelayanan,
+      "person": person,
+      "no_reg": noReg,
+      "kategori": kategori,
+      "nyeri": nyeri,
+      "lokasi_nyeri": lokasiNyeri,
+      "frekuensi_nyeri": frekuensiNyeri,
+      "nyeri_menjalar": nyeriMenjalar,
+      "kualitas_nyeri": kualitasNyeri
+    };
+  }
+
+  static Map<String, String> getPemfisikICU({
+    required String noReg,
+    required String person,
+    required String noRM,
+  }) {
+    return {"noreg": noReg, "person": person, "no_rm": noRM};
+  }
+
+  static Map<String, String> onGetPengkajianPerSistemICU({
+    required String noReg,
+    required String person,
+    required String noRM,
+  }) {
+    return {"no_reg": noReg, "person": person, "no_rm": noRM};
+  }
+
+  static Map<String, String> getVitalSignICU({
+    required String noReg,
+    required String person,
+    required String pelayanan,
+  }) {
+    return {
+      "no_reg": noReg,
+      "person": person,
+      "pelayanan": pelayanan,
+    };
+  }
+
+  static Map<String, String> onGetAsesmenIntensive({
+    required String noReg,
+    required String person,
+    required String noRM,
+  }) {
+    return {
+      "no_reg": noReg,
+      "person": person,
+      "no_rm": noRM,
+    };
+  }
+
+  static Map<String, String> onSaveAsesmenUlangIntensive({
+    required String noReg,
+    required String person,
+    required String noRM,
+    required String kdDPJP,
+    required String pelayanan,
+    required String deviceID,
+    required String asesmen,
+    required String caraMasuk,
+    required String keluhanUtama,
+    required String dari,
+    required String penyakitSekarang,
+    required String penyakitDahulu,
+    required String yangMuncul,
+    required String transfusiDarah,
+    required String riwayatMerokok,
+    required String minumanKeras,
+    required String alchodolMempegaruhi,
+  }) {
+    return {
+      "no_reg": noReg,
+      "kd_dpjp": kdDPJP,
+      "no_rm": noRM,
+      "pelayanan": pelayanan,
+      "device_id": deviceID,
+      "person": person,
+      "asesmen": asesmen,
+      "cara_masuk": caraMasuk,
+      "keluhan_utama": keluhanUtama,
+      "dari": dari,
+      "penyakit_sekarang": penyakitSekarang,
+      "penyakit_dahulu": penyakitDahulu,
+      "yang_muncul": yangMuncul,
+      "transfusi_darah": transfusiDarah,
+      "riwayat_merokok": riwayatMerokok,
+      "minuman_keras": minumanKeras,
+      "alcohol_mempengaruhi": alchodolMempegaruhi
+    };
+  }
+
+  // ===================
+  static Map<String, String> onSaveVitalSignICU({
+    required String devicesID,
+    required String noReg,
+    required String kategori,
+    required String person,
+    required String pelayanan,
+    required String tekananDarah,
+    required String nadi,
+    required String beratBadan,
+    required String suhu,
+    required String pernapasan,
+    required String tinggiBadan,
+  }) {
+    return {
+      "device_id": devicesID,
+      "kategori": kategori,
+      "no_reg": noReg,
+      "person": person,
+      "pelayanan": pelayanan,
+      "tekanan_darah": tekananDarah,
+      "nadi": nadi,
+      "berat_badan": beratBadan,
+      "suhu": suhu,
+      "pernapasan": pernapasan,
+      "tinggi_badan": tinggiBadan,
+    };
+  }
 
   static Map<String, String> onValidasiAnalisaData({
     required String noReg,

@@ -24,9 +24,9 @@ import '../../../domain/models/response/alergi/riwayat_alergi_pasien_model.dart'
 class AsesmenContentWidget extends StatefulWidget {
   final String noRm;
   const AsesmenContentWidget({
-    Key? key,
+    super.key,
     required this.noRm,
-  }) : super(key: key);
+  });
 
   @override
   State<AsesmenContentWidget> createState() => _AsesmenContentWidgetState();
@@ -222,7 +222,6 @@ class _AsesmenContentWidgetState extends State<AsesmenContentWidget> {
 
                             SizedBox(height: 15.sp),
 
-                            // TODO : TAMPILKAN LAPORAN
                             Container(
                               width: Get.width,
                               padding: const EdgeInsets.all(8.0),
@@ -238,7 +237,6 @@ class _AsesmenContentWidgetState extends State<AsesmenContentWidget> {
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
-                            // TODO: LAMPIRKAN LAPORAN DISINI
                             if (authState is Authenticated) ...[
                               // TAMPILKAN PILIHAN // UNTUK MEDIS DOKTER
                               SelectionButton(
@@ -255,8 +253,6 @@ class _AsesmenContentWidgetState extends State<AsesmenContentWidget> {
                                     setState(() {
                                       menuTitle = value.label;
                                     });
-
-                                    // AMBIL VALUE
                                   }),
                             ],
 

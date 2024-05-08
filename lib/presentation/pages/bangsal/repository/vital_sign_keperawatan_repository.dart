@@ -26,16 +26,16 @@ class VitalSignKeperawatanModel {
 
   factory VitalSignKeperawatanModel.fromJson(Map<String, dynamic> json) =>
       VitalSignKeperawatanModel(
-        gcsE: json["gcs_e"],
-        gcsV: json["gcs_v"],
-        gcsM: json["gcs_m"],
-        td: json["td"],
-        beratBadan: json["berat_badan"],
-        tinggiBadan: json["tinggi_badan"],
-        pernafasan: json["pernafasan"],
-        spo2: json["spo2"],
-        nadi: json["nadi"],
-        suhu: json["suhu"],
+        gcsE: json["gcs_e"].toString(),
+        gcsV: json["gcs_v"].toString(),
+        gcsM: json["gcs_m"].toString(),
+        td: json["td"].toString(),
+        beratBadan: json["berat_badan"].toString(),
+        tinggiBadan: json["tinggi_badan"].toString(),
+        pernafasan: json["pernafasan"].toString(),
+        spo2: json["spo2"].toString(),
+        nadi: json["nadi"].toString(),
+        suhu: json["suhu"].toString(),
       );
 
   Map<String, dynamic> toJson() => {

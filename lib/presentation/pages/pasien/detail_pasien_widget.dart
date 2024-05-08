@@ -16,11 +16,10 @@ import '../../../domain/bloc/dashboard/pasien/pasien_bloc.dart';
 
 class DetailPasienWidget extends StatelessWidget {
   final String norm;
-
   const DetailPasienWidget({
-    Key? key,
+    super.key,
     required this.norm,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -8,7 +8,7 @@ class MedisCppGigitWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: Container(
+      child: SizedBox(
         width: Get.width,
         height: Get.height,
         child: SingleChildScrollView(
@@ -17,20 +17,20 @@ class MedisCppGigitWidget extends StatelessWidget {
               DataColumn2(
                 label: DefaultTextStyle.merge(
                     softWrap: true,
-                    child: Text(
+                    child: const Text(
                       'Edit Header 1',
                     )),
               ),
               DataColumn2(
                 label: DefaultTextStyle.merge(
                   softWrap: true,
-                  child: Text(
+                  child: const Text(
                     'Edit Header 2',
                   ),
                 ),
               ),
             ],
-            rows: [],
+            rows: const [],
             headingRowHeight: 56,
             dataRowHeight: 56,
             border: TableBorder(

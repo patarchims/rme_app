@@ -16,9 +16,9 @@ import 'package:hms_app/presentation/component/shimer/shimer_loading.dart';
 class InputDignosaSpesialisAnak extends StatefulWidget {
   final bool enableEdit;
   const InputDignosaSpesialisAnak({
-    Key? key,
+    super.key,
     required this.enableEdit,
-  }) : super(key: key);
+  });
   @override
   State<InputDignosaSpesialisAnak> createState() => _InputDignosaWidgetState();
 }

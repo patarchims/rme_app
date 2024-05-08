@@ -68,7 +68,7 @@ class _ResikoJatuhWidgetState extends State<ResikoJatuhWidget> {
                 context.read<ResikoJatuhKebidananBloc>().add(
                     OnSaveResikoJatuhKebidanan(
                         kategori: "Bidan",
-                        device: "ID - ${data['id']} - ${data['device']}}",
+                        device: "ID - ${data['id']} - ${data['device']}",
                         noReg: singlePasien.first.noreg,
                         pelayanan:
                             toPelayanan(poliklinik: authState.user.poliklinik),
@@ -243,7 +243,6 @@ class _ResikoJatuhWidgetState extends State<ResikoJatuhWidget> {
                               width: 25.sp,
                               child: IconButton(
                                   onPressed: () {
-                                    // TODO : SIMPAN DATA ALERGI OBAT
                                     context
                                         .read<ResikoJatuhKebidananBloc>()
                                         .add(
@@ -272,7 +271,6 @@ class _ResikoJatuhWidgetState extends State<ResikoJatuhWidget> {
                               width: 25.sp,
                               child: IconButton(
                                   onPressed: () {
-                                    // TODO : SIMPAN DATA ALERGI OBAT
                                     context
                                         .read<ResikoJatuhKebidananBloc>()
                                         .add(OnChangedRiwayatJatuh(
@@ -353,7 +351,6 @@ class _ResikoJatuhWidgetState extends State<ResikoJatuhWidget> {
                               width: 25.sp,
                               child: IconButton(
                                   onPressed: () {
-                                    // TODO : SIMPAN DATA ALERGI OBAT
                                     context
                                         .read<ResikoJatuhKebidananBloc>()
                                         .add(OnChangedDiagnosa(value: "Ya"));
@@ -382,7 +379,6 @@ class _ResikoJatuhWidgetState extends State<ResikoJatuhWidget> {
                               width: 25.sp,
                               child: IconButton(
                                   onPressed: () {
-                                    // TODO : SIMPAN DATA ALERGI OBAT
                                     context
                                         .read<ResikoJatuhKebidananBloc>()
                                         .add(OnChangedDiagnosa(value: "Tidak"));
@@ -623,7 +619,6 @@ class _ResikoJatuhWidgetState extends State<ResikoJatuhWidget> {
                               width: 25.sp,
                               child: IconButton(
                                   onPressed: () {
-                                    // TODO : SIMPAN DATA ALERGI OBAT
                                     context
                                         .read<ResikoJatuhKebidananBloc>()
                                         .add(OnChangedInfuse(value: "Ya"));
@@ -652,7 +647,6 @@ class _ResikoJatuhWidgetState extends State<ResikoJatuhWidget> {
                               width: 25.sp,
                               child: IconButton(
                                   onPressed: () {
-                                    // TODO : SIMPAN DATA ALERGI OBAT
                                     context
                                         .read<ResikoJatuhKebidananBloc>()
                                         .add(OnChangedInfuse(value: "Tidak"));

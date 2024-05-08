@@ -16,9 +16,9 @@ import 'package:hms_app/presentation/component/shimer/shimer_loading.dart';
 class InputDignosaObgynWidget extends StatefulWidget {
   final bool enableEdit;
   const InputDignosaObgynWidget({
-    Key? key,
+    super.key,
     required this.enableEdit,
-  }) : super(key: key);
+  });
   @override
   State<InputDignosaObgynWidget> createState() => _InputDignosaWidgetState();
 }

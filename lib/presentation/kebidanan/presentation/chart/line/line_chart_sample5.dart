@@ -160,7 +160,7 @@ class _LineChartSample5State extends State<LineChartSample5> {
                     (LineChartBarData barData, List<int> spotIndexes) {
                   return spotIndexes.map((index) {
                     return TouchedSpotIndicatorData(
-                      FlLine(
+                      const FlLine(
                         color: Colors.pink,
                       ),
                       FlDotData(
@@ -198,9 +198,9 @@ class _LineChartSample5State extends State<LineChartSample5> {
               ),
               lineBarsData: lineBarsData,
               minY: 0,
-              titlesData: FlTitlesData(
+              titlesData: const FlTitlesData(
                 leftTitles: AxisTitles(
-                  axisNameWidget: const Text('count'),
+                  axisNameWidget: Text('count'),
                   axisNameSize: 24,
                   sideTitles: SideTitles(
                     showTitles: false,
@@ -211,13 +211,6 @@ class _LineChartSample5State extends State<LineChartSample5> {
                   sideTitles: SideTitles(
                     showTitles: true,
                     interval: 1,
-                    // getTitlesWidget: (value, meta) {
-                    //   return bottomTitleWidgets(
-                    //     value,
-                    //     meta,
-                    //     constraints.maxWidth,
-                    //   );
-                    // },
                     reservedSize: 30,
                   ),
                 ),
@@ -229,7 +222,7 @@ class _LineChartSample5State extends State<LineChartSample5> {
                   ),
                 ),
                 topTitles: AxisTitles(
-                  axisNameWidget: const Text(
+                  axisNameWidget: Text(
                     'Wall clock',
                     textAlign: TextAlign.left,
                   ),
@@ -240,7 +233,7 @@ class _LineChartSample5State extends State<LineChartSample5> {
                   ),
                 ),
               ),
-              gridData: FlGridData(show: false),
+              gridData: const FlGridData(show: false),
               borderData: FlBorderData(
                 show: true,
                 border: Border.all(

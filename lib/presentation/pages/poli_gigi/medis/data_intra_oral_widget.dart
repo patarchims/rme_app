@@ -139,8 +139,6 @@ class _DataIntraOralWidgetState extends State<DataIntraOralWidget> {
 
     return HeaderContentWidget(
         onPressed: () {
-          // TODO
-
           DataIntraOralModel data = DataIntraOralModel(
               anterior: anteriorValue,
               posterior: oklusiPosteriorValue,
@@ -235,7 +233,7 @@ class _DataIntraOralWidgetState extends State<DataIntraOralWidget> {
           },
           builder: (context, state) {
             return (state.isLoadingGetResult)
-                ? Container(
+                ? SizedBox(
                     height: Get.height,
                     width: Get.width,
                     child: ShimerLoading.loadingExpandCard(),
@@ -250,20 +248,16 @@ class _DataIntraOralWidgetState extends State<DataIntraOralWidget> {
                               value: anteriorValue, onChanged: (value) {
                             setAnterior(value.toString());
                           }, title: "Anterior"),
-
                           cardSelectBox(context,
                               list: posterior,
                               value: oklusiPosteriorValue, onChanged: (value) {
                             setPosterior(value.toString());
                           }, title: "Oklusi Posterior"),
-
                           cardSelectBox(context,
                               list: hubMolar,
                               value: hubMolarValue, onChanged: (value) {
                             setHubMolar(value.toString());
                           }, title: "Hub Molar"),
-
-                          // TODO: TEKANAN DARAH
                           cardOptions(
                             option: palatum,
                             title: "Palatum",
@@ -272,8 +266,6 @@ class _DataIntraOralWidgetState extends State<DataIntraOralWidget> {
                               setPalatum(value.toString());
                             },
                           ),
-
-                          // TODO: TORUS PALATINUS
                           cardOptions(
                             option: torusPalatinus,
                             title: "Torus Palatinus",
@@ -282,7 +274,6 @@ class _DataIntraOralWidgetState extends State<DataIntraOralWidget> {
                               setPalatinus(value.toString());
                             },
                           ),
-
                           cardOptions(
                             option: torusMandibularis,
                             title: "Torus Mandibularis",
@@ -291,7 +282,6 @@ class _DataIntraOralWidgetState extends State<DataIntraOralWidget> {
                               setTorusMandiBularis(value.toString());
                             },
                           ),
-                          // TODO : SUPER TO
                           cardBox(
                             hinText: "Keterangan Supernumerary\n Teeth",
                             controller: _superNumeraryController,
@@ -302,7 +292,6 @@ class _DataIntraOralWidgetState extends State<DataIntraOralWidget> {
                               setSuperNumery(value.toString());
                             },
                           ),
-
                           cardBox(
                             hinText: "Keterangan Diastema",
                             controller: _diastemaController,
@@ -313,7 +302,6 @@ class _DataIntraOralWidgetState extends State<DataIntraOralWidget> {
                               setDiastema(value.toString());
                             },
                           ),
-
                           cardBox(
                             hinText: "Keterangan Gigi Anomali",
                             controller: _gigiAnamaliController,
@@ -338,14 +326,14 @@ class _DataIntraOralWidgetState extends State<DataIntraOralWidget> {
       String? value,
       required List<String> list,
       required void Function(String?)? onChanged}) {
-    log("Value DropDown" + value.toString());
+    log("Value DropDown$value");
     return Card(
       borderOnForeground: true,
       color: ThemeColor.lightGrey,
       elevation: 0,
       child: Row(
         children: [
-          Container(
+          SizedBox(
             width: Get.width / 7,
             child: Text(
               title,
@@ -398,13 +386,12 @@ class _DataIntraOralWidgetState extends State<DataIntraOralWidget> {
       elevation: 0,
       child: Row(
         children: [
-          Container(
-            width: Get.width / 7,
-            child: Text(
-              title,
-              style: blackTextStyle,
-            ),
-          ),
+          SizedBox(
+              width: Get.width / 7,
+              child: Text(
+                title,
+                style: blackTextStyle,
+              )),
           Expanded(
             child: Wrap(
               children: option
@@ -448,7 +435,7 @@ class _DataIntraOralWidgetState extends State<DataIntraOralWidget> {
       elevation: 0,
       child: Row(
         children: [
-          Container(
+          SizedBox(
             width: Get.width / 7,
             child: Text(
               title,
@@ -486,7 +473,7 @@ class _DataIntraOralWidgetState extends State<DataIntraOralWidget> {
               (groupValue == "Ada")
                   ? FormWidget.textArea(
                       controller: controller, maxLines: 1, hinText: hinText)
-                  : SizedBox()
+                  : const SizedBox()
             ],
           ))
         ],
@@ -501,7 +488,7 @@ class _DataIntraOralWidgetState extends State<DataIntraOralWidget> {
       elevation: 0,
       child: Row(
         children: [
-          Container(
+          SizedBox(
             width: Get.width / 7,
             child: Text("Lain-lain", style: blackTextStyle),
           ),

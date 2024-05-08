@@ -11,9 +11,9 @@ import 'package:hms_app/presentation/component/component.dart';
 class OnValidasiAnalisaData extends StatelessWidget {
   final String kodeAnalisa;
   const OnValidasiAnalisaData({
-    Key? key,
+    super.key,
     required this.kodeAnalisa,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

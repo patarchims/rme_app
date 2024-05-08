@@ -253,16 +253,16 @@ class DetailPasienPage extends StatelessWidget {
                                                     child: Container(
                                                         height: 15.sp,
                                                         width: 15.sp,
-                                                        decoration: BoxDecoration(
-                                                            borderRadius: BorderRadius.circular(20.sp),
-                                                            image: const DecorationImage(
-                                                                // DETAIL IMAGE PASIEN
-                                                                // TODO : IMAGE PASIEN
-                                                                image: NetworkImage("https://avatars.githubusercontent.com/u/50953777?s=96&v=4"),
-
-                                                                // image: NetworkImage(
-                                                                //     "https://vincentcore.co.id/images/default_image.png"),
-                                                                fit: BoxFit.cover))),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            20.sp),
+                                                                image: const DecorationImage(
+                                                                    // DETAIL IMAGE PASIEN
+                                                                    image: NetworkImage("https://avatars.githubusercontent.com/u/50953777?s=96&v=4"),
+                                                                    fit: BoxFit.cover))),
                                                   ),
                                                 ),
                                               )

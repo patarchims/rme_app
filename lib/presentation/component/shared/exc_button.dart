@@ -14,7 +14,7 @@ class WonsButton extends StatelessWidget {
   final double width;
   final double? borderRadius;
   const WonsButton(
-      {Key? key,
+      {super.key,
       this.onPressed,
       this.child,
       this.text,
@@ -27,8 +27,7 @@ class WonsButton extends StatelessWidget {
       this.borderRadius,
       required this.height,
       required this.width})
-      : assert(text != null || child != null),
-        super(key: key);
+      : assert(text != null || child != null);
 
   @override
   Widget build(BuildContext context) {

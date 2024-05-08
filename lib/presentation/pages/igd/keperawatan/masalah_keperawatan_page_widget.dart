@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -48,10 +46,9 @@ class _MasalahKeperawatanWidgetState extends State<MasalahKeperawatanWidget> {
                 children: [
                   // ======
                   Padding(
-                    padding: EdgeInsets.only(right: 4.sp),
-                    child: Text("Cari Diagnosa Keperawatan",
-                        style: blackTextStyle.copyWith(fontSize: 9.sp)),
-                  ),
+                      padding: EdgeInsets.only(right: 4.sp),
+                      child: Text("Cari Diagnosa Keperawatan",
+                          style: blackTextStyle.copyWith(fontSize: 9.sp))),
 
                   // ======
                   Expanded(
@@ -108,14 +105,12 @@ class _MasalahKeperawatanWidgetState extends State<MasalahKeperawatanWidget> {
                   builder: (context, state) {
                     if (state.isLoadingCariSDKI) {
                       return Center(
-                        child: SizedBox(
-                          height: 100.sp,
-                          width: 100.sp,
-                          child: CircularProgressIndicator(
-                              strokeWidth: 2.sp,
-                              color: ThemeColor.primaryColor),
-                        ),
-                      );
+                          child: SizedBox(
+                        height: 100.sp,
+                        width: 100.sp,
+                        child: CircularProgressIndicator(
+                            strokeWidth: 2.sp, color: ThemeColor.primaryColor),
+                      ));
                     }
 
                     return state.getfailOrSuccessCariSDKI.fold(
@@ -131,7 +126,6 @@ class _MasalahKeperawatanWidgetState extends State<MasalahKeperawatanWidget> {
                                   return Container();
                                 }, loaded: (e) {
                                   // PARSING DATA
-
                                   List<SDKIModel> data =
                                       (e.value["response"] as Iterable)
                                           .map((e) => SDKIModel.fromMap(e))
@@ -171,10 +165,6 @@ class _MasalahKeperawatanWidgetState extends State<MasalahKeperawatanWidget> {
                                                                     .circular(
                                                                         2.sp)),
                                                         onPressed: () {
-                                                          // CARI // INTERVENSI
-
-                                                          log("CETAK DIAGNOSA  ${e.value.kode}");
-
                                                           context
                                                               .read<
                                                                   DeskripsiLuaranSlkiBloc>()
@@ -189,9 +179,6 @@ class _MasalahKeperawatanWidgetState extends State<MasalahKeperawatanWidget> {
                                                                   .selectSDKI(
                                                                       sdkiModel:
                                                                           e.value));
-
-                                                          log(e.value.slki
-                                                              .toString());
 
                                                           context
                                                               .read<

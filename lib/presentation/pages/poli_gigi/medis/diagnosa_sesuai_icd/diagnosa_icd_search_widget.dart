@@ -105,8 +105,6 @@ class _DiagnosaICDSearchWidgetState extends State<DiagnosaICDSearchWidget> {
                                       if (state.diagnosa.isEmpty) {
                                         dynamic data = await deviceInfo
                                             .initPlatformState();
-                                        // SIMPAN DATA PRIMARI
-                                        // TODO: PENAMBAHAN USER DEVICES
 
                                         if (authState is Authenticated) {
                                           if (authState.user.person ==
@@ -115,7 +113,7 @@ class _DiagnosaICDSearchWidgetState extends State<DiagnosaICDSearchWidget> {
                                             context.read<InputDiagnosaBloc>().add(
                                                 InputDiagnosaEvent.saveDiagnosa(
                                                     deviceID:
-                                                        "ID - ${data['id']} - ${data['device']}}",
+                                                        "ID-${data['id']} - ${data['device']}",
                                                     pelayanan: toPelayanan(
                                                         poliklinik: authState
                                                             .user.poliklinik),
@@ -138,7 +136,7 @@ class _DiagnosaICDSearchWidgetState extends State<DiagnosaICDSearchWidget> {
                                             context.read<InputDiagnosaBloc>().add(
                                                 InputDiagnosaEvent.saveDiagnosa(
                                                     deviceID:
-                                                        "ID - ${data['id']} - ${data['device']}}",
+                                                        "ID-${data['id']} - ${data['device']}",
                                                     pelayanan: toPelayanan(
                                                         poliklinik: authState
                                                             .user.poliklinik),
@@ -175,7 +173,7 @@ class _DiagnosaICDSearchWidgetState extends State<DiagnosaICDSearchWidget> {
                                               context.read<InputDiagnosaBloc>().add(
                                                   InputDiagnosaEvent.saveDiagnosa(
                                                       deviceID:
-                                                          "ID - ${data['id']} - ${data['device']}}",
+                                                          "ID-${data['id']}-${data['device']}",
                                                       pelayanan: toPelayanan(
                                                           poliklinik: authState
                                                               .user.poliklinik),
@@ -197,7 +195,7 @@ class _DiagnosaICDSearchWidgetState extends State<DiagnosaICDSearchWidget> {
                                               context.read<InputDiagnosaBloc>().add(
                                                   InputDiagnosaEvent.saveDiagnosa(
                                                       deviceID:
-                                                          "ID - ${data['id']} - ${data['device']}}",
+                                                          "ID-${data['id']}-${data['device']}",
                                                       pelayanan: toPelayanan(
                                                           poliklinik: authState
                                                               .user.poliklinik),
@@ -234,8 +232,6 @@ class _DiagnosaICDSearchWidgetState extends State<DiagnosaICDSearchWidget> {
                                             dynamic data = await deviceInfo
                                                 .initPlatformState();
                                             // SIMPAN DATA PRIMARI
-                                            // TODO: PENAMBAHAN USER DEVICES
-
                                             if (authState is Authenticated) {
                                               if (authState.user.person ==
                                                   Person.dokter) {
@@ -244,7 +240,7 @@ class _DiagnosaICDSearchWidgetState extends State<DiagnosaICDSearchWidget> {
                                                     .read<InputDiagnosaBloc>()
                                                     .add(InputDiagnosaEvent.saveDiagnosa(
                                                         deviceID:
-                                                            "ID - ${data['id']} - ${data['device']}}",
+                                                            "ID-${data['id']}-${data['device']}",
                                                         pelayanan: toPelayanan(
                                                             poliklinik: authState
                                                                 .user
@@ -269,7 +265,7 @@ class _DiagnosaICDSearchWidgetState extends State<DiagnosaICDSearchWidget> {
                                                     .read<InputDiagnosaBloc>()
                                                     .add(InputDiagnosaEvent.saveDiagnosa(
                                                         deviceID:
-                                                            "ID - ${data['id']} - ${data['device']}}",
+                                                            "ID-${data['id']}-${data['device']}",
                                                         pelayanan: toPelayanan(
                                                             poliklinik: authState
                                                                 .user
@@ -309,7 +305,7 @@ class _DiagnosaICDSearchWidgetState extends State<DiagnosaICDSearchWidget> {
                                                       .read<InputDiagnosaBloc>()
                                                       .add(InputDiagnosaEvent.saveDiagnosa(
                                                           deviceID:
-                                                              "ID - ${data['id']} - ${data['device']}}",
+                                                              "ID-${data['id']}-${data['device']}",
                                                           pelayanan: toPelayanan(
                                                               poliklinik: authState
                                                                   .user
@@ -333,7 +329,7 @@ class _DiagnosaICDSearchWidgetState extends State<DiagnosaICDSearchWidget> {
                                                       .read<InputDiagnosaBloc>()
                                                       .add(InputDiagnosaEvent.saveDiagnosa(
                                                           deviceID:
-                                                              "ID - ${data['id']} - ${data['device']}}",
+                                                              "ID-${data['id']}-${data['device']}",
                                                           pelayanan: toPelayanan(
                                                               poliklinik: authState
                                                                   .user

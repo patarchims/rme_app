@@ -31,6 +31,7 @@ class _KontrolPasienIstimewaPageWidgetState
             thickness: 10.sp,
             controller: _scrollController,
             trackVisibility: false,
+            radius: Radius.circular(5.sp),
             child: SingleChildScrollView(
               controller: _scrollController,
               child: Column(
@@ -193,7 +194,7 @@ class _KontrolPasienIstimewaPageWidgetState
                                 padding: const EdgeInsets.all(8),
                                 child: Center(
                                   child: Text(
-                                    "${e.nadi}",
+                                    "${e.nadi} kali per meni",
                                     style: blackTextStyle.copyWith(),
                                     textAlign: TextAlign.center,
                                   ),
@@ -219,7 +220,7 @@ class _KontrolPasienIstimewaPageWidgetState
                                 padding: const EdgeInsets.all(8),
                                 child: Center(
                                   child: Text(
-                                    "Keterangan",
+                                    "${e.keterangan} ",
                                     style: blackTextStyle.copyWith(),
                                     textAlign: TextAlign.center,
                                   ),
@@ -233,14 +234,17 @@ class _KontrolPasienIstimewaPageWidgetState
                                 child: Center(
                                   child: Column(
                                     children: [
+                                      BarcodeGreenWidget(
+                                          height: 35.sp,
+                                          dataBarcode: e.karyawan.nama),
+                                      SizedBox(
+                                        height: 2.sp,
+                                      ),
                                       Text(
                                         e.karyawan.nama,
                                         style: blackTextStyle.copyWith(),
                                         textAlign: TextAlign.center,
                                       ),
-                                      BarcodeGreenWidget(
-                                          height: 35.sp,
-                                          dataBarcode: e.karyawan.nama)
                                     ],
                                   ),
                                 ),

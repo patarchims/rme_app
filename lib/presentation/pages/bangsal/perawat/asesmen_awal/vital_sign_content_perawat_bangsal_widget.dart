@@ -79,7 +79,7 @@ class VitalSignContentWidget extends StatelessWidget {
                             kategori: toKategoriString(
                                 spesiliasasi: authState.user.spesialisasi),
                             userID: authState.user.userId,
-                            deviceID: "ID - ${data['id']} - ${data['device']}}",
+                            deviceID: "ID-${data['id']}-${data['device']}",
                             pelayanan: toPelayanan(
                                 poliklinik: authState.user.poliklinik),
                             noReg: singlePasien.first.noreg,

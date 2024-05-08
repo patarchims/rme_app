@@ -117,17 +117,14 @@ class _PasienAwalIGDWidgetState extends State<PasienAwalIGDWidget> {
 
           if (e.key == 1) {
             return const TandaVitalDanGannguanPerilakuWidgetContent(
-              isENableAdd: true,
-            );
+                isENableAdd: true);
           }
 
           if (e.key == 2) {
             if (AppConstant.appSetup == AppSetup.methodist) {
               return const PemeriksaanFisikIGDDokterMethodistWidgetPage();
             } else {
-              return const PemeriksaanFisikIGDDokterWidget(
-                isENableAdd: true,
-              );
+              return const PemeriksaanFisikIGDDokterWidget(isENableAdd: true);
             }
           }
 

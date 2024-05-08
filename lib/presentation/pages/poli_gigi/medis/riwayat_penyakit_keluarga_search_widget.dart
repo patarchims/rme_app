@@ -10,8 +10,8 @@ import 'package:hms_app/presentation/component/fonts/font_helper.dart';
 
 class RiwayatPenyakitKeluargaSearchWidget extends StatefulWidget {
   const RiwayatPenyakitKeluargaSearchWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<RiwayatPenyakitKeluargaSearchWidget> createState() =>

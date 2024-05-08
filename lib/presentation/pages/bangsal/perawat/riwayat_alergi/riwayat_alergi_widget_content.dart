@@ -359,7 +359,6 @@ class _RiwayatAlergiContentWidgetState
                               width: 40.sp,
                               child: ElevatedButton(
                                   onPressed: () {
-                                    // TODO : SIMPAN DATA ALERGI MAKANAN
                                     CustomDialogWidget.getDialog(
                                         widget: Container(
                                           height: 50.sp,

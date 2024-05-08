@@ -34,9 +34,7 @@ class _PencatatanBHPReUseDializerWidgetPageState
           return HeaderContentWidget(
             isENableAdd: true,
             title: "Simpan",
-            onPressed: () {
-              // TODO SIMPAN DATA
-            },
+            onPressed: () {},
             widget: SingleChildScrollView(
               child: Column(
                 children: [
@@ -674,6 +672,7 @@ class _PencatatanBHPReUseDializerWidgetPageState
             ),
           );
         }
+
         return HeaderContentWidget(
           isENableAdd: true,
           title: "Simpan",

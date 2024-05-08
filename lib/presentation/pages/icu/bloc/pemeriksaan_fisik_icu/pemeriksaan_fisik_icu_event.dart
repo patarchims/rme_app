@@ -13,6 +13,37 @@ class OnGetPemeriksaanFisikICU extends PemeriksaanFisikIcuEvent {
   });
 }
 
+// ON GET PENGKAJIAN PERSISTEM ICU
+class OnGetPengkajianPersistemICU extends PemeriksaanFisikIcuEvent {
+  final String noReg;
+  final String person;
+  final String noRM;
+  final String tanggal;
+  OnGetPengkajianPersistemICU({
+    required this.noReg,
+    required this.person,
+    required this.noRM,
+    required this.tanggal,
+  });
+}
+
+class OnSavePengkajianPersistemICU extends PemeriksaanFisikIcuEvent {
+  final String noReg;
+  final String person;
+  final String deviceID;
+  final String pelayanan;
+  final String kodeDokter;
+  final PengkajianPersistemIcuModel pengkajianPersistemIcuModel;
+  OnSavePengkajianPersistemICU({
+    required this.pengkajianPersistemIcuModel,
+    required this.noReg,
+    required this.person,
+    required this.deviceID,
+    required this.pelayanan,
+    required this.kodeDokter,
+  });
+}
+
 class OnSavePemeriksaanFisikICU extends PemeriksaanFisikIcuEvent {
   final String devicesID;
   final String pelayanan;

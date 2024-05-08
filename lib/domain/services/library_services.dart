@@ -182,7 +182,6 @@ class LibraryService {
     );
   }
 
-  // TODO : ONGET RIWAYAWT ALERGI PASIEN
   Future<Either<ApiFailureResult, ApiSuccessResult>> onGetRiwayatAlergiPasien({
     required String noRM,
     required String noReg,

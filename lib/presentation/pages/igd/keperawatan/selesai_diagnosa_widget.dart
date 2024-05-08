@@ -161,121 +161,111 @@ class SelesaiDiagnosaWidget extends StatelessWidget {
                             border: TableBorder.all(color: ThemeColor.bgColor),
                             defaultVerticalAlignment:
                                 TableCellVerticalAlignment.middle,
-                            // TODO : TAMBAHKAN DATA YANG DIPILIH DISINI
                             children: [
                               if (menurun.isNotEmpty) ...[
                                 titleTable2(title: "Hasil"),
-                                ...menurun
-                                    .map(
-                                      (es) => TableRow(
-                                          decoration: BoxDecoration(
-                                              color: ThemeColor.bgColor
-                                                  .withOpacity(0.5)),
-                                          children: [
-                                            Container(
+                                ...menurun.map(
+                                  (es) => TableRow(
+                                      decoration: BoxDecoration(
+                                          color: ThemeColor.bgColor
+                                              .withOpacity(0.5)),
+                                      children: [
+                                        Container(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            es.menurun,
+                                            textAlign: TextAlign.left,
+                                            style: blackTextStyle,
+                                          ),
+                                        ),
+
+                                        // ============================
+
+                                        TableCell(
+                                            verticalAlignment:
+                                                TableCellVerticalAlignment
+                                                    .middle,
+                                            child: Padding(
                                               padding:
                                                   const EdgeInsets.all(8.0),
                                               child: Text(
-                                                es.menurun,
-                                                textAlign: TextAlign.left,
+                                                setMenurun(es.selectedNumber
+                                                    .toString()),
                                                 style: blackTextStyle,
                                               ),
-                                            ),
-
-                                            // ============================
-
-                                            TableCell(
-                                                verticalAlignment:
-                                                    TableCellVerticalAlignment
-                                                        .middle,
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Text(
-                                                    setMenurun(es.selectedNumber
-                                                        .toString()),
-                                                    style: blackTextStyle,
-                                                  ),
-                                                )),
-                                          ]),
-                                    )
-                                    .toList(),
+                                            )),
+                                      ]),
+                                ),
                               ],
                               if (memburuk.isNotEmpty) ...[
                                 titleTable2(title: "Hasil"),
-                                ...memburuk
-                                    .map(
-                                      (es) => TableRow(
-                                          decoration: BoxDecoration(
-                                              color: ThemeColor.bgColor
-                                                  .withOpacity(0.5)),
-                                          children: [
-                                            Container(
+                                ...memburuk.map(
+                                  (es) => TableRow(
+                                      decoration: BoxDecoration(
+                                          color: ThemeColor.bgColor
+                                              .withOpacity(0.5)),
+                                      children: [
+                                        Container(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            es.memburuk,
+                                            textAlign: TextAlign.left,
+                                            style: blackTextStyle,
+                                          ),
+                                        ),
+
+                                        // ============================
+
+                                        TableCell(
+                                            verticalAlignment:
+                                                TableCellVerticalAlignment
+                                                    .middle,
+                                            child: Padding(
                                               padding:
                                                   const EdgeInsets.all(8.0),
                                               child: Text(
-                                                es.memburuk,
-                                                textAlign: TextAlign.left,
+                                                setMenurun(es.selectedNumber
+                                                    .toString()),
                                                 style: blackTextStyle,
                                               ),
-                                            ),
-
-                                            // ============================
-
-                                            TableCell(
-                                                verticalAlignment:
-                                                    TableCellVerticalAlignment
-                                                        .middle,
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Text(
-                                                    setMenurun(es.selectedNumber
-                                                        .toString()),
-                                                    style: blackTextStyle,
-                                                  ),
-                                                )),
-                                          ]),
-                                    )
-                                    .toList(),
+                                            )),
+                                      ]),
+                                ),
                               ],
                               if (meningkat.isNotEmpty) ...[
                                 titleTable2(title: "Hasil"),
-                                ...meningkat
-                                    .map(
-                                      (es) => TableRow(
-                                          decoration: BoxDecoration(
-                                              color: ThemeColor.bgColor
-                                                  .withOpacity(0.5)),
-                                          children: [
-                                            Container(
+                                ...meningkat.map(
+                                  (es) => TableRow(
+                                      decoration: BoxDecoration(
+                                          color: ThemeColor.bgColor
+                                              .withOpacity(0.5)),
+                                      children: [
+                                        Container(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            es.meningkat,
+                                            textAlign: TextAlign.left,
+                                            style: blackTextStyle,
+                                          ),
+                                        ),
+
+                                        // ============================
+
+                                        TableCell(
+                                            verticalAlignment:
+                                                TableCellVerticalAlignment
+                                                    .middle,
+                                            child: Padding(
                                               padding:
                                                   const EdgeInsets.all(8.0),
                                               child: Text(
-                                                es.meningkat,
-                                                textAlign: TextAlign.left,
+                                                setMenurun(es.selectedNumber
+                                                    .toString()),
                                                 style: blackTextStyle,
                                               ),
-                                            ),
-
-                                            // ============================
-
-                                            TableCell(
-                                                verticalAlignment:
-                                                    TableCellVerticalAlignment
-                                                        .middle,
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Text(
-                                                    setMenurun(es.selectedNumber
-                                                        .toString()),
-                                                    style: blackTextStyle,
-                                                  ),
-                                                )),
-                                          ]),
-                                    )
-                                    .toList(),
+                                            )),
+                                      ]),
+                                ),
                               ],
                             ],
                           );
@@ -348,7 +338,8 @@ class SelesaiDiagnosaWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
-          color: ThemeColor.primaryColor.withOpacity(0.2), border: Border()),
+          color: ThemeColor.primaryColor.withOpacity(0.2),
+          border: const Border()),
       width: Get.width,
       child: Text(
         title,

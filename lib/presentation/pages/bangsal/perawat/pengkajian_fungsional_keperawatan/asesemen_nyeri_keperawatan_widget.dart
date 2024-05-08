@@ -35,8 +35,6 @@ class _AsesmenAwalNyeriKeperawatanWidgetPageState
 
     return BlocConsumer<AsesmenNyeriBloc, AsesmenNyeriState>(
       listener: (context, state) {
-        // TODO: implement listener
-
         if (state.status == AsesmenNyeriStatus.isLoadingSave) {
           EasyLoading.show(maskType: EasyLoadingMaskType.black);
         }
@@ -52,8 +50,6 @@ class _AsesmenAwalNyeriKeperawatanWidgetPageState
                 (l) => l.maybeMap(
                     orElse: () {},
                     failure: (e) async {
-                      // log("ERROR FAILURE $e");
-                      // TAMPILKAN PESAN KESALAHAN
                       final shouldPop = await Alert.warningMessage(context,
                           subTitle: e.meta.message.toString());
                       return shouldPop ?? false;
@@ -77,7 +73,6 @@ class _AsesmenAwalNyeriKeperawatanWidgetPageState
             backgroundColor: ThemeColor.bgColor,
             isENableAdd: true,
             onPressed: () async {
-              // TODO SIMPAN
               dynamic data = await deviceInfo.initPlatformState();
               if (authState is Authenticated) {
                 // ignore: use_build_context_synchronously
@@ -87,7 +82,7 @@ class _AsesmenAwalNyeriKeperawatanWidgetPageState
                     person: toPerson(person: authState.user.person),
                     pelayanan:
                         toPelayanan(poliklinik: authState.user.poliklinik),
-                    devicesID: "ID - ${data['id']} - ${data['device']}"));
+                    devicesID: "ID-${data['id']}-${data['device']}"));
               }
             },
             title: "SIMPAN",

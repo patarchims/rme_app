@@ -14,14 +14,12 @@ import 'package:hms_app/presentation/component/component.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
 
 class PemeriksaanFisikRanapWidget extends StatelessWidget {
-  const PemeriksaanFisikRanapWidget({Key? key}) : super(key: key);
+  const PemeriksaanFisikRanapWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<PemeriksaanFisikBloc, PemeriksaanFisikState>(
-      listener: (context, state) {
-        // SIMPAN RENCANA TINDAK LANJUT
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         AuthState authState = context.watch<AuthBloc>().state;
         PasienState pasienState = context.watch<PasienBloc>().state;
@@ -30,8 +28,6 @@ class PemeriksaanFisikRanapWidget extends StatelessWidget {
 
         return BlocConsumer<PemeriksaanFisikBloc, PemeriksaanFisikState>(
           listener: (context, state) {
-            // TODO: implement listener
-
             if (state.isLoadingSavePemeriksaaanFisikBangsal) {
               EasyLoading.show();
             }
@@ -85,40 +81,44 @@ class PemeriksaanFisikRanapWidget extends StatelessWidget {
                           if (authState.user.person == Person.dokter) {
                             // ignore: use_build_context_synchronously
                             context.read<PemeriksaanFisikBloc>().add(
-                                PemeriksaanFisikEvent.savePemeriksaanFisikBangsal(
-                                    kategori: toKategoriString(
-                                        spesiliasasi:
-                                            authState.user.spesialisasi),
-                                    person:
-                                        toPerson(person: authState.user.person),
-                                    userID: authState.user.userId,
-                                    deviceID:
-                                        "ID - ${data['id']} - ${data['device']}}",
-                                    pelayanan: toPelayanan(
-                                        poliklinik: authState.user.poliklinik),
-                                    noReg: singlePasien.first.noreg,
-                                    pemeriksaanFisikBangsalModel:
-                                        state.pemeriksaanFisikBangsalModel));
+                                PemeriksaanFisikEvent
+                                    .savePemeriksaanFisikBangsal(
+                                        kategori: toKategoriString(
+                                            spesiliasasi:
+                                                authState.user.spesialisasi),
+                                        person: toPerson(
+                                            person: authState.user.person),
+                                        userID: authState.user.userId,
+                                        deviceID:
+                                            "ID-${data['id']}-${data['device']}",
+                                        pelayanan: toPelayanan(
+                                            poliklinik:
+                                                authState.user.poliklinik),
+                                        noReg: singlePasien.first.noreg,
+                                        pemeriksaanFisikBangsalModel: state
+                                            .pemeriksaanFisikBangsalModel));
                           }
 
                           if (authState.user.person == Person.nonDokter ||
                               authState.user.person == Person.perawat) {
                             // ignore: use_build_context_synchronously
                             context.read<PemeriksaanFisikBloc>().add(
-                                PemeriksaanFisikEvent.savePemeriksaanFisikBangsal(
-                                    kategori: toKategoriString(
-                                        spesiliasasi:
-                                            authState.user.spesialisasi),
-                                    person:
-                                        toPerson(person: authState.user.person),
-                                    userID: authState.user.userId,
-                                    deviceID:
-                                        "ID - ${data['id']} - ${data['device']}}",
-                                    pelayanan: toPelayanan(
-                                        poliklinik: authState.user.poliklinik),
-                                    noReg: singlePasien.first.noreg,
-                                    pemeriksaanFisikBangsalModel:
-                                        state.pemeriksaanFisikBangsalModel));
+                                PemeriksaanFisikEvent
+                                    .savePemeriksaanFisikBangsal(
+                                        kategori: toKategoriString(
+                                            spesiliasasi:
+                                                authState.user.spesialisasi),
+                                        person: toPerson(
+                                            person: authState.user.person),
+                                        userID: authState.user.userId,
+                                        deviceID:
+                                            "ID-${data['id']}-${data['device']}",
+                                        pelayanan: toPelayanan(
+                                            poliklinik:
+                                                authState.user.poliklinik),
+                                        noReg: singlePasien.first.noreg,
+                                        pemeriksaanFisikBangsalModel: state
+                                            .pemeriksaanFisikBangsalModel));
                           }
                         }
                       }

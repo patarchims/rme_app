@@ -99,7 +99,7 @@ class _RiwayatAlergiWidgetContentState
                   statusAlergiDetail: state.statusAlergiDetail,
                   person: toPerson(person: authState.user.person),
                   userID: authState.user.userId,
-                  deviceID: "ID - ${data['id']} - ${data['device']}}",
+                  deviceID: "ID-${data['id']}-${data['device']}",
                   pelayanan:
                       toPelayanan(poliklinik: authState.user.poliklinik)));
             }

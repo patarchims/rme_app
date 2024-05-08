@@ -1,6 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -8,7 +7,6 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
-
 import 'package:hms_app/domain/bloc/dashboard/cppt/cppt_bloc.dart';
 import 'package:hms_app/domain/bloc/dashboard/pasien/pasien_bloc.dart';
 import 'package:hms_app/domain/bloc/user/auth/auth_bloc.dart';
@@ -135,7 +133,6 @@ class _CpptWidgetBangsalState extends State<CpptWidgetBangsal> {
                                     dynamic data =
                                         await deviceInfo.initPlatformState();
                                     // SAVE FISIOTERAPI
-
                                     // detailFisioterapi
                                     if (authState is Authenticated) {
                                       // ignore: use_build_context_synchronously
@@ -144,7 +141,7 @@ class _CpptWidgetBangsalState extends State<CpptWidgetBangsal> {
                                               waktu: waktu,
                                               ppa: _ppaController.text,
                                               deviceID:
-                                                  "ID - ${data['id']} - ${data['device']}}",
+                                                  "ID-${data['id']}-${data['device']}",
                                               kelompok:
                                                   (authState.user.person ==
                                                           Person.dokter)
@@ -291,9 +288,8 @@ class _CpptWidgetBangsalState extends State<CpptWidgetBangsal> {
                                           controller: _planController),
                                       const Divider(),
                                       Text(
-                                        "Isikan Instruksi PPA Pada Kolom Dibawah  :",
-                                        style: blackTextStyle,
-                                      ),
+                                          "Isikan Instruksi PPA Pada Kolom Dibawah  :",
+                                          style: blackTextStyle),
                                       FormWidget.textArea(
                                           maxLines: 2,
                                           enabled: true,

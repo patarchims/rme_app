@@ -8,9 +8,9 @@ import 'package:hms_app/presentation/pages/poli_gigi/observasi_antastesi_lokal/p
 class ObservasiAnastesiLokalWidget extends StatefulWidget {
   final List<String> menu;
   const ObservasiAnastesiLokalWidget({
-    Key? key,
+    super.key,
     required this.menu,
-  }) : super(key: key);
+  });
 
   @override
   State<ObservasiAnastesiLokalWidget> createState() =>

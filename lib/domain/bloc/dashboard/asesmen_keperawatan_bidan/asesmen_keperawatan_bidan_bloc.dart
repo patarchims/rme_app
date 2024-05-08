@@ -29,16 +29,10 @@ class AsesmenKeperawatanBidanBloc
     this.asesmenRespository,
   ) : super(const AsesmenKeperawatanBidanState()) {
     on<AsesmenKeperawatanBidanEvent>((event, emit) async {
-      // Event handler
-
       await event.maybeMap(
-        selectionDeskripsi: (e) {
-          // emit(state.copyWith(deskripsiSiki: ));
-        },
+        selectionDeskripsi: (e) {},
         getDeskripsiAsuhan: (e) async {
-          // GET DESKRIPSI ASUHAN
           final data = await asesmenRespository.getDeskripsiSIKI(value: e.siki);
-
           data.fold(
               (l) => null,
               (r) => r.maybeMap(
@@ -50,11 +44,7 @@ class AsesmenKeperawatanBidanBloc
                               .map((e) => DeskripsisSikiModel.fromJson(e))
                               .toList();
 
-                      log("AMBIL DATA $data");
-
                       emit(state.copyWith(deskripsiSiki: data));
-
-                      log("STATE INI HERE ${state.deskripsiSiki}");
                     } catch (e) {
                       emit(state.copyWith(
                         deskripsiSiki: [],
@@ -146,8 +136,7 @@ class AsesmenKeperawatanBidanBloc
           emit(state.copyWith(isDiagnosa: e.isDiagnosa));
         },
         getAsuhanKeperawatan: (e) async {
-          // LOADING GET DATA
-          // DIAGNOSA SUDAH DITAMPILKAN JIKA ADA,
+          // LOADING GET DATA // DIAGNOSA SUDAH DITAMPILKAN JIKA ADA,
           emit(state.copyWith(
               isLoadingAsuhanKeperawatan: true,
               getFailResultAsuhanKeperawatan: none()));
@@ -196,7 +185,6 @@ class AsesmenKeperawatanBidanBloc
           }
         },
         addIntervensiModel: (e) {
-          // ADD INTERVENSI
           emit(state.copyWith(intervesiModel: e.intervensi));
         },
         started: (e) {
@@ -214,8 +202,6 @@ class AsesmenKeperawatanBidanBloc
           emit(state.copyWith(
               intervensiSelectionModel: e.listIntervensiSelectionModel));
         },
-        // SELECTION
-        // INTERVENSI
         clearIntervensi: (e) {
           emit(state.copyWith(
               intervensiSelectionModel: [],
@@ -223,13 +209,11 @@ class AsesmenKeperawatanBidanBloc
                   const ApiFailureResult.failure(
                       meta: MetaModel(code: 201, message: "")))),
               selectionSIKI: null,
-              // DIGUNAKAN UNTUK KEMBALI MEMILIH DIAGNOSA
               isDiagnosa: false,
               intervesiModel: []));
         },
 
         pilihIntervensi: (e) {
-          // SELECTION INTERVENSI
           final data = IntervensiSelectionModel(
             selectionNumber: e.number,
             slki: e.slki,
@@ -238,10 +222,6 @@ class AsesmenKeperawatanBidanBloc
           emit(state.copyWith(
               intervensiSelectionModel: List.of(state.intervensiSelectionModel)
                 ..add(data)));
-
-          // log("INTERVENSI    " + state.intervensiSelectionModel.toString());
-
-          // =======
         },
         selectionSIKI: (e) async {
           emit(state.copyWith(isLoadingSelectionSIKI: false));
@@ -250,8 +230,6 @@ class AsesmenKeperawatanBidanBloc
           emit(state.copyWith(isLoadingSelectionSIKI: true));
           await Future.delayed(const Duration(seconds: 1));
           emit(state.copyWith(isLoadingSelectionSIKI: false));
-
-          // ================
         },
         //
         selectSDKI: (e) {

@@ -85,7 +85,7 @@ class _HasilPenunjangMedikWidgetState extends State<HasilPenunjangMedikWidget> {
         autoFitPadding: EdgeInsets.zero,
         columnName: name,
         label: Container(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             alignment: Alignment.center,
             child: Text(
               subTitle,

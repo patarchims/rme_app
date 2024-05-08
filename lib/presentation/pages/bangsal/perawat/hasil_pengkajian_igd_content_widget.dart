@@ -50,6 +50,7 @@ class _HasilPengkajianIGDContentWidgetState
                 itemBuilder: (context, index) {
                   return Padding(
                     padding:
+                        // ignore: unrelated_type_equality_checks
                         EdgeInsets.only(right: (index == menu.last) ? 0 : 24),
                     child: TextButton(
                       onPressed: () {

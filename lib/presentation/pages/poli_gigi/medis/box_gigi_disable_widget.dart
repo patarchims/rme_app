@@ -9,10 +9,10 @@ class BoxGigiDisableWidget extends StatelessWidget {
   final GigiModel gigiModel;
   final List<OdontogramModel> ontogramList;
   const BoxGigiDisableWidget({
-    Key? key,
+    super.key,
     required this.gigiModel,
     required this.ontogramList,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

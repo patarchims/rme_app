@@ -162,4 +162,5 @@ abstract class EndPoint {
   // ===================== KEPERAWATAN ===================== //
   static String tandaVitalKeperawatan = '/v1/tanda-vital-bangsal-keperawatan';
   static String cpptBangsal = '/v1/cppt-sbar-bangsal';
+  static String tandaVitalAnak = '/v1/tanda-vital-bangsal-anak';
 }

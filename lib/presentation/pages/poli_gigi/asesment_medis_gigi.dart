@@ -17,9 +17,9 @@ import '../../component/component.dart';
 class AsesmenMedisGigiContentWidget extends StatefulWidget {
   final List<String> menuAsesmenMedis;
   const AsesmenMedisGigiContentWidget({
-    Key? key,
+    super.key,
     required this.menuAsesmenMedis,
-  }) : super(key: key);
+  });
 
   @override
   State<AsesmenMedisGigiContentWidget> createState() =>
@@ -120,7 +120,7 @@ class _AsesmenMedisGigiContentWidgetState
 
                   // TAMPILKAN ODONTOGRAM
                   if (e.key == 1) {
-                    return OdontogramWidget();
+                    return const OdontogramWidget();
                   }
 
                   // TAMPILKAN INFORMASI MEDIS DAN TINDAKAN

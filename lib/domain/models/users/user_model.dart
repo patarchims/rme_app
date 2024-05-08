@@ -192,6 +192,14 @@ class UserModel extends Equatable {
 
 String toPelayanan({required Poliklinik poliklinik}) {
   switch (poliklinik) {
+    case Poliklinik.icu:
+      return "ranap";
+    case Poliklinik.bedahPlastik:
+      return "ranap";
+    case Poliklinik.igd:
+      return "rajal";
+    case Poliklinik.jantung:
+      return "rajal";
     case Poliklinik.bangsal:
       return "ranap";
     case Poliklinik.bidan:
@@ -247,8 +255,6 @@ Poliklinik toPoliklinik({required String value}) {
       return Poliklinik.bidan;
     case "RUBY":
       return Poliklinik.bidan;
-    case "ICU":
-      return Poliklinik.bangsal;
     case "CEDR":
       return Poliklinik.bangsal;
     case "EMER":

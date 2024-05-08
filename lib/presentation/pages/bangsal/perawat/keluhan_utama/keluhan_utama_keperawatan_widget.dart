@@ -534,10 +534,7 @@ class _KeluhanUtamaKeperawatanWidgetState
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 5.sp,
-                      ),
-                      // TAMBANKAN ALERGI DI SINI
+                      SizedBox(height: 5.sp),
                       const RiwayatAlergiKeperawatanContentWidget(),
                       TitleWidget.titleContainer(title: "Reaksi Alergi"),
                       Padding(
@@ -553,9 +550,7 @@ class _KeluhanUtamaKeperawatanWidgetState
                                   .add(OnChangedReaksiAlergi(value: value));
                             }),
                       ),
-                      SizedBox(
-                        height: 10.sp,
-                      )
+                      SizedBox(height: 10.sp),
                     ],
                   ),
                 )));

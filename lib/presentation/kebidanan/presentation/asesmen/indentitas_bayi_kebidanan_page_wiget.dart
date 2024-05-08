@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bootstrap5/flutter_bootstrap5.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -57,7 +56,6 @@ class _IdentitasBayiKebidananWidgetPageState
 
   @override
   void initState() {
-    // TODO: implement initState
     _pemberiGelangBayi = TextEditingController();
     _jamKelahiranBayi = TextEditingController();
     _penentuJK = TextEditingController();
@@ -67,7 +65,6 @@ class _IdentitasBayiKebidananWidgetPageState
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _pemberiGelangBayi.clear();
     _jamKelahiranBayi.clear();
     _penentuJK.clear();
@@ -427,8 +424,6 @@ class _IdentitasBayiKebidananWidgetPageState
                                                     noReg: singlePasien
                                                         .first.noreg));
                                           } else {
-                                            // User canceled the picker
-                                            print("CANCEL USER");
                                             // ignore: use_build_context_synchronously
                                             context
                                                 .read<IndentiasBayiBloc>()
@@ -515,7 +510,7 @@ class _IdentitasBayiKebidananWidgetPageState
                                                     noRM:
                                                         singlePasien.first.mrn,
                                                     deviceID:
-                                                        "ID - ${data['id']} - ${data['device']}",
+                                                        "ID-${data['id']}-${data['device']}",
                                                     dpjp: singlePasien
                                                         .first.kdDokter,
                                                     file: file,
@@ -523,8 +518,6 @@ class _IdentitasBayiKebidananWidgetPageState
                                                     noReg: singlePasien
                                                         .first.noreg));
                                           } else {
-                                            // User canceled the picker
-                                            print("CANCEL USER");
                                             // ignore: use_build_context_synchronously
                                             context
                                                 .read<IndentiasBayiBloc>()
@@ -619,8 +612,6 @@ class _IdentitasBayiKebidananWidgetPageState
                                                     noReg: singlePasien
                                                         .first.noreg));
                                           } else {
-                                            // User canceled the picker
-                                            print("CANCEL USER");
                                             // ignore: use_build_context_synchronously
                                             context
                                                 .read<IndentiasBayiBloc>()

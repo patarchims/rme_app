@@ -19,7 +19,7 @@ class KontrolIstimewaPasienWidgetPage extends StatelessWidget {
     final singlePasien = pasienState.listPasienModel
         .where((element) => element.mrn == pasienState.normSelected);
 
-    final ScrollController _scrollController = ScrollController();
+    final ScrollController scrollController = ScrollController();
 
     return BlocBuilder<EarlyWarningSystemBloc, EarlyWarningSystemState>(
       builder: (context, state) {
@@ -41,7 +41,7 @@ class KontrolIstimewaPasienWidgetPage extends StatelessWidget {
               thumbVisibility: true,
               interactive: true,
               thickness: 5.sp,
-              controller: _scrollController,
+              controller: scrollController,
               trackVisibility: false,
               radius: Radius.circular(5.sp),
               child: ListView(

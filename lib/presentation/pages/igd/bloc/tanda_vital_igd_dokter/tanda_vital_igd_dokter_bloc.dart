@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
@@ -31,6 +30,7 @@ class TandaVitalIgdDokterBloc
     on<OnChangedPupilEvent>(_onChangedPupil);
     on<OnChangedAkralEvent>(_onChangedAkral);
     on<OnGetTandaVitalIGDPerawat>(_onGetTandaVitalIGDPerawat);
+    on<OnGetTandaVitalIGDAnak>(_onGetTandaVitalAsesemenAnakEvent);
   }
 
   Future<void> _onGetTandaVitalIGDDokter(
@@ -44,6 +44,33 @@ class TandaVitalIgdDokterBloc
 
     try {
       final getData = await igdServices.onGetTandaVitalIGDDokter(
+          pelayanan: event.pelayanan, noReg: event.noReg, person: event.person);
+
+      TandaVitalIgdDokter data =
+          TandaVitalIgdDokter.fromJson(getData["response"]);
+
+      emit(state.copyWith(
+        status: TandaVitalIgdDokterStatus.isLoadedGet,
+        tandaVitalIgdDokter: data,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+          status: TandaVitalIgdDokterStatus.loaded,
+          tandaVitalIgdDokter: state.tandaVitalIgdDokter));
+    }
+  }
+
+  Future<void> _onGetTandaVitalAsesemenAnakEvent(
+    OnGetTandaVitalIGDAnak event,
+    Emitter<TandaVitalIgdDokterState> emit,
+  ) async {
+    // REPLACE LIST ON LIST
+    emit(state.copyWith(
+        status: TandaVitalIgdDokterStatus.isLoadingGet,
+        tandaVitalIgdDokter: state.tandaVitalIgdDokter));
+
+    try {
+      final getData = await igdServices.onGetTandaVitalAnakEvent(
           pelayanan: event.pelayanan, noReg: event.noReg, person: event.person);
 
       TandaVitalIgdDokter data =
@@ -122,13 +149,47 @@ class TandaVitalIgdDokterBloc
     }
   }
 
+  Future<void> _onSaveTandaVitalAnakEvent(
+    OnSaveTandaVitalAnak event,
+    Emitter<TandaVitalIgdDokterState> emit,
+  ) async {
+    // REPLACE LIST ON LIST
+    emit(state.copyWith(
+        status: TandaVitalIgdDokterStatus.isLoadedSave,
+        tandaVitalIgdDokter: state.tandaVitalIgdDokter));
+
+    try {
+      final getData = await igdServices.onSaveTandaVitalAnakEvent(
+          devicesID: event.deviceId,
+          pelayanan: event.pelayanan,
+          noReg: event.noReg,
+          person: event.person,
+          tandaVitalIgdDokter: event.tandaVital);
+
+      emit(state.copyWith(
+        status: TandaVitalIgdDokterStatus.isLoadedSave,
+        saveResultFailure: optionOf(getData),
+        tandaVitalIgdDokter: state.tandaVitalIgdDokter,
+      ));
+
+      emit(state.copyWith(
+        status: TandaVitalIgdDokterStatus.isLoadedSave,
+        saveResultFailure: none(),
+        tandaVitalIgdDokter: state.tandaVitalIgdDokter,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+          status: TandaVitalIgdDokterStatus.loaded,
+          tandaVitalIgdDokter: state.tandaVitalIgdDokter));
+    }
+  }
+
   Future<void> _onChangedE(
     OnChangedE event,
     Emitter<TandaVitalIgdDokterState> emit,
   ) async {
     // REPLACE LIST ON LIST
     emit(state.copyWith(status: TandaVitalIgdDokterStatus.isChanged));
-    log(event.value);
     emit(state.copyWith(
         status: TandaVitalIgdDokterStatus.loaded,
         tandaVitalIgdDokter:
@@ -163,7 +224,6 @@ class TandaVitalIgdDokterBloc
   ) async {
     // REPLACE LIST ON LIST
     emit(state.copyWith(status: TandaVitalIgdDokterStatus.isChanged));
-    log(event.value);
     emit(state.copyWith(
         status: TandaVitalIgdDokterStatus.loaded,
         tandaVitalIgdDokter:
@@ -176,7 +236,6 @@ class TandaVitalIgdDokterBloc
   ) async {
     // REPLACE LIST ON LIST
     emit(state.copyWith(status: TandaVitalIgdDokterStatus.isChanged));
-    log(event.value);
     emit(state.copyWith(
         status: TandaVitalIgdDokterStatus.loaded,
         tandaVitalIgdDokter:
@@ -190,8 +249,6 @@ class TandaVitalIgdDokterBloc
     // REPLACE LIST ON LIST
     emit(state.copyWith(status: TandaVitalIgdDokterStatus.isChanged));
 
-    log(event.value);
-
     emit(state.copyWith(
         status: TandaVitalIgdDokterStatus.loaded,
         tandaVitalIgdDokter:
@@ -204,7 +261,6 @@ class TandaVitalIgdDokterBloc
   ) async {
     // REPLACE LIST ON LIST
     emit(state.copyWith(status: TandaVitalIgdDokterStatus.isChanged));
-    log(event.value);
     emit(state.copyWith(
         status: TandaVitalIgdDokterStatus.loaded,
         tandaVitalIgdDokter:
@@ -217,7 +273,6 @@ class TandaVitalIgdDokterBloc
   ) async {
     // REPLACE LIST ON LIST
     emit(state.copyWith(status: TandaVitalIgdDokterStatus.isChanged));
-    log(event.value);
     emit(state.copyWith(
         status: TandaVitalIgdDokterStatus.loaded,
         tandaVitalIgdDokter:
@@ -229,7 +284,6 @@ class TandaVitalIgdDokterBloc
     Emitter<TandaVitalIgdDokterState> emit,
   ) async {
     // REPLACE LIST ON LIST
-    log(event.value);
     emit(state.copyWith(status: TandaVitalIgdDokterStatus.isChanged));
     emit(state.copyWith(
         status: TandaVitalIgdDokterStatus.loaded,
@@ -243,7 +297,6 @@ class TandaVitalIgdDokterBloc
   ) async {
     // REPLACE LIST ON LIST
     emit(state.copyWith(status: TandaVitalIgdDokterStatus.isChanged));
-    log(event.value);
     emit(state.copyWith(
         status: TandaVitalIgdDokterStatus.loaded,
         tandaVitalIgdDokter:
@@ -254,10 +307,7 @@ class TandaVitalIgdDokterBloc
     OnChangedTekananDarahEvent event,
     Emitter<TandaVitalIgdDokterState> emit,
   ) async {
-    // REPLACE LIST ON LIST
-
     emit(state.copyWith(status: TandaVitalIgdDokterStatus.isChanged));
-    log(event.value);
     emit(state.copyWith(
         status: TandaVitalIgdDokterStatus.loaded,
         tandaVitalIgdDokter:
@@ -269,7 +319,6 @@ class TandaVitalIgdDokterBloc
     Emitter<TandaVitalIgdDokterState> emit,
   ) async {
     // REPLACE LIST ON LIST
-    log(event.value);
     emit(state.copyWith(status: TandaVitalIgdDokterStatus.isChanged));
 
     emit(state.copyWith(
@@ -284,12 +333,9 @@ class TandaVitalIgdDokterBloc
   ) async {
     // REPLACE LIST ON LIST
     emit(state.copyWith(status: TandaVitalIgdDokterStatus.isChanged));
-    log(event.value);
     emit(state.copyWith(
         status: TandaVitalIgdDokterStatus.loaded,
         tandaVitalIgdDokter:
             state.tandaVitalIgdDokter.copyWith(spo2: event.value)));
   }
-
-// === //
 }

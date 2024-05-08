@@ -135,7 +135,6 @@ class _CariLaborWidgetState extends State<CariLaborWidget> {
                               PasienEvent.getDetailPasien(
                                   noRM: singlePasien.first.mrn));
 
-                          // TODO GO to detail pasien page
                           Get.toNamed(GetRoutes.detailPasienPage);
                         },
                         child: Container(
@@ -145,7 +144,7 @@ class _CariLaborWidgetState extends State<CariLaborWidget> {
                               border:
                                   Border.all(color: Colors.black, width: 1.sp),
                               shape: BoxShape.circle,
-                              boxShadow: [],
+                              boxShadow: const [],
                               // JENIS KELAMIN SESUAIKAN DENGAN GAMBAR
                               image: DecorationImage(
                                   image: AssetImage(

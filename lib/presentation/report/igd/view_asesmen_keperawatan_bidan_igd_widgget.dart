@@ -21,8 +21,7 @@ class ViewAsesmenKeperawatanBidanIGDWidget extends StatelessWidget {
         );
       }
 
-      if (state.status == ReportStatus.loadedReportTriase &&
-          state.reportTriase != null) {
+      if (state.status == ReportStatus.loadedReportTriase) {
         return Scaffold(
           backgroundColor: ThemeColor.transparentColor,
           body: Container(
@@ -76,30 +75,27 @@ class ViewAsesmenKeperawatanBidanIGDWidget extends StatelessWidget {
                       const Divider(),
                       boxDuaWidget(
                           title: "Informasi didapat dari ",
-                          subTitle: state.reportTriase!.soapPerawat.info),
+                          subTitle: state.reportTriase.soapPerawat.info),
                       const Divider(),
                       boxDuaWidget(
                           title: "Cara Masuk ",
-                          subTitle: state.reportTriase!.soapPerawat.caraMasuk),
+                          subTitle: state.reportTriase.soapPerawat.caraMasuk),
                       const Divider(),
                       boxDuaWidget(
                           title: "Asal Masuk ",
-                          subTitle: state.reportTriase!.soapPerawat.asalMasuk),
+                          subTitle: state.reportTriase.soapPerawat.asalMasuk),
                       const Divider(),
                       boxDuaWidget(
                           title: "Riwayat Penyakit Sekarang ",
-                          subTitle:
-                              state.reportTriase!.soapPerawat.rwtPenyakit),
+                          subTitle: state.reportTriase.soapPerawat.rwtPenyakit),
                       const Divider(),
                       boxDuaWidget(
                           title: "Riwayat Penyakit Dahulu ",
-                          subTitle:
-                              state.reportTriase!.soapPerawat.rwtPenyakit),
+                          subTitle: state.reportTriase.soapPerawat.rwtPenyakit),
                       const Divider(),
                       boxDuaWidget(
                           title: "Riwayat Penyakit Sebelumnya ",
-                          subTitle:
-                              state.reportTriase!.soapPerawat.rwtPenyakit),
+                          subTitle: state.reportTriase.soapPerawat.rwtPenyakit),
                       const Divider(),
 
                       // =================================== NEW PAGE ============================ //
@@ -114,31 +110,31 @@ class ViewAsesmenKeperawatanBidanIGDWidget extends StatelessWidget {
                               style: blackTextStyle,
                             ),
                             Text(
-                              "1. Skala Nyeri               : ${state.reportTriase!.soapPerawat.nyeri}",
+                              "1. Skala Nyeri               : ${state.reportTriase.soapPerawat.nyeri}",
                               style: blackTextStyle,
                             ),
                             Text(
-                              "2. Frekuensi nyeri           :  ${state.reportTriase!.soapPerawat.frekuensiNyeri}",
+                              "2. Frekuensi nyeri           :  ${state.reportTriase.soapPerawat.frekuensiNyeri}",
                               style: blackTextStyle,
                             ),
                             Text(
-                              "3. Lama nyeri                : ${state.reportTriase!.soapPerawat.lamaNyeri}",
+                              "3. Lama nyeri                : ${state.reportTriase.soapPerawat.lamaNyeri}",
                               style: blackTextStyle,
                             ),
                             Text(
-                              "4. Menjalar                   : ${state.reportTriase!.soapPerawat.menjalar}",
+                              "4. Menjalar                   : ${state.reportTriase.soapPerawat.menjalar}",
                               style: blackTextStyle,
                             ),
                             Text(
-                              "5. Kualitas nyeri              : ${state.reportTriase!.soapPerawat.kualitasNyeri}",
+                              "5. Kualitas nyeri              : ${state.reportTriase.soapPerawat.kualitasNyeri}",
                               style: blackTextStyle,
                             ),
                             Text(
-                              "6. Faktor-faktor pemicu/yang memberatkan               : ${state.reportTriase!.soapPerawat.pemicu}",
+                              "6. Faktor-faktor pemicu/yang memberatkan               : ${state.reportTriase.soapPerawat.pemicu}",
                               style: blackTextStyle,
                             ),
                             Text(
-                              "7. Faktor-faktor yang mengurangi/menghilangkan nyeri :              ${state.reportTriase!.soapPerawat.pengurang}",
+                              "7. Faktor-faktor yang mengurangi/menghilangkan nyeri :              ${state.reportTriase.soapPerawat.pengurang}",
                               style: blackTextStyle,
                             ),
                             const Divider(),
@@ -216,7 +212,7 @@ class ViewAsesmenKeperawatanBidanIGDWidget extends StatelessWidget {
                                         color: Colors.white,
                                         blackTextStyle: blackTextStyle),
                                     TitleWidget.headerTitleLeft(
-                                        title: (state.reportTriase!.soapPerawat
+                                        title: (state.reportTriase.soapPerawat
                                                     .rj1 ==
                                                 "Ya")
                                             ? "                 ✓"
@@ -224,7 +220,7 @@ class ViewAsesmenKeperawatanBidanIGDWidget extends StatelessWidget {
                                         color: Colors.white,
                                         blackTextStyle: blackTextStyle),
                                     TitleWidget.headerTitleLeft(
-                                        title: (state.reportTriase!.soapPerawat
+                                        title: (state.reportTriase.soapPerawat
                                                     .rj1 ==
                                                 "Tidak")
                                             ? "                 ✓"
@@ -255,7 +251,7 @@ class ViewAsesmenKeperawatanBidanIGDWidget extends StatelessWidget {
                                         color: Colors.white,
                                         blackTextStyle: blackTextStyle),
                                     TitleWidget.headerTitleLeft(
-                                        title: (state.reportTriase!.soapPerawat
+                                        title: (state.reportTriase.soapPerawat
                                                     .rj2 ==
                                                 "Ya")
                                             ? "                 ✓"
@@ -264,11 +260,11 @@ class ViewAsesmenKeperawatanBidanIGDWidget extends StatelessWidget {
                                         blackTextStyle: blackTextStyle),
                                     TitleWidget.headerTitleLeft(
                                       color: Colors.white,
-                                      title: (state.reportTriase!.soapPerawat
-                                                  .rj2 ==
-                                              "Tidak")
-                                          ? "                 ✓"
-                                          : "",
+                                      title:
+                                          (state.reportTriase.soapPerawat.rj2 ==
+                                                  "Tidak")
+                                              ? "                 ✓"
+                                              : "",
                                     ),
                                   ]),
                                 ],

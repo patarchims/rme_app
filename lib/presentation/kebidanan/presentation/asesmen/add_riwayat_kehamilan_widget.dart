@@ -51,15 +51,6 @@ class _AddRiwayatKehamilanWidgetState extends State<AddRiwayatKehamilanWidget> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
-    // _tempatPersalinan.clear();
-    // _penyulit.clear();
-    // _umurKehamilan.clear();
-    // _jenisPersalinan.clear();
-    // _penolong.clear();
-    // _nifas.clear();
-    // _beratBadan.clear();
-    // _keadaanSekarang.clear();
     _tempatPersalinan.dispose();
     _umurKehamilan.dispose();
     _jenisPersalinan.dispose();
@@ -140,7 +131,7 @@ class _AddRiwayatKehamilanWidgetState extends State<AddRiwayatKehamilanWidget> {
                         OnSaveRiwayatKehamilanBidan(
                             pelayanan: toPelayanan(
                                 poliklinik: authState.user.poliklinik),
-                            deviceID: "ID - ${data['id']} - ${data['device']}}",
+                            deviceID: "ID-${data['id']}-${data['device']}",
                             tahun: tahunValue,
                             tempat: _tempatPersalinan.text,
                             noReg: singlePasien.first.noreg,

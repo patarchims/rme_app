@@ -13,8 +13,8 @@ import '../../../../../../domain/bloc/dashboard/informasi_medis/informasi_medis_
 
 class InformasiMedisSearchWidget extends StatefulWidget {
   const InformasiMedisSearchWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<InformasiMedisSearchWidget> createState() =>
@@ -81,7 +81,7 @@ class _RiwayatSekarangSearchWidgetState
           builder: (context, state) {
             log(state.toString());
             return Expanded(
-                child: Container(
+                child: SizedBox(
               child: ListView(
                 children: (state.masalahMedis.isNotEmpty)
                     ? state.masalahMedis
@@ -107,7 +107,7 @@ class _RiwayatSekarangSearchWidgetState
                                 subtitle: Text(e.kdBagian),
                                 trailing: IconButton(
                                     onPressed: () {},
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.add,
                                       color: Colors.black,
                                     )),

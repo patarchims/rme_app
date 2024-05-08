@@ -44,12 +44,12 @@ class _VitalSignDokterRawatInapWidgetState
                     width: Get.width / 3,
                     child: DropdownButtonFormField2(
                       hint: const Text(
-                        'Pilih Bagian',
+                        'Pilih',
                         style: TextStyle(fontSize: 14),
                       ),
                       validator: (value) {
                         if (value == null) {
-                          return 'Pilih Bagian';
+                          return 'Pilih';
                         }
                         return null;
                       },
@@ -120,12 +120,12 @@ class _VitalSignDokterRawatInapWidgetState
                     width: Get.width / 3,
                     child: DropdownButtonFormField2(
                       hint: const Text(
-                        'Pilih Bagian',
+                        'Pilih',
                         style: TextStyle(fontSize: 14),
                       ),
                       validator: (value) {
                         if (value == null) {
-                          return 'Pilih Bagian';
+                          return 'Pilih';
                         }
                         return null;
                       },

@@ -4,13 +4,10 @@ import 'package:sizer/sizer.dart';
 
 class CustomDialogWidget {
   // GET SINGLE PASIEN
-
   static Future<bool?> getDialog({required Widget widget, Color? color}) {
     return Get.dialog(
       StatefulBuilder(builder:
           (BuildContext context, void Function(void Function()) setState) {
-        // TODO : GET CONTEXT RESIKO JATUH // TODO: RESIKO JATUH
-
         return Dialog(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),

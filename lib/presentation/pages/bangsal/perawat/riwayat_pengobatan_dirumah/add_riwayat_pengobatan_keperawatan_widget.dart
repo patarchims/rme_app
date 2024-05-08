@@ -117,7 +117,7 @@ class _AddRiwayatPengobatanWidgetState
                     context.read<KebidananBloc>().add(
                         OnSaveRiwayatPengobatanDirumah(
                             noReg: singlePasien.first.noreg,
-                            deviceID: "ID - ${data['id']} - ${data['device']}}",
+                            deviceID: "ID-${data['id']}-${data['device']}",
                             userID: authState.user.userId,
                             namaObat: _namaObatController.text,
                             dosis: _dosisController.text,

@@ -15,11 +15,11 @@ class SkriningResikoDekubitusModel {
 
   factory SkriningResikoDekubitusModel.fromJson(Map<String, dynamic> json) =>
       SkriningResikoDekubitusModel(
-        dekubitus1: json["dekubitus1"],
-        dekubitus2: json["dekubitus2"],
-        dekubitus3: json["dekubitus3"],
-        dekubitus4: json["dekubitus4"],
-        dekubitusAnak: json["dekubitus_anak"],
+        dekubitus1: json["dekubitus1"].toString(),
+        dekubitus2: json["dekubitus2"].toString(),
+        dekubitus3: json["dekubitus3"].toString(),
+        dekubitus4: json["dekubitus4"].toString(),
+        dekubitusAnak: json["dekubitus_anak"].toString(),
       );
 
   Map<String, dynamic> toJson({

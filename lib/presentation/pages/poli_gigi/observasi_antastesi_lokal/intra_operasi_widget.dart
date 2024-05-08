@@ -55,9 +55,7 @@ class _IntraOperasiWidgetState extends State<IntraOperasiWidget> {
           ],
         ),
       ),
-      onPressed: () {
-        // TODO SAVE PASCA OPERAS
-      },
+      onPressed: () {},
     );
   }
 

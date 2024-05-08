@@ -367,7 +367,6 @@ class PemeriksaanFisikBloc
           emit(state.copyWith(
               isLoadingGetVitalSign: true, getVitalSignBangsalResult: none()));
 
-          // TODO : GET VITAL SIGN
           final getData = await librariRepositori.getVitalSign(noReg: e.noReg);
 
           log(getData.toString());
@@ -412,7 +411,6 @@ class PemeriksaanFisikBloc
               isLoadingSaveVitalSign: true,
               saveVitalSIgnBangsalResult: none()));
 
-          // TODO : SIMPAN VITAL SIGN
           final saveData = await librariRepositori.saveVitalSign(
               kategori: e.kategori,
               vitalSignmodel: e.vitalSignBangsalModel,
@@ -435,12 +433,10 @@ class PemeriksaanFisikBloc
                   state.ganguanPerilaku.copyWith(tekananDarah2: e.value)));
         },
         saveGangguanPerilaku: (e) async {
-          // ====================== //
           emit(state.copyWith(
               saveGangguanPerilakuSaveResult: none(),
               isLoadingSaveGangguanPerilaku: true));
 
-          // SAVE DATA
           final saveData = await librariRepositori.saveGangguanPerilaku(
               gangguanPerilaku: e.gangguanPerilakku,
               deviceID: e.deviceID,
@@ -552,11 +548,7 @@ class PemeriksaanFisikBloc
           emit(state.copyWith(
               ganguanPerilaku: state.ganguanPerilaku.copyWith(gcsM: e.value)));
         },
-        tenggorokanOnchanged: (e) {
-          //  emit(state.copyWith(
-          //     ganguanPerilaku:
-          //         state.ganguanPerilaku.copyWith(ten: e.value)));
-        },
+        tenggorokanOnchanged: (e) {},
         tekananDarah2Onchanged: (e) {
           emit(state.copyWith(
               ganguanPerilaku:
@@ -664,7 +656,6 @@ class PemeriksaanFisikBloc
               jantungSelection: List.of(state.jantungSelection)
                 ..removeWhere((element) => element == e.value)));
 
-          // TODO : JANTUNG PADA ANAK
           if (state.jantungSelection.contains(ListConstants.jantungAnak.last)) {
             List<String> data = List.of(state.jantungSelection)
               ..removeWhere(
@@ -702,8 +693,6 @@ class PemeriksaanFisikBloc
         addJantungSelection: (e) {
           emit(state.copyWith(
               jantungSelection: List.of(state.jantungSelection)..add(e.value)));
-
-          // TODO : JANTUNG PADA ANAK
           if (state.jantungSelection.contains(ListConstants.jantungAnak.last)) {
             List<String> data = List.of(state.jantungSelection)
               ..removeWhere(

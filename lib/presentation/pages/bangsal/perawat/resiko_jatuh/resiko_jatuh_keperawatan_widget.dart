@@ -71,7 +71,7 @@ class _ResikoJatuKeperawatanWidgetState
                 context.read<ResikoJatuhKebidananBloc>().add(
                     OnSaveResikoJatuhKebidanan(
                         kategori: "Perawat",
-                        device: "ID - ${data['id']} - ${data['device']}}",
+                        device: "ID-${data['id']}-${data['device']}",
                         noReg: singlePasien.first.noreg,
                         pelayanan:
                             toPelayanan(poliklinik: authState.user.poliklinik),
@@ -247,7 +247,6 @@ class _ResikoJatuKeperawatanWidgetState
                               width: 25.sp,
                               child: IconButton(
                                   onPressed: () {
-                                    // TODO : SIMPAN DATA ALERGI OBAT
                                     context
                                         .read<ResikoJatuhKebidananBloc>()
                                         .add(
@@ -275,7 +274,6 @@ class _ResikoJatuKeperawatanWidgetState
                               width: 25.sp,
                               child: IconButton(
                                   onPressed: () {
-                                    // TODO : SIMPAN DATA ALERGI OBAT
                                     context
                                         .read<ResikoJatuhKebidananBloc>()
                                         .add(OnChangedRiwayatJatuh(
@@ -355,7 +353,6 @@ class _ResikoJatuKeperawatanWidgetState
                               width: 25.sp,
                               child: IconButton(
                                   onPressed: () {
-                                    // TODO : SIMPAN DATA ALERGI OBAT
                                     context
                                         .read<ResikoJatuhKebidananBloc>()
                                         .add(OnChangedDiagnosa(value: "Ya"));
@@ -383,7 +380,6 @@ class _ResikoJatuKeperawatanWidgetState
                               width: 25.sp,
                               child: IconButton(
                                   onPressed: () {
-                                    // TODO : SIMPAN DATA ALERGI OBAT
                                     context
                                         .read<ResikoJatuhKebidananBloc>()
                                         .add(OnChangedDiagnosa(value: "Tidak"));
@@ -617,7 +613,6 @@ class _ResikoJatuKeperawatanWidgetState
                               width: 25.sp,
                               child: IconButton(
                                   onPressed: () {
-                                    // TODO : SIMPAN DATA ALERGI OBAT
                                     context
                                         .read<ResikoJatuhKebidananBloc>()
                                         .add(OnChangedInfuse(value: "Ya"));
@@ -645,7 +640,6 @@ class _ResikoJatuKeperawatanWidgetState
                               width: 25.sp,
                               child: IconButton(
                                   onPressed: () {
-                                    // TODO : SIMPAN DATA ALERGI OBAT
                                     context
                                         .read<ResikoJatuhKebidananBloc>()
                                         .add(OnChangedInfuse(value: "Tidak"));

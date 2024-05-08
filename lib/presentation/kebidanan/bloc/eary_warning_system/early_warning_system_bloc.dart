@@ -497,8 +497,6 @@ class EarlyWarningSystemBloc
           .map((e) => EarlyWarningSystem.fromJson(e))
           .toList();
 
-      log(data.toString());
-
       emit(state.copyWith(
           status: EarlyWarningSystemStatus.loaded, earlyWarningSystem: data));
     } catch (e) {

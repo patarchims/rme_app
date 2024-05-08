@@ -62,7 +62,6 @@ class CPPTDataSource extends DataGridSource {
                           backgroundColor: ThemeColor.dangerColor),
                       onPressed: () {
                         // TAMPILKAN PESAN EDIT
-
                         CustomDialogWidget.getDialog(
                             widget: OnDeleteCppTContentWidget(
                           idCppt: int.parse(row.getCells()[9].value.toString()),
@@ -99,7 +98,6 @@ class CPPTDataSource extends DataGridSource {
                 ],
               ),
             );
-
           default:
             return Container(
               alignment: Alignment.center,

@@ -14,9 +14,9 @@ import 'package:hms_app/presentation/pages/igd/dokter/pemeriksaan_fisik/pemeriks
 class AsesmenAwalDokterRawatInap extends StatefulWidget {
   final List<String> menu;
   const AsesmenAwalDokterRawatInap({
-    Key? key,
+    super.key,
     required this.menu,
-  }) : super(key: key);
+  });
 
   @override
   State<AsesmenAwalDokterRawatInap> createState() =>

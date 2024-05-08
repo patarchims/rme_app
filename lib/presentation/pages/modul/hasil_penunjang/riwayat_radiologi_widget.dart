@@ -100,36 +100,28 @@ class _RiwayatRadiologiPenmedikOldDBWidgetState
                                                     headerTitle(
                                                         title: "Pemeriksaan : ")
                                                   ]),
-                                                  ...e.radiologi
-                                                      .map((e) => TableRow(
-                                                              children: [
-                                                                textBox(
-                                                                    title: e
-                                                                        .pemeriksaanDeskripsi)
-                                                              ]))
-                                                      .toList(),
+                                                  ...e.radiologi.map((e) =>
+                                                      TableRow(children: [
+                                                        textBox(
+                                                            title: e
+                                                                .pemeriksaanDeskripsi)
+                                                      ])),
                                                   TableRow(children: [
                                                     headerTitle(
                                                         title: "Uraian : ")
                                                   ]),
-                                                  ...e.radiologi
-                                                      .map((e) =>
-                                                          TableRow(children: [
-                                                            textBox(
-                                                                title: e.uraian)
-                                                          ]))
-                                                      .toList(),
+                                                  ...e.radiologi.map((e) =>
+                                                      TableRow(children: [
+                                                        textBox(title: e.uraian)
+                                                      ])),
                                                   TableRow(children: [
                                                     headerTitle(
                                                         title: "Hasil : ")
                                                   ]),
-                                                  ...e.radiologi
-                                                      .map((e) =>
-                                                          TableRow(children: [
-                                                            textBox(
-                                                                title: e.hasil)
-                                                          ]))
-                                                      .toList()
+                                                  ...e.radiologi.map((e) =>
+                                                      TableRow(children: [
+                                                        textBox(title: e.hasil)
+                                                      ]))
                                                 ],
                                               ),
                                             ),

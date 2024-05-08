@@ -5,9 +5,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 class ImageSectionWidget extends StatelessWidget {
   final String? imageString;
   const ImageSectionWidget({
-    Key? key,
+    super.key,
     this.imageString,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

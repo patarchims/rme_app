@@ -8,7 +8,7 @@ import 'package:sizer/sizer.dart';
 import 'package:hms_app/domain/models/gigi/gigi_model.dart';
 import 'package:hms_app/presentation/component/fonts/font_helper.dart';
 
-enum KategoriGigi { Dewasa, Remaja }
+enum KategoriGigi { dewasa, remaja }
 
 class ButtonOdontogramWidget extends StatelessWidget {
   final GigiModel gigiModel;
@@ -16,11 +16,11 @@ class ButtonOdontogramWidget extends StatelessWidget {
   final List<OdontogramModel> ontogramList;
 
   const ButtonOdontogramWidget({
-    Key? key,
+    super.key,
     required this.gigiModel,
     this.onTap,
     required this.ontogramList,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class ButtonOdontogramWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             (img.isEmpty)
-                ? SizedBox()
+                ? const SizedBox()
                 : (img.first.imageUrl == "15" ||
                         img.first.imageUrl == "24" ||
                         img.first.imageUrl == "34" ||
@@ -56,7 +56,7 @@ class ButtonOdontogramWidget extends StatelessWidget {
             ),
             (img.isEmpty)
                 ? Image.asset(
-                    "assets/odon/" + gigiModel.images + ".png",
+                    "assets/odon/${gigiModel.images}.png",
                     height: 15.sp,
                   )
                 : (img.first.imageUrl == "15" ||
@@ -71,15 +71,15 @@ class ButtonOdontogramWidget extends StatelessWidget {
                         img.first.imageUrl == "73" ||
                         img.first.imageUrl == "38")
                     ? Image.asset(
-                        "assets/odon/" + img.first.imageUrl + ".png",
+                        "assets/odon/${img.first.imageUrl}.png",
                         height: 20.sp,
                       )
                     : Image.asset(
-                        "assets/odon/" + img.first.imageUrl + ".png",
+                        "assets/odon/${img.first.imageUrl}.png",
                         height: 15.sp,
                       ),
             (img.isEmpty)
-                ? SizedBox()
+                ? const SizedBox()
                 : (img.first.imageUrl == "36" ||
                         img.first.imageUrl == "37" ||
                         img.first.imageUrl == "38")

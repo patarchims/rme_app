@@ -307,9 +307,6 @@ class _TriaseWidgetState extends State<TriaseWidget> {
                               TriaseModel triase =
                                   TriaseModel.fromJson(e.value["response"]);
 
-                              log("Get Data ${triase.toJson()}");
-
-                              // ========================================================
                               setState(() {
                                 _keluhanUtamaConttoller.text = triase.keluhan;
                                 selectedJalanNafas = triase.nafas;
@@ -361,7 +358,6 @@ class _TriaseWidgetState extends State<TriaseWidget> {
               return ListView(
                 children: [
                   // ===========================
-                  // TRIASE ================== //
                   SizedBox(
                     width: Get.width,
                     child: Card(

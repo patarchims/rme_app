@@ -19,8 +19,6 @@ class AsesmenBangsalMedicalDokterContentWidget extends StatelessWidget {
     // CHEK ASESMEN
     if (authState is Authenticated) {
       // ============ PEMATAAN MENU UNTUK SETIAP DOKTER SPESIALIS
-
-      // TODO: ASESMEN BANGSAL //PADA DOKTER DI RAWAT INAP ANAK
       if (authState.user.spesialisasi == Spesialisasi.anak) {
         return const SpesialisasiAnakContentWidget();
       }
@@ -54,9 +52,6 @@ class AsesmenBangsalMedicalDokterContentWidget extends StatelessWidget {
   }
 }
 
-// =========== MENU INI UNTUK DOKTER MEDICAL (INTERNA, PARU, KARDIO)
-// TAMPILKAN MENU UNTUK DOKTER KHUSUS YANG MELAKUKAN ASESMEN BANGSAL MEDICAL
-
 List<String> menuBangsalMedical = [
   "Keluhan",
   "Pemeriksaan Fisik",
@@ -82,8 +77,3 @@ List<String> toMappingMenuBangsalMedical({required UserModel user}) {
 
   return [""];
 }
-
-// PADA HALAMAN INI,
-// DETEKSI APAKAH USER SEBAGAI PERAWAT ATAU DOKTER,
-// MAPPING HALAMAN MENUJU MASING MASING USER
-// SETIAP DOKTER MEMILIKI HALAMAN ASESMEN YANG BERBEDA

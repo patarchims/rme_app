@@ -18,7 +18,7 @@ class PemeriksaanFisikIGDContentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ScrollController _scrollController = ScrollController();
+    final ScrollController scrollController = ScrollController();
     AuthState authState = context.watch<AuthBloc>().state;
     PasienState pasienState = context.watch<PasienBloc>().state;
     final singlePasien = pasienState.listPasienModel
@@ -78,7 +78,7 @@ class PemeriksaanFisikIGDContentWidget extends StatelessWidget {
                     PemeriksaanFisikEvent.savePemeriksaanFisikIGD(
                         person: toPerson(person: authState.user.person),
                         userID: authState.user.userId,
-                        deviceID: "ID - ${data['id']} - ${data['device']}}",
+                        deviceID: "ID-${data['id']}-${data['device']}",
                         pelayanan:
                             toPelayanan(poliklinik: authState.user.poliklinik),
                         noReg: singlePasien.first.noreg,
@@ -99,11 +99,11 @@ class PemeriksaanFisikIGDContentWidget extends StatelessWidget {
                     thumbVisibility: true,
                     interactive: true,
                     thickness: 10.sp,
-                    controller: _scrollController,
+                    controller: scrollController,
                     trackVisibility: false,
                     radius: Radius.circular(5.sp),
                     child: SingleChildScrollView(
-                      controller: _scrollController,
+                      controller: scrollController,
                       child: SizedBox(
                         width: Get.width,
                         child: Card(

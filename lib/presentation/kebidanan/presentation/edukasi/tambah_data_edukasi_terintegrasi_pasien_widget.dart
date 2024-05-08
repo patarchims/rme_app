@@ -208,9 +208,8 @@ class _TambahDataEdukasiTerintegrasiPasienWidgetState
                                 width: 100.sp,
                                 margin: EdgeInsets.all(2.sp),
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(2.sp),
-                                  color: ThemeColor.transparentColor,
-                                ),
+                                    borderRadius: BorderRadius.circular(2.sp),
+                                    color: ThemeColor.transparentColor),
                                 child: Column(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
@@ -218,8 +217,6 @@ class _TambahDataEdukasiTerintegrasiPasienWidgetState
                                   children: [
                                     tdDarah1(state, context,
                                         onChanged: (value) {
-                                      // print(value.toString());
-
                                       context
                                           .read<EarlyWarningSystemBloc>()
                                           .add(OnChangedTekananDarah1(
@@ -227,10 +224,7 @@ class _TambahDataEdukasiTerintegrasiPasienWidgetState
                                     }),
                                     Text("/", style: blackTextStyle),
                                     tdDarah2(state, context),
-                                    Text(
-                                      "mmHg",
-                                      style: blackTextStyle,
-                                    ),
+                                    Text("mmHg", style: blackTextStyle),
                                   ],
                                 ),
                               ),
@@ -285,6 +279,7 @@ class _TambahDataEdukasiTerintegrasiPasienWidgetState
                                   child: CupertinoSpinBox(
                                     textStyle: whiteTextStyle,
                                     min: 1,
+                                    decimals: 1,
                                     max: 500,
                                     value: state.earlyWarningSystemModel.suhu,
                                     direction: Axis.vertical,
@@ -311,6 +306,7 @@ class _TambahDataEdukasiTerintegrasiPasienWidgetState
                                   textStyle: whiteTextStyle,
                                   min: 1,
                                   max: 500,
+                                  decimals: 1,
                                   value: spo2.toDouble(),
                                   direction: Axis.vertical,
                                   decoration: BoxDecoration(
@@ -335,6 +331,7 @@ class _TambahDataEdukasiTerintegrasiPasienWidgetState
                                   textStyle: whiteTextStyle,
                                   min: 1,
                                   max: 500,
+                                  decimals: 1,
                                   value: crt.toDouble(),
                                   direction: Axis.vertical,
                                   decoration: BoxDecoration(
@@ -359,6 +356,7 @@ class _TambahDataEdukasiTerintegrasiPasienWidgetState
                                   textStyle: whiteTextStyle,
                                   min: 1,
                                   max: 500,
+                                  decimals: 1,
                                   value: skalaNyeri.toDouble(),
                                   direction: Axis.vertical,
                                   decoration: BoxDecoration(
@@ -482,11 +480,11 @@ class _TambahDataEdukasiTerintegrasiPasienWidgetState
                                     crt: state.earlyWarningSystemModel.crt.toInt(),
                                     skalaNyeri: state.earlyWarningSystemModel.skalaNyeri.toInt()));
 
+                                Get.back();
+
                                 context.read<EarlyWarningSystemBloc>().add(
                                     OnGetDataEarlyWarningSystem(
                                         noReg: singlePasien.first.noreg));
-
-                                Get.back();
                               },
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -618,6 +616,7 @@ class _TambahDataEdukasiTerintegrasiPasienWidgetState
         textStyle: whiteTextStyle,
         min: 1,
         max: 500,
+        decimals: 1,
         value: value,
         direction: Axis.vertical,
         decoration: BoxDecoration(
@@ -639,6 +638,7 @@ class _TambahDataEdukasiTerintegrasiPasienWidgetState
         textStyle: whiteTextStyle.copyWith(fontSize: 5.sp),
         min: 1,
         max: 500,
+        decimals: 1,
         value: state.earlyWarningSystemModel.td2.toDouble(),
         direction: Axis.vertical,
         decoration: BoxDecoration(
@@ -666,6 +666,7 @@ class _TambahDataEdukasiTerintegrasiPasienWidgetState
         textStyle: whiteTextStyle.copyWith(fontSize: 5.sp),
         min: 1,
         max: 500,
+        decimals: 1,
         value: state.earlyWarningSystemModel.td.toDouble(),
         direction: Axis.vertical,
         decoration: BoxDecoration(

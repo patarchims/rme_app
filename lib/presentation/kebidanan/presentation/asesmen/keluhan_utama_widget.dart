@@ -104,7 +104,7 @@ class _KeluhanUtamaKebidananWidgetState
                         riwayatDahulu: state
                             .asesmenKebidananResponseModel.asesmen.rwytDahulu,
                         noReg: singlePasien.first.noreg,
-                        deviceID: "ID - ${data['id']} - ${data['device']}}",
+                        deviceID: "ID-${data['id']}-${data['device']}",
                         keluhanUtama: state
                             .asesmenKebidananResponseModel.asesmen.keluhanUtama,
                         penyakitSekarang:
@@ -207,15 +207,15 @@ class _KeluhanUtamaKebidananWidgetState
                     ),
                     TitleWidget.titleContainer(
                         title: "Riwayat Penyakit Keluarga"),
+
                     Container(
                       width: Get.width,
                       height: 20.sp,
                       margin: EdgeInsets.only(top: 5.sp),
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 5.sp,
-                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 5.sp),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
+                            backgroundColor: ThemeColor.primaryColor,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5.sp))),
                         child: const Icon(
@@ -242,9 +242,6 @@ class _KeluhanUtamaKebidananWidgetState
                                             padding: EdgeInsets.all(5.sp),
                                             child: FormWidget.textForm(
                                               onFieldSubmitted: (value) {
-                                                // TODO : SIMPAN DATA KELUARGA
-                                                // SIMPAN DATA KELUARGA
-
                                                 if (authState
                                                     is Authenticated) {
                                                   context
@@ -360,6 +357,7 @@ class _KeluhanUtamaKebidananWidgetState
                                           width: 100.sp,
                                           height: 20.sp,
                                           child: Card(
+                                            color: ThemeColor.darkColor,
                                             child: ListTile(
                                                 trailing: IconButton(
                                                   onPressed: () {

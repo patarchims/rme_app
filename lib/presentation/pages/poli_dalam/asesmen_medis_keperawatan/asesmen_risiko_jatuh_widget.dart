@@ -99,7 +99,6 @@ class _AsesmenRisikoJatuhWidgetState extends State<AsesmenRisikoJatuhWidget> {
 
                 const Divider(),
 
-                // TODO Hasil Resiko
                 Text(hasilResikoEdukasi,
                     textAlign: TextAlign.left,
                     style:

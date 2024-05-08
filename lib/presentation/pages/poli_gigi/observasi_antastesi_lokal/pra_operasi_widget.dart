@@ -22,9 +22,7 @@ class PraOperasiWidget extends StatelessWidget {
           ],
         ),
       ),
-      onPressed: () {
-        // TODO SAVE PASCA OPERAS
-      },
+      onPressed: () {},
     );
   }
 }

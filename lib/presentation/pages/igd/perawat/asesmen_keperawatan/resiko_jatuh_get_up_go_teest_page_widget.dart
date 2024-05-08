@@ -20,8 +20,6 @@ class ResikoJatuhGetUpGoTestPageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AsesmenIgdBloc, AsesmenIgdState>(
       listener: (context, state) {
-        // TODO: implement listener
-
         if (state.isLoadingSaveInformasiKeluhan) {
           EasyLoading.show();
         }

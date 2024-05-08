@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 
 class CpptPasienModel extends Equatable {
   final String bagian;
+  final String insertDttm;
   final int id;
   final String tanggal;
   final String objectif;
@@ -13,6 +14,7 @@ class CpptPasienModel extends Equatable {
 
   const CpptPasienModel({
     required this.id,
+    required this.insertDttm,
     required this.instruksiPpa,
     required this.bagian,
     required this.tanggal,
@@ -25,15 +27,16 @@ class CpptPasienModel extends Equatable {
 
   factory CpptPasienModel.fromJson(Map<String, dynamic> json) =>
       CpptPasienModel(
-        id: json["id_cppt"],
-        instruksiPpa: json["instruksi_ppa"],
-        bagian: json["bagian"],
-        tanggal: json["tanggal"],
-        subjektif: json["subjektif"],
-        objectif: json["objectif"],
-        asesmen: json["asesmen"],
-        plan: json["plan"],
-        ppa: json["ppa"],
+        insertDttm: json["insert_dttm"].toString(),
+        id: json["id_cppt"] as int,
+        instruksiPpa: json["instruksi_ppa"].toString(),
+        bagian: json["bagian"].toString(),
+        tanggal: json["tanggal"].toString(),
+        subjektif: json["subjektif"].toString(),
+        objectif: json["objectif"].toString(),
+        asesmen: json["asesmen"].toString(),
+        plan: json["plan"].toString(),
+        ppa: json["ppa"].toString(),
       );
 
   Map<String, dynamic> toJson() => {

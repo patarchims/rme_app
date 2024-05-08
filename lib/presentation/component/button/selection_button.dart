@@ -72,7 +72,6 @@ class _Button extends StatelessWidget {
     required this.selected,
     required this.data,
     required this.onPressed,
-    super.key,
   });
 
   final bool selected;

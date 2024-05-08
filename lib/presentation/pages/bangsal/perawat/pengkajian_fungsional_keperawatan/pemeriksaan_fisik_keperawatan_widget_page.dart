@@ -61,8 +61,6 @@ class _PemeriksaanFisikKeperawatanWidgetPageState
 
     return BlocConsumer<PemeriksaanFisikIgdBloc, PemeriksaanFisikIgdState>(
       listener: (context, state) {
-        // TODO: implement listener
-
         if (state.status ==
             PemeriksaanFisikIgdStatus.isLoadingSavePemeriksaanFisikBangsal) {
           EasyLoading.show();
@@ -143,7 +141,7 @@ class _PemeriksaanFisikKeperawatanWidgetPageState
                                 tht: _thtController.text,
                                 jalanNafas: _jalanNafasController.text,
                                 sirkulasi: _sirkulasiController.text),
-                        deviceID: "ID - ${data['id']} - ${data['device']}}",
+                        deviceID: "ID-${data['id']}-${data['device']}",
                         pelayanan:
                             toPelayanan(poliklinik: authState.user.poliklinik),
                         noReg: singlePasien.first.noreg,

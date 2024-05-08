@@ -65,7 +65,7 @@ class _LoadingPasienContentState extends State<LoadingPasienContent> {
   Widget build(BuildContext context) {
     // ignore: no_leading_underscores_for_local_identifiers
     AuthState authState = context.watch<AuthBloc>().state;
-    Widget _getWidgetForStackedHeaderCell(String title) {
+    Widget getWidgetForStackedHeaderCell(String title) {
       return Container(
           color: Colors.white.withOpacity(0.6),
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -87,10 +87,10 @@ class _LoadingPasienContentState extends State<LoadingPasienContent> {
             'nama',
             'debitur',
             'dpjp'
-          ], child: _getWidgetForStackedHeaderCell('PROFIL PASIEN')),
+          ], child: getWidgetForStackedHeaderCell('PROFIL PASIEN')),
           StackedHeaderCell(
               columnNames: <String>['s', 'o', 'a', 'p'],
-              child: _getWidgetForStackedHeaderCell('SOAP CONCEPT')),
+              child: getWidgetForStackedHeaderCell('SOAP CONCEPT')),
         ])
       ];
       return stackedHeaderRows;

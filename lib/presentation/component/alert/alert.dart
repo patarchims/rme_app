@@ -842,12 +842,12 @@ class CustomDialog extends StatelessWidget {
   final Function()? onPressed;
 
   const CustomDialog({
-    Key? key,
+    super.key,
     required this.value,
     required this.alasanPembatalan,
     this.onChanged,
     this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

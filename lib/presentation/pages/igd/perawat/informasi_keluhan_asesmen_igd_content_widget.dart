@@ -84,7 +84,7 @@ class _InformasiKeluhanAsesmenIgdContentWidgetState
                             asemenKeluhanIgdModel: state.asemenKeluhanIGDModel,
                             noreg: singlePasien.first.noreg,
                             person: toPerson(person: authState.user.person),
-                            deviceID: "ID - ${data['id']} - ${data['device']}}",
+                            deviceID: "ID-${data['id']}-${data['device']}",
                             pelayanan: toPelayanan(
                                 poliklinik: authState.user.poliklinik)));
                   }
@@ -100,7 +100,8 @@ class _InformasiKeluhanAsesmenIgdContentWidgetState
                   radius: Radius.circular(5.sp),
                   child: SingleChildScrollView(
                     controller: _scrollController,
-                    child: SizedBox(
+                    child: Container(
+                      margin: EdgeInsets.only(right: 5.sp),
                       width: Get.width,
                       child: Card(
                         color: ThemeColor.bgColor,

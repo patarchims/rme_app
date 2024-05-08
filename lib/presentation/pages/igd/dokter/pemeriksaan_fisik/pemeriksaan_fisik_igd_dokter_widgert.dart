@@ -105,8 +105,6 @@ class _PemeriksaanFisikIGDDokterWidgetState
                           subTitle: meta.message, title: "Pesan");
                       return shouldPop ?? false;
                     })));
-
-        // ================== //
       },
       builder: (context, state) {
         if (state.status == PemeriksaanFisikIgdStatus.isLoadingGet) {
@@ -151,7 +149,7 @@ class _PemeriksaanFisikIGDDokterWidgetState
                                     tht: _thtController.text,
                                     jalanNafas: _jalanNafasController.text,
                                     sirkulasi: _sirkulasiController.text),
-                            deviceID: "ID - ${data['id']} - ${data['device']}}",
+                            deviceID: "ID-${data['id']}-${data['device']}",
                             pelayanan: toPelayanan(
                                 poliklinik: authState.user.poliklinik),
                             noReg: singlePasien.first.noreg,
@@ -171,7 +169,8 @@ class _PemeriksaanFisikIGDDokterWidgetState
               radius: Radius.circular(5.sp),
               child: SingleChildScrollView(
                 controller: _scrollController,
-                child: SizedBox(
+                child: Container(
+                  margin: EdgeInsets.only(right: 10.sp),
                   width: Get.width,
                   child: Card(
                     color: ThemeColor.bgColor,
@@ -213,6 +212,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                             validator: (x) {
                               return null;
                             },
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             // CONTROLLER
                             controller: _kepalaController
                               ..text = state.pemeriksaanFisikIgdDokter.kepala,
@@ -239,6 +242,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                             marginColor: ThemeColor.whiteColor,
                             itemHeight: 15.sp,
                             suggestionStyle: blackTextStyle,
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             suggestions: pemeriksaanFisik
                                 .map(
                                   (e) => SearchFieldListItem(
@@ -266,19 +273,7 @@ class _PemeriksaanFisikIGDDokterWidgetState
                             onSubmit: (value) {},
                             suggestionState: Suggestion.expand,
                             onSaved: (a) {},
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.purple.shade100,
-                              gradient: const LinearGradient(
-                                colors: [
-                                  Color(0xfffc466b),
-                                  Color.fromARGB(255, 103, 128, 255)
-                                ],
-                                stops: [0.25, 0.75],
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                              ),
-                            ),
+
                             searchInputDecoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -322,16 +317,19 @@ class _PemeriksaanFisikIGDDokterWidgetState
                               return null;
                             },
                             // CONTROLLER
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             controller: _thtController
                               ..text = state.pemeriksaanFisikIgdDokter.tht,
                             onSubmit: (value) {},
                             onSaved: (a) {},
                             searchInputDecoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
-                                ),
-                              ),
+                                  borderSide: BorderSide(
+                                color: Colors.white.withOpacity(0.8),
+                              )),
                               border: const OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.red),
                               ),
@@ -373,6 +371,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                               ..text = state.pemeriksaanFisikIgdDokter.mulut,
                             onSubmit: (value) {},
                             onSaved: (a) {},
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             searchInputDecoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -394,6 +396,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                             marginColor: ThemeColor.whiteColor,
                             itemHeight: 15.sp,
                             suggestionStyle: blackTextStyle,
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             suggestions: pemeriksaanFisik
                                 .map(
                                   (e) => SearchFieldListItem(
@@ -441,6 +447,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                             marginColor: ThemeColor.whiteColor,
                             itemHeight: 15.sp,
                             suggestionStyle: blackTextStyle,
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             suggestions: pemeriksaanFisik
                                 .map(
                                   (e) => SearchFieldListItem(
@@ -488,6 +498,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                             marginColor: ThemeColor.whiteColor,
                             itemHeight: 15.sp,
                             suggestionStyle: blackTextStyle,
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             suggestions: pemeriksaanFisik
                                 .map(
                                   (e) => SearchFieldListItem(
@@ -514,6 +528,7 @@ class _PemeriksaanFisikIGDDokterWidgetState
                               ..text = state.pemeriksaanFisikIgdDokter.jantung,
                             onSubmit: (value) {},
                             onSaved: (a) {},
+
                             searchInputDecoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -535,6 +550,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                             marginColor: ThemeColor.whiteColor,
                             itemHeight: 15.sp,
                             suggestionStyle: blackTextStyle,
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             suggestions: pemeriksaanFisik
                                 .map(
                                   (e) => SearchFieldListItem(
@@ -559,6 +578,7 @@ class _PemeriksaanFisikIGDDokterWidgetState
                             // CONTROLLER
                             controller: _paruController
                               ..text = state.pemeriksaanFisikIgdDokter.paru,
+
                             onSubmit: (value) {},
                             onSaved: (a) {},
                             searchInputDecoration: InputDecoration(
@@ -581,6 +601,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                             enabled: true,
                             marginColor: ThemeColor.whiteColor,
                             itemHeight: 15.sp,
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             suggestionStyle: blackTextStyle,
                             suggestions: pemeriksaanFisik
                                 .map(
@@ -607,6 +631,7 @@ class _PemeriksaanFisikIGDDokterWidgetState
                             controller: _perutController
                               ..text = state.pemeriksaanFisikIgdDokter.perut,
                             onSubmit: (value) {},
+
                             onSaved: (a) {},
                             searchInputDecoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
@@ -629,6 +654,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                             marginColor: ThemeColor.whiteColor,
                             itemHeight: 15.sp,
                             suggestionStyle: blackTextStyle,
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             suggestions: pemeriksaanFisik
                                 .map(
                                   (e) => SearchFieldListItem(
@@ -672,6 +701,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                         TitleWidget.boxPemeriksaanFisikSugestion(
                           widget: SearchField(
                             searchStyle: blackTextStyle,
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             enabled: true,
                             marginColor: ThemeColor.whiteColor,
                             itemHeight: 15.sp,
@@ -701,6 +734,7 @@ class _PemeriksaanFisikIGDDokterWidgetState
                             controller: _limpaController
                               ..text = state.pemeriksaanFisikIgdDokter.limpa,
                             onSubmit: (value) {},
+
                             onSaved: (a) {},
                             searchInputDecoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
@@ -719,6 +753,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                         TitleWidget.boxPemeriksaanFisikSugestion(
                           widget: SearchField(
                             searchStyle: blackTextStyle,
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             enabled: true,
                             marginColor: ThemeColor.whiteColor,
                             itemHeight: 15.sp,
@@ -766,6 +804,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                         TitleWidget.boxPemeriksaanFisikSugestion(
                           widget: SearchField(
                             searchStyle: blackTextStyle,
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             enabled: true,
                             marginColor: ThemeColor.whiteColor,
                             itemHeight: 15.sp,
@@ -815,6 +857,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                           widget: SearchField(
                             searchStyle: blackTextStyle,
                             enabled: true,
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             marginColor: ThemeColor.whiteColor,
                             itemHeight: 15.sp,
                             suggestionStyle: blackTextStyle,
@@ -862,6 +908,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                         TitleWidget.boxPemeriksaanFisikSugestion(
                           widget: SearchField(
                             searchStyle: blackTextStyle,
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             enabled: true,
                             marginColor: ThemeColor.whiteColor,
                             itemHeight: 15.sp,
@@ -909,6 +959,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                         TitleWidget.boxPemeriksaanFisikSugestion(
                           widget: SearchField(
                             searchStyle: blackTextStyle,
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             enabled: true,
                             marginColor: ThemeColor.whiteColor,
                             itemHeight: 15.sp,
@@ -957,6 +1011,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                         TitleWidget.boxPemeriksaanFisikSugestion(
                           widget: SearchField(
                             searchStyle: blackTextStyle,
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             enabled: true,
                             marginColor: ThemeColor.whiteColor,
                             itemHeight: 15.sp,
@@ -1006,6 +1064,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                             searchStyle: blackTextStyle,
                             enabled: true,
                             marginColor: ThemeColor.whiteColor,
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             itemHeight: 15.sp,
                             suggestionStyle: blackTextStyle,
                             suggestions: pemeriksaanFisik
@@ -1052,6 +1114,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                         TitleWidget.boxPemeriksaanFisikSugestion(
                           widget: SearchField(
                             searchStyle: blackTextStyle,
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             enabled: true,
                             marginColor: ThemeColor.whiteColor,
                             itemHeight: 15.sp,
@@ -1101,6 +1167,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                             searchStyle: blackTextStyle,
                             enabled: true,
                             marginColor: ThemeColor.whiteColor,
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             itemHeight: 15.sp,
                             suggestionStyle: blackTextStyle,
                             suggestions: pemeriksaanFisik
@@ -1147,6 +1217,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                         TitleWidget.boxPemeriksaanFisikSugestion(
                           widget: SearchField(
                             searchStyle: blackTextStyle,
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             enabled: true,
                             marginColor: ThemeColor.whiteColor,
                             itemHeight: 15.sp,
@@ -1197,6 +1271,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                             searchStyle: blackTextStyle,
                             enabled: true,
                             marginColor: ThemeColor.whiteColor,
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             itemHeight: 15.sp,
                             suggestionStyle: blackTextStyle,
                             suggestions: pemeriksaanFisik
@@ -1241,6 +1319,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                         const Divider(),
                         TitleWidget.boxPemeriksaanFisikSugestion(
                           widget: SearchField(
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             searchStyle: blackTextStyle,
                             enabled: true,
                             marginColor: ThemeColor.whiteColor,
@@ -1288,6 +1370,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                         const Divider(),
                         TitleWidget.boxPemeriksaanFisikSugestion(
                           widget: SearchField(
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             searchStyle: blackTextStyle,
                             enabled: true,
                             marginColor: ThemeColor.whiteColor,
@@ -1336,6 +1422,10 @@ class _PemeriksaanFisikIGDDokterWidgetState
                         TitleWidget.boxPemeriksaanFisikSugestion(
                           widget: SearchField(
                             searchStyle: blackTextStyle,
+                            suggestionsDecoration: SuggestionDecoration(
+                              selectionColor: Colors.grey.shade100,
+                              hoverColor: Colors.black,
+                            ),
                             enabled: true,
                             marginColor: ThemeColor.whiteColor,
                             itemHeight: 15.sp,

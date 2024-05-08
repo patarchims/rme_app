@@ -166,10 +166,6 @@ class _PencapaianAsuhanKeperawatanContentWidgetState
           List<int> hasillist = [];
           int jumlahHasil = 0;
 
-          // CHECK APAKAH SUDAH DI PILIH
-          // List<KriteriaSlki> newKriteria;
-          // FILTER MENURUN
-
           for (var s in state.hasilAsuhanKeperawatanModel) {
             for (var buruk in s.deskripsiSlki) {
               if (buruk.hasil != 0) {
@@ -253,7 +249,7 @@ class _PencapaianAsuhanKeperawatanContentWidgetState
                                                                           8.sp),
                                                             ),
                                                             Text(
-                                                              "${tglIndo(diagnosa.value.tanggal.substring(0, 10))} | ${diagnosa.value.perawat.nama} - ${diagnosa.value.bagian.bagian.toUpperCase()}",
+                                                              "${tglIndo(diagnosa.value.tanggal.substring(0, 10))}-${diagnosa.value.insertDttm.substring(11, 19)} | ${diagnosa.value.perawat.nama} - ${diagnosa.value.bagian.bagian.toUpperCase()}",
                                                               style: whiteTextStyle
                                                                   .copyWith(
                                                                       color: Colors
@@ -271,7 +267,6 @@ class _PencapaianAsuhanKeperawatanContentWidgetState
                                                       child: IconButton(
                                                           iconSize: 20.sp,
                                                           onPressed: () {
-                                                            // TODO : LAKUKAN SIMPAN DATA
                                                             CustomDialogWidget.getDialog(
                                                                 widget: MessageAlert.deleteAlert(
                                                                     mesage: "Apakah Anda yakin menghapus data ${diagnosa.value.diagnosa.judul} ini ?",
@@ -555,8 +550,6 @@ class _PencapaianAsuhanKeperawatanContentWidgetState
 
                                                           if (save == "") {
                                                             // SIMPAN
-                                                            // TODO SIMPAN ALL
-
                                                             context
                                                                 .read<
                                                                     HasilAsuhanKeperawatanBloc>()
@@ -657,11 +650,7 @@ class _PencapaianAsuhanKeperawatanContentWidgetState
                                                       )),
                                                 ],
                                               ),
-                                              SizedBox(
-                                                height: 5.sp,
-                                              ),
-
-                                              // ======================== // TAMPILKAN DEFINISI
+                                              SizedBox(height: 5.sp),
                                             ],
                                           ))
                                       .toList()

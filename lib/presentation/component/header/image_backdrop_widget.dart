@@ -7,10 +7,10 @@ class ImageBackdropFilter extends StatelessWidget {
   final String imageAssets;
   final Widget widget;
   const ImageBackdropFilter({
-    Key? key,
+    super.key,
     required this.imageAssets,
     required this.widget,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

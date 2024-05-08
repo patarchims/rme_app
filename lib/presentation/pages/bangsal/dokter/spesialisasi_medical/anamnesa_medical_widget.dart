@@ -76,8 +76,7 @@ class AnamnesaMedicalWidget extends StatelessWidget {
                                 asesmentDokter: state.asesmentDokter,
                                 noReg: singlePasien.first.noreg,
                                 person: toPerson(person: authState.user.person),
-                                deviceID:
-                                    "ID - ${data['id']} - ${data['device']}}",
+                                deviceID: "ID-${data['id']}-${data['device']}",
                                 pelayanan: toPelayanan(
                                     poliklinik: authState.user.poliklinik)));
                       }

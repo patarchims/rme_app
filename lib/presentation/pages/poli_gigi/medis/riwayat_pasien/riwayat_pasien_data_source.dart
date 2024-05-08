@@ -65,7 +65,6 @@ class RiwayatPasienDataSource extends DataGridSource {
                           color: Colors.white);
                     },
                     child: Text(
-                      // TODO: SOAP NAME
                       "Radiologi",
                       style: whiteTextStyle,
                     )),
@@ -116,13 +115,6 @@ class RiwayatPasienDataSource extends DataGridSource {
                       // TAMPILKAN POP UP UNTUK SUBJECTIVE
                       String noRM = row.getCells()[2].value.toString();
                       log(noRM.toLowerCase());
-
-                      // TAMPILKAN SOAP CONTENT
-                      // TODO
-                      // Tampilkan SOAP CONTENT WIDGET
-                      // Berdasarkan nama poli
-                      // CustomDialogWidget.getDialog(
-                      //     widget: Container(), color: Colors.transparent);
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

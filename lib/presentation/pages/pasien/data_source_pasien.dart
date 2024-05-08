@@ -64,7 +64,6 @@ class PasienDataSource extends DataGridSource {
                         color: ThemeColor.blueColor);
                   },
                   child: Text(
-                    // TODO: SOAP NAME
                     "PILIH",
                     style: whiteCalibriTextStyle.copyWith(
                         fontSize: 7.sp, fontWeight: FontWeight.bold),
@@ -91,10 +90,7 @@ class PasienDataSource extends DataGridSource {
                       ),
                       onPressed: () async {
                         try {
-                          // TODO < PLAY audio
-                          // AssetsAudioPlayer().open(
-                          //   Audio("assets/sound/ONLINE.wav"),
-                          // );
+                          // TODO < PLAY audio // AssetsAudioPlayer().open(Audio("assets/sound/ONLINE.wav"));
                         } catch (t) {
                           //mp3 unreachable
                           log(t.toString());
@@ -132,7 +128,6 @@ class PasienDataSource extends DataGridSource {
                     elevation: 0),
                 onPressed: () {
                   // TAMPILKAN DETAIL PASIEN
-                  // TODO Tampilkan Detail
                   CustomDialogWidget.getDialog(
                       widget: DetailPasienWidget(
                     norm: e.value,
@@ -146,26 +141,13 @@ class PasienDataSource extends DataGridSource {
               ),
             );
           case "nama":
-            // return Container(
-            //   alignment: Alignment.centerLeft,
-            //   child: AutoSizeTextField(
-            //     controller: TextEditingController(text: e.value.toString()),
-            //     style: whiteCalibriTextStyle.copyWith(fontSize: 5.sp),
-            //     maxLines: 2,
-            //     decoration: const InputDecoration(
-            //         border: InputBorder.none,
-            //         isDense: true,
-            //         contentPadding: EdgeInsets.all(20)),
-            //   ),
-            // );
             return Container(
-              alignment: Alignment.centerLeft,
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                e.value.toString(),
-                style: whiteCalibriTextStyle.copyWith(fontSize: 7.sp),
-              ),
-            );
+                alignment: Alignment.centerLeft,
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  e.value.toString(),
+                  style: whiteCalibriTextStyle.copyWith(fontSize: 7.sp),
+                ));
           default:
             return Container(
               alignment: Alignment.center,

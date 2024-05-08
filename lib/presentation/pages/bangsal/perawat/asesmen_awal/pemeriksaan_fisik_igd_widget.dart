@@ -71,7 +71,7 @@ class PemeriksaanFisikIGDContentWidgetView extends StatelessWidget {
                     PemeriksaanFisikEvent.savePemeriksaanFisikIGD(
                         person: toPerson(person: authState.user.person),
                         userID: authState.user.userId,
-                        deviceID: "ID - ${data['id']} - ${data['device']}}",
+                        deviceID: "ID-${data['id']}-${data['device']}",
                         pelayanan:
                             toPelayanan(poliklinik: authState.user.poliklinik),
                         noReg: singlePasien.first.noreg,

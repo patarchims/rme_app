@@ -13,8 +13,8 @@ import '../../../../../../domain/bloc/dashboard/informasi_medis/informasi_medis_
 
 class InformasiMedisSearchWidget extends StatefulWidget {
   const InformasiMedisSearchWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<InformasiMedisSearchWidget> createState() =>

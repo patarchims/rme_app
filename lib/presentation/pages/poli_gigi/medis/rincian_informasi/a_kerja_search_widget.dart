@@ -15,9 +15,9 @@ enum Selection { kerja, banding }
 class AKerjaSearchWidget extends StatefulWidget {
   final Selection selection;
   const AKerjaSearchWidget({
-    Key? key,
+    super.key,
     required this.selection,
-  }) : super(key: key);
+  });
 
   @override
   State<AKerjaSearchWidget> createState() => _AKerjaSearchWidgetState();
@@ -80,7 +80,7 @@ class _AKerjaSearchWidgetState extends State<AKerjaSearchWidget> {
           },
           builder: (context, state) {
             return Expanded(
-                child: Container(
+                child: SizedBox(
               child: ListView(
                 children: (state.diagnosa.isNotEmpty)
                     ? state.diagnosa

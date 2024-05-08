@@ -11,9 +11,9 @@ import 'package:hms_app/presentation/component/component.dart';
 class EditRiwayatKehamilanPerinaPageWidget extends StatefulWidget {
   final RiwayatKehamilanPerinaModel riwayatKehamilan;
   const EditRiwayatKehamilanPerinaPageWidget({
-    Key? key,
+    super.key,
     required this.riwayatKehamilan,
-  }) : super(key: key);
+  });
 
   @override
   State<EditRiwayatKehamilanPerinaPageWidget> createState() =>

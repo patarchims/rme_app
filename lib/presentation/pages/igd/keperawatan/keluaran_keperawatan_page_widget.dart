@@ -27,13 +27,11 @@ class _IntervensiKeperawatanPageState extends State<IntervensiKeperawatanPage> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -57,28 +55,14 @@ class _IntervensiKeperawatanPageState extends State<IntervensiKeperawatanPage> {
         body: BlocConsumer<AsesmenKeperawatanBidanBloc,
             AsesmenKeperawatanBidanState>(
           listener: (context, state) {
-            // TODO: implement listener
-
             state.intervensiSelectionModel.map((e) {
-              log("SELECTION " + e.toString());
+              // log("SELECTION $e");
             });
 
             state.getFailOrScuccessCariIntervensi.fold(
                 () => null,
-                (a) => a.fold(
-                    (l) => null,
-                    (r) => r.maybeMap(
-                        orElse: () {},
-                        loaded: (e) {
-                          // List<IntervensiModel> data =
-                          //     (e.value["response"] as Iterable)
-                          //         .map((e) => IntervensiModel.fromJson(e))
-                          //         .toList();
-
-                          // setState(() {
-                          //   intervensi = data;
-                          // });
-                        })));
+                (a) => a.fold((l) => null,
+                    (r) => r.maybeMap(orElse: () {}, loaded: (e) {})));
           },
           builder: (context, state) {
             return Stack(
@@ -99,13 +83,12 @@ class _IntervensiKeperawatanPageState extends State<IntervensiKeperawatanPage> {
                     child: (state.isLoadingIntervensi)
                         ? Center(
                             child: SizedBox(
-                              height: 100.sp,
-                              width: 100.sp,
-                              child: CircularProgressIndicator(
-                                  strokeWidth: 5.sp,
-                                  color: ThemeColor.primaryColor),
-                            ),
-                          )
+                            height: 100.sp,
+                            width: 100.sp,
+                            child: CircularProgressIndicator(
+                                strokeWidth: 5.sp,
+                                color: ThemeColor.primaryColor),
+                          ))
                         : ListView(
                             children: state.intervesiModel.asMap().entries.map(
                               (e) {
@@ -148,364 +131,302 @@ class _IntervensiKeperawatanPageState extends State<IntervensiKeperawatanPage> {
                                               TableCellVerticalAlignment.middle,
                                           children: [
                                             if (menurun.isNotEmpty) ...[
-                                              //===
                                               titleTable2(title: "Pilihan "),
-                                              ...menurun
-                                                  .map(
-                                                    (e) => TableRow(
-                                                        decoration: BoxDecoration(
-                                                            color: ThemeColor
-                                                                .bgColor
-                                                                .withOpacity(
-                                                                    0.5)),
-                                                        children: [
-                                                          Container(
+                                              ...menurun.map(
+                                                (e) => TableRow(
+                                                    decoration: BoxDecoration(
+                                                        color: ThemeColor
+                                                            .bgColor
+                                                            .withOpacity(0.5)),
+                                                    children: [
+                                                      Container(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(8.0),
+                                                          child: Text(
+                                                            e.menurun,
+                                                            textAlign:
+                                                                TextAlign.left,
+                                                            style:
+                                                                blackTextStyle,
+                                                          )),
+                                                      TableCell(
+                                                          verticalAlignment:
+                                                              TableCellVerticalAlignment
+                                                                  .middle,
+                                                          child: Padding(
                                                             padding:
                                                                 const EdgeInsets
                                                                     .all(8.0),
-                                                            child: Text(
-                                                              e.menurun,
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .left,
-                                                              style:
-                                                                  blackTextStyle,
+                                                            child: SizedBox(
+                                                              height: 30,
+                                                              child: RadioGroup(
+                                                                scrollDirection:
+                                                                    Axis.horizontal,
+                                                                activeColor:
+                                                                    ThemeColor
+                                                                        .primaryColor,
+                                                                items:
+                                                                    e.kriteria,
+                                                                onChanged:
+                                                                    (value) {
+                                                                  context
+                                                                      .read<
+                                                                          AsesmenKeperawatanBidanBloc>()
+                                                                      .add(AsesmenKeperawatanBidanEvent.copyWriteIntervensi(
+                                                                          slki:
+                                                                              e.copyWith(selectedNumber: int.parse(value))));
+                                                                },
+                                                                shrinkWrap:
+                                                                    true,
+                                                                fillColor:
+                                                                    ThemeColor
+                                                                        .primaryColor,
+                                                                labelBuilder:
+                                                                    (ctx,
+                                                                        index) {
+                                                                  switch (
+                                                                      index) {
+                                                                    case 0:
+                                                                      return Text(
+                                                                        "Menurun",
+                                                                        style:
+                                                                            blackTextStyle,
+                                                                      );
+                                                                    case 1:
+                                                                      return Text(
+                                                                        "Cukup Menurun",
+                                                                        style:
+                                                                            blackTextStyle,
+                                                                      );
+                                                                    case 2:
+                                                                      return Text(
+                                                                        "Sendang",
+                                                                        style:
+                                                                            blackTextStyle,
+                                                                      );
+                                                                    case 3:
+                                                                      return Text(
+                                                                        "Cukup Meningkat",
+                                                                        style:
+                                                                            blackTextStyle,
+                                                                      );
+                                                                    case 4:
+                                                                      return Text(
+                                                                        "Meningkat",
+                                                                        style:
+                                                                            blackTextStyle,
+                                                                      );
+                                                                    default:
+                                                                  }
+                                                                  return null;
+                                                                },
+                                                              ),
                                                             ),
-                                                          ),
-
-                                                          // ============================
-
-                                                          TableCell(
-                                                              verticalAlignment:
-                                                                  TableCellVerticalAlignment
-                                                                      .middle,
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                        .all(
-                                                                        8.0),
-                                                                child: SizedBox(
-                                                                  height: 30,
-                                                                  child:
-                                                                      RadioGroup(
-                                                                    scrollDirection:
-                                                                        Axis.horizontal,
-                                                                    activeColor:
-                                                                        ThemeColor
-                                                                            .primaryColor,
-                                                                    items: e
-                                                                        .kriteria,
-                                                                    onChanged:
-                                                                        (value) {
-                                                                      // ================ /// ==> PILIH INTERVENSI
-                                                                      context
-                                                                          .read<
-                                                                              AsesmenKeperawatanBidanBloc>()
-                                                                          .add(AsesmenKeperawatanBidanEvent.copyWriteIntervensi(
-                                                                              slki: e.copyWith(selectedNumber: int.parse(value))));
-
-                                                                      // final data = intervensiSelectionModel.where((element) => element.slki.menurun == e.menurun && element.slki.noUrut == e.noUrut);
-
-                                                                      // if (data.isEmpty) {
-                                                                      //   // LAKUKAN
-                                                                      //   final IntervensiSelectionModel datas = IntervensiSelectionModel(selectionNumber: value, slki: e);
-                                                                      //   intervensiSelectionModel.add(datas);
-                                                                      // }
-
-                                                                      // log(intervensiSelectionModel.toString());
-                                                                      // context.read<AsesmenKeperawatanBidanBloc>().add(AsesmenKeperawatanBidanEvent.pilihIntervensi(slki: e, number: value));
-                                                                    },
-                                                                    shrinkWrap:
-                                                                        true,
-                                                                    fillColor:
-                                                                        ThemeColor
-                                                                            .primaryColor,
-                                                                    labelBuilder:
-                                                                        (ctx,
-                                                                            index) {
-                                                                      switch (
-                                                                          index) {
-                                                                        case 0:
-                                                                          return Text(
-                                                                            "Menurun",
-                                                                            style:
-                                                                                blackTextStyle,
-                                                                          );
-                                                                        case 1:
-                                                                          return Text(
-                                                                            "Cukup Menurun",
-                                                                            style:
-                                                                                blackTextStyle,
-                                                                          );
-                                                                        case 2:
-                                                                          return Text(
-                                                                            "Sendang",
-                                                                            style:
-                                                                                blackTextStyle,
-                                                                          );
-                                                                        case 3:
-                                                                          return Text(
-                                                                            "Cukup Meningkat",
-                                                                            style:
-                                                                                blackTextStyle,
-                                                                          );
-                                                                        case 4:
-                                                                          return Text(
-                                                                            "Meningkat",
-                                                                            style:
-                                                                                blackTextStyle,
-                                                                          );
-                                                                        default:
-                                                                      }
-                                                                      return null;
-                                                                    },
-                                                                  ),
-                                                                ),
-                                                              )),
-                                                        ]),
-                                                  )
-                                                  .toList(),
+                                                          )),
+                                                    ]),
+                                              ),
                                             ],
                                             if (meningkat.isNotEmpty) ...[
                                               titleTable2(title: "Pilihan "),
-                                              ...meningkat
-                                                  .map(
-                                                    (e) => TableRow(
-                                                        decoration: BoxDecoration(
-                                                            color: ThemeColor
-                                                                .bgColor
-                                                                .withOpacity(
-                                                                    0.5)),
-                                                        children: [
-                                                          Container(
+                                              ...meningkat.map(
+                                                (e) => TableRow(
+                                                    decoration: BoxDecoration(
+                                                        color: ThemeColor
+                                                            .bgColor
+                                                            .withOpacity(0.5)),
+                                                    children: [
+                                                      Container(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(8.0),
+                                                        child: Text(
+                                                          e.meningkat,
+                                                          textAlign:
+                                                              TextAlign.left,
+                                                          style: blackTextStyle,
+                                                        ),
+                                                      ),
+
+                                                      // =======
+
+                                                      TableCell(
+                                                          verticalAlignment:
+                                                              TableCellVerticalAlignment
+                                                                  .middle,
+                                                          child: Padding(
                                                             padding:
                                                                 const EdgeInsets
                                                                     .all(8.0),
-                                                            child: Text(
-                                                              e.meningkat,
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .left,
-                                                              style:
-                                                                  blackTextStyle,
+                                                            child: SizedBox(
+                                                              height: 30,
+                                                              child: RadioGroup(
+                                                                scrollDirection:
+                                                                    Axis.horizontal,
+                                                                activeColor:
+                                                                    ThemeColor
+                                                                        .primaryColor,
+                                                                items:
+                                                                    e.kriteria,
+                                                                onChanged:
+                                                                    (value) {
+                                                                  context
+                                                                      .read<
+                                                                          AsesmenKeperawatanBidanBloc>()
+                                                                      .add(AsesmenKeperawatanBidanEvent.copyWriteIntervensi(
+                                                                          slki:
+                                                                              e.copyWith(selectedNumber: int.parse(value))));
+                                                                },
+                                                                shrinkWrap:
+                                                                    true,
+                                                                fillColor:
+                                                                    ThemeColor
+                                                                        .primaryColor,
+                                                                labelBuilder:
+                                                                    (ctx,
+                                                                        index) {
+                                                                  switch (
+                                                                      index) {
+                                                                    case 0:
+                                                                      return Text(
+                                                                        "Meningkat",
+                                                                        style:
+                                                                            blackTextStyle,
+                                                                      );
+                                                                    case 1:
+                                                                      return Text(
+                                                                        "Cukup Meningkat",
+                                                                        style:
+                                                                            blackTextStyle,
+                                                                      );
+                                                                    case 2:
+                                                                      return Text(
+                                                                        "Sendang",
+                                                                        style:
+                                                                            blackTextStyle,
+                                                                      );
+                                                                    case 3:
+                                                                      return Text(
+                                                                        "Cukup Menurun",
+                                                                        style:
+                                                                            blackTextStyle,
+                                                                      );
+                                                                    case 4:
+                                                                      return Text(
+                                                                        "Menurun",
+                                                                        style:
+                                                                            blackTextStyle,
+                                                                      );
+                                                                    default:
+                                                                  }
+                                                                  return null;
+                                                                },
+                                                              ),
                                                             ),
-                                                          ),
-
-                                                          // =======
-
-                                                          TableCell(
-                                                              verticalAlignment:
-                                                                  TableCellVerticalAlignment
-                                                                      .middle,
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                        .all(
-                                                                        8.0),
-                                                                child: SizedBox(
-                                                                  height: 30,
-                                                                  child:
-                                                                      RadioGroup(
-                                                                    scrollDirection:
-                                                                        Axis.horizontal,
-                                                                    activeColor:
-                                                                        ThemeColor
-                                                                            .primaryColor,
-                                                                    items: e
-                                                                        .kriteria,
-                                                                    onChanged:
-                                                                        (value) {
-                                                                      // final datas = e.copyWith(selectedNumber: value.toString());
-                                                                      context
-                                                                          .read<
-                                                                              AsesmenKeperawatanBidanBloc>()
-                                                                          .add(AsesmenKeperawatanBidanEvent.copyWriteIntervensi(
-                                                                              slki: e.copyWith(selectedNumber: int.parse(value))));
-
-                                                                      // final datat = intervensiSelectionModel.where((element) => element.slki.menurun == e.menurun && element.slki.noUrut == e.noUrut);
-
-                                                                      // if (datat.isEmpty) {
-                                                                      //   // LAKUKAN
-                                                                      //   final IntervensiSelectionModel datas = IntervensiSelectionModel(selectionNumber: value, slki: e);
-                                                                      //   intervensiSelectionModel.add(datas);
-                                                                      // }
-
-                                                                      // log("INTERVENSI SELECTION " + intervensiSelectionModel.toString());
-
-                                                                      // TODO :
-                                                                      // DISINI AMBIL
-                                                                      // HASIL KRITERIA
-                                                                      // == PILIH INTERVENSI
-                                                                      // context.read<AsesmenKeperawatanBidanBloc>().add(AsesmenKeperawatanBidanEvent.pilihIntervensi(slki: e, number: value));
-                                                                    },
-                                                                    shrinkWrap:
-                                                                        true,
-                                                                    fillColor:
-                                                                        ThemeColor
-                                                                            .primaryColor,
-                                                                    labelBuilder:
-                                                                        (ctx,
-                                                                            index) {
-                                                                      switch (
-                                                                          index) {
-                                                                        case 0:
-                                                                          return Text(
-                                                                            "Meningkat",
-                                                                            style:
-                                                                                blackTextStyle,
-                                                                          );
-                                                                        case 1:
-                                                                          return Text(
-                                                                            "Cukup Meningkat",
-                                                                            style:
-                                                                                blackTextStyle,
-                                                                          );
-                                                                        case 2:
-                                                                          return Text(
-                                                                            "Sendang",
-                                                                            style:
-                                                                                blackTextStyle,
-                                                                          );
-                                                                        case 3:
-                                                                          return Text(
-                                                                            "Cukup Menurun",
-                                                                            style:
-                                                                                blackTextStyle,
-                                                                          );
-                                                                        case 4:
-                                                                          return Text(
-                                                                            "Menurun",
-                                                                            style:
-                                                                                blackTextStyle,
-                                                                          );
-                                                                        default:
-                                                                      }
-                                                                      return null;
-                                                                    },
-                                                                  ),
-                                                                ),
-                                                              )),
-                                                        ]),
-                                                  )
-                                                  .toList(),
+                                                          )),
+                                                    ]),
+                                              ),
                                             ],
                                             if (memburuk.isNotEmpty) ...[
                                               titleTable2(title: "Pilihan "),
-                                              ...memburuk
-                                                  .map(
-                                                    (e) => TableRow(
-                                                        decoration: BoxDecoration(
-                                                            color: ThemeColor
-                                                                .bgColor
-                                                                .withOpacity(
-                                                                    0.5)),
-                                                        children: [
-                                                          Container(
+                                              ...memburuk.map(
+                                                (e) => TableRow(
+                                                    decoration: BoxDecoration(
+                                                        color: ThemeColor
+                                                            .bgColor
+                                                            .withOpacity(0.5)),
+                                                    children: [
+                                                      Container(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(8.0),
+                                                        child: Text(
+                                                          e.memburuk,
+                                                          textAlign:
+                                                              TextAlign.left,
+                                                          style: blackTextStyle,
+                                                        ),
+                                                      ),
+
+                                                      // =======
+
+                                                      TableCell(
+                                                          verticalAlignment:
+                                                              TableCellVerticalAlignment
+                                                                  .middle,
+                                                          child: Padding(
                                                             padding:
                                                                 const EdgeInsets
                                                                     .all(8.0),
-                                                            child: Text(
-                                                              e.memburuk,
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .left,
-                                                              style:
-                                                                  blackTextStyle,
+                                                            child: SizedBox(
+                                                              height: 30,
+                                                              child: RadioGroup(
+                                                                scrollDirection:
+                                                                    Axis.horizontal,
+                                                                activeColor:
+                                                                    ThemeColor
+                                                                        .primaryColor,
+                                                                items:
+                                                                    e.kriteria,
+                                                                onChanged:
+                                                                    (value) {
+                                                                  // ===== >
+                                                                  context
+                                                                      .read<
+                                                                          AsesmenKeperawatanBidanBloc>()
+                                                                      .add(AsesmenKeperawatanBidanEvent.copyWriteIntervensi(
+                                                                          slki:
+                                                                              e.copyWith(selectedNumber: int.parse(value))));
+                                                                },
+                                                                shrinkWrap:
+                                                                    true,
+                                                                fillColor:
+                                                                    ThemeColor
+                                                                        .primaryColor,
+                                                                labelBuilder:
+                                                                    (ctx,
+                                                                        index) {
+                                                                  switch (
+                                                                      index) {
+                                                                    case 0:
+                                                                      return Text(
+                                                                        "Memburuk",
+                                                                        style:
+                                                                            blackTextStyle,
+                                                                      );
+                                                                    case 1:
+                                                                      return Text(
+                                                                        "Cukup Memburuk",
+                                                                        style:
+                                                                            blackTextStyle,
+                                                                      );
+                                                                    case 2:
+                                                                      return Text(
+                                                                        "Sendang",
+                                                                        style:
+                                                                            blackTextStyle,
+                                                                      );
+                                                                    case 3:
+                                                                      return Text(
+                                                                        "Cukup Membaik",
+                                                                        style:
+                                                                            blackTextStyle,
+                                                                      );
+                                                                    case 4:
+                                                                      return Text(
+                                                                        "Membaik",
+                                                                        style:
+                                                                            blackTextStyle,
+                                                                      );
+                                                                    default:
+                                                                  }
+                                                                  return null;
+                                                                },
+                                                              ),
                                                             ),
-                                                          ),
-
-                                                          // =======
-
-                                                          TableCell(
-                                                              verticalAlignment:
-                                                                  TableCellVerticalAlignment
-                                                                      .middle,
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                        .all(
-                                                                        8.0),
-                                                                child: SizedBox(
-                                                                  height: 30,
-                                                                  child:
-                                                                      RadioGroup(
-                                                                    scrollDirection:
-                                                                        Axis.horizontal,
-                                                                    activeColor:
-                                                                        ThemeColor
-                                                                            .primaryColor,
-                                                                    items: e
-                                                                        .kriteria,
-                                                                    onChanged:
-                                                                        (value) {
-                                                                      // ===== >
-                                                                      context
-                                                                          .read<
-                                                                              AsesmenKeperawatanBidanBloc>()
-                                                                          .add(AsesmenKeperawatanBidanEvent.copyWriteIntervensi(
-                                                                              slki: e.copyWith(selectedNumber: int.parse(value))));
-                                                                      // final data = intervensiSelectionModel.where((element) => element.slki.menurun == e.menurun && element.slki.noUrut == e.noUrut);
-
-                                                                      // if (data.isEmpty) {
-                                                                      // LAKUKAN
-                                                                      //   final IntervensiSelectionModel datas = IntervensiSelectionModel(selectionNumber: value, slki: e);
-                                                                      //   intervensiSelectionModel.add(datas);
-                                                                      // }
-
-                                                                      // log(intervensiSelectionModel.toString());
-
-                                                                      // context.read<AsesmenKeperawatanBidanBloc>().add(AsesmenKeperawatanBidanEvent.pilihIntervensi(slki: e, number: value));
-                                                                    },
-                                                                    shrinkWrap:
-                                                                        true,
-                                                                    fillColor:
-                                                                        ThemeColor
-                                                                            .primaryColor,
-                                                                    labelBuilder:
-                                                                        (ctx,
-                                                                            index) {
-                                                                      switch (
-                                                                          index) {
-                                                                        case 0:
-                                                                          return Text(
-                                                                            "Memburuk",
-                                                                            style:
-                                                                                blackTextStyle,
-                                                                          );
-                                                                        case 1:
-                                                                          return Text(
-                                                                            "Cukup Memburuk",
-                                                                            style:
-                                                                                blackTextStyle,
-                                                                          );
-                                                                        case 2:
-                                                                          return Text(
-                                                                            "Sendang",
-                                                                            style:
-                                                                                blackTextStyle,
-                                                                          );
-                                                                        case 3:
-                                                                          return Text(
-                                                                            "Cukup Membaik",
-                                                                            style:
-                                                                                blackTextStyle,
-                                                                          );
-                                                                        case 4:
-                                                                          return Text(
-                                                                            "Membaik",
-                                                                            style:
-                                                                                blackTextStyle,
-                                                                          );
-                                                                        default:
-                                                                      }
-                                                                      return null;
-                                                                    },
-                                                                  ),
-                                                                ),
-                                                              )),
-                                                        ]),
-                                                  )
-                                                  .toList(),
+                                                          )),
+                                                    ]),
+                                              ),
                                             ],
                                           ],
                                         ))
@@ -582,8 +503,6 @@ class _IntervensiKeperawatanPageState extends State<IntervensiKeperawatanPage> {
                                 onPressed: () {
                                   // GET INTERVENSI
                                   if (state.sdkiModel != null) {
-                                    // CEK APAKAH SUDAH MEMILIH HASIL KRITERIA
-
                                     for (var innerList
                                         in state.intervesiModel) {
                                       for (var innerData in innerList.slki) {
@@ -648,28 +567,6 @@ class _IntervensiKeperawatanPageState extends State<IntervensiKeperawatanPage> {
                                                   listIntervensiSelectionModel:
                                                       intervensiSelectionModel));
                                     }
-
-                                    // if (state.intervesiModel.isEmpty) {
-                                    //   // TAMPILKAN PESAN KESALAHAN
-                                    //   Get.showSnackbar(
-                                    //     GetSnackBar(
-                                    //       backgroundColor: ThemeColor
-                                    //           .dangerColor
-                                    //           .withOpacity(0.8),
-                                    //       title: "Pesan",
-                                    //       message:
-                                    //           'Silahkan pilih keluaran terlebih dahulu',
-                                    //       icon: const Icon(
-                                    //           FontAwesomeIcons.circleCheck),
-                                    //       duration: const Duration(seconds: 3),
-                                    //     ),
-                                    //   );
-                                    // }
-
-                                    // if (intervensiSelectionModel.isNotEmpty) {
-                                    //   //==
-
-                                    // }
                                   }
                                 },
                                 child: Row(

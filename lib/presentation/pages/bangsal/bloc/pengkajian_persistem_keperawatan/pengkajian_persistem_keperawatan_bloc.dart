@@ -39,8 +39,6 @@ class PengkajianPersistemKeperawatanBloc extends Bloc<
           status: PengkajianPersistemKeperawatanStatus.loaded,
           pengkajianKeperawatanPesistemModel: data,
           saveResultFailure: none()));
-
-      //====//
     } catch (e) {
       emit(
         state.copyWith(

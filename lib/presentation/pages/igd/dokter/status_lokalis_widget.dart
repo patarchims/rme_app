@@ -405,7 +405,7 @@ class _StatusLokalisWidgetState extends State<StatusLokalisWidget> {
                                 poliklinik: authState.user.poliklinik),
                             person: toPerson(person: authState.user.person),
                             userID: authState.user.userId,
-                            deviceID: "ID - ${data['id']} - ${data['device']}}",
+                            deviceID: "ID-${data['id']}-${data['device']}",
                             noReg: singlePasien.first.noreg,
                             imageUrl: images1));
                   }

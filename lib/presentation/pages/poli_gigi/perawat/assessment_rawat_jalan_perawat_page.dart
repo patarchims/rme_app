@@ -878,13 +878,12 @@ class _AssessmentRawatJalanPerawatPageState
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            width: 120.sp,
-            child: Text(
-              title,
-              style: blackCalibriTextStyle,
-            ),
-          ),
-          Container(
+              width: 120.sp,
+              child: Text(
+                title,
+                style: blackCalibriTextStyle,
+              )),
+          SizedBox(
             width: 50.sp,
             child: FormWidget.numberForm(
               controller: controller,

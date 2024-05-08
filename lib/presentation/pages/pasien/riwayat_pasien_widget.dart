@@ -7,9 +7,9 @@ import 'package:sizer/sizer.dart';
 class RiwayatPasienWidget extends StatelessWidget {
   final List<RiwayatPasienModel> riwayatPasien;
   const RiwayatPasienWidget({
-    Key? key,
+    super.key,
     required this.riwayatPasien,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

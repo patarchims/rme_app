@@ -48,7 +48,6 @@ class _PemedikRadiologiWidgetState extends State<PenmedikGiziWidget> {
 
     return BlocConsumer<AsesmenIgdBloc, AsesmenIgdState>(
       listener: (context, state) {
-        // TODO: implement listener
         if (state.loadingSaveFisioterapi) {
           EasyLoading.show();
         }
@@ -65,9 +64,10 @@ class _PemedikRadiologiWidgetState extends State<PenmedikGiziWidget> {
                     failure: (e) async {
                       final shouldPop = await Alert.loaded(context,
                           subTitle: e.meta.message, title: "Pesan");
+                      // ignore: use_build_context_synchronously
                       context
                           .read<AsesmenIgdBloc>()
-                          .add(AsesmenIgdEvent.clearGizi());
+                          .add(const AsesmenIgdEvent.clearGizi());
                       return shouldPop ?? false;
                     }),
                 (r) => r.maybeMap(
@@ -85,13 +85,15 @@ class _PemedikRadiologiWidgetState extends State<PenmedikGiziWidget> {
                         String noLab = e.value["response"]["no_lab"].toString();
 
                         final shouldPop = await Alert.loaded(context,
-                            subTitle: "Nomor  : ${noLab}  ${meta.message}",
+                            subTitle: "Nomor :$noLab${meta.message}",
                             title: "Pesan");
 
+                        // ignore: use_build_context_synchronously
                         context
                             .read<AsesmenIgdBloc>()
-                            .add(AsesmenIgdEvent.clearGizi());
+                            .add(const AsesmenIgdEvent.clearGizi());
                         return shouldPop ?? false;
+                        // ignore: empty_catches
                       } catch (e) {}
                     })));
       },
@@ -214,10 +216,6 @@ class _PemedikRadiologiWidgetState extends State<PenmedikGiziWidget> {
                                                                       e.kode));
                                                     }
                                                   },
-                                                  child: Icon(
-                                                    FontAwesomeIcons.check,
-                                                    color: Colors.white,
-                                                  ),
                                                   style:
                                                       ElevatedButton.styleFrom(
                                                     backgroundColor: (state
@@ -232,6 +230,10 @@ class _PemedikRadiologiWidgetState extends State<PenmedikGiziWidget> {
                                                           BorderRadius.circular(
                                                               20),
                                                     ),
+                                                  ),
+                                                  child: const Icon(
+                                                    FontAwesomeIcons.check,
+                                                    color: Colors.white,
                                                   ),
                                                 ),
                                               ),
@@ -283,15 +285,15 @@ class _PemedikRadiologiWidgetState extends State<PenmedikGiziWidget> {
                                                       .deleteItemSelectionGizi(
                                                           value: e.value.kode));
                                             },
-                                            child:
-                                                Icon(FontAwesomeIcons.trash)),
+                                            child: const Icon(
+                                                FontAwesomeIcons.trash)),
                                         iconColor: Colors.amber,
                                         title: Text(
                                           e.value.deskripsi,
                                         ),
                                         trailing:
                                             Text(e.value.tarip.toString()),
-                                        children: []),
+                                        children: const []),
                                   );
                                 }).toList(),
                               ),
@@ -321,7 +323,7 @@ class _PemedikRadiologiWidgetState extends State<PenmedikGiziWidget> {
                           jenisPenunjang: "GIZI",
                           umurPasien: singlePasien.first.umur,
                           noReg: singlePasien.first.noreg,
-                          deviceID: "ID - ${data['id']} - ${data['device']}}",
+                          deviceID: "ID-${data['id']}-${data['device']}",
                           dokterPengirim: authState.user.nama,
                           kdPoli: authState.user.kodePoli,
                           ketPoli: authState.user.poliklinik.name,
@@ -329,8 +331,9 @@ class _PemedikRadiologiWidgetState extends State<PenmedikGiziWidget> {
                           kodeKelas: singlePasien.first.kdKelas,
                           list: state.detailGizi);
 
-                      log("INFO GIZI \n" + penunjangModel.toMap().toString());
+                      log("INFO GIZI \n${penunjangModel.toMap()}");
 
+                      // ignore: use_build_context_synchronously
                       context.read<AsesmenIgdBloc>().add(
                           AsesmenIgdEvent.saveGizi(
                               inputPenunjangModel: penunjangModel));
@@ -341,7 +344,7 @@ class _PemedikRadiologiWidgetState extends State<PenmedikGiziWidget> {
                   // ============================
                   context
                       .read<AsesmenIgdBloc>()
-                      .add(AsesmenIgdEvent.clearGizi());
+                      .add(const AsesmenIgdEvent.clearGizi());
                 },
               ),
             ]));

@@ -97,7 +97,7 @@ class _AddDiagnosaICD10KebidananWidgetState
                         OnSaveDiagnosaSelectedEvent(
                             noReg: singlePasien.first.noreg,
                             userID: authState.user.userId,
-                            deviceID: "ID - ${data['id']} - ${data['device']}}",
+                            deviceID: "ID - ${data['id']} - ${data['device']}",
                             diagnosaList: state.diagnosaKebidanan));
                     Get.back();
                   }

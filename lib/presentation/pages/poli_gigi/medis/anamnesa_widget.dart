@@ -237,7 +237,6 @@ class _AnamnesaWidgetState extends State<AnamnesaWidget> {
       builder: (context, state) {
         return HeaderContentWidget(
           onPressed: () {
-            // TODO:SIMPAN DATA
             context.read<AnamnesaBloc>().add(AnamnesaEvent.saveData(
                 noReg: singlePasien.first.noreg,
                 jenisPelayanan: jenisPelayananStr,
@@ -332,7 +331,7 @@ class _AnamnesaWidgetState extends State<AnamnesaWidget> {
                           margin: EdgeInsets.only(bottom: 2.sp),
                           child: Row(
                             children: [
-                              Container(
+                              SizedBox(
                                 width: Get.width / 6,
                                 child: Text(
                                   "Riwayat Penyakit Sekarang",

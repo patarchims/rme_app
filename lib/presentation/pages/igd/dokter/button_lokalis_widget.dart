@@ -35,11 +35,8 @@ class _ButtonLokalisWidgetState extends State<ButtonLokalisWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                height: 10.sp,
-                width: 10.sp,
-              ),
-              Container(
+              SizedBox(height: 10.sp, width: 10.sp),
+              SizedBox(
                 width: 40.sp,
                 child: Text(
                   "e",

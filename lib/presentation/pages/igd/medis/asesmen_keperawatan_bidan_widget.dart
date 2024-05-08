@@ -472,8 +472,6 @@ class _AsesmenKeperawatanBidanState
       builder: (context, state) {
         return HeaderContentWidget(
             onPressed: () {
-              // TODO : SAVE
-              // JIKA DATA DI SIMPAN
               final data = AsesmenKeperawatanBidanModel(
                   kdBagian: "",
                   noreg: singlePasien.first.noreg,
@@ -754,7 +752,6 @@ class _AsesmenKeperawatanBidanState
                                               child: SizedBox(
                                                 width: Get.width / 3,
                                                 child: FormWidget.textArea(
-                                                    // TODO CARA MASUK
                                                     controller:
                                                         _caraMasukDetailController,
                                                     maxLines: 1,
@@ -1023,7 +1020,6 @@ class _AsesmenKeperawatanBidanState
 
                                 const Divider(),
 
-                                // TODO Hasil Resiko
                                 Text(hasilResikoEdukasi,
                                     textAlign: TextAlign.left,
                                     style: blackTextStyle.copyWith(
@@ -1031,8 +1027,7 @@ class _AsesmenKeperawatanBidanState
 
                                 titleContainer(title: "Krining Nyeri"),
 
-                                // =================================
-                                // =================================
+                                // ==================================================================
                                 Row(
                                   children: [
                                     Container(
@@ -1361,15 +1356,7 @@ class _AsesmenKeperawatanBidanState
                                 const Divider(),
 
                                 titleContainer(title: "Rencana Keperawatan"),
-                                // TODO : Rencana Keperawatan
-                                // FormWidget.textForm(
-                                //     labelText: "Rencana Keperawatan", enable: true),
-                                // titleContainer(title: "Tindak Lanjut"),
-                                // Ganti Dengan
-                                // Rencana Keperawatan
-
                                 const Divider(),
-                                // ======= //
                                 chooseBox(
                                     title:
                                         "Kondisi Pasien Pada Saat Pindah/Pulang Dari IGD",
@@ -1382,7 +1369,6 @@ class _AsesmenKeperawatanBidanState
                                       });
                                     }),
                                 const Divider(),
-                                // ======= //
                                 chooseBox(
                                     title: "Transportasi Pulang",
                                     list: transportasiPulang,
@@ -1394,7 +1380,6 @@ class _AsesmenKeperawatanBidanState
                                       });
                                     }),
                                 const Divider(),
-                                // ======= // ==
                                 chooseBox(
                                     title: "Pendidikan Pasien Saat Pulang",
                                     list: pendidikanSaatPulang,

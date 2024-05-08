@@ -368,9 +368,12 @@ class RiwayatPengobatanDirumahKeperawatanWidget extends StatelessWidget {
                                               height: 15.sp,
                                               width: 15.sp,
                                               child: FloatingActionButton(
+                                                backgroundColor: ThemeColor
+                                                    .primaryColor
+                                                    .withOpacity(0.5),
                                                 child: const Icon(
                                                   FontAwesomeIcons.trash,
-                                                  color: Colors.white,
+                                                  color: Colors.red,
                                                 ),
                                                 onPressed: () {
                                                   CustomDialogWidget.getDialog(
@@ -386,6 +389,9 @@ class RiwayatPengobatanDirumahKeperawatanWidget extends StatelessWidget {
                                               height: 15.sp,
                                               width: 15.sp,
                                               child: FloatingActionButton(
+                                                backgroundColor: ThemeColor
+                                                    .primaryColor
+                                                    .withOpacity(0.5),
                                                 onPressed: () {},
                                                 child: const Icon(
                                                   FontAwesomeIcons.pencil,

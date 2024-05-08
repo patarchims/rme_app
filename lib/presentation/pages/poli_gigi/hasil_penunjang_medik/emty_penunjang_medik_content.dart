@@ -90,7 +90,7 @@ class _EmtyPasienContentState extends State<EmtyPenunjangMedikContent> {
         autoFitPadding: EdgeInsets.zero,
         columnName: name,
         label: Container(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             alignment: Alignment.center,
             child: Text(
               subTitle,

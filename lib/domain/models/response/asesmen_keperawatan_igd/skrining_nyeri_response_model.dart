@@ -21,14 +21,14 @@ class SkriningNyeriModel {
 
   factory SkriningNyeriModel.fromJson(Map<String, dynamic> json) =>
       SkriningNyeriModel(
-        skalaNyeri: json["skala_nyeri"],
-        frekuensiNyeri: json["frekuensi_nyeri"],
-        lamaNyeri: json["lama_nyeri"],
-        nyeriMenjalar: json["nyeri_menjalar"],
-        manjalarDetail: json["manjalar_detail"],
-        kualitasNyeri: json["kualitas_nyeri"],
-        nyeriPemicu: json["nyeri_pemicu"],
-        nyeriPengurang: json["nyeri_pengurang"],
+        skalaNyeri: json["skala_nyeri"] as int,
+        frekuensiNyeri: json["frekuensi_nyeri"].toString(),
+        lamaNyeri: json["lama_nyeri"].toString(),
+        nyeriMenjalar: json["nyeri_menjalar"].toString(),
+        manjalarDetail: json["manjalar_detail"].toString(),
+        kualitasNyeri: json["kualitas_nyeri"].toString(),
+        nyeriPemicu: json["nyeri_pemicu"].toString(),
+        nyeriPengurang: json["nyeri_pengurang"].toString(),
       );
 
   Map<String, dynamic> toJson({

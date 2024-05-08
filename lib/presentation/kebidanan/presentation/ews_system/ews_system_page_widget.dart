@@ -25,9 +25,7 @@ class _EwsSystemPageWidgetState extends State<EwsSystemPageWidget> {
     return BlocBuilder<EarlyWarningSystemBloc, EarlyWarningSystemState>(
       builder: (context, state) {
         if (state.status == EarlyWarningSystemStatus.isLoadingGetData) {
-          return HeaderContentWidget(
-            widget: Loading.expandedLoading(),
-          );
+          return HeaderContentWidget(widget: Loading.expandedLoading());
         }
         return HeaderContentWidget(
             backgroundColor: ThemeColor.bgColor,
@@ -261,35 +259,6 @@ class _EwsSystemPageWidgetState extends State<EwsSystemPageWidget> {
       },
     );
   }
-
-  SideTitles get _bottomTitles => SideTitles(
-        showTitles: true,
-        getTitlesWidget: (value, meta) {
-          String text = '';
-          switch (value.toInt()) {
-            case 1:
-              text = 'Jan';
-              break;
-            case 3:
-              text = 'Mar';
-              break;
-            case 5:
-              text = 'May';
-              break;
-            case 7:
-              text = 'Jul';
-              break;
-            case 9:
-              text = 'Sep';
-              break;
-            case 11:
-              text = 'Nov';
-              break;
-          }
-
-          return Text(text);
-        },
-      );
 }
 
 class SalesData {

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
+// ignore: depend_on_referenced_packages
 import 'package:crypto/crypto.dart';
 import 'package:hms_app/core/api/api_db.dart';
 import 'package:hms_app/presentation/component/resources/app_config.dart';

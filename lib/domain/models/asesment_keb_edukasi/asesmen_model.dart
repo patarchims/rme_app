@@ -34,20 +34,20 @@ class AsesmenModel extends Equatable {
   });
 
   factory AsesmenModel.fromJson(Map<String, dynamic> json) => AsesmenModel(
-        keluhUtama: json["keluhUtama"],
-        jenisPelayanan: json["jenisPelayanan"],
-        rwtSekarang: json["rwtSekarang"],
-        rwtDulu: json["rwtDulu"],
-        rwtObat: json["rwtObat"],
-        rwtPenyKeluarga: json["rwtPenyKeluarga"],
-        rwtPenyAlergi: json["rwtPenyAlergi"],
-        rwtPenyAlergiDetail: json["rwtPenyAlergiDetail"],
-        khusPemGigi1: json["khusPemGigi1"],
-        khusPemGigi2: json["khusPemGigi2"],
-        khusPemGigi3: json["khusPemGigi3"],
-        khusPemGigi4: json["khusPemGigi4"],
-        khusPemGigi5: json["khusPemGigi5"],
-        khusPemGigi5Detail: json["khusPemGigi5Detail"],
+        keluhUtama: json["keluhUtama"].toString(),
+        jenisPelayanan: json["jenisPelayanan"].toString(),
+        rwtSekarang: json["rwtSekarang"].toString(),
+        rwtDulu: json["rwtDulu"].toString(),
+        rwtObat: json["rwtObat"].toString(),
+        rwtPenyKeluarga: json["rwtPenyKeluarga"].toString(),
+        rwtPenyAlergi: json["rwtPenyAlergi"].toString(),
+        rwtPenyAlergiDetail: json["rwtPenyAlergiDetail"].toString(),
+        khusPemGigi1: json["khusPemGigi1"].toString(),
+        khusPemGigi2: json["khusPemGigi2"].toString(),
+        khusPemGigi3: json["khusPemGigi3"].toString(),
+        khusPemGigi4: json["khusPemGigi4"].toString(),
+        khusPemGigi5: json["khusPemGigi5"].toString(),
+        khusPemGigi5Detail: json["khusPemGigi5Detail"].toString(),
       );
 
   Map<String, dynamic> toJson({String? noreg}) => {

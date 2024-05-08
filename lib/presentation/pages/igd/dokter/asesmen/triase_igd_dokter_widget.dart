@@ -1131,7 +1131,7 @@ List<String> kids1 = [
 List<String> kids2 = [
   "Gerakan Normal\n/Relaksasi",
   "Tidak Tenang\nTegang",
-  "Kaki Dibuatkan\nMenendang\Menarik Diri"
+  "Kaki Dibuatkan\nMenendang\nMenarik Diri"
 ];
 List<String> kids3 = [
   "Tidur, Posisi Normal\n/Relaksasi",

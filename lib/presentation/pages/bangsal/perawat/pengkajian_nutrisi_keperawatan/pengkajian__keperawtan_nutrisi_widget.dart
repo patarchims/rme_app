@@ -35,13 +35,9 @@ class _AsesmenPengkajianNutrisiKeperawatanWidgetState
 
     return BlocConsumer<PengkajianNutrisiBloc, PengkajianNutrisiState>(
       listener: (context, state) {
-        // TODO: implement listener
-
         if (state.status == PengkajianNutrisiStatus.isLoadingSavePengkajian) {
           EasyLoading.show(maskType: EasyLoadingMaskType.black);
         }
-
-        // TUTUP LOADING
         if (state.status != PengkajianNutrisiStatus.isLoadingSavePengkajian) {
           EasyLoading.dismiss();
         }
@@ -79,7 +75,7 @@ class _AsesmenPengkajianNutrisiKeperawatanWidgetState
             // ignore: use_build_context_synchronously
             context.read<PengkajianNutrisiBloc>().add(OnSavePengkajianNutrisi(
                 noReg: singlePasien.first.noreg,
-                deviceID: "ID - ${data['id']} - ${data['device']}}",
+                deviceID: "ID-${data['id']}-${data['device']}",
                 n1: state.pengkajianNutrisiResponseModel.n1,
                 n2: state.pengkajianNutrisiResponseModel.n2,
                 nilai: state.pengkajianNutrisiResponseModel.nilaiN1 +
@@ -104,9 +100,7 @@ class _AsesmenPengkajianNutrisiKeperawatanWidgetState
                   // ======================= START HEADER
                   Container(
                     color: Colors.white,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 5.sp,
-                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 5.sp),
                     child: TableDesk(
                       shape: const RoundedRectangleBorder(
                         side: BorderSide(color: Colors.black, width: 1),
@@ -382,7 +376,6 @@ class _AsesmenPengkajianNutrisiKeperawatanWidgetState
                             width: 25.sp,
                             child: IconButton(
                               onPressed: () {
-                                // TODO : SIMPAN DATA ALERGI OBAT
                                 context.read<PengkajianNutrisiBloc>().add(
                                     OnChangedN1(
                                         value:
@@ -521,7 +514,6 @@ class _AsesmenPengkajianNutrisiKeperawatanWidgetState
                             width: 25.sp,
                             child: IconButton(
                               onPressed: () {
-                                // TODO : SIMPAN DATA ALERGI OBAT
                                 context
                                     .read<PengkajianNutrisiBloc>()
                                     .add(OnChangedN1(value: "1-5 Kg"));
@@ -604,7 +596,6 @@ class _AsesmenPengkajianNutrisiKeperawatanWidgetState
                             width: 25.sp,
                             child: IconButton(
                               onPressed: () {
-                                // TODO : SIMPAN DATA ALERGI OBAT
                                 context
                                     .read<PengkajianNutrisiBloc>()
                                     .add(OnChangedN1(value: "6-10 Kg"));
@@ -687,7 +678,6 @@ class _AsesmenPengkajianNutrisiKeperawatanWidgetState
                             width: 25.sp,
                             child: IconButton(
                               onPressed: () {
-                                // TODO : SIMPAN DATA ALERGI OBAT
                                 context
                                     .read<PengkajianNutrisiBloc>()
                                     .add(OnChangedN1(value: "11-15 Kg"));
@@ -770,7 +760,6 @@ class _AsesmenPengkajianNutrisiKeperawatanWidgetState
                             width: 25.sp,
                             child: IconButton(
                               onPressed: () {
-                                // TODO : SIMPAN DATA ALERGI OBAT
                                 context
                                     .read<PengkajianNutrisiBloc>()
                                     .add(OnChangedN1(value: "> 15 Kg"));

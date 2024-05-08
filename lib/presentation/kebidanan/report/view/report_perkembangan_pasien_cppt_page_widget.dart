@@ -263,10 +263,7 @@ class _ReportPerkembanganPasienCPTTPageWidgetState
                             ),
 
                             if (state.cpptPasien.isNotEmpty) ...[
-                              ...state.cpptPasien
-                                  .asMap()
-                                  .entries
-                                  .map(
+                              ...state.cpptPasien.asMap().entries.map(
                                     (e) => Container(
                                       color: Colors.white,
                                       padding: EdgeInsets.symmetric(
@@ -456,7 +453,6 @@ class _ReportPerkembanganPasienCPTTPageWidgetState
                                       ),
                                     ),
                                   )
-                                  .toList()
                             ],
 
                             SizedBox(height: 25.sp),

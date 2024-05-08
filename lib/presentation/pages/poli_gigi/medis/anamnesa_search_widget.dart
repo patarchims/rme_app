@@ -10,8 +10,8 @@ import 'package:hms_app/presentation/component/fonts/font_helper.dart';
 
 class AnamnesaSearchWidget extends StatefulWidget {
   const AnamnesaSearchWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<AnamnesaSearchWidget> createState() => _AnamnesaSearchWidgetState();

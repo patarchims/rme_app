@@ -34,7 +34,7 @@ class PenunjangMedikDataSourceEmty extends DataGridSource {
   ) {
     return DataGridRowAdapter(
       cells: row.getCells().map<Widget>((e) {
-        return Container(
+        return const SizedBox(
           child: Center(
             child: Text(
               "No data",

@@ -878,8 +878,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                                 superior: _superiorController.text,
                                 usus: _ususController.text,
                               ),
-                              deviceID:
-                                  "ID - ${data['id']} - ${data['device']}}",
+                              deviceID: "ID-${data['id']} - ${data['device']}",
                               pelayanan: toPelayanan(
                                   poliklinik: authState.user.poliklinik),
                               noReg: singlePasien.first.noreg,

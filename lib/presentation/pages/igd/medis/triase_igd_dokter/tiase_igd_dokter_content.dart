@@ -12,9 +12,9 @@ import 'package:hms_app/presentation/pages/igd/medis/triase_igd_dokter/tanda_vit
 class TriaseIGDDokterWidgetContent extends StatefulWidget {
   final List<String> menu;
   const TriaseIGDDokterWidgetContent({
-    Key? key,
+    super.key,
     required this.menu,
-  }) : super(key: key);
+  });
 
   @override
   State<TriaseIGDDokterWidgetContent> createState() =>

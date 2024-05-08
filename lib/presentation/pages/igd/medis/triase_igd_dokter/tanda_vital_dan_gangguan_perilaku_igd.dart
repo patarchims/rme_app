@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -10,6 +8,7 @@ import 'package:hms_app/domain/models/devices_info/device_info_model.dart';
 import 'package:hms_app/domain/models/meta/meta_model.dart';
 import 'package:hms_app/domain/models/users/user_model.dart';
 import 'package:hms_app/presentation/component/component.dart';
+import 'package:hms_app/presentation/component/constant/list_constants.dart';
 import 'package:hms_app/presentation/component/shimer/shimer_loading.dart';
 import 'package:hms_app/presentation/pages/igd/bloc/tanda_vital_igd_dokter/tanda_vital_igd_dokter_bloc.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
@@ -37,16 +36,12 @@ class TandaVitalDanGannguanPerilakuWidgetContent extends StatelessWidget {
           EasyLoading.dismiss();
         }
 
-        // =========================== SAVE GANGGUAN PERILAKU ================================= //
         state.saveResultFailure.fold(
             () => null,
             (a) => a.fold(
                 (l) => l.maybeMap(
                     orElse: () {},
                     failure: (e) async {
-                      // FAILURE
-                      log(e.toString());
-
                       if (e.meta.code == 201) {
                         final shouldPop = await Alert.warningMessage(context,
                             subTitle: e.meta.message.toString(),
@@ -91,8 +86,7 @@ class TandaVitalDanGannguanPerilakuWidgetContent extends StatelessWidget {
                       // ignore: use_build_context_synchronously
                       context.read<TandaVitalIgdDokterBloc>().add(
                           OnSaveTandaVitalIGDDokter(
-                              deviceId:
-                                  "ID - ${data['id']} - ${data['device']}}",
+                              deviceId: "ID-${data['id']}-${data['device']}",
                               noReg: singlePasien.first.noreg,
                               pelayanan: toPelayanan(
                                   poliklinik: authState.user.poliklinik),
@@ -114,30 +108,147 @@ class TandaVitalDanGannguanPerilakuWidgetContent extends StatelessWidget {
                     children: [
                       SizedBox(
                         width: 70.sp,
-                        child: Text(
-                          "GCS",
-                          style: blackTextStyle,
-                        ),
+                        child: Text("GCS", style: blackTextStyle),
                       ),
-                      formBoxGSC(
-                          valueE: state.tandaVitalIgdDokter.gcsE,
-                          valueM: state.tandaVitalIgdDokter.gcsM,
-                          valueV: state.tandaVitalIgdDokter.gcsV,
-                          onChangedV: (vValue) {
-                            context
-                                .read<TandaVitalIgdDokterBloc>()
-                                .add(OnChangedV(value: vValue));
-                          },
-                          onChangedM: (mValue) {
-                            context
-                                .read<TandaVitalIgdDokterBloc>()
-                                .add(OnChangedM(value: mValue));
-                          },
-                          onChangedE: (eValue) {
-                            context
-                                .read<TandaVitalIgdDokterBloc>()
-                                .add(OnChangedE(value: eValue));
-                          })
+                      SizedBox(
+                          width: 65.sp,
+                          child: Row(
+                            children: [
+                              Text(
+                                "E :",
+                                style: blackTextStyle.copyWith(
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                width: 5.sp,
+                              ),
+                              Container(
+                                margin: EdgeInsets.symmetric(horizontal: 2.sp),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 5),
+                                decoration: BoxDecoration(
+                                    color: ThemeColor.primaryColor,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: DropdownButton<String>(
+                                  dropdownColor: ThemeColor.darkColor,
+                                  value: state.tandaVitalIgdDokter.gcsE,
+                                  onChanged: (eValue) {
+                                    context.read<TandaVitalIgdDokterBloc>().add(
+                                        OnChangedE(value: eValue.toString()));
+                                  },
+                                  items: ListConstants.gcs
+                                      .map<DropdownMenuItem<String>>(
+                                          (String value) =>
+                                              DropdownMenuItem<String>(
+                                                value: value,
+                                                child: Text(
+                                                  value,
+                                                  style: whiteTextStyle,
+                                                ),
+                                              ))
+                                      .toList(),
+                                  icon: const Icon(
+                                    Icons.arrow_drop_down,
+                                    color: ThemeColor.primaryColor,
+                                  ),
+                                  iconSize: 42,
+                                  underline: const SizedBox(),
+                                ),
+                              ),
+                            ],
+                          )),
+                      SizedBox(
+                          width: 65.sp,
+                          child: Row(
+                            children: [
+                              Text(
+                                "V :",
+                                style: blackTextStyle.copyWith(
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                width: 5.sp,
+                              ),
+                              Container(
+                                margin: EdgeInsets.symmetric(horizontal: 2.sp),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 5),
+                                decoration: BoxDecoration(
+                                    color: ThemeColor.primaryColor,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: DropdownButton<String>(
+                                  dropdownColor: ThemeColor.darkColor,
+                                  value: state.tandaVitalIgdDokter.gcsV,
+                                  onChanged: (mValue) {
+                                    context.read<TandaVitalIgdDokterBloc>().add(
+                                        OnChangedV(value: mValue.toString()));
+                                  },
+                                  items: ListConstants.gcs
+                                      .map<DropdownMenuItem<String>>(
+                                          (String value) =>
+                                              DropdownMenuItem<String>(
+                                                value: value,
+                                                child: Text(
+                                                  value,
+                                                  style: whiteTextStyle,
+                                                ),
+                                              ))
+                                      .toList(),
+                                  icon: const Icon(
+                                    Icons.arrow_drop_down,
+                                    color: ThemeColor.primaryColor,
+                                  ),
+                                  iconSize: 42,
+                                  underline: const SizedBox(),
+                                ),
+                              ),
+                            ],
+                          )),
+                      SizedBox(
+                          width: 65.sp,
+                          child: Row(
+                            children: [
+                              Text(
+                                "M :",
+                                style: blackTextStyle.copyWith(
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                width: 5.sp,
+                              ),
+                              Container(
+                                margin: EdgeInsets.symmetric(horizontal: 2.sp),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 5),
+                                decoration: BoxDecoration(
+                                    color: ThemeColor.primaryColor,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: DropdownButton<String>(
+                                  dropdownColor: ThemeColor.darkColor,
+                                  value: state.tandaVitalIgdDokter.gcsM,
+                                  onChanged: (mValue) {
+                                    context.read<TandaVitalIgdDokterBloc>().add(
+                                        OnChangedM(value: mValue.toString()));
+                                  },
+                                  items: ListConstants.gcs
+                                      .map<DropdownMenuItem<String>>(
+                                          (String value) =>
+                                              DropdownMenuItem<String>(
+                                                value: value,
+                                                child: Text(value,
+                                                    style: whiteTextStyle),
+                                              ))
+                                      .toList(),
+                                  icon: const Icon(
+                                    Icons.arrow_drop_down,
+                                    color: ThemeColor.primaryColor,
+                                  ),
+                                  iconSize: 42,
+                                  underline: const SizedBox(),
+                                ),
+                              ),
+                            ],
+                          )),
                     ],
                   ),
                 ),
@@ -203,16 +314,54 @@ class TandaVitalDanGannguanPerilakuWidgetContent extends StatelessWidget {
                       child: SizedBox(
                         child: Column(
                           children: [
-                            formBox(
-                              title: "Kesadaran",
-                              subTitle: "",
-                              value: state.tandaVitalIgdDokter.kesadaran,
-                              onChanged: (value) {
-                                context
-                                    .read<TandaVitalIgdDokterBloc>()
-                                    .add(OnChangedKesadaranEvent(value: value));
-                              },
-                            ),
+                            SizedBox(
+                                // width: 65.sp,
+                                child: Row(
+                              children: [
+                                Text(
+                                  "Kesadaran :",
+                                  style: blackTextStyle.copyWith(
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  width: 5.sp,
+                                ),
+                                Container(
+                                  margin:
+                                      EdgeInsets.symmetric(horizontal: 2.sp),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 5),
+                                  decoration: BoxDecoration(
+                                      color: ThemeColor.primaryColor,
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: DropdownButton<String>(
+                                    dropdownColor: ThemeColor.darkColor,
+                                    value: state.tandaVitalIgdDokter.kesadaran,
+                                    onChanged: (value) {
+                                      context
+                                          .read<TandaVitalIgdDokterBloc>()
+                                          .add(OnChangedKesadaranEvent(
+                                              value: value.toString()));
+                                    },
+                                    items: ListConstants.kesadaranManusia
+                                        .map<DropdownMenuItem<String>>(
+                                            (String value) =>
+                                                DropdownMenuItem<String>(
+                                                  value: value,
+                                                  child: Text(value,
+                                                      style: whiteTextStyle),
+                                                ))
+                                        .toList(),
+                                    icon: const Icon(
+                                      Icons.arrow_drop_down,
+                                      color: ThemeColor.primaryColor,
+                                    ),
+                                    iconSize: 42,
+                                    underline: const SizedBox(),
+                                  ),
+                                ),
+                              ],
+                            )),
                             formBox(
                               title: "Pernapasan",
                               subTitle: "x/mnt",

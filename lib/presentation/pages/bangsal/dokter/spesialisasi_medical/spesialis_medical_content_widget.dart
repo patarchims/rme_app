@@ -49,7 +49,6 @@ class SpesialisMedicalContentWidget extends StatelessWidget {
         },
         children: menu.asMap().entries.map((e) {
           // TAMPILKAN KELUHAN UTAMA KHUSU DOKTER ANAK
-          // TODO : DOKTER ANAK MEDS
           if (e.key == 0) {
             return const AnamnesaMedicalWidget();
           }

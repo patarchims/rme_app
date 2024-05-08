@@ -34,9 +34,7 @@ class _PasienContentWidgetState extends State<SikiContentWidget> {
   Widget build(BuildContext context) {
     return BlocConsumer<AsesmenKeperawatanBidanBloc,
         AsesmenKeperawatanBidanState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         if (state.isLoadingGetSIKI) {
           return SizedBox(

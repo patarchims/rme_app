@@ -12,10 +12,10 @@ class SaveButtonWidget extends StatelessWidget {
   final Function()? onSave;
   final Function()? onClear;
   const SaveButtonWidget({
-    Key? key,
+    super.key,
     this.onSave,
     this.onClear,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class SaveButtonWidget extends StatelessWidget {
     return Positioned(
       bottom: 0,
       child: Container(
-        decoration: BoxDecoration(color: ThemeColor.primaryColor),
+        decoration: const BoxDecoration(color: ThemeColor.primaryColor),
         height: 30.sp,
         width: Get.width,
         child: Row(
@@ -39,7 +39,7 @@ class SaveButtonWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.black, width: 1.sp),
                     shape: BoxShape.circle,
-                    boxShadow: [],
+                    boxShadow: const [],
                     // JENIS KELAMIN SESUAIKAN DENGAN GAMBAR
                     image: DecorationImage(
                         image: AssetImage(

@@ -13,10 +13,10 @@ class OdontogramModalWidget extends StatelessWidget {
   final List<GigiModel> listGigi;
   final List<AssetsGigiModel> newListAssestGigiModel;
   const OdontogramModalWidget({
-    Key? key,
+    super.key,
     required this.listGigi,
     required this.newListAssestGigiModel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +67,7 @@ class OdontogramModalWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
+                    SizedBox(
                       width: 40.sp,
                       child: DropdownButtonFormField(
                         dropdownColor: Colors.white,
@@ -114,33 +114,8 @@ class OdontogramModalWidget extends StatelessWidget {
                       width: 25.sp,
                       height: 15.sp,
                       child: ElevatedButton(
-                          onPressed: () {
-                            // if (_valueController.text ==
-                            //     "") {
-                            //   setState(
-                            //       () {
-                            //     Alert.failure(context,
-                            //         "Keterangan tidak boleh kosong");
-                            //   });
-                            // } else {
-                            // VALIDASI TERLEBIH DAHULU
-                            // SIMPAN ODONTOGRAM
-
-                            // context.read<PasienBloc>().add(PasienEvent.saveOdontogram(
-                            //     noReg: widget.noReg,
-                            //     noGigi: selectedNumber.toString(),
-                            //     keterangan: selectedImage + "," + _valueController.text));
-
-                            // addOntogram(odontogramModel: OdontogramModel(number: selectedNumber, imageUrl: selectedImage, keterangan: _valueController.text));
-
-                            // Navigator.of(context).pop();
-
-                            // log(widget.ontogramList.toString());
-
-                            // validasiList(items: items);
-                            // }
-                          },
-                          child: FaIcon(FontAwesomeIcons.circlePlus)),
+                          onPressed: () {},
+                          child: const FaIcon(FontAwesomeIcons.circlePlus)),
                     )
                   ],
                 ),

@@ -28,7 +28,6 @@ class PemeriksaanFisikSpesialisasiAnak extends StatelessWidget {
 
     return BlocConsumer<PemeriksaanFisikBloc, PemeriksaanFisikState>(
       listener: (context, state) {
-        // TODO: implement listener
         log(state.pemeriksaanFisikIgdModel.suaraJantung.toString());
 
         if (state.isLoadingSavePemeriksaanFisikIgd) {
@@ -73,12 +72,10 @@ class PemeriksaanFisikSpesialisasiAnak extends StatelessWidget {
                   // LAUKAN SIMPAN DATA
                   if (authState is Authenticated) {
                     // ignore: use_build_context_synchronously
-
-                    // ignore: use_build_context_synchronously
                     context.read<PemeriksaanFisikBloc>().add(
                         PemeriksaanFisikEvent.onSavePemeriksaanFisikAnak(
                             person: toPerson(person: authState.user.person),
-                            deviceID: "ID - ${data['id']} - ${data['device']}}",
+                            deviceID: "ID-${data['id']}-${data['device']}",
                             pelayanan: toPelayanan(
                                 poliklinik: authState.user.poliklinik),
                             noReg: singlePasien.first.noreg,

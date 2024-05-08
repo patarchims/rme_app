@@ -12,9 +12,9 @@ import 'package:hms_app/presentation/kebidanan/repository/riwayat_kehamilan_kebi
 class OnDeleteRiwayatKehamilanWidget extends StatelessWidget {
   final KehamilanKebidanModel kebidanModel;
   const OnDeleteRiwayatKehamilanWidget({
-    Key? key,
+    super.key,
     required this.kebidanModel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

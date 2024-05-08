@@ -13,11 +13,11 @@ class TabbarWithAlertContentWidget extends StatelessWidget {
   final List<Widget> children;
 
   const TabbarWithAlertContentWidget({
-    Key? key,
+    super.key,
     required this.menu,
     this.onTap,
     required this.children,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

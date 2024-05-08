@@ -126,7 +126,7 @@ class _RencanaTindakLanjutIGDWigetState
                             toPelayanan(poliklinik: authState.user.poliklinik),
                         person: toPerson(person: authState.user.person),
                         userID: authState.user.userId,
-                        deviceID: "ID - ${data['id']} - ${data['device']}}",
+                        deviceID: "ID-${data['id']}-${data['device']}",
                         noreg: singlePasien.first.noreg,
                         anjuran: state.asuhanTerapiStr,
                         alasanOpname: state.alasanObnameStr,

@@ -10,8 +10,8 @@ import 'package:hms_app/presentation/component/fonts/font_helper.dart';
 
 class RiwayatSekarangSearchWidget extends StatefulWidget {
   const RiwayatSekarangSearchWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<RiwayatSekarangSearchWidget> createState() =>
@@ -89,7 +89,7 @@ class _RiwayatSekarangSearchWidgetState
           },
           builder: (context, state) {
             return Expanded(
-                child: Container(
+                child: SizedBox(
               child: ListView(
                 children: (state.riwayatSekarang.isNotEmpty)
                     ? state.riwayatSekarang

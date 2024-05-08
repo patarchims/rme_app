@@ -74,6 +74,26 @@ abstract class DTOKeperawatan {
     };
   }
 
+  static Map<String, dynamic> onSavePengkajianNutrisiAnak({
+    required String noReg,
+    required String deviceID,
+    required String nilai1,
+    required String nilai2,
+    required String nilai3,
+    required String nilai4,
+    required int nilai,
+  }) {
+    return {
+      'device_id': deviceID,
+      'no_reg': noReg,
+      'n1': nilai1,
+      'n2': nilai2,
+      'n3': nilai3,
+      'n4': nilai4,
+      'nilai': nilai
+    };
+  }
+
   static Map<String, dynamic> onSaveCatatanKeperawatan({
     required String catatan,
     required String noReg,

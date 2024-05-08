@@ -81,7 +81,6 @@ class _CpptWidgetBangsalState extends State<CpptWidgetNoExpandedBangsal> {
           EasyLoading.show(maskType: EasyLoadingMaskType.black);
         }
 
-        // TUTUP LOADING
         if (!state.isLoadingSaveCPPT) {
           EasyLoading.dismiss();
         }
@@ -107,8 +106,6 @@ class _CpptWidgetBangsalState extends State<CpptWidgetNoExpandedBangsal> {
                       context.read<CpptBloc>().add(CpptEvent.onGetCPPTPasien(
                           noRM: singlePasien.first.mrn));
                     })));
-
-        //=====//
       },
       builder: (context, state) {
         return HeaderContentWidget(
@@ -118,194 +115,198 @@ class _CpptWidgetBangsalState extends State<CpptWidgetNoExpandedBangsal> {
                 ? () {
                     // TAMPILKAN SILAHKAN INPUT DATA
                     CustomDialogWidget.getDialog(
-                      widget: Container(
-                        width: Get.width,
-                        height: 250.sp,
-                        decoration: const BoxDecoration(color: Colors.white),
-                        child: Scaffold(
-                          floatingActionButton: SizedBox(
-                            width: 50.sp,
-                            child: FloatingActionButton(
-                              elevation: 0,
-                              backgroundColor:
-                                  AppColors.accent.withOpacity(0.4),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(2.sp)),
-                              onPressed: () async {
-                                if (_keyForm.currentState!.validate()) {
-                                  dynamic data =
-                                      await deviceInfo.initPlatformState();
-                                  // SAVE FISIOTERAPI
+                        widget: Container(
+                          width: Get.width,
+                          height: 250.sp,
+                          decoration: const BoxDecoration(color: Colors.white),
+                          child: Scaffold(
+                            floatingActionButton: SizedBox(
+                              width: 50.sp,
+                              child: FloatingActionButton(
+                                elevation: 0,
+                                backgroundColor:
+                                    AppColors.accent.withOpacity(0.4),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(2.sp)),
+                                onPressed: () async {
+                                  if (_keyForm.currentState!.validate()) {
+                                    dynamic data =
+                                        await deviceInfo.initPlatformState();
+                                    // SAVE FISIOTERAPI
 
-                                  // detailFisioterapi
-                                  if (authState is Authenticated) {
-                                    // ignore: use_build_context_synchronously
-                                    context.read<CpptBloc>().add(
-                                        CpptEvent.saveCPPTPasien(
-                                            waktu: waktu,
-                                            ppa: _ppaController.text,
-                                            deviceID:
-                                                "ID - ${data['id']} - ${data['device']}}",
-                                            kelompok: (authState.user.person ==
-                                                    Person.dokter)
-                                                ? "Dokter"
-                                                : "Perawat",
-                                            kdbagian: authState.user.kodePoli,
-                                            noReg: singlePasien.first.noreg,
-                                            pelayanan: "ranap",
-                                            dpjp: singlePasien.first.kdDokter,
-                                            subjetif: _subjektifController.text,
-                                            objektif: _objektifController.text,
-                                            asesmen: _asesmenController.text,
-                                            plan: _planController.text));
+                                    // detailFisioterapi
+                                    if (authState is Authenticated) {
+                                      // ignore: use_build_context_synchronously
+                                      context.read<CpptBloc>().add(
+                                          CpptEvent.saveCPPTPasien(
+                                              waktu: waktu,
+                                              ppa: _ppaController.text,
+                                              deviceID:
+                                                  "ID-${data['id']}-${data['device']}",
+                                              kelompok:
+                                                  (authState.user.person ==
+                                                          Person.dokter)
+                                                      ? "Dokter"
+                                                      : "Perawat",
+                                              kdbagian: authState.user.kodePoli,
+                                              noReg: singlePasien.first.noreg,
+                                              pelayanan: "ranap",
+                                              dpjp: singlePasien.first.kdDokter,
+                                              subjetif:
+                                                  _subjektifController.text,
+                                              objektif:
+                                                  _objektifController.text,
+                                              asesmen: _asesmenController.text,
+                                              plan: _planController.text));
 
-                                    Future.delayed(const Duration(seconds: 1),
-                                        () {
-                                      _subjektifController.clear();
-                                      _objektifController.clear();
-                                      _asesmenController.clear();
-                                      _planController.clear();
-                                    });
+                                      Future.delayed(const Duration(seconds: 1),
+                                          () {
+                                        _subjektifController.clear();
+                                        _objektifController.clear();
+                                        _asesmenController.clear();
+                                        _planController.clear();
+                                      });
 
-                                    Get.back();
+                                      Get.back();
+                                    }
                                   }
-                                }
-                              },
-                              heroTag: "btn2",
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  const Icon(
-                                    Icons.save,
-                                    color: Colors.white,
-                                  ),
-                                  Text(
-                                    "SIMPAN",
-                                    style: whiteTextStyle,
-                                  )
-                                ],
+                                },
+                                heroTag: "btn2",
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    const Icon(
+                                      Icons.save,
+                                      color: Colors.white,
+                                    ),
+                                    Text(
+                                      "SIMPAN",
+                                      style: whiteTextStyle,
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                          backgroundColor: ThemeColor.bgColor,
-                          appBar: AppBar(
-                            automaticallyImplyLeading: false,
-                            title: Text(
-                              "SILAHKAN INPUT CPPT BERBASIS SOAP",
-                              style: whiteTextStyle,
+                            backgroundColor: ThemeColor.bgColor,
+                            appBar: AppBar(
+                              automaticallyImplyLeading: false,
+                              title: Text(
+                                "SILAHKAN INPUT CPPT BERBASIS SOAP",
+                                style: whiteTextStyle,
+                              ),
                             ),
-                          ),
-                          body: RawScrollbar(
-                            thumbColor: ThemeColor.darkColor,
-                            thumbVisibility: true,
-                            interactive: true,
-                            thickness: 10.sp,
-                            controller: _scrollController,
-                            trackVisibility: false,
-                            radius: Radius.circular(5.sp),
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 15.sp),
-                              child: Form(
-                                key: _keyForm,
-                                child: ListView(
-                                  controller: _scrollController,
-                                  children: [
-                                    // ===============
-                                    Text("Tanggal :", style: blackTextStyle),
-                                    Container(
-                                      padding: EdgeInsets.all(5.sp),
-                                      color: Colors.white,
-                                      child: FormBuilderDateTimePicker(
-                                        format: DateFormat('dd/MM/yyyy'),
-                                        name: 'date',
-                                        inputType: InputType.date,
-                                        initialDate: DateTime.now(),
-                                        decoration: InputDecoration(
-                                          labelText: 'Waktu Terakhir Pemberian',
+                            body: RawScrollbar(
+                              thumbColor: ThemeColor.darkColor,
+                              thumbVisibility: true,
+                              interactive: true,
+                              thickness: 10.sp,
+                              controller: _scrollController,
+                              trackVisibility: false,
+                              radius: Radius.circular(5.sp),
+                              child: Padding(
+                                padding:
+                                    EdgeInsets.symmetric(horizontal: 15.sp),
+                                child: Form(
+                                  key: _keyForm,
+                                  child: ListView(
+                                    controller: _scrollController,
+                                    children: [
+                                      // ===============
+                                      Text("Tanggal :", style: blackTextStyle),
+                                      Container(
+                                        padding: EdgeInsets.all(5.sp),
+                                        color: Colors.white,
+                                        child: FormBuilderDateTimePicker(
+                                          format: DateFormat('dd/MM/yyyy'),
+                                          name: 'date',
+                                          inputType: InputType.date,
+                                          initialDate: DateTime.now(),
+                                          decoration: InputDecoration(
+                                            labelText:
+                                                'Waktu Terakhir Pemberian',
+                                            enabled: true,
+                                            fillColor: ThemeColor.bgColor,
+                                          ),
+                                          onChanged: (value) {
+                                            setState(() {
+                                              waktu = value.toString();
+                                            });
+                                          },
+                                          initialTime: const TimeOfDay(
+                                              hour: 8, minute: 0),
+                                          initialValue: DateTime.now(),
                                           enabled: true,
-                                          fillColor: ThemeColor.bgColor,
                                         ),
-                                        onChanged: (value) {
-                                          setState(() {
-                                            waktu = value.toString();
-                                          });
-                                        },
-                                        initialTime:
-                                            const TimeOfDay(hour: 8, minute: 0),
-                                        initialValue: DateTime.now(),
-                                        enabled: true,
                                       ),
-                                    ),
 
-                                    Text(
-                                      "Isikan SUBJEKTIF Pada Kolom Dibawah Ini :",
-                                      style: blackTextStyle,
-                                    ),
+                                      Text(
+                                        "Isikan SUBJEKTIF Pada Kolom Dibawah Ini :",
+                                        style: blackTextStyle,
+                                      ),
 
-                                    FormWidget.textArea(
-                                      maxLines: 3,
-                                      enabled: true,
-                                      controller: _subjektifController,
-                                      validator: (value) => value == ''
-                                          ? "Tidak boleh kosong"
-                                          : null,
-                                    ),
-                                    const Divider(),
-                                    Text(
-                                      "Isikan OBJEKTIF Pada Kolom Dibawah Ini :",
-                                      style: blackTextStyle,
-                                    ),
-                                    FormWidget.textArea(
+                                      FormWidget.textArea(
                                         maxLines: 3,
                                         enabled: true,
+                                        controller: _subjektifController,
                                         validator: (value) => value == ''
                                             ? "Tidak boleh kosong"
                                             : null,
-                                        controller: _objektifController),
-                                    const Divider(),
-                                    Text(
-                                      "Isikan ASESMEN Pada Kolom Dibawah Ini :",
-                                      style: blackTextStyle,
-                                    ),
-                                    FormWidget.textArea(
-                                        maxLines: 3,
-                                        enabled: true,
-                                        validator: (value) => value == ''
-                                            ? "Tidak boleh kosong"
-                                            : null,
-                                        controller: _asesmenController),
-                                    const Divider(),
-                                    Text(
-                                      "Isikan PLAN Pada Kolom Dibawah Ini :",
-                                      style: blackTextStyle,
-                                    ),
-                                    FormWidget.textArea(
-                                        maxLines: 3,
-                                        enabled: true,
-                                        validator: (value) => value == ''
-                                            ? "Tidak boleh kosong"
-                                            : null,
-                                        controller: _planController),
-                                    const Divider(),
-                                    Text(
-                                      "Isikan Instruksi PPA Pada Kolom Dibawah  :",
-                                      style: blackTextStyle,
-                                    ),
-                                    FormWidget.textArea(
-                                        maxLines: 3,
-                                        enabled: true,
-                                        controller: _ppaController),
-                                    const Divider(),
-                                  ],
+                                      ),
+                                      const Divider(),
+                                      Text(
+                                        "Isikan OBJEKTIF Pada Kolom Dibawah Ini :",
+                                        style: blackTextStyle,
+                                      ),
+                                      FormWidget.textArea(
+                                          maxLines: 3,
+                                          enabled: true,
+                                          validator: (value) => value == ''
+                                              ? "Tidak boleh kosong"
+                                              : null,
+                                          controller: _objektifController),
+                                      const Divider(),
+                                      Text(
+                                        "Isikan ASESMEN Pada Kolom Dibawah Ini :",
+                                        style: blackTextStyle,
+                                      ),
+                                      FormWidget.textArea(
+                                          maxLines: 3,
+                                          enabled: true,
+                                          validator: (value) => value == ''
+                                              ? "Tidak boleh kosong"
+                                              : null,
+                                          controller: _asesmenController),
+                                      const Divider(),
+                                      Text(
+                                        "Isikan PLAN Pada Kolom Dibawah Ini :",
+                                        style: blackTextStyle,
+                                      ),
+                                      FormWidget.textArea(
+                                          maxLines: 3,
+                                          enabled: true,
+                                          validator: (value) => value == ''
+                                              ? "Tidak boleh kosong"
+                                              : null,
+                                          controller: _planController),
+                                      const Divider(),
+                                      Text(
+                                        "Isikan Instruksi PPA Pada Kolom Dibawah  :",
+                                        style: blackTextStyle,
+                                      ),
+                                      FormWidget.textArea(
+                                          maxLines: 3,
+                                          enabled: true,
+                                          controller: _ppaController),
+                                      const Divider(),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      color: Colors.transparent,
-                    );
+                        color: Colors.transparent);
                   }
                 : null,
             // =================== >
@@ -327,16 +328,18 @@ class _CpptWidgetBangsalState extends State<CpptWidgetNoExpandedBangsal> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  Container(
+                    margin: EdgeInsets.only(right: 5.sp, left: 5.sp),
                     child: Table(
                       columnWidths: const {
-                        0: FlexColumnWidth(0.2),
+                        0: FlexColumnWidth(0.4),
                       },
                       border: TableBorder.all(color: Colors.black),
                       children: [
                         TableRow(children: [
                           TitleWidget.headerTitle(title: "No"),
                           TitleWidget.headerTitle(title: "Bagian"),
+                          TitleWidget.headerTitle(title: "User"),
                           TitleWidget.headerTitle(title: "Tanggal"),
                           TitleWidget.headerTitle(title: "Subjectif"),
                           TitleWidget.headerTitle(title: "Objectif"),
@@ -348,8 +351,6 @@ class _CpptWidgetBangsalState extends State<CpptWidgetNoExpandedBangsal> {
                       ],
                     ),
                   ),
-
-                  // ...state.getResult.fold(() => SizedBox(), (a) => a.fold((l) => Container(), (r) => Container))
                   state.getResult.fold(
                       () => Container(),
                       (a) => a.fold(
@@ -366,10 +367,12 @@ class _CpptWidgetBangsalState extends State<CpptWidgetNoExpandedBangsal> {
                                   children: result
                                       .asMap()
                                       .entries
-                                      .map((e) => SizedBox(
+                                      .map((e) => Container(
+                                            padding: EdgeInsets.only(
+                                                right: 5.sp, left: 5.sp),
                                             child: Table(
                                               columnWidths: const {
-                                                0: FlexColumnWidth(0.2),
+                                                0: FlexColumnWidth(0.4),
                                               },
                                               border: TableBorder.all(
                                                   color: Colors.black),
@@ -381,7 +384,10 @@ class _CpptWidgetBangsalState extends State<CpptWidgetNoExpandedBangsal> {
                                                   TitleWidget.contentTitle(
                                                       title: e.value.bagian),
                                                   TitleWidget.contentTitle(
-                                                      title: e.value.tanggal),
+                                                      title: e.value.ppa),
+                                                  TitleWidget.contentTitle(
+                                                      title:
+                                                          "${e.value.tanggal}\n${e.value.insertDttm.substring(11, 19)}"),
                                                   TitleWidget.contentTitle(
                                                       title: e.value.subjektif),
                                                   TitleWidget.contentTitle(
@@ -396,12 +402,12 @@ class _CpptWidgetBangsalState extends State<CpptWidgetNoExpandedBangsal> {
                                                   Padding(
                                                     padding:
                                                         EdgeInsets.all(1.sp),
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
+                                                    child: Wrap(
+                                                      runAlignment:
+                                                          WrapAlignment
                                                               .spaceAround,
                                                       crossAxisAlignment:
-                                                          CrossAxisAlignment
+                                                          WrapCrossAlignment
                                                               .center,
                                                       children: [
                                                         ElevatedButton(
@@ -416,7 +422,6 @@ class _CpptWidgetBangsalState extends State<CpptWidgetNoExpandedBangsal> {
                                                                         .dangerColor),
                                                             onPressed: () {
                                                               // TAMPILKAN PESAN EDIT
-
                                                               CustomDialogWidget
                                                                   .getDialog(
                                                                       widget:
@@ -443,12 +448,14 @@ class _CpptWidgetBangsalState extends State<CpptWidgetNoExpandedBangsal> {
                                                                     ThemeColor
                                                                         .greenColor),
                                                             onPressed: () {
-                                                              // UBAH DATA
+                                                              // UBAH DATA ----
                                                               CustomDialogWidget.getDialog(
                                                                   widget: CPPTEditContentPasienWidget(
+                                                                      key: const Key(
+                                                                          "1"),
                                                                       ppa: e
                                                                           .value
-                                                                          .ppa,
+                                                                          .instruksiPpa,
                                                                       asesmen: e
                                                                           .value
                                                                           .asesmen,

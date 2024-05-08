@@ -98,6 +98,7 @@ class _PenmedikLaborWidgetState extends State<PenmedikLaborWidget> {
                                 .read<AsesmenIgdBloc>()
                                 .add(const AsesmenIgdEvent.clearPemeriksaan());
                             return shouldPop ?? false;
+                            // ignore: empty_catches
                           } catch (e) {}
                         })));
           },

@@ -58,7 +58,6 @@ class _InputTindakLanjuPerinaPageState
 
     return BlocConsumer<AsesmenBayiBloc, AsesmenBayiState>(
       listener: (context, state) {
-        // TODO: implement listener
         if (state.status == AsesmenBayiStatus.isLoadingSave) {
           EasyLoading.show();
         }

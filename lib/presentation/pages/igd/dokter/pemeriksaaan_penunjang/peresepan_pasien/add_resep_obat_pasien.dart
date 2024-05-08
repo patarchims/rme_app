@@ -13,9 +13,9 @@ import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
 class AddResepObatPasienWidget extends StatefulWidget {
   final KTaripObatModel kTaripObatModel;
   const AddResepObatPasienWidget({
-    Key? key,
+    super.key,
     required this.kTaripObatModel,
-  }) : super(key: key);
+  });
 
   @override
   State<AddResepObatPasienWidget> createState() =>

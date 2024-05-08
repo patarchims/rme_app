@@ -11,9 +11,9 @@ import 'package:hms_app/presentation/component/component.dart';
 class OnDeletePengobatanDirumahWidget extends StatelessWidget {
   final RiwayatPengobatanDirumahModel riwayatPengobatanDirumahModel;
   const OnDeletePengobatanDirumahWidget({
-    Key? key,
+    super.key,
     required this.riwayatPengobatanDirumahModel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -13,8 +13,8 @@ import '../../../../../../domain/bloc/dashboard/informasi_medis/informasi_medis_
 
 class TerapiSearchWidget extends StatefulWidget {
   const TerapiSearchWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<TerapiSearchWidget> createState() =>
@@ -80,7 +80,7 @@ class _RiwayatSekarangSearchWidgetState extends State<TerapiSearchWidget> {
           builder: (context, state) {
             log(state.toString());
             return Expanded(
-                child: Container(
+                child: SizedBox(
               child: ListView(
                 children: (state.terapi.isNotEmpty)
                     ? state.terapi
@@ -106,7 +106,7 @@ class _RiwayatSekarangSearchWidgetState extends State<TerapiSearchWidget> {
                                 subtitle: Text(e.kdBagian),
                                 trailing: IconButton(
                                     onPressed: () {},
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.add,
                                       color: Colors.black,
                                     )),

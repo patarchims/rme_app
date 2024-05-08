@@ -132,7 +132,7 @@ class _CpptWidgetState extends State<CpptWidget> {
                                         waktu: waktu,
                                         ppa: _ppa.text,
                                         deviceID:
-                                            "ID - ${data['id']} - ${data['device']}}",
+                                            "ID-${data['id']}-${data['device']}",
                                         kelompok: (authState.user.person ==
                                                 Person.dokter)
                                             ? "Dokter"

@@ -226,7 +226,6 @@ class _AsesmenPasienPageWidgetState extends State<AsesmenPasienPageWidget> {
 
                                 SizedBox(height: 15.sp),
 
-                                // TODO : TAMPILKAN LAPORAN
                                 Container(
                                   width: Get.width,
                                   padding: const EdgeInsets.all(8.0),
@@ -242,7 +241,6 @@ class _AsesmenPasienPageWidgetState extends State<AsesmenPasienPageWidget> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
-                                // TODO: LAMPIRKAN LAPORAN DISINI
                                 if (authState is Authenticated) ...[
                                   // TAMPILKAN PILIHAN // UNTUK MEDIS DOKTER
                                   SelectionButton(

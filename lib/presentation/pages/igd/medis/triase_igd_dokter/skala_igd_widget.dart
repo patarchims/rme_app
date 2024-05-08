@@ -189,7 +189,6 @@ class _SkalaNyeriIGDWidgetState extends State<SkalaNyeriIGDWidget> {
     return BlocConsumer<TriaseBloc, TriaseState>(
       listener: (context, state) {
         // =========== ============= //
-        // TODO: implement listener
         if (state.isLoadingSaveSkalaTriase) {
           EasyLoading.show();
         }
@@ -269,7 +268,7 @@ class _SkalaNyeriIGDWidgetState extends State<SkalaNyeriIGDWidget> {
                         statusAlergiDetail: state.statusAlergiDetail,
                         person: toPerson(person: authState.user.person),
                         userID: authState.user.userId,
-                        deviceID: "ID - ${data['id']} - ${data['device']}}",
+                        deviceID: "ID-${data['id']}-${data['device']}",
                         pelayanan: toPelayanan(
                             poliklinik: authState.user.poliklinik)));
                   }

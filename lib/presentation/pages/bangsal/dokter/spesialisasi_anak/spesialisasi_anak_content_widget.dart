@@ -55,7 +55,6 @@ class SpesialisasiAnakContentWidget extends StatelessWidget {
         },
         children: menuBangsalDokterAnak.asMap().entries.map((e) {
           // TAMPILKAN KELUHAN UTAMA KHUSU DOKTER ANAK
-          // TODO : DOKTER ANAK MEDS
           if (e.key == 0) {
             return const AnamnesaSpesialisAnakContentWidget();
           }
@@ -65,7 +64,6 @@ class SpesialisasiAnakContentWidget extends StatelessWidget {
           }
 
           if (e.key == 1) {
-            // TAMPILKAN CONTENT SPESIALIS PENYAKIT DALAM
             return const VitalAnakViewWidget();
           }
 

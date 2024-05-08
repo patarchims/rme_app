@@ -47,7 +47,6 @@ class _PeresepanPasienWidgetState extends State<PeresepanPasienWidget> {
 
     return BlocConsumer<ResepBloc, ResepState>(
       listener: (context, state) {
-        // TODO: implement listener
         if (state.status == ResepStatus.isLoadingSaveResep) {
           EasyLoading.show();
         }
@@ -108,7 +107,7 @@ class _PeresepanPasienWidgetState extends State<PeresepanPasienWidget> {
                       noRM: singlePasien.first.mrn,
                       catatan: state.informasiResep,
                       keterangan: state.informasiResep,
-                      deviceID: "ID - ${data['id']} - ${data['device']}",
+                      deviceID: "ID-${data['id']}-${data['device']}",
                       namaUser: authState.user.nama,
                       selectionResep: state.ktaripObatSelection));
                 }

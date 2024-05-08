@@ -29,9 +29,9 @@ import 'package:hms_app/presentation/component/alert/alert.dart';
 import 'package:hms_app/presentation/component/fonts/font_helper.dart';
 
 class OdontogramWidget extends StatefulWidget {
-  OdontogramWidget({
-    Key? key,
-  }) : super(key: key);
+  const OdontogramWidget({
+    super.key,
+  });
 
   @override
   State<OdontogramWidget> createState() => _OdontogramWidgetState();
@@ -43,7 +43,7 @@ class _OdontogramWidgetState extends State<OdontogramWidget> {
   late List<OdontogramModel> odontogramList;
   late TextEditingController _valueController;
   late String seletedItem = "";
-  KategoriGigi? kategoriGigi = KategoriGigi.Dewasa;
+  KategoriGigi? kategoriGigi = KategoriGigi.dewasa;
   String ondogram = "";
   late List<String> value;
   int selectedNumber = listGigiModelUser.first.numberGigi;
@@ -69,7 +69,7 @@ class _OdontogramWidgetState extends State<OdontogramWidget> {
 
     final result = await ImageGallerySaver.saveImage(bytes, name: name);
 
-    log("RESULT " + result['filePath'].toString() + name);
+    log("RESULT ${result['filePath']}$name");
 
     return result['filePath'];
   }
@@ -141,11 +141,11 @@ class _OdontogramWidgetState extends State<OdontogramWidget> {
 
     if (singlePasien.first.usia >= 17) {
       setState(() {
-        kategoriGigi = KategoriGigi.Dewasa;
+        kategoriGigi = KategoriGigi.dewasa;
       });
     } else {
       setState(() {
-        kategoriGigi = KategoriGigi.Remaja;
+        kategoriGigi = KategoriGigi.remaja;
       });
     }
 
@@ -203,8 +203,6 @@ class _OdontogramWidgetState extends State<OdontogramWidget> {
 
         return HeaderContentWidget(
             onPressed: () async {
-              // TODO:
-              // LAKUKAN SIMPAN DATA DISINI
               context
                   .read<OdontogramBloc>()
                   .add(const OdontogramEvent.startLoading());
@@ -242,7 +240,7 @@ class _OdontogramWidgetState extends State<OdontogramWidget> {
                         children: [
                           // TAMPILKAN GIGI DISINI
                           // GIGI PERTAMA
-                          if (kategoriGigi == KategoriGigi.Dewasa) ...[
+                          if (kategoriGigi == KategoriGigi.dewasa) ...[
                             Container(
                                 color: Colors.white,
                                 child: Row(
@@ -305,7 +303,7 @@ class _OdontogramWidgetState extends State<OdontogramWidget> {
                                             ))
                                         .toList())),
                           ],
-                          if (kategoriGigi == KategoriGigi.Remaja) ...[
+                          if (kategoriGigi == KategoriGigi.remaja) ...[
                             Container(
                                 color: Colors.white,
                                 child: Row(
@@ -319,7 +317,7 @@ class _OdontogramWidgetState extends State<OdontogramWidget> {
                                             ))
                                         .toList())),
                           ],
-                          if (kategoriGigi == KategoriGigi.Dewasa) ...[
+                          if (kategoriGigi == KategoriGigi.dewasa) ...[
                             Container(
                                 color: Colors.white,
                                 child: Row(
@@ -333,7 +331,7 @@ class _OdontogramWidgetState extends State<OdontogramWidget> {
                                             ))
                                         .toList())),
                           ],
-                          if (kategoriGigi == KategoriGigi.Dewasa) ...[
+                          if (kategoriGigi == KategoriGigi.dewasa) ...[
                             Container(
                                 color: Colors.white,
                                 child: Row(
@@ -347,7 +345,7 @@ class _OdontogramWidgetState extends State<OdontogramWidget> {
                                             ))
                                         .toList())),
                           ],
-                          if (kategoriGigi == KategoriGigi.Remaja) ...[
+                          if (kategoriGigi == KategoriGigi.remaja) ...[
                             Container(
                                 color: Colors.white,
                                 child: Row(
@@ -411,7 +409,7 @@ class _OdontogramWidgetState extends State<OdontogramWidget> {
                                             ))
                                         .toList())),
                           ],
-                          if (kategoriGigi == KategoriGigi.Remaja) ...[
+                          if (kategoriGigi == KategoriGigi.remaja) ...[
                             Container(
                                 color: Colors.white,
                                 child: Row(
@@ -472,7 +470,7 @@ class _OdontogramWidgetState extends State<OdontogramWidget> {
                                             ))
                                         .toList())),
                           ],
-                          if (kategoriGigi == KategoriGigi.Dewasa) ...[
+                          if (kategoriGigi == KategoriGigi.dewasa) ...[
                             Container(
                                 color: Colors.white,
                                 child: Row(
@@ -534,7 +532,7 @@ class _OdontogramWidgetState extends State<OdontogramWidget> {
                                             ))
                                         .toList())),
                           ],
-                          if (kategoriGigi == KategoriGigi.Remaja) ...[
+                          if (kategoriGigi == KategoriGigi.remaja) ...[
                             Container(
                                 color: Colors.white,
                                 child: Row(
@@ -595,19 +593,11 @@ class _OdontogramWidgetState extends State<OdontogramWidget> {
                                                         decoration: BoxDecoration(
                                                             border: Border.all(
                                                                 width:
-                                                                    (seletedItem ==
-                                                                            e)
-                                                                        ? 3.sp
-                                                                        : 0,
-                                                                color: (seletedItem ==
-                                                                        e)
-                                                                    ? Colors
-                                                                        .green
-                                                                    : Colors
-                                                                        .transparent),
-                                                            image: DecorationImage(
-                                                                image: AssetImage(
-                                                                    "assets/odon/${e.imageUrl}.png"))),
+                                                                    // ignore: unrelated_type_equality_checks
+                                                                    (seletedItem == e) ? 3.sp : 0,
+                                                                // ignore: unrelated_type_equality_checks
+                                                                color: (seletedItem == e) ? Colors.green : Colors.transparent),
+                                                            image: DecorationImage(image: AssetImage("assets/odon/${e.imageUrl}.png"))),
                                                       ),
                                                       SizedBox(
                                                         width: 30.sp,
@@ -663,7 +653,7 @@ class _OdontogramWidgetState extends State<OdontogramWidget> {
                 "DEWASA",
                 style: blackCalibriTextStyle,
               ),
-              value: KategoriGigi.Dewasa,
+              value: KategoriGigi.dewasa,
               activeColor: Colors.black,
               groupValue: kategoriGigi,
               onChanged: (value) {
@@ -680,7 +670,7 @@ class _OdontogramWidgetState extends State<OdontogramWidget> {
                 "REMAJA",
                 style: blackCalibriTextStyle,
               ),
-              value: KategoriGigi.Remaja,
+              value: KategoriGigi.remaja,
               activeColor: Colors.black,
               groupValue: kategoriGigi,
               onChanged: (value) {

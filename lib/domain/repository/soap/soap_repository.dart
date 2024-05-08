@@ -17,7 +17,6 @@ import '../../models/asesment_keb_edukasi/assement_rawat_jalan_dokter_model.dart
 import '../../models/soap/medis/anamnesa_igd_model.dart';
 
 abstract class SoapRepository {
-  // UNTUK MENYIMPAN DATA INFORMASI MEDIS
   Future<Either<ApiFailureResult, ApiSuccessResult>> saveInformasiMedis({
     required String noReg,
     required String kdBagian,
@@ -70,7 +69,6 @@ abstract class SoapRepository {
     required String alasanOpname,
     required String konsulKe,
     required String prognosis,
-    // PENAMBAHAN DATA USER ID, DEVICE ID,
     required String person,
     required String userID,
     required String deviceID,

@@ -21,33 +21,35 @@ class CpptContentWidgetPage extends StatelessWidget {
     if (AppConstant.appSetup == AppSetup.rsVitaInSani) {
       return const Expanded(child: CpptWidgetNoExpandedBangsal());
     } else {
-      return TabbarHeaderContentWidget(
-          backgroundColor: ThemeColor.bgColor,
-          menu: menu,
-          onTap: (index) {
-            if (index == 0) {
-              context
-                  .read<CpptSbarBangsalBloc>()
-                  .add(OnGetCpptBangsal(noReg: singlePasien.first.noreg));
-            }
+      return Expanded(
+        child: TabbarHeaderContentWidget(
+            backgroundColor: ThemeColor.bgColor,
+            menu: menu,
+            onTap: (index) {
+              if (index == 0) {
+                context
+                    .read<CpptSbarBangsalBloc>()
+                    .add(OnGetCpptBangsal(noReg: singlePasien.first.noreg));
+              }
 
-            if (index == 1) {
-              context
-                  .read<CpptSbarBangsalBloc>()
-                  .add(OnGetCpptBangsal(noReg: singlePasien.first.noreg));
-            }
-          },
-          children: menu.asMap().entries.map((e) {
-            if (e.key == 0) {
-              return const CpptWidgetNoExpandedBangsal();
-            }
+              if (index == 1) {
+                context
+                    .read<CpptSbarBangsalBloc>()
+                    .add(OnGetCpptBangsal(noReg: singlePasien.first.noreg));
+              }
+            },
+            children: menu.asMap().entries.map((e) {
+              if (e.key == 0) {
+                return const CpptWidgetNoExpandedBangsal();
+              }
 
-            if (e.key == 1) {
-              return const CpptSBARBansalWidget();
-            }
+              if (e.key == 1) {
+                return const CpptSBARBansalWidget();
+              }
 
-            return Container();
-          }).toList());
+              return Container();
+            }).toList()),
+      );
     }
   }
 }

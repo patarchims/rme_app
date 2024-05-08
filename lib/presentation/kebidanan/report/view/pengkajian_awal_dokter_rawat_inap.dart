@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:hms_app/core/api/api_db.dart';
 import 'package:hms_app/domain/bloc/dashboard/pasien/pasien_bloc.dart';
 import 'package:hms_app/domain/bloc/report/report_bloc.dart';
-import 'package:hms_app/domain/bloc/user/auth/auth_bloc.dart';
 import 'package:hms_app/presentation/component/component.dart';
 import 'package:hms_app/presentation/component/extenstion/date_helper.dart';
 import 'package:hms_app/presentation/component/loading/loading.dart';
@@ -31,7 +30,6 @@ class _ReportPengkajianAwalKebidananRawatInapState
 
     final singlePasien = pasienState.listPasienModel
         .where((element) => element.mrn == pasienState.normSelected);
-    AuthState authState = context.watch<AuthBloc>().state;
 
     return BlocBuilder<ReportBloc, ReportState>(
       builder: (context, state) {
@@ -709,93 +707,87 @@ class _ReportPengkajianAwalKebidananRawatInapState
                                       Padding(
                                         padding: EdgeInsets.all(2.sp),
                                         child: Column(
-                                          children: state
-                                              .reportPengkajianAwalMedis
-                                              .radiologi
-                                              .map((e) => Container(
-                                                    margin: EdgeInsets.only(
-                                                        right: 10.sp),
-                                                    width: Get.width,
-                                                    decoration:
-                                                        const BoxDecoration(),
-                                                    child: Column(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Container(
-                                                          width: Get.width,
-                                                          decoration:
-                                                              const BoxDecoration(
+                                          children:
+                                              state.reportPengkajianAwalMedis
+                                                  .radiologi
+                                                  .map((e) => Container(
+                                                        margin: EdgeInsets.only(
+                                                            right: 10.sp),
+                                                        width: Get.width,
+                                                        decoration:
+                                                            const BoxDecoration(),
+                                                        child: Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Container(
+                                                              width: Get.width,
+                                                              decoration: const BoxDecoration(
                                                                   color: ThemeColor
                                                                       .greyColor),
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(8.0),
-                                                          child: Text(
-                                                            "${e.namaKelompok} - Tangggal : ${tglIndo(e.tanggal)}",
-                                                            textAlign:
-                                                                TextAlign.start,
-                                                            style:
-                                                                blackTextStyle,
-                                                          ),
-                                                        ),
-                                                        SizedBox(
-                                                          child: Table(
-                                                            border:
-                                                                TableBorder.all(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
+                                                              child: Text(
+                                                                "${e.namaKelompok} - Tangggal : ${tglIndo(e.tanggal)}",
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .start,
+                                                                style:
+                                                                    blackTextStyle,
+                                                              ),
+                                                            ),
+                                                            SizedBox(
+                                                              child: Table(
+                                                                border: TableBorder.all(
                                                                     color: Colors
                                                                         .black),
-                                                            children: [
-                                                              TableRow(
-                                                                  children: [
-                                                                    headerTitle(
-                                                                        title:
-                                                                            "Pemeriksaan : ")
-                                                                  ]),
-                                                              ...e.radiologi
-                                                                  .map((e) =>
-                                                                      TableRow(
-                                                                          children: [
+                                                                children: [
+                                                                  TableRow(
+                                                                      children: [
+                                                                        headerTitle(
+                                                                            title:
+                                                                                "Pemeriksaan : ")
+                                                                      ]),
+                                                                  ...e.radiologi
+                                                                      .map((e) =>
+                                                                          TableRow(children: [
                                                                             textBox(title: e.pemeriksaanDeskripsi)
-                                                                          ]))
-                                                                  .toList(),
-                                                              TableRow(
-                                                                  children: [
-                                                                    headerTitle(
-                                                                        title:
-                                                                            "Uraian : ")
-                                                                  ]),
-                                                              ...e.radiologi
-                                                                  .map((e) =>
-                                                                      TableRow(
-                                                                          children: [
+                                                                          ])),
+                                                                  TableRow(
+                                                                      children: [
+                                                                        headerTitle(
+                                                                            title:
+                                                                                "Uraian : ")
+                                                                      ]),
+                                                                  ...e.radiologi
+                                                                      .map((e) =>
+                                                                          TableRow(children: [
                                                                             textBox(title: e.uraian)
-                                                                          ]))
-                                                                  .toList(),
-                                                              TableRow(
-                                                                  children: [
-                                                                    headerTitle(
-                                                                        title:
-                                                                            "Hasil : ")
-                                                                  ]),
-                                                              ...e.radiologi
-                                                                  .map((e) =>
-                                                                      TableRow(
-                                                                          children: [
-                                                                            textBox(title: e.hasil)
-                                                                          ]))
-                                                                  .toList()
-                                                            ],
-                                                          ),
+                                                                          ])),
+                                                                  TableRow(
+                                                                      children: [
+                                                                        headerTitle(
+                                                                            title:
+                                                                                "Hasil : ")
+                                                                      ]),
+                                                                  ...e.radiologi
+                                                                      .map((e) =>
+                                                                          TableRow(
+                                                                              children: [
+                                                                                textBox(title: e.hasil)
+                                                                              ]))
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ],
                                                         ),
-                                                      ],
-                                                    ),
-                                                  ))
-                                              .toList(),
+                                                      ))
+                                                  .toList(),
                                         ),
                                       ),
 

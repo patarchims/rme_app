@@ -93,7 +93,7 @@ class _RiwayatDanTandaVitalContentState
                           child: Center(
                             child: RadioListTile(
                                 selected: true,
-                                activeColor: Color(0xFF293074),
+                                activeColor: const Color(0xFF293074),
                                 selectedTileColor: ThemeColor.bgColor,
                                 title: Text(
                                   e,

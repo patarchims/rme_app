@@ -270,168 +270,167 @@ class RiwayatKehamilanWidgetPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  ...state.kebidanModel
-                      .asMap()
-                      .entries
-                      .map((e) => Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 5.sp),
-                            child: Column(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.all(1.sp),
-                                  decoration: const BoxDecoration(
-                                      color: ThemeColor.softBlue),
-                                  child: Table(
-                                    columnWidths: const {
-                                      0: FlexColumnWidth(0.5),
-                                      1: FlexColumnWidth(0.5),
-                                      2: FlexColumnWidth(0.5),
-                                      3: FlexColumnWidth(0.5),
-                                      4: FlexColumnWidth(0.5),
-                                      5: FlexColumnWidth(0.5),
-                                      6: FlexColumnWidth(0.6),
-                                      7: FlexColumnWidth(0.5),
-                                      8: FlexColumnWidth(0.5),
-                                      9: FlexColumnWidth(0.5),
-                                      10: FlexColumnWidth(0.5),
-                                      11: FlexColumnWidth(0.5),
-                                    },
-                                    border: TableBorder.all(
-                                        color: Colors.transparent),
+                  ...state.kebidanModel.asMap().entries.map((e) => Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 5.sp),
+                        child: Column(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(1.sp),
+                              decoration: const BoxDecoration(
+                                  color: ThemeColor.softBlue),
+                              child: Table(
+                                columnWidths: const {
+                                  0: FlexColumnWidth(0.5),
+                                  1: FlexColumnWidth(0.5),
+                                  2: FlexColumnWidth(0.5),
+                                  3: FlexColumnWidth(0.5),
+                                  4: FlexColumnWidth(0.5),
+                                  5: FlexColumnWidth(0.5),
+                                  6: FlexColumnWidth(0.6),
+                                  7: FlexColumnWidth(0.5),
+                                  8: FlexColumnWidth(0.5),
+                                  9: FlexColumnWidth(0.5),
+                                  10: FlexColumnWidth(0.5),
+                                  11: FlexColumnWidth(0.5),
+                                },
+                                border:
+                                    TableBorder.all(color: Colors.transparent),
+                                children: [
+                                  TableRow(
                                     children: [
-                                      TableRow(
-                                        children: [
-                                          TableCell(
-                                            child: Center(
-                                              child: Text(
-                                                (e.key + 1).toString(),
-                                                style: blackTextStyle.copyWith(
-                                                    fontSize: 5.sp),
-                                              ),
-                                            ),
+                                      TableCell(
+                                        child: Center(
+                                          child: Text(
+                                            (e.key + 1).toString(),
+                                            style: blackTextStyle.copyWith(
+                                                fontSize: 5.sp),
                                           ),
-                                          TableCell(
-                                            child: Text(
-                                              e.value.tahun,
-                                              style: blackTextStyle.copyWith(
-                                                  fontSize: 5.sp),
-                                            ),
-                                          ),
-                                          TableCell(
-                                            child: Text(
-                                              e.value.tempat,
-                                              style: blackTextStyle.copyWith(
-                                                  fontSize: 5.sp),
-                                            ),
-                                          ),
-                                          TableCell(
-                                            child: Text(
-                                              e.value.umur,
-                                              style: blackTextStyle.copyWith(
-                                                  fontSize: 5.sp),
-                                            ),
-                                          ),
-                                          TableCell(
-                                            child: Text(
-                                              e.value.jenisPersalinan,
-                                              style: blackTextStyle.copyWith(
-                                                  fontSize: 5.sp),
-                                            ),
-                                          ),
-                                          TableCell(
-                                            child: Text(
-                                              e.value.penolong,
-                                              style: blackTextStyle.copyWith(
-                                                  fontSize: 5.sp),
-                                            ),
-                                          ),
-                                          TableCell(
-                                            child: Text(
-                                              e.value.penyulit,
-                                              style: blackTextStyle.copyWith(
-                                                  fontSize: 5.sp),
-                                            ),
-                                          ),
-                                          TableCell(
-                                            child: Text(
-                                              e.value.nifas,
-                                              style: blackTextStyle.copyWith(
-                                                  fontSize: 5.sp),
-                                            ),
-                                          ),
-                                          TableCell(
-                                            child: Text(
-                                              e.value.jk,
-                                              style: blackTextStyle.copyWith(
-                                                  fontSize: 5.sp),
-                                            ),
-                                          ),
-                                          TableCell(
-                                            child: Text(
-                                              e.value.bb,
-                                              style: blackTextStyle.copyWith(
-                                                  fontSize: 5.sp),
-                                            ),
-                                          ),
-                                          TableCell(
-                                            child: Text(
-                                              e.value.keadaanSekarang,
-                                              style: blackTextStyle.copyWith(
-                                                  fontSize: 5.sp),
-                                            ),
-                                          ),
-                                          TableCell(
-                                            child: Center(
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceAround,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  SizedBox(
-                                                    height: 15.sp,
-                                                    width: 15.sp,
-                                                    child: FloatingActionButton(
-                                                      child: const Icon(
-                                                        FontAwesomeIcons.trash,
-                                                        color: Colors.white,
-                                                      ),
-                                                      onPressed: () {
-                                                        CustomDialogWidget
-                                                            .getDialog(
-                                                                widget:
-                                                                    OnDeleteRiwayatKehamilanWidget(
-                                                          kebidanModel: e.value,
-                                                        ));
-                                                      },
-                                                    ),
+                                        ),
+                                      ),
+                                      TableCell(
+                                        child: Text(
+                                          e.value.tahun,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 5.sp),
+                                        ),
+                                      ),
+                                      TableCell(
+                                        child: Text(
+                                          e.value.tempat,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 5.sp),
+                                        ),
+                                      ),
+                                      TableCell(
+                                        child: Text(
+                                          e.value.umur,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 5.sp),
+                                        ),
+                                      ),
+                                      TableCell(
+                                        child: Text(
+                                          e.value.jenisPersalinan,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 5.sp),
+                                        ),
+                                      ),
+                                      TableCell(
+                                        child: Text(
+                                          e.value.penolong,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 5.sp),
+                                        ),
+                                      ),
+                                      TableCell(
+                                        child: Text(
+                                          e.value.penyulit,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 5.sp),
+                                        ),
+                                      ),
+                                      TableCell(
+                                        child: Text(
+                                          e.value.nifas,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 5.sp),
+                                        ),
+                                      ),
+                                      TableCell(
+                                        child: Text(
+                                          e.value.jk,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 5.sp),
+                                        ),
+                                      ),
+                                      TableCell(
+                                        child: Text(
+                                          e.value.bb,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 5.sp),
+                                        ),
+                                      ),
+                                      TableCell(
+                                        child: Text(
+                                          e.value.keadaanSekarang,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 5.sp),
+                                        ),
+                                      ),
+                                      TableCell(
+                                        child: Center(
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              SizedBox(
+                                                height: 15.sp,
+                                                width: 15.sp,
+                                                child: FloatingActionButton(
+                                                  backgroundColor:
+                                                      ThemeColor.redColor,
+                                                  child: const Icon(
+                                                    FontAwesomeIcons.trash,
+                                                    color: Colors.white,
                                                   ),
-                                                  SizedBox(
-                                                    height: 15.sp,
-                                                    width: 15.sp,
-                                                    child: FloatingActionButton(
-                                                      onPressed: () {},
-                                                      child: const Icon(
-                                                        FontAwesomeIcons.pencil,
-                                                        color: Colors.white,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
+                                                  onPressed: () {
+                                                    CustomDialogWidget
+                                                        .getDialog(
+                                                            widget:
+                                                                OnDeleteRiwayatKehamilanWidget(
+                                                      kebidanModel: e.value,
+                                                    ));
+                                                  },
+                                                ),
                                               ),
-                                            ),
+                                              // SizedBox(
+                                              //   height: 15.sp,
+                                              //   width: 15.sp,
+                                              //   child: FloatingActionButton(
+                                              //     backgroundColor:
+                                              //         ThemeColor.primaryColor,
+                                              //     onPressed: () {},
+                                              //     child: const Icon(
+                                              //       FontAwesomeIcons.pencil,
+                                              //       color: Colors.white,
+                                              //     ),
+                                              //   ),
+                                              // ),
+                                            ],
                                           ),
-                                        ],
+                                        ),
                                       ),
                                     ],
                                   ),
-                                ),
-                                const Divider()
-                              ],
+                                ],
+                              ),
                             ),
-                          ))
-                      .toList()
+                            const Divider()
+                          ],
+                        ),
+                      ))
                 ],
               ),
             ),

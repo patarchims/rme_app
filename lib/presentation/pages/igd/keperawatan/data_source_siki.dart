@@ -59,14 +59,7 @@ class SikiDataSource extends DataGridSource {
                     foregroundColor: Colors.white.withOpacity(.1),
                     backgroundColor: Colors.blue.withOpacity(.3),
                     elevation: 0),
-                onPressed: () {
-                  // TODO Tampilkan Detail
-
-                  // CustomDialogWidget.getDialog(
-                  //     widget: DetailPasienWidget(
-                  //   norm: e.value,
-                  // ));
-                },
+                onPressed: () {},
                 child: Text(
                   e.value.toString(),
                   textAlign: TextAlign.center,
@@ -78,7 +71,7 @@ class SikiDataSource extends DataGridSource {
           case "kode":
             return Container(
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Text(
                 e.value.toString(),
                 style: blackTextStyle.copyWith(fontSize: 7.sp),
@@ -88,7 +81,7 @@ class SikiDataSource extends DataGridSource {
           default:
             return Container(
               alignment: Alignment.center,
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Text(
                 e.value.toString(),
                 style: whiteCalibriTextStyle.copyWith(fontSize: 7.sp),

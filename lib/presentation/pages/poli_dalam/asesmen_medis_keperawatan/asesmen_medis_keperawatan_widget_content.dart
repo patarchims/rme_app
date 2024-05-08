@@ -10,9 +10,9 @@ import 'package:hms_app/presentation/pages/poli_dalam/asesmen_medis_keperawatan/
 class AsesmenMedisKeperawatanWidgetContent extends StatelessWidget {
   final List<String> menu;
   const AsesmenMedisKeperawatanWidgetContent({
-    Key? key,
+    super.key,
     required this.menu,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

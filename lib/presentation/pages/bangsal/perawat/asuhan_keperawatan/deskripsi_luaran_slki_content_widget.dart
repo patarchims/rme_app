@@ -184,18 +184,14 @@ class _DeskripsiLuaranSlkiContentWidgetState
         return HeaderContentWidget(
             isENableAdd: true,
             onPressed: () async {
-              // LAKUKAN SIMPAN
-              // LAKUKAN VALIDASI DI SINI
-
               final message = isSave();
 
               if (message == "") {
                 if (authState is Authenticated) {
                   dynamic data = await deviceInfo.initPlatformState();
-                  // _onSaveData
                   // ignore: use_build_context_synchronously
                   context.read<DeskripsiLuaranSlkiBloc>().add(OnSaveDataEvent(
-                      deviceID: "ID - ${data['id']} - ${data['device']}}",
+                      deviceID: "ID-${data['id']}-${data['device']}",
                       noReg: singlePasien.first.noreg,
                       person: toPerson(person: authState.user.person),
                       pelayanan:
@@ -216,7 +212,7 @@ class _DeskripsiLuaranSlkiContentWidgetState
               thumbColor: ThemeColor.darkColor,
               thumbVisibility: true,
               interactive: true,
-              thickness: 5.sp,
+              thickness: 10.sp,
               controller: _scrollController,
               trackVisibility: false,
               radius: Radius.circular(5.sp),
@@ -473,64 +469,62 @@ class _DeskripsiLuaranSlkiContentWidgetState
                                           : blackTextStyle,
                             )),
                             SizedBox(
-                              // height: 25.sp,
-                              width: 65.sp,
-                              child: Row(
-                                children: [
-                                  Container(
-                                    margin:
-                                        EdgeInsets.symmetric(horizontal: 2.sp),
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 10, vertical: 5),
-                                    decoration: BoxDecoration(
-                                        color: ThemeColor.primaryColor,
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    child: DropdownButton<String>(
-                                      dropdownColor: ThemeColor.darkColor,
-                                      value: list.value.waktu.toString(),
-                                      onChanged: (e) {
-                                        context
-                                            .read<DeskripsiLuaranSlkiBloc>()
-                                            .add(OnSelectionWaktuEvent(
-                                                jam: e!,
-                                                indexSLKI: indexSlki.key,
-                                                kategori: kategori,
-                                                kriteriaSlki: list.value
-                                                    .copyWith(
-                                                        waktu: int.parse(e)),
-                                                indexKriteriaSlki: list.key));
-                                      },
-                                      items: ListConstants.waktu
-                                          .map<DropdownMenuItem<String>>(
-                                              (String value) =>
-                                                  DropdownMenuItem<String>(
-                                                    value: value,
-                                                    child: Text(
-                                                      value,
-                                                      style: whiteTextStyle,
-                                                    ),
-                                                  ))
-                                          .toList(),
-                                      icon: const Icon(
-                                        Icons.arrow_drop_down,
-                                        color: ThemeColor.primaryColor,
+                                width: 65.sp,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.symmetric(
+                                          horizontal: 2.sp),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10, vertical: 5),
+                                      decoration: BoxDecoration(
+                                          color: ThemeColor.primaryColor,
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: DropdownButton<String>(
+                                        dropdownColor: ThemeColor.darkColor,
+                                        value: list.value.waktu.toString(),
+                                        onChanged: (e) {
+                                          context
+                                              .read<DeskripsiLuaranSlkiBloc>()
+                                              .add(OnSelectionWaktuEvent(
+                                                  jam: e!,
+                                                  indexSLKI: indexSlki.key,
+                                                  kategori: kategori,
+                                                  kriteriaSlki: list.value
+                                                      .copyWith(
+                                                          waktu: int.parse(e)),
+                                                  indexKriteriaSlki: list.key));
+                                        },
+                                        items: ListConstants.waktu
+                                            .map<DropdownMenuItem<String>>(
+                                                (String value) =>
+                                                    DropdownMenuItem<String>(
+                                                      value: value,
+                                                      child: Text(
+                                                        value,
+                                                        style: whiteTextStyle,
+                                                      ),
+                                                    ))
+                                            .toList(),
+                                        icon: const Icon(
+                                          Icons.arrow_drop_down,
+                                          color: ThemeColor.primaryColor,
+                                        ),
+                                        iconSize: 42,
+                                        underline: const SizedBox(),
                                       ),
-                                      iconSize: 42,
-                                      underline: const SizedBox(),
                                     ),
-                                  ),
-                                  Text(
-                                    "JAM",
-                                    style: blackTextStyle.copyWith(
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  SizedBox(
-                                    width: 5.sp,
-                                  ),
-                                ],
-                              ),
-                            )
+                                    Text(
+                                      "JAM",
+                                      style: blackTextStyle.copyWith(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SizedBox(
+                                      width: 5.sp,
+                                    ),
+                                  ],
+                                ))
                           ],
                         ),
                         children: [

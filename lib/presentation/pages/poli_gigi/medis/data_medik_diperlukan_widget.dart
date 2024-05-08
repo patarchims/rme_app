@@ -246,7 +246,7 @@ class _DataMedikDiperlukanWidgetState extends State<DataMedikDiperlukanWidget> {
                   kebiasaanBuruk: _kebiasaanBurukController.text));
             },
             widget: (state.isLoadingGetResult)
-                ? Container(
+                ? SizedBox(
                     width: Get.width,
                     height: Get.height,
                     child: ShimerLoading.loadingExpandCard(),
@@ -258,7 +258,6 @@ class _DataMedikDiperlukanWidgetState extends State<DataMedikDiperlukanWidget> {
                         children: [
                           golDarah(),
 
-                          // TODO: TEKANAN DARAH
                           pilihanCard(
                               color: ThemeColor.lightGrey,
                               title: "Tekanan Darah",
@@ -269,7 +268,6 @@ class _DataMedikDiperlukanWidgetState extends State<DataMedikDiperlukanWidget> {
                               },
                               controller: _tDarahController),
 
-                          // TODO : PENYAKIT JANTUNG
                           pilihanCard(
                               color: ThemeColor.bgColor,
                               title: "Penyakit Jantung",
@@ -280,7 +278,6 @@ class _DataMedikDiperlukanWidgetState extends State<DataMedikDiperlukanWidget> {
                               },
                               controller: _pJantungController),
 
-                          // TODO : DIABETES
                           pilihanCard(
                               groupValue: diabetesValue,
                               color: ThemeColor.lightGrey,
@@ -291,7 +288,6 @@ class _DataMedikDiperlukanWidgetState extends State<DataMedikDiperlukanWidget> {
                               },
                               controller: _diabetesController),
 
-                          // TODO : HAEMOPHELIA
                           pilihanCard(
                               groupValue: haemophiliaValue,
                               color: ThemeColor.bgColor,
@@ -302,7 +298,6 @@ class _DataMedikDiperlukanWidgetState extends State<DataMedikDiperlukanWidget> {
                               },
                               controller: _hepatitisController),
 
-                          // TODO : KEBIASAAN BURUK
                           pilihanCard(
                               groupValue: kebiasaanBurukValue,
                               color: ThemeColor.lightGrey,
@@ -313,7 +308,6 @@ class _DataMedikDiperlukanWidgetState extends State<DataMedikDiperlukanWidget> {
                               },
                               controller: _kebiasaanBurukController),
 
-                          // TODO : HEPATITIS
                           pilihanCard(
                               groupValue: hepatitisValue,
                               color: ThemeColor.bgColor,
@@ -324,7 +318,6 @@ class _DataMedikDiperlukanWidgetState extends State<DataMedikDiperlukanWidget> {
                               },
                               controller: _hepatitisController),
 
-                          // TODO : PENYAKIT LAINNYA
                           pilihanCard(
                               groupValue: penyLainValue,
                               color: ThemeColor.bgColor,
@@ -335,7 +328,6 @@ class _DataMedikDiperlukanWidgetState extends State<DataMedikDiperlukanWidget> {
                               },
                               controller: _penyakitLainnnyaController),
 
-                          // TODO : Alergi Obat
                           pilihanCard(
                               groupValue: alergiObatValue,
                               color: ThemeColor.bgColor,
@@ -346,7 +338,6 @@ class _DataMedikDiperlukanWidgetState extends State<DataMedikDiperlukanWidget> {
                               },
                               controller: _alergiObatController),
                           // Alergi Makanan
-                          // TODO : Alergi makanan
                           pilihanCard(
                               groupValue: alergiMakananValue,
                               color: ThemeColor.bgColor,
@@ -367,7 +358,7 @@ class _DataMedikDiperlukanWidgetState extends State<DataMedikDiperlukanWidget> {
   Row golDarah() {
     return Row(
       children: [
-        Container(
+        SizedBox(
           width: Get.width / 5,
           child: Text(
             "Golongan Darah",
@@ -418,7 +409,7 @@ class _DataMedikDiperlukanWidgetState extends State<DataMedikDiperlukanWidget> {
       elevation: 0,
       child: Row(
         children: [
-          Container(
+          SizedBox(
             width: Get.width / 5,
             child: Text(
               title,
@@ -476,7 +467,7 @@ class _DataMedikDiperlukanWidgetState extends State<DataMedikDiperlukanWidget> {
       elevation: 0,
       child: Row(
         children: [
-          Container(
+          SizedBox(
             width: Get.width / 5,
             child: Text(
               title,
@@ -517,7 +508,7 @@ class _DataMedikDiperlukanWidgetState extends State<DataMedikDiperlukanWidget> {
                       maxLines: 1,
                       hinText: "Keterangan",
                     )
-                  : SizedBox()
+                  : const SizedBox()
             ],
           ))
         ],

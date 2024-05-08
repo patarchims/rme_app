@@ -36,10 +36,17 @@ import 'package:hms_app/presentation/component/theme/themes.dart';
 import 'package:hms_app/presentation/hemodialisis/bloc/bhp/bhp_bloc.dart';
 import 'package:hms_app/presentation/kebidanan/bloc/eary_warning_system/early_warning_system_bloc.dart';
 import 'package:hms_app/presentation/kebidanan/bloc/identitas_bayi/indentias_bayi_bloc.dart';
+import 'package:hms_app/presentation/pages/bangsal/bloc/asesmen_intensive/asesmen_intensive_bloc.dart';
 import 'package:hms_app/presentation/pages/bangsal/bloc/asesmen_nyeri/asesmen_nyeri_bloc.dart';
+import 'package:hms_app/presentation/pages/bangsal/bloc/nyeri_anak/asesmen_nyeri_anak_bloc.dart';
+import 'package:hms_app/presentation/pages/bangsal/bloc/pengkajian_anak/pengkajian_awal_anak_keperawatan_bloc.dart';
+import 'package:hms_app/presentation/pages/bangsal/bloc/pengkajian_nutrisi_anak/pengkajian_nutrisi_anak_bloc.dart';
+import 'package:hms_app/presentation/pages/bangsal/bloc/vital_sign_bloc_anak/vital_sign_anak_bloc_bloc.dart';
+import 'package:hms_app/presentation/pages/icu/bloc/asesmen_nyeri_icu/asesmen_nyeri_icu_bloc.dart';
 import 'package:hms_app/presentation/pages/icu/bloc/pemeriksaan_fisik_icu/pemeriksaan_fisik_icu_bloc.dart';
 import 'package:hms_app/presentation/pages/icu/bloc/report_icu/report_icu_bloc.dart';
 import 'package:hms_app/presentation/pages/icu/bloc/riwayat_keperawaan/riwayat_keperawatan_bloc.dart';
+import 'package:hms_app/presentation/pages/icu/bloc/vital_sign_icu/vital_sign_icu_bloc.dart';
 import 'package:hms_app/presentation/perina/bloc/analisa/analisa_bloc.dart';
 import 'package:hms_app/presentation/kebidanan/bloc/diagnosa_kebidanan/diagnosa_kebidanan_bloc.dart';
 import 'package:hms_app/presentation/kebidanan/bloc/kebidanan/kebidanan_bloc.dart';
@@ -81,6 +88,13 @@ class App extends StatelessWidget {
         BlocProvider(create: (_) => ResepBloc()..add(OnGetResepObatEvent())),
         BlocProvider(
             create: (_) => ReportPengkajianKebidananAwalKebidananBloc()),
+        BlocProvider(create: (_) => AsesmenNyeriIcuBloc()),
+        BlocProvider(create: (_) => AsesmenIntensiveBloc()),
+        BlocProvider(create: (_) => AsesmenNyeriAnakBloc()),
+        BlocProvider(create: (_) => PengkajianAwalAnakKeperawatanBloc()),
+        BlocProvider(create: (_) => VitalSignIcuBloc()),
+        BlocProvider(create: (_) => PengkajianNutrisiAnakBloc()),
+        BlocProvider(create: (_) => VitalSignAnakBlocBloc()),
         BlocProvider(create: (_) => PemeriksaanFisikIcuBloc()),
         BlocProvider(create: (_) => RiwayatKeperawatanBloc()),
         BlocProvider(create: (_) => ReportIcuBloc()),

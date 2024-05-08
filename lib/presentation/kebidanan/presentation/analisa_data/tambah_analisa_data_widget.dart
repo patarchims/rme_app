@@ -24,14 +24,12 @@ class _TambahAnalisaDataWidgetState extends State<TambahAnalisaDataWidget> {
 
   @override
   void initState() {
-    // TODO: implement initState
     _dataController = TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _dataController.clear();
     _dataController.dispose();
 
@@ -75,6 +73,14 @@ class _TambahAnalisaDataWidgetState extends State<TambahAnalisaDataWidget> {
                           subTitle: meta.message, title: "Pesan");
 
                       Get.back();
+
+                      // ignore: use_build_context_synchronously
+                      context
+                          .read<AnalisaBloc>()
+                          .add(OnGetDiagnosaKeperawatan());
+                      // ignore: use_build_context_synchronously
+                      context.read<AnalisaBloc>().add(OnGetAnalisaDataEvent(
+                          noReg: singlePasien.first.noreg));
 
                       return shouldPop ?? false;
                     })));

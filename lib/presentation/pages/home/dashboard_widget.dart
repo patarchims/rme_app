@@ -46,9 +46,9 @@ class DashboardWidget extends StatelessWidget {
                   ],
                 )
               ],
-              titlesData: FlTitlesData(),
+              titlesData: const FlTitlesData(),
               maxY: 140,
-              gridData: FlGridData(show: false),
+              gridData: const FlGridData(show: false),
               borderData: FlBorderData(show: false),
             ),
           ),

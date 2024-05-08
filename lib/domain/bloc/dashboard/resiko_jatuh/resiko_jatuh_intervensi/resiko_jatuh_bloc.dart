@@ -195,10 +195,6 @@ class ResikoJatuhBloc extends Bloc<ResikoJatuhEvent, ResikoJatuhState> {
         deviceID: event.deviceID,
         pelayanan: event.pelayanan);
 
-    log("SIMPAN DATA");
-
-    log(saveData.toString());
-
     emit(state.copyWith(
         status: ResikoJatuhStatus.loading,
         resikoJatuh: state.resikoJatuh,

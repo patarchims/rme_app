@@ -20,20 +20,17 @@ class _RiwayatPenyakitTerdahuluTableContentState
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    // ========================
-    Widget _getWidgetForStackedHeaderCell(String title) {
+    Widget getWidgetForStackedHeaderCell(String title) {
       return Container(
           color: Colors.white.withOpacity(0.6),
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -44,7 +41,7 @@ class _RiwayatPenyakitTerdahuluTableContentState
           ));
     }
 
-    List<StackedHeaderRow> _getStackedHeaderRows() {
+    List<StackedHeaderRow> getStackedHeaderRows() {
       List<StackedHeaderRow> stackedHeaderRows;
       stackedHeaderRows = <StackedHeaderRow>[
         StackedHeaderRow(cells: <StackedHeaderCell>[
@@ -53,15 +50,11 @@ class _RiwayatPenyakitTerdahuluTableContentState
             'obat',
             'makanan',
             'lainnya',
-          ], child: _getWidgetForStackedHeaderCell('RIWAYAT PASIEN')),
+          ], child: getWidgetForStackedHeaderCell('RIWAYAT PASIEN')),
         ])
       ];
       return stackedHeaderRows;
     }
-
-    // tandaVitalSource = TandaVitalSource(
-    //   context: context,
-    // );
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(4.sp),
@@ -89,7 +82,7 @@ class _RiwayatPenyakitTerdahuluTableContentState
           headerGridLinesVisibility: GridLinesVisibility.both,
           source: tandaVitalSource,
           columnWidthMode: ColumnWidthMode.fill,
-          stackedHeaderRows: _getStackedHeaderRows(),
+          stackedHeaderRows: getStackedHeaderRows(),
           columns: <GridColumn>[
             gridColumn(name: "no", subTitle: "NO"),
             gridColumn(name: "riwayat", subTitle: "Riwayat Penyakit Terdahulu"),

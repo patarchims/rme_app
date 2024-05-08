@@ -108,7 +108,7 @@ class _AsesmenMedisIGdContentWidgetState
 
               // ignore: use_build_context_synchronously
               context.read<KeluhanUtamaBloc>().add(OnSaveKeluhanUtamaEvent(
-                  deviceID: "ID - ${data['id']} - ${data['device']}}",
+                  deviceID: "ID-${data['id']}-${data['device']}",
                   noRM: singlePasien.first.mrn,
                   noReg: singlePasien.first.noreg,
                   tanggal: DateTime.now().toString().substring(0, 10),
@@ -131,7 +131,8 @@ class _AsesmenMedisIGdContentWidgetState
             radius: Radius.circular(5.sp),
             child: SingleChildScrollView(
               controller: _scrollController,
-              child: SizedBox(
+              child: Container(
+                margin: EdgeInsets.only(right: 10.sp),
                 width: Get.width,
                 child: Card(
                   color: ThemeColor.bgColor,
@@ -237,8 +238,6 @@ class _AsesmenMedisIGdContentWidgetState
                                               padding: EdgeInsets.all(5.sp),
                                               child: FormWidget.textForm(
                                                 onFieldSubmitted: (value) {
-                                                  // TODO : SIMPAN DATA KELUARGA
-
                                                   if (authState
                                                       is Authenticated) {
                                                     context.read<KeluhanUtamaBloc>().add(

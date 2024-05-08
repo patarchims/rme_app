@@ -241,42 +241,13 @@ class _LineChartSample2State extends State<LineChartSample2> {
                 axisSide: meta.axisSide,
                 child: text,
               );
-              // switch (value.toInt()) {
-              //   case 2:
-              //     text = Text('MAR',
-              //         style: whiteTextStyle.copyWith(fontSize: 4.sp));
-              //     break;
-              //   case 5:
-              //     text = Text('JUN',
-              //         style: whiteTextStyle.copyWith(fontSize: 4.sp));
-              //     break;
-              //   case 6:
-              //     text = Text('JUNs',
-              //         style: whiteTextStyle.copyWith(fontSize: 4.sp));
-              //     break;
-              //   case 1:
-              //     text = Text('JUNs',
-              //         style: whiteTextStyle.copyWith(fontSize: 4.sp));
-              //     break;
-              //   case 8:
-              //     text = Text('SEP',
-              //         style: whiteTextStyle.copyWith(fontSize: 4.sp));
-              //     break;
-              //   default:
-              //     text =
-              //         Text('', style: whiteTextStyle.copyWith(fontSize: 4.sp));
-              //     break;
-              // }
-
-              // text = Text('', style: whiteTextStyle.copyWith(fontSize: 4.sp));
             },
           ),
         ),
-        leftTitles: AxisTitles(
+        leftTitles: const AxisTitles(
           sideTitles: SideTitles(
             showTitles: true,
             interval: 15,
-            // getTitlesWidget: leftTitleWidgets,
             reservedSize: 42,
           ),
         ),
@@ -310,7 +281,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
           ),
           barWidth: 5,
           isStrokeCapRound: true,
-          dotData: FlDotData(
+          dotData: const FlDotData(
             show: false,
           ),
           belowBarData: BarAreaData(
@@ -328,34 +299,31 @@ class _LineChartSample2State extends State<LineChartSample2> {
 
   LineChartData avgData({required List<EarlyWarningSystem> early}) {
     return LineChartData(
-      lineTouchData: LineTouchData(enabled: false),
+      lineTouchData: const LineTouchData(enabled: false),
       gridData: FlGridData(
         show: true,
         drawHorizontalLine: true,
         verticalInterval: 1,
         horizontalInterval: 1,
         getDrawingVerticalLine: (value) {
-          return FlLine(
-            color: const Color(0xff37434d),
+          return const FlLine(
+            color: Color(0xff37434d),
             strokeWidth: 1,
           );
         },
         getDrawingHorizontalLine: (value) {
-          return FlLine(
-            color: const Color(0xff37434d),
+          return const FlLine(
+            color: Color(0xff37434d),
             strokeWidth: 1,
           );
         },
       ),
       titlesData: FlTitlesData(
         show: true,
-        bottomTitles: AxisTitles(
+        bottomTitles: const AxisTitles(
           sideTitles: SideTitles(
             showTitles: true,
             reservedSize: 30,
-            // getTitlesWidget: bottomTitleWidgets(
-            //     0, TitleMeta(appliedInterval: sd),
-            //     earlyWarningSystem: early),
             interval: 1,
           ),
         ),
@@ -367,10 +335,10 @@ class _LineChartSample2State extends State<LineChartSample2> {
             interval: 1,
           ),
         ),
-        topTitles: AxisTitles(
+        topTitles: const AxisTitles(
           sideTitles: SideTitles(showTitles: false),
         ),
-        rightTitles: AxisTitles(
+        rightTitles: const AxisTitles(
           sideTitles: SideTitles(showTitles: false),
         ),
       ),
@@ -404,7 +372,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
           ),
           barWidth: 5,
           isStrokeCapRound: true,
-          dotData: FlDotData(
+          dotData: const FlDotData(
             show: false,
           ),
           belowBarData: BarAreaData(

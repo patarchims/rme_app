@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:hms_app/presentation/component/component.dart';
 import 'package:sizer/sizer.dart';
@@ -49,9 +47,6 @@ class TitleWidget {
       ),
     ]);
   }
-
-  
-
 
   static Container titleText(
       {required String title, required String subTitle}) {
@@ -118,7 +113,7 @@ class TitleWidget {
 
   static Container headerTitle({required String title, Color? color}) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 2.sp),
+      padding: EdgeInsets.symmetric(vertical: 2.sp, horizontal: 2.sp),
       decoration: BoxDecoration(color: color ?? Colors.yellow.withOpacity(0.5)),
       child: Center(
         child: Text(
@@ -368,7 +363,7 @@ class TitleWidget {
               child: Text(
                 title,
                 textAlign: TextAlign.left,
-                style: blackTextStyle.copyWith(fontSize: 4.5.sp),
+                style: blackTextStyle.copyWith(fontSize: 6.sp),
               ),
             ),
           ),

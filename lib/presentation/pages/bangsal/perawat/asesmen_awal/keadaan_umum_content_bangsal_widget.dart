@@ -80,7 +80,7 @@ class KeadaanUmumContentBangsalWidget extends StatelessWidget {
                         .add(PemeriksaanFisikEvent.saveKeadaanUmum(
                           person: toPerson(person: authState.user.person),
                           keadaanUmumModel: state.keadaanUmum,
-                          deviceID: "ID - ${data['id']} - ${data['device']}}",
+                          deviceID: "ID-${data['id']}-${data['device']}",
                           pelayanan: toPelayanan(
                               poliklinik: authState.user.poliklinik),
                           noReg: singlePasien.first.noreg,

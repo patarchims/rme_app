@@ -186,7 +186,6 @@ class LibrariRepositoriImpl implements LibrariRepositori {
   @override
   Future<Either<ApiFailureResult, ApiSuccessResult>> getLaborOldDB(
       {required String noreg}) {
-    // TODO: implement getLaborOldDB
     return getIt<MyDio>().postDataWithToken(
       data: DTO.getNoreg(noReg: noreg),
       endPoint: EndPoint.dHasilLaborOldDB,

@@ -66,22 +66,6 @@ class DiagnosaBandingIGDDokterWidget extends StatelessWidget {
             title: "Simpan",
             isENableAdd: false,
             onPressed: null,
-            // onPressed: () async {
-            //   // SIMPAN DATA
-            //   if (authState is Authenticated) {
-            //     dynamic data = await deviceInfo.initPlatformState();
-            //     // ignore: use_build_context_synchronously
-            //     context.read<DiagnosaBandingBloc>().add(
-            //         OnSaveDiagnosaBandingIGD(
-            //             devicesID: "ID - ${data['id']} - ${data['device']}}",
-            //             pelayanan:
-            //                 toPelayanan(poliklinik: authState.user.poliklinik),
-            //             noReg: singlePasien.first.noreg,
-            //             person: toPerson(person: authState.user.person),
-            //             diagnosa: state
-            //                 .diagnosaBandingResponseModel.diagnosaBanding));
-            //   }
-            // },
             widget: SizedBox(
               height: Get.height,
               width: Get.width,

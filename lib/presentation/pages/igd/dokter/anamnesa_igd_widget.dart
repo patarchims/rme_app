@@ -85,7 +85,7 @@ class AnamnesaIGDWidget extends StatelessWidget {
                   context.read<AsesmenIgdBloc>().add(
                       AsesmenIgdEvent.saveAnamnesaIGD(
                           anamnesaIGD: anamnesaIgdModel,
-                          deviceID: "ID - ${data['id']} - ${data['device']}}",
+                          deviceID: "ID-${data['id']}-${data['device']}",
                           pelayanan: "rajal",
                           userID: authState.user.userId,
                           person: "Dokter"));
@@ -96,7 +96,7 @@ class AnamnesaIGDWidget extends StatelessWidget {
                   context.read<AsesmenIgdBloc>().add(
                       AsesmenIgdEvent.saveAnamnesaIGD(
                           anamnesaIGD: anamnesaIgdModel,
-                          deviceID: "ID - ${data['id']} - ${data['device']}}",
+                          deviceID: "ID-${data['id']}-${data['device']}",
                           pelayanan: "rajal",
                           userID: authState.user.userId,
                           person: "Perawat"));

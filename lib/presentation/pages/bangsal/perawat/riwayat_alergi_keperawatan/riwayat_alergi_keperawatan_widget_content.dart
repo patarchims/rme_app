@@ -197,7 +197,6 @@ class _RiwayatAlergiContentWidgetState
                         child: ElevatedButton(
                             onPressed: () {
                               // TAMPILKAN ALERGI OBAT
-                              // TODO : SIMPAN DATA ALERGI OBAT
                               CustomDialogWidget.getDialog(
                                   widget: Container(
                                     width: Get.width / 1.5,
@@ -208,7 +207,6 @@ class _RiwayatAlergiContentWidgetState
                                       children: [
                                         TitleWidget.titleContentWidget(
                                             title: "DAFTAR ALERGI OBAT"),
-
                                         Row(
                                           children: [
                                             Container(
@@ -327,7 +325,6 @@ class _RiwayatAlergiContentWidgetState
                                             ),
                                           ],
                                         ),
-                                        // ======== ========= //
                                       ],
                                     ),
                                   ),
@@ -348,7 +345,6 @@ class _RiwayatAlergiContentWidgetState
                         width: 40.sp,
                         child: ElevatedButton(
                             onPressed: () {
-                              // TODO : SIMPAN DATA ALERGI MAKANAN
                               CustomDialogWidget.getDialog(
                                   widget: Container(
                                     width: Get.width / 1.5,

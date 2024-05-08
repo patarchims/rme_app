@@ -53,12 +53,8 @@ class TandaVitalSource extends DataGridSource {
                           side: const BorderSide(color: Colors.black)),
                       elevation: 0,
                       backgroundColor: ThemeColor.greenColor.withOpacity(0.5)),
-                  onPressed: () {
-                    // TAMPILKAN POP UP UNTUK SUBJECTIVE
-                    // TODO GET HASIL PENUNJANG MEDIK FIRST PADA PENYAKIT DALAM ATAU INTENIST
-                  },
+                  onPressed: () {},
                   child: Text(
-                    // TODO: SOAP NAME
                     "Asesmen",
                     style: whiteCalibriTextStyle.copyWith(
                         fontWeight: FontWeight.bold),
@@ -86,11 +82,7 @@ class TandaVitalSource extends DataGridSource {
                       onPressed: () async {
                         try {
                           // TODO < PLAY audio
-                          // AssetsAudioPlayer().open(
-                          //   Audio("assets/sound/ONLINE.wav"),
-                          // );
                         } catch (t) {
-                          //mp3 unreachable
                           log(t.toString());
                         }
                       },
@@ -115,14 +107,7 @@ class TandaVitalSource extends DataGridSource {
                     foregroundColor: Colors.white.withOpacity(.1),
                     backgroundColor: Colors.yellow.withOpacity(.3),
                     elevation: 0),
-                onPressed: () {
-                  // TAMPILKAN DETAIL PASIEN
-                  // TODO Tampilkan Detail
-                  // CustomDialogWidget.getDialog(
-                  //     widget: DetailPasienWidget(
-                  //   norm: e.value,
-                  // ));
-                },
+                onPressed: () {},
                 child: Text(
                   e.value.toString(),
                   textAlign: TextAlign.center,

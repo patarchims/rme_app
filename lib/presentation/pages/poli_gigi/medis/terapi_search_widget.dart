@@ -13,8 +13,8 @@ import '../../../../../../domain/bloc/dashboard/informasi_medis/informasi_medis_
 
 class TerapiSearchWidget extends StatefulWidget {
   const TerapiSearchWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<TerapiSearchWidget> createState() =>

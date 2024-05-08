@@ -17,9 +17,7 @@ class RencanaPenunangRawatInapDokterWidget extends StatelessWidget {
       onPressed: () {},
       title: "Simpan",
       widget: BlocConsumer<AsesmenIgdBloc, AsesmenIgdState>(
-        listener: (context, state) {
-          // TODO: implement listener
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           return SingleChildScrollView(
             child: SizedBox(

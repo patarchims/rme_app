@@ -23,6 +23,8 @@ samples, guidance on mobile development, and a full API reference.
 IGD
 K302
 
+Dokter iGD
+D0396 => 123456
 
 D0400
 BANGSAL LIEB
@@ -32,6 +34,11 @@ Bangsal lukas
 621
 
 
+
+
 <!-- ICU -->
 
 693
+
+MARIA
+K167

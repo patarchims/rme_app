@@ -101,6 +101,26 @@ abstract class ListConstants {
     "23",
     "24",
   ];
+  static const List<String> gcs = [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+  ];
+  static const List<String> kesadaranManusia = [
+    "",
+    "Composmentis",
+    "Apatis",
+    "Delirium",
+    "Somnolen",
+    "Sopor",
+    "Semi-koma",
+    "Koma Ringan",
+    "Koma"
+  ];
 
   static const List<String> kualitasNyeri = [
     "Nyeri Tumpul",

@@ -11,9 +11,9 @@ import 'package:hms_app/presentation/component/component.dart';
 class OnDeleteCppTContentWidget extends StatelessWidget {
   final int idCppt;
   const OnDeleteCppTContentWidget({
-    Key? key,
+    super.key,
     required this.idCppt,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

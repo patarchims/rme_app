@@ -2,6 +2,7 @@
 class HasilAsuhanKeperawatanModel {
   String hasil;
   String tanggal;
+  String insertDttm;
   String kodeDiagnosa;
   String noDaskep;
   Diagnosa diagnosa;
@@ -12,6 +13,7 @@ class HasilAsuhanKeperawatanModel {
 
   HasilAsuhanKeperawatanModel({
     required this.hasil,
+    required this.insertDttm,
     required this.tanggal,
     required this.bagian,
     required this.perawat,
@@ -24,12 +26,13 @@ class HasilAsuhanKeperawatanModel {
 
   factory HasilAsuhanKeperawatanModel.fromJson(Map<String, dynamic> json) =>
       HasilAsuhanKeperawatanModel(
-        tanggal: json["tanggal"],
+        tanggal: json["tanggal"].toString(),
+        insertDttm: json["insert_dttm"].toString(),
         perawat: Perawat.fromJson(json["perawat"]),
         bagian: Bagian.fromJson(json["bagian"]),
-        hasil: json["hasil"],
-        kodeDiagnosa: json["kode_diagnosa"],
-        noDaskep: json["no_daskep"],
+        hasil: json["hasil"].toString(),
+        kodeDiagnosa: json["kode_diagnosa"].toString(),
+        noDaskep: json["no_daskep"].toString(),
         diagnosa: Diagnosa.fromJson(json["diagnosa"]),
         deskripsiSlki: List<DeskripsiSlki>.from(
             json["deskripsi_slki"].map((x) => DeskripsiSlki.fromJson(x))),
@@ -52,6 +55,7 @@ class HasilAsuhanKeperawatanModel {
   HasilAsuhanKeperawatanModel copyWith({
     String? hasil,
     String? tanggal,
+    String? insertDttm,
     String? kodeDiagnosa,
     String? noDaskep,
     Diagnosa? diagnosa,
@@ -61,6 +65,7 @@ class HasilAsuhanKeperawatanModel {
     List<DeskripsiSiki>? deskripsiSiki,
   }) {
     return HasilAsuhanKeperawatanModel(
+      insertDttm: insertDttm ?? this.insertDttm,
       tanggal: tanggal ?? this.tanggal,
       bagian: bagian ?? this.bagian,
       perawat: perawat ?? this.perawat,
@@ -90,11 +95,11 @@ class Perawat {
   });
 
   factory Perawat.fromJson(Map<String, dynamic> json) => Perawat(
-        idPerawat: json["id_perawat"],
-        nama: json["nama"],
-        alamat: json["alamat"],
-        jenisKelamin: json["jenis_kelamin"],
-        status: json["status"],
+        idPerawat: json["id_perawat"].toString(),
+        nama: json["nama"].toString(),
+        alamat: json["alamat"].toString(),
+        jenisKelamin: json["jenis_kelamin"].toString(),
+        status: json["status"].toString(),
       );
 
   Map<String, dynamic> toJson() => {
@@ -107,7 +112,7 @@ class Perawat {
 }
 
 class DeskripsiSiki {
-  DateTime insertDttm;
+  String insertDttm;
   String noDaskep;
   int idSiki;
   String kodeSiki;
@@ -126,17 +131,17 @@ class DeskripsiSiki {
   });
 
   factory DeskripsiSiki.fromJson(Map<String, dynamic> json) => DeskripsiSiki(
-        insertDttm: DateTime.parse(json["insert_dttm"]),
-        noDaskep: json["no_daskep"],
-        idSiki: json["id_siki"],
-        kodeSiki: json["kode_siki"],
-        namaSiki: json["nama_siki"],
-        kategori: json["kategori"],
-        noUrut: json["no_urut"],
+        insertDttm: json["insert_dttm"].toString(),
+        noDaskep: json["no_daskep"].toString(),
+        idSiki: json["id_siki"] as int,
+        kodeSiki: json["kode_siki"].toString(),
+        namaSiki: json["nama_siki"].toString(),
+        kategori: json["kategori"].toString(),
+        noUrut: json["no_urut"] as int,
       );
 
   Map<String, dynamic> toJson() => {
-        "insert_dttm": insertDttm.toIso8601String(),
+        "insert_dttm": insertDttm,
         "no_daskep": noDaskep,
         "id_siki": idSiki,
         "kode_siki": kodeSiki,

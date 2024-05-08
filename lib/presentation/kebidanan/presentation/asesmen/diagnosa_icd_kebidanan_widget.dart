@@ -40,6 +40,7 @@ class DiagnosaICD10KebidananWidget extends StatelessWidget {
                                 height: 15.sp,
                                 width: 15.sp,
                                 child: FloatingActionButton(
+                                  backgroundColor: ThemeColor.dangerColor,
                                   child: const Icon(
                                     FontAwesomeIcons.trash,
                                     color: Colors.white,
@@ -69,9 +70,9 @@ class DiagnosaICD10KebidananWidget extends StatelessWidget {
         ),
         backgroundColor: ThemeColor.bgColor,
         floatingActionButton: FloatingActionButton(
+          backgroundColor: ThemeColor.primaryColor,
           onPressed: () {
             // ADD RIWAYAT KEHAMILAN
-
             context.read<DiagnosaKebidananBloc>().add(OnGetDiagnosaKebidanan());
             CustomDialogWidget.getDialog(
                 widget: const AddDiagnosaICD10KebidananWidget());

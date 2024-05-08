@@ -110,18 +110,18 @@ class BarChartSample1State extends State<BarChartSample8> {
             reservedSize: 38,
           ),
         ),
-        leftTitles: AxisTitles(
+        leftTitles: const AxisTitles(
           sideTitles: SideTitles(
             reservedSize: 30,
             showTitles: true,
           ),
         ),
-        topTitles: AxisTitles(
+        topTitles: const AxisTitles(
           sideTitles: SideTitles(
             showTitles: false,
           ),
         ),
-        rightTitles: AxisTitles(
+        rightTitles: const AxisTitles(
           sideTitles: SideTitles(
             showTitles: false,
           ),
@@ -137,7 +137,7 @@ class BarChartSample1State extends State<BarChartSample8> {
           Random().nextInt(290).toDouble() + 10,
         ),
       ),
-      gridData: FlGridData(show: false),
+      gridData: const FlGridData(show: false),
     );
   }
 }

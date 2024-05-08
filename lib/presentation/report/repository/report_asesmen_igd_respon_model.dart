@@ -6,7 +6,6 @@ class ReponseReportIgdAsesmenMedis {
   List<Diagnosa> diagnosa;
   Fisik fisik;
   VitalSign vitalSIgn;
-  // TAMBAHKAN DATA PENDUNJANG MEDIK
   List<DPenlabModel> dPenLab;
   List<DRadilogiModel> radiologi;
 
@@ -183,10 +182,10 @@ class Diagnosa {
   });
 
   factory Diagnosa.fromJson(Map<String, dynamic> json) => Diagnosa(
-        diagnosa: json["diagnosa"],
-        description: json["description"],
-        type: json["type"],
-        table: json["table"],
+        diagnosa: json["diagnosa"].toString(),
+        description: json["description"].toString(),
+        type: json["type"].toString(),
+        table: json["table"].toString(),
       );
 
   Map<String, dynamic> toJson() => {
@@ -220,6 +219,15 @@ class Fisik {
   String jalanNafas;
   String sirkulasi;
   String kesadaran;
+  String gigi;
+  String usus;
+  String superior;
+  String inferior;
+  String anus;
+  String abdomenLainnya;
+  String gcsE;
+  String gcsM;
+  String gcsV;
 
   Fisik({
     required this.kepala,
@@ -244,31 +252,50 @@ class Fisik {
     required this.jalanNafas,
     required this.sirkulasi,
     required this.kesadaran,
+    required this.gigi,
+    required this.usus,
+    required this.superior,
+    required this.inferior,
+    required this.anus,
+    required this.abdomenLainnya,
+    required this.gcsE,
+    required this.gcsM,
+    required this.gcsV,
   });
 
   factory Fisik.fromJson(Map<String, dynamic> json) => Fisik(
-      kepala: json["kepala"],
-      mata: json["mata"],
-      tht: json["tht"],
-      mulut: json["mulut"],
-      leher: json["leher"],
-      dada: json["dada"],
-      jantung: json["jantung"],
-      paru: json["paru"],
-      perut: json["perut"],
-      hati: json["hati"],
-      limpa: json["limpa"],
-      ginjal: json["ginjal"],
-      alatKelamin: json["alat_kelamin"],
-      anggotaGerak: json["anggota_gerak"],
-      refleks: json["refleks"],
-      kekuatanOtot: json["kekuatan_otot"],
-      kulit: json["kulit"],
-      getahBening: json["getah_bening"],
-      rtvt: json["rtvt"],
-      jalanNafas: json["jalan_nafas"],
-      sirkulasi: json["sirkulasi"],
-      kesadaran: json["kesadaran"]);
+        gcsE: json["gcs_e"].toString(),
+        gcsM: json["gcs_m"].toString(),
+        gcsV: json["gcs_v"].toString(),
+        abdomenLainnya: json["abdomen_lainnya"].toString(),
+        anus: json["anus"].toString(),
+        inferior: json["inferior"].toString(),
+        superior: json["superior"].toString(),
+        usus: json["usus"].toString(),
+        gigi: json["gigi"].toString(),
+        kepala: json["kepala"].toString(),
+        mata: json["mata"].toString(),
+        tht: json["tht"].toString(),
+        mulut: json["mulut"].toString(),
+        leher: json["leher"].toString(),
+        dada: json["dada"].toString(),
+        jantung: json["jantung"].toString(),
+        paru: json["paru"].toString(),
+        perut: json["perut"].toString(),
+        hati: json["hati"].toString(),
+        limpa: json["limpa"].toString(),
+        ginjal: json["ginjal"].toString(),
+        alatKelamin: json["alat_kelamin"].toString(),
+        anggotaGerak: json["anggota_gerak"].toString(),
+        refleks: json["refleks"].toString(),
+        kekuatanOtot: json["kekuatan_otot"].toString(),
+        kulit: json["kulit"].toString(),
+        getahBening: json["getah_bening"].toString(),
+        rtvt: json["rtvt"].toString(),
+        jalanNafas: json["jalan_nafas"].toString(),
+        sirkulasi: json["sirkulasi"].toString(),
+        kesadaran: json["kesadaran"].toString(),
+      );
 
   Map<String, dynamic> toJson() => {
         "kepala": kepala,
@@ -307,9 +334,9 @@ class Riwayat {
   });
 
   factory Riwayat.fromJson(Map<String, dynamic> json) => Riwayat(
-        tglMasuk: json["tgl_masuk"],
-        keluhUtama: json["keluh_utama"],
-        riwayatSekarang: json["riwayat_sekarang"],
+        tglMasuk: json["tgl_masuk"].toString(),
+        keluhUtama: json["keluh_utama"].toString(),
+        riwayatSekarang: json["riwayat_sekarang"].toString(),
       );
 
   Map<String, dynamic> toJson() => {

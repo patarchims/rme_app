@@ -265,8 +265,6 @@ class InformasiMedisWidget extends StatelessWidget {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(2.sp))),
                           onPressed: () {
-                            // TODO
-                            // GOto Riawyat Pasien
                             context.read<PasienBloc>().add(
                                 PasienEvent.riwayatPasien(
                                     noRM: singlePasien.first.mrn));

@@ -31,7 +31,6 @@ class _VitalSignKeperawatanBangsalWidgetState
     PasienState pasienState = context.watch<PasienBloc>().state;
     final singlePasien = pasienState.listPasienModel
         .where((element) => element.mrn == pasienState.normSelected);
-
     AuthState authState = context.watch<AuthBloc>().state;
 
     return BlocConsumer<TandaVitalKeperawatanBloc, TandaVitalKeperawatanState>(
@@ -39,6 +38,7 @@ class _VitalSignKeperawatanBangsalWidgetState
         if (state.status == TandaVitalKeperawatanStatus.isLoadingSave) {
           EasyLoading.show();
         }
+
         if (state.status != TandaVitalKeperawatanStatus.isLoadingSave) {
           EasyLoading.dismiss();
         }
@@ -78,16 +78,14 @@ class _VitalSignKeperawatanBangsalWidgetState
           isENableAdd: true,
           title: "Simpan",
           onPressed: () async {
-            // TODO SIMPAN DATA
             dynamic data = await deviceInfo.initPlatformState();
-
             if (authState is Authenticated) {
               // ignore: use_build_context_synchronously
               context.read<TandaVitalKeperawatanBloc>().add(
                   OnSaveTandaVitalKeperawatanBangsal(
                       pelayanan:
                           toPelayanan(poliklinik: authState.user.poliklinik),
-                      deviceId: "ID - ${data['id']} - ${data['device']}}",
+                      deviceId: "ID-${data['id']}-${data['device']}",
                       noReg: singlePasien.first.noreg,
                       person: toPerson(person: authState.user.person),
                       tandaVital: state.vitalSignKeperawatanModel));

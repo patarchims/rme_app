@@ -11,9 +11,9 @@ import 'package:hms_app/presentation/kebidanan/repository/diagnosa_response_kebi
 class OnDeleteDiagnosaKebidanan extends StatelessWidget {
   final DiagnosaKebidananResponse diagnosaKebidananResponse;
   const OnDeleteDiagnosaKebidanan({
-    Key? key,
+    super.key,
     required this.diagnosaKebidananResponse,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

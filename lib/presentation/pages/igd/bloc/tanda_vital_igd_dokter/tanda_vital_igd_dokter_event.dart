@@ -15,6 +15,17 @@ class OnGetTandaVitalIGDDokter extends TandaVitalIgdDokterEvent {
   });
 }
 
+class OnGetTandaVitalIGDAnak extends TandaVitalIgdDokterEvent {
+  final String noReg;
+  final String person;
+  final String pelayanan;
+  OnGetTandaVitalIGDAnak({
+    required this.noReg,
+    required this.person,
+    required this.pelayanan,
+  });
+}
+
 class OnGetTandaVitalIGDPerawat extends TandaVitalIgdDokterEvent {
   final String noReg;
   final String person;
@@ -66,6 +77,22 @@ class OnSaveTandaVitalIGDDokter extends TandaVitalIgdDokterEvent {
     required this.person,
     required this.tandaVital,
     required this.pelayanan,
+  });
+}
+
+//====//
+class OnSaveTandaVitalAnak extends TandaVitalIgdDokterEvent {
+  final String noReg;
+  final String person;
+  final String deviceId;
+  final String pelayanan;
+  final TandaVitalIgdDokter tandaVital;
+  OnSaveTandaVitalAnak({
+    required this.noReg,
+    required this.person,
+    required this.deviceId,
+    required this.pelayanan,
+    required this.tandaVital,
   });
 }
 

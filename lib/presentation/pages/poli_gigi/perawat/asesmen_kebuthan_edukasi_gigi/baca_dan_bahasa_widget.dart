@@ -8,9 +8,9 @@ import 'package:hms_app/presentation/component/fonts/font_helper.dart';
 class BacaDanBahasaWidget extends StatelessWidget {
   final String title;
   const BacaDanBahasaWidget({
-    Key? key,
+    super.key,
     required this.title,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

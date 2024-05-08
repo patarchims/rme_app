@@ -8,9 +8,9 @@ import 'package:sizer/sizer.dart';
 class RiwayatRadiologiWidget extends StatelessWidget {
   final String tanggal;
   const RiwayatRadiologiWidget({
-    Key? key,
+    super.key,
     required this.tanggal,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

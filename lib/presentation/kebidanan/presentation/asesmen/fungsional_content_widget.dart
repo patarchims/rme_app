@@ -35,8 +35,6 @@ class _AsesmentFungsionalKebidananWidgetState
 
     return BlocConsumer<KebidananBloc, KebidananState>(
       listener: (context, state) {
-        // TODO: implement listener
-
         if (state.kebidananStatus ==
             KebidananStatus.isLoadingSavePengkajianFungsional) {
           EasyLoading.show(maskType: EasyLoadingMaskType.black);
@@ -87,7 +85,7 @@ class _AsesmentFungsionalKebidananWidgetState
             // ignore: use_build_context_synchronously
             context.read<KebidananBloc>().add(OnSavePengkajianFungsionalEvent(
                 noReg: singlePasien.first.noreg,
-                devicesID: "ID - ${data['id']} - ${data['device']}}",
+                devicesID: "ID-${data['id']}-${data['device']}",
                 f1: state.pengkajianFungsional.f1,
                 f2: state.pengkajianFungsional.f2,
                 f3: state.pengkajianFungsional.f3,
@@ -317,8 +315,6 @@ class _AsesmentFungsionalKebidananWidgetState
                     title: "Aktifitas di Toilet",
                     icon2: IconButton(
                         onPressed: () {
-                          // TODO : SIMPAN DATA ALERGI OBAT
-
                           context
                               .read<KebidananBloc>()
                               .add(OnChangedFungsionalF2(value: mandiri));
@@ -337,8 +333,6 @@ class _AsesmentFungsionalKebidananWidgetState
                         )),
                     icon1: IconButton(
                         onPressed: () {
-                          // TODO : SIMPAN DATA ALERGI OBAT
-
                           context
                               .read<KebidananBloc>()
                               .add(OnChangedFungsionalF2(value: denganBantuan));
@@ -367,8 +361,6 @@ class _AsesmentFungsionalKebidananWidgetState
                         "Berpindah dari kursi roda ke tempat tidur / sebaliknya, termasuk duduk ditempat tidur",
                     icon2: IconButton(
                         onPressed: () {
-                          // TODO : SIMPAN DATA ALERGI OBAT
-
                           context
                               .read<KebidananBloc>()
                               .add(OnChangedFungsionalF3(value: mandiri));
@@ -387,8 +379,6 @@ class _AsesmentFungsionalKebidananWidgetState
                         )),
                     icon1: IconButton(
                         onPressed: () {
-                          // TODO : SIMPAN DATA ALERGI OBAT
-
                           context
                               .read<KebidananBloc>()
                               .add(OnChangedFungsionalF3(value: denganBantuan));
@@ -417,8 +407,6 @@ class _AsesmentFungsionalKebidananWidgetState
                         "Kebersihan diri, mencuci muka, menyisir rambut, mengosok gigi",
                     icon2: IconButton(
                         onPressed: () {
-                          // TODO : SIMPAN DATA ALERGI OBAT
-
                           context
                               .read<KebidananBloc>()
                               .add(OnChangedFungsionalF4(value: mandiri));
@@ -437,8 +425,6 @@ class _AsesmentFungsionalKebidananWidgetState
                         )),
                     icon1: IconButton(
                         onPressed: () {
-                          // TODO : SIMPAN DATA ALERGI OBAT
-
                           context
                               .read<KebidananBloc>()
                               .add(OnChangedFungsionalF4(value: denganBantuan));
@@ -466,8 +452,6 @@ class _AsesmentFungsionalKebidananWidgetState
                     title: "Mandi",
                     icon2: IconButton(
                         onPressed: () {
-                          // TODO : SIMPAN DATA ALERGI OBAT
-
                           context
                               .read<KebidananBloc>()
                               .add(OnChangedFungsionalF5(value: mandiri));
@@ -486,8 +470,6 @@ class _AsesmentFungsionalKebidananWidgetState
                         )),
                     icon1: IconButton(
                         onPressed: () {
-                          // TODO : SIMPAN DATA ALERGI OBAT
-
                           context
                               .read<KebidananBloc>()
                               .add(OnChangedFungsionalF5(value: denganBantuan));
@@ -515,8 +497,6 @@ class _AsesmentFungsionalKebidananWidgetState
                     title: "Berjalan di permukaan datar",
                     icon2: IconButton(
                         onPressed: () {
-                          // TODO : SIMPAN DATA ALERGI OBAT
-
                           context
                               .read<KebidananBloc>()
                               .add(OnChangedFungsionalF6(value: mandiri));
@@ -535,8 +515,6 @@ class _AsesmentFungsionalKebidananWidgetState
                         )),
                     icon1: IconButton(
                         onPressed: () {
-                          // TODO : SIMPAN DATA ALERGI OBAT
-
                           context
                               .read<KebidananBloc>()
                               .add(OnChangedFungsionalF6(value: denganBantuan));
@@ -564,8 +542,6 @@ class _AsesmentFungsionalKebidananWidgetState
                     title: "Naik turun tangga",
                     icon2: IconButton(
                         onPressed: () {
-                          // TODO : SIMPAN DATA ALERGI OBAT
-
                           context
                               .read<KebidananBloc>()
                               .add(OnChangedFungsionalF7(value: mandiri));
@@ -584,8 +560,6 @@ class _AsesmentFungsionalKebidananWidgetState
                         )),
                     icon1: IconButton(
                         onPressed: () {
-                          // TODO : SIMPAN DATA ALERGI OBAT
-
                           context
                               .read<KebidananBloc>()
                               .add(OnChangedFungsionalF7(value: denganBantuan));
@@ -613,8 +587,6 @@ class _AsesmentFungsionalKebidananWidgetState
                     title: "Berpakaian",
                     icon2: IconButton(
                         onPressed: () {
-                          // TODO : SIMPAN DATA ALERGI OBAT
-
                           context
                               .read<KebidananBloc>()
                               .add(OnChangedFungsionalF8(value: mandiri));
@@ -633,8 +605,6 @@ class _AsesmentFungsionalKebidananWidgetState
                         )),
                     icon1: IconButton(
                         onPressed: () {
-                          // TODO : SIMPAN DATA ALERGI OBAT
-
                           context
                               .read<KebidananBloc>()
                               .add(OnChangedFungsionalF8(value: denganBantuan));
@@ -662,8 +632,6 @@ class _AsesmentFungsionalKebidananWidgetState
                     title: "Mengontrol defekasi",
                     icon2: IconButton(
                         onPressed: () {
-                          // TODO : SIMPAN DATA ALERGI OBAT
-
                           context
                               .read<KebidananBloc>()
                               .add(OnChangedFungsionalF9(value: mandiri));
@@ -682,7 +650,6 @@ class _AsesmentFungsionalKebidananWidgetState
                         )),
                     icon1: IconButton(
                         onPressed: () {
-                          // TODO : SIMPAN DATA ALERGI OBAT
                           context
                               .read<KebidananBloc>()
                               .add(OnChangedFungsionalF9(value: denganBantuan));
@@ -710,8 +677,6 @@ class _AsesmentFungsionalKebidananWidgetState
                     title: "Mengontrol Berkemih",
                     icon2: IconButton(
                         onPressed: () {
-                          // TODO : SIMPAN DATA ALERGI OBAT
-
                           context
                               .read<KebidananBloc>()
                               .add(OnChangedFungsionalF10(value: mandiri));
@@ -730,8 +695,6 @@ class _AsesmentFungsionalKebidananWidgetState
                         )),
                     icon1: IconButton(
                         onPressed: () {
-                          // TODO : SIMPAN DATA ALERGI OBAT
-
                           context.read<KebidananBloc>().add(
                               OnChangedFungsionalF10(value: denganBantuan));
                         },

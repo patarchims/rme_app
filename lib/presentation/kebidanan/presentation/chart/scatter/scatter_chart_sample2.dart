@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hms_app/presentation/kebidanan/presentation/resources/app_resources.dart';
@@ -19,28 +17,6 @@ class _ScatterChartSample2State extends State {
   List<int> selectedSpots = [];
 
   PainterType _currentPaintType = PainterType.circle;
-
-  static FlDotPainter _getPaint(PainterType type, double size, Color color) {
-    switch (type) {
-      case PainterType.circle:
-        return FlDotCirclePainter(
-          color: color,
-          radius: size,
-        );
-      case PainterType.square:
-        return FlDotSquarePainter(
-          color: color,
-          size: size * 2,
-          strokeWidth: 0,
-        );
-      case PainterType.cross:
-        return FlDotCrossPainter(
-          color: color,
-          size: size * 2,
-          width: max(size / 5, 2),
-        );
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,16 +58,16 @@ class _ScatterChartSample2State extends State {
                 show: true,
                 drawHorizontalLine: true,
                 checkToShowHorizontalLine: (value) => true,
-                getDrawingHorizontalLine: (value) => FlLine(
+                getDrawingHorizontalLine: (value) => const FlLine(
                   color: AppColors.gridLinesColor,
                 ),
                 drawVerticalLine: true,
                 checkToShowVerticalLine: (value) => true,
-                getDrawingVerticalLine: (value) => FlLine(
+                getDrawingVerticalLine: (value) => const FlLine(
                   color: AppColors.gridLinesColor,
                 ),
               ),
-              titlesData: FlTitlesData(
+              titlesData: const FlTitlesData(
                 show: false,
               ),
               showingTooltipIndicators: selectedSpots,

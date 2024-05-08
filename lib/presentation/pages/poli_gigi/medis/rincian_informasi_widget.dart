@@ -23,7 +23,6 @@ class RincianInformasiWidget extends StatelessWidget {
         },
         widget: BlocConsumer<RincianInformasiBloc, RincianInformasiState>(
           listener: (context, state) {
-            // TODO LISTENER
             state.getfailOrSuccessResult.fold(
                 () => null,
                 (a) => a.fold(

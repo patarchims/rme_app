@@ -87,7 +87,7 @@ class LineChartSample9 extends StatelessWidget {
                     belowBarData: BarAreaData(
                       show: false,
                     ),
-                    dotData: FlDotData(show: false),
+                    dotData: const FlDotData(show: false),
                   ),
                 ],
                 minY: -1.5,
@@ -101,7 +101,7 @@ class LineChartSample9 extends StatelessWidget {
                       reservedSize: 56,
                     ),
                   ),
-                  rightTitles: AxisTitles(
+                  rightTitles: const AxisTitles(
                     sideTitles: SideTitles(showTitles: false),
                   ),
                   bottomTitles: AxisTitles(
@@ -113,7 +113,7 @@ class LineChartSample9 extends StatelessWidget {
                       interval: 1,
                     ),
                   ),
-                  topTitles: AxisTitles(
+                  topTitles: const AxisTitles(
                     sideTitles: SideTitles(showTitles: false),
                   ),
                 ),

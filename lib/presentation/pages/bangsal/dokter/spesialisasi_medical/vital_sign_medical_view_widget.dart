@@ -20,26 +20,7 @@ class VitalSignMedicalViewWidget extends StatelessWidget {
             ? Loading.expandedLoading()
             : HeaderContentWidget(
                 title: "Simpan",
-                onPressed: () async {
-                  // ONPRESS
-                  //========
-                  // dynamic data = await deviceInfo.initPlatformState();
-
-                  // // LAKUKAN SIMPAN DATA  ignore: use_build_context_synchronously
-                  // if (authState is Authenticated) {
-                  //   // ignore: use_build_context_synchronously
-                  //   context.read<PemeriksaanFisikBloc>().add(
-                  //       PemeriksaanFisikEvent.saveVitalSignResult(
-                  //           person: toPerson(person: authState.user.person),
-                  //           userID: authState.user.userId,
-                  //           deviceID: "ID - ${data['id']} - ${data['device']}}",
-                  //           pelayanan: toPelayanan(
-                  //               poliklinik: authState.user.poliklinik),
-                  //           noReg: singlePasien.first.noreg,
-                  //           vitalSignBangsalModel:
-                  //               state.vitalSignBangsalModel));
-                  // }
-                },
+                onPressed: () async {},
                 widget: SingleChildScrollView(
                   child: Card(
                     color: ThemeColor.bgColor,

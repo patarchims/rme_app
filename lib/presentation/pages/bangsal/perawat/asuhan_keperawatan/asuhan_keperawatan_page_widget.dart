@@ -25,13 +25,11 @@ class AsuhanKeperawatanPageWidget extends StatelessWidget {
           return const SelesaiDiagnosaWidget();
         }
 
-        // TODO : TAMPILKAN KELUARAN
         if (state.pilihDiagnosaKeperawatan ==
             PilihDiagnosaKeperawatan.keluaran) {
           return const DeskripsiLuaranSlkiContentWidget();
         }
 
-        // TIDAK LAGI DIGUNAKAN
         if (state.pilihDiagnosaKeperawatan ==
             PilihDiagnosaKeperawatan.intervensi) {
           return const DeskripsiSikiContentWidget();

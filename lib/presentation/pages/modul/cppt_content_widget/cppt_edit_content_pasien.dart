@@ -21,14 +21,14 @@ class CPPTEditContentPasienWidget extends StatefulWidget {
   final String plan;
   final String ppa;
   const CPPTEditContentPasienWidget({
-    Key? key,
+    super.key,
     required this.subjetif,
     required this.id,
     required this.objectif,
     required this.asesmen,
     required this.plan,
     required this.ppa,
-  }) : super(key: key);
+  });
 
   @override
   State<CPPTEditContentPasienWidget> createState() =>
@@ -80,7 +80,6 @@ class _CPPTEditContentPasienWidgetState
         .where((element) => element.mrn == pasienState.normSelected);
     return BlocConsumer<CpptBloc, CpptState>(
       listener: (context, state) {
-        // TODO: implement listener
         if (state.isLoadingSaveCPPT) {
           EasyLoading.show(maskType: EasyLoadingMaskType.black);
         }
@@ -180,10 +179,8 @@ class _CPPTEditContentPasienWidgetState
                       controller: _scrollController,
                       children: [
                         // ===============
-                        Text(
-                          "Isikan SUBJEKTIF Pada Kolom Dibawah Ini :",
-                          style: blackTextStyle,
-                        ),
+                        Text("Isikan SUBJEKTIF Pada Kolom Dibawah Ini :",
+                            style: blackTextStyle),
                         FormWidget.textArea(
                           enabled: true,
                           maxLines: 3,
@@ -225,10 +222,8 @@ class _CPPTEditContentPasienWidgetState
                                 value == '' ? "Tidak boleh kosong" : null,
                             controller: _planController),
                         const Divider(),
-                        Text(
-                          "Isikan Instruksi PPA Pada Kolom Dibawah Ini :",
-                          style: blackTextStyle,
-                        ),
+                        Text("Isikan Instruksi PPA Pada Kolom Dibawah Ini :",
+                            style: blackTextStyle),
                         FormWidget.textArea(
                             maxLines: 2,
                             enabled: true,

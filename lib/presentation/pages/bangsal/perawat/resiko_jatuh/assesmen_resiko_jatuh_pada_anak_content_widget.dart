@@ -71,7 +71,6 @@ class _AsesmenResikoJatuhPadaAnakState
           title: "Simpan",
           onPressed: () async {
             // SIMPAN DATA ASESEMEN RESIKO JATUH ANAK
-
             dynamic data = await deviceInfo.initPlatformState();
 
             if (authState is Authenticated) {

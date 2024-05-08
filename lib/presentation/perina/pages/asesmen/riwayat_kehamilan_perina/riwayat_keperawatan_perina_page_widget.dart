@@ -879,7 +879,6 @@ class _RiwayatKeperawatanPerinaPageWidgetState
                                                                                 .greenColor),
                                                                     onPressed:
                                                                         () {
-                                                                      // TODO: EDIT DATA
                                                                       CustomDialogWidget.getDialog(
                                                                           widget: EditRiwayatKehamilanPerinaPageWidget(
                                                                             riwayatKehamilan:

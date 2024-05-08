@@ -140,7 +140,7 @@ class _PengkajianPersistemPageWidgetState
                       person: toPerson(person: authState.user.person),
                       pelayanan:
                           toPelayanan(poliklinik: authState.user.poliklinik),
-                      deviceID: "ID - ${data['id']} - ${data['device']}}",
+                      deviceID: "ID - ${data['id']} - ${data['device']}",
                       pengkajian: state.penkajianKebidanan.copyWith(
                         aktivitas: state.penkajianKebidanan.aktivitas,
                         bahasaSehari: state.penkajianKebidanan.bahasaSehari,

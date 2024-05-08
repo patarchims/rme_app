@@ -49,8 +49,6 @@ class _PemedikRadiologiWidgetState extends State<PenmedikFisioTerapiWidget> {
 
     return BlocConsumer<AsesmenIgdBloc, AsesmenIgdState>(
       listener: (context, state) {
-        // TODO: implement listener
-
         if (state.loadingSaveFisioterapi) {
           EasyLoading.show();
         }
@@ -84,10 +82,11 @@ class _PemedikRadiologiWidgetState extends State<PenmedikFisioTerapiWidget> {
                       try {
                         MetaModel meta =
                             MetaModel.fromJson(e.value["metadata"]);
+
                         String noLab = e.value["response"]["no_lab"].toString();
 
                         final shouldPop = await Alert.loaded(context,
-                            subTitle: "Nomor  : ${noLab}  ${meta.message}",
+                            subTitle: "Nomor  : $noLab ${meta.message}",
                             title: "Pesan");
 
                         // ignore: use_build_context_synchronously
@@ -95,6 +94,7 @@ class _PemedikRadiologiWidgetState extends State<PenmedikFisioTerapiWidget> {
                             .read<AsesmenIgdBloc>()
                             .add(const AsesmenIgdEvent.clearFisioTerapi());
                         return shouldPop ?? false;
+                        // ignore: empty_catches
                       } catch (e) {}
                     })));
       },
@@ -321,7 +321,7 @@ class _PemedikRadiologiWidgetState extends State<PenmedikFisioTerapiWidget> {
                           jenisPenunjang: "FISIOTHERAPHY",
                           umurPasien: singlePasien.first.umur,
                           noReg: singlePasien.first.noreg,
-                          deviceID: "ID - ${data['id']} - ${data['device']}}",
+                          deviceID: "ID-${data['id']}-${data['device']}",
                           dokterPengirim: authState.user.nama,
                           kdPoli: authState.user.kodePoli,
                           ketPoli: authState.user.poliklinik.name,

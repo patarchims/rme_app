@@ -217,10 +217,6 @@ class DeskripsiLuaranSlkiBloc
       person: event.person,
     );
 
-    log("LAKUKAN SIMPAN DATA ASUHAN KEPERAWATAN");
-
-    // log(saveData.toString());
-
     emit(state.copyWith(
         status: DeskripsiLuaranSlkiStatus.loaded,
         onSaveData: optionOf(saveData)));

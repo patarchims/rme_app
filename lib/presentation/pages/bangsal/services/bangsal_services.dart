@@ -21,6 +21,22 @@ class KeperawatanServices {
         endPoint: "/v1/cppt-sbar-bangsal");
   }
 
+  Future<dynamic> onGetPengkajianNutrisiAnak({
+    required String noreg,
+  }) {
+    return MyDio().getAndToken(
+        data: DTOKeperawatan.onGETCPPTSBAR(noReg: noreg),
+        endPoint: "/v1/pengkajian-nutrisi-anak");
+  }
+
+  Future<dynamic> onGetPengkajianNyeriAnak({
+    required String noreg,
+  }) {
+    return MyDio().getAndToken(
+        data: DTOKeperawatan.onGETCPPTSBAR(noReg: noreg),
+        endPoint: "/v1/pengkajian-nyeri-anak");
+  }
+
   // SAVE ASESMEN IGD DOKTER
   Future<Either<ApiFailureResult, ApiSuccessResult>>
       savePengkajianAwalKeperawatan({
@@ -173,6 +189,30 @@ class KeperawatanServices {
           noReg: noReg,
           deviceID: devicesID,
           person: person),
+    );
+  }
+
+  Future<Either<ApiFailureResult, ApiSuccessResult>>
+      onSavePengkajianNutrisiAnak({
+    required String noReg,
+    required String devicesID,
+    required String nilai1,
+    required String nilai2,
+    required String nilai3,
+    required String nilai4,
+    required int nilai,
+  }) {
+    return MyDio().postDataWithToken(
+      endPoint: "/v1/pengkajian-nutrisi-anak",
+      data: DTOKeperawatan.onSavePengkajianNutrisiAnak(
+        nilai1: nilai1,
+        nilai2: nilai2,
+        nilai3: nilai3,
+        nilai4: nilai4,
+        nilai: nilai,
+        noReg: noReg,
+        deviceID: devicesID,
+      ),
     );
   }
 

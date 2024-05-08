@@ -94,7 +94,7 @@ class _PemeriksaanFisikKebidananContentWidgetState
                 context
                     .read<KebidananBloc>()
                     .add(OnSavePemeriksaanFisikKebidahan(
-                      deviceID: "ID - ${data['id']} - ${data['device']}}",
+                      deviceID: "ID - ${data['id']} - ${data['device']}",
                       person: toPerson(person: authState.user.person),
                       kdBagian: authState.user.bagian,
                       pelayanan:

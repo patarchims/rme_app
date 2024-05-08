@@ -36,8 +36,6 @@ class _ReasessenResikoJatuhPadaAnakContentWidgetState
 
     return BlocConsumer<ResikoJatuhDewasaBloc, ResikoJatuhDewasaState>(
       listener: (context, state) {
-        // TODO: implement listener
-        // === === //
         if (state.status == ResikoJatuhDewasaStatus.isLoadingSave) {
           EasyLoading.show(maskType: EasyLoadingMaskType.black);
         }
@@ -251,9 +249,7 @@ class _ReasessenResikoJatuhPadaAnakContentWidgetState
                     ),
                   ],
 
-                  SizedBox(
-                    height: 20.sp,
-                  )
+                  SizedBox(height: 20.sp),
                 ],
               ),
             ),
