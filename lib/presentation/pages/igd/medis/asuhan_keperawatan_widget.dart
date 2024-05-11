@@ -191,8 +191,6 @@ class AsuhanKeperawatanWidget extends StatelessWidget {
                                       .map((e) => DaskepModel.fromMap(e))
                                       .toList();
 
-                              log("DASKEP MODEL  ${data.asMap()}");
-
                               // GET SIKI
                               SikiModel siki = SikiModel.fromMap(
                                   e.value["response"]["siki"]);

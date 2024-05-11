@@ -412,9 +412,7 @@ class _ReportPengkajianAwalKeperawatanRawatInapPageState
                             ),
                           ),
 
-                          SizedBox(
-                            height: 5.sp,
-                          ),
+                          SizedBox(height: 5.sp),
 
                           Container(
                               color: Colors.white,
@@ -458,6 +456,8 @@ class _ReportPengkajianAwalKeperawatanRawatInapPageState
                                           ),
                                         ),
                                       ]))),
+
+                          //===//
                           Container(
                               color: Colors.white,
                               padding: EdgeInsets.symmetric(horizontal: 5.sp),
@@ -756,6 +756,7 @@ class _ReportPengkajianAwalKeperawatanRawatInapPageState
                                                           .asesmenPerawat
                                                           .sistemEliminasi
                                                           .toUpperCase()),
+
                                                   pemeriksaanFisik(
                                                       title: "MOBILISASI DI TT",
                                                       value: state
@@ -789,6 +790,7 @@ class _ReportPengkajianAwalKeperawatanRawatInapPageState
                                                       value: state.perawat
                                                           .asesmenPerawat.akral
                                                           .toUpperCase()),
+
                                                   pemeriksaanFisik(
                                                       title: "RESPIRATORI",
                                                       value: state
@@ -796,11 +798,13 @@ class _ReportPengkajianAwalKeperawatanRawatInapPageState
                                                           .asesmenPerawat
                                                           .sistemRespiratori
                                                           .toUpperCase()),
+
                                                   pemeriksaanFisik(
                                                       title: "BATUK",
                                                       value: state.perawat
                                                           .asesmenPerawat.batuk
                                                           .toUpperCase()),
+
                                                   pemeriksaanFisik(
                                                       title: "SUARA NAPAS",
                                                       value: state

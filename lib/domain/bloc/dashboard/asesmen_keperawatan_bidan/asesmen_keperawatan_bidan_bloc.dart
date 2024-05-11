@@ -54,6 +54,39 @@ class AsesmenKeperawatanBidanBloc
                     log(e.toString());
                   }));
         },
+        emty: (e) async {
+          // KOSONGKAN DATA
+          emit(state.copyWith(
+              isLoadingSaveAsesmenKeperawatan: false,
+              saveResultAsesmenKeperawatan: none()));
+
+          emit(state.copyWith(
+              getfailOrSuccessResult: none(),
+              getFailOrScuccessCariIntervensi: none(),
+              getFailOrSuccessCariSiki: none(),
+              getFailResultAsuhanKeperawatan: none(),
+              getResultAsesmenKeperawatan: none(),
+              getfailOrSuccessCariSDKI: none(),
+              intervensiSelectionModel: [],
+              isDiagnosa: false,
+              isLoadingAsuhanKeperawatan: false,
+              isLoadingCariSDKI: false,
+              isLoadingGet: false,
+              isLoadingGetAsesmenKeperawatan: false,
+              isLoadingGetSIKI: false,
+              isLoadingIntervensi: false,
+              isLoadingSave: false,
+              isLoadingSaveAsuhanKeperawatan: false,
+              isLoadingSelectionSIKI: false,
+              saveOrSuccessResult: none(),
+              selectedKeluaran: "",
+              saveResultAsuhanKeperawatan: none(),
+              deskripsiSiki: [],
+              intervesiModel: [],
+              isLoadingSaveAsesmenKeperawatan: false,
+              saveResultAsesmenKeperawatan: none()));
+        },
+
         saveAsesmenKeperawatan: (e) async {
           // SAVE ASESMEN KEPERAWATAN BIDAN
           emit(state.copyWith(
@@ -122,8 +155,6 @@ class AsesmenKeperawatanBidanBloc
           // ======= GET DATA
           final data = await asesmenRespository.getAsuhanKeperawatanBidan(
               noReg: e.noReg);
-
-          log(data.toString());
 
           await Future.delayed(const Duration(seconds: 1));
 

@@ -43,9 +43,26 @@ class _ResumeContentWidgetState extends State<ResumeContentWidget> {
                   child: (state.status == HasilAsuhanStatus.loading)
                       ? Loading.expandedLoading()
                       : (state.status == HasilAsuhanStatus.emty)
-                          ? EmtyScren(
-                              subTitle: "Data kosong",
-                              textStyle: blackTextStyle)
+                          ? Center(
+                              child: Container(
+                                margin: EdgeInsets.all(10.sp),
+                                width: Get.width,
+                                height: 200.sp,
+                                child: Card(
+                                  elevation: 1.sp,
+                                  shape: RoundedRectangleBorder(
+                                    side: const BorderSide(color: Colors.black),
+                                    borderRadius: BorderRadius.circular(2.sp),
+                                  ),
+                                  margin: EdgeInsets.only(top: 5.sp),
+                                  color:
+                                      ThemeColor.primaryColor.withOpacity(0.4),
+                                  child: EmtyScren(
+                                      subTitle: "Data kosong",
+                                      textStyle: blackTextStyle),
+                                ),
+                              ),
+                            )
                           : (state.status == HasilAsuhanStatus.loadedStatus)
                               ? Column(
                                   children:

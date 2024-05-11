@@ -118,7 +118,8 @@ class TitleWidget {
       child: Center(
         child: Text(
           title,
-          style: blackTextStyle.copyWith(fontWeight: FontWeight.bold),
+          style: blackTextStyle.copyWith(
+              fontWeight: FontWeight.bold, fontSize: 5.sp),
         ),
       ),
     );

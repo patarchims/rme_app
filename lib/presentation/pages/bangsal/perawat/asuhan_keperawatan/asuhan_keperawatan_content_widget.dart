@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hms_app/domain/bloc/dashboard/asesmen_keperawatan_bidan/asesmen_keperawatan_bidan_bloc.dart';
 import 'package:hms_app/domain/bloc/dashboard/asuhan_keperawatan/hasil_asuhan_keperawatan/hasil_asuhan_keperawatan_bloc.dart';
 import 'package:hms_app/domain/bloc/dashboard/pasien/pasien_bloc.dart';
 import 'package:hms_app/presentation/component/component.dart';
@@ -23,6 +24,12 @@ class AsuhanKeperawatanContentWidget extends StatelessWidget {
         menu: menu,
         onTap: (index) {
           // TAMPILKAN ANAMNESA
+
+          if (index == 0) {
+            context
+                .read<AsesmenKeperawatanBidanBloc>()
+                .add(const AsesmenKeperawatanBidanEvent.emty());
+          }
 
           if (index == 2) {
             context.read<HasilAsuhanKeperawatanBloc>().add(

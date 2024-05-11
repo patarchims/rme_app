@@ -34,7 +34,6 @@ class AsesmenKeperawatanWidget extends StatelessWidget {
         backgroundColor: ThemeColor.bgColor,
         onTap: (index) {
           if (index == 0) {
-            log("PENGKAJIAN NUTRISI");
             context
                 .read<PengkajianNutrisiBloc>()
                 .add(OnGetPengkajianNutrisi(noReg: singlePasien.first.noreg));

@@ -16,10 +16,10 @@ String soundAssets = "assets/sound/";
 DateTime now = DateTime.now();
 
 class AppConstant {
-  // static const AppSetup appSetup = AppSetup.rsTiara;
+  static const AppSetup appSetup = AppSetup.rsTiara;
   // static const AppSetup appSetup = AppSetup.methodist;
   // static const AppSetup appSetup = AppSetup.rsVitaInSani;
-  static const AppSetup appSetup = AppSetup.rsHarapan;
+  // static const AppSetup appSetup = AppSetup.rsHarapan;
   static const String nameAPP = "Mobile RS Fatima";
   static const String csFatima = "Customer Services \nRS Fatima Ketapang";
 
@@ -48,6 +48,7 @@ class AppConstant {
   static String createPasswordAnimate = "${animateAssets}create_password.json";
   static String securityOTP = "${animateAssets}security_otp.json";
   static String passwordAnimation = "${animateAssets}password.json";
+  static String findAnimation = "${animateAssets}find_animate.json";
   static String appDevAnimation = "${animateAssets}app_dev.json";
   static String disconectAnimation = "${animateAssets}disconnect.json";
   static String failedAnimation = "${animateAssets}failed.json";

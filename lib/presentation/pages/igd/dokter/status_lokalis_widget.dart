@@ -104,6 +104,8 @@ class _StatusLokalisWidgetState extends State<StatusLokalisWidget> {
                           subTitle: meta.message, title: "Pesan");
                       return shouldPop ?? false;
                     })));
+
+        // END STATUS LOKALIS //
       },
       builder: (context, state) {
         return HeaderContentWidget(
@@ -221,7 +223,11 @@ class _StatusLokalisWidgetState extends State<StatusLokalisWidget> {
                                 child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
                                       elevation: 1.sp,
-                                      backgroundColor: ThemeColor.primaryColor,
+                                      backgroundColor:
+                                          (selectedValue == e.title)
+                                              ? ThemeColor.greenColor
+                                                  .withOpacity(0.9)
+                                              : ThemeColor.primaryColor,
                                       shape: CircleBorder(
                                         side: BorderSide(
                                           color: (selectedValue == e.title)
@@ -326,7 +332,10 @@ class _StatusLokalisWidgetState extends State<StatusLokalisWidget> {
                   Expanded(child: ShimerLoading.loadingExpandCard())
                 ],
                 if (!state.isLoadingGetLokalis) ...[
-                  Expanded(child: SizedBox(
+                  Expanded(
+                      child: Container(
+                    // margin: EdgeInsets.only(top: 20.sp),
+                    padding: EdgeInsets.only(top: 20.sp),
                     child: LayoutBuilder(
                       builder: (context, constraints) {
                         return GestureDetector(

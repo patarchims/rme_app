@@ -180,1296 +180,1306 @@ class _PemeriksaanFisikIGDDokterWidgetState
                           color: ThemeColor.blackColor,
                         ),
                         borderRadius: BorderRadius.circular(2.sp)),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
+                    child: Container(
+                      padding: EdgeInsets.all(5.sp),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            // CONTROLLER
-                            controller: _kepalaController
-                              ..text = state.pemeriksaanFisikIgdDokter.kepala,
-                            onSubmit: (value) {},
-                            onSaved: (a) {},
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
-                                ),
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
                               ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
-                            ),
-                          ),
-                          title: "Kepala",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _mataController
-                              ..text = state.pemeriksaanFisikIgdDokter.mata,
-                            onSubmit: (value) {},
-                            suggestionState: Suggestion.expand,
-                            onSaved: (a) {},
-
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
-                                ),
-                              ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
-                            ),
-                          ),
-                          title: "Mata",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            controller: _thtController
-                              ..text = state.pemeriksaanFisikIgdDokter.tht,
-                            onSubmit: (value) {},
-                            onSaved: (a) {},
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
+                              // CONTROLLER
+                              controller: _kepalaController
+                                ..text = state.pemeriksaanFisikIgdDokter.kepala,
+                              onSubmit: (value) {},
+                              onSaved: (a) {},
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                color: Colors.white.withOpacity(0.8),
-                              )),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
-                            ),
-                          ),
-                          title: "THT",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
-                                      ),
-                                    ),
+                                    color: Colors.white.withOpacity(0.8),
                                   ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _mulutController
-                              ..text = state.pemeriksaanFisikIgdDokter.mulut,
-                            onSubmit: (value) {},
-                            onSaved: (a) {},
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
                                 ),
                               ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
                             ),
+                            title: "Kepala",
                           ),
-                          title: "Mulut",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _leherController
-                              ..text = state.pemeriksaanFisikIgdDokter.leher,
-                            onSubmit: (value) {},
-                            onSaved: (a) {},
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
-                                ),
-                              ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
-                            ),
-                          ),
-                          title: "Leher",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _dadaController
-                              ..text = state.pemeriksaanFisikIgdDokter.dada,
-                            onSubmit: (value) {},
-                            onSaved: (a) {},
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
-                                ),
-                              ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
-                            ),
-                          ),
-                          title: "Dada",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _jantungController
-                              ..text = state.pemeriksaanFisikIgdDokter.jantung,
-                            onSubmit: (value) {},
-                            onSaved: (a) {},
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _mataController
+                                ..text = state.pemeriksaanFisikIgdDokter.mata,
+                              onSubmit: (value) {},
+                              suggestionState: Suggestion.expand,
+                              onSaved: (a) {},
 
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
+                                  ),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
                                 ),
                               ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
                             ),
+                            title: "Mata",
                           ),
-                          title: "Jantung",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
                                       ),
                                     ),
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              controller: _thtController
+                                ..text = state.pemeriksaanFisikIgdDokter.tht,
+                              onSubmit: (value) {},
+                              onSaved: (a) {},
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                  color: Colors.white.withOpacity(0.8),
+                                )),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
+                                ),
+                              ),
+                            ),
+                            title: "THT",
+                          ),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _mulutController
+                                ..text = state.pemeriksaanFisikIgdDokter.mulut,
+                              onSubmit: (value) {},
+                              onSaved: (a) {},
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
                                   ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _paruController
-                              ..text = state.pemeriksaanFisikIgdDokter.paru,
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
+                                ),
+                              ),
+                            ),
+                            title: "Mulut",
+                          ),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _leherController
+                                ..text = state.pemeriksaanFisikIgdDokter.leher,
+                              onSubmit: (value) {},
+                              onSaved: (a) {},
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
+                                  ),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
+                                ),
+                              ),
+                            ),
+                            title: "Leher",
+                          ),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _dadaController
+                                ..text = state.pemeriksaanFisikIgdDokter.dada,
+                              onSubmit: (value) {},
+                              onSaved: (a) {},
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
+                                  ),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
+                                ),
+                              ),
+                            ),
+                            title: "Dada",
+                          ),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _jantungController
+                                ..text =
+                                    state.pemeriksaanFisikIgdDokter.jantung,
+                              onSubmit: (value) {},
+                              onSaved: (a) {},
 
-                            onSubmit: (value) {},
-                            onSaved: (a) {},
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
+                                  ),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
                                 ),
                               ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
                             ),
+                            title: "Jantung",
                           ),
-                          title: "Paru",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            itemHeight: 15.sp,
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            suggestionStyle: blackTextStyle,
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _perutController
-                              ..text = state.pemeriksaanFisikIgdDokter.perut,
-                            onSubmit: (value) {},
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _paruController
+                                ..text = state.pemeriksaanFisikIgdDokter.paru,
 
-                            onSaved: (a) {},
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
+                              onSubmit: (value) {},
+                              onSaved: (a) {},
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
+                                  ),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
                                 ),
                               ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
                             ),
+                            title: "Paru",
                           ),
-                          title: "Perut",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              itemHeight: 15.sp,
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              suggestionStyle: blackTextStyle,
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _hatiController
-                              ..text = state.pemeriksaanFisikIgdDokter.hati,
-                            onSubmit: (value) {},
-                            onSaved: (a) {},
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
-                                ),
-                              ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
-                            ),
-                          ),
-                          title: "Hati",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _limpaController
-                              ..text = state.pemeriksaanFisikIgdDokter.limpa,
-                            onSubmit: (value) {},
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _perutController
+                                ..text = state.pemeriksaanFisikIgdDokter.perut,
+                              onSubmit: (value) {},
 
-                            onSaved: (a) {},
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
+                              onSaved: (a) {},
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
+                                  ),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
                                 ),
                               ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
                             ),
+                            title: "Perut",
                           ),
-                          title: "Limpa",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
                                       ),
                                     ),
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _hatiController
+                                ..text = state.pemeriksaanFisikIgdDokter.hati,
+                              onSubmit: (value) {},
+                              onSaved: (a) {},
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
                                   ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _ginjalController
-                              ..text = state.pemeriksaanFisikIgdDokter.ginjal,
-                            onSubmit: (value) {},
-                            onSaved: (a) {},
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
                                 ),
                               ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
                             ),
+                            title: "Hati",
                           ),
-                          title: "Ginjal",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
                                       ),
                                     ),
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _limpaController
+                                ..text = state.pemeriksaanFisikIgdDokter.limpa,
+                              onSubmit: (value) {},
+
+                              onSaved: (a) {},
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
                                   ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _alatKelaminController
-                              ..text =
-                                  state.pemeriksaanFisikIgdDokter.alatKelamin,
-                            onSubmit: (value) {},
-                            onSaved: (a) {},
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
                                 ),
                               ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
                             ),
+                            title: "Limpa",
                           ),
-                          title: "Alat Kelamin",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            enabled: true,
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            marginColor: ThemeColor.whiteColor,
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
                                       ),
                                     ),
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _ginjalController
+                                ..text = state.pemeriksaanFisikIgdDokter.ginjal,
+                              onSubmit: (value) {},
+                              onSaved: (a) {},
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
                                   ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _anggotaGerakController
-                              ..text =
-                                  state.pemeriksaanFisikIgdDokter.anggotaGerak,
-                            onSubmit: (value) {},
-                            onSaved: (a) {},
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
                                 ),
                               ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
                             ),
+                            title: "Ginjal",
                           ),
-                          title: "Anggota Gerak",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
                                       ),
                                     ),
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _alatKelaminController
+                                ..text =
+                                    state.pemeriksaanFisikIgdDokter.alatKelamin,
+                              onSubmit: (value) {},
+                              onSaved: (a) {},
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
                                   ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _reflekController
-                              ..text = state.pemeriksaanFisikIgdDokter.refleks,
-                            onSubmit: (value) {},
-                            onSaved: (a) {},
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
                                 ),
                               ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
                             ),
+                            title: "Alat Kelamin",
                           ),
-                          title: "Paru",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              enabled: true,
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              marginColor: ThemeColor.whiteColor,
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
                                       ),
                                     ),
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _anggotaGerakController
+                                ..text = state
+                                    .pemeriksaanFisikIgdDokter.anggotaGerak,
+                              onSubmit: (value) {},
+                              onSaved: (a) {},
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
                                   ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _kekuatanOtotController
-                              ..text =
-                                  state.pemeriksaanFisikIgdDokter.kekuatanOtot,
-                            onSubmit: (value) {},
-                            onSaved: (a) {},
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
                                 ),
                               ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
                             ),
+                            title: "Anggota Gerak",
                           ),
-                          title: "Kekuatan Otot",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
                                       ),
                                     ),
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _reflekController
+                                ..text =
+                                    state.pemeriksaanFisikIgdDokter.refleks,
+                              onSubmit: (value) {},
+                              onSaved: (a) {},
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
                                   ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _kulitController
-                              ..text = state.pemeriksaanFisikIgdDokter.kulit,
-                            onSubmit: (value) {},
-                            onSaved: (a) {},
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
                                 ),
                               ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
                             ),
+                            title: "Paru",
                           ),
-                          title: "Kulit",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
                                       ),
                                     ),
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _kekuatanOtotController
+                                ..text = state
+                                    .pemeriksaanFisikIgdDokter.kekuatanOtot,
+                              onSubmit: (value) {},
+                              onSaved: (a) {},
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
                                   ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _getahBeningController
-                              ..text =
-                                  state.pemeriksaanFisikIgdDokter.getahBening,
-                            onSubmit: (value) {},
-                            onSaved: (a) {},
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
                                 ),
                               ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
                             ),
+                            title: "Kekuatan Otot",
                           ),
-                          title: "Kelenjar Getah Bening",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
                                       ),
                                     ),
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _kulitController
+                                ..text = state.pemeriksaanFisikIgdDokter.kulit,
+                              onSubmit: (value) {},
+                              onSaved: (a) {},
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
                                   ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _rtRVController
-                              ..text = state.pemeriksaanFisikIgdDokter.rtvt,
-                            onSubmit: (value) {},
-                            onSaved: (a) {},
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
                                 ),
                               ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
                             ),
+                            title: "Kulit",
                           ),
-                          title: "RT/RV",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
                                       ),
                                     ),
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _getahBeningController
+                                ..text =
+                                    state.pemeriksaanFisikIgdDokter.getahBening,
+                              onSubmit: (value) {},
+                              onSaved: (a) {},
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
                                   ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _jalanNafasController
-                              ..text =
-                                  state.pemeriksaanFisikIgdDokter.jalanNafas,
-                            onSubmit: (value) {},
-                            onSaved: (a) {},
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
                                 ),
                               ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
                             ),
+                            title: "Kelenjar Getah Bening",
                           ),
-                          title: "Jalan Nafas",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
                                       ),
                                     ),
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _rtRVController
+                                ..text = state.pemeriksaanFisikIgdDokter.rtvt,
+                              onSubmit: (value) {},
+                              onSaved: (a) {},
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
                                   ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _sirkulasiController
-                              ..text =
-                                  state.pemeriksaanFisikIgdDokter.sirkulasi,
-                            onSubmit: (value) {},
-                            onSaved: (a) {},
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
                                 ),
                               ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
                             ),
+                            title: "RT/RV",
                           ),
-                          title: "Sirkulasi",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
                                       ),
                                     ),
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _jalanNafasController
+                                ..text =
+                                    state.pemeriksaanFisikIgdDokter.jalanNafas,
+                              onSubmit: (value) {},
+                              onSaved: (a) {},
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
                                   ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _gigiController
-                              ..text = state.pemeriksaanFisikIgdDokter.gigi,
-                            onSubmit: (value) {},
-                            onSaved: (a) {},
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
                                 ),
                               ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
                             ),
+                            title: "Jalan Nafas",
                           ),
-                          title: "Gigi",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            searchStyle: blackTextStyle,
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
                                       ),
                                     ),
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _sirkulasiController
+                                ..text =
+                                    state.pemeriksaanFisikIgdDokter.sirkulasi,
+                              onSubmit: (value) {},
+                              onSaved: (a) {},
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
                                   ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _abdomenController
-                              ..text = state.pemeriksaanFisikIgdDokter.abdomen,
-                            onSubmit: (value) {},
-                            onSaved: (a) {},
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
                                 ),
                               ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
                             ),
+                            title: "Sirkulasi",
                           ),
-                          title: "Abdomen",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            searchStyle: blackTextStyle,
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
                                       ),
                                     ),
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _gigiController
+                                ..text = state.pemeriksaanFisikIgdDokter.gigi,
+                              onSubmit: (value) {},
+                              onSaved: (a) {},
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
                                   ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _hidungController
-                              ..text = state.pemeriksaanFisikIgdDokter.hidung,
-                            onSubmit: (value) {},
-                            onSaved: (a) {},
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
                                 ),
                               ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                              ),
                             ),
+                            title: "Gigi",
                           ),
-                          title: "Hidung",
-                        ),
-                        const Divider(),
-                        TitleWidget.boxPemeriksaanFisikSugestion(
-                          widget: SearchField(
-                            searchStyle: blackTextStyle,
-                            suggestionsDecoration: SuggestionDecoration(
-                              selectionColor: Colors.grey.shade100,
-                              hoverColor: Colors.black,
-                            ),
-                            enabled: true,
-                            marginColor: ThemeColor.whiteColor,
-                            itemHeight: 15.sp,
-                            suggestionStyle: blackTextStyle,
-                            suggestions: pemeriksaanFisik
-                                .map(
-                                  (e) => SearchFieldListItem(
-                                    e,
-                                    item: e.toUpperCase(),
-                                    child: Container(
-                                      width: Get.width,
-                                      color: ThemeColor.whiteColor,
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        e,
-                                        style: blackTextStyle.copyWith(
-                                            fontSize: 6.sp),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              searchStyle: blackTextStyle,
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
                                       ),
                                     ),
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _abdomenController
+                                ..text =
+                                    state.pemeriksaanFisikIgdDokter.abdomen,
+                              onSubmit: (value) {},
+                              onSaved: (a) {},
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
                                   ),
-                                )
-                                .toList(),
-                            validator: (x) {
-                              return null;
-                            },
-                            // CONTROLLER
-                            controller: _telingaController
-                              ..text = state.pemeriksaanFisikIgdDokter.telinga,
-                            onSubmit: (value) {},
-                            onSaved: (a) {},
-                            searchInputDecoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white.withOpacity(0.8),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
                                 ),
                               ),
-                              border: const OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
+                            ),
+                            title: "Abdomen",
+                          ),
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              searchStyle: blackTextStyle,
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _hidungController
+                                ..text = state.pemeriksaanFisikIgdDokter.hidung,
+                              onSubmit: (value) {},
+                              onSaved: (a) {},
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
+                                  ),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
+                                ),
                               ),
                             ),
+                            title: "Hidung",
                           ),
-                          title: "Telinga",
-                        ),
-                      ],
+                          const Divider(),
+                          TitleWidget.boxPemeriksaanFisikSugestion(
+                            widget: SearchField(
+                              searchStyle: blackTextStyle,
+                              suggestionsDecoration: SuggestionDecoration(
+                                selectionColor: Colors.grey.shade100,
+                                hoverColor: Colors.black,
+                              ),
+                              enabled: true,
+                              marginColor: ThemeColor.whiteColor,
+                              itemHeight: 15.sp,
+                              suggestionStyle: blackTextStyle,
+                              suggestions: pemeriksaanFisik
+                                  .map(
+                                    (e) => SearchFieldListItem(
+                                      e,
+                                      item: e.toUpperCase(),
+                                      child: Container(
+                                        width: Get.width,
+                                        color: ThemeColor.whiteColor,
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          e,
+                                          style: blackTextStyle.copyWith(
+                                              fontSize: 6.sp),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                  .toList(),
+                              validator: (x) {
+                                return null;
+                              },
+                              // CONTROLLER
+                              controller: _telingaController
+                                ..text =
+                                    state.pemeriksaanFisikIgdDokter.telinga,
+                              onSubmit: (value) {},
+                              onSaved: (a) {},
+                              searchInputDecoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white.withOpacity(0.8),
+                                  ),
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.red),
+                                ),
+                              ),
+                            ),
+                            title: "Telinga",
+                          ),
+                          SizedBox(
+                            height: 15.sp,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -1480,4 +1490,4 @@ class _PemeriksaanFisikIGDDokterWidgetState
   }
 }
 
-List<String> pemeriksaanFisik = ["TAK", "NORMAL", "UPNORMAL"];
+List<String> pemeriksaanFisik = ["TAK", "DBN", "UPNORMAL"];

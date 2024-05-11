@@ -19,6 +19,7 @@ mixin _$AsesmenKeperawatanBidanEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -54,6 +55,7 @@ mixin _$AsesmenKeperawatanBidanEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -88,6 +90,7 @@ mixin _$AsesmenKeperawatanBidanEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -121,6 +124,7 @@ mixin _$AsesmenKeperawatanBidanEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -152,6 +156,7 @@ mixin _$AsesmenKeperawatanBidanEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -179,6 +184,7 @@ mixin _$AsesmenKeperawatanBidanEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -266,6 +272,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -304,6 +311,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -341,6 +349,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -380,6 +389,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -414,6 +424,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -444,6 +455,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -477,6 +489,263 @@ class _$StartedImpl implements _Started {
 
 abstract class _Started implements AsesmenKeperawatanBidanEvent {
   const factory _Started() = _$StartedImpl;
+}
+
+/// @nodoc
+abstract class _$$EmtyImplCopyWith<$Res> {
+  factory _$$EmtyImplCopyWith(
+          _$EmtyImpl value, $Res Function(_$EmtyImpl) then) =
+      __$$EmtyImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$EmtyImplCopyWithImpl<$Res>
+    extends _$AsesmenKeperawatanBidanEventCopyWithImpl<$Res, _$EmtyImpl>
+    implements _$$EmtyImplCopyWith<$Res> {
+  __$$EmtyImplCopyWithImpl(_$EmtyImpl _value, $Res Function(_$EmtyImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$EmtyImpl implements _Emty {
+  const _$EmtyImpl();
+
+  @override
+  String toString() {
+    return 'AsesmenKeperawatanBidanEvent.emty()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$EmtyImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() emty,
+    required TResult Function(String siki) getDeskripsiAsuhan,
+    required TResult Function(bool seleted) selectionDeskripsi,
+    required TResult Function(String noReg) getAsuhanKeperawatanNew,
+    required TResult Function(String noReg) getAsesmenKeperawatan,
+    required TResult Function(
+            AsesmenKeperawatanBidanModel asesmenKeperawatanBidanModel)
+        saveAsesmenKeperawatan,
+    required TResult Function(bool isDiagnosa) isDiagnosaAvailable,
+    required TResult Function(Slki slki) copyWriteIntervensi,
+    required TResult Function(String value) getAsuhanKeperawatan,
+    required TResult Function(
+            List<IntervensiSelectionModel> listIntervensiSelectionModel)
+        selectIntervensi,
+    required TResult Function(Slki slki, String number) pilihIntervensi,
+    required TResult Function(List<IntervensiModel> intervensi)
+        addIntervensiModel,
+    required TResult Function() clearIntervensi,
+    required TResult Function(String sikiSelected) cariSIKI,
+    required TResult Function(SikiModel sikiModel) selectionSIKI,
+    required TResult Function(SDKIModel sdkiModel) selectSDKI,
+    required TResult Function(PilihDiagnosaKeperawatan pilihDiagnosaKeperawatan)
+        pilihDiagnosa,
+    required TResult Function(String value) selectedKeluaran,
+    required TResult Function(String value) cariIntervensi,
+    required TResult Function(String value) cariSDKI,
+    required TResult Function(String noReg) getData,
+    required TResult Function(
+            AsesmenKeperawatanBidanModel asesmenKeperawatanBidanModel)
+        saveData,
+    required TResult Function(String noReg) saveAsuhanKeperawatan,
+  }) {
+    return emty();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? emty,
+    TResult? Function(String siki)? getDeskripsiAsuhan,
+    TResult? Function(bool seleted)? selectionDeskripsi,
+    TResult? Function(String noReg)? getAsuhanKeperawatanNew,
+    TResult? Function(String noReg)? getAsesmenKeperawatan,
+    TResult? Function(
+            AsesmenKeperawatanBidanModel asesmenKeperawatanBidanModel)?
+        saveAsesmenKeperawatan,
+    TResult? Function(bool isDiagnosa)? isDiagnosaAvailable,
+    TResult? Function(Slki slki)? copyWriteIntervensi,
+    TResult? Function(String value)? getAsuhanKeperawatan,
+    TResult? Function(
+            List<IntervensiSelectionModel> listIntervensiSelectionModel)?
+        selectIntervensi,
+    TResult? Function(Slki slki, String number)? pilihIntervensi,
+    TResult? Function(List<IntervensiModel> intervensi)? addIntervensiModel,
+    TResult? Function()? clearIntervensi,
+    TResult? Function(String sikiSelected)? cariSIKI,
+    TResult? Function(SikiModel sikiModel)? selectionSIKI,
+    TResult? Function(SDKIModel sdkiModel)? selectSDKI,
+    TResult? Function(PilihDiagnosaKeperawatan pilihDiagnosaKeperawatan)?
+        pilihDiagnosa,
+    TResult? Function(String value)? selectedKeluaran,
+    TResult? Function(String value)? cariIntervensi,
+    TResult? Function(String value)? cariSDKI,
+    TResult? Function(String noReg)? getData,
+    TResult? Function(
+            AsesmenKeperawatanBidanModel asesmenKeperawatanBidanModel)?
+        saveData,
+    TResult? Function(String noReg)? saveAsuhanKeperawatan,
+  }) {
+    return emty?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? emty,
+    TResult Function(String siki)? getDeskripsiAsuhan,
+    TResult Function(bool seleted)? selectionDeskripsi,
+    TResult Function(String noReg)? getAsuhanKeperawatanNew,
+    TResult Function(String noReg)? getAsesmenKeperawatan,
+    TResult Function(AsesmenKeperawatanBidanModel asesmenKeperawatanBidanModel)?
+        saveAsesmenKeperawatan,
+    TResult Function(bool isDiagnosa)? isDiagnosaAvailable,
+    TResult Function(Slki slki)? copyWriteIntervensi,
+    TResult Function(String value)? getAsuhanKeperawatan,
+    TResult Function(
+            List<IntervensiSelectionModel> listIntervensiSelectionModel)?
+        selectIntervensi,
+    TResult Function(Slki slki, String number)? pilihIntervensi,
+    TResult Function(List<IntervensiModel> intervensi)? addIntervensiModel,
+    TResult Function()? clearIntervensi,
+    TResult Function(String sikiSelected)? cariSIKI,
+    TResult Function(SikiModel sikiModel)? selectionSIKI,
+    TResult Function(SDKIModel sdkiModel)? selectSDKI,
+    TResult Function(PilihDiagnosaKeperawatan pilihDiagnosaKeperawatan)?
+        pilihDiagnosa,
+    TResult Function(String value)? selectedKeluaran,
+    TResult Function(String value)? cariIntervensi,
+    TResult Function(String value)? cariSDKI,
+    TResult Function(String noReg)? getData,
+    TResult Function(AsesmenKeperawatanBidanModel asesmenKeperawatanBidanModel)?
+        saveData,
+    TResult Function(String noReg)? saveAsuhanKeperawatan,
+    required TResult orElse(),
+  }) {
+    if (emty != null) {
+      return emty();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
+    required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
+    required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
+    required TResult Function(_GetAsuhanKeperawatanNew value)
+        getAsuhanKeperawatanNew,
+    required TResult Function(GetAsesmenKeperawatan value)
+        getAsesmenKeperawatan,
+    required TResult Function(SaveAsesmenKeperawatan value)
+        saveAsesmenKeperawatan,
+    required TResult Function(_IsDiagnosaAvailable value) isDiagnosaAvailable,
+    required TResult Function(_CopyWriteIntervensi value) copyWriteIntervensi,
+    required TResult Function(_GetAsuhanKeperawatan value) getAsuhanKeperawatan,
+    required TResult Function(_SelectIntervensi value) selectIntervensi,
+    required TResult Function(_PilihIntervensi value) pilihIntervensi,
+    required TResult Function(_AddIntervensiModel value) addIntervensiModel,
+    required TResult Function(_ClearIntervensi value) clearIntervensi,
+    required TResult Function(_CariSIKI value) cariSIKI,
+    required TResult Function(_SelectionSIKI value) selectionSIKI,
+    required TResult Function(_SelectSDKI value) selectSDKI,
+    required TResult Function(_PilihDiagnosa value) pilihDiagnosa,
+    required TResult Function(_SelectedKeluaran value) selectedKeluaran,
+    required TResult Function(_CariIntervensi value) cariIntervensi,
+    required TResult Function(_CariSDKI value) cariSDKI,
+    required TResult Function(_GetData value) getData,
+    required TResult Function(_SaveData value) saveData,
+    required TResult Function(_SaveAsuhanKeperawatan value)
+        saveAsuhanKeperawatan,
+  }) {
+    return emty(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
+    TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
+    TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
+    TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
+    TResult? Function(GetAsesmenKeperawatan value)? getAsesmenKeperawatan,
+    TResult? Function(SaveAsesmenKeperawatan value)? saveAsesmenKeperawatan,
+    TResult? Function(_IsDiagnosaAvailable value)? isDiagnosaAvailable,
+    TResult? Function(_CopyWriteIntervensi value)? copyWriteIntervensi,
+    TResult? Function(_GetAsuhanKeperawatan value)? getAsuhanKeperawatan,
+    TResult? Function(_SelectIntervensi value)? selectIntervensi,
+    TResult? Function(_PilihIntervensi value)? pilihIntervensi,
+    TResult? Function(_AddIntervensiModel value)? addIntervensiModel,
+    TResult? Function(_ClearIntervensi value)? clearIntervensi,
+    TResult? Function(_CariSIKI value)? cariSIKI,
+    TResult? Function(_SelectionSIKI value)? selectionSIKI,
+    TResult? Function(_SelectSDKI value)? selectSDKI,
+    TResult? Function(_PilihDiagnosa value)? pilihDiagnosa,
+    TResult? Function(_SelectedKeluaran value)? selectedKeluaran,
+    TResult? Function(_CariIntervensi value)? cariIntervensi,
+    TResult? Function(_CariSDKI value)? cariSDKI,
+    TResult? Function(_GetData value)? getData,
+    TResult? Function(_SaveData value)? saveData,
+    TResult? Function(_SaveAsuhanKeperawatan value)? saveAsuhanKeperawatan,
+  }) {
+    return emty?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
+    TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
+    TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
+    TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
+    TResult Function(GetAsesmenKeperawatan value)? getAsesmenKeperawatan,
+    TResult Function(SaveAsesmenKeperawatan value)? saveAsesmenKeperawatan,
+    TResult Function(_IsDiagnosaAvailable value)? isDiagnosaAvailable,
+    TResult Function(_CopyWriteIntervensi value)? copyWriteIntervensi,
+    TResult Function(_GetAsuhanKeperawatan value)? getAsuhanKeperawatan,
+    TResult Function(_SelectIntervensi value)? selectIntervensi,
+    TResult Function(_PilihIntervensi value)? pilihIntervensi,
+    TResult Function(_AddIntervensiModel value)? addIntervensiModel,
+    TResult Function(_ClearIntervensi value)? clearIntervensi,
+    TResult Function(_CariSIKI value)? cariSIKI,
+    TResult Function(_SelectionSIKI value)? selectionSIKI,
+    TResult Function(_SelectSDKI value)? selectSDKI,
+    TResult Function(_PilihDiagnosa value)? pilihDiagnosa,
+    TResult Function(_SelectedKeluaran value)? selectedKeluaran,
+    TResult Function(_CariIntervensi value)? cariIntervensi,
+    TResult Function(_CariSDKI value)? cariSDKI,
+    TResult Function(_GetData value)? getData,
+    TResult Function(_SaveData value)? saveData,
+    TResult Function(_SaveAsuhanKeperawatan value)? saveAsuhanKeperawatan,
+    required TResult orElse(),
+  }) {
+    if (emty != null) {
+      return emty(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Emty implements AsesmenKeperawatanBidanEvent {
+  const factory _Emty() = _$EmtyImpl;
 }
 
 /// @nodoc
@@ -546,6 +815,7 @@ class _$GetDeskripsiAsuhanImpl implements _GetDeskripsiAsuhan {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -584,6 +854,7 @@ class _$GetDeskripsiAsuhanImpl implements _GetDeskripsiAsuhan {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -621,6 +892,7 @@ class _$GetDeskripsiAsuhanImpl implements _GetDeskripsiAsuhan {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -660,6 +932,7 @@ class _$GetDeskripsiAsuhanImpl implements _GetDeskripsiAsuhan {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -694,6 +967,7 @@ class _$GetDeskripsiAsuhanImpl implements _GetDeskripsiAsuhan {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -724,6 +998,7 @@ class _$GetDeskripsiAsuhanImpl implements _GetDeskripsiAsuhan {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -832,6 +1107,7 @@ class _$SelectionDeskripsiImpl implements _SelectionDeskripsi {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -870,6 +1146,7 @@ class _$SelectionDeskripsiImpl implements _SelectionDeskripsi {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -907,6 +1184,7 @@ class _$SelectionDeskripsiImpl implements _SelectionDeskripsi {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -946,6 +1224,7 @@ class _$SelectionDeskripsiImpl implements _SelectionDeskripsi {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -980,6 +1259,7 @@ class _$SelectionDeskripsiImpl implements _SelectionDeskripsi {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -1010,6 +1290,7 @@ class _$SelectionDeskripsiImpl implements _SelectionDeskripsi {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -1120,6 +1401,7 @@ class _$GetAsuhanKeperawatanNewImpl implements _GetAsuhanKeperawatanNew {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -1158,6 +1440,7 @@ class _$GetAsuhanKeperawatanNewImpl implements _GetAsuhanKeperawatanNew {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -1195,6 +1478,7 @@ class _$GetAsuhanKeperawatanNewImpl implements _GetAsuhanKeperawatanNew {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -1234,6 +1518,7 @@ class _$GetAsuhanKeperawatanNewImpl implements _GetAsuhanKeperawatanNew {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -1268,6 +1553,7 @@ class _$GetAsuhanKeperawatanNewImpl implements _GetAsuhanKeperawatanNew {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -1298,6 +1584,7 @@ class _$GetAsuhanKeperawatanNewImpl implements _GetAsuhanKeperawatanNew {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -1408,6 +1695,7 @@ class _$GetAsesmenKeperawatanImpl implements GetAsesmenKeperawatan {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -1446,6 +1734,7 @@ class _$GetAsesmenKeperawatanImpl implements GetAsesmenKeperawatan {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -1483,6 +1772,7 @@ class _$GetAsesmenKeperawatanImpl implements GetAsesmenKeperawatan {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -1522,6 +1812,7 @@ class _$GetAsesmenKeperawatanImpl implements GetAsesmenKeperawatan {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -1556,6 +1847,7 @@ class _$GetAsesmenKeperawatanImpl implements GetAsesmenKeperawatan {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -1586,6 +1878,7 @@ class _$GetAsesmenKeperawatanImpl implements GetAsesmenKeperawatan {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -1700,6 +1993,7 @@ class _$SaveAsesmenKeperawatanImpl implements SaveAsesmenKeperawatan {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -1738,6 +2032,7 @@ class _$SaveAsesmenKeperawatanImpl implements SaveAsesmenKeperawatan {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -1775,6 +2070,7 @@ class _$SaveAsesmenKeperawatanImpl implements SaveAsesmenKeperawatan {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -1814,6 +2110,7 @@ class _$SaveAsesmenKeperawatanImpl implements SaveAsesmenKeperawatan {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -1848,6 +2145,7 @@ class _$SaveAsesmenKeperawatanImpl implements SaveAsesmenKeperawatan {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -1878,6 +2176,7 @@ class _$SaveAsesmenKeperawatanImpl implements SaveAsesmenKeperawatan {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -1988,6 +2287,7 @@ class _$IsDiagnosaAvailableImpl implements _IsDiagnosaAvailable {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -2026,6 +2326,7 @@ class _$IsDiagnosaAvailableImpl implements _IsDiagnosaAvailable {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -2063,6 +2364,7 @@ class _$IsDiagnosaAvailableImpl implements _IsDiagnosaAvailable {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -2102,6 +2404,7 @@ class _$IsDiagnosaAvailableImpl implements _IsDiagnosaAvailable {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -2136,6 +2439,7 @@ class _$IsDiagnosaAvailableImpl implements _IsDiagnosaAvailable {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -2166,6 +2470,7 @@ class _$IsDiagnosaAvailableImpl implements _IsDiagnosaAvailable {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -2274,6 +2579,7 @@ class _$CopyWriteIntervensiImpl implements _CopyWriteIntervensi {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -2312,6 +2618,7 @@ class _$CopyWriteIntervensiImpl implements _CopyWriteIntervensi {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -2349,6 +2656,7 @@ class _$CopyWriteIntervensiImpl implements _CopyWriteIntervensi {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -2388,6 +2696,7 @@ class _$CopyWriteIntervensiImpl implements _CopyWriteIntervensi {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -2422,6 +2731,7 @@ class _$CopyWriteIntervensiImpl implements _CopyWriteIntervensi {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -2452,6 +2762,7 @@ class _$CopyWriteIntervensiImpl implements _CopyWriteIntervensi {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -2561,6 +2872,7 @@ class _$GetAsuhanKeperawatanImpl implements _GetAsuhanKeperawatan {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -2599,6 +2911,7 @@ class _$GetAsuhanKeperawatanImpl implements _GetAsuhanKeperawatan {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -2636,6 +2949,7 @@ class _$GetAsuhanKeperawatanImpl implements _GetAsuhanKeperawatan {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -2675,6 +2989,7 @@ class _$GetAsuhanKeperawatanImpl implements _GetAsuhanKeperawatan {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -2709,6 +3024,7 @@ class _$GetAsuhanKeperawatanImpl implements _GetAsuhanKeperawatan {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -2739,6 +3055,7 @@ class _$GetAsuhanKeperawatanImpl implements _GetAsuhanKeperawatan {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -2859,6 +3176,7 @@ class _$SelectIntervensiImpl implements _SelectIntervensi {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -2897,6 +3215,7 @@ class _$SelectIntervensiImpl implements _SelectIntervensi {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -2934,6 +3253,7 @@ class _$SelectIntervensiImpl implements _SelectIntervensi {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -2973,6 +3293,7 @@ class _$SelectIntervensiImpl implements _SelectIntervensi {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -3007,6 +3328,7 @@ class _$SelectIntervensiImpl implements _SelectIntervensi {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -3037,6 +3359,7 @@ class _$SelectIntervensiImpl implements _SelectIntervensi {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -3153,6 +3476,7 @@ class _$PilihIntervensiImpl implements _PilihIntervensi {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -3191,6 +3515,7 @@ class _$PilihIntervensiImpl implements _PilihIntervensi {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -3228,6 +3553,7 @@ class _$PilihIntervensiImpl implements _PilihIntervensi {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -3267,6 +3593,7 @@ class _$PilihIntervensiImpl implements _PilihIntervensi {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -3301,6 +3628,7 @@ class _$PilihIntervensiImpl implements _PilihIntervensi {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -3331,6 +3659,7 @@ class _$PilihIntervensiImpl implements _PilihIntervensi {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -3450,6 +3779,7 @@ class _$AddIntervensiModelImpl implements _AddIntervensiModel {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -3488,6 +3818,7 @@ class _$AddIntervensiModelImpl implements _AddIntervensiModel {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -3525,6 +3856,7 @@ class _$AddIntervensiModelImpl implements _AddIntervensiModel {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -3564,6 +3896,7 @@ class _$AddIntervensiModelImpl implements _AddIntervensiModel {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -3598,6 +3931,7 @@ class _$AddIntervensiModelImpl implements _AddIntervensiModel {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -3628,6 +3962,7 @@ class _$AddIntervensiModelImpl implements _AddIntervensiModel {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -3709,6 +4044,7 @@ class _$ClearIntervensiImpl implements _ClearIntervensi {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -3747,6 +4083,7 @@ class _$ClearIntervensiImpl implements _ClearIntervensi {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -3784,6 +4121,7 @@ class _$ClearIntervensiImpl implements _ClearIntervensi {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -3823,6 +4161,7 @@ class _$ClearIntervensiImpl implements _ClearIntervensi {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -3857,6 +4196,7 @@ class _$ClearIntervensiImpl implements _ClearIntervensi {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -3887,6 +4227,7 @@ class _$ClearIntervensiImpl implements _ClearIntervensi {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -3988,6 +4329,7 @@ class _$CariSIKIImpl implements _CariSIKI {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -4026,6 +4368,7 @@ class _$CariSIKIImpl implements _CariSIKI {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -4063,6 +4406,7 @@ class _$CariSIKIImpl implements _CariSIKI {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -4102,6 +4446,7 @@ class _$CariSIKIImpl implements _CariSIKI {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -4136,6 +4481,7 @@ class _$CariSIKIImpl implements _CariSIKI {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -4166,6 +4512,7 @@ class _$CariSIKIImpl implements _CariSIKI {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -4273,6 +4620,7 @@ class _$SelectionSIKIImpl implements _SelectionSIKI {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -4311,6 +4659,7 @@ class _$SelectionSIKIImpl implements _SelectionSIKI {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -4348,6 +4697,7 @@ class _$SelectionSIKIImpl implements _SelectionSIKI {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -4387,6 +4737,7 @@ class _$SelectionSIKIImpl implements _SelectionSIKI {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -4421,6 +4772,7 @@ class _$SelectionSIKIImpl implements _SelectionSIKI {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -4451,6 +4803,7 @@ class _$SelectionSIKIImpl implements _SelectionSIKI {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -4558,6 +4911,7 @@ class _$SelectSDKIImpl implements _SelectSDKI {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -4596,6 +4950,7 @@ class _$SelectSDKIImpl implements _SelectSDKI {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -4633,6 +4988,7 @@ class _$SelectSDKIImpl implements _SelectSDKI {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -4672,6 +5028,7 @@ class _$SelectSDKIImpl implements _SelectSDKI {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -4706,6 +5063,7 @@ class _$SelectSDKIImpl implements _SelectSDKI {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -4736,6 +5094,7 @@ class _$SelectSDKIImpl implements _SelectSDKI {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -4844,6 +5203,7 @@ class _$PilihDiagnosaImpl implements _PilihDiagnosa {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -4882,6 +5242,7 @@ class _$PilihDiagnosaImpl implements _PilihDiagnosa {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -4919,6 +5280,7 @@ class _$PilihDiagnosaImpl implements _PilihDiagnosa {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -4958,6 +5320,7 @@ class _$PilihDiagnosaImpl implements _PilihDiagnosa {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -4992,6 +5355,7 @@ class _$PilihDiagnosaImpl implements _PilihDiagnosa {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -5022,6 +5386,7 @@ class _$PilihDiagnosaImpl implements _PilihDiagnosa {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -5131,6 +5496,7 @@ class _$SelectedKeluaranImpl implements _SelectedKeluaran {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -5169,6 +5535,7 @@ class _$SelectedKeluaranImpl implements _SelectedKeluaran {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -5206,6 +5573,7 @@ class _$SelectedKeluaranImpl implements _SelectedKeluaran {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -5245,6 +5613,7 @@ class _$SelectedKeluaranImpl implements _SelectedKeluaran {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -5279,6 +5648,7 @@ class _$SelectedKeluaranImpl implements _SelectedKeluaran {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -5309,6 +5679,7 @@ class _$SelectedKeluaranImpl implements _SelectedKeluaran {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -5416,6 +5787,7 @@ class _$CariIntervensiImpl implements _CariIntervensi {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -5454,6 +5826,7 @@ class _$CariIntervensiImpl implements _CariIntervensi {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -5491,6 +5864,7 @@ class _$CariIntervensiImpl implements _CariIntervensi {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -5530,6 +5904,7 @@ class _$CariIntervensiImpl implements _CariIntervensi {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -5564,6 +5939,7 @@ class _$CariIntervensiImpl implements _CariIntervensi {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -5594,6 +5970,7 @@ class _$CariIntervensiImpl implements _CariIntervensi {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -5700,6 +6077,7 @@ class _$CariSDKIImpl implements _CariSDKI {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -5738,6 +6116,7 @@ class _$CariSDKIImpl implements _CariSDKI {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -5775,6 +6154,7 @@ class _$CariSDKIImpl implements _CariSDKI {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -5814,6 +6194,7 @@ class _$CariSDKIImpl implements _CariSDKI {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -5848,6 +6229,7 @@ class _$CariSDKIImpl implements _CariSDKI {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -5878,6 +6260,7 @@ class _$CariSDKIImpl implements _CariSDKI {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -5983,6 +6366,7 @@ class _$GetDataImpl implements _GetData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -6021,6 +6405,7 @@ class _$GetDataImpl implements _GetData {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -6058,6 +6443,7 @@ class _$GetDataImpl implements _GetData {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -6097,6 +6483,7 @@ class _$GetDataImpl implements _GetData {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -6131,6 +6518,7 @@ class _$GetDataImpl implements _GetData {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -6161,6 +6549,7 @@ class _$GetDataImpl implements _GetData {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -6269,6 +6658,7 @@ class _$SaveDataImpl implements _SaveData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -6307,6 +6697,7 @@ class _$SaveDataImpl implements _SaveData {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -6344,6 +6735,7 @@ class _$SaveDataImpl implements _SaveData {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -6383,6 +6775,7 @@ class _$SaveDataImpl implements _SaveData {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -6417,6 +6810,7 @@ class _$SaveDataImpl implements _SaveData {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -6447,6 +6841,7 @@ class _$SaveDataImpl implements _SaveData {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -6557,6 +6952,7 @@ class _$SaveAsuhanKeperawatanImpl implements _SaveAsuhanKeperawatan {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() emty,
     required TResult Function(String siki) getDeskripsiAsuhan,
     required TResult Function(bool seleted) selectionDeskripsi,
     required TResult Function(String noReg) getAsuhanKeperawatanNew,
@@ -6595,6 +6991,7 @@ class _$SaveAsuhanKeperawatanImpl implements _SaveAsuhanKeperawatan {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? emty,
     TResult? Function(String siki)? getDeskripsiAsuhan,
     TResult? Function(bool seleted)? selectionDeskripsi,
     TResult? Function(String noReg)? getAsuhanKeperawatanNew,
@@ -6632,6 +7029,7 @@ class _$SaveAsuhanKeperawatanImpl implements _SaveAsuhanKeperawatan {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? emty,
     TResult Function(String siki)? getDeskripsiAsuhan,
     TResult Function(bool seleted)? selectionDeskripsi,
     TResult Function(String noReg)? getAsuhanKeperawatanNew,
@@ -6671,6 +7069,7 @@ class _$SaveAsuhanKeperawatanImpl implements _SaveAsuhanKeperawatan {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Emty value) emty,
     required TResult Function(_GetDeskripsiAsuhan value) getDeskripsiAsuhan,
     required TResult Function(_SelectionDeskripsi value) selectionDeskripsi,
     required TResult Function(_GetAsuhanKeperawatanNew value)
@@ -6705,6 +7104,7 @@ class _$SaveAsuhanKeperawatanImpl implements _SaveAsuhanKeperawatan {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Emty value)? emty,
     TResult? Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult? Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult? Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,
@@ -6735,6 +7135,7 @@ class _$SaveAsuhanKeperawatanImpl implements _SaveAsuhanKeperawatan {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Emty value)? emty,
     TResult Function(_GetDeskripsiAsuhan value)? getDeskripsiAsuhan,
     TResult Function(_SelectionDeskripsi value)? selectionDeskripsi,
     TResult Function(_GetAsuhanKeperawatanNew value)? getAsuhanKeperawatanNew,

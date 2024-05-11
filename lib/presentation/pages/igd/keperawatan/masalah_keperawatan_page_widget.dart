@@ -6,7 +6,9 @@ import 'package:hms_app/domain/bloc/dashboard/asesmen_keperawatan_bidan/asesmen_
 import 'package:hms_app/domain/bloc/dashboard/asuhan_keperawatan/deskripsi_luaran_slki/deskripsi_luaran_slki_bloc.dart';
 import 'package:hms_app/domain/models/response/sdki_model.dart';
 import 'package:hms_app/presentation/component/component.dart';
+import 'package:hms_app/presentation/component/resources/app_constant.dart';
 import 'package:hms_app/presentation/screens/emty_page.dart';
+import 'package:lottie/lottie.dart';
 import 'package:sizer/sizer.dart';
 
 class MasalahKeperawatanWidget extends StatefulWidget {
@@ -103,6 +105,7 @@ class _MasalahKeperawatanWidgetState extends State<MasalahKeperawatanWidget> {
                 child: BlocBuilder<AsesmenKeperawatanBidanBloc,
                     AsesmenKeperawatanBidanState>(
                   builder: (context, state) {
+                    //====//
                     if (state.isLoadingCariSDKI) {
                       return Center(
                           child: SizedBox(
@@ -110,6 +113,16 @@ class _MasalahKeperawatanWidgetState extends State<MasalahKeperawatanWidget> {
                         width: 100.sp,
                         child: CircularProgressIndicator(
                             strokeWidth: 2.sp, color: ThemeColor.primaryColor),
+                      ));
+                    }
+
+                    if (state.getfailOrSuccessCariSDKI.isNone()) {
+                      return Center(
+                          child: SizedBox(
+                        height: 100.sp,
+                        width: 100.sp,
+                        child: Lottie.asset(AppConstant.findAnimation,
+                            height: 20.sp, reverse: true, repeat: true),
                       ));
                     }
 
@@ -122,8 +135,17 @@ class _MasalahKeperawatanWidgetState extends State<MasalahKeperawatanWidget> {
                                   return EmtyScren(
                                       subTitle: e.meta.message.toString());
                                 }),
-                            (r) => r.maybeMap(orElse: () {
+                            (r) => r.maybeMap(auAutorized: (e) {
                                   return Container();
+                                }, orElse: () {
+                                  return SizedBox(
+                                    child: Center(
+                                      child: Text(
+                                        "Cari",
+                                        style: blackTextStyle,
+                                      ),
+                                    ),
+                                  );
                                 }, loaded: (e) {
                                   // PARSING DATA
                                   List<SDKIModel> data =
@@ -131,21 +153,27 @@ class _MasalahKeperawatanWidgetState extends State<MasalahKeperawatanWidget> {
                                           .map((e) => SDKIModel.fromMap(e))
                                           .toList();
 
-                                  return Scrollbar(
+                                  return RawScrollbar(
+                                    thumbColor: ThemeColor.darkColor,
                                     thumbVisibility: true,
                                     interactive: true,
-                                    controller: _scrollController, // <
+                                    thickness: 10.sp,
+                                    controller: _scrollController,
+                                    trackVisibility: false,
+                                    radius: Radius.circular(2.sp),
                                     child: ListView(
                                       controller: _scrollController,
                                       children: data
                                           .asMap()
                                           .entries
-                                          .map((e) => Padding(
+                                          .map((e) => Container(
+                                                margin: EdgeInsets.only(
+                                                    right: 10.sp),
                                                 padding: EdgeInsets.symmetric(
                                                     horizontal: 2.sp,
                                                     vertical: 1.sp),
                                                 child: Card(
-                                                  elevation: 0,
+                                                  elevation: 1,
                                                   color: ThemeColor.bgColor,
                                                   shape: RoundedRectangleBorder(
                                                       borderRadius:

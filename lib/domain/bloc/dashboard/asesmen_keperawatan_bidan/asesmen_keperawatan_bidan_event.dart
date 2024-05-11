@@ -4,6 +4,9 @@ part of 'asesmen_keperawatan_bidan_bloc.dart';
 class AsesmenKeperawatanBidanEvent with _$AsesmenKeperawatanBidanEvent {
   const factory AsesmenKeperawatanBidanEvent.started() = _Started;
 
+  // ON EMTY DIAGNOSA KEPERAWATAN
+  const factory AsesmenKeperawatanBidanEvent.emty() = _Emty;
+
   // GET ASUHAN
   const factory AsesmenKeperawatanBidanEvent.getDeskripsiAsuhan(
       {required String siki}) = _GetDeskripsiAsuhan;

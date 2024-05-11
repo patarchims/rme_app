@@ -179,7 +179,6 @@ class App extends StatelessWidget {
             create: (_) => getIt<CreateUserBloc>()
               ..add(const CreateUserEvent.getKpelayanan())),
       ],
-
       child: Sizer(
         builder: (ctx, orientation, deviceType) {
           return GetMaterialApp(
@@ -210,39 +209,6 @@ class App extends StatelessWidget {
           );
         },
       ),
-      // child: ThemeBuilder(
-      //   builder: (themeMode) => Sizer(
-      //     builder: (ctx, orientation, deviceType) {
-      //       return GetMaterialApp(
-      //         theme: BootstrapTheme.of(ctx).toTheme(
-      //           theme: ThemeData(
-      //             scaffoldBackgroundColor: BootstrapTheme.of(ctx).colors.white,
-      //             appBarTheme: AppBarTheme(
-      //               backgroundColor: BootstrapTheme.of(ctx).colors.primary,
-      //               foregroundColor: BootstrapTheme.of(ctx).colors.white,
-      //               elevation: 0.0,
-      //             ),
-      //             scrollbarTheme: const ScrollbarThemeData(
-      //               radius: Radius.circular(4.0),
-      //               crossAxisMargin: 4.0,
-      //               mainAxisMargin: 4.0,
-      //               minThumbLength: 40.0,
-      //               interactive: true,
-      //             ),
-      //             fontFamily: GoogleFonts.roboto().fontFamily,
-      //           ),
-      //         ),
-      //         builder: EasyLoading.init(),
-      //         debugShowCheckedModeBanner: false,
-      //         title: 'HOSPITAL MANAGEMENT SYSTEM',
-      //         themeMode: themeMode,
-      //         darkTheme: Themes.dark,
-      //         initialRoute: GetRoutes.root,
-      //         getPages: GetRoutes.getPages,
-      //       );
-      //     },
-      //   ),
-      // ),
     );
   }
 }

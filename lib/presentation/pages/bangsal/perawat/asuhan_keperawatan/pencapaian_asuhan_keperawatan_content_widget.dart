@@ -210,8 +210,25 @@ class _PencapaianAsuhanKeperawatanContentWidgetState
               child: (state.status == HasilAsuhanStatus.loading)
                   ? Loading.circleLoading()
                   : (state.status == HasilAsuhanStatus.emty)
-                      ? EmtyScren(
-                          subTitle: "Data kosong", textStyle: blackTextStyle)
+                      ? Center(
+                          child: Container(
+                            margin: EdgeInsets.all(10.sp),
+                            width: Get.width,
+                            height: 200.sp,
+                            child: Card(
+                              elevation: 1.sp,
+                              shape: RoundedRectangleBorder(
+                                side: const BorderSide(color: Colors.black),
+                                borderRadius: BorderRadius.circular(2.sp),
+                              ),
+                              margin: EdgeInsets.only(top: 5.sp),
+                              color: ThemeColor.primaryColor.withOpacity(0.4),
+                              child: EmtyScren(
+                                  subTitle: "Data kosong",
+                                  textStyle: blackTextStyle),
+                            ),
+                          ),
+                        )
                       : Column(
                           children:
                               (state.hasilAsuhanKeperawatanModel.isNotEmpty)
@@ -485,25 +502,6 @@ class _PencapaianAsuhanKeperawatanContentWidgetState
                                                                               SizedBox(
                                                                                 height: 5.sp,
                                                                               ),
-                                                                              // SizedBox(
-                                                                              //   width: Get.width,
-                                                                              //   height: 15.sp,
-                                                                              //   child: ElevatedButton(
-                                                                              //       onPressed: (e.value.hasil == 0)
-                                                                              //           ? null
-                                                                              //           : () {
-                                                                              //               context.read<HasilAsuhanKeperawatanBloc>().add(OnSaveIntervensiEvent(noDaskep: e.value.noDaskep, kodeSLKI: e.value.kodeSlki, idKriteria: e.value.idKriteria, hasil: e.value.hasil));
-                                                                              //             },
-                                                                              //       style: ElevatedButton.styleFrom(
-                                                                              //         elevation: 1,
-                                                                              //         shape: RoundedRectangleBorder(side: const BorderSide(color: Colors.black, width: 1, style: BorderStyle.solid), borderRadius: BorderRadius.circular(2.sp)),
-                                                                              //         backgroundColor: (e.value.hasil == 0) ? ThemeColor.blackColor : ThemeColor.primaryColor,
-                                                                              //       ),
-                                                                              //       child: Text(
-                                                                              //         "SIMPAN",
-                                                                              //         style: (e.value.hasil == 0) ? primaryTextStyle.copyWith(fontSize: 8.sp) : whiteTextStyle.copyWith(fontSize: 8.sp),
-                                                                              //       )),
-                                                                              // )
                                                                             ],
                                                                           ),
                                                                           trailing: const Icon(Icons.more_vert),
@@ -520,14 +518,9 @@ class _PencapaianAsuhanKeperawatanContentWidgetState
                                                     height: 20.sp,
                                                     child: ElevatedButton(
                                                         onPressed: () {
-                                                          // CEK KODE DIAGNOSA KE BERAPA
-                                                          // CEK APAKAH SEMUAH SUDAH DIPILIH
-                                                          //  SAVE INTERVENSI
-                                                          // context.read<HasilAsuhanKeperawatanBloc>().add(OnSaveIntervensiEvent(noDaskep: noDaskep, kodeSLKI: kodeSLKI, idKriteria: idKriteria, hasil: hasil))
-
                                                           String save = isSave(
                                                               diagnosa.key);
-                                                          log(" PRINT HASIL $save");
+
                                                           if (save != "") {
                                                             // LAKUKKAN SIMPAN DATA
                                                             Get.showSnackbar(GetSnackBar(
