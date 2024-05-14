@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'report_icu_bloc.dart';
 
 @immutable
@@ -9,5 +8,18 @@ class OnGetReportICU extends ReportIcuEvent {
 
   OnGetReportICU({
     required this.noReg,
+  });
+}
+
+class OnGetReportAsesmenUlangIntensive extends ReportIcuEvent {
+  final String noReg;
+  final String noRM;
+  final String person;
+  final String tanggal;
+  OnGetReportAsesmenUlangIntensive({
+    required this.noReg,
+    required this.noRM,
+    required this.tanggal,
+    required this.person,
   });
 }

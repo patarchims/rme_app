@@ -32,6 +32,38 @@ abstract class DTOKeperawatan {
     };
   }
 
+  static Map<String, dynamic> onSavePengkajianFisikAnak({
+    required String deviceID,
+    required String pelayanan,
+    required String person,
+    required String noReg,
+    required String mata,
+    required String telinga,
+    required String hidung,
+    required String mulut,
+    required String leherDanBahu,
+    required String dada,
+    required String abdomen,
+    required String punggung,
+    required String nutrisiDanHidrasi,
+  }) {
+    return {
+      'device_id': deviceID,
+      'pelayanan': pelayanan,
+      'person': person,
+      'noreg': noReg,
+      'mata': mata,
+      'telinga': telinga,
+      'hidung': hidung,
+      'mulut': mulut,
+      'leher_dan_bahu': leherDanBahu,
+      'dada': dada,
+      'abdomen': abdomen,
+      'punggung': punggung,
+      'nutrisi_dan_hidrasi': nutrisiDanHidrasi
+    };
+  }
+
   static Map<String, dynamic> saveCPPTSBAR({
     required String noReg,
     required String deviceID,
@@ -236,6 +268,13 @@ abstract class DTOKeperawatan {
     return {
       "no_reg": noReg,
     };
+  }
+
+  static Map<String, dynamic> pengkajianFisikAnak({
+    required String noReg,
+    required String person,
+  }) {
+    return {"noreg": noReg, "person": person};
   }
 
   static Map<String, dynamic> onGetPengkajianAwalKeperawatanBangsal({

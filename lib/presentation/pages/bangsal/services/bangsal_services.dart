@@ -13,6 +13,17 @@ class KeperawatanServices {
     return MyDio().getAndToken(endPoint: "/v1/resep-obat");
   }
 
+  // GET PENGKJIAN ANAK REPO
+  Future<dynamic> getPengkajianFisikAnakRepo({
+    required String noReg,
+    required String person,
+  }) {
+    return MyDio().getAndToken(
+      data: DTOKeperawatan.pengkajianFisikAnak(noReg: noReg, person: person),
+      endPoint: "/v1/get-pemeriksaan-fisik-anak",
+    );
+  }
+
   Future<dynamic> onGetCPPTSBAR({
     required String noreg,
   }) {
@@ -68,6 +79,43 @@ class KeperawatanServices {
           rwtPenyakit: rwtPenyakit,
           riwayatPenyakitDahulu: rwtPenyakitDahulu,
           reaksiAlergi: reaksiAlergi),
+    );
+  }
+
+  // SAVE ASESMEN IGD DOKTER
+  Future<Either<ApiFailureResult, ApiSuccessResult>>
+      onSavePemeriksaanFisikAnak({
+    required String deviceID,
+    required String pelayanan,
+    required String person,
+    required String noReg,
+    required String mata,
+    required String telinga,
+    required String hidung,
+    required String mulut,
+    required String leherDanBahu,
+    required String dada,
+    required String abdomen,
+    required String punggung,
+    required String nutrisiDanHidrasi,
+  }) {
+    return MyDio().postDataWithToken(
+      endPoint: EndPoint.savePemeriksaanFisikAnak,
+      data: DTOKeperawatan.onSavePengkajianFisikAnak(
+        person: person,
+        pelayanan: pelayanan,
+        deviceID: deviceID,
+        abdomen: abdomen,
+        dada: dada,
+        hidung: hidung,
+        leherDanBahu: leherDanBahu,
+        mata: mata,
+        mulut: mulut,
+        noReg: noReg,
+        nutrisiDanHidrasi: nutrisiDanHidrasi,
+        punggung: punggung,
+        telinga: telinga,
+      ),
     );
   }
 

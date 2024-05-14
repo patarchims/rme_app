@@ -39,7 +39,6 @@ class _PencapaianAsuhanKeperawatanContentWidgetState
         // HASIL ASUHAN KEPERAWATAN
 
         // todo : DETEKSI SIMPAN DATA
-        // ====  ==== //
         if (state.status == HasilAsuhanStatus.isLoadingSave) {
           EasyLoading.show(maskType: EasyLoadingMaskType.black);
         }
@@ -130,6 +129,7 @@ class _PencapaianAsuhanKeperawatanContentWidgetState
 
                       return shouldPop ?? false;
                     })));
+
         state.saveAllDaskep.fold(
             () => null,
             (a) => a.fold(
@@ -174,9 +174,6 @@ class _PencapaianAsuhanKeperawatanContentWidgetState
               }
             }
           }
-
-          log("HASIL LIST $hasillist");
-          log("Jumlah HAISL $jumlahHasil");
 
           if (jumlahHasil == 0) {
             return "Pastikan hasil keluaran sudah dipilih";

@@ -126,7 +126,9 @@ class FormWidget {
             borderSide: BorderSide(color: Colors.black, width: 2),
           ),
           filled: true,
-          fillColor: (enable == true) ? Colors.white : ThemeColor.darkGreyColor,
+          fillColor: (enable == true)
+              ? Colors.white
+              : ThemeColor.darkGreyColor.withOpacity(0.2),
         ),
         autocorrect: false);
   }

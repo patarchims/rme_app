@@ -609,6 +609,20 @@ abstract class DTO {
     return {"noreg": noReg, "person": person};
   }
 
+  static Map<String, String> onGetAsesmenPerawatanIntensive({
+    required String noReg,
+    required String person,
+    required String pelayanan,
+    required String tanggal,
+  }) {
+    return {
+      "no_reg": noReg,
+      "person": person,
+      "pelayanan": pelayanan,
+      "tanggal": tanggal
+    };
+  }
+
   static Map<String, dynamic> onSaveAsesmenNyeriICU({
     required String kdDokter,
     required String devicesID,

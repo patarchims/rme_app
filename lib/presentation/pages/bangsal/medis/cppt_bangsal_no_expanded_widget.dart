@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -6,9 +5,11 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hms_app/domain/models/response/list_cppt_pasien_model_response.dart';
+import 'package:hms_app/presentation/component/resources/app_constant.dart';
 import 'package:hms_app/presentation/pages/modul/cppt_content_widget/cppt_edit_content_pasien.dart';
 import 'package:hms_app/presentation/pages/modul/cppt_content_widget/on_delete_content_cppt_widget.dart';
 import 'package:intl/intl.dart';
+import 'package:lottie/lottie.dart';
 import 'package:sizer/sizer.dart';
 
 import 'package:hms_app/domain/bloc/dashboard/cppt/cppt_bloc.dart';
@@ -91,7 +92,6 @@ class _CpptWidgetBangsalState extends State<CpptWidgetNoExpandedBangsal> {
                 (l) => l.maybeMap(
                     orElse: () {},
                     failure: (e) async {
-                      log("ERROR FAILURE $e");
                       // TAMPILKAN PESAN KESALAHAN
                       final shouldPop = await Alert.warningMessage(context,
                           subTitle: e.meta.message.toString());
@@ -364,135 +364,204 @@ class _CpptWidgetBangsalState extends State<CpptWidgetNoExpandedBangsal> {
                                         .toList();
 
                                 return Column(
-                                  children: result
-                                      .asMap()
-                                      .entries
-                                      .map((e) => Container(
-                                            padding: EdgeInsets.only(
+                                  children: (result.isNotEmpty)
+                                      ? result
+                                          .asMap()
+                                          .entries
+                                          .map((e) => Container(
+                                                padding: EdgeInsets.only(
+                                                    right: 5.sp, left: 5.sp),
+                                                child: Table(
+                                                  columnWidths: const {
+                                                    0: FlexColumnWidth(0.4),
+                                                  },
+                                                  border: TableBorder.all(
+                                                      color: Colors.black),
+                                                  children: [
+                                                    TableRow(children: [
+                                                      TitleWidget.contentTitle(
+                                                          title: (e.key + 1)
+                                                              .toString()),
+                                                      TitleWidget.contentTitle(
+                                                          title:
+                                                              e.value.bagian),
+                                                      TitleWidget.contentTitle(
+                                                          title: e.value.ppa),
+                                                      TitleWidget.contentTitle(
+                                                          title:
+                                                              "${e.value.tanggal}\n${e.value.insertDttm.substring(11, 19)}"),
+                                                      TitleWidget.contentTitle(
+                                                          title: e
+                                                              .value.subjektif),
+                                                      TitleWidget.contentTitle(
+                                                          title:
+                                                              e.value.objectif),
+                                                      TitleWidget.contentTitle(
+                                                          title:
+                                                              e.value.asesmen),
+                                                      TitleWidget.contentTitle(
+                                                          title: e.value.plan),
+                                                      TitleWidget.contentTitle(
+                                                          title: e.value
+                                                              .instruksiPpa),
+                                                      Padding(
+                                                        padding: EdgeInsets.all(
+                                                            1.sp),
+                                                        child: Wrap(
+                                                          runAlignment:
+                                                              WrapAlignment
+                                                                  .spaceAround,
+                                                          crossAxisAlignment:
+                                                              WrapCrossAlignment
+                                                                  .center,
+                                                          children: [
+                                                            ElevatedButton(
+                                                                style: ElevatedButton.styleFrom(
+                                                                    elevation:
+                                                                        1,
+                                                                    shape: RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(2
+                                                                                .sp)),
+                                                                    backgroundColor:
+                                                                        ThemeColor
+                                                                            .dangerColor),
+                                                                onPressed: () {
+                                                                  // TAMPILKAN PESAN EDIT
+                                                                  CustomDialogWidget
+                                                                      .getDialog(
+                                                                          widget:
+                                                                              OnDeleteCppTContentWidget(
+                                                                    idCppt: e
+                                                                        .value
+                                                                        .id,
+                                                                  ));
+                                                                },
+                                                                child:
+                                                                    const Icon(
+                                                                  FontAwesomeIcons
+                                                                      .circleXmark,
+                                                                  color: ThemeColor
+                                                                      .whiteColor,
+                                                                )),
+                                                            SizedBox(
+                                                                width: 1.sp),
+                                                            ElevatedButton(
+                                                                style: ElevatedButton.styleFrom(
+                                                                    elevation:
+                                                                        1,
+                                                                    shape: RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(2
+                                                                                .sp)),
+                                                                    backgroundColor:
+                                                                        ThemeColor
+                                                                            .greenColor),
+                                                                onPressed: () {
+                                                                  // UBAH DATA ----
+                                                                  CustomDialogWidget.getDialog(
+                                                                      widget: CPPTEditContentPasienWidget(
+                                                                          key: const Key(
+                                                                              "1"),
+                                                                          ppa: e
+                                                                              .value
+                                                                              .instruksiPpa,
+                                                                          asesmen: e
+                                                                              .value
+                                                                              .asesmen,
+                                                                          subjetif: e
+                                                                              .value
+                                                                              .subjektif,
+                                                                          id: e
+                                                                              .value
+                                                                              .id,
+                                                                          objectif: e
+                                                                              .value
+                                                                              .objectif,
+                                                                          plan: e
+                                                                              .value
+                                                                              .plan),
+                                                                      color: Colors
+                                                                          .transparent);
+                                                                },
+                                                                child:
+                                                                    const Icon(
+                                                                  FontAwesomeIcons
+                                                                      .pen,
+                                                                  color: ThemeColor
+                                                                      .whiteColor,
+                                                                )),
+                                                          ],
+                                                        ),
+                                                      )
+                                                    ])
+                                                  ],
+                                                ),
+                                              ))
+                                          .toList()
+                                      : [
+                                          Container(
+                                            width: Get.width,
+                                            height: 150.sp,
+                                            margin: EdgeInsets.only(
                                                 right: 5.sp, left: 5.sp),
-                                            child: Table(
-                                              columnWidths: const {
-                                                0: FlexColumnWidth(0.4),
-                                              },
-                                              border: TableBorder.all(
-                                                  color: Colors.black),
-                                              children: [
-                                                TableRow(children: [
-                                                  TitleWidget.contentTitle(
-                                                      title: (e.key + 1)
-                                                          .toString()),
-                                                  TitleWidget.contentTitle(
-                                                      title: e.value.bagian),
-                                                  TitleWidget.contentTitle(
-                                                      title: e.value.ppa),
-                                                  TitleWidget.contentTitle(
-                                                      title:
-                                                          "${e.value.tanggal}\n${e.value.insertDttm.substring(11, 19)}"),
-                                                  TitleWidget.contentTitle(
-                                                      title: e.value.subjektif),
-                                                  TitleWidget.contentTitle(
-                                                      title: e.value.objectif),
-                                                  TitleWidget.contentTitle(
-                                                      title: e.value.asesmen),
-                                                  TitleWidget.contentTitle(
-                                                      title: e.value.plan),
-                                                  TitleWidget.contentTitle(
-                                                      title:
-                                                          e.value.instruksiPpa),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsets.all(1.sp),
-                                                    child: Wrap(
-                                                      runAlignment:
-                                                          WrapAlignment
-                                                              .spaceAround,
-                                                      crossAxisAlignment:
-                                                          WrapCrossAlignment
-                                                              .center,
-                                                      children: [
-                                                        ElevatedButton(
-                                                            style: ElevatedButton.styleFrom(
-                                                                elevation: 1,
-                                                                shape: RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(2
-                                                                            .sp)),
-                                                                backgroundColor:
-                                                                    ThemeColor
-                                                                        .dangerColor),
-                                                            onPressed: () {
-                                                              // TAMPILKAN PESAN EDIT
-                                                              CustomDialogWidget
-                                                                  .getDialog(
-                                                                      widget:
-                                                                          OnDeleteCppTContentWidget(
-                                                                idCppt:
-                                                                    e.value.id,
-                                                              ));
-                                                            },
-                                                            child: const Icon(
-                                                              FontAwesomeIcons
-                                                                  .circleXmark,
-                                                              color: ThemeColor
-                                                                  .whiteColor,
-                                                            )),
-                                                        SizedBox(width: 1.sp),
-                                                        ElevatedButton(
-                                                            style: ElevatedButton.styleFrom(
-                                                                elevation: 1,
-                                                                shape: RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(2
-                                                                            .sp)),
-                                                                backgroundColor:
-                                                                    ThemeColor
-                                                                        .greenColor),
-                                                            onPressed: () {
-                                                              // UBAH DATA ----
-                                                              CustomDialogWidget.getDialog(
-                                                                  widget: CPPTEditContentPasienWidget(
-                                                                      key: const Key(
-                                                                          "1"),
-                                                                      ppa: e
-                                                                          .value
-                                                                          .instruksiPpa,
-                                                                      asesmen: e
-                                                                          .value
-                                                                          .asesmen,
-                                                                      subjetif: e
-                                                                          .value
-                                                                          .subjektif,
-                                                                      id: e
-                                                                          .value
-                                                                          .id,
-                                                                      objectif: e
-                                                                          .value
-                                                                          .objectif,
-                                                                      plan: e
-                                                                          .value
-                                                                          .plan),
-                                                                  color: Colors
-                                                                      .transparent);
-                                                            },
-                                                            child: const Icon(
-                                                              FontAwesomeIcons
-                                                                  .pen,
-                                                              color: ThemeColor
-                                                                  .whiteColor,
-                                                            )),
-                                                      ],
-                                                    ),
-                                                  )
-                                                ])
-                                              ],
+                                            child: Card(
+                                              elevation: 1.sp,
+                                              shape: RoundedRectangleBorder(
+                                                side: const BorderSide(
+                                                    color: Colors.black),
+                                                borderRadius:
+                                                    BorderRadius.circular(2.sp),
+                                              ),
+                                              margin:
+                                                  EdgeInsets.only(top: 5.sp),
+                                              color: ThemeColor.primaryColor
+                                                  .withOpacity(0.4),
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            2.sp)),
+                                                padding: EdgeInsets.only(
+                                                    right: 5.sp, left: 5.sp),
+                                                child: Center(
+                                                    child: SizedBox(
+                                                  height: 100.sp,
+                                                  width: 100.sp,
+                                                  child: Lottie.asset(
+                                                      AppConstant.findAnimation,
+                                                      height: 20.sp,
+                                                      reverse: true,
+                                                      repeat: true),
+                                                )),
+                                              ),
                                             ),
-                                          ))
-                                      .toList(),
+                                          )
+                                        ],
                                 );
                               }, auAutorized: (e) {
                                 return Container();
                               }, emty: (e) {
-                                return Container();
+                                return Card(
+                                  elevation: 1.sp,
+                                  shape: RoundedRectangleBorder(
+                                    side: const BorderSide(color: Colors.black),
+                                    borderRadius: BorderRadius.circular(2.sp),
+                                  ),
+                                  margin: EdgeInsets.only(top: 5.sp),
+                                  color:
+                                      ThemeColor.primaryColor.withOpacity(0.4),
+                                  child: Center(
+                                      child: SizedBox(
+                                    height: 100.sp,
+                                    width: 100.sp,
+                                    child: Lottie.asset(
+                                        AppConstant.findAnimation,
+                                        height: 20.sp,
+                                        reverse: true,
+                                        repeat: true),
+                                  )),
+                                );
                               })))
                 ],
               ),

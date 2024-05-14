@@ -19,11 +19,14 @@ class MessageAlert {
                 textAlign: TextAlign.center,
                 style: primaryTextStyle.copyWith(
                     fontSize: 9.sp, color: ThemeColor.primaryColor)),
-            Text(
-              mesage,
-              textAlign: TextAlign.center,
-              style: greyTextStyle.copyWith(
-                  fontSize: 8.sp, fontWeight: FontWeight.normal),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                mesage,
+                textAlign: TextAlign.center,
+                style: blackTextStyle.copyWith(
+                    fontSize: 8.sp, fontWeight: FontWeight.bold),
+              ),
             ),
             Container(
               color: Colors.transparent,

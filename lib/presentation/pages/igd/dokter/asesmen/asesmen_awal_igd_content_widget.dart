@@ -101,9 +101,7 @@ class _PasienAwalIGDWidgetState extends State<PasienAwalIGDWidget> {
                     noreg: singlePasien.first.noreg));
           }
 
-          if (index == 5) {
-            log("RENCANA TINDAK LANJUT ");
-          }
+          if (index == 5) {}
           if (index == 8) {
             context.read<TriaseBloc>().add(
                 TriaseEvent.getTriaseSkala(noReg: singlePasien.first.noreg));

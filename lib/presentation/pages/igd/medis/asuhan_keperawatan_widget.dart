@@ -237,6 +237,7 @@ class AsuhanKeperawatanWidget extends StatelessWidget {
                                           child:
                                               const IntervensiKeperawatanWidget())
                                     ],
+                                    //====//
                                     if (state.pilihDiagnosaKeperawatan ==
                                         PilihDiagnosaKeperawatan.selesai) ...[
                                       SizedBox(

@@ -7,6 +7,7 @@ import 'package:hms_app/domain/models/devices_info/device_info_model.dart';
 import 'package:hms_app/domain/models/meta/meta_model.dart';
 import 'package:hms_app/domain/models/users/user_model.dart';
 import 'package:hms_app/presentation/component/component.dart';
+import 'package:hms_app/presentation/component/constant/list_constants.dart';
 import 'package:hms_app/presentation/component/loading/loading.dart';
 import 'package:hms_app/presentation/pages/bangsal/bloc/tanda_vital_keperawatan/tanda_vital_keperawatan_bloc.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
@@ -102,52 +103,186 @@ class _VitalSignKeperawatanBangsalWidgetState
                 child: Column(
                   children: [
                     TitleWidget.titleContainer(title: "Tanda  Tanda Vital"),
-                    Row(
-                      children: [
-                        Container(
-                          width: Get.width / 2.5,
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 12.sp, vertical: 4.sp),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: 40.sp,
-                                child: Text("GCS", style: blackTextStyle),
-                              ),
-                              formBoxGSC(
-                                  valueE: state.vitalSignKeperawatanModel.gcsE,
-                                  valueM: state.vitalSignKeperawatanModel.gcsM,
-                                  valueV: state.vitalSignKeperawatanModel.gcsV,
-                                  onChangedV: (vValue) {
-                                    context
-                                        .read<TandaVitalKeperawatanBloc>()
-                                        .add(OnChangedV(value: vValue));
-                                  },
-                                  onChangedM: (mValue) {
-                                    context
-                                        .read<TandaVitalKeperawatanBloc>()
-                                        .add(OnChangedM(value: mValue));
-                                  },
-                                  onChangedE: (eValue) {
-                                    context
-                                        .read<TandaVitalKeperawatanBloc>()
-                                        .add(OnChangedE(value: eValue));
-                                  })
-                            ],
+                    Container(
+                      width: Get.width,
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 12.sp, vertical: 4.sp),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 70.sp,
+                            child: Text("GCS", style: blackTextStyle),
                           ),
-                        ),
-                        Expanded(
-                          child: TitleWidget.formBox(
-                              title: "SPO2",
-                              subTitle: "%",
-                              value: state.vitalSignKeperawatanModel.spo2,
-                              onChanged: (e) {
-                                context
-                                    .read<TandaVitalKeperawatanBloc>()
-                                    .add(OnChangedSpoEvent(value: e));
-                              }),
-                        )
-                      ],
+                          SizedBox(
+                              width: 65.sp,
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "E :",
+                                    style: blackTextStyle.copyWith(
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    width: 5.sp,
+                                  ),
+                                  Container(
+                                    margin:
+                                        EdgeInsets.symmetric(horizontal: 2.sp),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 5),
+                                    decoration: BoxDecoration(
+                                        color: ThemeColor.primaryColor,
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: DropdownButton<String>(
+                                      dropdownColor: ThemeColor.darkColor,
+                                      value:
+                                          state.vitalSignKeperawatanModel.gcsE,
+                                      onChanged: (eValue) {
+                                        context
+                                            .read<TandaVitalKeperawatanBloc>()
+                                            .add(OnChangedE(
+                                                value: eValue.toString()));
+
+                                        // context
+                                        //     .read<TandaVitalIgdDokterBloc>()
+                                        //     .add(OnChangedE(
+                                        //         value: eValue.toString()));
+                                      },
+                                      items: ListConstants.gcs
+                                          .map<DropdownMenuItem<String>>(
+                                              (String value) =>
+                                                  DropdownMenuItem<String>(
+                                                    value: value,
+                                                    child: Text(
+                                                      value,
+                                                      style: whiteTextStyle,
+                                                    ),
+                                                  ))
+                                          .toList(),
+                                      icon: const Icon(
+                                        Icons.arrow_drop_down,
+                                        color: ThemeColor.primaryColor,
+                                      ),
+                                      iconSize: 42,
+                                      underline: const SizedBox(),
+                                    ),
+                                  ),
+                                ],
+                              )),
+                          SizedBox(
+                              width: 65.sp,
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "V :",
+                                    style: blackTextStyle.copyWith(
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    width: 5.sp,
+                                  ),
+                                  Container(
+                                    margin:
+                                        EdgeInsets.symmetric(horizontal: 2.sp),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 5),
+                                    decoration: BoxDecoration(
+                                        color: ThemeColor.primaryColor,
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: DropdownButton<String>(
+                                      dropdownColor: ThemeColor.darkColor,
+                                      value:
+                                          state.vitalSignKeperawatanModel.gcsV,
+                                      onChanged: (mValue) {
+                                        // context
+                                        //     .read<TandaVitalIgdDokterBloc>()
+                                        //     .add(OnChangedV(
+                                        //         value: mValue.toString()));
+
+                                        context
+                                            .read<TandaVitalKeperawatanBloc>()
+                                            .add(OnChangedV(
+                                                value: mValue.toString()));
+                                      },
+                                      items: ListConstants.gcs
+                                          .map<DropdownMenuItem<String>>(
+                                              (String value) =>
+                                                  DropdownMenuItem<String>(
+                                                    value: value,
+                                                    child: Text(
+                                                      value,
+                                                      style: whiteTextStyle,
+                                                    ),
+                                                  ))
+                                          .toList(),
+                                      icon: const Icon(
+                                        Icons.arrow_drop_down,
+                                        color: ThemeColor.primaryColor,
+                                      ),
+                                      iconSize: 42,
+                                      underline: const SizedBox(),
+                                    ),
+                                  ),
+                                ],
+                              )),
+                          SizedBox(
+                              width: 65.sp,
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "M :",
+                                    style: blackTextStyle.copyWith(
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    width: 5.sp,
+                                  ),
+                                  Container(
+                                    margin:
+                                        EdgeInsets.symmetric(horizontal: 2.sp),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 5),
+                                    decoration: BoxDecoration(
+                                        color: ThemeColor.primaryColor,
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: DropdownButton<String>(
+                                      dropdownColor: ThemeColor.darkColor,
+                                      value:
+                                          state.vitalSignKeperawatanModel.gcsM,
+                                      onChanged: (mValue) {
+                                        context
+                                            .read<TandaVitalKeperawatanBloc>()
+                                            .add(OnChangedM(
+                                                value: mValue.toString()));
+                                        // context
+                                        //     .read<TandaVitalIgdDokterBloc>()
+                                        //     .add(OnChangedM(
+                                        //         value: mValue.toString()));
+                                      },
+                                      items: ListConstants.gcs
+                                          .map<DropdownMenuItem<String>>(
+                                              (String value) =>
+                                                  DropdownMenuItem<String>(
+                                                    value: value,
+                                                    child: Text(value,
+                                                        style: whiteTextStyle),
+                                                  ))
+                                          .toList(),
+                                      icon: const Icon(
+                                        Icons.arrow_drop_down,
+                                        color: ThemeColor.primaryColor,
+                                      ),
+                                      iconSize: 42,
+                                      underline: const SizedBox(),
+                                    ),
+                                  ),
+                                ],
+                              )),
+                        ],
+                      ),
                     ),
                     Row(
                       children: [

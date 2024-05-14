@@ -16,8 +16,11 @@ import 'package:hms_app/presentation/component/alert/custom_dialog.dart';
 import 'package:hms_app/presentation/component/alert/mesage_alert.dart';
 import 'package:hms_app/presentation/component/color/color_helper.dart';
 import 'package:hms_app/presentation/component/fonts/font_helper.dart';
+import 'package:hms_app/presentation/component/resources/app_constant.dart';
 import 'package:hms_app/presentation/component/title/title_component.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
+import 'package:hms_app/presentation/screens/emty_obat_screen.dart';
+import 'package:lottie/lottie.dart';
 import 'package:searchfield/searchfield.dart';
 import 'package:sizer/sizer.dart';
 
@@ -462,8 +465,6 @@ class _RiwayatAlergiContentWidgetState
                                                           onPressed: () {
                                                             if (authState
                                                                 is Authenticated) {
-                                                              log(_searchController
-                                                                  .text);
                                                               context.read<AlergiBloc>().add(OnSaveAlergiObatEvent(
                                                                   noRM:
                                                                       singlePasien
@@ -689,27 +690,29 @@ class _RiwayatAlergiContentWidgetState
                           TableRow(children: [
                             Container(
                               padding: EdgeInsets.symmetric(vertical: 2.sp),
-                              height: Get.height / 2,
+                              height: Get.height - 100.sp,
+                              decoration: BoxDecoration(
+                                  color:
+                                      ThemeColor.primaryColor.withOpacity(0.2)),
                               child: Center(
                                   child: ListView(
-                                children: obat
-                                    .map((e) => Card(
-                                          color: ThemeColor.primaryColor,
-                                          child: ListTile(
-                                              trailing: (e.insertDttm ==
-                                                      DateTime.now()
-                                                          .toString()
-                                                          .substring(0, 10))
-                                                  ? IconButton(
-                                                      onPressed: () {
-                                                        CustomDialogWidget
-                                                            .getDialog(
-                                                                widget: MessageAlert
-                                                                    .deleteAlert(
-                                                                        mesage:
-                                                                            "Apakah Anda yakin menghapus data ${e.alergi} ini ?",
-                                                                        onPressed:
-                                                                            () {
+                                children: (obat.isEmpty)
+                                    ? obat
+                                        .map((e) => Card(
+                                              color: ThemeColor.primaryColor,
+                                              child: ListTile(
+                                                  trailing:
+                                                      (e.insertDttm ==
+                                                              DateTime.now()
+                                                                  .toString()
+                                                                  .substring(
+                                                                      0, 10))
+                                                          ? IconButton(
+                                                              onPressed: () {
+                                                                CustomDialogWidget.getDialog(
+                                                                    widget: MessageAlert.deleteAlert(
+                                                                        mesage: "Apakah Anda yakin menghapus data ${e.alergi} ini ?",
+                                                                        onPressed: () {
                                                                           //  ON PRESS
                                                                           context.read<AlergiBloc>().add(OnDeleteAlergi(
                                                                               no: e.no,
@@ -723,45 +726,54 @@ class _RiwayatAlergiContentWidgetState
 
                                                                           Get.back();
                                                                         }));
-                                                      },
-                                                      icon: const Icon(
-                                                        FontAwesomeIcons.trash,
-                                                        color: ThemeColor
-                                                            .dangerColor,
-                                                      ))
-                                                  : const SizedBox(),
-                                              title: Text(e.alergi,
-                                                  style:
-                                                      whiteTextStyle.copyWith(
-                                                          fontSize: 5.sp))),
-                                        ))
-                                    .toList(),
+                                                              },
+                                                              icon: const Icon(
+                                                                FontAwesomeIcons
+                                                                    .trash,
+                                                                color: ThemeColor
+                                                                    .dangerColor,
+                                                              ))
+                                                          : const SizedBox(),
+                                                  title: Text(e.alergi,
+                                                      style: whiteTextStyle
+                                                          .copyWith(
+                                                              fontSize: 5.sp))),
+                                            ))
+                                        .toList()
+                                    : [
+                                        Lottie.asset(AppConstant.makananAnimate,
+                                            height: 150.sp,
+                                            reverse: true,
+                                            repeat: true),
+                                      ],
                               )),
                             ),
                             Container(
-                              height: 80.sp,
+                              height: Get.height - 100.sp,
                               padding: EdgeInsets.symmetric(vertical: 2.sp),
+                              decoration: BoxDecoration(
+                                  color:
+                                      ThemeColor.primaryColor.withOpacity(0.2)),
                               child: Center(
                                   child: ListView(
-                                children: makanan
-                                    .map((e) => Card(
-                                          color: ThemeColor.primaryColor,
-                                          child: ListTile(
-                                              trailing: (e.insertDttm ==
-                                                      DateTime.now()
-                                                          .toString()
-                                                          .substring(0, 10))
-                                                  ? IconButton(
-                                                      onPressed: () {
-                                                        // DELETE DATA
-                                                        CustomDialogWidget
-                                                            .getDialog(
-                                                                widget: MessageAlert
-                                                                    .deleteAlert(
-                                                                        mesage:
-                                                                            "Apakah Anda yakin menghapus data ${e.alergi} ini ?",
-                                                                        onPressed:
-                                                                            () {
+                                children: (makanan.isNotEmpty)
+                                    ? makanan
+                                        .map((e) => Card(
+                                              color: ThemeColor.primaryColor,
+                                              child: ListTile(
+                                                  trailing:
+                                                      (e.insertDttm ==
+                                                              DateTime.now()
+                                                                  .toString()
+                                                                  .substring(
+                                                                      0, 10))
+                                                          ? IconButton(
+                                                              onPressed: () {
+                                                                // DELETE DATA
+                                                                CustomDialogWidget.getDialog(
+                                                                    widget: MessageAlert.deleteAlert(
+                                                                        mesage: "Apakah Anda yakin menghapus data ${e.alergi} ini ?",
+                                                                        onPressed: () {
                                                                           //  ON PRESS
                                                                           context.read<AlergiBloc>().add(OnDeleteAlergi(
                                                                               no: e.no,
@@ -775,46 +787,56 @@ class _RiwayatAlergiContentWidgetState
 
                                                                           Get.back();
                                                                         }));
-                                                      },
-                                                      icon: const Icon(
-                                                        FontAwesomeIcons.trash,
-                                                        color: ThemeColor
-                                                            .dangerColor,
-                                                      ))
-                                                  : const SizedBox(),
-                                              title: Text(
-                                                e.alergi,
-                                                style: whiteTextStyle.copyWith(
-                                                    fontSize: 5.sp),
-                                              )),
-                                        ))
-                                    .toList(),
+                                                              },
+                                                              icon: const Icon(
+                                                                FontAwesomeIcons
+                                                                    .trash,
+                                                                color: ThemeColor
+                                                                    .dangerColor,
+                                                              ))
+                                                          : const SizedBox(),
+                                                  title: Text(
+                                                    e.alergi,
+                                                    style:
+                                                        whiteTextStyle.copyWith(
+                                                            fontSize: 5.sp),
+                                                  )),
+                                            ))
+                                        .toList()
+                                    : [
+                                        Lottie.asset(AppConstant.makananAnimate,
+                                            height: 150.sp,
+                                            reverse: true,
+                                            repeat: true),
+                                      ],
                               )),
                             ),
                             Container(
-                              height: 80.sp,
+                              height: Get.height - 100.sp,
                               padding: EdgeInsets.symmetric(vertical: 2.sp),
+                              decoration: BoxDecoration(
+                                  color:
+                                      ThemeColor.primaryColor.withOpacity(0.2)),
                               child: Center(
                                   child: ListView(
-                                children: lain
-                                    .map((e) => Card(
-                                          color: ThemeColor.primaryColor,
-                                          child: ListTile(
-                                              trailing: (e.insertDttm ==
-                                                      DateTime.now()
-                                                          .toString()
-                                                          .substring(0, 10))
-                                                  ? IconButton(
-                                                      onPressed: () {
-                                                        //  DELETE
-                                                        CustomDialogWidget
-                                                            .getDialog(
-                                                                widget: MessageAlert
-                                                                    .deleteAlert(
-                                                                        mesage:
-                                                                            "Apakah Anda yakin menghapus data ${e.alergi} ini ?",
-                                                                        onPressed:
-                                                                            () {
+                                children: (lain.isNotEmpty)
+                                    ? lain
+                                        .map((e) => Card(
+                                              color: ThemeColor.primaryColor,
+                                              child: ListTile(
+                                                  trailing:
+                                                      (e.insertDttm ==
+                                                              DateTime.now()
+                                                                  .toString()
+                                                                  .substring(
+                                                                      0, 10))
+                                                          ? IconButton(
+                                                              onPressed: () {
+                                                                //  DELETE
+                                                                CustomDialogWidget.getDialog(
+                                                                    widget: MessageAlert.deleteAlert(
+                                                                        mesage: "Apakah Anda yakin menghapus data ${e.alergi} ini ?",
+                                                                        onPressed: () {
                                                                           //  ON PRESS
                                                                           context.read<AlergiBloc>().add(OnDeleteAlergi(
                                                                               no: e.no,
@@ -828,19 +850,26 @@ class _RiwayatAlergiContentWidgetState
 
                                                                           Get.back();
                                                                         }));
-                                                      },
-                                                      icon: const Icon(
-                                                        FontAwesomeIcons.trash,
-                                                        color: ThemeColor
-                                                            .dangerColor,
-                                                      ))
-                                                  : const SizedBox(),
-                                              title: Text(e.alergi,
-                                                  style:
-                                                      whiteTextStyle.copyWith(
-                                                          fontSize: 5.sp))),
-                                        ))
-                                    .toList(),
+                                                              },
+                                                              icon: const Icon(
+                                                                FontAwesomeIcons
+                                                                    .trash,
+                                                                color: ThemeColor
+                                                                    .dangerColor,
+                                                              ))
+                                                          : const SizedBox(),
+                                                  title: Text(e.alergi,
+                                                      style: whiteTextStyle
+                                                          .copyWith(
+                                                              fontSize: 5.sp))),
+                                            ))
+                                        .toList()
+                                    : [
+                                        Lottie.asset(AppConstant.makananAnimate,
+                                            height: 150.sp,
+                                            reverse: true,
+                                            repeat: true),
+                                      ],
                               )),
                             ),
                           ]),

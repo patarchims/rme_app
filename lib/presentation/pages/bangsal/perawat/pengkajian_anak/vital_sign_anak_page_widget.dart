@@ -307,16 +307,70 @@ class _VitalSignAnakPageWidgetState extends State<VitalSignAnakPageWidget> {
                                   .add(OnChangedTinggiBadanEvent(value: value));
                             },
                           ),
-                          TitleWidget.formBox(
-                            title: "Akral",
-                            subTitle: "",
-                            value: state.tandaVitalIgdDokter.akral,
-                            onChanged: (value) {
-                              context
-                                  .read<TandaVitalIgdDokterBloc>()
-                                  .add(OnChangedAkralEvent(value: value));
-                            },
-                          ),
+
+                          Container(
+                              margin: EdgeInsets.only(left: 15.sp),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "Akral :",
+                                    style: blackTextStyle.copyWith(
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    width: 5.sp,
+                                  ),
+                                  Container(
+                                    margin:
+                                        EdgeInsets.symmetric(horizontal: 2.sp),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 5),
+                                    decoration: BoxDecoration(
+                                        color: ThemeColor.primaryColor,
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: DropdownButton<String>(
+                                      dropdownColor: ThemeColor.darkColor,
+                                      value: state.tandaVitalIgdDokter.akral,
+                                      onChanged: (value) {
+                                        context
+                                            .read<TandaVitalIgdDokterBloc>()
+                                            .add(OnChangedAkralEvent(
+                                                value: value.toString()));
+
+                                        // context.read<TandaVitalIgdDokterBloc>().add(
+                                        //     OnChangedPupilEvent(
+                                        //         value: value.toString()));
+                                      },
+                                      items: ListConstants.akralChoose
+                                          .map<DropdownMenuItem<String>>(
+                                              (String value) =>
+                                                  DropdownMenuItem<String>(
+                                                    value: value,
+                                                    child: Text(value,
+                                                        style: whiteTextStyle),
+                                                  ))
+                                          .toList(),
+                                      icon: const Icon(
+                                        Icons.arrow_drop_down,
+                                        color: ThemeColor.primaryColor,
+                                      ),
+                                      iconSize: 42,
+                                      underline: const SizedBox(),
+                                    ),
+                                  ),
+                                ],
+                              )),
+                          // TitleWidget.formBox(
+                          //   title: "Akral",
+                          //   subTitle: "",
+                          //   value: state.tandaVitalIgdDokter.akral,
+                          //   onChanged: (value) {
+                          //     context
+                          //         .read<TandaVitalIgdDokterBloc>()
+                          //         .add(OnChangedAkralEvent(value: value));
+                          //   },
+                          // ),
                         ],
                       ),
                     ),
@@ -325,7 +379,6 @@ class _VitalSignAnakPageWidgetState extends State<VitalSignAnakPageWidget> {
                         child: Column(
                           children: [
                             SizedBox(
-                                // width: 65.sp,
                                 child: Row(
                               children: [
                                 Text(
@@ -401,16 +454,63 @@ class _VitalSignAnakPageWidgetState extends State<VitalSignAnakPageWidget> {
                                     .add(OnChangedBeratBadan(value: value));
                               },
                             ),
-                            TitleWidget.formBox(
-                              title: "Pupil",
-                              subTitle: "",
-                              value: state.tandaVitalIgdDokter.pupil,
-                              onChanged: (value) {
-                                context
-                                    .read<TandaVitalIgdDokterBloc>()
-                                    .add(OnChangedPupilEvent(value: value));
-                              },
-                            ),
+                            SizedBox(
+                                child: Row(
+                              children: [
+                                Text(
+                                  "Pupil :",
+                                  style: blackTextStyle.copyWith(
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  width: 5.sp,
+                                ),
+                                Container(
+                                  margin:
+                                      EdgeInsets.symmetric(horizontal: 2.sp),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 5),
+                                  decoration: BoxDecoration(
+                                      color: ThemeColor.primaryColor,
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: DropdownButton<String>(
+                                    dropdownColor: ThemeColor.darkColor,
+                                    value: state.tandaVitalIgdDokter.pupil,
+                                    onChanged: (value) {
+                                      context
+                                          .read<TandaVitalIgdDokterBloc>()
+                                          .add(OnChangedPupilEvent(
+                                              value: value.toString()));
+                                    },
+                                    items: ListConstants.pupilChoose
+                                        .map<DropdownMenuItem<String>>(
+                                            (String value) =>
+                                                DropdownMenuItem<String>(
+                                                  value: value,
+                                                  child: Text(value,
+                                                      style: whiteTextStyle),
+                                                ))
+                                        .toList(),
+                                    icon: const Icon(
+                                      Icons.arrow_drop_down,
+                                      color: ThemeColor.primaryColor,
+                                    ),
+                                    iconSize: 42,
+                                    underline: const SizedBox(),
+                                  ),
+                                ),
+                              ],
+                            )),
+                            // TitleWidget.formBox(
+                            //   title: "Pupil",
+                            //   subTitle: "",
+                            //   value: state.tandaVitalIgdDokter.pupil,
+                            //   onChanged: (value) {
+                            //     context
+                            //         .read<TandaVitalIgdDokterBloc>()
+                            //         .add(OnChangedPupilEvent(value: value));
+                            //   },
+                            // ),
                           ],
                         ),
                       ),

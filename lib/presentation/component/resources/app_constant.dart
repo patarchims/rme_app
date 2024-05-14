@@ -41,10 +41,13 @@ class AppConstant {
   static String successSound = "success.mp3";
 
   // LOTTIE ASSETS
+  static String obatAnimate = "${animateAssets}obat_animate.json";
+  static String moreAnimate = "${animateAssets}more_animate.json";
   static String searchAnimate = "${animateAssets}searching.json";
   static String loginAnimate = "${animateAssets}login_animation.json";
   static String alertAnimate = "${animateAssets}alert.json";
   static String alergiAnimate = "${animateAssets}alergi.json";
+  static String makananAnimate = "${animateAssets}food_animate.json";
   static String createPasswordAnimate = "${animateAssets}create_password.json";
   static String securityOTP = "${animateAssets}security_otp.json";
   static String passwordAnimation = "${animateAssets}password.json";

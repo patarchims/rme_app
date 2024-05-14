@@ -156,6 +156,8 @@ abstract class EndPoint {
   static String tandaVitalIGDDokter = '/v1/tanda-vital-igd-dokter';
   static String tandaVitalIGDPerawat = '/v1/tanda-vital-igd-perawat';
   static String pengkajianAwalKeperawatan = '/v1/pengkajian-awal-perawat';
+  static String getPemeriksaanFisikAnak = '/v1/get-pemeriksaan-fisik-anak';
+  static String savePemeriksaanFisikAnak = '/v1/save-pemeriksaan-fisik-anak';
   static String riwayatPenyakitKeluarga =
       '/v1/riwayat-penyakit-keluarga-bangsal';
 

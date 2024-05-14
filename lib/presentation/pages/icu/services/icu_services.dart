@@ -16,6 +16,21 @@ class ICUServices {
         endPoint: "/v1/pemeriksaan-fisik-icu");
   }
 
+  Future<dynamic> onGetAsesmenPerawatanIntensiveICU({
+    required String noReg,
+    required String person,
+    required String pelayanan,
+    required String tanggal,
+  }) {
+    return MyDio().putWithToken(
+        data: DTO.onGetAsesmenPerawatanIntensive(
+            noReg: noReg,
+            person: person,
+            pelayanan: pelayanan,
+            tanggal: tanggal),
+        endPoint: "/v1/asesmen-perawatan-intensive");
+  }
+
   Future<dynamic> onGetAsesmenNyeriICU({required String noReg}) {
     return MyDio().getAndToken(
         endPoint: "/v1/asesmen-nyeri-icu", data: DTO.getNoreg(noReg: noReg));

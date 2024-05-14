@@ -29,7 +29,6 @@ class AsesmenIntensivePageWidget extends StatelessWidget {
         onTap: (index) {
           if (index == 0) {
             // ON GET RIWAYAT KEPERAWATAN
-
             if (authState is Authenticated) {
               context.read<AsesmenIntensiveBloc>().add(
                   OnGetRiwayatKeperawatanIntensive(

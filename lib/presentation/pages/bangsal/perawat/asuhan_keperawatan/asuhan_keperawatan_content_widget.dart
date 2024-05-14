@@ -24,7 +24,6 @@ class AsuhanKeperawatanContentWidget extends StatelessWidget {
         menu: menu,
         onTap: (index) {
           // TAMPILKAN ANAMNESA
-
           if (index == 0) {
             context
                 .read<AsesmenKeperawatanBidanBloc>()

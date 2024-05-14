@@ -329,7 +329,7 @@ class _RiwayatAlergiWidgetContentState
                                                                 widget: MessageAlert
                                                                     .deleteAlert(
                                                                         mesage:
-                                                                            "Apakah Anda yakin menghapus data ${e.alergi} init ?",
+                                                                            "Apakah Anda yakin menghapus data ${e.alergi} ini ?",
                                                                         onPressed:
                                                                             () {
                                                                           //  === DELETE DATA ==== /

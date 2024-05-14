@@ -63,6 +63,7 @@ dependencies:
   internet_connection_checker: ^1.0.0+1
   intl: ^0.18.1
   lottie: ^3.0.0
+  marquee: ^2.2.3
   meta: ^1.9.1
   msix: ^3.16.7
   multi_select_flutter: ^4.1.3

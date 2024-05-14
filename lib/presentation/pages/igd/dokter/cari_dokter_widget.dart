@@ -48,9 +48,11 @@ class _CariDokterSpesialisWidgetState extends State<CariDokterSpesialisWidget> {
       body: Column(
         children: [
           Container(
-            padding: EdgeInsets.only(top: 5.sp, left: 5.sp, right: 5.sp),
+            height: 25.sp,
+            padding: EdgeInsets.only(top: 5.sp, left: 5.sp, right: 15.sp),
             width: Get.width,
             child: FormWidget.textForm(
+                autoFocus: true,
                 enable: true,
                 labelText: "Cari nama dokter",
                 controller: _cariController,
@@ -62,9 +64,6 @@ class _CariDokterSpesialisWidgetState extends State<CariDokterSpesialisWidget> {
           ),
           BlocBuilder<AsesmenIgdBloc, AsesmenIgdState>(
             builder: (context, state) {
-              log("DOKTER SPESILIS ${state.isSuccessSpesialis}");
-              log("DOKTER SPESILIS ${state.failMessageSpesialis}");
-
               if (state.isSuccessSpesialis) {
                 return Container(
                   padding: EdgeInsets.symmetric(horizontal: 5.sp),
@@ -78,48 +77,51 @@ class _CariDokterSpesialisWidgetState extends State<CariDokterSpesialisWidget> {
                     controller: _scrollController,
                     trackVisibility: false,
                     radius: Radius.circular(5.sp),
-                    child: ListView(
-                      controller: _scrollController,
-                      children: state.dokterSpesialis
-                          .where((element) => element.nama
-                              .toLowerCase()
-                              .contains(valueSearch.toLowerCase()))
-                          .map((e) => Card(
-                                color: ThemeColor.primaryColor,
-                                elevation: 1.sp,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(2.sp),
-                                ),
-                                child: ListTile(
-                                  onTap: () {
-                                    // PILIH DOKTER
-                                    context.read<AsesmenIgdBloc>().add(
-                                        AsesmenIgdEvent.selectedDokter(
-                                            dokter: "${e.idk}-${e.nama}"));
-                                    Navigator.pop(context);
-                                  },
-                                  title: Text(
-                                    e.nama,
-                                    style: whiteTextStyle.copyWith(
-                                        fontWeight: FontWeight.bold),
+                    child: Container(
+                      margin: EdgeInsets.only(right: 10.sp),
+                      child: ListView(
+                        controller: _scrollController,
+                        children: state.dokterSpesialis
+                            .where((element) => element.nama
+                                .toLowerCase()
+                                .contains(valueSearch.toLowerCase()))
+                            .map((e) => Card(
+                                  color: ThemeColor.primaryColor,
+                                  elevation: 1.sp,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(2.sp),
                                   ),
-                                  subtitle: Text(
-                                    " ${e.idk}-${e.spesialis} ",
-                                    style: whiteCalibriTextStyle,
-                                  ),
-                                  trailing: const InkWell(
-                                    child: Icon(
-                                      FontAwesomeIcons.circleRight,
+                                  child: ListTile(
+                                    onTap: () {
+                                      // PILIH DOKTER
+                                      context.read<AsesmenIgdBloc>().add(
+                                          AsesmenIgdEvent.selectedDokter(
+                                              dokter: "${e.idk}-${e.nama}"));
+                                      Navigator.pop(context);
+                                    },
+                                    title: Text(
+                                      e.nama,
+                                      style: whiteTextStyle.copyWith(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    subtitle: Text(
+                                      " ${e.idk}-${e.spesialis} ",
+                                      style: whiteCalibriTextStyle,
+                                    ),
+                                    trailing: const InkWell(
+                                      child: Icon(
+                                        FontAwesomeIcons.circleRight,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    leading: const Icon(
+                                      FontAwesomeIcons.userDoctor,
                                       color: Colors.white,
                                     ),
                                   ),
-                                  leading: const Icon(
-                                    FontAwesomeIcons.userDoctor,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ))
-                          .toList(),
+                                ))
+                            .toList(),
+                      ),
                     ),
                   ),
                 );

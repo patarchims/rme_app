@@ -14,9 +14,11 @@ import 'package:hms_app/presentation/component/alert/mesage_alert.dart';
 import 'package:hms_app/presentation/component/component.dart';
 import 'package:hms_app/presentation/component/loading/loading.dart';
 import 'package:hms_app/presentation/component/res/colors.dart';
+import 'package:hms_app/presentation/component/resources/app_constant.dart';
 import 'package:hms_app/presentation/pages/bangsal/bloc/cppt_sbar_bangsal/cppt_sbar_bangsal_bloc.dart';
 import 'package:hms_app/presentation/pages/bangsal/medis/on_update_cppt_sbar_widget.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
+import 'package:lottie/lottie.dart';
 import 'package:sizer/sizer.dart';
 
 class CpptSBARBansalWidget extends StatefulWidget {
@@ -305,99 +307,132 @@ class _CpptSBARBansalWidgetState extends State<CpptSBARBansalWidget> {
                         ],
                       ),
                     ),
-                    ...state.cppt.map(
-                      (e) => SizedBox(
-                        child: Table(
-                          border: TableBorder.all(color: Colors.black),
-                          children: [
-                            TableRow(children: [
-                              TitleWidget.contentTitle(title: e.situation),
-                              TitleWidget.contentTitle(title: e.background),
-                              TitleWidget.contentTitle(title: e.asesmen),
-                              TitleWidget.contentTitle(title: e.recomendation),
-                              TitleWidget.contentTitle(title: e.instruksiPPA),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 5.sp, vertical: 5.sp),
-                                child: Wrap(
-                                  crossAxisAlignment: WrapCrossAlignment.center,
-                                  alignment: WrapAlignment.center,
-                                  runAlignment: WrapAlignment.center,
-                                  runSpacing: 4,
-                                  spacing: 5.sp,
-                                  children: [
-                                    SizedBox(
-                                      height: 15.sp,
-                                      width: 25.sp,
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          CustomDialogWidget.getDialog(
-                                              widget: MessageAlert.deleteAlert(
-                                                  mesage:
-                                                      "Apakah Anda yakin menghapus data ${e.situation} ini ?",
-                                                  onPressed: () {
-                                                    //  === DELETE DATA ==== /
-                                                    context
-                                                        .read<
-                                                            CpptSbarBangsalBloc>()
-                                                        .add(
-                                                            OnDeleteCPPTBangsalEvent(
-                                                                noCppt:
-                                                                    e.idCppt));
+                    if (state.cppt.isNotEmpty) ...[
+                      ...state.cppt.map(
+                        (e) => SizedBox(
+                          child: Table(
+                            border: TableBorder.all(color: Colors.black),
+                            children: [
+                              TableRow(children: [
+                                TitleWidget.contentTitle(title: e.situation),
+                                TitleWidget.contentTitle(title: e.background),
+                                TitleWidget.contentTitle(title: e.asesmen),
+                                TitleWidget.contentTitle(
+                                    title: e.recomendation),
+                                TitleWidget.contentTitle(title: e.instruksiPPA),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 5.sp, vertical: 5.sp),
+                                  child: Wrap(
+                                    crossAxisAlignment:
+                                        WrapCrossAlignment.center,
+                                    alignment: WrapAlignment.center,
+                                    runAlignment: WrapAlignment.center,
+                                    runSpacing: 4,
+                                    spacing: 5.sp,
+                                    children: [
+                                      SizedBox(
+                                        height: 15.sp,
+                                        width: 25.sp,
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            CustomDialogWidget.getDialog(
+                                                widget:
+                                                    MessageAlert.deleteAlert(
+                                                        mesage:
+                                                            "Apakah Anda yakin menghapus data ${e.situation} ini ?",
+                                                        onPressed: () {
+                                                          //  === DELETE DATA ==== /
+                                                          context
+                                                              .read<
+                                                                  CpptSbarBangsalBloc>()
+                                                              .add(OnDeleteCPPTBangsalEvent(
+                                                                  noCppt: e
+                                                                      .idCppt));
 
-                                                    Get.back();
-                                                    context
-                                                        .read<
-                                                            CpptSbarBangsalBloc>()
-                                                        .add(OnGetCpptBangsal(
-                                                            noReg: singlePasien
-                                                                .first.noreg));
-                                                  }));
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        1.sp)),
-                                            backgroundColor:
-                                                ThemeColor.dangerColor),
-                                        child: const Icon(
-                                          FontAwesomeIcons.trash,
-                                          color: Colors.white,
+                                                          Get.back();
+                                                          context
+                                                              .read<
+                                                                  CpptSbarBangsalBloc>()
+                                                              .add(OnGetCpptBangsal(
+                                                                  noReg: singlePasien
+                                                                      .first
+                                                                      .noreg));
+                                                        }));
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          1.sp)),
+                                              backgroundColor:
+                                                  ThemeColor.dangerColor),
+                                          child: const Icon(
+                                            FontAwesomeIcons.trash,
+                                            color: Colors.white,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    SizedBox(
-                                      height: 15.sp,
-                                      width: 25.sp,
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          CustomDialogWidget.getDialog(
-                                              color: Colors.transparent,
-                                              widget: OnUpdateCpptSbarWidget(
-                                                  cpptSbarDokterModel: e));
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        1.sp)),
-                                            backgroundColor:
-                                                ThemeColor.primaryColor),
-                                        child: const Icon(
-                                          FontAwesomeIcons.pencil,
-                                          color: Colors.white,
+                                      SizedBox(
+                                        height: 15.sp,
+                                        width: 25.sp,
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            CustomDialogWidget.getDialog(
+                                                color: Colors.transparent,
+                                                widget: OnUpdateCpptSbarWidget(
+                                                    cpptSbarDokterModel: e));
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          1.sp)),
+                                              backgroundColor:
+                                                  ThemeColor.primaryColor),
+                                          child: const Icon(
+                                            FontAwesomeIcons.pencil,
+                                            color: Colors.white,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ])
-                          ],
+                                    ],
+                                  ),
+                                )
+                              ])
+                            ],
+                          ),
                         ),
-                      ),
-                    )
+                      )
+                    ],
+                    if (state.cppt.isEmpty) ...[
+                      Container(
+                        width: Get.width,
+                        height: 150.sp,
+                        margin: EdgeInsets.only(right: 5.sp, left: 5.sp),
+                        child: Card(
+                          elevation: 1.sp,
+                          shape: RoundedRectangleBorder(
+                            side: const BorderSide(color: Colors.black),
+                            borderRadius: BorderRadius.circular(2.sp),
+                          ),
+                          margin: EdgeInsets.only(top: 5.sp),
+                          color: ThemeColor.primaryColor.withOpacity(0.4),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(2.sp)),
+                            padding: EdgeInsets.only(right: 5.sp, left: 5.sp),
+                            child: Center(
+                                child: SizedBox(
+                              height: 100.sp,
+                              width: 100.sp,
+                              child: Lottie.asset(AppConstant.findAnimation,
+                                  height: 20.sp, reverse: true, repeat: true),
+                            )),
+                          ),
+                        ),
+                      )
+                    ],
                   ],
                 ),
               ),

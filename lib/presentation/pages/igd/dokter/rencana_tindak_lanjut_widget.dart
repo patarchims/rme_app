@@ -143,10 +143,11 @@ class _RencanaTindakLanjutIGDWigetState
               radius: Radius.circular(5.sp),
               child: SingleChildScrollView(
                 controller: _scrollController,
-                child: SizedBox(
+                child: Container(
+                  margin: EdgeInsets.only(right: 10.sp),
                   width: Get.width,
                   child: Card(
-                    color: ThemeColor.bgColor,
+                    color: ThemeColor.whiteColor,
                     shape: RoundedRectangleBorder(
                         side: BorderSide(
                           width: 1.sp,
@@ -167,7 +168,7 @@ class _RencanaTindakLanjutIGDWigetState
                             width: Get.width,
                             child: FormWidget.textArea(
                               enabled: true,
-                              maxLines: 5,
+                              maxLines: 10,
                               value: state.asuhanTerapiStr,
                               validator: (value) {
                                 return value == ''
@@ -215,14 +216,23 @@ class _RencanaTindakLanjutIGDWigetState
                                             },
                                             child: Text(
                                               e,
-                                              style: whiteTextStyle,
+                                              style: whiteTextStyle.copyWith(
+                                                fontWeight:
+                                                    (state.prognosisStr == e)
+                                                        ? FontWeight.bold
+                                                        : FontWeight.normal,
+                                                color: (state.prognosisStr == e)
+                                                    ? ThemeColor.whiteColor
+                                                    : ThemeColor.blackColor,
+                                                fontSize: 6.sp,
+                                              ),
                                             )),
                                       ))
                                   .toList(),
                             ),
                           ),
                           SizedBox(
-                            height: 15.sp,
+                            height: 5.sp,
                           ),
                           titleContainer(title: "Konsul Ke"),
                           SizedBox(
@@ -234,6 +244,7 @@ class _RencanaTindakLanjutIGDWigetState
                             ),
                           ),
                           Container(
+                              margin: EdgeInsets.symmetric(vertical: 5.sp),
                               width: Get.width,
                               height: 25.sp,
                               padding: EdgeInsets.all(2.sp),
@@ -267,6 +278,9 @@ class _RencanaTindakLanjutIGDWigetState
                                     color: Colors.white,
                                     size: 15.sp,
                                   ))),
+                          SizedBox(
+                            height: 25.sp,
+                          )
                         ],
                       ),
                     ),

@@ -122,6 +122,24 @@ abstract class ListConstants {
     "Koma"
   ];
 
+  static const List<String> pupilChoose = [
+    "",
+    "Isokor",
+    "Unisokor",
+    "Midriasis",
+    "Miosis",
+    "Tidak ada reaksi"
+  ];
+
+  static const List<String> akralChoose = [
+    "",
+    "Hangat",
+    "Kering",
+    "Merah",
+    "Dingin",
+    "Basah",
+  ];
+
   static const List<String> kualitasNyeri = [
     "Nyeri Tumpul",
     "Nyeri Tajam",

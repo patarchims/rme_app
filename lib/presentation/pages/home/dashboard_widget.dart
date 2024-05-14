@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hms_app/presentation/component/constant/app_constants.dart';
 import 'package:hms_app/presentation/component/loading/loading.dart';
 import 'package:hms_app/presentation/component/loading/progress_report_card.dart';
+import 'package:marquee/marquee.dart';
 import 'package:sizer/sizer.dart';
 
 class DashboardWidget extends StatelessWidget {
@@ -83,6 +84,71 @@ class DashboardWidget extends StatelessWidget {
                       task: 3,
                       undoneTask: 2,
                     ),
+                  ),
+                ),
+              ],
+            )
+          : Column(
+              children: [
+                Loading.progressCardLoading(
+                    data: const ProgressCardData(
+                      totalUndone: 10,
+                      totalTaskInProress: 2,
+                    ),
+                    onPressedCheck: () {}),
+                const SizedBox(height: kSpacing / 2),
+                const ProgressReportCard(
+                  data: ProgressReportCardData(
+                    title: "1st Sprint",
+                    doneTask: 5,
+                    percent: .3,
+                    task: 3,
+                    undoneTask: 2,
+                  ),
+                ),
+              ],
+            ),
+    );
+  }
+
+  Widget _buildProgress1({Axis axis = Axis.horizontal}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: kSpacing),
+      child: (axis == Axis.horizontal)
+          ? Row(
+              children: [
+                Flexible(
+                  flex: 5,
+                  child: Loading.progressCardLoading(
+                      data: const ProgressCardData(
+                        totalUndone: 10,
+                        totalTaskInProress: 2,
+                      ),
+                      onPressedCheck: () {}),
+                ),
+                const SizedBox(width: kSpacing / 2),
+                Flexible(
+                  flex: 4,
+                  child: Marquee(
+                    // key: Key("$_useRtlText"),
+                    text:
+                        'זהו משפט ראשון של הטקסט הארוך. זהו המשפט השני של הטקסט הארוך',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                    scrollAxis: Axis.horizontal,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    blankSpace: 20,
+                    velocity: 100,
+                    pauseAfterRound: Duration(seconds: 1),
+                    showFadingOnlyWhenScrolling: true,
+                    fadingEdgeStartFraction: 0.1,
+                    fadingEdgeEndFraction: 0.1,
+                    numberOfRounds: 3,
+                    startPadding: 10,
+                    accelerationDuration: Duration(seconds: 1),
+                    accelerationCurve: Curves.linear,
+                    decelerationDuration: Duration(milliseconds: 500),
+                    decelerationCurve: Curves.easeOut,
+                    textDirection: TextDirection.ltr,
                   ),
                 ),
               ],

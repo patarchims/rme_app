@@ -14,8 +14,11 @@ import 'package:hms_app/domain/models/users/user_model.dart';
 import 'package:hms_app/presentation/component/alert/mesage_alert.dart';
 import 'package:hms_app/presentation/component/component.dart';
 import 'package:hms_app/presentation/component/loading/loading.dart';
+import 'package:hms_app/presentation/component/resources/app_constant.dart';
 import 'package:hms_app/presentation/pages/igd/bloc/keluhan_utama/keluhan_utama_bloc.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
+import 'package:hms_app/presentation/screens/emty_obat_screen.dart';
+import 'package:lottie/lottie.dart';
 import 'package:sizer/sizer.dart';
 
 class AsesmenMedisIGdContentWidget extends StatefulWidget {
@@ -340,63 +343,73 @@ class _AsesmenMedisIGdContentWidgetState
                         ),
                         child: Card(
                           elevation: 1,
-                          color: ThemeColor.bgColor,
+                          color: ThemeColor.whiteColor,
                           child: SizedBox(
                             width: Get.width,
                             child: Wrap(
                               children:
-                                  state.keluhanUtamaDokterIgd.riwayatKeluarga
-                                      .map((e) => SizedBox(
-                                            width: 120.sp,
-                                            child: Card(
-                                              color: ThemeColor.darkColor,
-                                              child: ListTile(
-                                                  trailing: IconButton(
-                                                    onPressed: () {
-                                                      // === //
-                                                      // TAMPILKAN PESAN DELETE RIWAYAT ALEG
-                                                      // todo : delete alergi
-                                                      CustomDialogWidget
-                                                          .getDialog(
-                                                              widget: MessageAlert
-                                                                  .deleteAlert(
-                                                                      mesage:
-                                                                          "Apakah Anda yakin menghapus data ${e.alergi} init ?",
-                                                                      onPressed:
-                                                                          () {
-                                                                        //  === DELETE DATA ==== /
-                                                                        context.read<AlergiBloc>().add(OnRemovePenyakitKeluargaEvent(
-                                                                            nomor:
-                                                                                e.nomor,
-                                                                            noRm: e.noRm,
-                                                                            kelompok: e.kelompok));
+                                  (state.keluhanUtamaDokterIgd.riwayatKeluarga
+                                          .isNotEmpty)
+                                      ? state
+                                          .keluhanUtamaDokterIgd.riwayatKeluarga
+                                          .map((e) => SizedBox(
+                                                width: 120.sp,
+                                                child: Card(
+                                                  color: ThemeColor.darkColor,
+                                                  child: ListTile(
+                                                      trailing: IconButton(
+                                                        onPressed: () {
+                                                          // === //
+                                                          // TAMPILKAN PESAN DELETE RIWAYAT ALEG
+                                                          // todo : delete alergi
+                                                          CustomDialogWidget
+                                                              .getDialog(
+                                                                  widget: MessageAlert
+                                                                      .deleteAlert(
+                                                                          mesage:
+                                                                              "Apakah Anda yakin menghapus data ${e.alergi} ini ?",
+                                                                          onPressed:
+                                                                              () {
+                                                                            //  === DELETE DATA ==== /
+                                                                            context.read<AlergiBloc>().add(OnRemovePenyakitKeluargaEvent(
+                                                                                nomor: e.nomor,
+                                                                                noRm: e.noRm,
+                                                                                kelompok: e.kelompok));
 
-                                                                        if (authState
-                                                                            is Authenticated) {
-                                                                          context.read<KeluhanUtamaBloc>().add(OnGetKeluhanUtamaEvent(
-                                                                              noRM: singlePasien.first.mrn,
-                                                                              noReg: singlePasien.first.noreg,
-                                                                              tanggal: DateTime.now().toString().substring(0, 10),
-                                                                              person: toPerson(person: authState.user.person),
-                                                                              pelayanan: toPelayanan(poliklinik: authState.user.poliklinik)));
-                                                                        }
-                                                                        Get.back();
-                                                                      }));
-                                                    },
-                                                    icon: const Icon(
-                                                      FontAwesomeIcons
-                                                          .circleMinus,
-                                                      color: ThemeColor
-                                                          .dangerColor,
-                                                    ),
-                                                  ),
-                                                  title: Text(
-                                                    e.alergi,
-                                                    style: whiteTextStyle,
-                                                  )),
-                                            ),
+                                                                            if (authState
+                                                                                is Authenticated) {
+                                                                              context.read<KeluhanUtamaBloc>().add(OnGetKeluhanUtamaEvent(noRM: singlePasien.first.mrn, noReg: singlePasien.first.noreg, tanggal: DateTime.now().toString().substring(0, 10), person: toPerson(person: authState.user.person), pelayanan: toPelayanan(poliklinik: authState.user.poliklinik)));
+                                                                            }
+                                                                            Get.back();
+                                                                          }));
+                                                        },
+                                                        icon: const Icon(
+                                                          FontAwesomeIcons
+                                                              .circleMinus,
+                                                          color: ThemeColor
+                                                              .dangerColor,
+                                                        ),
+                                                      ),
+                                                      title: Text(
+                                                        e.alergi,
+                                                        style: whiteTextStyle,
+                                                      )),
+                                                ),
+                                              ))
+                                          .toList()
+                                      : [
+                                          //====//
+                                          Center(
+                                              child: SizedBox(
+                                            height: 100.sp,
+                                            width: 100.sp,
+                                            child: Lottie.asset(
+                                                AppConstant.findAnimation,
+                                                height: 20.sp,
+                                                reverse: true,
+                                                repeat: true),
                                           ))
-                                      .toList(),
+                                        ],
                             ),
                           ),
                         ),

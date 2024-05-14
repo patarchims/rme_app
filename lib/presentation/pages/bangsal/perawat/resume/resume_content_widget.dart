@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -24,8 +23,8 @@ class _ResumeContentWidgetState extends State<ResumeContentWidget> {
   Widget build(BuildContext context) {
     return BlocBuilder<HasilAsuhanKeperawatanBloc, HasilAsuhanKeperawatanState>(
       builder: (context, state) {
+        // ===== //
         if (state.status == HasilAsuhanStatus.loadedStatus) {
-          log(state.hasilAsuhanKeperawatanModel.toString());
           return Material(
             color: ThemeColor.bgColor,
             child: RawScrollbar(
@@ -364,11 +363,29 @@ class _ResumeContentWidgetState extends State<ResumeContentWidget> {
             ),
           );
         }
+
+        // ===== //
         if (state.status == HasilAsuhanStatus.emty) {
           return Material(
             color: ThemeColor.bgColor,
-            child:
-                EmtyScren(subTitle: "Data kosong", textStyle: blackTextStyle),
+            child: Center(
+              child: Container(
+                margin: EdgeInsets.all(10.sp),
+                width: Get.width,
+                height: 200.sp,
+                child: Card(
+                  elevation: 1.sp,
+                  shape: RoundedRectangleBorder(
+                    side: const BorderSide(color: Colors.black),
+                    borderRadius: BorderRadius.circular(2.sp),
+                  ),
+                  margin: EdgeInsets.only(top: 5.sp),
+                  color: ThemeColor.primaryColor.withOpacity(0.4),
+                  child: EmtyScren(
+                      subTitle: "Data kosong", textStyle: blackTextStyle),
+                ),
+              ),
+            ),
           );
         }
 

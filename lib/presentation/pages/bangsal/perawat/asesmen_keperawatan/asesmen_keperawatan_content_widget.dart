@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hms_app/domain/bloc/dashboard/pasien/pasien_bloc.dart';
@@ -33,15 +31,20 @@ class AsesmenKeperawatanWidget extends StatelessWidget {
     return TabbarWithoutExpandexWidget(
         backgroundColor: ThemeColor.bgColor,
         onTap: (index) {
+          // ====== //
           if (index == 0) {
             context
                 .read<PengkajianNutrisiBloc>()
                 .add(OnGetPengkajianNutrisi(noReg: singlePasien.first.noreg));
           }
+
+          // ====== //
           if (index == 2) {
             context.read<ResikoJatuhKebidananBloc>().add(
                 OnGetResikoJatuhKebidanan(noReg: singlePasien.first.noreg));
           }
+
+          // ====== //
           if (index == 1) {
             if (authState is Authenticated) {
               context.read<PengkajianPersistemKeperawatanBloc>().add(
@@ -57,6 +60,8 @@ class AsesmenKeperawatanWidget extends StatelessWidget {
                 OnGetPengkajianFungsionalKebidanan(
                     noReg: singlePasien.first.noreg));
           }
+
+          // ====== //
           if (index == 4) {
             if (authState is Authenticated) {
               context.read<PemeriksaanFisikIgdBloc>().add(
@@ -65,11 +70,15 @@ class AsesmenKeperawatanWidget extends StatelessWidget {
                       noReg: singlePasien.first.noreg));
             }
           }
+
+          // ====== //
           if (index == 5) {
             context
                 .read<AsesmenNyeriBloc>()
                 .add(OnGetAsesemenNyeri(noReg: singlePasien.first.noreg));
           }
+
+          // ====== //
         },
         menu: menu,
         children: menu.asMap().entries.map((e) {
