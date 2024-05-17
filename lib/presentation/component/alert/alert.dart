@@ -540,7 +540,7 @@ class Alert {
                 textAlign: TextAlign.center,
                 style: greyTextStyle.copyWith(
                   fontSize: 8.sp,
-                  fontWeight: FontWeight.normal,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ],

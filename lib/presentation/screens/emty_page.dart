@@ -25,7 +25,7 @@ class EmtyScren extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Lottie.asset(AppConstant.searchAnimate,
-              height: size ?? 150.sp, reverse: true, repeat: true),
+              height: size ?? 100.sp, reverse: true, repeat: true),
           Text(
             subTitle,
             textAlign: TextAlign.center,

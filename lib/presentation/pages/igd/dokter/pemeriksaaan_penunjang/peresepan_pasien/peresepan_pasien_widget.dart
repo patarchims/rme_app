@@ -11,13 +11,10 @@ import 'package:hms_app/domain/models/devices_info/device_info_model.dart';
 import 'package:hms_app/domain/models/meta/meta_model.dart';
 import 'package:hms_app/presentation/component/alert/mesage_alert.dart';
 import 'package:hms_app/presentation/component/component.dart';
-import 'package:hms_app/presentation/component/fonts/font_helper.dart';
 import 'package:hms_app/presentation/component/resources/app_constant.dart';
 import 'package:hms_app/presentation/pages/igd/bloc/resep/resep_bloc.dart';
 import 'package:hms_app/presentation/pages/igd/dokter/pemeriksaaan_penunjang/peresepan_pasien/tambah_resep_obat_widget.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
-import 'package:hms_app/presentation/screens/emty_obat_screen.dart';
-import 'package:hms_app/presentation/screens/emty_page.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sizer/sizer.dart';
 
@@ -38,7 +35,6 @@ class _PeresepanPasienWidgetState extends State<PeresepanPasienWidget> {
 
   @override
   void dispose() {
-    // _scrollController.dispose();
     _scrollController.dispose();
     super.dispose();
   }

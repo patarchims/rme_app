@@ -1,6 +1,9 @@
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hms_app/domain/network/api_failure_handler.dart';
+import 'package:hms_app/domain/network/api_success_handler.dart';
 import 'package:hms_app/presentation/pages/bangsal/repository/nyeri_icu_repository.dart';
 import 'package:hms_app/presentation/pages/bangsal/repository/pengkajian_nyeri_nips_anak_repository.dart';
 import 'package:hms_app/presentation/pages/bangsal/services/bangsal_services.dart';
@@ -20,6 +23,7 @@ class AsesmenNyeriAnakBloc
     on<OnChangedKakiEvent>(_onChangedKakiEvent);
     on<OnChangedKesadaraEvent>(_onChangedKesadaran);
     on<OnChangedSkalaNyeriEvent>(_onChangedSkalaNyeri);
+    on<OnSaveAssesmenNyeriAnakEvent>(_onSaveAsessmenAnakEvent);
   }
 
   Future<void> _onGetPengkajianNyeriEvent(
@@ -42,6 +46,53 @@ class AsesmenNyeriAnakBloc
       emit(state.copyWith(
         status: AsesmenNyeriAnakStatus.loaded,
       ));
+    }
+  }
+
+  Future<void> _onSaveAsessmenAnakEvent(
+    OnSaveAssesmenNyeriAnakEvent event,
+    Emitter<AsesmenNyeriAnakState> emit,
+  ) async {
+    // === //
+    emit(state.copyWith(
+      status: AsesmenNyeriAnakStatus.isLoadingSave,
+    ));
+    try {
+      final saveData = await keperawatanBangsalService.onSaveAssesmenNyeriAnak(
+          noReg: event.noReg,
+          pelayanan: event.pelayanan,
+          person: event.person,
+          devicesID: event.deviceID,
+          ekspresiWajah: event.ekspresiWajah,
+          kdDokter: event.kdDokter,
+          tangisan: event.tangisan,
+          polaNafas: event.polaNapas,
+          tangan: event.tangan,
+          kaki: event.kaki,
+          kesadaran: event.kesadaran,
+          total: event.total,
+          nyeri: event.nyeri,
+          lokasiNyeri: event.lokasiNyeri,
+          frekuensiNyeri: event.frekuensiNyeri,
+          nyeriMenjalar: event.nyeriMenjalar,
+          kualitasNyeri: event.kualitasNyeri);
+
+      emit(state.copyWith(
+          status: AsesmenNyeriAnakStatus.loaded,
+          saveResultFailure: optionOf(saveData)));
+
+      final getData = await keperawatanBangsalService.onGetPengkajianNyeriAnak(
+          noreg: event.noReg);
+
+      PengkajianNyeriNips data =
+          PengkajianNyeriNips.fromJson(getData["response"]);
+
+      emit(state.copyWith(
+          status: AsesmenNyeriAnakStatus.loaded,
+          saveResultFailure: none(),
+          penkajianNyeri: data));
+    } catch (e) {
+      emit(state.copyWith(status: AsesmenNyeriAnakStatus.loaded));
     }
   }
 

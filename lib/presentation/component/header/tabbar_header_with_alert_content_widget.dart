@@ -1,4 +1,4 @@
-import 'package:blinking_text/blinking_text.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hms_app/domain/bloc/dashboard/resiko_jatuh/deteksi_resiko_jatuh/deteksi_resiko_jatuh_bloc.dart';
@@ -73,15 +73,31 @@ class TabbarWithAlertContentWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        BlinkText(state.resiko.hasil + state.resiko.tindakan,
-                            style: TextStyle(
-                                fontSize: 12.sp,
+                        AnimatedTextKit(
+                          animatedTexts: [
+                            TypewriterAnimatedText(
+                              state.resiko.hasil + state.resiko.tindakan,
+                              textStyle: const TextStyle(
+                                fontSize: 32.0,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.redAccent),
-                            beginColor: Colors.black,
-                            endColor: Colors.redAccent,
-                            times: 10,
-                            duration: const Duration(seconds: 1)),
+                              ),
+                              speed: const Duration(milliseconds: 2000),
+                            ),
+                          ],
+                          totalRepeatCount: 4,
+                          pause: const Duration(milliseconds: 1000),
+                          displayFullTextOnTap: true,
+                          stopPauseOnTap: true,
+                        ),
+                        // BlinkText(state.resiko.hasil + state.resiko.tindakan,
+                        //     style: TextStyle(
+                        //         fontSize: 12.sp,
+                        //         fontWeight: FontWeight.bold,
+                        //         color: Colors.redAccent),
+                        //     beginColor: Colors.black,
+                        //     endColor: Colors.redAccent,
+                        //     times: 10,
+                        //     duration: const Duration(seconds: 1)),
                         SizedBox(
                           width: 25.sp,
                         ),

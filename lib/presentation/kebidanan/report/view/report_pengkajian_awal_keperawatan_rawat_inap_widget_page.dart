@@ -28,7 +28,6 @@ class _ReportPengkajianAwalKeperawatanRawatInapPageState
     PasienState pasienState = context.watch<PasienBloc>().state;
     final singlePasien = pasienState.listPasienModel
         .where((element) => element.mrn == pasienState.normSelected);
-    // AuthState authState = context.watch<AuthBloc>().state;
 
     return BlocBuilder<ReportBloc, ReportState>(
       builder: (context, state) {
@@ -88,9 +87,11 @@ class _ReportPengkajianAwalKeperawatanRawatInapPageState
                         children: [
                           // TAMPILKAN DATA // TAMPILKAN HEADER
                           Padding(
-                            padding: EdgeInsets.all(8.sp),
-                            child: const HeaderAllWidget(),
-                          ),
+                              padding: EdgeInsets.all(8.sp),
+                              child: const HeaderAllWidget()),
+
+                          //==
+                          const Divider(),
                           Container(
                             color: Colors.white,
                             padding: EdgeInsets.symmetric(horizontal: 5.sp),
@@ -164,8 +165,8 @@ class _ReportPengkajianAwalKeperawatanRawatInapPageState
                               ),
                             ),
                           ),
-
                           const Divider(),
+
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(

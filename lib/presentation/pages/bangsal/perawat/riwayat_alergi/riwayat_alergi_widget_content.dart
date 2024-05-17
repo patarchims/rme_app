@@ -19,7 +19,6 @@ import 'package:hms_app/presentation/component/fonts/font_helper.dart';
 import 'package:hms_app/presentation/component/resources/app_constant.dart';
 import 'package:hms_app/presentation/component/title/title_component.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
-import 'package:hms_app/presentation/screens/emty_obat_screen.dart';
 import 'package:lottie/lottie.dart';
 import 'package:searchfield/searchfield.dart';
 import 'package:sizer/sizer.dart';

@@ -204,6 +204,7 @@ class SidebarWidget extends StatelessWidget {
                             context
                                 .read<AuthBloc>()
                                 .add(const AuthEvent.signOut());
+
                             context
                                 .read<AppBloc>()
                                 .add(const AppEvent.started());

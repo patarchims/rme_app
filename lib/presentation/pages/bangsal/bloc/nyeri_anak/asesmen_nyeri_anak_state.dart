@@ -15,17 +15,21 @@ class AsesmenNyeriAnakState extends Equatable {
   final AsesmenNyeriAnakStatus status;
   final PengkajianNyeriNips penkajianNyeri;
   final NyeriIcuModel nyeriICUModel;
+  final Option<Either<ApiFailureResult, ApiSuccessResult>> saveResultFailure;
 
   const AsesmenNyeriAnakState({
     required this.status,
     required this.penkajianNyeri,
     required this.nyeriICUModel,
+    required this.saveResultFailure,
   });
 
   @override
-  List<Object?> get props => [status, penkajianNyeri, nyeriICUModel];
+  List<Object?> get props =>
+      [status, penkajianNyeri, nyeriICUModel, saveResultFailure];
 
   static AsesmenNyeriAnakState initial() => AsesmenNyeriAnakState(
+      saveResultFailure: none(),
       status: AsesmenNyeriAnakStatus.initial,
       nyeriICUModel: NyeriIcuModel(
           frekuensiNyeri: "",
@@ -52,8 +56,10 @@ class AsesmenNyeriAnakState extends Equatable {
     AsesmenNyeriAnakStatus? status,
     PengkajianNyeriNips? penkajianNyeri,
     NyeriIcuModel? nyeriICUModel,
+    Option<Either<ApiFailureResult, ApiSuccessResult>>? saveResultFailure,
   }) {
     return AsesmenNyeriAnakState(
+      saveResultFailure: saveResultFailure ?? this.saveResultFailure,
       status: status ?? this.status,
       nyeriICUModel: nyeriICUModel ?? this.nyeriICUModel,
       penkajianNyeri: penkajianNyeri ?? this.penkajianNyeri,

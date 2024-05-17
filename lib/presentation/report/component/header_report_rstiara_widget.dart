@@ -60,27 +60,6 @@ class HeaderReportRSTiaraWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              // SizedBox(
-              //   width: Get.width / 2.5,
-              //   child: Column(
-              //     mainAxisAlignment: MainAxisAlignment.center,
-              //     crossAxisAlignment: CrossAxisAlignment.center,
-              //     children: [
-              //       Text(
-              //         SetApp.nameApp(appSetup: AppConstant.appSetup)
-              //             .toUpperCase(),
-              //         style: blackTextStyle.copyWith(
-              //             fontWeight: FontWeight.bold, fontSize: 12.sp),
-              //       ),
-              //       Text(
-              //         SetApp.alamatApp(appSetup: AppConstant.appSetup),
-              //         textAlign: TextAlign.center,
-              //         style: blackTextStyle.copyWith(
-              //             fontWeight: FontWeight.bold, fontSize: 6.sp),
-              //       ),
-              //     ],
-              //   ),
-              // ),
               Expanded(
                   child: Container(
                 height: 50.sp,

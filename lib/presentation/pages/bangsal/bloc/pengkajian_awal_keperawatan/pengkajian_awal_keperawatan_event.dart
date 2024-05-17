@@ -11,6 +11,58 @@ class OnChangedJenisAnamnesa extends PengkajianAwalKeperawatanEvent {
   });
 }
 
+class OnChangedJenisAnamnesAnak extends PengkajianAwalKeperawatanEvent {
+  final String value;
+  OnChangedJenisAnamnesAnak({
+    required this.value,
+  });
+}
+
+class OnSaveAssesmenAnakEvent extends PengkajianAwalKeperawatanEvent {
+  final String noReg;
+  final String noRM;
+  final String person;
+  final String pelayanan;
+  final String devicesID;
+  final String dpjp;
+  final String jenpel;
+  final String jenpenDetail;
+  final String keluhanUtama;
+  final String riwayatPenyakit;
+  final String riwayatPenyakitDahulu;
+  final String tanggal;
+  final String reaksiAlergi;
+
+  OnSaveAssesmenAnakEvent({
+    required this.noReg,
+    required this.noRM,
+    required this.person,
+    required this.pelayanan,
+    required this.devicesID,
+    required this.dpjp,
+    required this.jenpel,
+    required this.jenpenDetail,
+    required this.keluhanUtama,
+    required this.riwayatPenyakitDahulu,
+    required this.riwayatPenyakit,
+    required this.tanggal,
+    required this.reaksiAlergi,
+  });
+}
+
+class OnGetAsesmenAnakEvent extends PengkajianAwalKeperawatanEvent {
+  final String noReg;
+  final String noRM;
+  final String person;
+  final String tanggal;
+  OnGetAsesmenAnakEvent({
+    required this.noReg,
+    required this.noRM,
+    required this.person,
+    required this.tanggal,
+  });
+}
+
 class OnSaveRiwayatPenyakitKeluarga extends PengkajianAwalKeperawatanEvent {
   // TAMBAHKAN RIWAYAT PENYAKIT KELUARGA
   final String noRM;
@@ -32,6 +84,14 @@ class OnSaveRiwayatPenyakitKeluarga extends PengkajianAwalKeperawatanEvent {
 class OnChangedRiwayatPenyakitDahulu extends PengkajianAwalKeperawatanEvent {
   final String value;
   OnChangedRiwayatPenyakitDahulu({
+    required this.value,
+  });
+}
+
+class OnChangedRiwayatPenyakitDahuluAnak
+    extends PengkajianAwalKeperawatanEvent {
+  final String value;
+  OnChangedRiwayatPenyakitDahuluAnak({
     required this.value,
   });
 }
@@ -78,9 +138,24 @@ class OnChangedKeluhanUtama extends PengkajianAwalKeperawatanEvent {
   });
 }
 
+class OnChangedKeluhanUtamaAnak extends PengkajianAwalKeperawatanEvent {
+  final String value;
+  OnChangedKeluhanUtamaAnak({
+    required this.value,
+  });
+}
+
 class OnChangedRiwayatPenyakitSekarang extends PengkajianAwalKeperawatanEvent {
   final String value;
   OnChangedRiwayatPenyakitSekarang({
+    required this.value,
+  });
+}
+
+class OnChangedRiwayatPenyakitSekarangAnak
+    extends PengkajianAwalKeperawatanEvent {
+  final String value;
+  OnChangedRiwayatPenyakitSekarangAnak({
     required this.value,
   });
 }
@@ -92,9 +167,22 @@ class OnChangedDetailJenisAnamnesa extends PengkajianAwalKeperawatanEvent {
   });
 }
 
+class OnChangedDetailJenisAnamnesaAnak extends PengkajianAwalKeperawatanEvent {
+  final String value;
+  OnChangedDetailJenisAnamnesaAnak({
+    required this.value,
+  });
+}
+
 class OnChangedReaksiAlergi extends PengkajianAwalKeperawatanEvent {
   final String value;
   OnChangedReaksiAlergi({
+    required this.value,
+  });
+}
+class OnChangedReaksiAlergiAnak extends PengkajianAwalKeperawatanEvent {
+  final String value;
+  OnChangedReaksiAlergiAnak({
     required this.value,
   });
 }

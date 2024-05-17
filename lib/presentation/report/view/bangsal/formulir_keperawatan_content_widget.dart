@@ -60,8 +60,7 @@ class FormulirKeperawatanWidgetContent extends StatelessWidget {
           }
         },
         children: menu.asMap().entries.map((e) {
-          if (e.value ==
-              "Formulir Pengkajian\nRawat Pasien Dewasa Rawat Inap") {
+          if (e.value == "Formulir Pengkajian\nRawat Pasien Rawat Inap") {
             return const ViewReportPengkajianAwalKeperawatanPage();
           }
 
@@ -103,7 +102,7 @@ class FormulirKeperawatanWidgetContent extends StatelessWidget {
 }
 
 List<String> menu = [
-  "Formulir Pengkajian\nRawat Pasien Dewasa Rawat Inap",
+  "Formulir Pengkajian\nRawat Pasien Rawat Inap",
   "Formulir Pelaksanaan\nKeperawatan & Perkembangan Pasien",
   "Formulir CPPT",
   "Analisa Data",

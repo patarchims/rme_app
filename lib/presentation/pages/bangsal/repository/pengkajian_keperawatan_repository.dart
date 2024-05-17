@@ -12,14 +12,12 @@ class PengkajianKeperawatanResponseModel {
   factory PengkajianKeperawatanResponseModel.fromJson(
           Map<String, dynamic> json) =>
       PengkajianKeperawatanResponseModel(
-          riwayatTerdahulu: List<RiwayatTerdahulu>.from(
-              json["riwayat_terdahulu"]
-                  .map((x) => RiwayatTerdahulu.fromJson(x))),
-          riwayatPenyakitKeluarga: List<RiwayatKeluarga>.from(
-              json["riwayat_keluarga"].map((x) => RiwayatKeluarga.fromJson(x))),
-          pengkajian: Pengkajian.fromJson(json["pengkajian"]));
-
-  Map<String, dynamic> toJson() => {"pengkajian": pengkajian.toJson()};
+        riwayatTerdahulu: List<RiwayatTerdahulu>.from(
+            json["riwayat_terdahulu"].map((x) => RiwayatTerdahulu.fromJson(x))),
+        riwayatPenyakitKeluarga: List<RiwayatKeluarga>.from(
+            json["riwayat_keluarga"].map((x) => RiwayatKeluarga.fromJson(x))),
+        pengkajian: Pengkajian.fromJson(json["pengkajian"]),
+      );
 
   PengkajianKeperawatanResponseModel copyWith({
     Pengkajian? pengkajian,
@@ -56,13 +54,13 @@ class RiwayatKeluarga {
 
   factory RiwayatKeluarga.fromJson(Map<String, dynamic> json) =>
       RiwayatKeluarga(
-        nomor: json["nomor"],
-        noRm: json["no_rm"],
-        kelompok: json["kelompok"],
+        nomor: json["nomor"] as int,
+        noRm: json["no_rm"].toString(),
+        kelompok: json["kelompok"].toString(),
         insertDttm: DateTime.parse(json["insert_dttm"]),
-        alergi: json["alergi"],
-        namaUser: json["nama_user"],
-        bagian: json["bagian"],
+        alergi: json["alergi"].toString(),
+        namaUser: json["nama_user"].toString(),
+        bagian: json["bagian"].toString(),
       );
 
   Map<String, dynamic> toJson() => {
@@ -162,8 +160,8 @@ class RiwayatTerdahulu {
   factory RiwayatTerdahulu.fromJson(Map<String, dynamic> json) =>
       RiwayatTerdahulu(
         tglMasuk: DateTime.parse(json["tgl_masuk"]),
-        keluhUtama: json["keluh_utama"],
-        riwayatSekarang: json["riwayat_sekarang"],
+        keluhUtama: json["keluh_utama"].toString(),
+        riwayatSekarang: json["riwayat_sekarang"].toString(),
       );
 
   Map<String, dynamic> toJson() => {

@@ -17,7 +17,6 @@ import 'package:hms_app/presentation/component/loading/loading.dart';
 import 'package:hms_app/presentation/component/resources/app_constant.dart';
 import 'package:hms_app/presentation/pages/igd/bloc/keluhan_utama/keluhan_utama_bloc.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
-import 'package:hms_app/presentation/screens/emty_obat_screen.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sizer/sizer.dart';
 

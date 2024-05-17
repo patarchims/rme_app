@@ -32,6 +32,95 @@ abstract class DTOKeperawatan {
     };
   }
 
+  static Map<String, dynamic> savePengkajianAwalAnak({
+    required String noreg,
+    required String dpjp,
+    required String noRM,
+    required String person,
+    required String pelayanan,
+    required String deviceID,
+    required String jenPel,
+    required String detailJenPel,
+    required String keluhanUtama,
+    required String rwtPenyakit,
+    required String reaksiAlergi,
+    required String riwayatPenyakitDahulu,
+    required String tanggal,
+  }) {
+    return {
+      'no_reg': noreg,
+      'no_rm': noRM,
+      'person': person,
+      'pelayanan': pelayanan,
+      'device_id': deviceID,
+      'dpjp': dpjp,
+      'jenpel': jenPel,
+      'detail_jenpel': detailJenPel,
+      'keluhan_utama': keluhanUtama,
+      'rwyt_penyakit': rwtPenyakit,
+      'reaksi_alergi': reaksiAlergi,
+      'tanggal': tanggal,
+      'rwyt_penyakit_dahulu': riwayatPenyakitDahulu,
+    };
+  }
+
+  // Noreg                 string `json:"noreg" binding:"required"`
+  // 	Pelayanan             string `json:"pelayanan" binding:"required"`
+  // 	Person                string `json:"person" binding:"required"`
+  // 	DeviceID              string `json:"device_id" binding:"required"`
+  // 	EkspresiWajah         string `json:"ekspresi_wajah"`
+  // 	KdDokter              string `json:"kd_dokter"`
+  // 	Tangisan              string `json:"tangisan"`
+  // 	PolaNapas             string `json:"pola_napas"`
+  // 	Tangan                string `json:"tangan"`
+  // 	Kaki                  string `json:"kaki"`
+  // 	Kesadaran             string `json:"kesadaran"`
+  // 	Total                 int    `json:"total"`
+  // 	AseskepNyeri          int    `json:"nyeri"`
+  // 	AseskepLokasiNyeri    string `json:"lokasi_nyeri"`
+  // 	AseskepFrekuensiNyeri string `json:"frekuensi_nyeri"`
+  // 	AseskepNyeriMenjalar  string `json:"nyeri_menjalar"`
+  // 	AseskepKualitasNyeri  string `json:"kualitas_nyeri"`
+  static Map<String, dynamic> onSaveNyeriAnak({
+    required String noReg,
+    required String pelayanan,
+    required String person,
+    required String devicesID,
+    required String ekspresiWajah,
+    required String kdDokter,
+    required String tangisan,
+    required String polaNafas,
+    required String tangan,
+    required String kaki,
+    required String kesadaran,
+    required int total,
+    required int nyeri,
+    required String lokasiNyeri,
+    required String frekuensiNyeri,
+    required String nyeriMenjalar,
+    required String kualitasNyeri,
+  }) {
+    return {
+      'noreg': noReg,
+      'pelayanan': pelayanan,
+      'person': person,
+      'device_id': devicesID,
+      'ekspresi_wajah': ekspresiWajah,
+      'kd_dokter': kdDokter,
+      'tangisan': tangisan,
+      'pola_napas': polaNafas,
+      'tangan': tangan,
+      'kaki': kaki,
+      'kesadaran': kesadaran,
+      'total': total,
+      'nyeri': nyeri,
+      'lokasi_nyeri': lokasiNyeri,
+      'frekuensi_nyeri': frekuensiNyeri,
+      'nyeri_menjalar': nyeriMenjalar,
+      'kualitas_nyeri': kualitasNyeri
+    };
+  }
+
   static Map<String, dynamic> onSavePengkajianFisikAnak({
     required String deviceID,
     required String pelayanan,
@@ -267,6 +356,20 @@ abstract class DTOKeperawatan {
   }) {
     return {
       "no_reg": noReg,
+    };
+  }
+
+  static Map<String, dynamic> onGetAsesmenAnak({
+    required String noReg,
+    required String noRM,
+    required String person,
+    required String tanggal,
+  }) {
+    return {
+      "no_reg": noReg,
+      "no_rm": noRM,
+      "person": person,
+      "tanggal": tanggal,
     };
   }
 

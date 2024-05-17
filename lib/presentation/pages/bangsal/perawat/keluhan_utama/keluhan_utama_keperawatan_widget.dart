@@ -11,11 +11,13 @@ import 'package:hms_app/domain/models/users/user_model.dart';
 import 'package:hms_app/presentation/component/alert/mesage_alert.dart';
 import 'package:hms_app/presentation/component/component.dart';
 import 'package:hms_app/presentation/component/extenstion/date_helper.dart';
+import 'package:hms_app/presentation/component/fonts/font_helper.dart';
 import 'package:hms_app/presentation/component/loading/loading.dart';
 import 'package:hms_app/presentation/kebidanan/presentation/asesmen/kebidanan_widget_content.dart';
 import 'package:hms_app/presentation/pages/bangsal/bloc/pengkajian_awal_keperawatan/pengkajian_awal_keperawatan_bloc.dart';
 import 'package:hms_app/presentation/pages/bangsal/perawat/riwayat_alergi_keperawatan/riwayat_alergi_keperawatan_widget_content.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
+import 'package:hms_app/presentation/screens/emty_page.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../../domain/bloc/user/auth/auth_bloc.dart';
 import '../../../../../domain/models/response/alergi/riwayat_alergi_pasien_model.dart';
@@ -126,7 +128,7 @@ class _KeluhanUtamaKeperawatanWidgetState
                 context.read<PengkajianAwalKeperawatanBloc>().add(
                     OnSavePengkajianAwalKeperawatan(
                         dpjp: singlePasien.first.kdDokter,
-                        deviceID: "ID - ${data['id']} - ${data['device']}",
+                        deviceID: "ID-${data['id']}-${data['device']}",
                         jenPel: state.pengkajianKeperawatanResponseModel
                             .pengkajian.jenpel,
                         noRM: singlePasien.first.mrn,
@@ -148,47 +150,76 @@ class _KeluhanUtamaKeperawatanWidgetState
                 radius: Radius.circular(5.sp),
                 child: SingleChildScrollView(
                   controller: _scrollController,
-                  child: Column(
-                    children: [
-                      TitleWidget.titleContainer(title: "Jenis Anamnesa"),
-                      Container(
-                        padding: EdgeInsets.symmetric(horizontal: 5.sp),
-                        child: Table(
-                          border: TableBorder.all(color: ThemeColor.bgColor),
-                          columnWidths: const {
-                            1: FlexColumnWidth(6),
-                            2: FlexColumnWidth(1.2),
-                          },
-                          children: [
-                            TableRow(children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  "Anamnesa",
-                                  textAlign: TextAlign.left,
-                                  style:
-                                      blackTextStyle.copyWith(fontSize: 6.sp),
+                  child: Container(
+                    margin: EdgeInsets.only(right: 15.sp),
+                    child: Column(
+                      children: [
+                        TitleWidget.titleContainer(title: "Jenis Anamnesa"),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 5.sp),
+                          child: Table(
+                            border: TableBorder.all(color: ThemeColor.bgColor),
+                            columnWidths: const {
+                              1: FlexColumnWidth(6),
+                              2: FlexColumnWidth(1.2),
+                            },
+                            children: [
+                              TableRow(children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "Anamnesa",
+                                    textAlign: TextAlign.left,
+                                    style:
+                                        blackTextStyle.copyWith(fontSize: 6.sp),
+                                  ),
                                 ),
-                              ),
-                              Container(
-                                width: Get.width,
-                                decoration:
-                                    BoxDecoration(color: ThemeColor.bgColor),
-                                child: Column(
-                                  children: [
-                                    Wrap(
-                                      children: jenisPengkajian
-                                          .asMap()
-                                          .entries
-                                          .map((e) {
-                                        if (state
-                                                .pengkajianKeperawatanResponseModel
-                                                .pengkajian
-                                                .jenpel ==
-                                            e.value) {
+                                Container(
+                                  width: Get.width,
+                                  decoration:
+                                      BoxDecoration(color: ThemeColor.bgColor),
+                                  child: Column(
+                                    children: [
+                                      Wrap(
+                                        children: jenisPengkajian
+                                            .asMap()
+                                            .entries
+                                            .map((e) {
+                                          if (state
+                                                  .pengkajianKeperawatanResponseModel
+                                                  .pengkajian
+                                                  .jenpel ==
+                                              e.value) {
+                                            return TitleWidget.boxChoose(
+                                              backgroundColor:
+                                                  ThemeColor.greenColor,
+                                              onPressed: () {
+                                                if (e.value ==
+                                                    jenisPengkajian[1]) {
+                                                  context
+                                                      .read<
+                                                          PengkajianAwalKeperawatanBloc>()
+                                                      .add(
+                                                          OnChangedDetailJenisAnamnesa(
+                                                              value: ""));
+                                                }
+
+                                                context
+                                                    .read<
+                                                        PengkajianAwalKeperawatanBloc>()
+                                                    .add(OnChangedJenisAnamnesa(
+                                                        value: e.value));
+                                              },
+                                              icon: const Icon(
+                                                FontAwesomeIcons.check,
+                                                color: Colors.white,
+                                              ),
+                                              title: e.value,
+                                            );
+                                          }
                                           return TitleWidget.boxChoose(
                                             backgroundColor:
-                                                ThemeColor.greenColor,
+                                                ThemeColor.primaryColor,
                                             onPressed: () {
                                               if (e.value ==
                                                   jenisPengkajian[1]) {
@@ -199,7 +230,6 @@ class _KeluhanUtamaKeperawatanWidgetState
                                                         OnChangedDetailJenisAnamnesa(
                                                             value: ""));
                                               }
-
                                               context
                                                   .read<
                                                       PengkajianAwalKeperawatanBloc>()
@@ -207,351 +237,333 @@ class _KeluhanUtamaKeperawatanWidgetState
                                                       value: e.value));
                                             },
                                             icon: const Icon(
-                                              FontAwesomeIcons.check,
-                                              color: Colors.white,
-                                            ),
+                                                FontAwesomeIcons.check,
+                                                color: Colors.white),
                                             title: e.value,
                                           );
-                                        }
-                                        return TitleWidget.boxChoose(
-                                          backgroundColor:
-                                              ThemeColor.primaryColor,
-                                          onPressed: () {
-                                            if (e.value == jenisPengkajian[1]) {
-                                              context
-                                                  .read<
-                                                      PengkajianAwalKeperawatanBloc>()
-                                                  .add(
-                                                      OnChangedDetailJenisAnamnesa(
-                                                          value: ""));
-                                            }
-                                            context
-                                                .read<
-                                                    PengkajianAwalKeperawatanBloc>()
-                                                .add(OnChangedJenisAnamnesa(
-                                                    value: e.value));
-                                          },
-                                          icon: const Icon(
-                                              FontAwesomeIcons.check,
-                                              color: Colors.white),
-                                          title: e.value,
-                                        );
-                                      }).toList(),
-                                    ),
-
-                                    //====//
-                                    if (state.pengkajianKeperawatanResponseModel
-                                            .pengkajian.jenpel ==
-                                        jenisPengkajian.last) ...[
-                                      Container(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 5.sp, vertical: 2.sp),
-                                        width: Get.width / 2.4,
-                                        child: SizedBox(
-                                          child: FormWidget.textArea(
-                                              maxLines: 2,
-                                              enabled: true,
-                                              value: state
-                                                  .pengkajianKeperawatanResponseModel
-                                                  .pengkajian
-                                                  .detailJenpel,
-                                              onChanged: (e) {
-                                                context
-                                                    .read<
-                                                        PengkajianAwalKeperawatanBloc>()
-                                                    .add(
-                                                        OnChangedDetailJenisAnamnesa(
-                                                            value: e));
-                                              }),
-                                        ),
+                                        }).toList(),
                                       ),
-                                    ]
-                                  ],
-                                ),
-                              )
-                            ]),
-                          ],
-                        ),
-                      ),
-                      TitleWidget.titleContainer(title: "Keluhan Utama"),
-                      Padding(
-                        padding: EdgeInsets.all(5.sp),
-                        child: FormWidget.textArea(
-                            enabled: true,
-                            maxLines: 3,
-                            value: state.pengkajianKeperawatanResponseModel
-                                .pengkajian.keluhanUtama,
-                            onChanged: (value) {
-                              context
-                                  .read<PengkajianAwalKeperawatanBloc>()
-                                  .add(OnChangedKeluhanUtama(value: value));
-                            }),
-                      ),
-                      TitleWidget.titleContainer(
-                          title: "Riwayat Penyakit Sekarang"),
 
-                      Padding(
-                        padding: EdgeInsets.all(5.sp),
-                        child: FormWidget.textArea(
-                            enabled: true,
-                            maxLines: 3,
-                            value: state.pengkajianKeperawatanResponseModel
-                                .pengkajian.rwytPenyakit,
-                            onChanged: (value) {
-                              context.read<PengkajianAwalKeperawatanBloc>().add(
-                                  OnChangedRiwayatPenyakitSekarang(
-                                      value: value));
-                            }),
-                      ),
-                      TitleWidget.titleContainer(
-                          title: "Riwayat Penyakit Dahulu"),
-
-                      // ===================== //
-                      Padding(
-                        padding: EdgeInsets.all(5.sp),
-                        child: FormWidget.textArea(
-                            value: state.pengkajianKeperawatanResponseModel
-                                .pengkajian.riwayatPenyakitDahulu,
-                            enabled: true,
-                            maxLines: 3,
-                            onChanged: (value) {
-                              context.read<PengkajianAwalKeperawatanBloc>().add(
-                                  OnChangedRiwayatPenyakitDahulu(value: value));
-                            }),
-                      ),
-
-                      TitleWidget.titleContainer(
-                          title: "Riwayat Pengobatan Sebelumnya"),
-
-                      Padding(
-                        padding: EdgeInsets.all(3.sp),
-                        child: Wrap(
-                          alignment: WrapAlignment.start,
-                          crossAxisAlignment: WrapCrossAlignment.start,
-                          children: (state.pengkajianKeperawatanResponseModel
-                                  .riwayatTerdahulu.isNotEmpty)
-                              ? state.pengkajianKeperawatanResponseModel
-                                  .riwayatTerdahulu
-                                  .map((e) => Padding(
-                                        padding: EdgeInsets.all(1.sp),
-                                        child: Card(
-                                          margin: EdgeInsets.all(5.sp),
-                                          color: ThemeColor.bgColor,
-                                          elevation: 0,
-                                          child: Text(
-                                            "${tglIndo(e.tglMasuk.toString().substring(0, 10))} - ${e.riwayatSekarang.toString()},",
-                                            style: blackTextStyle,
+                                      //====//
+                                      if (state
+                                              .pengkajianKeperawatanResponseModel
+                                              .pengkajian
+                                              .jenpel ==
+                                          jenisPengkajian.last) ...[
+                                        Container(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 5.sp, vertical: 2.sp),
+                                          width: Get.width / 2.4,
+                                          child: SizedBox(
+                                            child: FormWidget.textArea(
+                                                maxLines: 2,
+                                                enabled: true,
+                                                value: state
+                                                    .pengkajianKeperawatanResponseModel
+                                                    .pengkajian
+                                                    .detailJenpel,
+                                                onChanged: (e) {
+                                                  context
+                                                      .read<
+                                                          PengkajianAwalKeperawatanBloc>()
+                                                      .add(
+                                                          OnChangedDetailJenisAnamnesa(
+                                                              value: e));
+                                                }),
                                           ),
                                         ),
-                                      ))
-                                  .toList()
-                              : [
-                                  Container(
-                                    height: 35.sp,
-                                  )
-                                ],
-                        ),
-                      ),
-
-                      TitleWidget.titleContainer(
-                          title: "Riwayat Penyakit Keluarga"),
-
-                      const SizedBox(height: 10),
-                      Container(
-                        width: Get.width,
-                        height: 20.sp,
-                        padding: EdgeInsets.symmetric(horizontal: 5.sp),
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: ThemeColor.primaryColor,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5.sp))),
-                          child: const Icon(FontAwesomeIcons.plus,
-                              color: Colors.white),
-                          onPressed: () {
-                            CustomDialogWidget.getDialog(
-                                widget: Container(
-                                  width: Get.width / 1.5,
-                                  height: 65.sp,
-                                  decoration:
-                                      const BoxDecoration(color: Colors.white),
-                                  child: Column(
-                                    children: [
-                                      TitleWidget.titleContentWidget(
-                                          title:
-                                              "TAMBAH DATA RIWAYAT PENYAKIT KELUARGA"),
-                                      Row(
-                                        children: [
-                                          Container(
-                                              height: 35.sp,
-                                              width: Get.width / 2,
-                                              padding: EdgeInsets.all(5.sp),
-                                              child: FormWidget.textForm(
-                                                controller:
-                                                    _riwayatPenyakitKeluargaController,
-                                                validator: (value) {
-                                                  if (value!.contains("\n")) {
-                                                    Get.back();
-                                                  }
-                                                  return null;
-                                                },
-                                                enable: true,
-                                              )),
-                                          Expanded(
-                                            child: Container(
-                                              margin: EdgeInsets.all(5.sp),
-                                              height: 22.sp,
-                                              width: Get.width,
-                                              child: IconButton(
-                                                  onPressed: () {
-                                                    if (authState
-                                                        is Authenticated) {
-                                                      // ==== //
-                                                      context.read<PengkajianAwalKeperawatanBloc>().add(
-                                                          OnSaveRiwayatPenyakitKeluarga(
-                                                              tanggal:
-                                                                  DateTime.now()
-                                                                      .toString()
-                                                                      .substring(
-                                                                          0, 10),
-                                                              noRM: singlePasien
-                                                                  .first.mrn,
-                                                              noReg: singlePasien
-                                                                  .first
-                                                                  .noAntrean,
-                                                              person: toPerson(
-                                                                  person: authState
-                                                                      .user
-                                                                      .person),
-                                                              penyakitKeluarga:
-                                                                  _riwayatPenyakitKeluargaController
-                                                                      .text,
-                                                              userID: authState
-                                                                  .user
-                                                                  .userId));
-                                                    }
-                                                    Get.back();
-                                                    _riwayatPenyakitKeluargaController
-                                                        .clear();
-                                                  },
-                                                  style: ElevatedButton.styleFrom(
-                                                      backgroundColor:
-                                                          ThemeColor
-                                                              .primaryColor,
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(2
-                                                                          .sp))),
-                                                  color: ThemeColor.whiteColor,
-                                                  icon: const Icon(
-                                                      FontAwesomeIcons
-                                                          .circlePlus)),
-                                            ),
-                                          )
-                                        ],
-                                      ),
+                                      ]
                                     ],
                                   ),
-                                ),
-                                color: Colors.transparent);
-                          },
-                        ),
-                      ),
-                      Container(
-                        height: 150.sp,
-                        padding: EdgeInsets.all(5.sp),
-                        margin: EdgeInsets.all(5.sp),
-                        width: Get.width,
-                        decoration: BoxDecoration(
-                          color: ThemeColor.bgColor,
-                          borderRadius: BorderRadius.all(Radius.circular(5.sp)),
-                          border: Border.all(color: Colors.black),
-                        ),
-                        child: Card(
-                          elevation: 1,
-                          color: ThemeColor.bgColor,
-                          child: SizedBox(
-                            width: Get.width,
-                            child: (state.pengkajianKeperawatanResponseModel
-                                    .riwayatPenyakitKeluarga.isNotEmpty)
-                                ? Wrap(
-                                    children:
-                                        state.pengkajianKeperawatanResponseModel
-                                            .riwayatPenyakitKeluarga
-                                            .map((e) => SizedBox(
-                                                  width: 100.sp,
-                                                  height: 20.sp,
-                                                  child: Card(
-                                                    color: ThemeColor.darkColor,
-                                                    child: ListTile(
-                                                        trailing: IconButton(
-                                                          onPressed: () {
-                                                            // === //
-                                                            CustomDialogWidget.getDialog(
-                                                                widget: MessageAlert.deleteAlert(
-                                                                    mesage: "Apakah Anda yakin menghapus data ${e.alergi} init ?",
-                                                                    onPressed: () {
-                                                                      //  === DELETE DATA ==== /
-                                                                      context.read<AlergiBloc>().add(OnRemovePenyakitKeluargaEvent(
-                                                                          nomor: e
-                                                                              .nomor,
-                                                                          noRm: e
-                                                                              .noRm,
-                                                                          kelompok:
-                                                                              e.kelompok));
-
-                                                                      if (authState
-                                                                          is Authenticated) {
-                                                                        context.read<PengkajianAwalKeperawatanBloc>().add(OnGetPengkajianAwalKeperawatanEvent(
-                                                                            tanggal: DateTime.now().toString().substring(0,
-                                                                                10),
-                                                                            noReg:
-                                                                                singlePasien.first.noreg,
-                                                                            noRM: singlePasien.first.mrn,
-                                                                            person: toPerson(person: authState.user.person)));
-                                                                      }
-                                                                      Get.back();
-                                                                    }));
-                                                          },
-                                                          icon: const Icon(
-                                                            FontAwesomeIcons
-                                                                .circleMinus,
-                                                            color: ThemeColor
-                                                                .dangerColor,
-                                                          ),
-                                                        ),
-                                                        title: Text(
-                                                          e.alergi,
-                                                          style: whiteTextStyle,
-                                                        )),
-                                                  ),
-                                                ))
-                                            .toList(),
-                                  )
-                                : Container(),
+                                )
+                              ]),
+                            ],
                           ),
                         ),
-                      ),
-                      SizedBox(height: 5.sp),
-                      const RiwayatAlergiKeperawatanContentWidget(),
-                      TitleWidget.titleContainer(title: "Reaksi Alergi"),
-                      Padding(
-                        padding: EdgeInsets.all(5.sp),
-                        child: FormWidget.textArea(
-                            value: state.pengkajianKeperawatanResponseModel
-                                .pengkajian.reaksiAlergi,
-                            enabled: true,
-                            maxLines: 3,
-                            onChanged: (value) {
-                              context
-                                  .read<PengkajianAwalKeperawatanBloc>()
-                                  .add(OnChangedReaksiAlergi(value: value));
-                            }),
-                      ),
-                      SizedBox(height: 10.sp),
-                    ],
+                        TitleWidget.titleContainer(title: "Keluhan Utama"),
+                        Padding(
+                          padding: EdgeInsets.all(5.sp),
+                          child: FormWidget.textArea(
+                              enabled: true,
+                              maxLines: 3,
+                              value: state.pengkajianKeperawatanResponseModel
+                                  .pengkajian.keluhanUtama,
+                              onChanged: (value) {
+                                context
+                                    .read<PengkajianAwalKeperawatanBloc>()
+                                    .add(OnChangedKeluhanUtama(value: value));
+                              }),
+                        ),
+                        TitleWidget.titleContainer(
+                            title: "Riwayat Penyakit Sekarang"),
+
+                        Padding(
+                          padding: EdgeInsets.all(5.sp),
+                          child: FormWidget.textArea(
+                              enabled: true,
+                              maxLines: 3,
+                              value: state.pengkajianKeperawatanResponseModel
+                                  .pengkajian.rwytPenyakit,
+                              onChanged: (value) {
+                                context
+                                    .read<PengkajianAwalKeperawatanBloc>()
+                                    .add(OnChangedRiwayatPenyakitSekarang(
+                                        value: value));
+                              }),
+                        ),
+                        TitleWidget.titleContainer(
+                            title: "Riwayat Penyakit Dahulu"),
+
+                        // ===================== //
+                        Padding(
+                          padding: EdgeInsets.all(5.sp),
+                          child: FormWidget.textArea(
+                              value: state.pengkajianKeperawatanResponseModel
+                                  .pengkajian.riwayatPenyakitDahulu,
+                              enabled: true,
+                              maxLines: 3,
+                              onChanged: (value) {
+                                context
+                                    .read<PengkajianAwalKeperawatanBloc>()
+                                    .add(OnChangedRiwayatPenyakitDahulu(
+                                        value: value));
+                              }),
+                        ),
+
+                        TitleWidget.titleContainer(
+                            title: "Riwayat Pengobatan Sebelumnya"),
+
+                        Padding(
+                          padding: EdgeInsets.all(3.sp),
+                          child: Wrap(
+                            alignment: WrapAlignment.start,
+                            crossAxisAlignment: WrapCrossAlignment.start,
+                            children: (state.pengkajianKeperawatanResponseModel
+                                    .riwayatTerdahulu.isNotEmpty)
+                                ? state.pengkajianKeperawatanResponseModel
+                                    .riwayatTerdahulu
+                                    .map((e) => Padding(
+                                          padding: EdgeInsets.all(1.sp),
+                                          child: Card(
+                                            margin: EdgeInsets.all(5.sp),
+                                            color: ThemeColor.bgColor,
+                                            elevation: 0,
+                                            child: Text(
+                                              "${tglIndo(e.tglMasuk.toString().substring(0, 10))} - ${e.riwayatSekarang.toString()},",
+                                              style: blackTextStyle,
+                                            ),
+                                          ),
+                                        ))
+                                    .toList()
+                                : [
+                                    Container(
+                                      height: 35.sp,
+                                    )
+                                  ],
+                          ),
+                        ),
+
+                        TitleWidget.titleContainer(
+                            title: "Riwayat Penyakit Keluarga"),
+
+                        const SizedBox(height: 10),
+                        Container(
+                          width: Get.width,
+                          height: 20.sp,
+                          padding: EdgeInsets.symmetric(horizontal: 5.sp),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: ThemeColor.primaryColor,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5.sp))),
+                            child: const Icon(FontAwesomeIcons.plus,
+                                color: Colors.white),
+                            onPressed: () {
+                              CustomDialogWidget.getDialog(
+                                  widget: Container(
+                                    width: Get.width / 1.5,
+                                    height: 65.sp,
+                                    decoration: const BoxDecoration(
+                                        color: Colors.white),
+                                    child: Column(
+                                      children: [
+                                        TitleWidget.titleContentWidget(
+                                            title:
+                                                "TAMBAH DATA RIWAYAT PENYAKIT KELUARGA"),
+                                        Row(
+                                          children: [
+                                            Container(
+                                                height: 35.sp,
+                                                width: Get.width / 2,
+                                                padding: EdgeInsets.all(5.sp),
+                                                child: FormWidget.textForm(
+                                                  controller:
+                                                      _riwayatPenyakitKeluargaController,
+                                                  validator: (value) {
+                                                    if (value!.contains("\n")) {
+                                                      Get.back();
+                                                    }
+                                                    return null;
+                                                  },
+                                                  enable: true,
+                                                )),
+                                            Expanded(
+                                              child: Container(
+                                                margin: EdgeInsets.all(5.sp),
+                                                height: 22.sp,
+                                                width: Get.width,
+                                                child: IconButton(
+                                                    onPressed: () {
+                                                      if (authState
+                                                          is Authenticated) {
+                                                        // ==== //
+                                                        context.read<PengkajianAwalKeperawatanBloc>().add(OnSaveRiwayatPenyakitKeluarga(
+                                                            tanggal:
+                                                                DateTime.now()
+                                                                    .toString()
+                                                                    .substring(
+                                                                        0, 10),
+                                                            noRM: singlePasien
+                                                                .first.mrn,
+                                                            noReg: singlePasien
+                                                                .first
+                                                                .noAntrean,
+                                                            person: toPerson(
+                                                                person: authState
+                                                                    .user
+                                                                    .person),
+                                                            penyakitKeluarga:
+                                                                _riwayatPenyakitKeluargaController
+                                                                    .text,
+                                                            userID: authState
+                                                                .user.userId));
+                                                      }
+                                                      Get.back();
+                                                      _riwayatPenyakitKeluargaController
+                                                          .clear();
+                                                    },
+                                                    style: ElevatedButton.styleFrom(
+                                                        backgroundColor:
+                                                            ThemeColor
+                                                                .primaryColor,
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        2.sp))),
+                                                    color:
+                                                        ThemeColor.whiteColor,
+                                                    icon: const Icon(
+                                                        FontAwesomeIcons
+                                                            .circlePlus)),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  color: Colors.transparent);
+                            },
+                          ),
+                        ),
+                        Container(
+                          height: 150.sp,
+                          padding: EdgeInsets.all(5.sp),
+                          margin: EdgeInsets.all(5.sp),
+                          width: Get.width,
+                          decoration: BoxDecoration(
+                            color: ThemeColor.bgColor,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(5.sp)),
+                            border: Border.all(color: Colors.black),
+                          ),
+                          child: Card(
+                            elevation: 1,
+                            color: ThemeColor.bgColor,
+                            child: SizedBox(
+                              width: Get.width,
+                              child:
+                                  (state.pengkajianKeperawatanResponseModel
+                                          .riwayatPenyakitKeluarga.isNotEmpty)
+                                      ? Wrap(
+                                          children: state
+                                              .pengkajianKeperawatanResponseModel
+                                              .riwayatPenyakitKeluarga
+                                              .map((e) => SizedBox(
+                                                    width: 100.sp,
+                                                    height: 20.sp,
+                                                    child: Card(
+                                                      color:
+                                                          ThemeColor.darkColor,
+                                                      child: ListTile(
+                                                          trailing: IconButton(
+                                                            onPressed: () {
+                                                              // === //
+                                                              CustomDialogWidget.getDialog(
+                                                                  widget: MessageAlert.deleteAlert(
+                                                                      mesage: "Apakah Anda yakin menghapus data ${e.alergi} init ?",
+                                                                      onPressed: () {
+                                                                        //  === DELETE DATA ==== /
+                                                                        context.read<AlergiBloc>().add(OnRemovePenyakitKeluargaEvent(
+                                                                            nomor:
+                                                                                e.nomor,
+                                                                            noRm: e.noRm,
+                                                                            kelompok: e.kelompok));
+
+                                                                        if (authState
+                                                                            is Authenticated) {
+                                                                          context.read<PengkajianAwalKeperawatanBloc>().add(OnGetPengkajianAwalKeperawatanEvent(
+                                                                              tanggal: DateTime.now().toString().substring(0, 10),
+                                                                              noReg: singlePasien.first.noreg,
+                                                                              noRM: singlePasien.first.mrn,
+                                                                              person: toPerson(person: authState.user.person)));
+                                                                        }
+                                                                        Get.back();
+                                                                      }));
+                                                            },
+                                                            icon: const Icon(
+                                                              FontAwesomeIcons
+                                                                  .circleMinus,
+                                                              color: ThemeColor
+                                                                  .dangerColor,
+                                                            ),
+                                                          ),
+                                                          title: Text(
+                                                            e.alergi,
+                                                            style:
+                                                                whiteTextStyle,
+                                                          )),
+                                                    ),
+                                                  ))
+                                              .toList(),
+                                        )
+                                      : EmtyScren(
+                                          subTitle: "Data kosong",
+                                          textStyle: blackTextStyle,
+                                        ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 5.sp),
+                        const RiwayatAlergiKeperawatanContentWidget(),
+                        TitleWidget.titleContainer(title: "Reaksi Alergi"),
+                        Padding(
+                          padding: EdgeInsets.all(5.sp),
+                          child: FormWidget.textArea(
+                              value: state.pengkajianKeperawatanResponseModel
+                                  .pengkajian.reaksiAlergi,
+                              enabled: true,
+                              maxLines: 3,
+                              onChanged: (value) {
+                                context
+                                    .read<PengkajianAwalKeperawatanBloc>()
+                                    .add(OnChangedReaksiAlergi(value: value));
+                              }),
+                        ),
+                        SizedBox(height: 10.sp),
+                      ],
+                    ),
                   ),
                 )));
       },

@@ -31,8 +31,8 @@ class AsesmenKeperawatanContentWidget extends StatelessWidget {
             context.read<KebidananBloc>().add(
                 OnGetRiwayatPengobatanDirumah(noReg: singlePasien.first.noreg));
           }
+
           if (index == 0) {
-            // LAKUKAN GET PENGKAJIAN
             if (authState is Authenticated) {
               context.read<PengkajianAwalKeperawatanBloc>().add(
                   OnGetPengkajianAwalKeperawatanEvent(
@@ -42,6 +42,7 @@ class AsesmenKeperawatanContentWidget extends StatelessWidget {
                       person: toPerson(person: authState.user.person)));
             }
           }
+
           if (index == 1) {
             // LAKUKAN GET TANDA VITAL
             if (authState is Authenticated) {

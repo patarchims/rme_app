@@ -421,6 +421,7 @@ class _PengkajianICUPersistemPageWidgetState
                     ));
 
                 // ngasih hp sama BENDA TAJAM AJA
+                // ignore: use_build_context_synchronously
                 context.read<PemeriksaanFisikIcuBloc>().add(
                     OnGetPemeriksaanFisikICU(
                         noReg: singlePasien.first.noreg,

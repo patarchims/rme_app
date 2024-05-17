@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'asesmen_anak_bloc.dart';
 
 enum AsesmenAnakStatus {
@@ -15,15 +14,44 @@ enum AsesmenAnakStatus {
 
 class AsesmenAnakState extends Equatable {
   final AsesmenAnakStatus status;
+  final PenkajianAnakRepository pengkajianAnak;
+  final Option<Either<ApiFailureResult, ApiSuccessResult>> saveResultFailure;
 
   const AsesmenAnakState({
     required this.status,
+    required this.pengkajianAnak,
+    required this.saveResultFailure,
   });
 
   @override
-  List<Object?> get props => [status];
+  List<Object?> get props => [status, pengkajianAnak, saveResultFailure];
 
-  static AsesmenAnakState initial() => const AsesmenAnakState(
-        status: AsesmenAnakStatus.initial,
-      );
+  static AsesmenAnakState initial() => AsesmenAnakState(
+      saveResultFailure: none(),
+      status: AsesmenAnakStatus.initial,
+      pengkajianAnak: PenkajianAnakRepository(
+          riwayatPenyakitKeluarga: [],
+          riwayatTerdahulu: [],
+          pengkajianAnak: PengkajianAnak(
+              noreg: "",
+              person: "",
+              kdDpjp: "",
+              jenpel: "",
+              jenpelDetail: "",
+              keluhanUtama: "",
+              rwtPenyakit: "",
+              reaksiAlergi: "",
+              rwtPenyakitDahulu: "")));
+
+  AsesmenAnakState copyWith({
+    AsesmenAnakStatus? status,
+    PenkajianAnakRepository? pengkajianAnak,
+    Option<Either<ApiFailureResult, ApiSuccessResult>>? saveResultFailure,
+  }) {
+    return AsesmenAnakState(
+      status: status ?? this.status,
+      pengkajianAnak: pengkajianAnak ?? this.pengkajianAnak,
+      saveResultFailure: saveResultFailure ?? this.saveResultFailure,
+    );
+  }
 }

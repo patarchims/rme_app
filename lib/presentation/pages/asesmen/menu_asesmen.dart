@@ -838,6 +838,7 @@ class MenuAsesmen {
             return const FormulirKeperawatanWidgetContent();
           }
 
+          //===//
           if (MenuAsesmen.medis(poliklinik: poliklinik, person: person)[0] ==
               menu) {
             context.read<AsesmenDokterBloc>().add(
@@ -859,6 +860,14 @@ class MenuAsesmen {
           if (MenuAsesmen.medis(poliklinik: poliklinik, person: person)[1] ==
               menu) {
             // ==== //
+            // if (authState is Authenticated) {
+            context.read<PengkajianAwalKeperawatanBloc>().add(
+                OnGetAsesmenAnakEvent(
+                    noReg: singlePasien.first.noreg,
+                    noRM: singlePasien.first.mrn,
+                    person: "Anak",
+                    tanggal: DateTime.now().toString().substring(0, 10)));
+            // }
             return const PengkajianAwalAnakRawatInapPageWidget();
           }
 

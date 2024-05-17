@@ -6,6 +6,7 @@ import 'package:hms_app/domain/network/my_dio.dart';
 import 'package:hms_app/presentation/pages/bangsal/perawat/dto/perawatan_dto.dart';
 import 'package:hms_app/presentation/pages/bangsal/repository/pengkajian_keperawatan_persistem_repository.dart';
 import 'package:hms_app/presentation/pages/bangsal/repository/vital_sign_keperawatan_repository.dart';
+import 'package:hms_app/presentation/pages/icu/page/pengkajian_persistem/pengkajian_persistem_page_widge.dart';
 
 class KeperawatanServices {
   // GET ALL ICD 10
@@ -32,6 +33,53 @@ class KeperawatanServices {
         endPoint: "/v1/cppt-sbar-bangsal");
   }
 
+  Future<dynamic> onGetAsesmenAnak({
+    required String noreg,
+    required String noRM,
+    required String person,
+    required String tanggal,
+  }) {
+    return MyDio().getAndToken(
+        data: DTOKeperawatan.onGetAsesmenAnak(
+            noReg: noreg, noRM: noRM, person: person, tanggal: tanggal),
+        endPoint: "/v1/asesmen-awal-anak");
+  }
+
+  // SAVE ASESMEN IGD DOKTER
+  Future<Either<ApiFailureResult, ApiSuccessResult>> saveAssesmenAnakEvent({
+    required String noreg,
+    required String dpjp,
+    required String noRM,
+    required String person,
+    required String pelayanan,
+    required String deviceID,
+    required String jenPel,
+    required String detailJenPel,
+    required String keluhanUtama,
+    required String rwtPenyakit,
+    required String rwtPenyakitDahulu,
+    required String reaksiAlergi,
+    required String tanggal,
+  }) {
+    return MyDio().postDataWithToken(
+      endPoint: EndPoint.assesmenAwalAnak,
+      data: DTOKeperawatan.savePengkajianAwalAnak(
+          tanggal: tanggal,
+          noreg: noreg,
+          dpjp: dpjp,
+          noRM: noRM,
+          person: person,
+          pelayanan: pelayanan,
+          deviceID: deviceID,
+          jenPel: jenPel,
+          detailJenPel: detailJenPel,
+          keluhanUtama: keluhanUtama,
+          rwtPenyakit: rwtPenyakit,
+          riwayatPenyakitDahulu: rwtPenyakitDahulu,
+          reaksiAlergi: reaksiAlergi),
+    );
+  }
+
   Future<dynamic> onGetPengkajianNutrisiAnak({
     required String noreg,
   }) {
@@ -46,6 +94,50 @@ class KeperawatanServices {
     return MyDio().getAndToken(
         data: DTOKeperawatan.onGETCPPTSBAR(noReg: noreg),
         endPoint: "/v1/pengkajian-nyeri-anak");
+  }
+
+  // SAVE ASESMEN IGD DOKTER
+  Future<Either<ApiFailureResult, ApiSuccessResult>> onSaveAssesmenNyeriAnak({
+    required String noReg,
+    required String pelayanan,
+    required String person,
+    required String devicesID,
+    required String ekspresiWajah,
+    required String kdDokter,
+    required String tangisan,
+    required String polaNafas,
+    required String tangan,
+    required String kaki,
+    required String kesadaran,
+    required int total,
+    required int nyeri,
+    required String lokasiNyeri,
+    required String frekuensiNyeri,
+    required String nyeriMenjalar,
+    required String kualitasNyeri,
+  }) {
+    return MyDio().postDataWithToken(
+      endPoint: EndPoint.pengkajianNyeriAnak,
+      data: DTOKeperawatan.onSaveNyeriAnak(
+        devicesID: devicesID,
+        ekspresiWajah: ekspresiWajah,
+        frekuensiNyeri: frekuensiNyeri,
+        kaki: kaki,
+        kdDokter: kdDokter,
+        kesadaran: kesadaran,
+        kualitasNyeri: kualitasNyeri,
+        lokasiNyeri: lokasiNyeri,
+        noReg: noReg,
+        nyeri: nyeri,
+        total: total,
+        nyeriMenjalar: nyeriMenjalar,
+        pelayanan: pelayanan,
+        person: person,
+        polaNafas: polaNafas,
+        tangan: tangan,
+        tangisan: tangisan,
+      ),
+    );
   }
 
   // SAVE ASESMEN IGD DOKTER

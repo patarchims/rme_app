@@ -11,6 +11,46 @@ class OnGetAsesmenNyeriAnakEvent extends AsesmenNyeriAnakEvent {
   });
 }
 
+class OnSaveAssesmenNyeriAnakEvent extends AsesmenNyeriAnakEvent {
+  final String noReg;
+  final String pelayanan;
+  final String person;
+  final String deviceID;
+
+  final String ekspresiWajah;
+  final String kdDokter;
+  final String tangisan;
+  final String polaNapas;
+  final String tangan;
+  final String kaki;
+  final String kesadaran;
+  final int total;
+  final int nyeri;
+  final String lokasiNyeri;
+  final String frekuensiNyeri;
+  final String nyeriMenjalar;
+  final String kualitasNyeri;
+  OnSaveAssesmenNyeriAnakEvent({
+    required this.noReg,
+    required this.pelayanan,
+    required this.person,
+    required this.deviceID,
+    required this.ekspresiWajah,
+    required this.kdDokter,
+    required this.tangisan,
+    required this.polaNapas,
+    required this.tangan,
+    required this.kaki,
+    required this.kesadaran,
+    required this.total,
+    required this.nyeri,
+    required this.lokasiNyeri,
+    required this.frekuensiNyeri,
+    required this.nyeriMenjalar,
+    required this.kualitasNyeri,
+  });
+}
+
 class OnChangeEkspresiWajahEvent extends AsesmenNyeriAnakEvent {
   final String value;
   OnChangeEkspresiWajahEvent({

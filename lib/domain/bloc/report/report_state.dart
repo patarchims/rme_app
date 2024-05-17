@@ -28,6 +28,9 @@ enum ReportStatus {
 
   isLoadingReportPengkajianRawatInapPerawat,
   loadedReportPengkajianRawatInapPerawat,
+
+  isLoadingReportAnak,
+  isLoadedReportAnak,
 }
 
 class ReportState extends Equatable {
