@@ -170,7 +170,6 @@ class AsuhanKeperawatanWidget extends StatelessWidget {
                                   SizedBox(
                                       height: 250.sp,
                                       width: Get.width,
-                                      // ==>
                                       child: const AsuhanWidgetContentValue())
                                 ],
                                 if (state.pilihDiagnosaKeperawatan ==

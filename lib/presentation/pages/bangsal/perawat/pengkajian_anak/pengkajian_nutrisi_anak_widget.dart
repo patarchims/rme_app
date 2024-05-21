@@ -9,7 +9,6 @@ import 'package:hms_app/presentation/component/loading/loading.dart';
 import 'package:hms_app/presentation/pages/bangsal/bloc/pengkajian_nutrisi_anak/pengkajian_nutrisi_anak_bloc.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
 import 'package:sizer/sizer.dart';
-import 'package:table_desk/table_desk.dart';
 
 class PengkajianNutrisiAnakPageWidget extends StatefulWidget {
   const PengkajianNutrisiAnakPageWidget({super.key});
@@ -92,71 +91,71 @@ class _PengkajianNutrisiAnakPageWidgetState
               child: Column(
                 children: [
                   SizedBox(height: 5.sp),
-                  Container(
-                    color: Colors.white,
-                    padding: EdgeInsets.symmetric(horizontal: 5.sp),
-                    child: TableDesk(
-                      shape: const RoundedRectangleBorder(
-                        side: BorderSide(color: Colors.black, width: 1),
-                      ),
-                      child: TableDeskRow(
-                        border: const BorderSide(width: 1, color: Colors.black),
-                        gaps: [
-                          TableGap.weight(),
-                          TableGap.width(220),
-                          TableGap.width(220),
-                        ],
-                        children: [
-                          Container(
-                            color: ThemeColor.primaryColor,
-                            child: Padding(
-                              padding: EdgeInsets.all(5.sp),
-                              child: Center(
-                                child: Text(
-                                  "PARAMETER",
-                                  style:
-                                      whiteTextStyle.copyWith(fontSize: 5.sp),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            color: ThemeColor.primaryColor,
-                            child: Padding(
-                              padding: EdgeInsets.all(5.sp),
-                              child: Center(
-                                child: Text(
-                                  "PILIHAN",
-                                  style:
-                                      whiteTextStyle.copyWith(fontSize: 5.sp),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            color: ThemeColor.primaryColor,
-                            child: Padding(
-                              padding: EdgeInsets.all(5.sp),
-                              child: Center(
-                                child: Text(
-                                  "NILAI",
-                                  style:
-                                      whiteTextStyle.copyWith(fontSize: 5.sp),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  // Container(
+                  //   color: Colors.white,
+                  //   padding: EdgeInsets.symmetric(horizontal: 5.sp),
+                  //   child: TableDesk(
+                  //     shape: const RoundedRectangleBorder(
+                  //       side: BorderSide(color: Colors.black, width: 1),
+                  //     ),
+                  //     child: TableDeskRow(
+                  //       border: const BorderSide(width: 1, color: Colors.black),
+                  //       gaps: [
+                  //         TableGap.weight(),
+                  //         TableGap.width(220),
+                  //         TableGap.width(220),
+                  //       ],
+                  //       children: [
+                  //         Container(
+                  //           color: ThemeColor.primaryColor,
+                  //           child: Padding(
+                  //             padding: EdgeInsets.all(5.sp),
+                  //             child: Center(
+                  //               child: Text(
+                  //                 "PARAMETER",
+                  //                 style:
+                  //                     whiteTextStyle.copyWith(fontSize: 5.sp),
+                  //                 textAlign: TextAlign.center,
+                  //               ),
+                  //             ),
+                  //           ),
+                  //         ),
+                  //         Container(
+                  //           color: ThemeColor.primaryColor,
+                  //           child: Padding(
+                  //             padding: EdgeInsets.all(5.sp),
+                  //             child: Center(
+                  //               child: Text(
+                  //                 "PILIHAN",
+                  //                 style:
+                  //                     whiteTextStyle.copyWith(fontSize: 5.sp),
+                  //                 textAlign: TextAlign.center,
+                  //               ),
+                  //             ),
+                  //           ),
+                  //         ),
+                  //         Container(
+                  //           color: ThemeColor.primaryColor,
+                  //           child: Padding(
+                  //             padding: EdgeInsets.all(5.sp),
+                  //             child: Center(
+                  //               child: Text(
+                  //                 "NILAI",
+                  //                 style:
+                  //                     whiteTextStyle.copyWith(fontSize: 5.sp),
+                  //                 textAlign: TextAlign.center,
+                  //               ),
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
                   Table(
                     columnWidths: const {
                       0: FlexColumnWidth(10),
-                      2: FlexColumnWidth(3),
+                      2: FlexColumnWidth(2),
                       1: FlexColumnWidth(3),
                     },
                     children: [
@@ -199,6 +198,9 @@ class _PengkajianNutrisiAnakPageWidgetState
                                         style: whiteTextStyle,
                                       ),
                                     )),
+                                SizedBox(
+                                  width: 2.sp,
+                                ),
                                 ElevatedButton(
                                     onPressed: () {
                                       context
@@ -275,6 +277,9 @@ class _PengkajianNutrisiAnakPageWidgetState
                                         style: whiteTextStyle,
                                       ),
                                     )),
+                                SizedBox(
+                                  width: 2.sp,
+                                ),
                                 ElevatedButton(
                                     onPressed: () {
                                       context
@@ -351,6 +356,9 @@ class _PengkajianNutrisiAnakPageWidgetState
                                         style: whiteTextStyle,
                                       ),
                                     )),
+                                SizedBox(
+                                  width: 2.sp,
+                                ),
                                 ElevatedButton(
                                     onPressed: () {
                                       context
@@ -427,6 +435,9 @@ class _PengkajianNutrisiAnakPageWidgetState
                                         style: whiteTextStyle,
                                       ),
                                     )),
+                                SizedBox(
+                                  width: 2.sp,
+                                ),
                                 ElevatedButton(
                                     onPressed: () {
                                       context

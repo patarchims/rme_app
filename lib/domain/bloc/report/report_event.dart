@@ -4,6 +4,15 @@ part of 'report_bloc.dart';
 @immutable
 sealed class ReportEvent {}
 
+class OnGetReportAssesmenAnakEvent extends ReportEvent {
+  final String noRM;
+  final String noReg;
+  OnGetReportAssesmenAnakEvent({
+    required this.noRM,
+    required this.noReg,
+  });
+}
+
 class OnGetReportTriaseEvent extends ReportEvent {
   final String noRM;
   final String noReg;

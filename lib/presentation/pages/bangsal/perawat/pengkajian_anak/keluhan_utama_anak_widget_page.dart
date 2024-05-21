@@ -15,7 +15,6 @@ import 'package:hms_app/presentation/component/component.dart';
 import 'package:hms_app/presentation/component/extenstion/date_helper.dart';
 import 'package:hms_app/presentation/component/loading/loading.dart';
 import 'package:hms_app/presentation/kebidanan/presentation/asesmen/kebidanan_widget_content.dart';
-import 'package:hms_app/presentation/kebidanan/repository/asesmen_reponse_kebidanan_model.dart';
 import 'package:hms_app/presentation/pages/bangsal/bloc/pengkajian_awal_keperawatan/pengkajian_awal_keperawatan_bloc.dart';
 import 'package:hms_app/presentation/pages/bangsal/perawat/riwayat_alergi_keperawatan/riwayat_alergi_keperawatan_widget_content.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';

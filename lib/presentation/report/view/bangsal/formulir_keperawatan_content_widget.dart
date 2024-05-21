@@ -92,6 +92,7 @@ class FormulirKeperawatanWidgetContent extends StatelessWidget {
           if (e.key == 6) {
             return const ViewReportICUPage();
           }
+
           if (e.key == 7) {
             return const KontrolIstimewaPasienWidgetPage();
           }

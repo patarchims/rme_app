@@ -5,6 +5,7 @@ import 'package:hms_app/domain/bloc/report/report_bloc.dart';
 import 'package:hms_app/presentation/component/component.dart';
 import 'package:hms_app/presentation/component/header/tabbar_without_expanded_widget.dart';
 import 'package:hms_app/presentation/kebidanan/report/view/pengkajian_awal_dokter_rawat_inap.dart';
+import 'package:hms_app/presentation/kebidanan/report/view/report_formulir_double_check_high_alert.dart';
 import 'package:hms_app/presentation/kebidanan/report/view/report_pengkajian_awal_anak_widget_page.dart';
 import 'package:hms_app/presentation/kebidanan/report/view/report_pengkajian_awal_keperawatan_rawat_inap_widget_page.dart';
 
@@ -50,9 +51,13 @@ class ViewReportPengkajianAwalKeperawatanPage extends StatelessWidget {
             return const ReportPengkajianAwalAnakPageWidget();
           }
 
+          if (e.key == 3) {
+            return const ReportFormulirDoubleCheckHighAlertPage();
+          }
+
           return Container();
         }).toList());
   }
 }
 
-List<String> menu = ["Dokter", "Perawat", "Anak"];
+List<String> menu = ["Dokter", "Perawat", "Anak", "Double Check"];

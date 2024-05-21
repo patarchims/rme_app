@@ -28,6 +28,7 @@ class _ReportPengkajianAwalAnakPageWidgetState
 
   @override
   Widget build(BuildContext context) {
+    //===//
     PasienState pasienState = context.watch<PasienBloc>().state;
     final singlePasien = pasienState.listPasienModel
         .where((element) => element.mrn == pasienState.normSelected);
@@ -36,9 +37,8 @@ class _ReportPengkajianAwalAnakPageWidgetState
       builder: (context, state) {
         if (state.status == ReportStatus.isLoadingReportAnak) {
           return Scaffold(
-            backgroundColor: ThemeColor.transparentColor,
-            body: Loading.expandedLoading(),
-          );
+              backgroundColor: ThemeColor.transparentColor,
+              body: Loading.expandedLoading());
         }
 
         return Scaffold(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hms_app/presentation/component/component.dart';
 import 'package:sizer/sizer.dart';
@@ -135,6 +136,27 @@ class TitleWidget {
           style: blackTextStyle.copyWith(fontSize: 4.sp),
         ),
       ),
+    );
+  }
+
+  //=====//
+  static Container isChecklist({
+    required bool check,
+  }) {
+    return Container(
+      decoration:
+          BoxDecoration(color: ThemeColor.primaryColor.withOpacity(0.2)),
+      child: (check)
+          ? Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(FontAwesomeIcons.check,
+                  size: 10.sp, color: ThemeColor.greenColor.withOpacity(0.5)),
+            )
+          : Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(FontAwesomeIcons.minus,
+                  size: 10.sp, color: ThemeColor.blackColor),
+            ),
     );
   }
 
@@ -436,7 +458,7 @@ class TitleWidget {
 
   static Container headerCenterTitle2({required String title, Color? color}) {
     return Container(
-      height: 15.sp,
+      height: 25.sp,
       padding: EdgeInsets.symmetric(vertical: 2.sp, horizontal: 2.sp),
       decoration: BoxDecoration(color: color ?? ThemeColor.darkGreyColor),
       child: Center(

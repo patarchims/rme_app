@@ -35,9 +35,8 @@ class _ReportPengkajianAwalKebidananRawatInapState
       builder: (context, state) {
         if (state.status == ReportStatus.isLoadingReportPengkajianRawatInap) {
           return Scaffold(
-            backgroundColor: ThemeColor.transparentColor,
-            body: Loading.expandedLoading(),
-          );
+              backgroundColor: ThemeColor.transparentColor,
+              body: Loading.expandedLoading());
         }
 
         return Scaffold(

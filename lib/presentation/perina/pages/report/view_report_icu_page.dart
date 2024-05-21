@@ -7,6 +7,8 @@ import 'package:hms_app/presentation/component/color/color_helper.dart';
 import 'package:hms_app/presentation/component/header/tabbar_header_content_widget.dart';
 import 'package:hms_app/presentation/pages/icu/bloc/report_icu/report_icu_bloc.dart';
 import 'package:hms_app/presentation/pages/icu/report/asesmen_ulang_perawatan_intensive_report_page_widget.dart';
+import 'package:hms_app/presentation/pages/icu/report/report_kartu_cairan_page_widget.dart';
+import 'package:hms_app/presentation/pages/icu/report/report_kartu_observasi_page_widget.dart';
 
 class ViewReportICUPage extends StatelessWidget {
   const ViewReportICUPage({super.key});
@@ -33,12 +35,36 @@ class ViewReportICUPage extends StatelessWidget {
         }
 
         if (index == 2) {
-          // GET DATA //
+          if (authState is Authenticated) {
+            context.read<ReportIcuBloc>().add(OnGetReportAsesmenUlangIntensive(
+                noReg: singlePasien.first.noreg,
+                noRM: singlePasien.first.mrn,
+                tanggal: DateTime.now().toString().substring(0, 10),
+                person: toPerson(person: authState.user.person)));
+          }
+        }
+
+        if (index == 1) {
+          if (authState is Authenticated) {
+            context.read<ReportIcuBloc>().add(OnGetReportAsesmenUlangIntensive(
+                noReg: singlePasien.first.noreg,
+                noRM: singlePasien.first.mrn,
+                tanggal: DateTime.now().toString().substring(0, 10),
+                person: toPerson(person: authState.user.person)));
+          }
         }
       },
       children: menu.asMap().entries.map((e) {
         if (e.key == 0) {
           return const ReportAsesmenUlangPerawatIntensivePageWidget();
+        }
+
+        if (e.key == 1) {
+          return const ReportKartuCairanPageWidget();
+        }
+
+        if (e.key == 2) {
+          return const ReportKartuObservasiPageWidget();
         }
 
         return Container();
@@ -47,4 +73,8 @@ class ViewReportICUPage extends StatelessWidget {
   }
 }
 
-List<String> menu = ["Asesmen Ulang\nPerawatan Intensive", "KARTU CAIRAN"];
+List<String> menu = [
+  "Asesmen Ulang\nPerawatan Intensive",
+  "KARTU CAIRAN",
+  "KARTU OBSERVASI"
+];

@@ -602,6 +602,119 @@ abstract class DTO {
     return {"no_reg": noReg};
   }
 
+  static Map<String, dynamic> onSaveDoubleCheck({
+    required String noReg,
+    required String deviceID,
+    required bool pasien,
+    required bool obat,
+    required bool dosis,
+    required bool cara,
+    required bool waktu,
+    required bool informasi,
+    required bool dokumentasi,
+    required String keterangan,
+  }) {
+    return {
+      "no_reg": noReg,
+      "device_id": deviceID,
+      "pasien": pasien,
+      "obat": obat,
+      "dosis": dosis,
+      "cara": cara,
+      "waktu": waktu,
+      "informasi": informasi,
+      "dokumentasi": dokumentasi,
+      "keterangan": keterangan
+    };
+  }
+
+  static Map<String, dynamic> onSaveVerifyDoubleCheck({
+    required String noReg,
+    required bool pasien,
+    required bool obat,
+    required bool dosis,
+    required bool cara,
+    required bool waktu,
+    required bool informasi,
+    required bool dokumentasi,
+  }) {
+    return {
+      "no_reg": noReg,
+      "pasien": pasien,
+      "obat": obat,
+      "dosis": dosis,
+      "cara": cara,
+      "waktu": waktu,
+      "informasi": informasi,
+      "dokumentasi": dokumentasi,
+    };
+  }
+
+  static Map<String, dynamic> onSaveKartuObservasi({
+    required String noReg,
+    required String t,
+    required String n,
+    required String p,
+    required String s,
+    required String cvp,
+    required String ekg,
+    required String ukuranKi,
+    required String ukuranKa,
+    required String redaksiKi,
+    required String redaksiKa,
+    required String anggotaGerak,
+    required String kesadaran,
+    required String sputumWarna,
+    required String isiCUP,
+    required String keterangan,
+  }) {
+    return {
+      "noreg": noReg,
+      "t": t,
+      "n": n,
+      "p": p,
+      "s": s,
+      "cvp": cvp,
+      "ekg": ekg,
+      "ukuran_ki": ukuranKi,
+      "ukuran_ka": ukuranKa,
+      "redaksi_ki": redaksiKi,
+      "redaksi_ka": ukuranKa,
+      "anggota_gerak": anggotaGerak,
+      "kesadaran": kesadaran,
+      "sputum_warna": sputumWarna,
+      "isi_cup": isiCUP,
+      "keterangan": keterangan
+    };
+  }
+
+  static Map<String, dynamic> onSaveKartuCairan({
+    required String noReg,
+    required String cairanMasuk1,
+    required String cairanMasuk2,
+    required String cairanMasuk3,
+    required String cairanMasukNgt,
+    required String namaCairan,
+    required String cairanKeluar,
+    required String cairanKeluarNgt,
+    required String cairanMasuk,
+    required String keterangan,
+    required String drainDll,
+  }) {
+    return {
+      "noreg": noReg,
+      "cairan_masuk1": cairanMasuk1,
+      "cairan_masuk2": cairanMasuk3,
+      "cairan_masuk3": cairanMasukNgt,
+      "cairan_masuk_ngt": cairanMasukNgt,
+      "nama_cairan": namaCairan,
+      "cairan_keluar": cairanKeluar,
+      "cairan_ngt": cairanMasukNgt,
+      "ketarangan": keterangan,
+      "drain_dll": drainDll
+    };
+  }
+
   static Map<String, String> getFisikICU({
     required String noReg,
     required String person,

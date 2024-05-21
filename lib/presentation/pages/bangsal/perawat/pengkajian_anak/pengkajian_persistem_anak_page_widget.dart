@@ -35,6 +35,7 @@ class PengkajianPersistemAnakPageWidget extends StatelessWidget {
                       person: toPerson(person: authState.user.person)));
             }
           }
+
           if (index == 1) {
             // GET ASESMEN NYERI NIPS
             context.read<PengkajianNutrisiAnakBloc>().add(

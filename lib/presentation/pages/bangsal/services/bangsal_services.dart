@@ -6,7 +6,6 @@ import 'package:hms_app/domain/network/my_dio.dart';
 import 'package:hms_app/presentation/pages/bangsal/perawat/dto/perawatan_dto.dart';
 import 'package:hms_app/presentation/pages/bangsal/repository/pengkajian_keperawatan_persistem_repository.dart';
 import 'package:hms_app/presentation/pages/bangsal/repository/vital_sign_keperawatan_repository.dart';
-import 'package:hms_app/presentation/pages/icu/page/pengkajian_persistem/pengkajian_persistem_page_widge.dart';
 
 class KeperawatanServices {
   // GET ALL ICD 10

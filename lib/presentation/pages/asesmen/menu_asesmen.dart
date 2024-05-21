@@ -18,7 +18,13 @@ import 'package:hms_app/presentation/hemodialisis/bloc/bhp/bhp_bloc.dart';
 import 'package:hms_app/presentation/hemodialisis/presentation/formulir_asuhan_keperawatan_hd_widget_page.dart';
 import 'package:hms_app/presentation/hemodialisis/presentation/formulir_pencatatan_bhp_widget_page.dart';
 import 'package:hms_app/presentation/hemodialisis/presentation/implementasi_keperawatan_widget.dart';
+import 'package:hms_app/presentation/kebidanan/bloc/double_check/double_check_bloc.dart';
 import 'package:hms_app/presentation/kebidanan/bloc/eary_warning_system/early_warning_system_bloc.dart';
+import 'package:hms_app/presentation/kebidanan/bloc/kartu_observasi/kartu_observasi_bloc.dart';
+import 'package:hms_app/presentation/kebidanan/presentation/double_check/double_check_page_widget.dart';
+import 'package:hms_app/presentation/kebidanan/presentation/fornulir_surveilans/formulir_survailans.dart';
+import 'package:hms_app/presentation/kebidanan/presentation/kartu_cairan/kartu_cairan_page_widget.dart';
+import 'package:hms_app/presentation/kebidanan/presentation/kartu_observasi/kartu_observasi_page_widget.dart';
 import 'package:hms_app/presentation/kebidanan/presentation/kontrol_pasien/kontrol_pasine_page_widget.dart';
 import 'package:hms_app/presentation/pages/bangsal/bloc/asesmen_intensive/asesmen_intensive_bloc.dart';
 import 'package:hms_app/presentation/pages/bangsal/bloc/cppt_sbar_bangsal/cppt_sbar_bangsal_bloc.dart';
@@ -148,7 +154,7 @@ class MenuAsesmen {
         "Formulir IGD",
         "Hasil Resiko Jatuh",
         "Formulir Keperawatan",
-        "Formulir Perawatan Intensive"
+        "Formulir Perawatan Intensive",
       ];
     }
 
@@ -191,6 +197,7 @@ class MenuAsesmen {
 
   static List<String> medis(
       {required Poliklinik poliklinik, required Person person}) {
+    //===//
     if (poliklinik == Poliklinik.dalam && person == Person.dokter) {
       return [
         "Asesmen Medis Keperawatan",
@@ -207,7 +214,7 @@ class MenuAsesmen {
         "Asuhan Keperawatan",
         "Edukasi Terintegrasi",
         "Analisa Data",
-        "Kontrol Pasien"
+        "Kontrol Pasien",
       ];
     }
 
@@ -230,6 +237,7 @@ class MenuAsesmen {
       ];
     }
 
+    //===//
     if (poliklinik == Poliklinik.bedahPlastik && person == Person.dokter) {
       return [
         "Formulir Rekam Medis",
@@ -325,7 +333,9 @@ class MenuAsesmen {
           "Asuhan Keperawatan",
           "Catatan Perkembangan\nPasien Terintegrasi",
           "Analisa Data",
-          "Kontrol Pasien"
+          "Kontrol Pasien",
+          "Double Check",
+          "Formulir Surveilans"
         ];
       }
     } else {
@@ -337,7 +347,9 @@ class MenuAsesmen {
           "Resiko Jatuh",
           "Asuhan Keperawatan",
           "Analisa Data",
-          "Kontrol Pasien"
+          "Kontrol Pasien",
+          "Double Check",
+          "Formulir Surveilans"
         ];
       }
     }
@@ -362,6 +374,8 @@ class MenuAsesmen {
           "Asuhan Keperawatan",
           "Analisa Data",
           "Kontrol Pasien",
+          "Kartu Observasi",
+          "Kartu Cairan",
         ];
       }
     }
@@ -750,6 +764,7 @@ class MenuAsesmen {
 
           if (MenuAsesmen.medis(poliklinik: poliklinik, person: person)[0] ==
               menu) {
+            //===//
             context
                 .read<CpptBloc>()
                 .add(CpptEvent.onGetCPPTPasien(noRM: singlePasien.first.mrn));
@@ -801,6 +816,7 @@ class MenuAsesmen {
       } else if (AppConstant.appSetup == AppSetup.rsTiara) {
         // TAMPILKAN LAPORAN UNTUK PERAWAT
         if (poliklinik == Poliklinik.bangsal && person == Person.perawat) {
+          // === //
           if (MenuAsesmen.laporan(poliklinik: poliklinik, person: person)[0] ==
               menu) {
             context
@@ -973,6 +989,8 @@ class MenuAsesmen {
                 .add(CpptEvent.onGetCPPTPasien(noRM: singlePasien.first.mrn));
             context.read<CpptSbarBangsalBloc>().add(
                 OnGetCatatanKeperawatanEvent(noReg: singlePasien.first.noreg));
+
+            //===//
             return const CpptContentWidgetPage();
           }
 
@@ -1033,6 +1051,21 @@ class MenuAsesmen {
             context.read<EarlyWarningSystemBloc>().add(
                 OnGetDataEarlyWarningSystem(noReg: singlePasien.first.noreg));
             return const KontrolPasienPageWidget();
+          }
+
+          if (MenuAsesmen.medis(poliklinik: poliklinik, person: person)[7] ==
+              menu) {
+            context
+                .read<DoubleCheckBloc>()
+                .add(OnGetDoubleCheckEvent(noReg: singlePasien.first.noreg));
+
+            return const DoubleCheckHightAlertPageWidget();
+          }
+
+          if (MenuAsesmen.medis(poliklinik: poliklinik, person: person)[8] ==
+              menu) {
+            return const FormulirSourvilnPage();
+            // return const DoubleCheckHightAlertPageWidget();
           }
         }
       }
@@ -1268,11 +1301,26 @@ class MenuAsesmen {
 
             return const KontrolPasienPageWidget();
           }
+          if (MenuAsesmen.medis(poliklinik: poliklinik, person: person)[6] ==
+              menu) {
+            context
+                .read<KartuObservasiBloc>()
+                .add(OnGetKartuObservasiEvent(noReg: singlePasien.first.noreg));
+
+            return const KartuObservasiPageWidget();
+          }
+          if (MenuAsesmen.medis(poliklinik: poliklinik, person: person)[7] ==
+              menu) {
+            context
+                .read<KartuObservasiBloc>()
+                .add(OnGetKartuCairanEvent(noReg: singlePasien.first.noreg));
+
+            return const KartuCairanPageWidget();
+          }
         }
       }
 
       if (poliklinik == Poliklinik.bangsal && person == Person.dokter) {
-        // ==== //
         if (MenuAsesmen.laporan(poliklinik: poliklinik, person: person)[0] ==
             menu) {
           context.read<HasilPenunjangBloc>().add(
@@ -1332,6 +1380,7 @@ class MenuAsesmen {
           return const IntervensiRisikoJatuhContentWidget();
         }
 
+        //===//
         if (MenuAsesmen.medis(poliklinik: poliklinik, person: person)[3] ==
             menu) {
           context.read<AlergiBloc>().add(OnGetAlergiObatEvent(

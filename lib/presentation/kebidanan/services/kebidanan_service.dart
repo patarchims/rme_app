@@ -19,6 +19,143 @@ class KebidananService {
         endPoint: "/v1/riwayat-pengobatan-dirumah");
   }
 
+  Future<dynamic> onGetObservasi({required String noReg}) {
+    return MyDio().getAndToken(
+        data: DTO.getNoreg(noReg: noReg), endPoint: "/v1/kartu-observasi");
+  }
+
+  Future<dynamic> onGetKartuCairan({required String noReg}) {
+    return MyDio().getAndToken(
+        data: DTO.getNoreg(noReg: noReg), endPoint: "/v1/kartu-cairan");
+  }
+
+  Future<dynamic> onGetDoubleCheck({required String noReg}) {
+    return MyDio().getAndToken(
+      data: DTO.getNoreg(noReg: noReg),
+      endPoint: "/v1/double-check",
+    );
+  }
+
+  Future<Either<ApiFailureResult, ApiSuccessResult>>
+      onSaveVerifyFormulirDoubleCheck({
+    required String noReg,
+    required bool pasien,
+    required bool obat,
+    required bool dosis,
+    required bool cara,
+    required bool waktu,
+    required bool informasi,
+    required bool dokumentasi,
+  }) {
+    return MyDio().postDataWithToken(
+        data: DTO.onSaveVerifyDoubleCheck(
+            cara: cara,
+            dokumentasi: dokumentasi,
+            dosis: dosis,
+            informasi: informasi,
+            obat: obat,
+            pasien: pasien,
+            waktu: waktu,
+            noReg: noReg),
+        endPoint: "/v1/double-check");
+  }
+
+  Future<Either<ApiFailureResult, ApiSuccessResult>> onSaveKartuObservasi({
+    required String noReg,
+    required String t,
+    required String n,
+    required String p,
+    required String s,
+    required String cvp,
+    required String ekg,
+    required String ukuranKi,
+    required String ukuranKa,
+    required String redaksiKi,
+    required String redaksiKa,
+    required String anggotaGerak,
+    required String kesadaran,
+    required String sputumWarna,
+    required String isiCUP,
+    required String keterangan,
+  }) {
+    return MyDio().postDataWithToken(
+        data: DTO.onSaveKartuObservasi(
+            anggotaGerak: anggotaGerak,
+            noReg: noReg,
+            cvp: cvp,
+            ekg: ekg,
+            isiCUP: isiCUP,
+            kesadaran: kesadaran,
+            keterangan: keterangan,
+            n: n,
+            p: p,
+            redaksiKa: redaksiKa,
+            redaksiKi: redaksiKi,
+            s: s,
+            sputumWarna: sputumWarna,
+            t: t,
+            ukuranKa: ukuranKa,
+            ukuranKi: ukuranKi),
+        endPoint: "/v1/kartu-observasi");
+  }
+
+  Future<Either<ApiFailureResult, ApiSuccessResult>> onSaveKartuCairan({
+    required String noReg,
+    required String cairanMasuk1,
+    required String cairanMasuk2,
+    required String cairanMasuk3,
+    required String cairanMasukNgt,
+    required String namaCairan,
+    required String cairanKeluar,
+    required String cairanKeluarNgt,
+    required String cairanMasuk,
+    required String keterangan,
+    required String drainDll,
+  }) {
+    return MyDio().postDataWithToken(
+        data: DTO.onSaveKartuCairan(
+            drainDll: drainDll,
+            cairanKeluar: cairanKeluar,
+            cairanKeluarNgt: cairanKeluarNgt,
+            cairanMasuk1: cairanMasuk1,
+            cairanMasuk2: cairanMasuk2,
+            cairanMasuk3: cairanMasuk3,
+            cairanMasuk: cairanMasuk,
+            cairanMasukNgt: cairanMasukNgt,
+            keterangan: keterangan,
+            namaCairan: namaCairan,
+            noReg: noReg),
+        endPoint: "/v1/kartu-cairan");
+  }
+
+  Future<Either<ApiFailureResult, ApiSuccessResult>> onSaveDoubleCheck({
+    required String noReg,
+    required String devicesID,
+    required bool pasien,
+    required bool obat,
+    required bool dosis,
+    required bool cara,
+    required bool waktu,
+    required bool informasi,
+    required bool dokumentasi,
+    required String keterangan,
+  }) {
+    return MyDio().postDataWithToken(
+        data: DTO.onSaveDoubleCheck(
+          cara: cara,
+          deviceID: devicesID,
+          dokumentasi: dokumentasi,
+          dosis: dosis,
+          informasi: informasi,
+          keterangan: keterangan,
+          obat: obat,
+          pasien: pasien,
+          waktu: waktu,
+          noReg: noReg,
+        ),
+        endPoint: "/v1/double-check");
+  }
+
   Future<Either<ApiFailureResult, ApiSuccessResult>> saveStatusLokalis({
     required String noReg,
     required String imageURL,

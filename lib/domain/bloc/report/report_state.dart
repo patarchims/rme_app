@@ -31,6 +31,10 @@ enum ReportStatus {
 
   isLoadingReportAnak,
   isLoadedReportAnak,
+
+  // IS LOADING DOUBLE CHECK ALERT
+  isLoadingReportCheckAlert,
+  isLoadedReportCheckAlert
 }
 
 class ReportState extends Equatable {
