@@ -60,6 +60,83 @@ class KebidananService {
         endPoint: "/v1/double-check");
   }
 
+  Future<Either<ApiFailureResult, ApiSuccessResult>> onDeleteKartuObservasi({
+    required int idKartu,
+  }) {
+    return MyDio().deleteWithToken(
+        data: DTO.onDeleteKartuCairan(idKartuCairan: idKartu),
+        endPoint: "/v1/kartu-observasi");
+  }
+
+  Future<Either<ApiFailureResult, ApiSuccessResult>> onDeleteKartuCairan({
+    required int idKartu,
+  }) {
+    return MyDio().deleteWithToken(
+        data: DTO.onDeleteKartuCairan(idKartuCairan: idKartu),
+        endPoint: "/v1/kartu-cairan");
+  }
+
+  Future<Either<ApiFailureResult, ApiSuccessResult>> onUpdateKartuCairanEvent({
+    required int idKartu,
+    required String cairanMasuk1,
+    required String cairanMasuk2,
+    required String cairanMasuk3,
+    required String cairanMasukNgt,
+    required String namaCairan,
+    required String cairanKeluarUrine,
+    required String cairanKeluarNgt,
+    required String drainDll,
+    required String keterangan,
+  }) {
+    return MyDio().deleteWithToken(
+        data: DTO.onDeleteKartuCairan(
+          idKartuCairan: idKartu,
+        ),
+        endPoint: "/v1/kartu-cairan");
+  }
+
+  Future<Either<ApiFailureResult, ApiSuccessResult>>
+      onUpdateKartuObservasiEvent({
+    required int idObservasi,
+    required String t,
+    required String noReg,
+    required String n,
+    required String p,
+    required String s,
+    required String cvp,
+    required String ekg,
+    required String pupilKiri,
+    required String pupilKanan,
+    required String redaksiKiri,
+    required String redaksiKanan,
+    required String anggoataBadan,
+    required String kesadaran,
+    required String sputumWarna,
+    required String isiCup,
+    required String keterangan,
+  }) {
+    return MyDio().putDataWithToken(
+        data: DTO.onUpdateKartuObservasi(
+          anggoataBadan: anggoataBadan,
+          cvp: cvp,
+          ekg: ekg,
+          idObservasi: idObservasi,
+          isiCup: isiCup,
+          kesadaran: kesadaran,
+          keterangan: keterangan,
+          n: n,
+          p: p,
+          pupilKanan: pupilKanan,
+          pupilKiri: pupilKiri,
+          redaksiKanan: redaksiKanan,
+          redaksiKiri: redaksiKiri,
+          s: s,
+          sputumWarna: sputumWarna,
+          t: t,
+        ),
+        endPoint: "/v1/kartu-observasi");
+  }
+
   Future<Either<ApiFailureResult, ApiSuccessResult>> onSaveKartuObservasi({
     required String noReg,
     required String t,
@@ -106,22 +183,22 @@ class KebidananService {
     required String cairanMasuk3,
     required String cairanMasukNgt,
     required String namaCairan,
-    required String cairanKeluar,
+    required String cairanKeluarUrine,
     required String cairanKeluarNgt,
     required String cairanMasuk,
-    required String keterangan,
     required String drainDll,
+    required String keterangan,
   }) {
     return MyDio().postDataWithToken(
         data: DTO.onSaveKartuCairan(
             drainDll: drainDll,
-            cairanKeluar: cairanKeluar,
             cairanKeluarNgt: cairanKeluarNgt,
             cairanMasuk1: cairanMasuk1,
             cairanMasuk2: cairanMasuk2,
             cairanMasuk3: cairanMasuk3,
             cairanMasuk: cairanMasuk,
             cairanMasukNgt: cairanMasukNgt,
+            cairanKeluarUrine: cairanKeluarUrine,
             keterangan: keterangan,
             namaCairan: namaCairan,
             noReg: noReg),

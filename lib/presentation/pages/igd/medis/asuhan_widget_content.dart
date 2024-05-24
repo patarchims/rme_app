@@ -166,8 +166,6 @@ class _AsuhanWidgetContentState extends State<AsuhanWidgetContentValue> {
                                                           onPressed: () {
                                                             // ADD DESKRIPSI
                                                             setState(() {
-                                                              // Deskripsi
-                                                              // J
                                                               final data = deskripsi
                                                                   .where((element) =>
                                                                       element

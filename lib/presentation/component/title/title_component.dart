@@ -114,7 +114,7 @@ class TitleWidget {
 
   static Container headerTitle({required String title, Color? color}) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 2.sp, horizontal: 2.sp),
+      padding: EdgeInsets.symmetric(vertical: 3.sp, horizontal: 3.sp),
       decoration: BoxDecoration(color: color ?? Colors.yellow.withOpacity(0.5)),
       child: Center(
         child: Text(
@@ -307,22 +307,19 @@ class TitleWidget {
         child: Container(
           padding: EdgeInsets.all(3.sp),
           width: width ?? 100.sp,
-          // height: 25.sp,
           child: Center(
             child: ListTile(
               leading: SizedBox(
-                height: 20.sp,
-                child: ElevatedButton(
-                  onPressed: onPressed,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: backgroundColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5.sp),
-                    ),
-                  ),
-                  child: icon,
-                ),
-              ),
+                  height: 20.sp,
+                  child: ElevatedButton(
+                    onPressed: onPressed,
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: backgroundColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(2.sp),
+                        )),
+                    child: icon,
+                  )),
               title: Text(
                 title,
                 style: whiteTextStyle.copyWith(fontSize: 6.sp),

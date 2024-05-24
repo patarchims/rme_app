@@ -650,6 +650,78 @@ abstract class DTO {
     };
   }
 
+  static Map<String, dynamic> onDeleteKartuCairan({
+    required int idKartuCairan,
+  }) {
+    return {
+      "id_kartu": idKartuCairan,
+    };
+  }
+
+  static Map<String, dynamic> onUpdateKartuCairanEvent({
+    required int idKartu,
+    required String cairanMasuk1,
+    required String cairanMasuk2,
+    required String cairanMasuk3,
+    required String cairanMasukNgt,
+    required String namaCairan,
+    required String cairanKeluarUrine,
+    required String cairanKeluarNgt,
+    required String drain,
+    required String keterangan,
+  }) {
+    return {
+      "id_kartu": idKartu,
+      "cairan_masuk1": cairanMasuk1,
+      "cairan_masuk2": cairanMasuk2,
+      "cairan_masuk3": cairanMasuk3,
+      "cairan_masuk_ngt": cairanMasukNgt,
+      "nama_cairan": namaCairan,
+      "cairan_keluar_urine": cairanKeluarUrine,
+      "cairan_keluar_ngt": cairanKeluarNgt,
+      "drain_dll": drain,
+      "keterangan": keterangan
+    };
+  }
+
+  static Map<String, dynamic> onUpdateKartuObservasi({
+    required int idObservasi,
+    required String t,
+    required String n,
+    required String p,
+    required String s,
+    required String cvp,
+    required String ekg,
+    required String pupilKiri,
+    required String pupilKanan,
+    required String redaksiKiri,
+    required String redaksiKanan,
+    required String anggoataBadan,
+    required String kesadaran,
+    required String sputumWarna,
+    required String isiCup,
+    required String keterangan,
+  }) {
+    return {
+      "id_observasi": idObservasi,
+      "t": t,
+      "n": n,
+      "p": p,
+      "s": s,
+      "cvp": cvp,
+      "ekg": ekg,
+      "pupil_kiri": pupilKiri,
+      "pupil_kanan": pupilKanan,
+      "redaksi_kiri": redaksiKiri,
+      "redaksi_kanan": redaksiKanan,
+      "anggota_badan": anggoataBadan,
+      "kesadaran": kesadaran,
+      "sputum_warna": sputumWarna,
+      "isi_cup": isiCup,
+      "keterangan": keterangan,
+    };
+  }
+
   static Map<String, dynamic> onSaveKartuObservasi({
     required String noReg,
     required String t,
@@ -695,23 +767,23 @@ abstract class DTO {
     required String cairanMasuk3,
     required String cairanMasukNgt,
     required String namaCairan,
-    required String cairanKeluar,
+    required String cairanKeluarUrine,
     required String cairanKeluarNgt,
     required String cairanMasuk,
-    required String keterangan,
     required String drainDll,
+    required String keterangan,
   }) {
     return {
       "noreg": noReg,
       "cairan_masuk1": cairanMasuk1,
-      "cairan_masuk2": cairanMasuk3,
-      "cairan_masuk3": cairanMasukNgt,
+      "cairan_masuk2": cairanMasuk2,
+      "cairan_masuk3": cairanMasuk3,
       "cairan_masuk_ngt": cairanMasukNgt,
       "nama_cairan": namaCairan,
-      "cairan_keluar": cairanKeluar,
-      "cairan_ngt": cairanMasukNgt,
-      "ketarangan": keterangan,
-      "drain_dll": drainDll
+      "cairan_keluar_urine": cairanKeluarUrine,
+      "cairan_keluar_ngt": cairanKeluarNgt,
+      "drain_dll": drainDll,
+      "keterangan": keterangan
     };
   }
 
@@ -2243,6 +2315,16 @@ abstract class DTO {
     };
   }
 
+  static Map<String, dynamic> onGetResikoJatuhGoUpAndGoTest({
+    required String noRM,
+    required String noReg,
+  }) {
+    return {
+      "no_reg": noReg,
+      "no_rm": noRM,
+    };
+  }
+
   static Map<String, dynamic> onGetTriaseIGDReportDokter({
     required String noReg,
     required String tanggal,
@@ -2348,6 +2430,26 @@ abstract class DTO {
       "spo2": tandaVitalIgdDokter.spo2,
       "tinggi_badan": tandaVitalIgdDokter.tinggiBadan,
       "berat_badan": tandaVitalIgdDokter.beratBadan,
+    };
+  }
+
+  static Map<String, dynamic> onSaveResikoJatuhGoUpAndGoTest({
+    required String deviceID,
+    required String pelayanan,
+    required String person,
+    required String noReg,
+    required String resikoJatuh1,
+    required String resikoJatuh2,
+    required String tindakan,
+  }) {
+    return {
+      "device_id": deviceID,
+      "pelayanan": pelayanan,
+      "person": person,
+      "noreg": noReg,
+      "resiko_jatuh1": resikoJatuh1,
+      "resiko_jatuh2": resikoJatuh2,
+      "tindakan": tindakan,
     };
   }
 

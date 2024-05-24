@@ -1,7 +1,22 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'report_icu_bloc.dart';
 
 @immutable
 sealed class ReportIcuEvent {}
+
+class OnGetReportKartuCairan extends ReportIcuEvent {
+  final String noReg;
+  OnGetReportKartuCairan({
+    required this.noReg,
+  });
+}
+
+class OnGetReportKartuObservasi extends ReportIcuEvent {
+  final String noReg;
+  OnGetReportKartuObservasi({
+    required this.noReg,
+  });
+}
 
 class OnGetReportICU extends ReportIcuEvent {
   final String noReg;

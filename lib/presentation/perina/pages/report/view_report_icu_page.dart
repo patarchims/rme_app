@@ -36,21 +36,16 @@ class ViewReportICUPage extends StatelessWidget {
 
         if (index == 2) {
           if (authState is Authenticated) {
-            context.read<ReportIcuBloc>().add(OnGetReportAsesmenUlangIntensive(
-                noReg: singlePasien.first.noreg,
-                noRM: singlePasien.first.mrn,
-                tanggal: DateTime.now().toString().substring(0, 10),
-                person: toPerson(person: authState.user.person)));
+            context.read<ReportIcuBloc>().add(
+                OnGetReportKartuObservasi(noReg: singlePasien.first.noreg));
           }
         }
 
         if (index == 1) {
           if (authState is Authenticated) {
-            context.read<ReportIcuBloc>().add(OnGetReportAsesmenUlangIntensive(
-                noReg: singlePasien.first.noreg,
-                noRM: singlePasien.first.mrn,
-                tanggal: DateTime.now().toString().substring(0, 10),
-                person: toPerson(person: authState.user.person)));
+            context
+                .read<ReportIcuBloc>()
+                .add(OnGetReportKartuCairan(noReg: singlePasien.first.noreg));
           }
         }
       },

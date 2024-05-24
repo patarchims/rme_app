@@ -67,9 +67,6 @@ class _RiwayatAlergiWidgetContentState
                 (l) => l.maybeMap(
                     orElse: () {},
                     failure: (e) async {
-                      // FAILURE
-                      log(e.toString());
-
                       if (e.meta.code == 201) {
                         final shouldPop = await Alert.warningMessage(context,
                             subTitle: e.meta.message.toString(),
@@ -130,10 +127,8 @@ class _RiwayatAlergiWidgetContentState
                             // ========================= //
                             Padding(
                                 padding: EdgeInsets.all(3.sp),
-                                child: Text(
-                                  "Keluhan Utama",
-                                  style: blackTextStyle.copyWith(),
-                                )),
+                                child: Text("Keluhan Utama",
+                                    style: blackTextStyle.copyWith())),
 
                             // ========================= //
                             Padding(

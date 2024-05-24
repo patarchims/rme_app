@@ -10,6 +10,7 @@ import 'package:hms_app/presentation/pages/igd/repository/ktaripobat_repository.
 import 'package:hms_app/presentation/pages/igd/repository/pemeriksaan_fisik_repository.dart';
 import 'package:hms_app/presentation/pages/igd/repository/pemeriksaan_fisik_repository_dokter_methodist.dart';
 import 'package:hms_app/presentation/pages/igd/repository/tanda_vital_igd_dokter_repository.dart';
+import 'package:injectable/injectable.dart';
 
 class IGDServices {
   // GET ALL ICD 10
@@ -94,14 +95,13 @@ class IGDServices {
     required String person,
   }) {
     return MyDio().postDataWithToken(
-      endPoint: EndPoint.pemeriksaanFisikIGDDokter,
-      data: DTO.pemeriksaanFisikIGDDokter(
-          pemeriksaanFisik: pemeriksaanFisikIgdDokter,
-          deviceID: deviceID,
-          pelayanan: pelayanan,
-          person: person,
-          noReg: noReg),
-    );
+        endPoint: EndPoint.pemeriksaanFisikIGDDokter,
+        data: DTO.pemeriksaanFisikIGDDokter(
+            pemeriksaanFisik: pemeriksaanFisikIgdDokter,
+            deviceID: deviceID,
+            pelayanan: pelayanan,
+            person: person,
+            noReg: noReg));
   }
 
   Future<Either<ApiFailureResult, ApiSuccessResult>>
@@ -153,6 +153,43 @@ class IGDServices {
       endPoint: EndPoint.keluhanUtamaDokterIGD,
       data: DTO.onGetKeluhanUtamaIGD(
           noRM: noRM, noReg: noReg, person: person, tanggal: tanggal),
+    );
+  }
+
+  Future<dynamic> onGetResikoJatuhGoUpAndGoTest({
+    required String noRM,
+    required String noReg,
+  }) {
+    return MyDio().getAndToken(
+      endPoint: EndPoint.resikoJatuhGoUPGoTest,
+      data: DTO.onGetResikoJatuhGoUpAndGoTest(
+        noRM: noRM,
+        noReg: noReg,
+      ),
+    );
+  }
+
+  Future<Either<ApiFailureResult, ApiSuccessResult>>
+      onSaveResikoJatuhGoUpAndGoTest({
+    required String deviceID,
+    required String pelayanan,
+    required String person,
+    required String noreg,
+    required String resikoJatuh1,
+    required String resikoJatuh2,
+    required String tindakan,
+  }) {
+    return MyDio().postDataWithToken(
+      endPoint: EndPoint.resikoJatuhGoUPGoTest,
+      data: DTO.onSaveResikoJatuhGoUpAndGoTest(
+        deviceID: deviceID,
+        noReg: noreg,
+        pelayanan: pelayanan,
+        resikoJatuh1: resikoJatuh1,
+        resikoJatuh2: resikoJatuh2,
+        tindakan: tindakan,
+        person: person,
+      ),
     );
   }
 

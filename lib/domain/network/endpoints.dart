@@ -140,6 +140,7 @@ abstract class EndPoint {
   static String reportPerkembanganPasien = '/v1/report-perkembangan-pasien';
   static String reportIntervensi = '/v1/report-intervensi';
   static String keluhanUtamaDokterIGD = '/v1/keluhan-utama-dokter-igd';
+  static String resikoJatuhGoUPGoTest = '/v1/resiko-jatuh-getup-igd';
   static String diagnosaBandingIGDDokter = '/v1/diagnosa-banding-dokter';
   static String riwayatPenyakitKeluargaIGD =
       '/v1/riwayat-penyakit-keluarga-dokter-igd';

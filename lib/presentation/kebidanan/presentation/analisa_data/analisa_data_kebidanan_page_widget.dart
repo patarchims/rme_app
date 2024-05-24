@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:hms_app/domain/bloc/dashboard/pasien/pasien_bloc.dart';
 import 'package:hms_app/domain/models/meta/meta_model.dart';
 import 'package:hms_app/presentation/component/component.dart';
@@ -98,7 +99,6 @@ class _AnalisaDataPageWidgetState extends State<AnalisaDataPageWidget> {
                                   ),
                                   child: ListTile(
                                       shape: RoundedRectangleBorder(
-                                        //<-- SEE HERE
                                         side: const BorderSide(width: 2),
                                         borderRadius:
                                             BorderRadius.circular(2.sp),
@@ -277,9 +277,28 @@ class _AnalisaDataPageWidgetState extends State<AnalisaDataPageWidget> {
                                 );
                               }).toList()
                             : [
-                                EmtyScren(
-                                  subTitle: "Data Kosong",
-                                  textStyle: blackTextStyle,
+                                Center(
+                                  child: Container(
+                                    margin: EdgeInsets.all(10.sp),
+                                    width: Get.width,
+                                    height: 200.sp,
+                                    child: Card(
+                                      elevation: 1.sp,
+                                      shape: RoundedRectangleBorder(
+                                        side: const BorderSide(
+                                            color: Colors.black),
+                                        borderRadius:
+                                            BorderRadius.circular(2.sp),
+                                      ),
+                                      margin: EdgeInsets.only(top: 5.sp),
+                                      color: ThemeColor.primaryColor
+                                          .withOpacity(0.4),
+                                      child: EmtyScren(
+                                        subTitle: "Data kosong",
+                                        textStyle: whiteTextStyle,
+                                      ),
+                                    ),
+                                  ),
                                 )
                               ],
                       ),

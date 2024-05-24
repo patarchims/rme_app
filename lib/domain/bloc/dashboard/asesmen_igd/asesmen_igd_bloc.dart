@@ -72,15 +72,13 @@ class AsesmenIgdBloc extends Bloc<AsesmenIgdEvent, AsesmenIgdState> {
           // GET DATA
           final data = await librariRepositori.getTindakLanjut(noReg: e.noreg);
 
-          log("Data get tindak lanjut");
-          log(data.toString());
-
           data.fold(
               (l) => l.maybeMap(
                   orElse: () {},
                   failure: (e) {
                     emit(state.copyWith(
                         tindakLanjutIGDModel: TindakLanjutIgdModel(
+                            waktu: "",
                             caraKeluar: "",
                             jam: "",
                             menit: "",
@@ -104,6 +102,7 @@ class AsesmenIgdBloc extends Bloc<AsesmenIgdEvent, AsesmenIgdState> {
                     } catch (e) {
                       emit(state.copyWith(
                           tindakLanjutIGDModel: TindakLanjutIgdModel(
+                              waktu: "",
                               caraKeluar: "",
                               jam: "",
                               menit: "",

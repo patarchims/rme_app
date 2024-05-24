@@ -58,8 +58,7 @@ class PengkajianAwalKeperawatanIGDPageWidget extends StatelessWidget {
 
           if (e.key == 1) {
             return const TandaVitalDanGannguanPerilakuWidgetContent(
-              isENableAdd: false,
-            );
+                isENableAdd: false);
           }
 
           if (e.key == 2) {

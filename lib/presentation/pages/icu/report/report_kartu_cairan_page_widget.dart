@@ -8,6 +8,7 @@ import 'package:hms_app/presentation/component/loading/loading.dart';
 import 'package:hms_app/presentation/component/title/title_component.dart';
 import 'package:hms_app/presentation/pages/icu/bloc/report_icu/report_icu_bloc.dart';
 import 'package:hms_app/presentation/report/component/header_report_widget.dart';
+import 'package:hms_app/presentation/screens/emty_page.dart';
 import 'package:sizer/sizer.dart';
 import 'package:table_desk/table_desk.dart';
 
@@ -198,6 +199,62 @@ class _ReportKartuCairanPageWidgetState
                                               title: "KETERANGAN"),
                                         ]),
                                       ])),
+
+                              // ADD TODO: KARTU CAIRAN
+                              if (state.kartuCairan.isEmpty) ...[
+                                Container(
+                                  height: 200.sp,
+                                  margin:
+                                      EdgeInsets.only(right: 5.sp, left: 5.sp),
+                                  decoration: BoxDecoration(
+                                      color: ThemeColor.primaryColor
+                                          .withOpacity(0.2),
+                                      borderRadius:
+                                          BorderRadius.circular(0.sp)),
+                                  child: EmtyScren(
+                                    subTitle: "Data Kosong",
+                                    textStyle: blackTextStyle,
+                                  ),
+                                ),
+                              ],
+                              if (state.kartuCairan.isNotEmpty) ...[
+                                Container(
+                                    padding: EdgeInsets.only(
+                                        right: 5.sp, left: 5.sp),
+                                    child: Table(
+                                        border: TableBorder.all(),
+                                        columnWidths: const {
+                                          10: FlexColumnWidth(1.2),
+                                        },
+                                        children: state.kartuCairan.map((e) {
+                                          return TableRow(children: [
+                                            TitleWidget.contentTitle(
+                                                title: e.jam.substring(11, 19)),
+                                            TitleWidget.contentTitle(
+                                                title: e.cairanMasuk1),
+                                            TitleWidget.contentTitle(
+                                                title: e.cairanMasuk2),
+                                            TitleWidget.contentTitle(
+                                                title: e.cairanMasuk3),
+                                            TitleWidget.contentTitle(
+                                                title: e.cairanMasukNgt),
+                                            TitleWidget.contentTitle(
+                                                title: e.namaCairan),
+                                            TitleWidget.contentTitle(
+                                                title: e.cairanKeluarUrine),
+                                            TitleWidget.contentTitle(
+                                                title: e.cairanKeluarNgt),
+                                            TitleWidget.contentTitle(
+                                                title: e.drainDll),
+                                            TitleWidget.contentTitle(
+                                                title: e.keterangan),
+                                          ]);
+                                        }).toList())),
+                              ],
+
+                              SizedBox(
+                                height: 50.sp,
+                              ),
                             ],
                           ),
                         )

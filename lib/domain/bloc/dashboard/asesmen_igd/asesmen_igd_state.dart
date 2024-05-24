@@ -158,6 +158,7 @@ class AsesmenIgdState with _$AsesmenIgdState {
         isLoadingSaveTindakLanjut: false,
         saveTindakLanjutIGDResult: none(),
         tindakLanjutIGDModel: TindakLanjutIgdModel(
+            waktu: "",
             caraKeluar: "",
             jam: "",
             menit: "",

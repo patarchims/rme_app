@@ -175,9 +175,10 @@ class AsuhanKeperawatanWidget extends StatelessWidget {
                                 if (state.pilihDiagnosaKeperawatan ==
                                     PilihDiagnosaKeperawatan.selesai) ...[
                                   SizedBox(
-                                      height: 250.sp,
-                                      width: Get.width,
-                                      child: const SelesaiDiagnosaWidget())
+                                    height: 250.sp,
+                                    width: Get.width,
+                                    child: const SelesaiDiagnosaWidget(),
+                                  )
                                 ],
                               ],
                             ),

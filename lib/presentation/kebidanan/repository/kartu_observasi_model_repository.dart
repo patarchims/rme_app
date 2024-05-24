@@ -1,4 +1,5 @@
 class KartuObservasiModelRepository {
+  final int idObservasi;
   final String t;
   final String n;
   final String p;
@@ -16,6 +17,7 @@ class KartuObservasiModelRepository {
   final String keterangan;
   final String jam;
   KartuObservasiModelRepository({
+    required this.idObservasi,
     required this.t,
     required this.n,
     required this.p,
@@ -57,6 +59,7 @@ class KartuObservasiModelRepository {
 
   factory KartuObservasiModelRepository.fromMap(Map<String, dynamic> map) {
     return KartuObservasiModelRepository(
+      idObservasi: map["id_observasi"] as int,
       ekg: map["ekg"].toString(),
       jam: map["jam"].toString(),
       t: map['t'].toString(),

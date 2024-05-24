@@ -465,6 +465,68 @@ class MyDio {
     }
   }
 
+  Future<Either<ApiFailureResult, ApiSuccessResult>> putDataWithToken({
+    required String endPoint,
+    Map<String, dynamic>? data,
+    Map<String, dynamic>? queryParameters,
+    bool formData = true,
+  }) async {
+    final currentToken = await TokenPref.getCurrentToken();
+    /*
+    Token diubah, di ambil dari Bearer Token,
+    Tidak lagi diambil dari Header x-token
+    */
+    dio.options.headers =
+        DTO.checkBearerToken(token: currentToken!.token.toString());
+
+    printResponse('header:    ${dio.options.headers}');
+    log("Data :$data");
+
+    try {
+      var response = await dio.put(
+        endPoint,
+        data: data,
+        queryParameters: queryParameters,
+      );
+
+      printResponse('base:    ${dio.options.baseUrl}');
+      printResponse('url:    $endPoint');
+      printResponse('header:    ${dio.options.headers}');
+      switch (response.statusCode) {
+        case 200:
+          return right(ApiSuccessResult.loaded(value: response.data));
+        case 201:
+          return left(ApiFailureResult.failure(
+              meta: MetaModel.fromJson(response.data["metadata"])));
+        case 202:
+          return right(const ApiSuccessResult.emty());
+        default:
+          return left(ApiFailureResult.failure(
+              meta: MetaModel(
+                  code: response.statusCode,
+                  message: response.data.toString())));
+      }
+    } on SocketException {
+      return left(const ApiFailureResult.noConnection());
+    } on FormatException {
+      return left(const ApiFailureResult.connectionTimeOut());
+    } on DioException catch (e) {
+      if (e.type == DioExceptionType.connectionTimeout) {
+        return left(const ApiFailureResult.connectionTimeOut());
+      } else if (e.type == DioExceptionType.receiveTimeout) {
+        return left(const ApiFailureResult.disconectToServer());
+      } else if (e.type == DioExceptionType.badResponse) {
+        return left(const ApiFailureResult.badResponse());
+      } else {
+        return left(const ApiFailureResult.failure(
+            meta: MetaModel(code: 201, message: failureMessage)));
+      }
+    } catch (e) {
+      return left(const ApiFailureResult.failure(
+          meta: MetaModel(code: 201, message: failureMessage)));
+    }
+  }
+
   // GET DATA RETURN DYNAMIC
   Future<dynamic> get({
     required String endPoint,

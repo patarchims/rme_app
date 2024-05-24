@@ -13,16 +13,27 @@ enum ReportIcuStatus {
 
 class ReportIcuState extends Equatable {
   final ReportIcuStatus status;
+  final List<KartuCairanRepository> kartuCairan;
+  final List<KartuObservasiModelRepository> kartuObservasi;
   final ReportPerawatanIntensiveIcuModel reportIntensiveIcuModel;
   const ReportIcuState({
     required this.status,
     required this.reportIntensiveIcuModel,
+    required this.kartuObservasi,
+    required this.kartuCairan,
   });
 
   @override
-  List<Object?> get props => [status, reportIntensiveIcuModel];
+  List<Object?> get props => [
+        status,
+        reportIntensiveIcuModel,
+        kartuObservasi,
+        kartuCairan,
+      ];
 
   static ReportIcuState initial() => ReportIcuState(
+      kartuObservasi: [],
+      kartuCairan: [],
       status: ReportIcuStatus.initial,
       reportIntensiveIcuModel: ReportPerawatanIntensiveIcuModel(
           asuhanKeperawatan: [],
@@ -123,11 +134,14 @@ class ReportIcuState extends Equatable {
               rwtMinumanKeras: "",
               rwtAlkoholMempegaruhi: "")));
 
-  ReportIcuState copyWith({
-    ReportIcuStatus? status,
-    ReportPerawatanIntensiveIcuModel? reportIntensiveIcuModel,
-  }) {
+  ReportIcuState copyWith(
+      {ReportIcuStatus? status,
+      ReportPerawatanIntensiveIcuModel? reportIntensiveIcuModel,
+      List<KartuObservasiModelRepository>? kartuObservasi,
+      List<KartuCairanRepository>? kartuCairan}) {
     return ReportIcuState(
+        kartuObservasi: kartuObservasi ?? this.kartuObservasi,
+        kartuCairan: kartuCairan ?? this.kartuCairan,
         status: status ?? this.status,
         reportIntensiveIcuModel:
             reportIntensiveIcuModel ?? this.reportIntensiveIcuModel);

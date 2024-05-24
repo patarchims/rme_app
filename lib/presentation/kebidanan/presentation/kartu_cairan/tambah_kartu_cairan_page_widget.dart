@@ -27,6 +27,7 @@ class _TambahKartuCairanPageState extends State<TambahKartuCairanPage> {
   late TextEditingController _cairanMasuk;
   late TextEditingController _keterangan;
   late TextEditingController _drainDLL;
+  late TextEditingController _cairanKeluarUrine;
 
   @override
   void initState() {
@@ -40,6 +41,7 @@ class _TambahKartuCairanPageState extends State<TambahKartuCairanPage> {
     _keterangan = TextEditingController();
     _drainDLL = TextEditingController();
     _cairanKeluarNgt = TextEditingController();
+    _cairanKeluarUrine = TextEditingController();
 
     super.initState();
   }
@@ -56,6 +58,7 @@ class _TambahKartuCairanPageState extends State<TambahKartuCairanPage> {
     _keterangan.clear();
     _drainDLL.clear();
     _cairanKeluarNgt.clear();
+    _cairanKeluarUrine.clear();
 
     _cairanmasuk1.dispose();
     _cairanmasuk2.dispose();
@@ -67,6 +70,7 @@ class _TambahKartuCairanPageState extends State<TambahKartuCairanPage> {
     _keterangan.dispose();
     _drainDLL.dispose();
     _cairanKeluarNgt.dispose();
+    _cairanKeluarUrine.dispose();
 
     super.dispose();
   }
@@ -125,20 +129,20 @@ class _TambahKartuCairanPageState extends State<TambahKartuCairanPage> {
             backgroundColor: ThemeColor.bgColor,
             isENableAdd: true,
             onPressed: () {
-              // TODO SIMPAN DATA
-              // OnSaveKartuCarianEvent
+              // TODO SIMPAN DATA // OnSaveKartuCarianEvent
               context.read<KartuObservasiBloc>().add(OnSaveKartuCarianEvent(
-                  noReg: singlePasien.first.noreg,
-                  cairanMasuk1: _cairanmasuk1.text,
-                  cairanMasuk2: _cairanmasuk2.text,
-                  cairanMasuk3: _cairanmasuk3.text,
-                  cairanMasukNgt: _cairanmasukNgt.text,
-                  drainDll: _drainDLL.text,
-                  namaCairan: _namaCairan.text,
-                  cairanKeluar: _cairanKeluar.text,
-                  cairanNgt: _cairanmasukNgt.text,
-                  cairanMasuk: _cairanMasuk.text,
-                  keterangan: _keterangan.text));
+                    noReg: singlePasien.first.noreg,
+                    cairanMasuk1: _cairanmasuk1.text,
+                    cairanMasuk2: _cairanmasuk2.text,
+                    cairanMasuk3: _cairanmasuk3.text,
+                    cairanMasukNgt: _cairanmasukNgt.text,
+                    drainDll: _drainDLL.text,
+                    namaCairan: _namaCairan.text,
+                    cairanKeluarNgt: _cairanKeluarNgt.text,
+                    cairanKeluarUrine: _cairanKeluarUrine.text,
+                    cairanMasuk: _cairanMasuk.text,
+                    keterangan: _keterangan.text,
+                  ));
             },
             widget: Scaffold(
               appBar: AppBar(
@@ -235,7 +239,7 @@ class _TambahKartuCairanPageState extends State<TambahKartuCairanPage> {
                                 Padding(
                                   padding: EdgeInsets.all(3.sp),
                                   child: FormWidget.textArea(
-                                    controller: _cairanKeluar,
+                                    controller: _cairanKeluarUrine,
                                     maxLines: 3,
                                     enabled: true,
                                   ),

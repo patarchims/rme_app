@@ -252,12 +252,20 @@ class _TambahAnalisaDataWidgetState extends State<TambahAnalisaDataWidget> {
                                 backgroundColor: ThemeColor.primaryColor,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(1.sp))),
-                            onPressed: () {
-                              context.read<AnalisaBloc>().add(
-                                  OnSaveDiagnosaKeperawatan(
-                                      noReg: singlePasien.first.noreg,
-                                      data: _dataController.text,
-                                      diagnosa: state.selectedDiagnosa));
+                            onPressed: () async {
+                              if (state.selectedDiagnosa.isNotEmpty) {
+                                context.read<AnalisaBloc>().add(
+                                    OnSaveDiagnosaKeperawatan(
+                                        noReg: singlePasien.first.noreg,
+                                        data: _dataController.text,
+                                        diagnosa: state.selectedDiagnosa));
+                              }
+
+                              if (state.selectedDiagnosa.isEmpty) {
+                                await Alert.loaded(context,
+                                    subTitle: "Diagnosa tidk boleh kosong",
+                                    title: "Pesan");
+                              }
                             },
                             child: Text(
                               "SIMPAN",

@@ -36,6 +36,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_animate: ^4.5.0
+  flutter_animated_button: ^2.0.3
   flutter_bloc: ^8.1.5
   flutter_bootstrap5: ^1.1.1+1
   flutter_chart: ^0.1.6

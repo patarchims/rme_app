@@ -85,7 +85,7 @@ class _AsesmenTindakLanjutIGDContentWidgetState
                             tindakLanjut: state.tindakLanjutIGDModel,
                             noreg: singlePasien.first.noreg,
                             person: toPerson(person: authState.user.person),
-                            deviceID: "ID - ${data['id']} - ${data['device']}",
+                            deviceID: "ID-${data['id']}-${data['device']}",
                             pelayanan: toPelayanan(
                                 poliklinik: authState.user.poliklinik)));
                   }
@@ -115,8 +115,6 @@ class _AsesmenTindakLanjutIGDContentWidgetState
                             TitleWidget.titleContainer(
                                 title:
                                     "Kondisi Pasien Saat Pindah / Pulang Dari IGD"),
-
-                            // ================== INFORMASI DAN KELUHAN PASIEN
                             Container(
                               width: Get.width,
                               padding: EdgeInsets.symmetric(
@@ -161,7 +159,6 @@ class _AsesmenTindakLanjutIGDContentWidgetState
                             TitleWidget.titleContainer(
                                 title: "Transportasi Pulang"),
 
-                            // ================== INFORMASI DAN KELUHAN PASIEN
                             Container(
                               width: Get.width,
                               padding: EdgeInsets.symmetric(
@@ -272,11 +269,12 @@ class _AsesmenTindakLanjutIGDContentWidgetState
                                         iconSize: 42,
                                         underline: const SizedBox(),
                                         dropdownColor: ThemeColor.primaryColor,
-                                        value: (state
-                                                    .tindakLanjutIGDModel.jam ==
+                                        value: (state.tindakLanjutIGDModel
+                                                    .waktu ==
                                                 "")
                                             ? times.first
-                                            : state.tindakLanjutIGDModel.jam,
+                                            : state.tindakLanjutIGDModel.waktu
+                                                .substring(0, 2),
                                         items: times
                                             .map<DropdownMenuItem<String>>(
                                                 (String value) {
@@ -311,10 +309,11 @@ class _AsesmenTindakLanjutIGDContentWidgetState
                                         underline: const SizedBox(),
                                         dropdownColor: ThemeColor.primaryColor,
                                         value: (state.tindakLanjutIGDModel
-                                                    .menit ==
+                                                    .waktu ==
                                                 "")
                                             ? menit.first
-                                            : state.tindakLanjutIGDModel.menit,
+                                            : state.tindakLanjutIGDModel.waktu
+                                                .substring(3, 5),
                                         items: menit
                                             .map<DropdownMenuItem<String>>(
                                                 (String value) {
@@ -328,7 +327,6 @@ class _AsesmenTindakLanjutIGDContentWidgetState
                                             ),
                                           );
                                         }).toList(),
-                                        // Step 5.
                                         onChanged: (String? newValue) {
                                           context.read<AsesmenIgdBloc>().add(
                                               AsesmenIgdEvent.menitOnchanged(

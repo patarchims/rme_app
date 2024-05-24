@@ -545,9 +545,10 @@ class _CpptWidgetBangsalState extends State<CpptWidgetNoExpandedBangsal> {
                                 return Card(
                                   elevation: 1.sp,
                                   shape: RoundedRectangleBorder(
-                                    side: const BorderSide(color: Colors.black),
-                                    borderRadius: BorderRadius.circular(2.sp),
-                                  ),
+                                      side:
+                                          const BorderSide(color: Colors.black),
+                                      borderRadius:
+                                          BorderRadius.circular(2.sp)),
                                   margin: EdgeInsets.only(top: 5.sp),
                                   color:
                                       ThemeColor.primaryColor.withOpacity(0.4),

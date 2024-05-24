@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hms_app/domain/bloc/dashboard/pasien/pasien_bloc.dart';
-import 'package:hms_app/domain/bloc/report/report_bloc.dart';
 import 'package:hms_app/presentation/component/color/color_helper.dart';
 import 'package:hms_app/presentation/component/fonts/font_helper.dart';
 import 'package:hms_app/presentation/component/loading/loading.dart';
 import 'package:hms_app/presentation/component/title/title_component.dart';
 import 'package:hms_app/presentation/kebidanan/bloc/kartu_observasi/kartu_observasi_bloc.dart';
+import 'package:hms_app/presentation/pages/icu/bloc/report_icu/report_icu_bloc.dart';
 import 'package:hms_app/presentation/report/component/header_report_widget.dart';
 import 'package:hms_app/presentation/screens/emty_page.dart';
 import 'package:sizer/sizer.dart';
@@ -32,9 +31,10 @@ class _ReportKartuObservasiPageWidgetState
     final singlePasien = pasienState.listPasienModel
         .where((element) => element.mrn == pasienState.normSelected);
 
-    return BlocBuilder<ReportBloc, ReportState>(
+    return BlocBuilder<ReportIcuBloc, ReportIcuState>(
       builder: (context, state) {
-        if (state.status == ReportStatus.isLoadingReportAnak) {
+        // ON GET REPORT
+        if (state.status == ReportIcuStatus.isLoadingGet) {
           return Scaffold(
             backgroundColor: ThemeColor.transparentColor,
             body: SizedBox(
@@ -44,6 +44,8 @@ class _ReportKartuObservasiPageWidgetState
             ),
           );
         }
+
+        // ==== //
         return Scaffold(
           backgroundColor: ThemeColor.transparentColor,
           body: Container(

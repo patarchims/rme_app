@@ -138,8 +138,6 @@ class _CpptSBARBansalWidgetState extends State<CpptSBARBansalWidget> {
                             child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 15.sp),
                               child: ListView(
-                                // mainAxisAlignment: MainAxisAlignment.start,
-                                // crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   // ===============
                                   Text(
@@ -288,11 +286,11 @@ class _CpptSBARBansalWidgetState extends State<CpptSBARBansalWidget> {
                             const BoxDecoration(color: Colors.lightBlueAccent),
                         child: Center(
                             child: Text(
-                          "Catatan Perkembangan Pasien Terintegrasi CPPT (SBAR)",
-                          style: blackTextStyle.copyWith(
-                              fontWeight: FontWeight.bold),
-                        ))),
-                    SizedBox(
+                                "Catatan Perkembangan Pasien Terintegrasi CPPT (SBAR)",
+                                style: blackTextStyle.copyWith(
+                                    fontWeight: FontWeight.bold)))),
+                    Container(
+                      margin: EdgeInsets.only(right: 5.sp, left: 5.sp),
                       child: Table(
                         border: TableBorder.all(color: Colors.black),
                         children: [
