@@ -10,7 +10,6 @@ import 'package:hms_app/presentation/pages/igd/repository/ktaripobat_repository.
 import 'package:hms_app/presentation/pages/igd/repository/pemeriksaan_fisik_repository.dart';
 import 'package:hms_app/presentation/pages/igd/repository/pemeriksaan_fisik_repository_dokter_methodist.dart';
 import 'package:hms_app/presentation/pages/igd/repository/tanda_vital_igd_dokter_repository.dart';
-import 'package:injectable/injectable.dart';
 
 class IGDServices {
   // GET ALL ICD 10
@@ -153,6 +152,24 @@ class IGDServices {
       endPoint: EndPoint.keluhanUtamaDokterIGD,
       data: DTO.onGetKeluhanUtamaIGD(
           noRM: noRM, noReg: noReg, person: person, tanggal: tanggal),
+    );
+  }
+
+  // SAVE ASESMEN IGD DOKTER
+  Future<dynamic> onGetAsesmenIGD({
+    required String noReg,
+    required String noRM,
+    required String tanggal,
+    required String person,
+  }) {
+    return MyDio().getAndToken(
+      endPoint: EndPoint.asesmenIGD,
+      data: DTO.onGetKeluhanUtamaIGD(
+        noRM: noRM,
+        noReg: noReg,
+        person: person,
+        tanggal: tanggal,
+      ),
     );
   }
 

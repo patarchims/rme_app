@@ -255,9 +255,7 @@ class _KontrolPasienIstimewaPageWidgetState
                       ),
                     );
                   }),
-                  SizedBox(
-                    height: 25.sp,
-                  )
+                  SizedBox(height: 25.sp),
                 ],
               ),
             ),

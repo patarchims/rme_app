@@ -64,7 +64,6 @@ class OnGetAsesmenAnakEvent extends PengkajianAwalKeperawatanEvent {
 }
 
 class OnSaveRiwayatPenyakitKeluarga extends PengkajianAwalKeperawatanEvent {
-  // TAMBAHKAN RIWAYAT PENYAKIT KELUARGA
   final String noRM;
   final String penyakitKeluarga;
   final String userID;
@@ -180,6 +179,7 @@ class OnChangedReaksiAlergi extends PengkajianAwalKeperawatanEvent {
     required this.value,
   });
 }
+
 class OnChangedReaksiAlergiAnak extends PengkajianAwalKeperawatanEvent {
   final String value;
   OnChangedReaksiAlergiAnak({

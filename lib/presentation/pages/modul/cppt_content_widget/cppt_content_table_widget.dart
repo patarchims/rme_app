@@ -111,14 +111,15 @@ class _CPPTContentTableWidgetState extends State<CPPTContentTableWidget> {
                           borderRadius: BorderRadius.circular(4.sp),
                           child: SfDataGridTheme(
                             data: SfDataGridThemeData(
-                                filterIconHoverColor: Colors.white,
-                                rowHoverColor: Colors.white.withOpacity(0.3),
-                                gridLineColor: Colors.white.withOpacity(0.6),
-                                selectionColor: Colors.white.withOpacity(0.2),
-                                sortOrderNumberBackgroundColor: Colors.white,
-                                headerColor: Colors.white.withOpacity(0.6),
-                                headerHoverColor: Colors.transparent,
-                                columnResizeIndicatorColor: Colors.white),
+                              filterIconHoverColor: Colors.white,
+                              rowHoverColor: Colors.white.withOpacity(0.3),
+                              gridLineColor: Colors.white.withOpacity(0.6),
+                              selectionColor: Colors.white.withOpacity(0.2),
+                              sortOrderNumberBackgroundColor: Colors.white,
+                              headerColor: Colors.white.withOpacity(0.6),
+                              headerHoverColor: Colors.transparent,
+                              columnResizeIndicatorColor: Colors.white,
+                            ),
                             child: SfDataGrid(
                               navigationMode: GridNavigationMode.cell,
                               selectionMode: SelectionMode.single,

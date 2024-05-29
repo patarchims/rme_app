@@ -424,6 +424,47 @@ class KeperawatanServices {
     );
   }
 
+  Future<Either<ApiFailureResult, ApiSuccessResult>> onSaveAsesmenIGD({
+    required String noReg,
+    required String noRm,
+    required String tanggal,
+    required String person,
+    required String devicesID,
+    required String pelayanan,
+    required String info,
+    required String infoDetail,
+    required String caraMasuk,
+    required String asalMasuk,
+    required String fungsional,
+    required String keluhanUtama,
+    required String penyakitSekarang,
+    required String penyakitDahulu,
+    required String riwayatDahulu,
+    required String reaksiAlergi,
+  }) {
+    return MyDio().postDataWithToken(
+      endPoint: EndPoint.asesmenAwalIGD,
+      data: DTOKeperawatan.onSaveAsesmenIGD(
+        asalMasuk: asalMasuk,
+        caraMasuk: caraMasuk,
+        fungsional: fungsional,
+        info: info,
+        infoDetail: infoDetail,
+        keluhanUtama: keluhanUtama,
+        noRm: noRm,
+        penyakitDahulu: penyakitDahulu,
+        penyakitSekarang: penyakitSekarang,
+        reaksiAlergi: reaksiAlergi,
+        riwayatDahulu: riwayatDahulu,
+        tanggal: tanggal,
+        pelayanan: pelayanan,
+        devicesID: devicesID,
+        noReg: noReg,
+        person: person,
+      ),
+    );
+  }
+
   Future<Either<ApiFailureResult, ApiSuccessResult>>
       onSaveTandaVitalKeperawatanBangsal({
     required String noReg,

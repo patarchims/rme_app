@@ -51,6 +51,7 @@ import 'package:hms_app/presentation/pages/icu/bloc/pemeriksaan_fisik_icu/pemeri
 import 'package:hms_app/presentation/pages/icu/bloc/report_icu/report_icu_bloc.dart';
 import 'package:hms_app/presentation/pages/icu/bloc/riwayat_keperawaan/riwayat_keperawatan_bloc.dart';
 import 'package:hms_app/presentation/pages/icu/bloc/vital_sign_icu/vital_sign_icu_bloc.dart';
+import 'package:hms_app/presentation/pages/igd/bloc/asesmen_igd/asesmen_igd_bloc.dart';
 import 'package:hms_app/presentation/pages/igd/bloc/resiko_jatuh_getup/resiko_jatuh_getup_bloc.dart';
 import 'package:hms_app/presentation/perina/bloc/analisa/analisa_bloc.dart';
 import 'package:hms_app/presentation/kebidanan/bloc/diagnosa_kebidanan/diagnosa_kebidanan_bloc.dart';
@@ -93,6 +94,7 @@ class App extends StatelessWidget {
         BlocProvider(create: (_) => ResepBloc()..add(OnGetResepObatEvent())),
         BlocProvider(
             create: (_) => ReportPengkajianKebidananAwalKebidananBloc()),
+        BlocProvider(create: (_) => AsesmenAwalIgdBloc()),
         BlocProvider(create: (_) => ResikoJatuhGetupBloc()),
         BlocProvider(create: (_) => KartuObservasiBloc()),
         BlocProvider(create: (_) => DoubleCheckBloc()),

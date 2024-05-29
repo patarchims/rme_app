@@ -92,9 +92,7 @@ class AsesmenIgdBloc extends Bloc<AsesmenIgdEvent, AsesmenIgdState> {
               (r) => r.maybeMap(
                   orElse: () {},
                   loaded: (data) {
-                    // LOADED DATA
                     try {
-                      // LAKUKAN MAPPING DATA
                       TindakLanjutIgdModel datas =
                           TindakLanjutIgdModel.fromJson(data.value["response"]);
 
@@ -102,16 +100,17 @@ class AsesmenIgdBloc extends Bloc<AsesmenIgdEvent, AsesmenIgdState> {
                     } catch (e) {
                       emit(state.copyWith(
                           tindakLanjutIGDModel: TindakLanjutIgdModel(
-                              waktu: "",
-                              caraKeluar: "",
-                              jam: "",
-                              menit: "",
-                              pulang1: "",
-                              pulang1Detail: "",
-                              pulang2: "",
-                              pulang2Detail: "",
-                              pulang3: "",
-                              pulang3Detail: "")));
+                        waktu: "",
+                        caraKeluar: "",
+                        jam: "",
+                        menit: "",
+                        pulang1: "",
+                        pulang1Detail: "",
+                        pulang2: "",
+                        pulang2Detail: "",
+                        pulang3: "",
+                        pulang3Detail: "",
+                      )));
                     }
                   }));
 

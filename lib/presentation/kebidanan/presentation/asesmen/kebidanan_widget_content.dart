@@ -141,7 +141,7 @@ class _PengkajianKebidananWidgetContentState
                               state.pengkajianKebidanan.pemeriksaanDalam,
                         ),
                         noReg: singlePasien.first.noreg,
-                        devicesID: "ID - ${data['id']} - ${data['device']}",
+                        devicesID: "ID-${data['id']} - ${data['device']}",
                         person: toPerson(person: authState.user.person)));
               }
             },

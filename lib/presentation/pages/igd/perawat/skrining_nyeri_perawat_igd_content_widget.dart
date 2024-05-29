@@ -168,356 +168,367 @@ class _SkriningNyeriPerawatContentWidgetState
                   controller: _scrollController,
                   trackVisibility: false,
                   radius: Radius.circular(5.sp),
-                  child: SingleChildScrollView(
-                    controller: _scrollController,
-                    child: SizedBox(
-                      width: Get.width,
-                      child: Card(
-                        color: ThemeColor.bgColor,
-                        shape: RoundedRectangleBorder(
-                            side: BorderSide(
-                                width: 1.sp, color: ThemeColor.blackColor),
-                            borderRadius: BorderRadius.circular(2.sp)),
-                        child: Column(
-                          children: [
-                            if (AppConstant.appSetup != AppSetup.methodist) ...[
-                              TitleWidget.titleContainer(
-                                  title: "Skrining Nyeri"),
+                  child: Container(
+                    margin: EdgeInsets.only(right: 10.sp),
+                    child: SingleChildScrollView(
+                      controller: _scrollController,
+                      child: SizedBox(
+                        width: Get.width,
+                        child: Card(
+                          color: ThemeColor.bgColor,
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                  width: 1.sp, color: ThemeColor.blackColor),
+                              borderRadius: BorderRadius.circular(2.sp)),
+                          child: Column(
+                            children: [
+                              if (AppConstant.appSetup !=
+                                  AppSetup.methodist) ...[
+                                TitleWidget.titleContainer(
+                                    title: "Skrining Nyeri"),
 
-                              // ==================== //
-                              Slider(
-                                value: state.skalaNyeriValue,
-                                max: 10,
-                                divisions: 10,
-                                label: state.skalaNyeriValue.round().toString(),
-                                onChanged: (double value) {
-                                  context.read<TriaseBloc>().add(
-                                      TriaseEvent.skalaNyeriOnchanged(
-                                          value: value));
-                                },
+                                // ==================== //
+                                Slider(
+                                  value: state.skalaNyeriValue,
+                                  max: 10,
+                                  divisions: 10,
+                                  label:
+                                      state.skalaNyeriValue.round().toString(),
+                                  onChanged: (double value) {
+                                    context.read<TriaseBloc>().add(
+                                        TriaseEvent.skalaNyeriOnchanged(
+                                            value: value));
+                                  },
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          context.read<TriaseBloc>().add(
+                                              const TriaseEvent
+                                                  .skalaNyeriOnchanged(
+                                                  value: 1.0));
+                                        },
+                                        child: SizedBox(
+                                            height: 20.sp,
+                                            child: Image.asset(
+                                                "assets/images/nyeri/1.png")),
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          context.read<TriaseBloc>().add(
+                                              const TriaseEvent
+                                                  .skalaNyeriOnchanged(
+                                                  value: 3.0));
+                                        },
+                                        child: SizedBox(
+                                            height: 20.sp,
+                                            child: Image.asset(
+                                                "assets/images/nyeri/2.png")),
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          context.read<TriaseBloc>().add(
+                                              const TriaseEvent
+                                                  .skalaNyeriOnchanged(
+                                                  value: 5.0));
+                                        },
+                                        child: SizedBox(
+                                            height: 20.sp,
+                                            child: Image.asset(
+                                                "assets/images/nyeri/3.png")),
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          context.read<TriaseBloc>().add(
+                                              const TriaseEvent
+                                                  .skalaNyeriOnchanged(
+                                                  value: 7.0));
+                                        },
+                                        child: SizedBox(
+                                            height: 20.sp,
+                                            child: Image.asset(
+                                                "assets/images/nyeri/4.png")),
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          context.read<TriaseBloc>().add(
+                                              const TriaseEvent
+                                                  .skalaNyeriOnchanged(
+                                                  value: 8.0));
+                                        },
+                                        child: SizedBox(
+                                            height: 20.sp,
+                                            child: Image.asset(
+                                                "assets/images/nyeri/5.png")),
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          context.read<TriaseBloc>().add(
+                                              const TriaseEvent
+                                                  .skalaNyeriOnchanged(
+                                                  value: 10.0));
+                                        },
+                                        child: SizedBox(
+                                            height: 20.sp,
+                                            child: Image.asset(
+                                                "assets/images/nyeri/6.png")),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                // ================================
+                                SizedBox(
+                                  child: Row(
+                                    children: [
+                                      SizedBox(
+                                        width: Get.width / 2.5,
+                                        child: Text(
+                                          "Skala\nNyeri\n${state.skalaNyeriValue.toInt()}",
+                                          style: blackTextStyle.copyWith(
+                                              fontWeight: FontWeight.bold),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                      Expanded(
+                                          child: SizedBox(
+                                        child: Column(
+                                          children: [
+                                            SizedBox(
+                                                height: 50.sp,
+                                                child: Image.asset(toNyeri(
+                                                    nyeri: state
+                                                        .skalaNyeriValue))),
+                                            Text(
+                                              toNyeriText(
+                                                  nyeri: state.skalaNyeriValue),
+                                              style: blackTextStyle,
+                                            )
+                                          ],
+                                        ),
+                                      )),
+                                    ],
+                                  ),
+                                ),
+                              ],
+
+                              // ========================== LAMA NYERI
+                              TitleWidget.titleContainer(
+                                  title: "Frekuensi Nyeri"),
+
+                              // ===========================
+                              Container(
+                                width: Get.width,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 5.sp, vertical: 5.sp),
+                                child: Wrap(
+                                  runAlignment: WrapAlignment.start,
+                                  runSpacing: 1.sp,
+                                  spacing: 1.sp,
+                                  alignment: WrapAlignment.start,
+                                  children: ListConstants.frekuensiNyeriChoose
+                                      .map(
+                                        (e) => TitleWidget.boxChoose(
+                                            icon: (state.skriningNyeri
+                                                        .frekuensiNyeri ==
+                                                    e)
+                                                ? const Icon(
+                                                    FontAwesomeIcons.check,
+                                                    color: Colors.white,
+                                                  )
+                                                : const Icon(
+                                                    FontAwesomeIcons.xmark,
+                                                    color: Colors.white,
+                                                  ),
+                                            backgroundColor: (state
+                                                        .skriningNyeri
+                                                        .frekuensiNyeri ==
+                                                    e)
+                                                ? Colors.green
+                                                : ThemeColor.primaryColor,
+                                            onPressed: () {
+                                              context.read<TriaseBloc>().add(
+                                                  TriaseEvent
+                                                      .frekuensiNyeriOnchanged(
+                                                          value: e));
+                                            },
+                                            title: e),
+                                      )
+                                      .toList(),
+                                ),
                               ),
+
+                              TitleWidget.titleContainer(title: "Lama Nyeri"),
+
+                              //  Tampilkan lama nyeri
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    InkWell(
-                                      onTap: () {
-                                        context.read<TriaseBloc>().add(
-                                            const TriaseEvent
-                                                .skalaNyeriOnchanged(
-                                                value: 1.0));
-                                      },
-                                      child: SizedBox(
-                                          height: 20.sp,
-                                          child: Image.asset(
-                                              "assets/images/nyeri/1.png")),
-                                    ),
-                                    InkWell(
-                                      onTap: () {
-                                        context.read<TriaseBloc>().add(
-                                            const TriaseEvent
-                                                .skalaNyeriOnchanged(
-                                                value: 3.0));
-                                      },
-                                      child: SizedBox(
-                                          height: 20.sp,
-                                          child: Image.asset(
-                                              "assets/images/nyeri/2.png")),
-                                    ),
-                                    InkWell(
-                                      onTap: () {
-                                        context.read<TriaseBloc>().add(
-                                            const TriaseEvent
-                                                .skalaNyeriOnchanged(
-                                                value: 5.0));
-                                      },
-                                      child: SizedBox(
-                                          height: 20.sp,
-                                          child: Image.asset(
-                                              "assets/images/nyeri/3.png")),
-                                    ),
-                                    InkWell(
-                                      onTap: () {
-                                        context.read<TriaseBloc>().add(
-                                            const TriaseEvent
-                                                .skalaNyeriOnchanged(
-                                                value: 7.0));
-                                      },
-                                      child: SizedBox(
-                                          height: 20.sp,
-                                          child: Image.asset(
-                                              "assets/images/nyeri/4.png")),
-                                    ),
-                                    InkWell(
-                                      onTap: () {
-                                        context.read<TriaseBloc>().add(
-                                            const TriaseEvent
-                                                .skalaNyeriOnchanged(
-                                                value: 8.0));
-                                      },
-                                      child: SizedBox(
-                                          height: 20.sp,
-                                          child: Image.asset(
-                                              "assets/images/nyeri/5.png")),
-                                    ),
-                                    InkWell(
-                                      onTap: () {
-                                        context.read<TriaseBloc>().add(
-                                            const TriaseEvent
-                                                .skalaNyeriOnchanged(
-                                                value: 10.0));
-                                      },
-                                      child: SizedBox(
-                                          height: 20.sp,
-                                          child: Image.asset(
-                                              "assets/images/nyeri/6.png")),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              // ================================
-                              SizedBox(
-                                child: Row(
-                                  children: [
                                     SizedBox(
-                                      width: Get.width / 2.5,
-                                      child: Text(
-                                        "Skala\nNyeri\n${state.skalaNyeriValue.toInt()}",
-                                        style: blackTextStyle.copyWith(
-                                            fontWeight: FontWeight.bold),
-                                        textAlign: TextAlign.center,
-                                      ),
+                                      width: 25.sp,
+                                      height: 25.sp,
+                                      child: FormWidget.numberForm(
+                                          enable: true,
+                                          onChanged: (value) {
+                                            context.read<TriaseBloc>().add(
+                                                TriaseEvent.lamaNyeriOnchanged(
+                                                    value: value));
+                                          }),
                                     ),
-                                    Expanded(
-                                        child: SizedBox(
-                                      child: Column(
-                                        children: [
-                                          SizedBox(
-                                              height: 50.sp,
-                                              child: Image.asset(toNyeri(
-                                                  nyeri:
-                                                      state.skalaNyeriValue))),
-                                          Text(
-                                            toNyeriText(
-                                                nyeri: state.skalaNyeriValue),
-                                            style: blackTextStyle,
-                                          )
-                                        ],
-                                      ),
-                                    )),
+                                    Text(
+                                      " Hari",
+                                      style: blackTextStyle,
+                                    )
                                   ],
                                 ),
                               ),
-                            ],
 
-                            // ========================== LAMA NYERI
-                            TitleWidget.titleContainer(
-                                title: "Frekuensi Nyeri"),
-
-                            // ===========================
-                            Container(
-                              width: Get.width,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 5.sp, vertical: 5.sp),
-                              child: Wrap(
-                                runAlignment: WrapAlignment.start,
-                                runSpacing: 1.sp,
-                                spacing: 1.sp,
-                                alignment: WrapAlignment.start,
-                                children: ListConstants.frekuensiNyeriChoose
-                                    .map(
-                                      (e) => TitleWidget.boxChoose(
-                                          icon: (state.skriningNyeri
-                                                      .frekuensiNyeri ==
-                                                  e)
-                                              ? const Icon(
-                                                  FontAwesomeIcons.check,
-                                                  color: Colors.white,
-                                                )
-                                              : const Icon(
-                                                  FontAwesomeIcons.xmark,
-                                                  color: Colors.white,
-                                                ),
-                                          backgroundColor: (state.skriningNyeri
-                                                      .frekuensiNyeri ==
-                                                  e)
-                                              ? Colors.green
-                                              : ThemeColor.primaryColor,
-                                          onPressed: () {
-                                            context.read<TriaseBloc>().add(
-                                                TriaseEvent
-                                                    .frekuensiNyeriOnchanged(
-                                                        value: e));
-                                          },
-                                          title: e),
-                                    )
-                                    .toList(),
-                              ),
-                            ),
-
-                            TitleWidget.titleContainer(title: "Lama Nyeri"),
-
-                            //  Tampilkan lama nyeri
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    width: 25.sp,
-                                    height: 25.sp,
-                                    child: FormWidget.numberForm(
-                                        enable: true,
-                                        onChanged: (value) {
-                                          context.read<TriaseBloc>().add(
-                                              TriaseEvent.lamaNyeriOnchanged(
-                                                  value: value));
-                                        }),
-                                  ),
-                                  Text(
-                                    " Hari",
-                                    style: blackTextStyle,
-                                  )
-                                ],
-                              ),
-                            ),
-
-                            TitleWidget.titleContainer(title: "Menjalar"),
-                            Container(
-                              width: Get.width,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 5.sp, vertical: 5.sp),
-                              child: Wrap(
-                                runAlignment: WrapAlignment.start,
-                                runSpacing: 1.sp,
-                                spacing: 1.sp,
-                                alignment: WrapAlignment.start,
-                                children: ListConstants.yaTidak
-                                    .map(
-                                      (e) => TitleWidget.boxChoose(
-                                          icon: (state.skriningNyeri
-                                                      .nyeriMenjalar ==
-                                                  e)
-                                              ? const Icon(
-                                                  FontAwesomeIcons.check,
-                                                  color: Colors.white,
-                                                )
-                                              : const Icon(
-                                                  FontAwesomeIcons.xmark,
-                                                  color: Colors.white,
-                                                ),
-                                          backgroundColor: (state.skriningNyeri
-                                                      .nyeriMenjalar ==
-                                                  e)
-                                              ? Colors.green
-                                              : ThemeColor.primaryColor,
-                                          onPressed: () {
-                                            context.read<TriaseBloc>().add(
-                                                TriaseEvent.menjalarOnchanged(
-                                                    value: e));
-
-                                            if (e !=
-                                                ListConstants.yaTidak.last) {
+                              TitleWidget.titleContainer(title: "Menjalar"),
+                              Container(
+                                width: Get.width,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 5.sp, vertical: 5.sp),
+                                child: Wrap(
+                                  runAlignment: WrapAlignment.start,
+                                  runSpacing: 1.sp,
+                                  spacing: 1.sp,
+                                  alignment: WrapAlignment.start,
+                                  children: ListConstants.yaTidak
+                                      .map(
+                                        (e) => TitleWidget.boxChoose(
+                                            icon: (state.skriningNyeri
+                                                        .nyeriMenjalar ==
+                                                    e)
+                                                ? const Icon(
+                                                    FontAwesomeIcons.check,
+                                                    color: Colors.white,
+                                                  )
+                                                : const Icon(
+                                                    FontAwesomeIcons.xmark,
+                                                    color: Colors.white,
+                                                  ),
+                                            backgroundColor: (state
+                                                        .skriningNyeri
+                                                        .nyeriMenjalar ==
+                                                    e)
+                                                ? Colors.green
+                                                : ThemeColor.primaryColor,
+                                            onPressed: () {
                                               context.read<TriaseBloc>().add(
-                                                  const TriaseEvent
-                                                      .menjalarDetailOnchanged(
-                                                      value: ""));
-                                            }
-                                          },
-                                          title: e),
-                                    )
-                                    .toList(),
-                              ),
-                            ),
+                                                  TriaseEvent.menjalarOnchanged(
+                                                      value: e));
 
-                            if (state.skriningNyeri.nyeriMenjalar ==
-                                ListConstants.yaTidak.last) ...[
+                                              if (e !=
+                                                  ListConstants.yaTidak.last) {
+                                                context.read<TriaseBloc>().add(
+                                                    const TriaseEvent
+                                                        .menjalarDetailOnchanged(
+                                                        value: ""));
+                                              }
+                                            },
+                                            title: e),
+                                      )
+                                      .toList(),
+                                ),
+                              ),
+
+                              if (state.skriningNyeri.nyeriMenjalar ==
+                                  ListConstants.yaTidak.last) ...[
+                                Padding(
+                                  padding: EdgeInsets.all(5.sp),
+                                  child: FormWidget.textArea(
+                                      enabled: true,
+                                      maxLines: 2,
+                                      value: state.skriningNyeri.manjalarDetail,
+                                      onChanged: (value) {
+                                        context.read<TriaseBloc>().add(
+                                            TriaseEvent.menjalarDetailOnchanged(
+                                                value: value));
+                                      }),
+                                ),
+                              ],
+
+                              TitleWidget.titleContainer(
+                                  title: "Kualitas Nyeri"),
+                              Container(
+                                width: Get.width,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 5.sp, vertical: 5.sp),
+                                child: Wrap(
+                                  runAlignment: WrapAlignment.start,
+                                  runSpacing: 1.sp,
+                                  spacing: 1.sp,
+                                  alignment: WrapAlignment.start,
+                                  children: ListConstants.kualitasNyeri
+                                      .map(
+                                        (e) => TitleWidget.boxChoose(
+                                            icon: (state.skriningNyeri
+                                                        .kualitasNyeri ==
+                                                    e)
+                                                ? const Icon(
+                                                    FontAwesomeIcons.check,
+                                                    color: Colors.white,
+                                                  )
+                                                : const Icon(
+                                                    FontAwesomeIcons.xmark,
+                                                    color: Colors.white,
+                                                  ),
+                                            backgroundColor: (state
+                                                        .skriningNyeri
+                                                        .kualitasNyeri ==
+                                                    e)
+                                                ? Colors.green
+                                                : ThemeColor.primaryColor,
+                                            onPressed: () {
+                                              context.read<TriaseBloc>().add(
+                                                  TriaseEvent
+                                                      .kualitasNyeriOnchanged(
+                                                          value: e));
+                                            },
+                                            title: e),
+                                      )
+                                      .toList(),
+                                ),
+                              ),
+                              TitleWidget.titleContainer(
+                                  title: "Faktor Pemicu"),
                               Padding(
                                 padding: EdgeInsets.all(5.sp),
                                 child: FormWidget.textArea(
                                     enabled: true,
-                                    maxLines: 2,
-                                    value: state.skriningNyeri.manjalarDetail,
+                                    maxLines: 3,
+                                    value: state.skriningNyeri.nyeriPemicu,
                                     onChanged: (value) {
                                       context.read<TriaseBloc>().add(
-                                          TriaseEvent.menjalarDetailOnchanged(
+                                          TriaseEvent.faktorPemicuOnchanged(
+                                              value: value));
+                                    }),
+                              ),
+                              TitleWidget.titleContainer(
+                                  title: "Faktor Mengurangi"),
+                              Padding(
+                                padding: EdgeInsets.all(5.sp),
+                                child: FormWidget.textArea(
+                                    enabled: true,
+                                    maxLines: 3,
+                                    value: state.skriningNyeri.nyeriPengurang,
+                                    onChanged: (value) {
+                                      context.read<TriaseBloc>().add(
+                                          TriaseEvent.faktorMengurangi(
                                               value: value));
                                     }),
                               ),
                             ],
-
-                            TitleWidget.titleContainer(title: "Kualitas Nyeri"),
-                            Container(
-                              width: Get.width,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 5.sp, vertical: 5.sp),
-                              child: Wrap(
-                                runAlignment: WrapAlignment.start,
-                                runSpacing: 1.sp,
-                                spacing: 1.sp,
-                                alignment: WrapAlignment.start,
-                                children: ListConstants.kualitasNyeri
-                                    .map(
-                                      (e) => TitleWidget.boxChoose(
-                                          icon: (state.skriningNyeri
-                                                      .kualitasNyeri ==
-                                                  e)
-                                              ? const Icon(
-                                                  FontAwesomeIcons.check,
-                                                  color: Colors.white,
-                                                )
-                                              : const Icon(
-                                                  FontAwesomeIcons.xmark,
-                                                  color: Colors.white,
-                                                ),
-                                          backgroundColor: (state.skriningNyeri
-                                                      .kualitasNyeri ==
-                                                  e)
-                                              ? Colors.green
-                                              : ThemeColor.primaryColor,
-                                          onPressed: () {
-                                            context.read<TriaseBloc>().add(
-                                                TriaseEvent
-                                                    .kualitasNyeriOnchanged(
-                                                        value: e));
-                                          },
-                                          title: e),
-                                    )
-                                    .toList(),
-                              ),
-                            ),
-                            TitleWidget.titleContainer(title: "Faktor Pemicu"),
-                            Padding(
-                              padding: EdgeInsets.all(5.sp),
-                              child: FormWidget.textArea(
-                                  enabled: true,
-                                  maxLines: 3,
-                                  value: state.skriningNyeri.nyeriPemicu,
-                                  onChanged: (value) {
-                                    context.read<TriaseBloc>().add(
-                                        TriaseEvent.faktorPemicuOnchanged(
-                                            value: value));
-                                  }),
-                            ),
-                            TitleWidget.titleContainer(
-                                title: "Faktor Mengurangi"),
-                            Padding(
-                              padding: EdgeInsets.all(5.sp),
-                              child: FormWidget.textArea(
-                                  enabled: true,
-                                  maxLines: 3,
-                                  value: state.skriningNyeri.nyeriPengurang,
-                                  onChanged: (value) {
-                                    context.read<TriaseBloc>().add(
-                                        TriaseEvent.faktorMengurangi(
-                                            value: value));
-                                  }),
-                            ),
-                          ],
+                          ),
                         ),
                       ),
                     ),

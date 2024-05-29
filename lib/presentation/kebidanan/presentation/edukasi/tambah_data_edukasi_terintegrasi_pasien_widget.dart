@@ -20,6 +20,7 @@ class TambahDataEdukasiTerintegrasiPasienWidget extends StatefulWidget {
 
 class _TambahDataEdukasiTerintegrasiPasienWidgetState
     extends State<TambahDataEdukasiTerintegrasiPasienWidget> {
+  final ScrollController _scrollController = ScrollController();
   late String tingkatKesadaran;
   late String kategori;
   late String obsigenTambahan;
@@ -124,390 +125,542 @@ class _TambahDataEdukasiTerintegrasiPasienWidgetState
                   "Early Warning System",
                   style: whiteTextStyle,
                 )),
-            body: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                      padding: EdgeInsets.only(
-                          top: 5.sp, bottom: 0, right: 5.sp, left: 5.sp),
-                      child: Table(border: TableBorder.all(), children: [
-                        TableRow(children: [
-                          TitleWidget.headerCenterTitle2(title: "KATEGORI"),
-                          TitleWidget.headerCenterTitle2(
-                              title: "TINGKAT KESADARAN"),
-                          TitleWidget.headerCenterTitle2(
-                              title: "TEKANAN DARAH\n(SYSTOLIK)"),
-                          TitleWidget.headerCenterTitle2(title: "NADI"),
-                          TitleWidget.headerCenterTitle2(title: "PERNAPASAN"),
-                          TitleWidget.headerCenterTitle2(title: "REAKSI OTOT"),
-                          TitleWidget.headerCenterTitle2(title: "SUHU"),
-                          TitleWidget.headerCenterTitle2(title: "SPO2"),
-                          TitleWidget.headerCenterTitle2(title: "CRT"),
-                          TitleWidget.headerCenterTitle2(title: "SKALA NYERI"),
-                          TitleWidget.headerCenterTitle2(
-                              title: "OKSIGEN TAMBAHAN"),
-                        ]),
-                      ])),
-                  Container(
-                      padding: EdgeInsets.only(top: 0, left: 5.sp, right: 5.sp),
-                      child: Table(
-                          columnWidths: const {
-                            2: FlexColumnWidth(1.2),
-                          },
-                          border: TableBorder.all(),
-                          children: [
+            body: RawScrollbar(
+              thumbColor: ThemeColor.darkColor,
+              thumbVisibility: true,
+              interactive: true,
+              thickness: 10.sp,
+              controller: _scrollController,
+              trackVisibility: false,
+              radius: Radius.circular(5.sp),
+              child: SingleChildScrollView(
+                controller: _scrollController,
+                child: Container(
+                  margin: EdgeInsets.only(right: 5.sp),
+                  child: Column(
+                    children: [
+                      Container(
+                          padding: EdgeInsets.only(
+                              top: 5.sp, bottom: 0, right: 5.sp, left: 5.sp),
+                          child: Table(border: TableBorder.all(), children: [
                             TableRow(children: [
-                              // ====== KATEGORI ================ /// ====
-                              Container(
-                                height: 110.sp,
-                                margin: EdgeInsets.all(2.sp),
-                                padding: EdgeInsets.all(2.sp),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(2.sp),
-                                  color: ThemeColor.primaryColor,
-                                ),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    btnKategori(state, context,
-                                        title: "Dewasa"),
-                                    btnKategori(state, context, title: "Anak"),
-                                  ],
-                                ),
-                              ),
+                              TitleWidget.headerCenterTitle2(title: "KATEGORI"),
+                              TitleWidget.headerCenterTitle2(
+                                  title: "TINGKAT KESADARAN"),
+                              TitleWidget.headerCenterTitle2(
+                                  title: "TEKANAN DARAH\n(SYSTOLIK)"),
+                              TitleWidget.headerCenterTitle2(title: "NADI"),
+                              TitleWidget.headerCenterTitle2(
+                                  title: "PERNAPASAN"),
+                              TitleWidget.headerCenterTitle2(
+                                  title: "REAKSI OTOT"),
+                              TitleWidget.headerCenterTitle2(title: "SUHU"),
+                              TitleWidget.headerCenterTitle2(title: "SPO2"),
+                              TitleWidget.headerCenterTitle2(title: "CRT"),
+                              TitleWidget.headerCenterTitle2(
+                                  title: "SKALA NYERI"),
+                              TitleWidget.headerCenterTitle2(
+                                  title: "OKSIGEN TAMBAHAN"),
+                            ]),
+                          ])),
+                      Container(
+                          padding:
+                              EdgeInsets.only(top: 0, left: 5.sp, right: 5.sp),
+                          child: Table(
+                              columnWidths: const {
+                                2: FlexColumnWidth(1.2),
+                              },
+                              border: TableBorder.all(),
+                              children: [
+                                TableRow(children: [
+                                  // ====== KATEGORI ================ /// ====
+                                  Container(
+                                    height: 110.sp,
+                                    margin: EdgeInsets.all(2.sp),
+                                    padding: EdgeInsets.all(2.sp),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(2.sp),
+                                      color: ThemeColor.primaryColor,
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        btnKategori(state, context,
+                                            title: "Dewasa"),
+                                        btnKategori(state, context,
+                                            title: "Anak"),
+                                      ],
+                                    ),
+                                  ),
 
-                              //================== TINGKAT KESADARAN
-                              Container(
-                                height: 110.sp,
-                                margin: EdgeInsets.all(2.sp),
-                                padding: EdgeInsets.all(2.sp),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(2.sp),
-                                    color: ThemeColor.primaryColor),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    btnTingkatKesadaran(state, context,
-                                        title: "Alert"),
-                                    btnTingkatKesadaran(state, context,
-                                        title: "Voice"),
-                                    btnTingkatKesadaran(state, context,
-                                        title: "Pain"),
-                                    btnTingkatKesadaran(state, context,
-                                        title: "Unreponsiv"),
-                                  ],
-                                ),
-                              ),
+                                  //================== TINGKAT KESADARAN
+                                  Container(
+                                    height: 110.sp,
+                                    margin: EdgeInsets.all(2.sp),
+                                    padding: EdgeInsets.all(2.sp),
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(2.sp),
+                                        color: ThemeColor.primaryColor),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        btnTingkatKesadaran(state, context,
+                                            title: "Alert"),
+                                        btnTingkatKesadaran(state, context,
+                                            title: "Voice"),
+                                        btnTingkatKesadaran(state, context,
+                                            title: "Pain"),
+                                        btnTingkatKesadaran(state, context,
+                                            title: "Unreponsiv"),
+                                      ],
+                                    ),
+                                  ),
 
-                              //================ TEKANAN DARAH ==== //
-                              Container(
-                                height: 110.sp,
-                                width: 100.sp,
-                                margin: EdgeInsets.all(2.sp),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(2.sp),
-                                    color: ThemeColor.transparentColor),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    tdDarah1(state, context,
+                                  //================ TEKANAN DARAH ==== //
+                                  Container(
+                                    height: 110.sp,
+                                    margin: EdgeInsets.all(2.sp),
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(2.sp),
+                                        color: ThemeColor.transparentColor),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        tdDarah1(state, context,
+                                            onChanged: (value) {
+                                          context
+                                              .read<EarlyWarningSystemBloc>()
+                                              .add(OnChangedTekananDarah1(
+                                                  value: value));
+                                        }),
+                                        Text("/", style: blackTextStyle),
+                                        tdDarah2(state, context),
+                                        Text("mmHg", style: blackTextStyle),
+                                      ],
+                                    ),
+                                  ),
+
+                                  //  CHANGE NADI
+                                  buttonApp(context,
+                                      value: state.earlyWarningSystemModel.nadi
+                                          .toDouble(), onChanged: (value) {
+                                    context
+                                        .read<EarlyWarningSystemBloc>()
+                                        .add(OnChangedNadi(value: value));
+                                  }),
+                                  // ====== NADI ==== //
+                                  buttonApp(context,
+                                      value: pernapasan.toDouble(),
+                                      onChanged: (value) {
+                                    context.read<EarlyWarningSystemBloc>().add(
+                                        OnChangedPernapasanEvent(value: value));
+                                  }),
+
+                                  Container(
+                                    height: 110.sp,
+                                    margin: EdgeInsets.all(2.sp),
+                                    padding: EdgeInsets.all(2.sp),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(2.sp),
+                                      color: ThemeColor.primaryColor,
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        btnReaksiOtot(context, state,
+                                            value: "Berat"),
+                                        SizedBox(height: 5.sp),
+                                        btnReaksiOtot(context, state,
+                                            value: "Sedang"),
+                                        SizedBox(height: 5.sp),
+                                        btnReaksiOtot(context, state,
+                                            value: "Ringan"),
+                                      ],
+                                    ),
+                                  ),
+
+                                  //======== SUHU ==================//
+                                  Container(
+                                      height: 110.sp,
+                                      margin: EdgeInsets.all(2.sp),
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(2.sp),
+                                        color: ThemeColor.primaryColor,
+                                      ),
+                                      child: CupertinoSpinBox(
+                                        textStyle: whiteTextStyle,
+                                        min: 1,
+                                        decimals: 1,
+                                        max: 500,
+                                        value:
+                                            state.earlyWarningSystemModel.suhu,
+                                        direction: Axis.vertical,
+                                        decoration: BoxDecoration(
+                                            color: ThemeColor.primaryColor,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(2.sp))),
                                         onChanged: (value) {
-                                      context
-                                          .read<EarlyWarningSystemBloc>()
-                                          .add(OnChangedTekananDarah1(
-                                              value: value));
-                                    }),
-                                    Text("/", style: blackTextStyle),
-                                    tdDarah2(state, context),
-                                    Text("mmHg", style: blackTextStyle),
-                                  ],
+                                          context
+                                              .read<EarlyWarningSystemBloc>()
+                                              .add(OnChangedSuhu(value: value));
+                                        },
+                                      )),
+
+                                  // ===== //
+                                  Container(
+                                    height: 110.sp,
+                                    margin: EdgeInsets.all(2.sp),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(2.sp),
+                                      color: ThemeColor.primaryColor,
+                                    ),
+                                    child: CupertinoSpinBox(
+                                      textStyle: whiteTextStyle,
+                                      min: 1,
+                                      max: 500,
+                                      decimals: 1,
+                                      value: spo2.toDouble(),
+                                      direction: Axis.vertical,
+                                      decoration: BoxDecoration(
+                                          color: ThemeColor.primaryColor,
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(2.sp))),
+                                      onChanged: (value) {
+                                        context
+                                            .read<EarlyWarningSystemBloc>()
+                                            .add(OnChangedSPO2(value: value));
+                                      },
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 110.sp,
+                                    margin: EdgeInsets.all(2.sp),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(2.sp),
+                                      color: ThemeColor.primaryColor,
+                                    ),
+                                    child: CupertinoSpinBox(
+                                      textStyle: whiteTextStyle,
+                                      min: 1,
+                                      max: 500,
+                                      decimals: 1,
+                                      value: crt.toDouble(),
+                                      direction: Axis.vertical,
+                                      decoration: BoxDecoration(
+                                          color: ThemeColor.primaryColor,
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(2.sp))),
+                                      onChanged: (value) {
+                                        context
+                                            .read<EarlyWarningSystemBloc>()
+                                            .add(OnChangedCRT(value: value));
+                                      },
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 110.sp,
+                                    margin: EdgeInsets.all(2.sp),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(2.sp),
+                                      color: ThemeColor.primaryColor,
+                                    ),
+                                    child: CupertinoSpinBox(
+                                      textStyle: whiteTextStyle,
+                                      min: 1,
+                                      max: 500,
+                                      decimals: 1,
+                                      value: skalaNyeri.toDouble(),
+                                      direction: Axis.vertical,
+                                      decoration: BoxDecoration(
+                                          color: ThemeColor.primaryColor,
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(2.sp))),
+                                      onChanged: (value) {
+                                        context
+                                            .read<EarlyWarningSystemBloc>()
+                                            .add(OnChangedSkalaNyeri(
+                                                value: value));
+                                      },
+                                    ),
+                                  ),
+                                  btnObsigenTambahan(state, context),
+                                ]),
+                              ])),
+                      Container(
+                          padding: EdgeInsets.only(
+                              top: 5.sp, bottom: 0, right: 5.sp, left: 5.sp),
+                          child: Table(border: TableBorder.all(), children: [
+                            TableRow(children: [
+                              TitleWidget.headerCenterTitle2(
+                                  title: "SKOR NYERI"),
+                              TitleWidget.headerCenterTitle2(
+                                  title: "NAMA OBAT"),
+                              TitleWidget.headerCenterTitle2(
+                                  title: "DOSIS & FREKUENSI"),
+                              TitleWidget.headerCenterTitle2(title: "RUTE"),
+                              TitleWidget.headerCenterTitle2(
+                                  title: "INTERVENSI NON FARMAKOLOGI"),
+                              TitleWidget.headerCenterTitle2(
+                                  title: "WAKTU KAJI ULANG"),
+                            ]),
+                          ])),
+                      Container(
+                          padding: EdgeInsets.only(
+                              bottom: 0, right: 5.sp, left: 5.sp),
+                          child: Table(border: TableBorder.all(), children: [
+                            TableRow(children: [
+                              SizedBox(
+                                height: 50.sp,
+                                child: Wrap(
+                                  alignment: WrapAlignment.center,
+                                  children: skorNyeri
+                                      .map((e) => Padding(
+                                            padding: const EdgeInsets.all(4),
+                                            child: ElevatedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              2.sp)),
+                                                  backgroundColor:
+                                                      ThemeColor.primaryColor,
+                                                ),
+                                                onPressed: () {},
+                                                child: Text(
+                                                  e.toString(),
+                                                  style: whiteTextStyle
+                                                      .copyWith(fontSize: 7.sp),
+                                                )),
+                                          ))
+                                      .toList(),
                                 ),
                               ),
-
-                              //  CHANGE NADI
-                              buttonApp(context,
-                                  value: state.earlyWarningSystemModel.nadi
-                                      .toDouble(), onChanged: (value) {
-                                context
-                                    .read<EarlyWarningSystemBloc>()
-                                    .add(OnChangedNadi(value: value));
-                              }),
-                              // ====== NADI ==== //
-                              buttonApp(context, value: pernapasan.toDouble(),
-                                  onChanged: (value) {
-                                context.read<EarlyWarningSystemBloc>().add(
-                                    OnChangedPernapasanEvent(value: value));
-                              }),
-
                               Container(
-                                height: 110.sp,
-                                margin: EdgeInsets.all(2.sp),
-                                padding: EdgeInsets.all(2.sp),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(2.sp),
-                                  color: ThemeColor.primaryColor,
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    btnReaksiOtot(context, state,
-                                        value: "Berat"),
-                                    SizedBox(height: 5.sp),
-                                    btnReaksiOtot(context, state,
-                                        value: "Sedang"),
-                                    SizedBox(height: 5.sp),
-                                    btnReaksiOtot(context, state,
-                                        value: "Ringan"),
-                                  ],
-                                ),
-                              ),
-
-                              //======== SUHU ==================//
-                              Container(
-                                  height: 110.sp,
+                                  height: 50.sp,
                                   margin: EdgeInsets.all(2.sp),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(2.sp),
-                                    color: ThemeColor.primaryColor,
+                                    // color: ThemeColor.primaryColor,
                                   ),
-                                  child: CupertinoSpinBox(
-                                    textStyle: whiteTextStyle,
-                                    min: 1,
-                                    decimals: 1,
-                                    max: 500,
-                                    value: state.earlyWarningSystemModel.suhu,
-                                    direction: Axis.vertical,
-                                    decoration: BoxDecoration(
-                                        color: ThemeColor.primaryColor,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(2.sp))),
+                                  child: FormWidget.textArea(
+                                    maxLines: 20,
+                                    enabled: true,
+                                  )),
+                              Container(
+                                  height: 50.sp,
+                                  margin: EdgeInsets.all(2.sp),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(2.sp),
+                                    // color: ThemeColor.primaryColor,
+                                  ),
+                                  child: FormWidget.textArea(
+                                    maxLines: 20,
+                                    enabled: true,
+                                  )),
+                              Container(
+                                  height: 50.sp,
+                                  margin: EdgeInsets.all(2.sp),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(2.sp),
+                                    // color: ThemeColor.primaryColor,
+                                  ),
+                                  child: FormWidget.textArea(
+                                    maxLines: 20,
+                                    enabled: true,
+                                  )),
+                              Container(
+                                  height: 50.sp,
+                                  margin: EdgeInsets.all(2.sp),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(2.sp),
+                                    // color: ThemeColor.primaryColor,
+                                  ),
+                                  child: FormWidget.textArea(
+                                    maxLines: 20,
+                                    enabled: true,
+                                  )),
+                              SizedBox(
+                                height: 50.sp,
+                                child: Wrap(
+                                  alignment: WrapAlignment.center,
+                                  children: waktuKajiUlang
+                                      .map((e) => Padding(
+                                            padding: const EdgeInsets.all(4),
+                                            child: ElevatedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              2.sp)),
+                                                  backgroundColor:
+                                                      ThemeColor.primaryColor,
+                                                ),
+                                                onPressed: () {},
+                                                child: Text(
+                                                  e.toString(),
+                                                  style: whiteTextStyle
+                                                      .copyWith(fontSize: 7.sp),
+                                                )),
+                                          ))
+                                      .toList(),
+                                ),
+                              ),
+                            ]),
+                          ])),
+                      Container(
+                          padding:
+                              EdgeInsets.only(top: 0, left: 5.sp, right: 5.sp),
+                          child: Table(border: TableBorder.all(), children: [
+                            TableRow(children: [
+                              Padding(
+                                padding: EdgeInsets.all(5.sp),
+                                child: FormWidget.textArea(
+                                    hinText: "Keterangan",
                                     onChanged: (value) {
                                       context
                                           .read<EarlyWarningSystemBloc>()
-                                          .add(OnChangedSuhu(value: value));
+                                          .add(OnChangedKeterangan(
+                                              value: value.toString()));
                                     },
-                                  )),
-
-                              // ===== //
-                              Container(
-                                height: 110.sp,
-                                margin: EdgeInsets.all(2.sp),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(2.sp),
-                                  color: ThemeColor.primaryColor,
-                                ),
-                                child: CupertinoSpinBox(
-                                  textStyle: whiteTextStyle,
-                                  min: 1,
-                                  max: 500,
-                                  decimals: 1,
-                                  value: spo2.toDouble(),
-                                  direction: Axis.vertical,
-                                  decoration: BoxDecoration(
-                                      color: ThemeColor.primaryColor,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(2.sp))),
-                                  onChanged: (value) {
-                                    context
-                                        .read<EarlyWarningSystemBloc>()
-                                        .add(OnChangedSPO2(value: value));
-                                  },
-                                ),
+                                    enabled: true,
+                                    maxLines: 3),
                               ),
-                              Container(
-                                height: 110.sp,
-                                margin: EdgeInsets.all(2.sp),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(2.sp),
-                                  color: ThemeColor.primaryColor,
-                                ),
-                                child: CupertinoSpinBox(
-                                  textStyle: whiteTextStyle,
-                                  min: 1,
-                                  max: 500,
-                                  decimals: 1,
-                                  value: crt.toDouble(),
-                                  direction: Axis.vertical,
-                                  decoration: BoxDecoration(
-                                      color: ThemeColor.primaryColor,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(2.sp))),
-                                  onChanged: (value) {
-                                    context
-                                        .read<EarlyWarningSystemBloc>()
-                                        .add(OnChangedCRT(value: value));
-                                  },
-                                ),
-                              ),
-                              Container(
-                                height: 110.sp,
-                                margin: EdgeInsets.all(2.sp),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(2.sp),
-                                  color: ThemeColor.primaryColor,
-                                ),
-                                child: CupertinoSpinBox(
-                                  textStyle: whiteTextStyle,
-                                  min: 1,
-                                  max: 500,
-                                  decimals: 1,
-                                  value: skalaNyeri.toDouble(),
-                                  direction: Axis.vertical,
-                                  decoration: BoxDecoration(
-                                      color: ThemeColor.primaryColor,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(2.sp))),
-                                  onChanged: (value) {
-                                    context
-                                        .read<EarlyWarningSystemBloc>()
-                                        .add(OnChangedSkalaNyeri(value: value));
-                                  },
-                                ),
-                              ),
-                              btnObsigenTambahan(state, context),
                             ]),
                           ])),
-                  Container(
-                      padding: EdgeInsets.only(top: 0, left: 5.sp, right: 5.sp),
-                      child: Table(border: TableBorder.all(), children: [
-                        TableRow(children: [
-                          Padding(
-                            padding: EdgeInsets.all(5.sp),
-                            child: FormWidget.textArea(
-                                hinText: "Keterangan",
-                                onChanged: (value) {
-                                  context.read<EarlyWarningSystemBloc>().add(
-                                      OnChangedKeterangan(
-                                          value: value.toString()));
-                                },
-                                enabled: true,
-                                maxLines: 3),
-                          ),
-                        ]),
-                      ])),
-                  Container(
-                      padding: EdgeInsets.only(top: 0, left: 5.sp, right: 5.sp),
-                      child: Table(border: TableBorder.all(), children: [
-                        TableRow(children: [
-                          Container(
-                            height: 15.sp,
-                            margin: EdgeInsets.all(2.sp),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(2.sp),
-                              color: ThemeColor.primaryColor,
-                            ),
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: ThemeColor.primaryColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(2.sp))),
-                              onPressed: null,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  const Icon(
-                                    FontAwesomeIcons.handPointUp,
-                                    color: ThemeColor.whiteColor,
+                      Container(
+                          padding:
+                              EdgeInsets.only(top: 0, left: 5.sp, right: 5.sp),
+                          child: Table(border: TableBorder.all(), children: [
+                            TableRow(children: [
+                              Container(
+                                height: 15.sp,
+                                margin: EdgeInsets.all(2.sp),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(2.sp),
+                                  color: ThemeColor.primaryColor,
+                                ),
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: ThemeColor.primaryColor,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(2.sp))),
+                                  onPressed: null,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      const Icon(
+                                        FontAwesomeIcons.handPointUp,
+                                        color: ThemeColor.whiteColor,
+                                      ),
+                                      SizedBox(
+                                        width: 5.sp,
+                                      ),
+                                      Text(
+                                        "TOTAL SKOR ${state.earlyWarningSystemModel.totalSkor.toString()} ",
+                                        style: whiteTextStyle,
+                                      )
+                                    ],
                                   ),
-                                  SizedBox(
-                                    width: 5.sp,
-                                  ),
-                                  Text(
-                                    "TOTAL SKOR ${state.earlyWarningSystemModel.totalSkor.toString()} ",
-                                    style: whiteTextStyle,
-                                  )
-                                ],
+                                ),
                               ),
-                            ),
-                          ),
-                        ]),
-                      ])),
-                  Container(
-                      padding: EdgeInsets.only(top: 0, left: 5.sp, right: 5.sp),
-                      child: Table(border: TableBorder.all(), children: [
-                        TableRow(children: [
-                          Container(
-                            height: 15.sp,
-                            margin: EdgeInsets.all(2.sp),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(2.sp),
-                              color: ThemeColor.primaryColor,
-                            ),
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: ThemeColor.primaryColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(2.sp))),
-                              onPressed: () {
-                                context.read<EarlyWarningSystemBloc>().add(OnSaveData(
-                                    kategori:
-                                        state.earlyWarningSystemModel.kategori,
-                                    obsigenTambahan: state
-                                        .earlyWarningSystemModel
-                                        .obsigenTambahan,
-                                    totalSkor: state
-                                        .earlyWarningSystemModel.totalSkor
-                                        .toInt(),
-                                    noreg: singlePasien.first.noreg,
-                                    keterangan: state
-                                        .earlyWarningSystemModel.keterangan,
-                                    td2: state.earlyWarningSystemModel.td2
-                                        .toInt(),
-                                    kesadaran: state.earlyWarningSystemModel
-                                        .tingkatKesadaran,
-                                    td: state.earlyWarningSystemModel.td
-                                        .toInt(),
-                                    nadi: state.earlyWarningSystemModel.nadi
-                                        .toInt(),
-                                    pernapasan: state
-                                        .earlyWarningSystemModel.pernapasan
-                                        .toInt(),
-                                    reaksiOtot: state
-                                        .earlyWarningSystemModel.reaksiOtot,
-                                    suhu: state.earlyWarningSystemModel.suhu
-                                        .toInt(),
-                                    spo2:
-                                        state.earlyWarningSystemModel.spo2.toInt(),
-                                    crt: state.earlyWarningSystemModel.crt.toInt(),
-                                    skalaNyeri: state.earlyWarningSystemModel.skalaNyeri.toInt()));
+                            ]),
+                          ])),
+                      Container(
+                          padding:
+                              EdgeInsets.only(top: 0, left: 5.sp, right: 5.sp),
+                          child: Table(border: TableBorder.all(), children: [
+                            TableRow(children: [
+                              Container(
+                                height: 15.sp,
+                                margin: EdgeInsets.all(2.sp),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(2.sp),
+                                  color: ThemeColor.primaryColor,
+                                ),
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: ThemeColor.primaryColor,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(2.sp))),
+                                  onPressed: () {
+                                    context.read<EarlyWarningSystemBloc>().add(OnSaveData(
+                                        kategori: state
+                                            .earlyWarningSystemModel.kategori,
+                                        obsigenTambahan: state
+                                            .earlyWarningSystemModel
+                                            .obsigenTambahan,
+                                        totalSkor: state
+                                            .earlyWarningSystemModel.totalSkor
+                                            .toInt(),
+                                        noreg: singlePasien.first.noreg,
+                                        keterangan: state
+                                            .earlyWarningSystemModel.keterangan,
+                                        td2: state.earlyWarningSystemModel.td2
+                                            .toInt(),
+                                        kesadaran: state.earlyWarningSystemModel
+                                            .tingkatKesadaran,
+                                        td: state.earlyWarningSystemModel.td
+                                            .toInt(),
+                                        nadi: state.earlyWarningSystemModel.nadi
+                                            .toInt(),
+                                        pernapasan: state
+                                            .earlyWarningSystemModel.pernapasan
+                                            .toInt(),
+                                        reaksiOtot:
+                                            state.earlyWarningSystemModel.reaksiOtot,
+                                        suhu: state.earlyWarningSystemModel.suhu.toInt(),
+                                        spo2: state.earlyWarningSystemModel.spo2.toInt(),
+                                        crt: state.earlyWarningSystemModel.crt.toInt(),
+                                        skalaNyeri: state.earlyWarningSystemModel.skalaNyeri.toInt()));
 
-                                Get.back();
+                                    Get.back();
 
-                                context.read<EarlyWarningSystemBloc>().add(
-                                    OnGetDataEarlyWarningSystem(
-                                        noReg: singlePasien.first.noreg));
-                              },
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  const Icon(
-                                    FontAwesomeIcons.floppyDisk,
-                                    color: ThemeColor.whiteColor,
+                                    context.read<EarlyWarningSystemBloc>().add(
+                                        OnGetDataEarlyWarningSystem(
+                                            noReg: singlePasien.first.noreg));
+                                  },
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      const Icon(
+                                        FontAwesomeIcons.floppyDisk,
+                                        color: ThemeColor.whiteColor,
+                                      ),
+                                      SizedBox(
+                                        width: 5.sp,
+                                      ),
+                                      Text(
+                                        "SIMPAN",
+                                        style: whiteTextStyle,
+                                      )
+                                    ],
                                   ),
-                                  SizedBox(
-                                    width: 5.sp,
-                                  ),
-                                  Text(
-                                    "SIMPAN",
-                                    style: whiteTextStyle,
-                                  )
-                                ],
+                                ),
                               ),
-                            ),
-                          ),
-                        ]),
-                      ])),
-                ],
+                            ]),
+                          ])),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
@@ -736,3 +889,6 @@ class _TambahDataEdukasiTerintegrasiPasienWidgetState
 List<String> menu = [
   "Early Warning System",
 ];
+
+List<int> skorNyeri = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+List<int> waktuKajiUlang = [0, 1, 2, 3, 4, 5, 6, 7];

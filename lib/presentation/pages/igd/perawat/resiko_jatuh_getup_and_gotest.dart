@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hms_app/domain/bloc/dashboard/pasien/pasien_bloc.dart';
 import 'package:hms_app/domain/bloc/user/auth/auth_bloc.dart';
 import 'package:hms_app/domain/models/devices_info/device_info_model.dart';
+import 'package:hms_app/domain/models/meta/meta_model.dart';
 import 'package:hms_app/domain/models/users/user_model.dart';
 import 'package:hms_app/presentation/component/component.dart';
 import 'package:hms_app/presentation/component/constant/list_constants.dart';
@@ -33,7 +35,33 @@ class _ResikoJatuhGetUpAndGoTestPageWidgetState
         .where((element) => element.mrn == pasienState.normSelected);
 
     return BlocConsumer<ResikoJatuhGetupBloc, ResikoJatuhGetupState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state.status == ResikoJatuhGetupStatus.isLoadingSave) {
+          EasyLoading.show(maskType: EasyLoadingMaskType.black);
+        }
+
+        if (state.status != ResikoJatuhGetupStatus.isLoadingSave) {
+          EasyLoading.dismiss();
+        }
+
+        state.saveResult.fold(
+            () => null,
+            (a) => a.fold(
+                (l) => l.maybeMap(orElse: () {}, failure: (value) {}),
+                (r) => r.maybeMap(
+                    orElse: () {},
+                    loaded: (value) async {
+                      MetaModel meta =
+                          MetaModel.fromJson(value.value["metadata"]);
+
+                      final shouldPop = await Alert.loaded(context,
+                          subTitle: meta.message, title: "Pesan");
+
+                      // ignore: use_build_context_synchronously
+
+                      return shouldPop ?? false;
+                    })));
+      },
       builder: (context, state) {
         if (state.status == ResikoJatuhGetupStatus.isLoadingGet) {
           return HeaderContentWidget(widget: Loading.expandedLoading());
@@ -42,7 +70,7 @@ class _ResikoJatuhGetUpAndGoTestPageWidgetState
         return HeaderContentWidget(
             backgroundColor: ThemeColor.bgColor,
             isENableAdd: true,
-            onPressed: () async* {
+            onPressed: () async {
               // TODO : SAVE DATA
               dynamic data = await deviceInfo.initPlatformState();
               if (authState is Authenticated) {
@@ -76,27 +104,19 @@ class _ResikoJatuhGetUpAndGoTestPageWidgetState
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // TODO SAVE DATA
-                    // ==== // / =============================== CARA MASUK
                     TitleWidget.titleContainer(
                         title: "Asesmen Risiko Jatuh (Get Up & Go Test)"),
-
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "Cara Berjalan Pasien (Salah Satu Atau Lebih)",
-                        style: blackTextStyle,
-                      ),
-                    ),
-
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                            "Cara Berjalan Pasien (Salah Satu Atau Lebih)",
+                            style: blackTextStyle)),
                     const Divider(),
-
                     Padding(
                         padding: EdgeInsets.all(6.sp),
                         child: Text(
                             "1.  Tidak Seimbang/Sempoyongan/Limbung\n2. Jalan Dengan Menggunakan Alat bantu (Tongkat & Tripot, Kursi Roda, Orang Lain)",
                             style: blackTextStyle)),
-
                     Container(
                         width: Get.width,
                         padding: EdgeInsets.symmetric(
@@ -130,7 +150,6 @@ class _ResikoJatuhGetUpAndGoTestPageWidgetState
                               )
                               .toList(),
                         )),
-
                     const Divider(),
                     Padding(
                       padding: EdgeInsets.all(6.sp),
@@ -139,7 +158,6 @@ class _ResikoJatuhGetUpAndGoTestPageWidgetState
                         style: blackTextStyle,
                       ),
                     ),
-
                     Container(
                         width: Get.width,
                         padding: EdgeInsets.symmetric(
@@ -174,7 +192,6 @@ class _ResikoJatuhGetUpAndGoTestPageWidgetState
                               .toList(),
                         )),
                     const Divider(),
-
                     SizedBox(height: 5.sp),
                     Container(
                       width: Get.width,
@@ -200,7 +217,6 @@ class _ResikoJatuhGetUpAndGoTestPageWidgetState
                         ),
                       ),
                     ),
-
                     SizedBox(height: 25.sp)
                   ],
                 ),

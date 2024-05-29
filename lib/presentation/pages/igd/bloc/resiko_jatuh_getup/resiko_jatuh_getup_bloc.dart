@@ -4,7 +4,6 @@ import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hms_app/domain/network/api_failure_handler.dart';
 import 'package:hms_app/domain/network/api_success_handler.dart';
-import 'package:hms_app/presentation/component/component.dart';
 import 'package:hms_app/presentation/pages/igd/repository/resiko_jatuh_getup_and_gotest_igd_model.dart';
 import 'package:hms_app/presentation/pages/igd/services/igd_services.dart';
 

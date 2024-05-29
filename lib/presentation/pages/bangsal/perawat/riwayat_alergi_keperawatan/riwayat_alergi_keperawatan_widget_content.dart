@@ -15,7 +15,9 @@ import 'package:hms_app/presentation/component/alert/custom_dialog.dart';
 import 'package:hms_app/presentation/component/alert/mesage_alert.dart';
 import 'package:hms_app/presentation/component/color/color_helper.dart';
 import 'package:hms_app/presentation/component/fonts/font_helper.dart';
+import 'package:hms_app/presentation/component/resources/app_constant.dart';
 import 'package:hms_app/presentation/component/title/title_component.dart';
+import 'package:lottie/lottie.dart';
 import 'package:searchfield/searchfield.dart';
 import 'package:sizer/sizer.dart';
 
@@ -200,7 +202,7 @@ class _RiwayatAlergiContentWidgetState
                               CustomDialogWidget.getDialog(
                                   widget: Container(
                                     width: Get.width / 1.5,
-                                    height: 65.sp,
+                                    height: 55.sp,
                                     decoration: const BoxDecoration(
                                         color: Colors.white),
                                     child: Column(
@@ -348,14 +350,14 @@ class _RiwayatAlergiContentWidgetState
                               CustomDialogWidget.getDialog(
                                   widget: Container(
                                     width: Get.width / 1.5,
-                                    height: 65.sp,
+                                    height: 55.sp,
                                     decoration: const BoxDecoration(
                                         color: Colors.white),
                                     child: Column(
                                       children: [
                                         TitleWidget.titleContentWidget(
-                                            title: "DAFTAR ALERGI MAKANAN"),
-
+                                          title: "DAFTAR ALERGI MAKANAN",
+                                        ),
                                         // ======== ========= //
                                         Row(
                                           children: [
@@ -497,7 +499,7 @@ class _RiwayatAlergiContentWidgetState
                               CustomDialogWidget.getDialog(
                                   widget: Container(
                                     width: Get.width / 1.5,
-                                    height: 65.sp,
+                                    height: 55.sp,
                                     decoration: const BoxDecoration(
                                         color: Colors.white),
                                     child: Column(
@@ -506,7 +508,6 @@ class _RiwayatAlergiContentWidgetState
                                             title: "DAFTAR ALERGI LAINNYA"),
 
                                         // ======== ========= //
-
                                         Row(
                                           children: [
                                             Container(
@@ -652,171 +653,183 @@ class _RiwayatAlergiContentWidgetState
                     TableRow(children: [
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 2.sp),
-                        height: 80.sp,
+                        height: 160.sp,
                         child: Center(
                             child: ListView(
-                          children: obat
-                              .map((e) => Card(
-                                    color: ThemeColor.primaryColor,
-                                    child: ListTile(
-                                        trailing: (e.insertDttm ==
-                                                DateTime.now()
-                                                    .toString()
-                                                    .substring(0, 10))
-                                            ? IconButton(
-                                                onPressed: () {
-                                                  CustomDialogWidget.getDialog(
-                                                      widget: MessageAlert
-                                                          .deleteAlert(
-                                                              mesage:
-                                                                  "Apakah Anda yakin menghapus data ${e.alergi} ini ?",
-                                                              onPressed: () {
-                                                                //  ON PRESS
-                                                                context.read<AlergiBloc>().add(OnDeleteAlergi(
-                                                                    no: e.no,
-                                                                    noRM: singlePasien
-                                                                        .first
-                                                                        .mrn,
-                                                                    kelompok: e
-                                                                        .kelompok,
-                                                                    insertDttm:
-                                                                        e.insertDttm));
+                          children: (obat.isNotEmpty)
+                              ? obat
+                                  .map((e) => Card(
+                                        color: ThemeColor.primaryColor,
+                                        child: ListTile(
+                                            trailing:
+                                                (e.insertDttm ==
+                                                        DateTime.now()
+                                                            .toString()
+                                                            .substring(0, 10))
+                                                    ? IconButton(
+                                                        onPressed: () {
+                                                          CustomDialogWidget
+                                                              .getDialog(
+                                                                  widget: MessageAlert
+                                                                      .deleteAlert(
+                                                                          mesage:
+                                                                              "Apakah Anda yakin menghapus data ${e.alergi} ini ?",
+                                                                          onPressed:
+                                                                              () {
+                                                                            //  ON PRESS
+                                                                            context.read<AlergiBloc>().add(OnDeleteAlergi(
+                                                                                no: e.no,
+                                                                                noRM: singlePasien.first.mrn,
+                                                                                kelompok: e.kelompok,
+                                                                                insertDttm: e.insertDttm));
 
-                                                                context.read<AlergiBloc>().add(OnGetAlergiObatEvent(
-                                                                    noRM: singlePasien
-                                                                        .first
-                                                                        .mrn,
-                                                                    noReg: singlePasien
-                                                                        .first
-                                                                        .noreg));
+                                                                            context.read<AlergiBloc>().add(OnGetAlergiObatEvent(
+                                                                                noRM: singlePasien.first.mrn,
+                                                                                noReg: singlePasien.first.noreg));
 
-                                                                Get.back();
-                                                              }));
-                                                },
-                                                icon: const Icon(
-                                                  FontAwesomeIcons.trash,
-                                                  color: ThemeColor.dangerColor,
-                                                ))
-                                            : const SizedBox(),
-                                        title: Text(e.alergi,
-                                            style: whiteTextStyle.copyWith(
-                                                fontSize: 5.sp))),
-                                  ))
-                              .toList(),
+                                                                            Get.back();
+                                                                          }));
+                                                        },
+                                                        icon: const Icon(
+                                                          FontAwesomeIcons
+                                                              .trash,
+                                                          color: ThemeColor
+                                                              .dangerColor,
+                                                        ))
+                                                    : const SizedBox(),
+                                            title: Text(e.alergi,
+                                                style: whiteTextStyle.copyWith(
+                                                    fontSize: 5.sp))),
+                                      ))
+                                  .toList()
+                              : [
+                                  Lottie.asset(AppConstant.makananAnimate,
+                                      height: 150.sp,
+                                      reverse: true,
+                                      repeat: true),
+                                ],
                         )),
                       ),
                       Container(
-                        height: 80.sp,
+                        height: 160.sp,
                         padding: EdgeInsets.symmetric(vertical: 2.sp),
                         child: Center(
                             child: ListView(
-                          children: makanan
-                              .map((e) => Card(
-                                    color: ThemeColor.primaryColor,
-                                    child: ListTile(
-                                        trailing: (e.insertDttm ==
-                                                DateTime.now()
-                                                    .toString()
-                                                    .substring(0, 10))
-                                            ? IconButton(
-                                                onPressed: () {
-                                                  // DELETE DATA
-                                                  CustomDialogWidget.getDialog(
-                                                      widget: MessageAlert
-                                                          .deleteAlert(
-                                                              mesage:
-                                                                  "Apakah Anda yakin menghapus data ${e.alergi} ini ?",
-                                                              onPressed: () {
-                                                                //  ON PRESS
-                                                                context.read<AlergiBloc>().add(OnDeleteAlergi(
-                                                                    no: e.no,
-                                                                    noRM: singlePasien
-                                                                        .first
-                                                                        .mrn,
-                                                                    kelompok: e
-                                                                        .kelompok,
-                                                                    insertDttm:
-                                                                        e.insertDttm));
+                          children: (makanan.isNotEmpty)
+                              ? makanan
+                                  .map((e) => Card(
+                                        color: ThemeColor.primaryColor,
+                                        child: ListTile(
+                                            trailing:
+                                                (e.insertDttm ==
+                                                        DateTime.now()
+                                                            .toString()
+                                                            .substring(0, 10))
+                                                    ? IconButton(
+                                                        onPressed: () {
+                                                          // DELETE DATA
+                                                          CustomDialogWidget
+                                                              .getDialog(
+                                                                  widget: MessageAlert
+                                                                      .deleteAlert(
+                                                                          mesage:
+                                                                              "Apakah Anda yakin menghapus data ${e.alergi} ini ?",
+                                                                          onPressed:
+                                                                              () {
+                                                                            //  ON PRESS
+                                                                            context.read<AlergiBloc>().add(OnDeleteAlergi(
+                                                                                no: e.no,
+                                                                                noRM: singlePasien.first.mrn,
+                                                                                kelompok: e.kelompok,
+                                                                                insertDttm: e.insertDttm));
 
-                                                                context.read<AlergiBloc>().add(OnGetAlergiObatEvent(
-                                                                    noRM: singlePasien
-                                                                        .first
-                                                                        .mrn,
-                                                                    noReg: singlePasien
-                                                                        .first
-                                                                        .noreg));
+                                                                            context.read<AlergiBloc>().add(OnGetAlergiObatEvent(
+                                                                                noRM: singlePasien.first.mrn,
+                                                                                noReg: singlePasien.first.noreg));
 
-                                                                Get.back();
-                                                              }));
-                                                },
-                                                icon: const Icon(
-                                                  FontAwesomeIcons.trash,
-                                                  color: ThemeColor.dangerColor,
-                                                ))
-                                            : const SizedBox(),
-                                        title: Text(
-                                          e.alergi,
-                                          style: whiteTextStyle.copyWith(
-                                              fontSize: 5.sp),
-                                        )),
-                                  ))
-                              .toList(),
+                                                                            Get.back();
+                                                                          }));
+                                                        },
+                                                        icon: const Icon(
+                                                          FontAwesomeIcons
+                                                              .trash,
+                                                          color: ThemeColor
+                                                              .dangerColor,
+                                                        ))
+                                                    : const SizedBox(),
+                                            title: Text(
+                                              e.alergi,
+                                              style: whiteTextStyle.copyWith(
+                                                  fontSize: 5.sp),
+                                            )),
+                                      ))
+                                  .toList()
+                              : [
+                                  Lottie.asset(AppConstant.makananAnimate,
+                                      height: 150.sp,
+                                      reverse: true,
+                                      repeat: true),
+                                ],
                         )),
                       ),
                       Container(
-                        height: 80.sp,
+                        height: 160.sp,
                         padding: EdgeInsets.symmetric(vertical: 2.sp),
                         child: Center(
                             child: ListView(
-                          children: lain
-                              .map((e) => Card(
-                                    color: ThemeColor.primaryColor,
-                                    child: ListTile(
-                                        trailing: (e.insertDttm ==
-                                                DateTime.now()
-                                                    .toString()
-                                                    .substring(0, 10))
-                                            ? IconButton(
-                                                onPressed: () {
-                                                  //  DELETE
-                                                  CustomDialogWidget.getDialog(
-                                                      widget: MessageAlert
-                                                          .deleteAlert(
-                                                              mesage:
-                                                                  "Apakah Anda yakin menghapus data ${e.alergi} ini ?",
-                                                              onPressed: () {
-                                                                //  ON PRESS
-                                                                context.read<AlergiBloc>().add(OnDeleteAlergi(
-                                                                    no: e.no,
-                                                                    noRM: singlePasien
-                                                                        .first
-                                                                        .mrn,
-                                                                    kelompok: e
-                                                                        .kelompok,
-                                                                    insertDttm:
-                                                                        e.insertDttm));
+                          children: (lain.isNotEmpty)
+                              ? lain
+                                  .map((e) => Card(
+                                        color: ThemeColor.primaryColor,
+                                        child: ListTile(
+                                            trailing:
+                                                (e.insertDttm ==
+                                                        DateTime.now()
+                                                            .toString()
+                                                            .substring(0, 10))
+                                                    ? IconButton(
+                                                        onPressed: () {
+                                                          //  DELETE
+                                                          CustomDialogWidget
+                                                              .getDialog(
+                                                                  widget: MessageAlert
+                                                                      .deleteAlert(
+                                                                          mesage:
+                                                                              "Apakah Anda yakin menghapus data ${e.alergi} ini ?",
+                                                                          onPressed:
+                                                                              () {
+                                                                            //  ON PRESS
+                                                                            context.read<AlergiBloc>().add(OnDeleteAlergi(
+                                                                                no: e.no,
+                                                                                noRM: singlePasien.first.mrn,
+                                                                                kelompok: e.kelompok,
+                                                                                insertDttm: e.insertDttm));
 
-                                                                context.read<AlergiBloc>().add(OnGetAlergiObatEvent(
-                                                                    noRM: singlePasien
-                                                                        .first
-                                                                        .mrn,
-                                                                    noReg: singlePasien
-                                                                        .first
-                                                                        .noreg));
+                                                                            context.read<AlergiBloc>().add(OnGetAlergiObatEvent(
+                                                                                noRM: singlePasien.first.mrn,
+                                                                                noReg: singlePasien.first.noreg));
 
-                                                                Get.back();
-                                                              }));
-                                                },
-                                                icon: const Icon(
-                                                  FontAwesomeIcons.trash,
-                                                  color: ThemeColor.dangerColor,
-                                                ))
-                                            : const SizedBox(),
-                                        title: Text(e.alergi,
-                                            style: whiteTextStyle.copyWith(
-                                                fontSize: 5.sp))),
-                                  ))
-                              .toList(),
+                                                                            Get.back();
+                                                                          }));
+                                                        },
+                                                        icon: const Icon(
+                                                          FontAwesomeIcons
+                                                              .trash,
+                                                          color: ThemeColor
+                                                              .dangerColor,
+                                                        ))
+                                                    : const SizedBox(),
+                                            title: Text(e.alergi,
+                                                style: whiteTextStyle.copyWith(
+                                                    fontSize: 5.sp))),
+                                      ))
+                                  .toList()
+                              : [
+                                  Lottie.asset(AppConstant.makananAnimate,
+                                      height: 150.sp,
+                                      reverse: true,
+                                      repeat: true),
+                                ],
                         )),
                       ),
                     ]),

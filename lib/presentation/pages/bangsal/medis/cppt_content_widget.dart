@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hms_app/domain/bloc/dashboard/cppt/cppt_bloc.dart';
 import 'package:hms_app/domain/bloc/dashboard/pasien/pasien_bloc.dart';
 import 'package:hms_app/presentation/component/component.dart';
 import 'package:hms_app/presentation/component/header/tabbar_header_content_widget.dart';
@@ -27,9 +28,8 @@ class CpptContentWidgetPage extends StatelessWidget {
             menu: menu,
             onTap: (index) {
               if (index == 0) {
-                context
-                    .read<CpptSbarBangsalBloc>()
-                    .add(OnGetCpptBangsal(noReg: singlePasien.first.noreg));
+                context.read<CpptBloc>().add(
+                    CpptEvent.onGetCPPTPasien(noRM: singlePasien.first.mrn));
               }
 
               if (index == 1) {

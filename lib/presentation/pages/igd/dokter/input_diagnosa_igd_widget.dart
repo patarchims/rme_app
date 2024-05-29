@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:animate_gradient/animate_gradient.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -88,147 +89,181 @@ class _InputDiagnosaIgdWidgetState extends State<InputDiagnosaIgdWidget> {
                   TitleWidget.titleContainer(title: "Diagnosa ICD-10"),
                   Expanded(
                     child: Container(
-                      padding: EdgeInsets.all(5.sp),
+                      // padding: EdgeInsets.all(5.sp),
                       margin: EdgeInsets.all(5.sp),
                       width: Get.width,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5.sp),
                           color: ThemeColor.primaryColor.withOpacity(0.2)),
-                      child: Wrap(
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        alignment: WrapAlignment.center,
-                        runSpacing: 4.sp,
-                        spacing: 4.sp,
-                        children: (state.diagnosa.isNotEmpty)
-                            ? state.diagnosa
-                                .asMap()
-                                .entries
-                                .map((e) => SizedBox(
-                                      height: 90.sp,
-                                      width: 90.sp,
-                                      child: Card(
-                                        color: (e.value.type == "primer")
-                                            ? ThemeColor.primaryColor
-                                            : ThemeColor.primaryColor
-                                                .withOpacity(0.5),
-                                        elevation: 1.sp,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(5.sp)),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                                padding: EdgeInsets.all(5.sp),
-                                                width: Get.width,
-                                                decoration: BoxDecoration(
-                                                    color: Colors.yellow
-                                                        .withOpacity(0.5),
-                                                    borderRadius: BorderRadius
-                                                        .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    2.sp),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    2.sp))),
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Text(
-                                                    e.value.type.toUpperCase(),
-                                                    style:
-                                                        blackTextStyle.copyWith(
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                    textAlign: TextAlign.center,
-                                                  ),
-                                                )),
-                                            Expanded(
-                                              child: Center(
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Text(
-                                                    "${e.value.code} - ${e.value.description}",
-                                                    textAlign: TextAlign.center,
-                                                    style: whiteTextStyle,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 20.sp,
-                                              width: Get.width,
-                                              child: ElevatedButton(
-                                                  style: ElevatedButton.styleFrom(
-                                                      backgroundColor:
-                                                          ThemeColor
-                                                              .dangerColor,
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(2
-                                                                          .sp))),
-                                                  onPressed: (state.diagnosa
-                                                              .length !=
-                                                          e.key + 1)
-                                                      ? null
-                                                      : () {
-                                                          // HAPUS DATA DARI DATABASE
-                                                          setState(() {
-                                                            try {
-                                                              // DELETE DIAGNOSA
-                                                              CustomDialogWidget.getDialog(
-                                                                  widget: MessageAlert.deleteAlert(
-                                                                      mesage: "Apakah Anda yakin menghapus data ${e.value.description} ?",
-                                                                      onPressed: () {
-                                                                        context.read<InputDiagnosaBloc>().add(InputDiagnosaEvent.deleteItem(
-                                                                            noReg:
-                                                                                singlePasien.first.noreg,
-                                                                            table: e.value.table));
-
-                                                                        Get.back();
-                                                                      }));
-                                                            } catch (e) {
-                                                              log(e.toString());
-                                                            }
-                                                          });
-                                                        },
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        "Hapus ",
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(5.sp),
+                        child: AnimateGradient(
+                          primaryBeginGeometry:
+                              const AlignmentDirectional(0, 1),
+                          primaryEndGeometry: const AlignmentDirectional(0, 2),
+                          secondaryBeginGeometry:
+                              const AlignmentDirectional(2, 0),
+                          secondaryEndGeometry:
+                              const AlignmentDirectional(0, -0.8),
+                          primaryColors: [
+                            ThemeColor.primaryColor.withOpacity(0.5),
+                            Colors.blueAccent.withOpacity(0.5),
+                            Colors.white,
+                          ],
+                          secondaryColors: [
+                            ThemeColor.primaryColor.withOpacity(0.2),
+                            Colors.blueAccent.withOpacity(0.2),
+                            Colors.white,
+                          ],
+                          child: Wrap(
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            alignment: WrapAlignment.center,
+                            runSpacing: 4.sp,
+                            spacing: 4.sp,
+                            children: (state.diagnosa.isNotEmpty)
+                                ? state.diagnosa
+                                    .asMap()
+                                    .entries
+                                    .map((e) => SizedBox(
+                                          height: 90.sp,
+                                          width: 90.sp,
+                                          child: Card(
+                                            color: (e.value.type == "primer")
+                                                ? ThemeColor.primaryColor
+                                                : ThemeColor.primaryColor
+                                                    .withOpacity(0.5),
+                                            elevation: 1.sp,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        5.sp)),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                    padding:
+                                                        EdgeInsets.all(5.sp),
+                                                    width: Get.width,
+                                                    decoration: BoxDecoration(
+                                                        color: Colors.yellow
+                                                            .withOpacity(0.5),
+                                                        borderRadius:
+                                                            BorderRadius.only(
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        2.sp),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        2.sp))),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Text(
+                                                        e.value.type
+                                                            .toUpperCase(),
                                                         style: blackTextStyle
                                                             .copyWith(
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold),
+                                                        textAlign:
+                                                            TextAlign.center,
                                                       ),
-                                                      const Icon(
-                                                        Icons.delete,
-                                                        color: Colors.black,
-                                                      )
-                                                    ],
-                                                  )),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ))
-                                .toList()
-                            : [],
+                                                    )),
+                                                Expanded(
+                                                  child: Center(
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Text(
+                                                        "${e.value.code} - ${e.value.description}",
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: whiteTextStyle,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 20.sp,
+                                                  width: Get.width,
+                                                  child: ElevatedButton(
+                                                      style: ElevatedButton.styleFrom(
+                                                          backgroundColor:
+                                                              ThemeColor
+                                                                  .dangerColor,
+                                                          shape: RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(2
+                                                                          .sp))),
+                                                      onPressed:
+                                                          (state.diagnosa
+                                                                      .length !=
+                                                                  e.key + 1)
+                                                              ? null
+                                                              : () {
+                                                                  // HAPUS DATA DARI DATABASE
+                                                                  setState(() {
+                                                                    try {
+                                                                      // DELETE DIAGNOSA
+                                                                      CustomDialogWidget.getDialog(
+                                                                          widget: MessageAlert.deleteAlert(
+                                                                              mesage: "Apakah Anda yakin menghapus data ${e.value.description} ?",
+                                                                              onPressed: () {
+                                                                                context.read<InputDiagnosaBloc>().add(InputDiagnosaEvent.deleteItem(noReg: singlePasien.first.noreg, table: e.value.table));
+
+                                                                                Get.back();
+                                                                              }));
+                                                                    } catch (e) {
+                                                                      log(e
+                                                                          .toString());
+                                                                    }
+                                                                  });
+                                                                },
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Text(
+                                                            "Hapus ",
+                                                            style: (state
+                                                                        .diagnosa
+                                                                        .length !=
+                                                                    e.key + 1)
+                                                                ? blackTextStyle.copyWith(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold)
+                                                                : whiteTextStyle.copyWith(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold),
+                                                          ),
+                                                          const Icon(
+                                                            Icons.delete,
+                                                            color: Colors.black,
+                                                          )
+                                                        ],
+                                                      )),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ))
+                                    .toList()
+                                : [],
+                          ),
+                        ),
                       ),
                     ),
                   ),

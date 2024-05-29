@@ -23,10 +23,11 @@ class ViewReportPengkajianAwalKeperawatanPage extends StatelessWidget {
         onTap: (index) {
           if (index == 0) {
             context.read<ReportBloc>().add(
-                OnGetReportPengkajianAwalRawatInapDokter(
-                    noRM: singlePasien.first.mrn,
-                    noReg: singlePasien.first.noreg,
-                    tanggal: DateTime.now().toString().substring(0, 10)));
+                  OnGetReportPengkajianAwalRawatInapDokter(
+                      noRM: singlePasien.first.mrn,
+                      noReg: singlePasien.first.noreg,
+                      tanggal: DateTime.now().toString().substring(0, 10)),
+                );
           }
 
           if (index == 1) {
@@ -60,4 +61,9 @@ class ViewReportPengkajianAwalKeperawatanPage extends StatelessWidget {
   }
 }
 
-List<String> menu = ["Dokter", "Perawat", "Anak", "Double Check"];
+List<String> menu = [
+  "Dokter",
+  "Perawat",
+  "Anak",
+  "Double Check",
+];

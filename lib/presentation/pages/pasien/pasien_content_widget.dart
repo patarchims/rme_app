@@ -1,10 +1,12 @@
 import 'dart:developer';
+import 'package:animate_gradient/animate_gradient.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:hms_app/domain/bloc/dashboard/pasien/pasien_bloc.dart';
 import 'package:hms_app/domain/bloc/user/auth/auth_bloc.dart';
 import 'package:hms_app/domain/models/response/list_antrean_model_response.dart';
+import 'package:hms_app/presentation/component/color/color_helper.dart';
 import 'package:hms_app/presentation/component/fonts/font_helper.dart';
 import 'package:hms_app/presentation/component/shimer/shimer_loading.dart';
 import 'package:hms_app/presentation/pages/asesmen/menu_asesmen.dart';
@@ -120,61 +122,82 @@ class _PasienContentWidgetState extends State<PasienContentWidget> {
                         width: Get.width,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(4.sp),
-                          child: SfDataGridTheme(
-                            data: SfDataGridThemeData(
-                                filterIconHoverColor: Colors.white,
-                                rowHoverColor: Colors.white.withOpacity(0.3),
-                                gridLineColor: Colors.white.withOpacity(0.6),
-                                selectionColor: Colors.white.withOpacity(0.2),
-                                sortOrderNumberBackgroundColor: Colors.white,
-                                headerColor: Colors.white.withOpacity(0.6),
-                                headerHoverColor: Colors.transparent,
-                                columnResizeIndicatorColor: Colors.white),
-                            child: SfDataGrid(
-                              rowHeight: 25.sp,
-                              shrinkWrapRows: true,
-                              navigationMode: GridNavigationMode.cell,
-                              selectionMode: SelectionMode.single,
-                              allowSorting: false,
-                              onCellSecondaryTap: ((details) {
-                                log(details.toString());
-                              }),
-                              onCellTap: ((detail) {
-                                if (detail.rowColumnIndex.rowIndex != 0) {}
-                              }),
-                              gridLinesVisibility: GridLinesVisibility.both,
-                              headerGridLinesVisibility:
-                                  GridLinesVisibility.both,
-                              source: employeeDataSource,
-                              columnWidthMode: ColumnWidthMode.fill,
-                              stackedHeaderRows: _getStackedHeaderRows(),
-                              columns: <GridColumn>[
-                                gridColumn(name: "no", subTitle: "NO"),
-                                ...[
-                                  if (authState is Authenticated) ...[
-                                    if (authState.user.poliklinik ==
-                                        Poliklinik.bangsal) ...[
-                                      gridColumn(
-                                          name: "antrean", subTitle: "Kamar"),
+                          child: AnimateGradient(
+                            primaryBeginGeometry:
+                                const AlignmentDirectional(0, 1),
+                            primaryEndGeometry:
+                                const AlignmentDirectional(0, 2),
+                            secondaryBeginGeometry:
+                                const AlignmentDirectional(2, 0),
+                            secondaryEndGeometry:
+                                const AlignmentDirectional(0, -0.8),
+                            primaryColors: [
+                              ThemeColor.primaryColor.withOpacity(0.5),
+                              Colors.blueAccent.withOpacity(0.5),
+                              Colors.white.withOpacity(0.2),
+                            ],
+                            secondaryColors: [
+                              ThemeColor.primaryColor.withOpacity(0.2),
+                              Colors.blueAccent.withOpacity(0.2),
+                              Colors.white.withOpacity(0.4),
+                            ],
+                            child: SfDataGridTheme(
+                              data: SfDataGridThemeData(
+                                  filterIconHoverColor: Colors.white,
+                                  rowHoverColor: Colors.white.withOpacity(0.3),
+                                  gridLineColor: Colors.white.withOpacity(0.6),
+                                  selectionColor: Colors.white.withOpacity(0.2),
+                                  sortOrderNumberBackgroundColor: Colors.white,
+                                  headerColor: Colors.white.withOpacity(0.6),
+                                  headerHoverColor: Colors.transparent,
+                                  columnResizeIndicatorColor: Colors.white),
+                              child: SfDataGrid(
+                                rowHeight: 25.sp,
+                                shrinkWrapRows: true,
+                                navigationMode: GridNavigationMode.cell,
+                                selectionMode: SelectionMode.single,
+                                allowSorting: false,
+                                onCellSecondaryTap: ((details) {
+                                  log(details.toString());
+                                }),
+                                onCellTap: ((detail) {
+                                  if (detail.rowColumnIndex.rowIndex != 0) {}
+                                }),
+                                gridLinesVisibility: GridLinesVisibility.both,
+                                headerGridLinesVisibility:
+                                    GridLinesVisibility.both,
+                                source: employeeDataSource,
+                                columnWidthMode: ColumnWidthMode.fill,
+                                stackedHeaderRows: _getStackedHeaderRows(),
+                                columns: <GridColumn>[
+                                  gridColumn(name: "no", subTitle: "NO"),
+                                  ...[
+                                    if (authState is Authenticated) ...[
+                                      if (authState.user.poliklinik ==
+                                          Poliklinik.bangsal) ...[
+                                        gridColumn(
+                                            name: "antrean", subTitle: "Kamar"),
+                                      ],
+                                      if (authState.user.poliklinik !=
+                                          Poliklinik.bangsal) ...[
+                                        gridColumn(
+                                            name: "antrean",
+                                            subTitle: "Antrean"),
+                                      ]
                                     ],
-                                    if (authState.user.poliklinik !=
-                                        Poliklinik.bangsal) ...[
+                                    if (authState is Unauthenticated) ...[
                                       gridColumn(
                                           name: "antrean", subTitle: "Antrean"),
                                     ]
                                   ],
-                                  if (authState is Unauthenticated) ...[
-                                    gridColumn(
-                                        name: "antrean", subTitle: "Antrean"),
-                                  ]
+                                  gridColumn(name: "mrn", subTitle: "M.R.N/ID"),
+                                  gridColumn(name: "nama", subTitle: "NAMA"),
+                                  gridColumn(
+                                      name: "debitur", subTitle: "DEBITUR"),
+                                  gridColumn(name: "dpjp", subTitle: "DPJP"),
+                                  gridColumn(name: "soap", subTitle: "ASESMEN"),
                                 ],
-                                gridColumn(name: "mrn", subTitle: "M.R.N/ID"),
-                                gridColumn(name: "nama", subTitle: "NAMA"),
-                                gridColumn(
-                                    name: "debitur", subTitle: "DEBITUR"),
-                                gridColumn(name: "dpjp", subTitle: "DPJP"),
-                                gridColumn(name: "soap", subTitle: "ASESMEN"),
-                              ],
+                              ),
                             ),
                           ),
                         ),

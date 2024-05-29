@@ -250,9 +250,10 @@ class _FormSectionState extends State<_FormSection> {
                                       color: ThemeColor.bgColor,
                                       shape: RoundedRectangleBorder(
                                         side: BorderSide(
-                                            width: 1.0,
-                                            style: BorderStyle.solid,
-                                            color: ThemeColor.bgColor),
+                                          width: 1.0,
+                                          style: BorderStyle.solid,
+                                          color: ThemeColor.bgColor,
+                                        ),
                                       )),
                                   child: DropdownButtonFormField(
                                     hint: Text(

@@ -33,7 +33,8 @@ class CustomDialogWidget {
                 ),
                 Positioned(
                   right: 0.0,
-                  child: GestureDetector(
+                  child: InkWell(
+                    onHover: (value) {},
                     onTap: () {
                       Navigator.of(context).pop();
                     },

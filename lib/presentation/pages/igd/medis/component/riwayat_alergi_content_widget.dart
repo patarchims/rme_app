@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -317,8 +316,6 @@ class _RiwayatAlergiWidgetContentState
                                                     trailing: IconButton(
                                                       onPressed: () {
                                                         // === //
-                                                        // TAMPILKAN PESAN DELETE RIWAYAT ALEG
-                                                        // todo : delete alergi
                                                         CustomDialogWidget
                                                             .getDialog(
                                                                 widget: MessageAlert

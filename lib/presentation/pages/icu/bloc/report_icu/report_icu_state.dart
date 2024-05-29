@@ -32,8 +32,8 @@ class ReportIcuState extends Equatable {
       ];
 
   static ReportIcuState initial() => ReportIcuState(
-      kartuObservasi: [],
-      kartuCairan: [],
+      kartuObservasi: const [],
+      kartuCairan: const [],
       status: ReportIcuStatus.initial,
       reportIntensiveIcuModel: ReportPerawatanIntensiveIcuModel(
           asuhanKeperawatan: [],

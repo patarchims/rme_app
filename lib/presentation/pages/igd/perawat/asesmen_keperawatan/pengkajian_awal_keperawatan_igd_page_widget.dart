@@ -3,8 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hms_app/domain/bloc/dashboard/asesmen_igd/asesmen_igd_bloc.dart';
 import 'package:hms_app/domain/bloc/dashboard/pasien/pasien_bloc.dart';
 import 'package:hms_app/domain/bloc/dashboard/triase/triase_bloc.dart';
+import 'package:hms_app/domain/bloc/user/auth/auth_bloc.dart';
+import 'package:hms_app/domain/models/users/user_model.dart';
 import 'package:hms_app/presentation/component/color/color_helper.dart';
-import 'package:hms_app/presentation/component/header/tabbar_header_content_widget.dart';
+import 'package:hms_app/presentation/component/header/tabbar_without_expanded_widget.dart';
+import 'package:hms_app/presentation/pages/bangsal/bloc/cppt_sbar_bangsal/cppt_sbar_bangsal_bloc.dart';
+import 'package:hms_app/presentation/pages/igd/bloc/asesmen_igd/asesmen_igd_bloc.dart';
 import 'package:hms_app/presentation/pages/igd/bloc/resiko_jatuh_getup/resiko_jatuh_getup_bloc.dart';
 import 'package:hms_app/presentation/pages/igd/perawat/asesmen_keperawatan/pengkajian_awal_content_widget.dart';
 import 'package:hms_app/presentation/pages/igd/perawat/asesmen_tindak_lanjut_igd_content_widget.dart';
@@ -22,22 +26,35 @@ class PengkajianAwalIGDPerawatDokterPageWidget extends StatelessWidget {
     final singlePasien = pasienState.listPasienModel
         .where((element) => element.mrn == pasienState.normSelected);
 
-    return TabbarHeaderContentWidget(
+    AuthState authState = context.watch<AuthBloc>().state;
+
+    return TabbarWithoutExpandexWidget(
         backgroundColor: ThemeColor.whiteColor,
         menu: menu,
         onTap: (index) {
+          //==//
+          if (index == 0) {
+            if (authState is Authenticated) {
+              context.read<AsesmenAwalIgdBloc>().add(OnGetAsesmenAwalIGDEvent(
+                  noReg: singlePasien.first.noreg,
+                  noRM: singlePasien.first.mrn,
+                  tanggal: DateTime.now().toString().substring(0, 10),
+                  person: toPerson(person: authState.user.person)));
+            }
+          }
+          //==//
           if (index == 1) {
             context.read<TriaseBloc>().add(
                 TriaseEvent.getSkriningNyeri(noReg: singlePasien.first.noreg));
           }
           if (index == 2) {
-            // context.read<AsesmenIgdBloc>().add(
-            //     AsesmenIgdEvent.getRiwayatKehamilan(
-            //         noreg: singlePasien.first.noreg));
             context.read<ResikoJatuhGetupBloc>().add(
                 OnGetResikoJatuhGetUpGoTestEvent(
                     noRM: singlePasien.first.mrn,
                     noReg: singlePasien.first.noreg));
+
+            context.read<CpptSbarBangsalBloc>().add(
+                OnGetCatatanKeperawatanEvent(noReg: singlePasien.first.noreg));
           }
           if (index == 4) {
             context.read<AsesmenIgdBloc>().add(
@@ -73,7 +90,6 @@ class PengkajianAwalIGDPerawatDokterPageWidget extends StatelessWidget {
             }
 
             if (e.key == 2) {
-              // TODO :
               return const ResikoJatuhGetUpAndGoTestPageWidget();
             }
 

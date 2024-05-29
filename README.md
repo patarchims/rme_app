@@ -33,11 +33,10 @@ BANGSAL LIEB
 Bangsal lukas
 621
 
-
-
+Bangsal Dokter RUANGAN LUKAS
+D0332 
 
 <!-- ICU -->
-
 693
 
 MARIA

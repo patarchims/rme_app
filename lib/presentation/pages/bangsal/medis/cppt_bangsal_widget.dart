@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:developer';
+import 'package:animate_gradient/animate_gradient.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -195,107 +196,120 @@ class _CpptWidgetBangsalState extends State<CpptWidgetBangsal> {
                                 style: whiteTextStyle,
                               ),
                             ),
-                            body: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Form(
-                                key: _keyForm,
-                                child: RawScrollbar(
-                                  thumbColor: ThemeColor.darkColor,
-                                  thumbVisibility: true,
-                                  interactive: true,
-                                  thickness: 10.sp,
-                                  controller: _scrollController,
-                                  trackVisibility: false,
-                                  child: ListView(
+                            body: AnimateGradient(
+                              primaryColors: const [
+                                Colors.pink,
+                                Colors.pinkAccent,
+                                Colors.white,
+                              ],
+                              secondaryColors: const [
+                                Colors.blue,
+                                Colors.blueAccent,
+                                Colors.white,
+                              ],
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Form(
+                                  key: _keyForm,
+                                  child: RawScrollbar(
+                                    thumbColor: ThemeColor.darkColor,
+                                    thumbVisibility: true,
+                                    interactive: true,
+                                    thickness: 10.sp,
                                     controller: _scrollController,
-                                    children: [
-                                      // ===============
-                                      Text("Tanggal :", style: blackTextStyle),
-                                      Container(
-                                        padding: EdgeInsets.all(5.sp),
-                                        color: Colors.white,
-                                        child: FormBuilderDateTimePicker(
-                                          format: DateFormat('dd/MM/yyyy'),
-                                          name: 'date',
-                                          inputType: InputType.date,
-                                          initialDate: DateTime.now(),
-                                          decoration: InputDecoration(
-                                            labelText:
-                                                'Waktu Terakhir Pemberian',
+                                    trackVisibility: false,
+                                    child: ListView(
+                                      controller: _scrollController,
+                                      children: [
+                                        // ===============
+                                        Text("Tanggal :",
+                                            style: blackTextStyle),
+                                        Container(
+                                          padding: EdgeInsets.all(5.sp),
+                                          color: Colors.white,
+                                          child: FormBuilderDateTimePicker(
+                                            format: DateFormat('dd/MM/yyyy'),
+                                            name: 'date',
+                                            inputType: InputType.date,
+                                            initialDate: DateTime.now(),
+                                            decoration: InputDecoration(
+                                              labelText:
+                                                  'Waktu Terakhir Pemberian',
+                                              enabled: true,
+                                              fillColor: ThemeColor.bgColor,
+                                            ),
+                                            onChanged: (value) {
+                                              setState(() {
+                                                waktu = value.toString();
+                                              });
+                                            },
+                                            initialTime: const TimeOfDay(
+                                                hour: 8, minute: 0),
+                                            initialValue: DateTime.now(),
                                             enabled: true,
-                                            fillColor: ThemeColor.bgColor,
                                           ),
-                                          onChanged: (value) {
-                                            setState(() {
-                                              waktu = value.toString();
-                                            });
-                                          },
-                                          initialTime: const TimeOfDay(
-                                              hour: 8, minute: 0),
-                                          initialValue: DateTime.now(),
-                                          enabled: true,
                                         ),
-                                      ),
 
-                                      Text(
-                                        "Isikan SUBJEKTIF Pada Kolom Dibawah Ini :",
-                                        style: blackTextStyle,
-                                      ),
+                                        Text(
+                                          "Isikan SUBJEKTIF Pada Kolom Dibawah Ini :",
+                                          style: blackTextStyle,
+                                        ),
 
-                                      FormWidget.textArea(
-                                        maxLines: 2,
-                                        enabled: true,
-                                        controller: _subjektifController,
-                                        validator: (value) => value == ''
-                                            ? "Tidak boleh kosong"
-                                            : null,
-                                      ),
-                                      const Divider(),
-                                      Text(
-                                        "Isikan OBJEKTIF Pada Kolom Dibawah Ini :",
-                                        style: blackTextStyle,
-                                      ),
-                                      FormWidget.textArea(
+                                        FormWidget.textArea(
                                           maxLines: 2,
                                           enabled: true,
+                                          controller: _subjektifController,
                                           validator: (value) => value == ''
                                               ? "Tidak boleh kosong"
                                               : null,
-                                          controller: _objektifController),
-                                      const Divider(),
-                                      Text(
-                                        "Isikan ASESMEN Pada Kolom Dibawah Ini :",
-                                        style: blackTextStyle,
-                                      ),
-                                      FormWidget.textArea(
-                                          maxLines: 2,
-                                          enabled: true,
-                                          validator: (value) => value == ''
-                                              ? "Tidak boleh kosong"
-                                              : null,
-                                          controller: _asesmenController),
-                                      const Divider(),
-                                      Text(
-                                        "Isikan PLAN Pada Kolom Dibawah Ini :",
-                                        style: blackTextStyle,
-                                      ),
-                                      FormWidget.textArea(
-                                          maxLines: 2,
-                                          enabled: true,
-                                          validator: (value) => value == ''
-                                              ? "Tidak boleh kosong"
-                                              : null,
-                                          controller: _planController),
-                                      const Divider(),
-                                      Text(
-                                          "Isikan Instruksi PPA Pada Kolom Dibawah  :",
-                                          style: blackTextStyle),
-                                      FormWidget.textArea(
-                                          maxLines: 2,
-                                          enabled: true,
-                                          controller: _ppaController),
-                                      const Divider(),
-                                    ],
+                                        ),
+                                        const Divider(),
+                                        Text(
+                                          "Isikan OBJEKTIF Pada Kolom Dibawah Ini :",
+                                          style: blackTextStyle,
+                                        ),
+                                        FormWidget.textArea(
+                                            maxLines: 2,
+                                            enabled: true,
+                                            validator: (value) => value == ''
+                                                ? "Tidak boleh kosong"
+                                                : null,
+                                            controller: _objektifController),
+                                        const Divider(),
+                                        Text(
+                                          "Isikan ASESMEN Pada Kolom Dibawah Ini :",
+                                          style: blackTextStyle,
+                                        ),
+                                        FormWidget.textArea(
+                                            maxLines: 2,
+                                            enabled: true,
+                                            validator: (value) => value == ''
+                                                ? "Tidak boleh kosong"
+                                                : null,
+                                            controller: _asesmenController),
+                                        const Divider(),
+                                        Text(
+                                          "Isikan PLAN Pada Kolom Dibawah Ini :",
+                                          style: blackTextStyle,
+                                        ),
+                                        FormWidget.textArea(
+                                            maxLines: 2,
+                                            enabled: true,
+                                            validator: (value) => value == ''
+                                                ? "Tidak boleh kosong"
+                                                : null,
+                                            controller: _planController),
+                                        const Divider(),
+                                        Text(
+                                            "Isikan Instruksi PPA Pada Kolom Dibawah  :",
+                                            style: blackTextStyle),
+                                        FormWidget.textArea(
+                                            maxLines: 2,
+                                            enabled: true,
+                                            controller: _ppaController),
+                                        const Divider(),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),

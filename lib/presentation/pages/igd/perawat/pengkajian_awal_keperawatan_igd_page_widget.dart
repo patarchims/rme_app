@@ -6,6 +6,7 @@ import 'package:hms_app/presentation/component/color/color_helper.dart';
 import 'package:hms_app/presentation/component/header/tabbar_header_content_widget.dart';
 import 'package:hms_app/presentation/component/resources/app_config.dart';
 import 'package:hms_app/presentation/component/resources/app_constant.dart';
+import 'package:hms_app/presentation/pages/bangsal/bloc/cppt_sbar_bangsal/cppt_sbar_bangsal_bloc.dart';
 import 'package:hms_app/presentation/pages/igd/bloc/pemeriksaan_fisik_igd/pemeriksaan_fisik_igd_bloc.dart';
 import 'package:hms_app/presentation/pages/igd/bloc/tanda_vital_igd_dokter/tanda_vital_igd_dokter_bloc.dart';
 import 'package:hms_app/presentation/pages/igd/dokter/pemeriksaan_fisik/pemeriksaan_fisik_igd_dokter_methodis_widget.dart';
@@ -49,6 +50,11 @@ class PengkajianAwalKeperawatanIGDPageWidget extends StatelessWidget {
                       noReg: singlePasien.first.noreg,
                       person: "Dokter"));
             }
+          }
+
+          if (index == 0) {
+            context.read<CpptSbarBangsalBloc>().add(
+                OnGetCatatanKeperawatanEvent(noReg: singlePasien.first.noreg));
           }
         },
         children: menu.asMap().entries.map((e) {

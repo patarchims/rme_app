@@ -98,327 +98,342 @@ class _AsesmenTindakLanjutIGDContentWidgetState
                   controller: _scrollController,
                   trackVisibility: false,
                   radius: Radius.circular(5.sp),
-                  child: SingleChildScrollView(
-                    controller: _scrollController,
-                    child: SizedBox(
-                      width: Get.width,
-                      child: Card(
-                        color: ThemeColor.bgColor,
-                        shape: RoundedRectangleBorder(
-                            side: BorderSide(
-                                width: 1.sp, color: ThemeColor.blackColor),
-                            borderRadius: BorderRadius.circular(2.sp)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            TitleWidget.titleContainer(
-                                title:
-                                    "Kondisi Pasien Saat Pindah / Pulang Dari IGD"),
-                            Container(
-                              width: Get.width,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 5.sp, vertical: 5.sp),
-                              child: Wrap(
-                                runAlignment: WrapAlignment.start,
-                                runSpacing: 1.sp,
-                                spacing: 1.sp,
-                                alignment: WrapAlignment.start,
-                                children: ListConstants.kodisiSaatPulangChoose
-                                    .map(
-                                      (e) => TitleWidget.boxChoose(
-                                          icon: (state.tindakLanjutIGDModel
-                                                      .pulang1 ==
-                                                  e)
-                                              ? const Icon(
-                                                  FontAwesomeIcons.check,
-                                                  color: Colors.white,
-                                                )
-                                              : const Icon(
-                                                  FontAwesomeIcons.xmark,
-                                                  color: Colors.white,
-                                                ),
-                                          backgroundColor: (state
-                                                      .tindakLanjutIGDModel
-                                                      .pulang1 ==
-                                                  e)
-                                              ? Colors.green
-                                              : ThemeColor.primaryColor,
-                                          onPressed: () {
-                                            context.read<AsesmenIgdBloc>().add(
-                                                AsesmenIgdEvent
-                                                    .kondisiPasienOnchanged(
-                                                        value: e));
-                                          },
-                                          title: e),
-                                    )
-                                    .toList(),
-                              ),
-                            ),
-
-                            TitleWidget.titleContainer(
-                                title: "Transportasi Pulang"),
-
-                            Container(
-                              width: Get.width,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 5.sp, vertical: 5.sp),
-                              child: Wrap(
-                                runAlignment: WrapAlignment.start,
-                                runSpacing: 1.sp,
-                                spacing: 1.sp,
-                                alignment: WrapAlignment.start,
-                                children: ListConstants.transportasiPulangChoose
-                                    .map(
-                                      (e) => TitleWidget.boxChoose(
-                                          icon: (state.tindakLanjutIGDModel
-                                                      .pulang2 ==
-                                                  e)
-                                              ? const Icon(
-                                                  FontAwesomeIcons.check,
-                                                  color: Colors.white,
-                                                )
-                                              : const Icon(
-                                                  FontAwesomeIcons.xmark,
-                                                  color: Colors.white,
-                                                ),
-                                          backgroundColor: (state
-                                                      .tindakLanjutIGDModel
-                                                      .pulang2 ==
-                                                  e)
-                                              ? Colors.green
-                                              : ThemeColor.primaryColor,
-                                          onPressed: () {
-                                            context.read<AsesmenIgdBloc>().add(
-                                                AsesmenIgdEvent
-                                                    .transportasiPulangOnchanged(
-                                                        value: e));
-                                          },
-                                          title: e),
-                                    )
-                                    .toList(),
-                              ),
-                            ),
-
-                            TitleWidget.titleContainer(
-                                title: "Cara Keluar dari IGD"),
-
-                            Container(
-                              width: Get.width,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 5.sp, vertical: 5.sp),
-                              child: Wrap(
-                                runAlignment: WrapAlignment.start,
-                                runSpacing: 1.sp,
-                                spacing: 1.sp,
-                                alignment: WrapAlignment.start,
-                                children: ListConstants.caraKeluarDariIGD
-                                    .map(
-                                      (e) => TitleWidget.boxChoose(
-                                          icon: (state.tindakLanjutIGDModel
-                                                      .caraKeluar ==
-                                                  e)
-                                              ? const Icon(
-                                                  FontAwesomeIcons.check,
-                                                  color: Colors.white,
-                                                )
-                                              : const Icon(
-                                                  FontAwesomeIcons.xmark,
-                                                  color: Colors.white,
-                                                ),
-                                          backgroundColor: (state
-                                                      .tindakLanjutIGDModel
-                                                      .caraKeluar ==
-                                                  e)
-                                              ? Colors.green
-                                              : ThemeColor.primaryColor,
-                                          onPressed: () {
-                                            context.read<AsesmenIgdBloc>().add(
-                                                AsesmenIgdEvent
-                                                    .caraPulangOnChanged(
-                                                        value: e));
-                                          },
-                                          title: e),
-                                    )
-                                    .toList(),
-                              ),
-                            ),
-
-                            TitleWidget.titleContainer(
-                                title:
-                                    "Jam Keluar/dipulangkan/dirujuk/ditransfer IGD"),
-
-                            Container(
-                              width: Get.width,
-                              decoration:
-                                  const BoxDecoration(color: Colors.white),
-                              child: Center(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 10, vertical: 5),
-                                      decoration: BoxDecoration(
-                                          color: ThemeColor.blueColor,
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                      child: DropdownButton<String>(
-                                        icon: const Icon(Icons.arrow_drop_down),
-                                        iconSize: 42,
-                                        underline: const SizedBox(),
-                                        dropdownColor: ThemeColor.primaryColor,
-                                        value: (state.tindakLanjutIGDModel
-                                                    .waktu ==
-                                                "")
-                                            ? times.first
-                                            : state.tindakLanjutIGDModel.waktu
-                                                .substring(0, 2),
-                                        items: times
-                                            .map<DropdownMenuItem<String>>(
-                                                (String value) {
-                                          return DropdownMenuItem<String>(
-                                            value: value,
-                                            child: Text(
-                                              value,
-                                              style: whiteTextStyle.copyWith(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 10.sp),
-                                            ),
-                                          );
-                                        }).toList(),
-                                        onChanged: (String? newValue) {
-                                          context.read<AsesmenIgdBloc>().add(
-                                              AsesmenIgdEvent.jamOnchanged(
-                                                  value: newValue.toString()));
-                                        },
-                                      ),
-                                    ),
-                                    SizedBox(width: 10.sp),
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 10, vertical: 5),
-                                      decoration: BoxDecoration(
-                                          color: ThemeColor.blueColor,
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                      child: DropdownButton<String>(
-                                        icon: const Icon(Icons.arrow_drop_down),
-                                        iconSize: 42,
-                                        underline: const SizedBox(),
-                                        dropdownColor: ThemeColor.primaryColor,
-                                        value: (state.tindakLanjutIGDModel
-                                                    .waktu ==
-                                                "")
-                                            ? menit.first
-                                            : state.tindakLanjutIGDModel.waktu
-                                                .substring(3, 5),
-                                        items: menit
-                                            .map<DropdownMenuItem<String>>(
-                                                (String value) {
-                                          return DropdownMenuItem<String>(
-                                            value: value,
-                                            child: Text(
-                                              value,
-                                              style: whiteTextStyle.copyWith(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 10.sp),
-                                            ),
-                                          );
-                                        }).toList(),
-                                        onChanged: (String? newValue) {
-                                          context.read<AsesmenIgdBloc>().add(
-                                              AsesmenIgdEvent.menitOnchanged(
-                                                  value: newValue.toString()));
-                                        },
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-
-                            TitleWidget.titleContainer(
-                                title: "Pendidikan kesehatan pasien pulang :"),
-
-                            // ================== INFORMASI DAN KELUHAN PASIEN
-                            Container(
-                              width: Get.width,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 5.sp, vertical: 5.sp),
-                              child: Wrap(
-                                runAlignment: WrapAlignment.start,
-                                runSpacing: 1.sp,
-                                spacing: 1.sp,
-                                alignment: WrapAlignment.start,
-                                children: ListConstants.pendidikanSaatPulang
-                                    .map(
-                                      (e) => TitleWidget.boxChoose(
-                                          icon: (state.tindakLanjutIGDModel
-                                                      .pulang3 ==
-                                                  e)
-                                              ? const Icon(
-                                                  FontAwesomeIcons.check,
-                                                  color: Colors.white,
-                                                )
-                                              : const Icon(
-                                                  FontAwesomeIcons.xmark,
-                                                  color: Colors.white,
-                                                ),
-                                          backgroundColor: (state
-                                                      .tindakLanjutIGDModel
-                                                      .pulang3 ==
-                                                  e)
-                                              ? Colors.green
-                                              : ThemeColor.primaryColor,
-                                          onPressed: () {
-                                            context.read<AsesmenIgdBloc>().add(
-                                                AsesmenIgdEvent
-                                                    .pendidikanKesehatanOnchanged(
-                                                        value: e));
-
-                                            if (e !=
-                                                ListConstants
-                                                    .pendidikanSaatPulang
-                                                    .last) {
+                  child: Container(
+                    margin: EdgeInsets.only(right: 10.sp),
+                    child: SingleChildScrollView(
+                      controller: _scrollController,
+                      child: SizedBox(
+                        width: Get.width,
+                        child: Card(
+                          color: ThemeColor.bgColor,
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                  width: 1.sp, color: ThemeColor.blackColor),
+                              borderRadius: BorderRadius.circular(2.sp)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TitleWidget.titleContainer(
+                                  title:
+                                      "Kondisi Pasien Saat Pindah / Pulang Dari IGD"),
+                              Container(
+                                width: Get.width,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 5.sp, vertical: 5.sp),
+                                child: Wrap(
+                                  runAlignment: WrapAlignment.start,
+                                  runSpacing: 1.sp,
+                                  spacing: 1.sp,
+                                  alignment: WrapAlignment.start,
+                                  children: ListConstants.kodisiSaatPulangChoose
+                                      .map(
+                                        (e) => TitleWidget.boxChoose(
+                                            icon: (state.tindakLanjutIGDModel
+                                                        .pulang1 ==
+                                                    e)
+                                                ? const Icon(
+                                                    FontAwesomeIcons.check,
+                                                    color: Colors.white,
+                                                  )
+                                                : const Icon(
+                                                    FontAwesomeIcons.xmark,
+                                                    color: Colors.white,
+                                                  ),
+                                            backgroundColor: (state
+                                                        .tindakLanjutIGDModel
+                                                        .pulang1 ==
+                                                    e)
+                                                ? Colors.green
+                                                : ThemeColor.primaryColor,
+                                            onPressed: () {
                                               context
                                                   .read<AsesmenIgdBloc>()
-                                                  .add(const AsesmenIgdEvent
-                                                      .pendidikanKesehatanOnchangedDetail(
-                                                      value: ""));
-                                            }
-                                          },
-                                          title: e),
-                                    )
-                                    .toList(),
-                              ),
-                            ),
-
-                            if (state.tindakLanjutIGDModel.pulang3 ==
-                                ListConstants.pendidikanSaatPulang.last) ...[
-                              Container(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 5.sp, vertical: 2.sp),
-                                width: Get.width,
-                                child: SizedBox(
-                                  child: FormWidget.textArea(
-                                      enabled: true,
-                                      maxLines: 3,
-                                      value: state
-                                          .tindakLanjutIGDModel.pulang3Detail,
-                                      onChanged: (e) {
-                                        context.read<AsesmenIgdBloc>().add(
-                                            AsesmenIgdEvent
-                                                .pendidikanKesehatanOnchangedDetail(
-                                                    value: e));
-                                      }),
+                                                  .add(AsesmenIgdEvent
+                                                      .kondisiPasienOnchanged(
+                                                          value: e));
+                                            },
+                                            title: e),
+                                      )
+                                      .toList(),
                                 ),
                               ),
-                            ],
 
-                            SizedBox(height: 15.sp)
-                          ],
+                              TitleWidget.titleContainer(
+                                  title: "Transportasi Pulang"),
+
+                              Container(
+                                width: Get.width,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 5.sp, vertical: 5.sp),
+                                child: Wrap(
+                                  runAlignment: WrapAlignment.start,
+                                  runSpacing: 1.sp,
+                                  spacing: 1.sp,
+                                  alignment: WrapAlignment.start,
+                                  children: ListConstants
+                                      .transportasiPulangChoose
+                                      .map(
+                                        (e) => TitleWidget.boxChoose(
+                                            icon: (state.tindakLanjutIGDModel
+                                                        .pulang2 ==
+                                                    e)
+                                                ? const Icon(
+                                                    FontAwesomeIcons.check,
+                                                    color: Colors.white,
+                                                  )
+                                                : const Icon(
+                                                    FontAwesomeIcons.xmark,
+                                                    color: Colors.white,
+                                                  ),
+                                            backgroundColor: (state
+                                                        .tindakLanjutIGDModel
+                                                        .pulang2 ==
+                                                    e)
+                                                ? Colors.green
+                                                : ThemeColor.primaryColor,
+                                            onPressed: () {
+                                              context
+                                                  .read<AsesmenIgdBloc>()
+                                                  .add(AsesmenIgdEvent
+                                                      .transportasiPulangOnchanged(
+                                                          value: e));
+                                            },
+                                            title: e),
+                                      )
+                                      .toList(),
+                                ),
+                              ),
+
+                              TitleWidget.titleContainer(
+                                  title: "Cara Keluar dari IGD"),
+
+                              Container(
+                                width: Get.width,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 5.sp, vertical: 5.sp),
+                                child: Wrap(
+                                  runAlignment: WrapAlignment.start,
+                                  runSpacing: 1.sp,
+                                  spacing: 1.sp,
+                                  alignment: WrapAlignment.start,
+                                  children: ListConstants.caraKeluarDariIGD
+                                      .map(
+                                        (e) => TitleWidget.boxChoose(
+                                            icon: (state.tindakLanjutIGDModel
+                                                        .caraKeluar ==
+                                                    e)
+                                                ? const Icon(
+                                                    FontAwesomeIcons.check,
+                                                    color: Colors.white,
+                                                  )
+                                                : const Icon(
+                                                    FontAwesomeIcons.xmark,
+                                                    color: Colors.white,
+                                                  ),
+                                            backgroundColor: (state
+                                                        .tindakLanjutIGDModel
+                                                        .caraKeluar ==
+                                                    e)
+                                                ? Colors.green
+                                                : ThemeColor.primaryColor,
+                                            onPressed: () {
+                                              context
+                                                  .read<AsesmenIgdBloc>()
+                                                  .add(AsesmenIgdEvent
+                                                      .caraPulangOnChanged(
+                                                          value: e));
+                                            },
+                                            title: e),
+                                      )
+                                      .toList(),
+                                ),
+                              ),
+
+                              TitleWidget.titleContainer(
+                                  title:
+                                      "Jam Keluar/dipulangkan/dirujuk/ditransfer IGD"),
+
+                              Container(
+                                width: Get.width,
+                                decoration:
+                                    const BoxDecoration(color: Colors.white),
+                                child: Center(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 10, vertical: 5),
+                                        decoration: BoxDecoration(
+                                            color: ThemeColor.blueColor,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: DropdownButton<String>(
+                                          icon:
+                                              const Icon(Icons.arrow_drop_down),
+                                          iconSize: 42,
+                                          underline: const SizedBox(),
+                                          dropdownColor:
+                                              ThemeColor.primaryColor,
+                                          value: (state.tindakLanjutIGDModel
+                                                      .jam ==
+                                                  "")
+                                              ? times.first
+                                              : state.tindakLanjutIGDModel.jam,
+                                          items: times
+                                              .map<DropdownMenuItem<String>>(
+                                                  (String value) {
+                                            return DropdownMenuItem<String>(
+                                              value: value,
+                                              child: Text(
+                                                value,
+                                                style: whiteTextStyle.copyWith(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 10.sp),
+                                              ),
+                                            );
+                                          }).toList(),
+                                          onChanged: (String? newValue) {
+                                            context.read<AsesmenIgdBloc>().add(
+                                                AsesmenIgdEvent.jamOnchanged(
+                                                    value:
+                                                        newValue.toString()));
+                                          },
+                                        ),
+                                      ),
+                                      SizedBox(width: 10.sp),
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 10, vertical: 5),
+                                        decoration: BoxDecoration(
+                                            color: ThemeColor.blueColor,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: DropdownButton<String>(
+                                          icon:
+                                              const Icon(Icons.arrow_drop_down),
+                                          iconSize: 42,
+                                          underline: const SizedBox(),
+                                          dropdownColor:
+                                              ThemeColor.primaryColor,
+                                          value: (state.tindakLanjutIGDModel
+                                                      .menit ==
+                                                  "")
+                                              ? menit.first
+                                              : state
+                                                  .tindakLanjutIGDModel.menit,
+                                          items: menit
+                                              .map<DropdownMenuItem<String>>(
+                                                  (String value) {
+                                            return DropdownMenuItem<String>(
+                                              value: value,
+                                              child: Text(
+                                                value,
+                                                style: whiteTextStyle.copyWith(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 10.sp),
+                                              ),
+                                            );
+                                          }).toList(),
+                                          onChanged: (String? newValue) {
+                                            context.read<AsesmenIgdBloc>().add(
+                                                AsesmenIgdEvent.menitOnchanged(
+                                                    value:
+                                                        newValue.toString()));
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+
+                              TitleWidget.titleContainer(
+                                  title:
+                                      "Pendidikan kesehatan pasien pulang :"),
+
+                              // ================== INFORMASI DAN KELUHAN PASIEN
+                              Container(
+                                width: Get.width,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 5.sp, vertical: 5.sp),
+                                child: Wrap(
+                                  runAlignment: WrapAlignment.start,
+                                  runSpacing: 1.sp,
+                                  spacing: 1.sp,
+                                  alignment: WrapAlignment.start,
+                                  children: ListConstants.pendidikanSaatPulang
+                                      .map(
+                                        (e) => TitleWidget.boxChoose(
+                                            icon: (state.tindakLanjutIGDModel
+                                                        .pulang3 ==
+                                                    e)
+                                                ? const Icon(
+                                                    FontAwesomeIcons.check,
+                                                    color: Colors.white,
+                                                  )
+                                                : const Icon(
+                                                    FontAwesomeIcons.xmark,
+                                                    color: Colors.white,
+                                                  ),
+                                            backgroundColor: (state
+                                                        .tindakLanjutIGDModel
+                                                        .pulang3 ==
+                                                    e)
+                                                ? Colors.green
+                                                : ThemeColor.primaryColor,
+                                            onPressed: () {
+                                              context
+                                                  .read<AsesmenIgdBloc>()
+                                                  .add(AsesmenIgdEvent
+                                                      .pendidikanKesehatanOnchanged(
+                                                          value: e));
+
+                                              if (e !=
+                                                  ListConstants
+                                                      .pendidikanSaatPulang
+                                                      .last) {
+                                                context
+                                                    .read<AsesmenIgdBloc>()
+                                                    .add(const AsesmenIgdEvent
+                                                        .pendidikanKesehatanOnchangedDetail(
+                                                        value: ""));
+                                              }
+                                            },
+                                            title: e),
+                                      )
+                                      .toList(),
+                                ),
+                              ),
+
+                              if (state.tindakLanjutIGDModel.pulang3 ==
+                                  ListConstants.pendidikanSaatPulang.last) ...[
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 5.sp, vertical: 2.sp),
+                                  width: Get.width,
+                                  child: SizedBox(
+                                    child: FormWidget.textArea(
+                                        enabled: true,
+                                        maxLines: 3,
+                                        value: state
+                                            .tindakLanjutIGDModel.pulang3Detail,
+                                        onChanged: (e) {
+                                          context.read<AsesmenIgdBloc>().add(
+                                              AsesmenIgdEvent
+                                                  .pendidikanKesehatanOnchangedDetail(
+                                                      value: e));
+                                        }),
+                                  ),
+                                ),
+                              ],
+
+                              SizedBox(height: 15.sp)
+                            ],
+                          ),
                         ),
                       ),
                     ),

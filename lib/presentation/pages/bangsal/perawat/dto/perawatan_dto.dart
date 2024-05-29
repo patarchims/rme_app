@@ -64,23 +64,6 @@ abstract class DTOKeperawatan {
     };
   }
 
-  // Noreg                 string `json:"noreg" binding:"required"`
-  // 	Pelayanan             string `json:"pelayanan" binding:"required"`
-  // 	Person                string `json:"person" binding:"required"`
-  // 	DeviceID              string `json:"device_id" binding:"required"`
-  // 	EkspresiWajah         string `json:"ekspresi_wajah"`
-  // 	KdDokter              string `json:"kd_dokter"`
-  // 	Tangisan              string `json:"tangisan"`
-  // 	PolaNapas             string `json:"pola_napas"`
-  // 	Tangan                string `json:"tangan"`
-  // 	Kaki                  string `json:"kaki"`
-  // 	Kesadaran             string `json:"kesadaran"`
-  // 	Total                 int    `json:"total"`
-  // 	AseskepNyeri          int    `json:"nyeri"`
-  // 	AseskepLokasiNyeri    string `json:"lokasi_nyeri"`
-  // 	AseskepFrekuensiNyeri string `json:"frekuensi_nyeri"`
-  // 	AseskepNyeriMenjalar  string `json:"nyeri_menjalar"`
-  // 	AseskepKualitasNyeri  string `json:"kualitas_nyeri"`
   static Map<String, dynamic> onSaveNyeriAnak({
     required String noReg,
     required String pelayanan,
@@ -427,6 +410,43 @@ abstract class DTOKeperawatan {
       "spo2": tandaVitalIgdDokter.spo2,
       "tinggi_badan": tandaVitalIgdDokter.tinggiBadan,
       "berat_badan": tandaVitalIgdDokter.beratBadan,
+    };
+  }
+
+  static Map<String, dynamic> onSaveAsesmenIGD({
+    required String noReg,
+    required String noRm,
+    required String tanggal,
+    required String person,
+    required String devicesID,
+    required String pelayanan,
+    required String info,
+    required String infoDetail,
+    required String caraMasuk,
+    required String asalMasuk,
+    required String fungsional,
+    required String keluhanUtama,
+    required String penyakitSekarang,
+    required String penyakitDahulu,
+    required String riwayatDahulu,
+    required String reaksiAlergi,
+  }) {
+    return {
+      "no_reg": noReg,
+      "no_rm": noRm,
+      "tanggal": tanggal,
+      "person": person,
+      "device_id": devicesID,
+      "pelayanan": pelayanan,
+      "perolehan_info": info,
+      "perolehan_info_detail": infoDetail,
+      "cara_masuk": caraMasuk,
+      "asal_masuk": asalMasuk,
+      "fungsi_aktivitas": fungsional,
+      "keluhan_utama": keluhanUtama,
+      "penyakit_sekarang": penyakitSekarang,
+      "penyakit_dahulu": riwayatDahulu,
+      "reaksi_alergi": reaksiAlergi
     };
   }
 }

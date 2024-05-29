@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:animate_gradient/animate_gradient.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -131,76 +132,97 @@ class _CpptSBARBansalWidgetState extends State<CpptSBARBansalWidget> {
                             thumbColor: ThemeColor.darkColor,
                             thumbVisibility: true,
                             interactive: true,
-                            thickness: 10.sp,
+                            thickness: 15.sp,
                             controller: _scrollController,
                             trackVisibility: false,
                             radius: Radius.circular(5.sp),
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 15.sp),
-                              child: ListView(
-                                children: [
-                                  // ===============
-                                  Text(
-                                      "Isikan SITUATION Pada Kolom Dibawah Ini :",
-                                      style: blackTextStyle),
+                            child: AnimateGradient(
+                              primaryBeginGeometry:
+                                  const AlignmentDirectional(0, 1),
+                              primaryEndGeometry:
+                                  const AlignmentDirectional(0, 2),
+                              secondaryBeginGeometry:
+                                  const AlignmentDirectional(2, 0),
+                              secondaryEndGeometry:
+                                  const AlignmentDirectional(0, -0.8),
+                              primaryColors: [
+                                ThemeColor.primaryColor.withOpacity(0.5),
+                                Colors.blueAccent.withOpacity(0.5),
+                                Colors.white,
+                              ],
+                              secondaryColors: const [
+                                ThemeColor.primaryColor,
+                                Colors.blueAccent,
+                                Colors.white,
+                              ],
+                              child: Padding(
+                                padding:
+                                    EdgeInsets.symmetric(horizontal: 15.sp),
+                                child: ListView(
+                                  children: [
+                                    // ===============
+                                    Text(
+                                        "Isikan SITUATION Pada Kolom Dibawah Ini :",
+                                        style: blackTextStyle),
 
-                                  FormWidget.textArea(
-                                    maxLines: 3,
-                                    enabled: true,
-                                    controller: _situationController,
-                                    validator: (value) => value == ''
-                                        ? "Tidak boleh kosong"
-                                        : null,
-                                  ),
-                                  const Divider(),
-                                  Text(
-                                    "Isikan BACKGROUND Pada Kolom Dibawah Ini :",
-                                    style: blackTextStyle,
-                                  ),
-                                  FormWidget.textArea(
-                                      maxLines: 3,
+                                    FormWidget.textArea(
+                                      maxLines: 5,
                                       enabled: true,
+                                      controller: _situationController,
                                       validator: (value) => value == ''
                                           ? "Tidak boleh kosong"
                                           : null,
-                                      controller: _backgroundController),
-                                  const Divider(),
-                                  Text(
-                                    "Isikan ASESMEN Pada Kolom Dibawah Ini :",
-                                    style: blackTextStyle,
-                                  ),
-                                  FormWidget.textArea(
-                                      maxLines: 3,
-                                      enabled: true,
-                                      validator: (value) => value == ''
-                                          ? "Tidak boleh kosong"
-                                          : null,
-                                      controller: _asesmenController),
-                                  const Divider(),
-                                  Text(
-                                    "Isikan Recomendation Pada Kolom Dibawah Ini :",
-                                    style: blackTextStyle,
-                                  ),
-                                  FormWidget.textArea(
-                                      maxLines: 3,
-                                      enabled: true,
-                                      validator: (value) => value == ''
-                                          ? "Tidak boleh kosong"
-                                          : null,
-                                      controller: _recomendationController),
-                                  Text(
-                                    "Isikan PPA Dibawah ini :",
-                                    style: blackTextStyle,
-                                  ),
-                                  FormWidget.textArea(
-                                      maxLines: 3,
-                                      enabled: true,
-                                      validator: (value) => value == ''
-                                          ? "Tidak boleh kosong"
-                                          : null,
-                                      controller: _ppaController),
-                                  const Divider(),
-                                ],
+                                    ),
+                                    const Divider(),
+                                    Text(
+                                      "Isikan BACKGROUND Pada Kolom Dibawah Ini :",
+                                      style: blackTextStyle,
+                                    ),
+                                    FormWidget.textArea(
+                                        maxLines: 5,
+                                        enabled: true,
+                                        validator: (value) => value == ''
+                                            ? "Tidak boleh kosong"
+                                            : null,
+                                        controller: _backgroundController),
+                                    const Divider(),
+                                    Text(
+                                      "Isikan ASESMEN Pada Kolom Dibawah Ini :",
+                                      style: blackTextStyle,
+                                    ),
+                                    FormWidget.textArea(
+                                        maxLines: 5,
+                                        enabled: true,
+                                        validator: (value) => value == ''
+                                            ? "Tidak boleh kosong"
+                                            : null,
+                                        controller: _asesmenController),
+                                    const Divider(),
+                                    Text(
+                                      "Isikan Recomendation Pada Kolom Dibawah Ini :",
+                                      style: blackTextStyle,
+                                    ),
+                                    FormWidget.textArea(
+                                        maxLines: 5,
+                                        enabled: true,
+                                        validator: (value) => value == ''
+                                            ? "Tidak boleh kosong"
+                                            : null,
+                                        controller: _recomendationController),
+                                    Text(
+                                      "Isikan PPA Dibawah ini :",
+                                      style: blackTextStyle,
+                                    ),
+                                    FormWidget.textArea(
+                                        maxLines: 5,
+                                        enabled: true,
+                                        validator: (value) => value == ''
+                                            ? "Tidak boleh kosong"
+                                            : null,
+                                        controller: _ppaController),
+                                    const Divider(),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -275,163 +297,186 @@ class _CpptSBARBansalWidgetState extends State<CpptSBARBansalWidget> {
               radius: Radius.circular(5.sp),
               child: SingleChildScrollView(
                 controller: _scrollController,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                        width: Get.width,
-                        height: 15.sp,
-                        decoration:
-                            const BoxDecoration(color: Colors.lightBlueAccent),
-                        child: Center(
-                            child: Text(
-                                "Catatan Perkembangan Pasien Terintegrasi CPPT (SBAR)",
-                                style: blackTextStyle.copyWith(
-                                    fontWeight: FontWeight.bold)))),
-                    Container(
-                      margin: EdgeInsets.only(right: 5.sp, left: 5.sp),
-                      child: Table(
-                        border: TableBorder.all(color: Colors.black),
-                        children: [
-                          TableRow(children: [
-                            TitleWidget.headerTitle(title: "Situation"),
-                            TitleWidget.headerTitle(title: "Background"),
-                            TitleWidget.headerTitle(title: "Asesmen"),
-                            TitleWidget.headerTitle(title: "Recomendation"),
-                            TitleWidget.headerTitle(title: "Instruksi PPA"),
-                            TitleWidget.headerTitle(title: "Action")
-                          ])
-                        ],
-                      ),
-                    ),
-                    if (state.cppt.isNotEmpty) ...[
-                      ...state.cppt.map(
-                        (e) => SizedBox(
-                          child: Table(
-                            border: TableBorder.all(color: Colors.black),
-                            children: [
-                              TableRow(children: [
-                                TitleWidget.contentTitle(title: e.situation),
-                                TitleWidget.contentTitle(title: e.background),
-                                TitleWidget.contentTitle(title: e.asesmen),
-                                TitleWidget.contentTitle(
-                                    title: e.recomendation),
-                                TitleWidget.contentTitle(title: e.instruksiPPA),
-                                Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 5.sp, vertical: 5.sp),
-                                  child: Wrap(
-                                    crossAxisAlignment:
-                                        WrapCrossAlignment.center,
-                                    alignment: WrapAlignment.center,
-                                    runAlignment: WrapAlignment.center,
-                                    runSpacing: 4,
-                                    spacing: 5.sp,
-                                    children: [
-                                      SizedBox(
-                                        height: 15.sp,
-                                        width: 25.sp,
-                                        child: ElevatedButton(
-                                          onPressed: () {
-                                            CustomDialogWidget.getDialog(
-                                                widget:
-                                                    MessageAlert.deleteAlert(
-                                                        mesage:
-                                                            "Apakah Anda yakin menghapus data ${e.situation} ini ?",
-                                                        onPressed: () {
-                                                          //  === DELETE DATA ==== /
-                                                          context
-                                                              .read<
-                                                                  CpptSbarBangsalBloc>()
-                                                              .add(OnDeleteCPPTBangsalEvent(
-                                                                  noCppt: e
-                                                                      .idCppt));
-
-                                                          Get.back();
-                                                          context
-                                                              .read<
-                                                                  CpptSbarBangsalBloc>()
-                                                              .add(OnGetCpptBangsal(
-                                                                  noReg: singlePasien
-                                                                      .first
-                                                                      .noreg));
-                                                        }));
-                                          },
-                                          style: ElevatedButton.styleFrom(
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          1.sp)),
-                                              backgroundColor:
-                                                  ThemeColor.dangerColor),
-                                          child: const Icon(
-                                            FontAwesomeIcons.trash,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 15.sp,
-                                        width: 25.sp,
-                                        child: ElevatedButton(
-                                          onPressed: () {
-                                            CustomDialogWidget.getDialog(
-                                                color: Colors.transparent,
-                                                widget: OnUpdateCpptSbarWidget(
-                                                    cpptSbarDokterModel: e));
-                                          },
-                                          style: ElevatedButton.styleFrom(
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          1.sp)),
-                                              backgroundColor:
-                                                  ThemeColor.primaryColor),
-                                          child: const Icon(
-                                            FontAwesomeIcons.pencil,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ])
-                            ],
-                          ),
-                        ),
-                      )
-                    ],
-                    if (state.cppt.isEmpty) ...[
-                      Container(
-                        width: Get.width,
-                        height: 150.sp,
-                        margin: EdgeInsets.only(right: 5.sp, left: 5.sp),
-                        child: Card(
-                          elevation: 1.sp,
-                          shape: RoundedRectangleBorder(
-                            side: const BorderSide(color: Colors.black),
-                            borderRadius: BorderRadius.circular(2.sp),
-                          ),
-                          margin: EdgeInsets.only(top: 5.sp),
-                          color: ThemeColor.primaryColor.withOpacity(0.4),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(2.sp)),
-                            padding: EdgeInsets.only(right: 5.sp, left: 5.sp),
-                            child: Center(
-                                child: SizedBox(
-                              height: 100.sp,
-                              width: 100.sp,
-                              child: Lottie.asset(AppConstant.findAnimation,
-                                  height: 20.sp, reverse: true, repeat: true),
-                            )),
-                          ),
-                        ),
-                      )
-                    ],
+                child: AnimateGradient(
+                  primaryColors: [
+                    ThemeColor.primaryColor.withOpacity(0.1),
+                    Colors.blueAccent.withOpacity(0.1),
+                    Colors.white.withOpacity(0.1),
                   ],
+                  secondaryColors: [
+                    ThemeColor.primaryColor.withOpacity(0.1),
+                    Colors.blueAccent.withOpacity(0.1),
+                    Colors.white.withOpacity(0.1),
+                  ],
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                          width: Get.width,
+                          height: 15.sp,
+                          decoration: const BoxDecoration(
+                              color: Colors.lightBlueAccent),
+                          child: Center(
+                              child: Text(
+                                  "Catatan Perkembangan Pasien Terintegrasi CPPT (SBAR)",
+                                  style: blackTextStyle.copyWith(
+                                      fontWeight: FontWeight.bold)))),
+                      Container(
+                        margin: EdgeInsets.only(right: 15.sp, left: 5.sp),
+                        child: Table(
+                          border: TableBorder.all(color: Colors.black),
+                          children: [
+                            TableRow(children: [
+                              TitleWidget.headerTitle(title: "Situation"),
+                              TitleWidget.headerTitle(title: "Background"),
+                              TitleWidget.headerTitle(title: "Asesmen"),
+                              TitleWidget.headerTitle(title: "Recomendation"),
+                              TitleWidget.headerTitle(title: "Instruksi PPA"),
+                              TitleWidget.headerTitle(title: "Action")
+                            ])
+                          ],
+                        ),
+                      ),
+                      if (state.cppt.isNotEmpty) ...[
+                        ...state.cppt.map(
+                          (e) => Container(
+                            width: Get.width,
+                            margin: EdgeInsets.only(right: 15.sp, left: 5.sp),
+                            child: Table(
+                              border: TableBorder.all(color: Colors.black),
+                              children: [
+                                TableRow(children: [
+                                  TitleWidget.contentTitle(title: e.situation),
+                                  TitleWidget.contentTitle(title: e.background),
+                                  TitleWidget.contentTitle(title: e.asesmen),
+                                  TitleWidget.contentTitle(
+                                      title: e.recomendation),
+                                  TitleWidget.contentTitle(
+                                      title: e.instruksiPPA),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 2.sp, vertical: 2.sp),
+                                    child: Wrap(
+                                      crossAxisAlignment:
+                                          WrapCrossAlignment.center,
+                                      alignment: WrapAlignment.center,
+                                      runAlignment: WrapAlignment.center,
+                                      runSpacing: 4,
+                                      spacing: 5.sp,
+                                      children: [
+                                        SizedBox(
+                                          height: 10.sp,
+                                          width: 20.sp,
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              CustomDialogWidget.getDialog(
+                                                  widget:
+                                                      MessageAlert.deleteAlert(
+                                                          mesage:
+                                                              "Apakah Anda yakin menghapus data  ${(e.situation.length > 9) ? e.situation.substring(0, 10) : (e.situation.length > 9) ? e.situation.substring(0, 5) : e.situation}... ini ?... ini ?",
+                                                          onPressed: () {
+                                                            //  === DELETE DATA ==== /
+                                                            context
+                                                                .read<
+                                                                    CpptSbarBangsalBloc>()
+                                                                .add(OnDeleteCPPTBangsalEvent(
+                                                                    noCppt: e
+                                                                        .idCppt));
+
+                                                            Get.back();
+                                                            context
+                                                                .read<
+                                                                    CpptSbarBangsalBloc>()
+                                                                .add(OnGetCpptBangsal(
+                                                                    noReg: singlePasien
+                                                                        .first
+                                                                        .noreg));
+                                                          }));
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            1.sp)),
+                                                backgroundColor:
+                                                    ThemeColor.dangerColor),
+                                            child: Icon(
+                                              FontAwesomeIcons.trash,
+                                              size: 5.sp,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 10.sp,
+                                          width: 20.sp,
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              CustomDialogWidget.getDialog(
+                                                  color: Colors.transparent,
+                                                  widget:
+                                                      OnUpdateCpptSbarWidget(
+                                                          cpptSbarDokterModel:
+                                                              e));
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            1.sp)),
+                                                backgroundColor:
+                                                    ThemeColor.primaryColor),
+                                            child: Icon(
+                                              FontAwesomeIcons.pencil,
+                                              size: 5.sp,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ])
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 50.sp,
+                        )
+                      ],
+                      if (state.cppt.isEmpty) ...[
+                        Container(
+                          width: Get.width,
+                          height: Get.height - 100.sp,
+                          margin: EdgeInsets.only(right: 15.sp, left: 5.sp),
+                          padding: EdgeInsets.only(bottom: 15.sp),
+                          child: Card(
+                            elevation: 1.sp,
+                            shape: RoundedRectangleBorder(
+                              side: const BorderSide(color: Colors.black),
+                              borderRadius: BorderRadius.circular(2.sp),
+                            ),
+                            margin: EdgeInsets.only(top: 5.sp),
+                            color: ThemeColor.primaryColor.withOpacity(0.4),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(2.sp)),
+                              padding: EdgeInsets.only(right: 5.sp, left: 5.sp),
+                              child: Center(
+                                  child: SizedBox(
+                                height: 100.sp,
+                                width: 100.sp,
+                                child: Lottie.asset(AppConstant.findAnimation,
+                                    height: 20.sp, reverse: true, repeat: true),
+                              )),
+                            ),
+                          ),
+                        )
+                      ],
+                    ],
+                  ),
                 ),
               ),
             ));

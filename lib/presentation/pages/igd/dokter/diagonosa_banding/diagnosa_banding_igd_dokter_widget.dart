@@ -1,3 +1,4 @@
+import 'package:animate_gradient/animate_gradient.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -107,94 +108,119 @@ class DiagnosaBandingIGDDokterWidget extends StatelessWidget {
                             color: ThemeColor.whiteColor,
                           ),
                         ),
-                        body: Container(
-                          height: Get.height,
-                          width: Get.width,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(3.sp),
-                              color: ThemeColor.primaryColor.withOpacity(0.2)),
-                          child: Wrap(
-                            alignment: WrapAlignment.center,
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            children: [
-                              (state.diagnosaBandingResponse.diagnosa != " ")
-                                  ? SizedBox(
-                                      height: 90.sp,
-                                      width: 90.sp,
-                                      child: Card(
-                                        color: ThemeColor.primaryColor,
-                                        elevation: 1.sp,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(5.sp)),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                                padding: EdgeInsets.all(5.sp),
-                                                width: Get.width,
-                                                decoration: BoxDecoration(
-                                                    color: Colors.yellow
-                                                        .withOpacity(0.5),
-                                                    borderRadius: BorderRadius
-                                                        .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    2.sp),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    2.sp))),
-                                                child: Text(
-                                                  "Diagnosa Banding",
-                                                  style:
-                                                      blackTextStyle.copyWith(
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                  textAlign: TextAlign.center,
-                                                )),
-                                            Expanded(
-                                              child: Center(
-                                                child: Text(
-                                                  " ${state.diagnosaBandingResponse.diagnosa} - ${state.diagnosaBandingResponse.description}",
-                                                  textAlign: TextAlign.center,
-                                                  style: whiteTextStyle,
+                        body: ClipRRect(
+                          borderRadius: BorderRadius.circular(3.sp),
+                          child: AnimateGradient(
+                            primaryBeginGeometry:
+                                const AlignmentDirectional(0, 1),
+                            primaryEndGeometry:
+                                const AlignmentDirectional(0, 2),
+                            secondaryBeginGeometry:
+                                const AlignmentDirectional(2, 0),
+                            secondaryEndGeometry:
+                                const AlignmentDirectional(0, -0.8),
+                            primaryColors: [
+                              ThemeColor.primaryColor.withOpacity(0.5),
+                              Colors.blueAccent.withOpacity(0.5),
+                              Colors.white,
+                            ],
+                            secondaryColors: [
+                              ThemeColor.primaryColor.withOpacity(0.2),
+                              Colors.blueAccent.withOpacity(0.2),
+                              Colors.white,
+                            ],
+                            child: Container(
+                              height: Get.height,
+                              width: Get.width,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(3.sp),
+                                  color:
+                                      ThemeColor.primaryColor.withOpacity(0.2)),
+                              child: Wrap(
+                                alignment: WrapAlignment.center,
+                                crossAxisAlignment: WrapCrossAlignment.center,
+                                children: [
+                                  (state.diagnosaBandingResponse.diagnosa !=
+                                          " ")
+                                      ? SizedBox(
+                                          height: 90.sp,
+                                          width: 90.sp,
+                                          child: Card(
+                                            color: ThemeColor.primaryColor,
+                                            elevation: 1.sp,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        5.sp)),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                    padding:
+                                                        EdgeInsets.all(5.sp),
+                                                    width: Get.width,
+                                                    decoration: BoxDecoration(
+                                                        color: Colors.yellow
+                                                            .withOpacity(0.5),
+                                                        borderRadius:
+                                                            BorderRadius.only(
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        2.sp),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        2.sp))),
+                                                    child: Text(
+                                                      "Diagnosa Banding",
+                                                      style: blackTextStyle
+                                                          .copyWith(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold),
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                    )),
+                                                Expanded(
+                                                  child: Center(
+                                                    child: Text(
+                                                      " ${state.diagnosaBandingResponse.diagnosa} - ${state.diagnosaBandingResponse.description}",
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: whiteTextStyle,
+                                                    ),
+                                                  ),
                                                 ),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 20.sp,
-                                              width: Get.width,
-                                              child: ElevatedButton(
-                                                  style: ElevatedButton.styleFrom(
-                                                      backgroundColor:
-                                                          ThemeColor
-                                                              .dangerColor,
-                                                      shape:
-                                                          RoundedRectangleBorder(
+                                                SizedBox(
+                                                  height: 20.sp,
+                                                  width: Get.width,
+                                                  child: ElevatedButton(
+                                                      style: ElevatedButton.styleFrom(
+                                                          backgroundColor:
+                                                              ThemeColor
+                                                                  .dangerColor,
+                                                          shape: RoundedRectangleBorder(
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
                                                                           2.sp))),
-                                                  onPressed: () async {
-                                                    if (authState
-                                                        is Authenticated) {
-                                                      dynamic data =
-                                                          await deviceInfo
-                                                              .initPlatformState();
-                                                      // ignore: use_build_context_synchronously
-                                                      context
-                                                          .read<
-                                                              DiagnosaBandingBloc>()
-                                                          .add(OnSaveDiagnosaBandingIGD(
+                                                      onPressed: () async {
+                                                        if (authState
+                                                            is Authenticated) {
+                                                          dynamic data =
+                                                              await deviceInfo
+                                                                  .initPlatformState();
+                                                          // ignore: use_build_context_synchronously
+                                                          context.read<DiagnosaBandingBloc>().add(OnSaveDiagnosaBandingIGD(
                                                               devicesID:
                                                                   "ID - ${data['id']} - ${data['device']}",
                                                               pelayanan: toPelayanan(
-                                                                  poliklinik: authState
-                                                                      .user
-                                                                      .poliklinik),
+                                                                  poliklinik:
+                                                                      authState
+                                                                          .user
+                                                                          .poliklinik),
                                                               noReg:
                                                                   singlePasien
                                                                       .first
@@ -204,37 +230,39 @@ class DiagnosaBandingIGDDokterWidget extends StatelessWidget {
                                                                       .user
                                                                       .person),
                                                               diagnosa: " "));
-                                                    }
-                                                  },
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        "Hapus ",
-                                                        style: blackTextStyle
-                                                            .copyWith(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                      ),
-                                                      const Icon(
-                                                        Icons.delete,
-                                                        color: Colors.black,
-                                                      )
-                                                    ],
-                                                  )),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    )
-                                  : const SizedBox()
-                            ],
+                                                        }
+                                                      },
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Text(
+                                                            "Hapus ",
+                                                            style: whiteTextStyle
+                                                                .copyWith(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold),
+                                                          ),
+                                                          const Icon(
+                                                            Icons.delete,
+                                                            color: Colors.black,
+                                                          )
+                                                        ],
+                                                      )),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        )
+                                      : const SizedBox()
+                                ],
+                              ),
+                            ),
                           ),
                         ),
                       ),

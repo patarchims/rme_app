@@ -36,8 +36,8 @@ class TabbarWithAlertContentWidget extends StatelessWidget {
                   backgroundColor: ThemeColor.bgColor,
                   appBar: AppBar(
                     backgroundColor: ThemeColor.bgColor,
-                    foregroundColor: Colors.black,
-                    surfaceTintColor: Colors.black,
+                    foregroundColor: Colors.red,
+                    surfaceTintColor: Colors.red,
                     flexibleSpace: SafeArea(
                         child: TabBar(
                       labelColor: ThemeColor.primaryColor,
@@ -77,15 +77,15 @@ class TabbarWithAlertContentWidget extends StatelessWidget {
                           animatedTexts: [
                             TypewriterAnimatedText(
                               state.resiko.hasil + state.resiko.tindakan,
-                              textStyle: const TextStyle(
-                                fontSize: 32.0,
+                              textStyle: TextStyle(
+                                fontSize: 12.sp,
                                 fontWeight: FontWeight.bold,
                               ),
-                              speed: const Duration(milliseconds: 2000),
+                              speed: const Duration(milliseconds: 200),
                             ),
                           ],
                           totalRepeatCount: 4,
-                          pause: const Duration(milliseconds: 1000),
+                          pause: const Duration(milliseconds: 100),
                           displayFullTextOnTap: true,
                           stopPauseOnTap: true,
                         ),

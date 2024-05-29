@@ -84,7 +84,6 @@ class _DoubleCheckHightAlertPageWidgetState
                                       title: "PERAWAT VERIFIKASI"),
                                 ]),
                               ])),
-                      //====//
                       (state.listCheck.isEmpty)
                           ? Container(
                               width: Get.width,

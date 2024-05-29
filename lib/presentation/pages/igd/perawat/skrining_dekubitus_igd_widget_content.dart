@@ -100,307 +100,325 @@ class _SkriningDekubitusIGdContentWidgetState
                   controller: _scrollController,
                   trackVisibility: false,
                   radius: Radius.circular(5.sp),
-                  child: SingleChildScrollView(
-                    controller: _scrollController,
-                    child: Card(
-                      color: ThemeColor.bgColor,
-                      shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                              width: 1.sp, color: ThemeColor.blackColor),
-                          borderRadius: BorderRadius.circular(2.sp)),
-                      child: Column(
-                        children: [
-                          // ===================== // [ ==================== ]
-                          TitleWidget.titleContainer(
-                              title: "Skrining Resiko Dikubitus"),
+                  child: Container(
+                    margin: EdgeInsets.only(right: 10.sp),
+                    child: SingleChildScrollView(
+                      controller: _scrollController,
+                      child: Card(
+                        color: ThemeColor.bgColor,
+                        shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                                width: 1.sp, color: ThemeColor.blackColor),
+                            borderRadius: BorderRadius.circular(2.sp)),
+                        child: Column(
+                          children: [
+                            // ===================== // [ ==================== ]
+                            TitleWidget.titleContainer(
+                                title: "Skrining Resiko Dikubitus"),
 
-                          Row(
-                            children: [
-                              Container(
-                                width: Get.width / 3,
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 5.sp, vertical: 5.sp),
-                                child: Wrap(
-                                  runAlignment: WrapAlignment.start,
-                                  runSpacing: 1.sp,
-                                  spacing: 1.sp,
-                                  alignment: WrapAlignment.start,
-                                  children: ListConstants.yaTidak
-                                      .map(
-                                        (e) => TitleWidget.boxChoose(
-                                            width: 80.sp,
-                                            icon: (state.skriningResikoDekubitus
-                                                        .dekubitus1 ==
-                                                    e)
-                                                ? const Icon(
-                                                    FontAwesomeIcons.check,
-                                                    color: Colors.white,
-                                                  )
-                                                : const Icon(
-                                                    FontAwesomeIcons.xmark,
-                                                    color: Colors.white,
-                                                  ),
-                                            backgroundColor: (state
-                                                        .skriningResikoDekubitus
-                                                        .dekubitus1 ==
-                                                    e)
-                                                ? Colors.green
-                                                : ThemeColor.primaryColor,
-                                            onPressed: () {
-                                              context
-                                                  .read<AsesmenIgdBloc>()
-                                                  .add(AsesmenIgdEvent
-                                                      .dekubitusOnchaged1(
-                                                          value: e));
-                                            },
-                                            title: e),
-                                      )
-                                      .toList(),
-                                ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "Apakah Pasien Menggunakan Kursi Roda Atau Membutuhkan Bantuan ?",
-                                  style: blackTextStyle.copyWith(
-                                    fontWeight: FontWeight.bold,
+                            Row(
+                              children: [
+                                Container(
+                                  width: Get.width / 3,
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 5.sp, vertical: 5.sp),
+                                  child: Wrap(
+                                    runAlignment: WrapAlignment.start,
+                                    runSpacing: 1.sp,
+                                    spacing: 1.sp,
+                                    alignment: WrapAlignment.start,
+                                    children: ListConstants.yaTidak
+                                        .map(
+                                          (e) => TitleWidget.boxChoose(
+                                              width: 80.sp,
+                                              icon:
+                                                  (state.skriningResikoDekubitus
+                                                              .dekubitus1 ==
+                                                          e)
+                                                      ? const Icon(
+                                                          FontAwesomeIcons
+                                                              .check,
+                                                          color: Colors.white,
+                                                        )
+                                                      : const Icon(
+                                                          FontAwesomeIcons
+                                                              .xmark,
+                                                          color: Colors.white,
+                                                        ),
+                                              backgroundColor:
+                                                  (state.skriningResikoDekubitus
+                                                              .dekubitus1 ==
+                                                          e)
+                                                      ? Colors.green
+                                                      : ThemeColor.primaryColor,
+                                              onPressed: () {
+                                                context
+                                                    .read<AsesmenIgdBloc>()
+                                                    .add(AsesmenIgdEvent
+                                                        .dekubitusOnchaged1(
+                                                            value: e));
+                                              },
+                                              title: e),
+                                        )
+                                        .toList(),
                                   ),
                                 ),
-                              )
-                            ],
-                          ),
+                                Expanded(
+                                  child: Text(
+                                    "Apakah Pasien Menggunakan Kursi Roda Atau Membutuhkan Bantuan ?",
+                                    style: blackTextStyle.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
 
-                          // ===================== //
-                          const Divider(),
-                          // ===================== //
-                          Row(
-                            children: [
-                              Container(
-                                width: Get.width / 3,
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 5.sp, vertical: 5.sp),
-                                child: Wrap(
-                                  runAlignment: WrapAlignment.start,
-                                  runSpacing: 1.sp,
-                                  spacing: 1.sp,
-                                  alignment: WrapAlignment.start,
-                                  children: ListConstants.yaTidak
-                                      .map(
-                                        (e) => TitleWidget.boxChoose(
-                                            width: 80.sp,
-                                            icon: (state.skriningResikoDekubitus
-                                                        .dekubitus2 ==
-                                                    e)
-                                                ? const Icon(
-                                                    FontAwesomeIcons.check,
-                                                    color: Colors.white,
-                                                  )
-                                                : const Icon(
-                                                    FontAwesomeIcons.xmark,
-                                                    color: Colors.white,
-                                                  ),
-                                            backgroundColor: (state
-                                                        .skriningResikoDekubitus
-                                                        .dekubitus2 ==
-                                                    e)
-                                                ? Colors.green
-                                                : ThemeColor.primaryColor,
-                                            onPressed: () {
-                                              context
-                                                  .read<AsesmenIgdBloc>()
-                                                  .add(AsesmenIgdEvent
-                                                      .dekubitusOnchaged2(
-                                                          value: e));
-                                            },
-                                            title: e),
-                                      )
-                                      .toList(),
-                                ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "Apakah Anda Inkontinensia Uri Atau Alvi?",
-                                  style: blackTextStyle.copyWith(
-                                    fontWeight: FontWeight.bold,
+                            // ===================== //
+                            const Divider(),
+                            // ===================== //
+                            Row(
+                              children: [
+                                Container(
+                                  width: Get.width / 3,
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 5.sp, vertical: 5.sp),
+                                  child: Wrap(
+                                    runAlignment: WrapAlignment.start,
+                                    runSpacing: 1.sp,
+                                    spacing: 1.sp,
+                                    alignment: WrapAlignment.start,
+                                    children: ListConstants.yaTidak
+                                        .map(
+                                          (e) => TitleWidget.boxChoose(
+                                              width: 80.sp,
+                                              icon:
+                                                  (state.skriningResikoDekubitus
+                                                              .dekubitus2 ==
+                                                          e)
+                                                      ? const Icon(
+                                                          FontAwesomeIcons
+                                                              .check,
+                                                          color: Colors.white,
+                                                        )
+                                                      : const Icon(
+                                                          FontAwesomeIcons
+                                                              .xmark,
+                                                          color: Colors.white,
+                                                        ),
+                                              backgroundColor:
+                                                  (state.skriningResikoDekubitus
+                                                              .dekubitus2 ==
+                                                          e)
+                                                      ? Colors.green
+                                                      : ThemeColor.primaryColor,
+                                              onPressed: () {
+                                                context
+                                                    .read<AsesmenIgdBloc>()
+                                                    .add(AsesmenIgdEvent
+                                                        .dekubitusOnchaged2(
+                                                            value: e));
+                                              },
+                                              title: e),
+                                        )
+                                        .toList(),
                                   ),
                                 ),
-                              )
-                            ],
-                          ),
+                                Expanded(
+                                  child: Text(
+                                    "Apakah Anda Inkontinensia Uri Atau Alvi?",
+                                    style: blackTextStyle.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
 
-                          // ===================== //
-                          const Divider(),
-                          // ===================== //
-                          Row(
-                            children: [
-                              Container(
-                                width: Get.width / 3,
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 5.sp, vertical: 5.sp),
-                                child: Wrap(
-                                  runAlignment: WrapAlignment.start,
-                                  runSpacing: 1.sp,
-                                  spacing: 1.sp,
-                                  alignment: WrapAlignment.start,
-                                  children: ListConstants.yaTidak
-                                      .map(
-                                        (e) => TitleWidget.boxChoose(
-                                            width: 80.sp,
-                                            icon: (state.skriningResikoDekubitus
-                                                        .dekubitus3 ==
-                                                    e)
-                                                ? const Icon(
-                                                    FontAwesomeIcons.check,
-                                                    color: Colors.white,
-                                                  )
-                                                : const Icon(
-                                                    FontAwesomeIcons.xmark,
-                                                    color: Colors.white,
-                                                  ),
-                                            backgroundColor: (state
-                                                        .skriningResikoDekubitus
-                                                        .dekubitus3 ==
-                                                    e)
-                                                ? Colors.green
-                                                : ThemeColor.primaryColor,
-                                            onPressed: () {
-                                              context
-                                                  .read<AsesmenIgdBloc>()
-                                                  .add(AsesmenIgdEvent
-                                                      .dekubitusOnchaged3(
-                                                          value: e));
-                                            },
-                                            title: e),
-                                      )
-                                      .toList(),
-                                ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "Apakah Ada Riwayat Dekubitus Atau Luka Dekubitus?",
-                                  style: blackTextStyle.copyWith(
-                                    fontWeight: FontWeight.bold,
+                            // ===================== //
+                            const Divider(),
+                            // ===================== //
+                            Row(
+                              children: [
+                                Container(
+                                  width: Get.width / 3,
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 5.sp, vertical: 5.sp),
+                                  child: Wrap(
+                                    runAlignment: WrapAlignment.start,
+                                    runSpacing: 1.sp,
+                                    spacing: 1.sp,
+                                    alignment: WrapAlignment.start,
+                                    children: ListConstants.yaTidak
+                                        .map(
+                                          (e) => TitleWidget.boxChoose(
+                                              width: 80.sp,
+                                              icon:
+                                                  (state.skriningResikoDekubitus
+                                                              .dekubitus3 ==
+                                                          e)
+                                                      ? const Icon(
+                                                          FontAwesomeIcons
+                                                              .check,
+                                                          color: Colors.white,
+                                                        )
+                                                      : const Icon(
+                                                          FontAwesomeIcons
+                                                              .xmark,
+                                                          color: Colors.white,
+                                                        ),
+                                              backgroundColor:
+                                                  (state.skriningResikoDekubitus
+                                                              .dekubitus3 ==
+                                                          e)
+                                                      ? Colors.green
+                                                      : ThemeColor.primaryColor,
+                                              onPressed: () {
+                                                context
+                                                    .read<AsesmenIgdBloc>()
+                                                    .add(AsesmenIgdEvent
+                                                        .dekubitusOnchaged3(
+                                                            value: e));
+                                              },
+                                              title: e),
+                                        )
+                                        .toList(),
                                   ),
                                 ),
-                              )
-                            ],
-                          ),
+                                Expanded(
+                                  child: Text(
+                                    "Apakah Ada Riwayat Dekubitus Atau Luka Dekubitus?",
+                                    style: blackTextStyle.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
 
-                          // ===================== //
-                          const Divider(),
-                          // ===================== //
-                          Row(
-                            children: [
-                              Container(
-                                width: Get.width / 3,
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 5.sp, vertical: 5.sp),
-                                child: Wrap(
-                                  runAlignment: WrapAlignment.start,
-                                  runSpacing: 1.sp,
-                                  spacing: 1.sp,
-                                  alignment: WrapAlignment.start,
-                                  children: ListConstants.yaTidak
-                                      .map(
-                                        (e) => TitleWidget.boxChoose(
-                                            width: 80.sp,
-                                            icon: (state.skriningResikoDekubitus
-                                                        .dekubitus4 ==
-                                                    e)
-                                                ? const Icon(
-                                                    FontAwesomeIcons.check,
-                                                    color: Colors.white,
-                                                  )
-                                                : const Icon(
-                                                    FontAwesomeIcons.xmark,
-                                                    color: Colors.white,
-                                                  ),
-                                            backgroundColor: (state
-                                                        .skriningResikoDekubitus
-                                                        .dekubitus4 ==
-                                                    e)
-                                                ? Colors.green
-                                                : ThemeColor.primaryColor,
-                                            onPressed: () {
-                                              context
-                                                  .read<AsesmenIgdBloc>()
-                                                  .add(AsesmenIgdEvent
-                                                      .dekubitusOnchaged4(
-                                                          value: e));
-                                            },
-                                            title: e),
-                                      )
-                                      .toList(),
-                                ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "Apakah Pasien Di atas 65 Tahun?",
-                                  style: blackTextStyle.copyWith(
-                                    fontWeight: FontWeight.bold,
+                            // ===================== //
+                            const Divider(),
+                            // ===================== //
+                            Row(
+                              children: [
+                                Container(
+                                  width: Get.width / 3,
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 5.sp, vertical: 5.sp),
+                                  child: Wrap(
+                                    runAlignment: WrapAlignment.start,
+                                    runSpacing: 1.sp,
+                                    spacing: 1.sp,
+                                    alignment: WrapAlignment.start,
+                                    children: ListConstants.yaTidak
+                                        .map(
+                                          (e) => TitleWidget.boxChoose(
+                                              width: 80.sp,
+                                              icon:
+                                                  (state.skriningResikoDekubitus
+                                                              .dekubitus4 ==
+                                                          e)
+                                                      ? const Icon(
+                                                          FontAwesomeIcons
+                                                              .check,
+                                                          color: Colors.white,
+                                                        )
+                                                      : const Icon(
+                                                          FontAwesomeIcons
+                                                              .xmark,
+                                                          color: Colors.white,
+                                                        ),
+                                              backgroundColor:
+                                                  (state.skriningResikoDekubitus
+                                                              .dekubitus4 ==
+                                                          e)
+                                                      ? Colors.green
+                                                      : ThemeColor.primaryColor,
+                                              onPressed: () {
+                                                context
+                                                    .read<AsesmenIgdBloc>()
+                                                    .add(AsesmenIgdEvent
+                                                        .dekubitusOnchaged4(
+                                                            value: e));
+                                              },
+                                              title: e),
+                                        )
+                                        .toList(),
                                   ),
                                 ),
-                              )
-                            ],
-                          ),
+                                Expanded(
+                                  child: Text(
+                                    "Apakah Pasien Di atas 65 Tahun?",
+                                    style: blackTextStyle.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
 
-                          // ===================== //
-                          TitleWidget.titleContainer(title: "Khusus Anak"),
+                            // ===================== //
+                            TitleWidget.titleContainer(title: "Khusus Anak"),
 
-                          Row(
-                            children: [
-                              Container(
-                                width: Get.width / 3,
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 5.sp, vertical: 5.sp),
-                                child: Wrap(
-                                  runAlignment: WrapAlignment.start,
-                                  runSpacing: 1.sp,
-                                  spacing: 1.sp,
-                                  alignment: WrapAlignment.start,
-                                  children: ListConstants.yaTidak
-                                      .map(
-                                        (e) => TitleWidget.boxChoose(
-                                            width: 80.sp,
-                                            icon: (state.skriningResikoDekubitus
-                                                        .dekubitusAnak ==
-                                                    e)
-                                                ? const Icon(
-                                                    FontAwesomeIcons.check,
-                                                    color: Colors.white,
-                                                  )
-                                                : const Icon(
-                                                    FontAwesomeIcons.xmark,
-                                                    color: Colors.white,
-                                                  ),
-                                            backgroundColor: (state
-                                                        .skriningResikoDekubitus
-                                                        .dekubitusAnak ==
-                                                    e)
-                                                ? Colors.green
-                                                : ThemeColor.primaryColor,
-                                            onPressed: () {
-                                              context
-                                                  .read<AsesmenIgdBloc>()
-                                                  .add(AsesmenIgdEvent
-                                                      .dekubitusOnchagedAnak(
-                                                          value: e));
-                                            },
-                                            title: e),
-                                      )
-                                      .toList(),
-                                ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "Apakah Ekstremitas Dan Badan Tidak Sesuai Dengan Usia Perkembangan?",
-                                  style: blackTextStyle.copyWith(
-                                    fontWeight: FontWeight.bold,
+                            Row(
+                              children: [
+                                Container(
+                                  width: Get.width / 3,
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 5.sp, vertical: 5.sp),
+                                  child: Wrap(
+                                    runAlignment: WrapAlignment.start,
+                                    runSpacing: 1.sp,
+                                    spacing: 1.sp,
+                                    alignment: WrapAlignment.start,
+                                    children: ListConstants.yaTidak
+                                        .map(
+                                          (e) => TitleWidget.boxChoose(
+                                              width: 80.sp,
+                                              icon:
+                                                  (state.skriningResikoDekubitus
+                                                              .dekubitusAnak ==
+                                                          e)
+                                                      ? const Icon(
+                                                          FontAwesomeIcons
+                                                              .check,
+                                                          color: Colors.white,
+                                                        )
+                                                      : const Icon(
+                                                          FontAwesomeIcons
+                                                              .xmark,
+                                                          color: Colors.white,
+                                                        ),
+                                              backgroundColor:
+                                                  (state.skriningResikoDekubitus
+                                                              .dekubitusAnak ==
+                                                          e)
+                                                      ? Colors.green
+                                                      : ThemeColor.primaryColor,
+                                              onPressed: () {
+                                                context
+                                                    .read<AsesmenIgdBloc>()
+                                                    .add(AsesmenIgdEvent
+                                                        .dekubitusOnchagedAnak(
+                                                            value: e));
+                                              },
+                                              title: e),
+                                        )
+                                        .toList(),
                                   ),
                                 ),
-                              )
-                            ],
-                          ),
-                        ],
+                                Expanded(
+                                  child: Text(
+                                    "Apakah Ekstremitas Dan Badan Tidak Sesuai Dengan Usia Perkembangan?",
+                                    style: blackTextStyle.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

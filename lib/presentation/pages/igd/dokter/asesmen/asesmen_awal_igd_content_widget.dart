@@ -120,6 +120,8 @@ class _PasienAwalIGDWidgetState extends State<PasienAwalIGDWidget> {
           if (e.key == 2) {
             if (AppConstant.appSetup == AppSetup.methodist) {
               return const PemeriksaanFisikIGDDokterMethodistWidgetPage();
+            } else if (AppConstant.appSetup == AppSetup.rsTiara) {
+              return const PemeriksaanFisikIGDDokterMethodistWidgetPage();
             } else {
               return const PemeriksaanFisikIGDDokterWidget(isENableAdd: true);
             }

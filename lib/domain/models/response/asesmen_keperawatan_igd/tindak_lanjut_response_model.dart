@@ -7,16 +7,16 @@ class TindakLanjutIgdModel {
   String pulang3Detail;
   String caraKeluar;
   String waktu;
-  String? jam;
-  String? menit;
+  String jam;
+  String menit;
 
   TindakLanjutIgdModel(
       {required this.pulang1,
       required this.pulang1Detail,
       required this.pulang2,
       required this.waktu,
-      this.jam,
-      this.menit,
+      required this.jam,
+      required this.menit,
       required this.pulang2Detail,
       required this.pulang3,
       required this.pulang3Detail,
@@ -24,6 +24,8 @@ class TindakLanjutIgdModel {
 
   factory TindakLanjutIgdModel.fromJson(Map<String, dynamic> json) =>
       TindakLanjutIgdModel(
+          jam: json["jam"].toString().substring(0, 2),
+          menit: json["jam"].toString().substring(3, 5),
           waktu: json["jam"].toString(),
           pulang1: json["pulang1"].toString(),
           pulang1Detail: json["pulang1_detail"].toString(),
