@@ -5,7 +5,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hms_app/domain/network/api_failure_handler.dart';
 import 'package:hms_app/domain/network/api_success_handler.dart';
 import 'package:hms_app/domain/services/library_services.dart';
-import 'package:hms_app/presentation/kebidanan/services/kebidanan_service.dart';
 import 'package:hms_app/presentation/pages/bangsal/repository/pengkajian_awal_igd_repository.dart';
 import 'package:hms_app/presentation/pages/bangsal/services/bangsal_services.dart';
 import 'package:hms_app/presentation/pages/igd/services/igd_services.dart';

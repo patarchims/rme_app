@@ -7,15 +7,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hms_app/domain/models/response/list_cppt_pasien_model_response.dart';
 import 'package:hms_app/presentation/component/alert/mesage_alert.dart';
-import 'package:hms_app/presentation/component/color/color_helper.dart';
 import 'package:hms_app/presentation/component/resources/app_constant.dart';
 import 'package:hms_app/presentation/pages/modul/cppt_content_widget/cppt_edit_content_pasien.dart';
-import 'package:hms_app/presentation/pages/modul/cppt_content_widget/on_delete_content_cppt_widget.dart';
-import 'package:hms_app/presentation/pages/widget/animated_gradient_background_widget.dart';
 import 'package:intl/intl.dart';
-import 'package:lottie/lottie.dart';
-import 'package:sizer/sizer.dart';
-
 import 'package:hms_app/domain/bloc/dashboard/cppt/cppt_bloc.dart';
 import 'package:hms_app/domain/bloc/dashboard/pasien/pasien_bloc.dart';
 import 'package:hms_app/domain/bloc/user/auth/auth_bloc.dart';
@@ -25,6 +19,8 @@ import 'package:hms_app/domain/models/users/user_model.dart';
 import 'package:hms_app/presentation/component/component.dart';
 import 'package:hms_app/presentation/component/res/colors.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
+import 'package:lottie/lottie.dart';
+import 'package:sizer/sizer.dart';
 
 class CpptWidgetNoExpandedBangsal extends StatefulWidget {
   final bool isENableAdd;

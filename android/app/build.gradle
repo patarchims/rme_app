@@ -43,9 +43,12 @@ android {
     defaultConfig {
         applicationId "com.example.new_app"
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 34
+        compileSdkVersion 34
+        multiDexEnabled true
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        multiDexEnabled true  
     }
 
     buildTypes {
