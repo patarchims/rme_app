@@ -426,6 +426,27 @@ class _FormSectionState extends State<_FormSection> {
                       },
                     ),
                     const SizedBox(height: 30),
+                    // WonsButton(
+                    //   height: 25.sp,
+                    //   width: Get.width,
+                    //   verticalPadding: 0,
+                    //   color: AppColors.darkGrey,
+                    //   child: Text(
+                    //     "Log Out",
+                    //     style: whiteTextStyle,
+                    //   ),
+                    //   onPressed: () {
+                    //     Alert.logOut(onTap: () {
+                    //       context
+                    //           .read<AuthBloc>()
+                    //           .add(const AuthEvent.signOut());
+
+                    //       context.read<AppBloc>().add(const AppEvent.started());
+
+                    //       Get.offNamed(GetRoutes.login);
+                    //     });
+                    //   },
+                    // ),
                   ],
                 ),
               ),

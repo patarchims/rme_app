@@ -2245,7 +2245,6 @@ class _PengkajianPersistemPageWidgetState
                       validator: (x) {
                         return null;
                       },
-                      // CONTROLLER
                       controller: _spikologisController
                         ..text =
                             state.pengkajianKeperawatanPesistemModel.spikologis,
@@ -2262,7 +2261,7 @@ class _PengkajianPersistemPageWidgetState
                         ),
                       ),
                     ),
-                    title: "Spikologis",
+                    title: "Psikologis",
                   ),
 
                   const Divider(),
@@ -2746,6 +2745,11 @@ List<String> kenyamanan = [
 List<String> statusMental = [
   "Orientasi",
   "Agitasi",
+  "Menyerang",
+  "Tak Ada Response",
+  "Letargi",
+  "Kooperatif",
+  "Disorientasi"
 ];
 List<String> pAPSSMER = [
   "Tidak",
@@ -2764,7 +2768,7 @@ List<String> bahasaSehariHari = [
 ];
 List<String> perluPenerjemah = ["Tidak", "Ya", "Bahasa"];
 List<String> spikologis = [
-  "Stabil/Tenan",
+  "Stabil/Tenang",
   "Cemas/Takut",
   "Marah",
   "Sedih",

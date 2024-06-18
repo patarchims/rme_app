@@ -19,6 +19,9 @@ class AntreanPasienModel extends Equatable {
   final String jenisKelamin;
   final String tglLahir;
   final String kdKelas;
+  final String kelas;
+  final String kasur;
+  final String kamar;
   final String umur;
   final String kdDokter;
   const AntreanPasienModel({
@@ -42,10 +45,15 @@ class AntreanPasienModel extends Equatable {
     required this.kdKelas,
     required this.umur,
     required this.kdDokter,
+    required this.kelas,
+    required this.kasur,
+    required this.kamar,
   });
 
   factory AntreanPasienModel.fromMap(Map<String, dynamic> json) =>
       AntreanPasienModel(
+        kamar: json["kamar"].toString(),
+        kasur: json["kasur"].toString(),
         usia: json["usia"] as int,
         kdBagian: json["kd_bagian"].toString(),
         tglLahir: json["tglLahir"].toString(),
@@ -64,6 +72,7 @@ class AntreanPasienModel extends Equatable {
         pelayanan: json["pelayanan"],
         namaDokter: json["namaDokter"],
         kdKelas: json["kdKelas"],
+        kelas: json["kelas"].toString(),
         umur: json["umur"],
         kdDokter: json["kdDokter"],
       );

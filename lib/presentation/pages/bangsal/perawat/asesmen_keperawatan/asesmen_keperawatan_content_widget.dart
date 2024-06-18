@@ -17,6 +17,7 @@ import 'package:hms_app/presentation/pages/bangsal/perawat/pengkajian_nutrisi_ke
 import 'package:hms_app/presentation/pages/bangsal/perawat/pengkajian_persistem_keperawatan/pengkajian_persistem_page_widget.dart';
 import 'package:hms_app/presentation/pages/bangsal/perawat/resiko_jatuh/resiko_jatuh_keperawatan_widget.dart';
 import 'package:hms_app/presentation/pages/igd/bloc/pemeriksaan_fisik_igd/pemeriksaan_fisik_igd_bloc.dart';
+import 'package:hms_app/presentation/pages/igd/dokter/pemeriksaan_fisik/pemeriksaan_fisik_igd_dokter_methodis_widget.dart';
 
 class AsesmenKeperawatanWidget extends StatelessWidget {
   const AsesmenKeperawatanWidget({super.key});
@@ -65,6 +66,11 @@ class AsesmenKeperawatanWidget extends StatelessWidget {
           if (index == 4) {
             if (authState is Authenticated) {
               context.read<PemeriksaanFisikIgdBloc>().add(
+                  OnGetPemeriksaanFisikMethodist(
+                      noReg: singlePasien.first.noreg,
+                      person: toPerson(person: authState.user.person)));
+
+              context.read<PemeriksaanFisikIgdBloc>().add(
                   OnGetPemeriksaanFisikBangsalEvent(
                       person: toPerson(person: authState.user.person),
                       noReg: singlePasien.first.noreg));
@@ -98,7 +104,9 @@ class AsesmenKeperawatanWidget extends StatelessWidget {
             return const PengkajianFungsionalKeperawatanWidget();
           }
           if (e.value == "Pemeriksaan\nFisik") {
-            return const PemeriksaanFisikKeperawatanWidgetPage();
+            // =========== UBAH PEMERIKSAAN FISIK
+            return const PemeriksaanFisikIGDDokterMethodistWidgetPage();
+            // return const PemeriksaanFisikKeperawatanWidgetPage();
           }
 
           if (e.key == 5) {

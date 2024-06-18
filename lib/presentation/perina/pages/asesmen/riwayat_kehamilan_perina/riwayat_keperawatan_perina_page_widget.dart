@@ -325,7 +325,7 @@ class _RiwayatKeperawatanPerinaPageWidgetState
                 context.read<AsesmenBayiBloc>().add(
                     OnSaveDataAsesmenKeperawatanBayiEvent(
                         kdDPJP: singlePasien.first.kdDokter,
-                        devicesID: "ID - ${data['id']} - ${data['device']}",
+                        devicesID: "ID-${data['id']}-${data['device']}",
                         pelayanan:
                             toPelayanan(poliklinik: authState.user.poliklinik),
                         person: toPerson(person: authState.user.person),

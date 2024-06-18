@@ -208,8 +208,10 @@ String toPelayanan({required Poliklinik poliklinik}) {
       return "ranap";
     case Poliklinik.ponek:
       return "ranap";
-    default:
+    case Poliklinik.penMedik:
       return "rajal";
+    default:
+      return "ranap";
   }
 }
 

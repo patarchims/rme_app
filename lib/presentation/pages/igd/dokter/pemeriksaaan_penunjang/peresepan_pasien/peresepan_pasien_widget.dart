@@ -9,8 +9,10 @@ import 'package:hms_app/domain/bloc/dashboard/pasien/pasien_bloc.dart';
 import 'package:hms_app/domain/bloc/user/auth/auth_bloc.dart';
 import 'package:hms_app/domain/models/devices_info/device_info_model.dart';
 import 'package:hms_app/domain/models/meta/meta_model.dart';
+import 'package:hms_app/domain/models/users/user_model.dart';
 import 'package:hms_app/presentation/component/alert/mesage_alert.dart';
 import 'package:hms_app/presentation/component/component.dart';
+import 'package:hms_app/presentation/component/resources/app_config.dart';
 import 'package:hms_app/presentation/component/resources/app_constant.dart';
 import 'package:hms_app/presentation/pages/igd/bloc/resep/resep_bloc.dart';
 import 'package:hms_app/presentation/pages/igd/dokter/pemeriksaaan_penunjang/peresepan_pasien/tambah_resep_obat_widget.dart';
@@ -102,15 +104,23 @@ class _PeresepanPasienWidgetState extends State<PeresepanPasienWidget> {
                 dynamic data = await deviceInfo.initPlatformState();
                 if (authState is Authenticated) {
                   // ignore: use_build_context_synchronously
-                  context.read<ResepBloc>().add(OnSaveResepObatEvent(
-                      namaPasien: singlePasien.first.namaPasien,
-                      noReg: singlePasien.first.noreg,
-                      noRM: singlePasien.first.mrn,
-                      catatan: state.informasiResep,
-                      keterangan: state.informasiResep,
-                      deviceID: "ID-${data['id']}-${data['device']}",
-                      namaUser: authState.user.nama,
-                      selectionResep: state.ktaripObatSelection));
+                  context.read<ResepBloc>().add(OnSaveResepObatEventV2(
+                        kamar: singlePasien.first.bagian,
+                        kasur: singlePasien.first.kasur,
+                        kelas: singlePasien.first.kdKelas,
+                        namaApotik:
+                            SetApp.namaApotik(appSetup: AppConstant.appSetup),
+                        pelayanan:
+                            toPelayanan(poliklinik: authState.user.poliklinik),
+                        namaPasien: singlePasien.first.namaPasien,
+                        noReg: singlePasien.first.noreg,
+                        noRM: singlePasien.first.mrn,
+                        catatan: state.informasiResep,
+                        keterangan: state.informasiResep,
+                        deviceID: "ID-${data['id']}-${data['device']}",
+                        namaUser: authState.user.nama,
+                        selectionResep: state.ktaripObatSelection,
+                      ));
                 }
               }
             },
@@ -178,8 +188,10 @@ class _PeresepanPasienWidgetState extends State<PeresepanPasienWidget> {
                     Container(
                       height: 135.sp,
                       width: Get.width,
-                      // decoration: BoxDecoration(
-                      //     color: ThemeColor.primaryColor.withOpacity(0.2)),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(2.sp),
+                        color: ThemeColor.primaryColor.withOpacity(0.2),
+                      ),
                       margin: EdgeInsets.symmetric(horizontal: 5.sp),
                       child: Card(
                         color: ThemeColor.whiteColor,

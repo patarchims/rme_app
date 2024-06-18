@@ -142,7 +142,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                       }).toList())),
               Container(
                 color: ThemeColor.bgColor,
-                height: Get.height / 1.8,
+                height: Get.height / 1.9,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -846,7 +846,10 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5.sp)),
+                        side:
+                            BorderSide(width: 1.sp, color: ThemeColor.bgColor),
+                        borderRadius: BorderRadius.circular(5.sp),
+                      ),
                       backgroundColor: ThemeColor.primaryColor),
                   onPressed: () async {
                     dynamic data = await deviceInfo.initPlatformState();
@@ -885,9 +888,12 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                               person: toPerson(person: authState.user.person)));
                     }
                   },
-                  child: Text(
-                    "SIMPAN",
-                    style: whiteTextStyle,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "SIMPAN",
+                      style: whiteTextStyle,
+                    ),
                   ),
                 ),
               ))

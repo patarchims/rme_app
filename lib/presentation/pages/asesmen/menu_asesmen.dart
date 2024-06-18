@@ -690,6 +690,7 @@ class MenuAsesmen {
               OnGetCatatanKeperawatanEvent(noReg: singlePasien.first.noreg));
           return const CpptContentWidgetPage();
         }
+
         if (MenuAsesmen.medis(poliklinik: poliklinik, person: person)[1] ==
             menu) {
           context.read<AsesmenBayiBloc>().add(OnGetAsesmenKeperawatanBayi(
@@ -730,8 +731,6 @@ class MenuAsesmen {
             menu) {
           return const EdukasiTerintegrasiPageWidget();
         }
-
-        // ANALISA DATA
 
         if (MenuAsesmen.medis(poliklinik: poliklinik, person: person)[6] ==
             menu) {
@@ -1003,7 +1002,6 @@ class MenuAsesmen {
 
           if (MenuAsesmen.laporan(poliklinik: poliklinik, person: person)[1] ==
               menu) {
-            // return const CpptContentWidgetPage();
             context.read<HasilPenunjangBloc>().add(
                 HasilPenunjangEvent.getHasilLaborOldDB(
                     noReg: singlePasien.first.noreg));
@@ -1618,7 +1616,6 @@ class MenuAsesmen {
             return const IntervensiRisikoJatuhContentWidget();
           }
 
-          //===//
           if (MenuAsesmen.medis(poliklinik: poliklinik, person: person)[2] ==
               menu) {
             context.read<AlergiBloc>().add(OnGetAlergiObatEvent(
@@ -1703,6 +1700,7 @@ class MenuAsesmen {
                   noReg: singlePasien.first.noreg));
           return HasilPenunjangOldDBWidgetContent(menu: hasilPenunjangMedik);
         }
+
         if (MenuAsesmen.laporan(poliklinik: poliklinik, person: person)[1] ==
             menu) {
           return const ReportViewKeperawatanPerinaPageWidget();

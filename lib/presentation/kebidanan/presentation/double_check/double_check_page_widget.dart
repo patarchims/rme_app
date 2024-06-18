@@ -143,7 +143,6 @@ class _DoubleCheckHightAlertPageWidgetState
                                                   backgroundColor:
                                                       ThemeColor.primaryColor),
                                               onPressed: () {
-                                                // TODO : VERIFIKASI DATA
                                                 CustomDialogWidget.getDialog(
                                                   widget: SizedBox(
                                                       height:

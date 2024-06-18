@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -48,27 +46,32 @@ class _SplashScreenState extends State<SplashScreenPage>
     return BlocListener<AppBloc, AppState>(
       listener: (context, state) {
         state.maybeMap(
+          diconectToServer: (e) {
+            Future.delayed(const Duration(seconds: 3), () {
+              Get.toNamed(GetRoutes.login);
+            });
+          },
+          noConnection: (e) {
+            Future.delayed(const Duration(seconds: 3), () {
+              Get.toNamed(GetRoutes.login);
+            });
+          },
           orElse: () {
-            log("OR ELSE");
             Future.delayed(const Duration(seconds: 3), () {
               Get.toNamed(GetRoutes.disconectScreen);
             });
           },
           badResponse: (e) {
-            log("BAD RESPONSE");
             Future.delayed(const Duration(seconds: 3), () {
               Get.toNamed(GetRoutes.disconectScreen);
             });
           },
           connectionTimeOut: (e) {
-            log("CONNECTION TIME OUT");
-            // TAMPILKAN CONNECTION TIME OUT
             Future.delayed(const Duration(seconds: 3), () {
               Get.toNamed(GetRoutes.disconectScreen);
             });
           },
           failure: (e) {
-            log("FAILURE ${e.toString()}");
             Future.delayed(const Duration(seconds: 3), () {
               Get.toNamed(GetRoutes.login);
             });
@@ -80,27 +83,20 @@ class _SplashScreenState extends State<SplashScreenPage>
           },
           runMainPage: (e) {
             context.read<AuthBloc>().add(AuthEvent.addUser(userModel: e.user));
-            // GOTO DASHBOARD
             Future.delayed(const Duration(seconds: 3), () {
               Get.toNamed(GetRoutes.homePage);
             });
           },
           updateNow: (e) async {
-            // GOTO UPATE NOW
             Future.delayed(const Duration(seconds: 3), () {});
           },
           runOnBoarding: (e) {
-            // GO TO UPDATE NOW PAGE
             Future.delayed(const Duration(seconds: 3), () {
-              // todo go to oNBOARDING PAGE
-              // Get.toNamed(GetRoutes.login);
               Get.toNamed(GetRoutes.onBoardingPage);
             });
           },
           noToken: (e) {
-            log("NO TOKEN USER");
             Future.delayed(const Duration(seconds: 3), () {
-              // tODO GO TO LOGIN PAGE
               Get.toNamed(GetRoutes.login);
             });
           },

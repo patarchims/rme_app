@@ -148,7 +148,7 @@ class TandaVitalDanGannguanPerilakuWidgetContent extends StatelessWidget {
                                             .add(OnChangedE(
                                                 value: eValue.toString()));
                                       },
-                                      items: ListConstants.gcs
+                                      items: ListConstants.gcsE
                                           .map<DropdownMenuItem<String>>(
                                               (String value) =>
                                                   DropdownMenuItem<String>(
@@ -199,7 +199,7 @@ class TandaVitalDanGannguanPerilakuWidgetContent extends StatelessWidget {
                                             .add(OnChangedV(
                                                 value: mValue.toString()));
                                       },
-                                      items: ListConstants.gcs
+                                      items: ListConstants.gcsV
                                           .map<DropdownMenuItem<String>>(
                                               (String value) =>
                                                   DropdownMenuItem<String>(
@@ -250,7 +250,7 @@ class TandaVitalDanGannguanPerilakuWidgetContent extends StatelessWidget {
                                             .add(OnChangedM(
                                                 value: mValue.toString()));
                                       },
-                                      items: ListConstants.gcs
+                                      items: ListConstants.gcsM
                                           .map<DropdownMenuItem<String>>(
                                               (String value) =>
                                                   DropdownMenuItem<String>(
@@ -289,7 +289,7 @@ class TandaVitalDanGannguanPerilakuWidgetContent extends StatelessWidget {
                               ),
                               formBox(
                                 title: "Nadi",
-                                subTitle: "x/mnt",
+                                subTitle: "x/menit",
                                 value: state.tandaVitalIgdDokter.nadi,
                                 onChanged: (value) {
                                   context

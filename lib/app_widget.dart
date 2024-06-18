@@ -91,6 +91,11 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+            create: (_) => getIt<AppBloc>()..add(const AppEvent.started())),
+        BlocProvider(
+            create: (_) => getIt<AsesmenKeperawatanBidanBloc>()
+              ..add(const AsesmenKeperawatanBidanEvent.started())),
         BlocProvider(create: (_) => ResepBloc()..add(OnGetResepObatEvent())),
         BlocProvider(
             create: (_) => ReportPengkajianKebidananAwalKebidananBloc()),
@@ -142,9 +147,6 @@ class App extends StatelessWidget {
         BlocProvider(create: (_) => getIt<ThemeBloc>()),
         BlocProvider(create: (_) => DeskripsiLuaranSlkiBloc()),
         BlocProvider(create: (_) => ReportBloc()),
-        BlocProvider(
-            create: (_) => getIt<AsesmenKeperawatanBidanBloc>()
-              ..add(const AsesmenKeperawatanBidanEvent.started())),
         BlocProvider(create: (_) => getIt<SignInFormBloc>()),
         BlocProvider(
             create: (_) => getIt<ReassesmenResikoJatuhBloc>()
@@ -184,8 +186,6 @@ class App extends StatelessWidget {
         BlocProvider(
             create: (_) =>
                 getIt<PasienBloc>()..add(const PasienEvent.getKVitalSign())),
-        BlocProvider(
-            create: (_) => getIt<AppBloc>()..add(const AppEvent.started())),
         BlocProvider(create: (_) => getIt<ContentManagerBloc>()),
         BlocProvider(
             create: (_) => getIt<CreateUserBloc>()
@@ -216,6 +216,7 @@ class App extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'HOSPITAL MANAGEMENT SYSTEM',
             darkTheme: Themes.dark,
+            // initialRoute: GetRoutes.login,
             initialRoute: GetRoutes.root,
             getPages: GetRoutes.getPages,
           );

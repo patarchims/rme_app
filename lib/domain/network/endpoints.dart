@@ -153,6 +153,7 @@ abstract class EndPoint {
       '/v1/pemeriksaan-fisik-dokter-igd-methodist';
   static String pemeriksaanFisikBangsal = '/v1/pemeriksaan-fisik-bangsal';
   static String resepObat = '/v1/resep-obat';
+  static String resepObatV2 = '/v2/resep-obat';
   static String pengkajianPersistemKeperawatan =
       '/v1/pengkajian-persistem-keperawatan';
   static String tandaVitalIGDDokter = '/v1/tanda-vital-igd-dokter';

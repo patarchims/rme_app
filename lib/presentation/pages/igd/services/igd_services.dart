@@ -61,6 +61,41 @@ class IGDServices {
     );
   }
 
+  Future<Either<ApiFailureResult, ApiSuccessResult>> onSaveResepObatV2({
+    required String noReg,
+    required String namaPasien,
+    required String noRM,
+    required String catatan,
+    required String keterangan,
+    required String deviceID,
+    required String namaUser,
+    required List<KTaripObatModel> selectionResep,
+    required String pelayanan,
+    required String namaApotik,
+    required String kamar,
+    required String kasur,
+    required String kelas,
+  }) async {
+    return MyDio().postDataWithToken(
+      endPoint: EndPoint.resepObatV2,
+      data: DTO.onSaveResepObatV2(
+        kamar: kamar,
+        kasur: kasur,
+        kelas: kelas,
+        namaApotik: namaApotik,
+        pelayanan: pelayanan,
+        catatan: catatan,
+        deviceID: deviceID,
+        keterangan: keterangan,
+        namaUser: namaUser,
+        namaPasien: namaPasien,
+        noRM: noRM,
+        noReg: noReg,
+        selectionResep: selectionResep,
+      ),
+    );
+  }
+
   Future<Either<ApiFailureResult, ApiSuccessResult>> onSaveResepObat({
     required String noReg,
     required String namaPasien,

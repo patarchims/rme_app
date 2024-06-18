@@ -29,6 +29,9 @@ class _LoadingPasienContentState extends State<LoadingPasienContent> {
       employeeData: List.generate(
         10,
         (index) => const AntreanPasienModel(
+            kamar: "",
+            kasur: "",
+            kelas: "",
             umur: "",
             kdKelas: "",
             usia: 0,

@@ -101,7 +101,7 @@ abstract class ListConstants {
     "23",
     "24",
   ];
-  static const List<String> gcs = [
+  static const List<String> gcsM = [
     "0",
     "1",
     "2",
@@ -110,6 +110,17 @@ abstract class ListConstants {
     "5",
     "6",
   ];
+
+  static const List<String> gcsE = [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+  ];
+
+  static const List<String> gcsV = ["0", "1", "2", "3", "4", "5"];
+
   static const List<String> kesadaranManusia = [
     "",
     "Composmentis",

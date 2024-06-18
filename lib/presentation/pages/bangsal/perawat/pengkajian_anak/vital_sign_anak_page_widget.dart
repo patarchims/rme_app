@@ -146,7 +146,7 @@ class _VitalSignAnakPageWidgetState extends State<VitalSignAnakPageWidget> {
                                     context.read<TandaVitalIgdDokterBloc>().add(
                                         OnChangedE(value: eValue.toString()));
                                   },
-                                  items: ListConstants.gcs
+                                  items: ListConstants.gcsE
                                       .map<DropdownMenuItem<String>>(
                                           (String value) =>
                                               DropdownMenuItem<String>(
@@ -193,7 +193,7 @@ class _VitalSignAnakPageWidgetState extends State<VitalSignAnakPageWidget> {
                                     context.read<TandaVitalIgdDokterBloc>().add(
                                         OnChangedV(value: mValue.toString()));
                                   },
-                                  items: ListConstants.gcs
+                                  items: ListConstants.gcsV
                                       .map<DropdownMenuItem<String>>(
                                           (String value) =>
                                               DropdownMenuItem<String>(
@@ -240,7 +240,7 @@ class _VitalSignAnakPageWidgetState extends State<VitalSignAnakPageWidget> {
                                     context.read<TandaVitalIgdDokterBloc>().add(
                                         OnChangedM(value: mValue.toString()));
                                   },
-                                  items: ListConstants.gcs
+                                  items: ListConstants.gcsM
                                       .map<DropdownMenuItem<String>>(
                                           (String value) =>
                                               DropdownMenuItem<String>(

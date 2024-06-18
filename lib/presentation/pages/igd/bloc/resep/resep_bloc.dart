@@ -18,6 +18,7 @@ class ResepBloc extends Bloc<ResepEvent, ResepState> {
     on<OnDeleteResepObatEvent>(_onDeleteResepObat);
     on<OnSaveResepObatEvent>(_onSaveResepObat);
     on<OnChangeInformasiResepEvent>(_onChangeInformasiResep);
+    on<OnSaveResepObatEventV2>(_onSaveResepObatV2);
   }
 
   Future<void> _onGetKapersediaanObat(
@@ -59,6 +60,56 @@ class ResepBloc extends Bloc<ResepEvent, ResepState> {
         ktaripObat: state.ktaripObat,
         informasiResep: event.value,
         ktaripObatSelection: state.ktaripObatSelection));
+  }
+
+  Future<void> _onSaveResepObatV2(
+    OnSaveResepObatEventV2 event,
+    Emitter<ResepState> emit,
+  ) async {
+    //====//
+    emit(state.copyWith(
+        status: ResepStatus.isLoadingSaveResep,
+        ktaripObat: state.ktaripObat,
+        ktaripObatSelection: state.ktaripObatSelection));
+
+    try {
+      final data = await igdServices.onSaveResepObatV2(
+        kasur: event.kasur,
+        kelas: event.kelas,
+        kamar: event.kamar,
+        namaApotik: event.namaApotik,
+        pelayanan: event.pelayanan,
+        namaPasien: event.namaPasien,
+        catatan: event.catatan,
+        deviceID: event.deviceID,
+        keterangan: event.keterangan,
+        namaUser: event.namaUser,
+        noRM: event.noRM,
+        noReg: event.noReg,
+        selectionResep: event.selectionResep,
+      );
+
+      emit(state.copyWith(
+          status: ResepStatus.loadedSaveResep,
+          saveResultResepFailure: optionOf(data),
+          informasiResep: "",
+          ktaripObat: state.ktaripObat,
+          ktaripObatSelection: []));
+
+      emit(state.copyWith(
+          status: ResepStatus.loadedSaveResep,
+          informasiResep: "",
+          saveResultResepFailure: none(),
+          ktaripObat: state.ktaripObat,
+          ktaripObatSelection: []));
+
+      //==
+    } catch (e) {
+      emit(state.copyWith(
+          status: ResepStatus.loaded,
+          ktaripObat: state.ktaripObat,
+          ktaripObatSelection: []));
+    }
   }
 
   Future<void> _onSaveResepObat(

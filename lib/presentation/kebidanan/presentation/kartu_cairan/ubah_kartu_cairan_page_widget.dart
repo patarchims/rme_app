@@ -84,9 +84,7 @@ class _UbahKartuCairanPageWidgetState extends State<UbahKartuCairanPageWidget> {
     //     .where((element) => element.mrn == pasienState.normSelected);
 
     return BlocConsumer<KartuObservasiBloc, KartuObservasiState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         return HeaderContentWidget(
           backgroundColor: ThemeColor.bgColor,

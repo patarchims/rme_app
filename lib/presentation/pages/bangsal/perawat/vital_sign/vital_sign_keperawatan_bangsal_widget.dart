@@ -143,13 +143,8 @@ class _VitalSignKeperawatanBangsalWidgetState
                                             .read<TandaVitalKeperawatanBloc>()
                                             .add(OnChangedE(
                                                 value: eValue.toString()));
-
-                                        // context
-                                        //     .read<TandaVitalIgdDokterBloc>()
-                                        //     .add(OnChangedE(
-                                        //         value: eValue.toString()));
                                       },
-                                      items: ListConstants.gcs
+                                      items: ListConstants.gcsE
                                           .map<DropdownMenuItem<String>>(
                                               (String value) =>
                                                   DropdownMenuItem<String>(
@@ -196,17 +191,12 @@ class _VitalSignKeperawatanBangsalWidgetState
                                       value:
                                           state.vitalSignKeperawatanModel.gcsV,
                                       onChanged: (mValue) {
-                                        // context
-                                        //     .read<TandaVitalIgdDokterBloc>()
-                                        //     .add(OnChangedV(
-                                        //         value: mValue.toString()));
-
                                         context
                                             .read<TandaVitalKeperawatanBloc>()
                                             .add(OnChangedV(
                                                 value: mValue.toString()));
                                       },
-                                      items: ListConstants.gcs
+                                      items: ListConstants.gcsV
                                           .map<DropdownMenuItem<String>>(
                                               (String value) =>
                                                   DropdownMenuItem<String>(
@@ -257,12 +247,8 @@ class _VitalSignKeperawatanBangsalWidgetState
                                             .read<TandaVitalKeperawatanBloc>()
                                             .add(OnChangedM(
                                                 value: mValue.toString()));
-                                        // context
-                                        //     .read<TandaVitalIgdDokterBloc>()
-                                        //     .add(OnChangedM(
-                                        //         value: mValue.toString()));
                                       },
-                                      items: ListConstants.gcs
+                                      items: ListConstants.gcsM
                                           .map<DropdownMenuItem<String>>(
                                               (String value) =>
                                                   DropdownMenuItem<String>(
@@ -335,7 +321,7 @@ class _VitalSignKeperawatanBangsalWidgetState
                               children: [
                                 TitleWidget.formBox(
                                     title: "Nadi",
-                                    subTitle: "x/i",
+                                    subTitle: "x/menit",
                                     value: state.vitalSignKeperawatanModel.nadi,
                                     onChanged: (e) {
                                       context

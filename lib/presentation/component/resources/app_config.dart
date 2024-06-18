@@ -5,6 +5,7 @@ class AppConfigVitaInsani {
   static String logo = "assets/images/vita_logo.png";
   static String appLogo = "assets/images/app_logo.png";
   static String qrCode = "assets/images/qrcode_vita.png";
+  static String apotik = "Farmasi RS Vita Insani";
 }
 
 class AppConfigMethodist {
@@ -14,6 +15,7 @@ class AppConfigMethodist {
   static String logo = "assets/images/methodis_logo_satu.png";
   static String appLogo = "assets/images/methodist_logo.png";
   static String qrCode = "assets/images/qrcode_methodist.png";
+  static String apotik = "Farmasi RS Methodist";
 }
 
 class AppConfigBatuRaja {
@@ -23,6 +25,7 @@ class AppConfigBatuRaja {
   static String logo = "assets/images/logo_baturaja.png";
   static String appLogo = "assets/images/baturaja_logo.png";
   static String qrCode = "assets/images/qrcode_baturaja.png";
+  static String apotik = "Farmasi RS Batu Raja";
 }
 
 class AppConfigVincentCore {
@@ -32,6 +35,7 @@ class AppConfigVincentCore {
   static String logo = "assets/images/vincent_logo.png";
   static String appLogo = "assets/images/vincent_logo.png";
   static String qrCode = "assets/images/qrcode_center.png";
+  static String apotik = "Farmasi RS Vincent Core";
 }
 
 class AppConfigHarapan {
@@ -41,6 +45,7 @@ class AppConfigHarapan {
   static String logo = "assets/images/harapan_logo.png";
   static String appLogo = "assets/images/app_logo_dua.png";
   static String qrCode = "assets/images/qrcode_center.png";
+  static String apotik = "Farmasi RS Harapan";
 }
 
 class AppConfigTiara {
@@ -51,6 +56,7 @@ class AppConfigTiara {
   static String appLogo = "assets/images/app_logo_tiara.png";
   static String qrCode = "assets/images/qrcode_tiara.png";
   static String dotLogo = "assets/images/dot_logo.png";
+  static String apotik = "Farmasi RS Tiara";
 }
 
 // ==== //
@@ -64,6 +70,23 @@ enum AppSetup {
 }
 
 class SetApp {
+  static String namaApotik({required AppSetup appSetup}) {
+    switch (appSetup) {
+      case AppSetup.rsHarapan:
+        return AppConfigHarapan.apotik;
+      case AppSetup.vincentCore:
+        return AppConfigVincentCore.apotik;
+      case AppSetup.methodist:
+        return AppConfigMethodist.apotik;
+      case AppSetup.batuRaja:
+        return AppConfigBatuRaja.apotik;
+      case AppSetup.rsTiara:
+        return AppConfigTiara.apotik;
+      default:
+        return AppConfigVitaInsani.apotik;
+    }
+  }
+
   static String appLogo({required AppSetup appSetup}) {
     switch (appSetup) {
       case AppSetup.rsHarapan:

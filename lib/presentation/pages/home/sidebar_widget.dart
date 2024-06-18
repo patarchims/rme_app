@@ -27,7 +27,7 @@ class SidebarWidget extends StatelessWidget {
     // AuthState authState = context.watch<AuthBloc>().state;
     return Container(
       height: Get.height,
-      width: 90.sp,
+      width: 75.sp,
       margin: EdgeInsets.all(4.sp),
       decoration: BoxDecoration(
         boxShadow: [

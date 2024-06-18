@@ -2201,6 +2201,41 @@ abstract class DTO {
     };
   }
 
+  static Map<String, dynamic> onSaveResepObatV2({
+    required String noReg,
+    required String noRM,
+    required String catatan,
+    required String keterangan,
+    required String deviceID,
+    required String namaUser,
+    required String namaPasien,
+    required List<KTaripObatModel> selectionResep,
+    required String pelayanan,
+    required String namaApotik,
+    required String kamar,
+    required String kelas,
+    required String kasur,
+  }) {
+    List<Map<String, dynamic>> list =
+        selectionResep.map((model) => model.toJson()).toList();
+
+    return {
+      "noreg": noReg,
+      "no_rm": noRM,
+      "kamar": kamar,
+      "kasur": kasur,
+      "kelas": kelas,
+      "catatan": catatan,
+      "keterangan": keterangan,
+      "device_id": deviceID,
+      "nama_user": namaUser,
+      "nama_pasien": namaPasien,
+      "resep": list,
+      "pelayanan": pelayanan,
+      "nama_apotik": namaApotik
+    };
+  }
+
   static Map<String, dynamic> onSaveResepObat({
     required String noReg,
     required String noRM,

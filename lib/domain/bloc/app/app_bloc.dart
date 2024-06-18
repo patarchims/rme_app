@@ -28,26 +28,21 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     await event.maybeMap(
         orElse: () {},
         started: (e) async {
-          // CEK VERSI
-          // TERLEBIH DAHULU
           final version = await authRepository.checkVersion();
-          log("VERSI APLIKASI ${version.toString()}");
           await version.fold(
               // =>  <= //
-              (l) => l.maybeMap(
-                  orElse: () {},
-                  failure: (e) {
+              (l) => l.maybeMap(orElse: () {
                     emit(const AppState.failure());
-                  },
-                  badResponse: (e) {
+                  }, failure: (e) {
+                    emit(const AppState.failure());
+                  }, badResponse: (e) {
                     emit(const AppState.badResponse());
-                  },
-                  connectionTimeOut: (e) {
+                  }, connectionTimeOut: (e) {
                     emit(const AppState.connectionTimeOut());
                   }),
-              (r) => r.maybeMap(
-                  orElse: () {},
-                  loaded: (e) async {
+              (r) => r.maybeMap(orElse: () {
+                    emit(const AppState.failure());
+                  }, loaded: (e) async {
                     VersionModel meta =
                         VersionModel.fromMap(e.value["response"]);
 
