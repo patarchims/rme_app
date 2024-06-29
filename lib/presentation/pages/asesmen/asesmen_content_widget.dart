@@ -162,8 +162,13 @@ class _AsesmenContentWidgetState extends State<AsesmenContentWidget> {
                             SizedBox(height: 5.sp),
 
                             Text(
-                                "${singlePasien.first.mrn} # \n${singlePasien.first.noreg} \n ${singlePasien.first.namaPasien}",
+                                "${singlePasien.first.mrn} # \n${singlePasien.first.noreg} \n ${singlePasien.first.namaPasien} ",
                                 style: whiteTextStyle,
+                                textAlign: TextAlign.center),
+
+                            Text(
+                                "Jenis Kelamin:\n${singlePasien.first.jenisKelamin}",
+                                style: whiteTextStyle.copyWith(fontSize: 5.sp),
                                 textAlign: TextAlign.center),
 
                             SizedBox(height: 5.sp),
@@ -193,7 +198,6 @@ class _AsesmenContentWidgetState extends State<AsesmenContentWidget> {
                                     builder: (context, state) {
                                       if (state
                                           .riwayatAlergi.alergi.isNotEmpty) {
-                                        // ==== //
                                         Iterable<Alergi> newAlergi = state
                                             .riwayatAlergi.alergi
                                             .where((element) =>
@@ -208,10 +212,6 @@ class _AsesmenContentWidgetState extends State<AsesmenContentWidget> {
                                               reverse: true,
                                               repeat: true);
                                         }
-
-                                        // return Text(state
-                                        //     .riwayatAlergi.alergi.first.alergi
-                                        //     .toString());
                                       }
                                       return Container();
                                     },

@@ -61,250 +61,236 @@ class _AnalisaDataPageWidgetState extends State<AnalisaDataPageWidget> {
       },
       builder: (context, state) {
         if (state.status == AnalisaStatus.isLoadingGetAnalisaData) {
-          return Expanded(
-              child: HeaderContentWidget(widget: Loading.expandedLoading()));
+          return HeaderContentWidget(
+            widget: Loading.expandedLoading(),
+          );
         }
-        return Expanded(
-            child: HeaderContentWidget(
-                isENableAdd: true,
-                backgroundColor: ThemeColor.bgColor,
-                onPressed: () {
-                  CustomDialogWidget.getDialog(
-                      widget: const TambahAnalisaDataWidget(),
-                      color: ThemeColor.blueColor);
-                },
-                title: "Tambah",
-                widget: RawScrollbar(
-                  thumbColor: ThemeColor.darkColor,
-                  thumbVisibility: true,
-                  interactive: true,
-                  thickness: 10.sp,
-                  controller: _scrollController,
-                  trackVisibility: false,
-                  radius: Radius.circular(5.sp),
-                  child: SingleChildScrollView(
-                    controller: _scrollController,
-                    child: Container(
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      margin: EdgeInsets.only(right: 10.sp),
-                      child: Column(
-                        children: (state.analisaData.isNotEmpty)
-                            ? state.analisaData.asMap().entries.map((e) {
-                                return Card(
-                                  color: ThemeColor.bgColor,
-                                  elevation: 1.sp,
+        return HeaderContentWidget(
+            isENableAdd: true,
+            backgroundColor: ThemeColor.bgColor,
+            onPressed: () {
+              CustomDialogWidget.getDialog(
+                  widget: const TambahAnalisaDataWidget(),
+                  color: ThemeColor.blueColor);
+            },
+            title: "Tambah",
+            widget: RawScrollbar(
+              thumbColor: ThemeColor.darkColor,
+              thumbVisibility: true,
+              interactive: true,
+              thickness: 10.sp,
+              controller: _scrollController,
+              trackVisibility: false,
+              radius: Radius.circular(5.sp),
+              child: SingleChildScrollView(
+                controller: _scrollController,
+                child: Container(
+                  decoration: BoxDecoration(color: ThemeColor.bgColor),
+                  margin: EdgeInsets.only(right: 10.sp),
+                  child: Column(
+                    children: (state.analisaData.isNotEmpty)
+                        ? state.analisaData.asMap().entries.map((e) {
+                            return Card(
+                              color: ThemeColor.bgColor,
+                              elevation: 1.sp,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(2.sp),
+                                side: BorderSide.none,
+                              ),
+                              child: ListTile(
                                   shape: RoundedRectangleBorder(
+                                    side: const BorderSide(width: 2),
                                     borderRadius: BorderRadius.circular(2.sp),
-                                    side: BorderSide.none,
                                   ),
-                                  child: ListTile(
-                                      shape: RoundedRectangleBorder(
-                                        side: const BorderSide(width: 2),
+                                  leading: CircleAvatar(
+                                    backgroundColor: const Color(0xff6ae792),
+                                    child: Text(
+                                      "${e.key + 1}",
+                                      style: blackTextStyle,
+                                    ),
+                                  ),
+                                  trailing: FloatingActionButton(
+                                    backgroundColor: (e.value.jam == "00:00:00")
+                                        ? ThemeColor.primaryColor
+                                        : ThemeColor.softBlue,
+                                    shape: RoundedRectangleBorder(
                                         borderRadius:
-                                            BorderRadius.circular(2.sp),
-                                      ),
-                                      leading: CircleAvatar(
-                                        backgroundColor:
-                                            const Color(0xff6ae792),
-                                        child: Text(
-                                          "${e.key + 1}",
+                                            BorderRadius.circular(1.sp)),
+                                    onPressed: (e.value.jam == "00:00:00")
+                                        ? () {
+                                            // APAKAH INI SUDAH TERATASI
+                                            CustomDialogWidget.getDialog(
+                                                widget: OnValidasiAnalisaData(
+                                              kodeAnalisa: e.value.kodeAnalisa,
+                                            ));
+                                          }
+                                        : null,
+                                    child: Icon(
+                                      FontAwesomeIcons.solidCircleCheck,
+                                      color: (e.value.jam == "00:00:00")
+                                          ? Colors.white
+                                          : Colors.green,
+                                    ),
+                                  ),
+                                  title: RichText(
+                                      text: TextSpan(
+                                          text: "DIAGNOSA  :  ",
                                           style: blackTextStyle,
-                                        ),
-                                      ),
-                                      trailing: FloatingActionButton(
-                                        backgroundColor:
-                                            (e.value.jam == "00:00:00")
-                                                ? ThemeColor.primaryColor
-                                                : ThemeColor.softBlue,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(1.sp)),
-                                        onPressed: (e.value.jam == "00:00:00")
-                                            ? () {
-                                                // APAKAH INI SUDAH TERATASI
-                                                CustomDialogWidget.getDialog(
-                                                    widget:
-                                                        OnValidasiAnalisaData(
-                                                  kodeAnalisa:
-                                                      e.value.kodeAnalisa,
-                                                ));
-                                              }
-                                            : null,
-                                        child: Icon(
-                                          FontAwesomeIcons.solidCircleCheck,
-                                          color: (e.value.jam == "00:00:00")
-                                              ? Colors.white
-                                              : Colors.green,
-                                        ),
-                                      ),
-                                      title: RichText(
-                                          text: TextSpan(
-                                              text: "DIAGNOSA  :  ",
-                                              style: blackTextStyle,
-                                              children: e.value.analisaData
-                                                  .map(
-                                                    (e) => TextSpan(
-                                                        text:
-                                                            "${e.idDiagnosa} - ${e.namaDiagnosa}, ",
-                                                        style: blackTextStyle
-                                                            .copyWith(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold)),
-                                                  )
-                                                  .toList())),
-                                      subtitle: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          RichText(
-                                            text: TextSpan(
-                                                text: "DATA : ",
-                                                style: blackTextStyle,
-                                                children: [
-                                                  TextSpan(text: e.value.data),
-                                                ]),
-                                          ),
-                                          Row(
-                                            children: [
-                                              ElevatedButton(
-                                                onPressed: () {},
-                                                style: ElevatedButton.styleFrom(
-                                                    backgroundColor:
-                                                        ThemeColor.primaryColor,
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        2.sp))),
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Text(
-                                                    "Ditemukan, ${tglIndo(e.value.insertDttm.substring(0, 10))}",
-                                                    style:
-                                                        whiteTextStyle.copyWith(
-                                                            fontSize: 4.sp),
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: 5.sp,
-                                              ),
-                                              ElevatedButton(
-                                                onPressed: () {},
-                                                style: ElevatedButton.styleFrom(
-                                                    backgroundColor: (e
-                                                                .value.jam ==
-                                                            "00:00:00")
-                                                        ? ThemeColor
-                                                            .primaryColor
-                                                        : ThemeColor.greenColor,
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        2.sp))),
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: (e.value.jam ==
-                                                          "00:00:00")
-                                                      ? Text(
-                                                          "Teratasi, -",
-                                                          style: whiteTextStyle
-                                                              .copyWith(
-                                                                  fontSize:
-                                                                      4.sp),
-                                                        )
-                                                      : Text(
-                                                          "Teratasi, Tgl : ${tglIndo(e.value.tgl.substring(0, 10))} Jam ${e.value.jam}",
-                                                          style: whiteTextStyle
-                                                              .copyWith(
-                                                                  fontSize:
-                                                                      4.sp),
-                                                        ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: 5.sp,
-                                              ),
-                                              ElevatedButton(
-                                                onPressed: () {
-                                                  CustomDialogWidget.getDialog(
-                                                      widget:
-                                                          HapusAnalisaDataWidget(
-                                                        kodeAnalisa:
-                                                            e.value.kodeAnalisa,
-                                                      ),
-                                                      color: ThemeColor
-                                                          .whiteColor);
-                                                },
-                                                style: ElevatedButton.styleFrom(
-                                                    backgroundColor:
-                                                        ThemeColor.dangerColor,
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        2.sp))),
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Text(
-                                                    "Hapus",
+                                          children: e.value.analisaData
+                                              .map(
+                                                (e) => TextSpan(
+                                                    text:
+                                                        "${e.idDiagnosa} - ${e.namaDiagnosa}, ",
                                                     style:
                                                         blackTextStyle.copyWith(
                                                             fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 4.sp),
-                                                  ),
-                                                ),
+                                                                FontWeight
+                                                                    .bold)),
                                               )
-                                            ],
+                                              .toList())),
+                                  subtitle: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      RichText(
+                                        text: TextSpan(
+                                            text: "DATA : ",
+                                            style: blackTextStyle,
+                                            children: [
+                                              TextSpan(text: e.value.data),
+                                            ]),
+                                      ),
+                                      Row(
+                                        children: [
+                                          ElevatedButton(
+                                            onPressed: () {},
+                                            style: ElevatedButton.styleFrom(
+                                                backgroundColor:
+                                                    ThemeColor.primaryColor,
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            2.sp))),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: (e.value.insertDttm
+                                                          .length) >
+                                                      9
+                                                  ? Text(
+                                                      "Ditemukan, ${tglIndo(e.value.insertDttm.substring(0, 10))}",
+                                                      style: whiteTextStyle
+                                                          .copyWith(
+                                                              fontSize: 4.sp))
+                                                  : Text(
+                                                      "Ditemukan, ${e.value.insertDttm}",
+                                                      style: whiteTextStyle
+                                                          .copyWith(
+                                                              fontSize: 4.sp),
+                                                    ),
+                                            ),
                                           ),
                                           SizedBox(
-                                            height: 5.sp,
+                                            width: 5.sp,
                                           ),
+                                          ElevatedButton(
+                                            onPressed: () {},
+                                            style: ElevatedButton.styleFrom(
+                                                backgroundColor: (e.value.jam ==
+                                                        "00:00:00")
+                                                    ? ThemeColor.primaryColor
+                                                    : ThemeColor.greenColor,
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            2.sp))),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: (e.value.jam == "00:00:00")
+                                                  ? Text(
+                                                      "Teratasi, -",
+                                                      style: whiteTextStyle
+                                                          .copyWith(
+                                                              fontSize: 4.sp),
+                                                    )
+                                                  : Text(
+                                                      "Teratasi, Tgl : ${tglIndo(e.value.tgl.substring(0, 10))} Jam ${e.value.jam}",
+                                                      style: whiteTextStyle
+                                                          .copyWith(
+                                                              fontSize: 4.sp),
+                                                    ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 5.sp,
+                                          ),
+                                          ElevatedButton(
+                                            onPressed: () {
+                                              CustomDialogWidget.getDialog(
+                                                  widget:
+                                                      HapusAnalisaDataWidget(
+                                                    kodeAnalisa:
+                                                        e.value.kodeAnalisa,
+                                                  ),
+                                                  color: ThemeColor.whiteColor);
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                                backgroundColor:
+                                                    ThemeColor.dangerColor,
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            2.sp))),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                "Hapus",
+                                                style: blackTextStyle.copyWith(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 4.sp),
+                                              ),
+                                            ),
+                                          )
                                         ],
                                       ),
-                                      enabled: true),
-                                );
-                              }).toList()
-                            : [
-                                Center(
-                                  child: Container(
-                                    margin: EdgeInsets.all(10.sp),
-                                    width: Get.width,
-                                    height: 200.sp,
-                                    child: Card(
-                                      elevation: 1.sp,
-                                      shape: RoundedRectangleBorder(
-                                        side: const BorderSide(
-                                            color: Colors.black),
-                                        borderRadius:
-                                            BorderRadius.circular(2.sp),
+                                      SizedBox(
+                                        height: 5.sp,
                                       ),
-                                      margin: EdgeInsets.only(top: 5.sp),
-                                      color: ThemeColor.primaryColor
-                                          .withOpacity(0.4),
-                                      child: EmtyScren(
-                                        subTitle: "Data kosong",
-                                        textStyle: whiteTextStyle,
-                                      ),
-                                    ),
+                                    ],
                                   ),
-                                )
-                              ],
-                      ),
-                    ),
+                                  enabled: true),
+                            );
+                          }).toList()
+                        : [
+                            Center(
+                              child: Container(
+                                margin: EdgeInsets.all(10.sp),
+                                width: Get.width,
+                                height: 200.sp,
+                                child: Card(
+                                  elevation: 1.sp,
+                                  shape: RoundedRectangleBorder(
+                                    side: const BorderSide(color: Colors.black),
+                                    borderRadius: BorderRadius.circular(2.sp),
+                                  ),
+                                  margin: EdgeInsets.only(top: 5.sp),
+                                  color:
+                                      ThemeColor.primaryColor.withOpacity(0.4),
+                                  child: EmtyScren(
+                                    subTitle: "Data kosong",
+                                    textStyle: whiteTextStyle,
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
                   ),
-                )));
+                ),
+              ),
+            ));
       },
     );
   }

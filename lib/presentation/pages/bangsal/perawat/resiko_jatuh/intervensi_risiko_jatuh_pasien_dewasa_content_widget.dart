@@ -100,233 +100,235 @@ class _IntervensiRisikoJaatuhPasienDewasaContentWidgetState
               radius: Radius.circular(5.sp),
               child: SingleChildScrollView(
                 controller: _scrollController,
-                child: Column(
-                  children: [
-                    TitleWidget.titleContainer(
-                        title: "INTERVENSI RISIKO JATUH PASIEN "),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          Text(
-                            "Berikan Tanda ",
-                            style: blackTextStyle,
-                          ),
-                          const Icon(
-                            FontAwesomeIcons.check,
-                            color: ThemeColor.blackColor,
-                          ),
-                          Text(
-                            "Pada tindakan yang dilaksanakan ",
-                            style: blackTextStyle,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                        width: Get.width,
-                        padding: EdgeInsets.symmetric(
-                            vertical: 5.sp, horizontal: 8.sp),
-                        decoration:
-                            BoxDecoration(color: Colors.green.withOpacity(0.5)),
+                child: Container(
+                  margin: EdgeInsets.only(right: 15.sp, bottom: 10.sp),
+                  child: Column(
+                    children: [
+                      TitleWidget.titleContainer(
+                          title: "INTERVENSI RISIKO JATUH PASIEN "),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              "Tanggal : ${tglIndo(DateTime.now().toString())} ",
-                              textAlign: TextAlign.start,
-                              style: blackTextStyle.copyWith(
-                                  fontWeight: FontWeight.bold),
+                              "Berikan Tanda ",
+                              style: blackTextStyle,
                             ),
-                            Wrap(
-                              runAlignment: WrapAlignment.spaceAround,
-                              runSpacing: 10,
-                              spacing: 10,
-                              alignment: WrapAlignment.spaceAround,
-                              children: ListConstants.shiftList
-                                  .map((e) => SizedBox(
-                                        height: 15.sp,
-                                        child: ElevatedButton(
-                                          onPressed: () {
-                                            context.read<ResikoJatuhBloc>().add(
-                                                OnChangeShiftResikoJatuh(
-                                                    value: e));
+                            const Icon(
+                              FontAwesomeIcons.check,
+                              color: ThemeColor.blackColor,
+                            ),
+                            Text(
+                              "Pada tindakan yang dilaksanakan ",
+                              style: blackTextStyle,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                          width: Get.width,
+                          padding: EdgeInsets.symmetric(
+                              vertical: 5.sp, horizontal: 8.sp),
+                          decoration: BoxDecoration(
+                              color: Colors.green.withOpacity(0.5)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Tanggal : ${tglIndo(DateTime.now().toString())} ",
+                                textAlign: TextAlign.start,
+                                style: blackTextStyle.copyWith(
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Wrap(
+                                runAlignment: WrapAlignment.spaceAround,
+                                runSpacing: 10,
+                                spacing: 10,
+                                alignment: WrapAlignment.spaceAround,
+                                children: ListConstants.shiftList
+                                    .map((e) => SizedBox(
+                                          height: 15.sp,
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              context
+                                                  .read<ResikoJatuhBloc>()
+                                                  .add(OnChangeShiftResikoJatuh(
+                                                      value: e));
 
-                                            // LAKUKAN CLEAR PADA CECKLIS
-                                            context.read<ResikoJatuhBloc>().add(
-                                                OnClearCheckListResikoJatuh());
-                                          },
-                                          style: ElevatedButton.styleFrom(
-                                            backgroundColor:
-                                                (state.shiftSelected == e)
-                                                    ? ThemeColor.greenColor
-                                                    : ThemeColor.primaryColor,
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(5.sp),
+                                              // LAKUKAN CLEAR PADA CECKLIS
+                                              context.read<ResikoJatuhBloc>().add(
+                                                  OnClearCheckListResikoJatuh());
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  (state.shiftSelected == e)
+                                                      ? ThemeColor.greenColor
+                                                      : ThemeColor.primaryColor,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(5.sp),
+                                              ),
+                                            ),
+                                            child: Text(
+                                              e,
+                                              style: whiteTextStyle,
                                             ),
                                           ),
-                                          child: Text(
-                                            e,
-                                            style: whiteTextStyle,
+                                        ))
+                                    .toList(),
+                              )
+                            ],
+                          )),
+                      Container(
+                        width: Get.width,
+                        decoration: const BoxDecoration(),
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: state.resikoJatuh
+                                .asMap()
+                                .entries
+                                .map((resiko) => Column(
+                                      children: [
+                                        Container(
+                                          padding: EdgeInsets.symmetric(
+                                            vertical: 5.sp,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: Colors.yellow
+                                                  .withOpacity(0.5)),
+                                          child: Center(
+                                            child: Text(
+                                              resiko.value.namaFaktor,
+                                              style: blackTextStyle.copyWith(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
                                           ),
                                         ),
-                                      ))
-                                  .toList(),
-                            )
-                          ],
-                        )),
-                    Container(
-                      width: Get.width,
-                      decoration: const BoxDecoration(),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: state.resikoJatuh
-                              .asMap()
-                              .entries
-                              .map((resiko) => Column(
-                                    children: [
-                                      Container(
-                                        padding: EdgeInsets.symmetric(
-                                          vertical: 5.sp,
-                                        ),
-                                        decoration: BoxDecoration(
-                                            color:
-                                                Colors.yellow.withOpacity(0.5)),
-                                        child: Center(
-                                          child: Text(
-                                            resiko.value.namaFaktor,
-                                            style: blackTextStyle.copyWith(
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: resiko.value.resikoJatuh
-                                              .asMap()
-                                              .entries
-                                              .map((sub) => Column(
-                                                    children: [
-                                                      Container(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                                horizontal:
-                                                                    15.sp,
-                                                                vertical: 2.sp),
-                                                        width: Get.width,
-                                                        child: Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .start,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            Text(
-                                                              sub.value.noUrut
-                                                                  .toString(),
-                                                              style: blackTextStyle
-                                                                  .copyWith(
-                                                                      fontSize:
-                                                                          6.sp,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold),
-                                                            ),
-                                                            SizedBox(
-                                                              width: 10.sp,
-                                                            ),
-                                                            Text(
-                                                              sub.value
-                                                                  .kategoriFaktor,
-                                                              style: blackTextStyle
-                                                                  .copyWith(
-                                                                      fontSize:
-                                                                          6.sp,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold),
-                                                            ),
-                                                            const Spacer(),
-                                                            SizedBox(
-                                                              height: 15.sp,
-                                                              width: 20.sp,
-                                                              child:
-                                                                  ElevatedButton(
-                                                                onPressed: () {
-                                                                  context.read<ResikoJatuhBloc>().add(OnCheckIntervensiResikoJatuh(
-                                                                      faktorIndex:
-                                                                          resiko
-                                                                              .key,
-                                                                      resikoJatuhIndex:
-                                                                          sub
-                                                                              .key,
-                                                                      resikoJatuh: sub
-                                                                          .value
-                                                                          .copyWith(
-                                                                              isEnable: !sub.value.isEnable)));
-                                                                },
-                                                                style: ElevatedButton
-                                                                    .styleFrom(
-                                                                  backgroundColor: (sub
+                                        SizedBox(
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: resiko.value.resikoJatuh
+                                                .asMap()
+                                                .entries
+                                                .map((sub) => Column(
+                                                      children: [
+                                                        Container(
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                                  horizontal:
+                                                                      15.sp,
+                                                                  vertical:
+                                                                      2.sp),
+                                                          width: Get.width,
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Text(
+                                                                sub.value.noUrut
+                                                                    .toString(),
+                                                                style: blackTextStyle.copyWith(
+                                                                    fontSize:
+                                                                        6.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold),
+                                                              ),
+                                                              SizedBox(
+                                                                width: 10.sp,
+                                                              ),
+                                                              Text(
+                                                                sub.value
+                                                                    .kategoriFaktor,
+                                                                style: blackTextStyle.copyWith(
+                                                                    fontSize:
+                                                                        6.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold),
+                                                              ),
+                                                              const Spacer(),
+                                                              SizedBox(
+                                                                height: 15.sp,
+                                                                width: 20.sp,
+                                                                child:
+                                                                    ElevatedButton(
+                                                                  onPressed:
+                                                                      () {
+                                                                    context.read<ResikoJatuhBloc>().add(OnCheckIntervensiResikoJatuh(
+                                                                        faktorIndex:
+                                                                            resiko
+                                                                                .key,
+                                                                        resikoJatuhIndex: sub
+                                                                            .key,
+                                                                        resikoJatuh: sub
+                                                                            .value
+                                                                            .copyWith(isEnable: !sub.value.isEnable)));
+                                                                  },
+                                                                  style: ElevatedButton
+                                                                      .styleFrom(
+                                                                    backgroundColor: (sub
+                                                                            .value
+                                                                            .isEnable)
+                                                                        ? Colors
+                                                                            .green
+                                                                        : ThemeColor
+                                                                            .primaryColor,
+                                                                    shape:
+                                                                        RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              5.sp),
+                                                                    ),
+                                                                  ),
+                                                                  child: (sub
                                                                           .value
                                                                           .isEnable)
-                                                                      ? Colors
-                                                                          .green
-                                                                      : ThemeColor
-                                                                          .primaryColor,
-                                                                  shape:
-                                                                      RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            5.sp),
-                                                                  ),
+                                                                      ? Icon(
+                                                                          FontAwesomeIcons
+                                                                              .check,
+                                                                          color:
+                                                                              Colors.white,
+                                                                          size:
+                                                                              5.sp,
+                                                                        )
+                                                                      : Icon(
+                                                                          FontAwesomeIcons
+                                                                              .minus,
+                                                                          color:
+                                                                              Colors.white,
+                                                                          size:
+                                                                              5.sp,
+                                                                        ),
                                                                 ),
-                                                                child: (sub
-                                                                        .value
-                                                                        .isEnable)
-                                                                    ? Icon(
-                                                                        FontAwesomeIcons
-                                                                            .check,
-                                                                        color: Colors
-                                                                            .white,
-                                                                        size: 5
-                                                                            .sp,
-                                                                      )
-                                                                    : Icon(
-                                                                        FontAwesomeIcons
-                                                                            .minus,
-                                                                        color: Colors
-                                                                            .white,
-                                                                        size: 5
-                                                                            .sp,
-                                                                      ),
-                                                              ),
-                                                            )
-                                                          ],
+                                                              )
+                                                            ],
+                                                          ),
                                                         ),
-                                                      ),
-                                                      const Divider(),
-                                                    ],
-                                                  ))
-                                              .toList(),
+                                                        const Divider(),
+                                                      ],
+                                                    ))
+                                                .toList(),
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ))
-                              .toList()),
-                    ),
-                    SizedBox(
-                      height: 35.sp,
-                    )
-                  ],
+                                      ],
+                                    ))
+                                .toList()),
+                      ),
+                      SizedBox(
+                        height: 35.sp,
+                      )
+                    ],
+                  ),
                 ),
               ),
             ));

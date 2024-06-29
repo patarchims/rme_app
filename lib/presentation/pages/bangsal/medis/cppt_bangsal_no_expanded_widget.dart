@@ -6,6 +6,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hms_app/domain/models/response/list_cppt_pasien_model_response.dart';
+import 'package:hms_app/fitur/action_cppt/widget/action_cppt_widget.dart';
 import 'package:hms_app/presentation/component/alert/mesage_alert.dart';
 import 'package:hms_app/presentation/component/resources/app_constant.dart';
 import 'package:hms_app/presentation/pages/modul/cppt_content_widget/cppt_edit_content_pasien.dart';
@@ -397,7 +398,8 @@ class _CpptWidgetBangsalState extends State<CpptWidgetNoExpandedBangsal> {
                               TitleWidget.headerTitle(title: "Asesmen"),
                               TitleWidget.headerTitle(title: "Plan"),
                               TitleWidget.headerTitle(title: "PPA"),
-                              TitleWidget.headerTitle(title: "Action")
+                              // TitleWidget.headerTitle(title: "Action"),
+                              TitleWidget.headerTitle(title: "")
                             ])
                           ],
                         ),
@@ -473,6 +475,49 @@ class _CpptWidgetBangsalState extends State<CpptWidgetNoExpandedBangsal> {
                                                           TitleWidget.contentTitle(
                                                               title: e.value
                                                                   .instruksiPpa),
+                                                          // Padding(
+                                                          //   padding:
+                                                          //       EdgeInsets.all(
+                                                          //           1.sp),
+                                                          //   child: Padding(
+                                                          //     padding:
+                                                          //         const EdgeInsets
+                                                          //             .all(2),
+                                                          //     child:
+                                                          //         ElevatedButton(
+                                                          //             style: ElevatedButton.styleFrom(
+                                                          //                 elevation:
+                                                          //                     1,
+                                                          //                 shape: RoundedRectangleBorder(
+                                                          //                     borderRadius: BorderRadius.circular(2
+                                                          //                         .sp)),
+                                                          //                 backgroundColor: ThemeColor.greenColor.withOpacity(
+                                                          //                     0.5)),
+                                                          //             onPressed:
+                                                          //                 () {
+                                                          //               // TODO : ACTION DI SINI
+
+                                                          //               CustomDialogWidget.getDialog(
+                                                          //                   widget: ActionCpptWidget(
+                                                          //                 cpptPasien:
+                                                          //                     e.value,
+                                                          //                 key: const Key(
+                                                          //                     "1"),
+                                                          //               ));
+                                                          //             },
+                                                          //             child:
+                                                          //                 Padding(
+                                                          //               padding:
+                                                          //                   EdgeInsets.all(2.sp),
+                                                          //               child:
+                                                          //                   Text(
+                                                          //                 "Action",
+                                                          //                 style:
+                                                          //                     whiteTextStyle,
+                                                          //               ),
+                                                          //             )),
+                                                          //   ),
+                                                          // ),
                                                           Padding(
                                                             padding:
                                                                 EdgeInsets.all(

@@ -59,23 +59,28 @@ class KeperawatanServices {
     required String rwtPenyakitDahulu,
     required String reaksiAlergi,
     required String tanggal,
+    required String rwtImunisasi,
+    required String rwtKelahiran,
   }) {
     return MyDio().postDataWithToken(
       endPoint: EndPoint.assesmenAwalAnak,
       data: DTOKeperawatan.savePengkajianAwalAnak(
-          tanggal: tanggal,
-          noreg: noreg,
-          dpjp: dpjp,
-          noRM: noRM,
-          person: person,
-          pelayanan: pelayanan,
-          deviceID: deviceID,
-          jenPel: jenPel,
-          detailJenPel: detailJenPel,
-          keluhanUtama: keluhanUtama,
-          rwtPenyakit: rwtPenyakit,
-          riwayatPenyakitDahulu: rwtPenyakitDahulu,
-          reaksiAlergi: reaksiAlergi),
+        tanggal: tanggal,
+        noreg: noreg,
+        dpjp: dpjp,
+        noRM: noRM,
+        person: person,
+        pelayanan: pelayanan,
+        deviceID: deviceID,
+        jenPel: jenPel,
+        detailJenPel: detailJenPel,
+        keluhanUtama: keluhanUtama,
+        rwtPenyakit: rwtPenyakit,
+        riwayatPenyakitDahulu: rwtPenyakitDahulu,
+        reaksiAlergi: reaksiAlergi,
+        imunisasi: rwtImunisasi,
+        kelahiran: rwtKelahiran,
+      ),
     );
   }
 
@@ -189,6 +194,7 @@ class KeperawatanServices {
     required String abdomen,
     required String punggung,
     required String nutrisiDanHidrasi,
+    required String peristaltik,
   }) {
     return MyDio().postDataWithToken(
       endPoint: EndPoint.savePemeriksaanFisikAnak,
@@ -203,6 +209,7 @@ class KeperawatanServices {
         mata: mata,
         mulut: mulut,
         noReg: noReg,
+        peristaltik: peristaltik,
         nutrisiDanHidrasi: nutrisiDanHidrasi,
         punggung: punggung,
         telinga: telinga,

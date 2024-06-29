@@ -8,6 +8,7 @@ import 'package:hms_app/domain/models/devices_info/device_info_model.dart';
 import 'package:hms_app/domain/models/meta/meta_model.dart';
 import 'package:hms_app/domain/models/users/user_model.dart';
 import 'package:hms_app/presentation/component/component.dart';
+import 'package:hms_app/presentation/component/constant/list_constants.dart';
 import 'package:hms_app/presentation/component/loading/loading.dart';
 import 'package:hms_app/presentation/pages/igd/bloc/pemeriksaan_fisik_igd/pemeriksaan_fisik_igd_bloc.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
@@ -45,7 +46,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
   final TextEditingController _inferiorController = TextEditingController();
   final TextEditingController _abdomenLiannyaController =
       TextEditingController();
-  String isActive = fisik.first;
+  String isActive = ListConstants.fisik.first;
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +114,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                   margin: EdgeInsets.symmetric(vertical: 5.sp),
                   child: ListView(
                       scrollDirection: Axis.horizontal,
-                      children: fisik.map((e) {
+                      children: ListConstants.fisik.map((e) {
                         return Container(
                           margin: EdgeInsets.only(right: 5.sp, left: 5.sp),
                           child: ElevatedButton(
@@ -148,7 +149,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     // PEMERIKSAAN FISIK
-                    if (isActive == fisik.first) ...[
+                    if (isActive == ListConstants.fisik.first) ...[
                       TitleWidget.boxPemeriksaanFisikSugestion(
                         widget: SearchField(
                           searchStyle: blackTextStyle,
@@ -159,7 +160,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                               selectionColor: ThemeColor.bgColor,
                               hoverColor: ThemeColor.darkColor.withOpacity(0.2),
                               color: ThemeColor.bgColor),
-                          suggestions: pemeriksaanFisik
+                          suggestions: ListConstants.pemeriksaanFisik
                               .map(
                                 (e) => SearchFieldListItem(
                                   e,
@@ -193,7 +194,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                               selectionColor: ThemeColor.bgColor,
                               hoverColor: ThemeColor.darkColor.withOpacity(0.2),
                               color: ThemeColor.bgColor),
-                          suggestions: pemeriksaanFisik
+                          suggestions: ListConstants.pemeriksaanFisikMata
                               .map(
                                 (e) => SearchFieldListItem(
                                   e,
@@ -227,7 +228,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                               selectionColor: ThemeColor.bgColor,
                               hoverColor: ThemeColor.darkColor.withOpacity(0.2),
                               color: ThemeColor.bgColor),
-                          suggestions: pemeriksaanFisik
+                          suggestions: ListConstants.pemeriksaanFisik
                               .map(
                                 (e) => SearchFieldListItem(
                                   e,
@@ -261,7 +262,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                               selectionColor: ThemeColor.bgColor,
                               hoverColor: ThemeColor.darkColor.withOpacity(0.2),
                               color: ThemeColor.bgColor),
-                          suggestions: pemeriksaanFisik
+                          suggestions: ListConstants.pemeriksaanFisikMulut
                               .map(
                                 (e) => SearchFieldListItem(
                                   e,
@@ -295,7 +296,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                               selectionColor: ThemeColor.bgColor,
                               hoverColor: ThemeColor.darkColor.withOpacity(0.2),
                               color: ThemeColor.bgColor),
-                          suggestions: pemeriksaanFisik
+                          suggestions: ListConstants.pemeriksaanFisik
                               .map(
                                 (e) => SearchFieldListItem(
                                   e,
@@ -331,7 +332,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                               selectionColor: ThemeColor.bgColor,
                               hoverColor: ThemeColor.darkColor.withOpacity(0.2),
                               color: ThemeColor.bgColor),
-                          suggestions: pemeriksaanFisik
+                          suggestions: ListConstants.pemeriksaanFisikLeher
                               .map(
                                 (e) => SearchFieldListItem(
                                   e,
@@ -365,7 +366,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                               selectionColor: ThemeColor.bgColor,
                               hoverColor: ThemeColor.darkColor.withOpacity(0.2),
                               color: ThemeColor.bgColor),
-                          suggestions: pemeriksaanFisik
+                          suggestions: ListConstants.pemeriksaanFisik
                               .map(
                                 (e) => SearchFieldListItem(
                                   e,
@@ -400,7 +401,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                               selectionColor: ThemeColor.bgColor,
                               hoverColor: ThemeColor.darkColor.withOpacity(0.2),
                               color: ThemeColor.bgColor),
-                          suggestions: pemeriksaanFisik
+                          suggestions: ListConstants.pemeriksaanFisikDada
                               .map(
                                 (e) => SearchFieldListItem(
                                   e,
@@ -434,7 +435,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                               selectionColor: ThemeColor.bgColor,
                               hoverColor: ThemeColor.darkColor.withOpacity(0.2),
                               color: ThemeColor.bgColor),
-                          suggestions: pemeriksaanFisik
+                          suggestions: ListConstants.pemeriksaanFisikJantung
                               .map(
                                 (e) => SearchFieldListItem(
                                   e,
@@ -468,7 +469,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                               selectionColor: ThemeColor.bgColor,
                               hoverColor: ThemeColor.darkColor.withOpacity(0.2),
                               color: ThemeColor.bgColor),
-                          suggestions: pemeriksaanFisik
+                          suggestions: ListConstants.pemeriksaanFisik
                               .map(
                                 (e) => SearchFieldListItem(
                                   e,
@@ -503,7 +504,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                               selectionColor: ThemeColor.bgColor,
                               hoverColor: ThemeColor.darkColor.withOpacity(0.2),
                               color: ThemeColor.bgColor),
-                          suggestions: pemeriksaanFisik
+                          suggestions: ListConstants.pemeriksaanFisikPerut
                               .map(
                                 (e) => SearchFieldListItem(
                                   e,
@@ -537,7 +538,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                               selectionColor: ThemeColor.bgColor,
                               hoverColor: ThemeColor.darkColor.withOpacity(0.2),
                               color: ThemeColor.bgColor),
-                          suggestions: pemeriksaanFisik
+                          suggestions: ListConstants.pemeriksaanFisikHati
                               .map(
                                 (e) => SearchFieldListItem(
                                   e,
@@ -571,7 +572,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                               selectionColor: ThemeColor.bgColor,
                               hoverColor: ThemeColor.darkColor.withOpacity(0.2),
                               color: ThemeColor.bgColor),
-                          suggestions: pemeriksaanFisik
+                          suggestions: ListConstants.pemeriksaanFisik
                               .map(
                                 (e) => SearchFieldListItem(
                                   e,
@@ -605,7 +606,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                               selectionColor: ThemeColor.bgColor,
                               hoverColor: ThemeColor.darkColor.withOpacity(0.2),
                               color: ThemeColor.bgColor),
-                          suggestions: pemeriksaanFisik
+                          suggestions: ListConstants.pemeriksaanFisikUsus
                               .map(
                                 (e) => SearchFieldListItem(
                                   e,
@@ -639,7 +640,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                               selectionColor: ThemeColor.bgColor,
                               hoverColor: ThemeColor.darkColor.withOpacity(0.2),
                               color: ThemeColor.bgColor),
-                          suggestions: pemeriksaanFisik
+                          suggestions: ListConstants.pemeriksaanFisik
                               .map(
                                 (e) => SearchFieldListItem(
                                   e,
@@ -674,7 +675,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                               selectionColor: ThemeColor.bgColor,
                               hoverColor: ThemeColor.darkColor.withOpacity(0.2),
                               color: ThemeColor.bgColor),
-                          suggestions: pemeriksaanFisik
+                          suggestions: ListConstants.pemeriksaanFisikGinjal
                               .map(
                                 (e) => SearchFieldListItem(
                                   e,
@@ -708,7 +709,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                               selectionColor: ThemeColor.bgColor,
                               hoverColor: ThemeColor.darkColor.withOpacity(0.2),
                               color: ThemeColor.bgColor),
-                          suggestions: pemeriksaanFisik
+                          suggestions: ListConstants.pemeriksaanFisik
                               .map(
                                 (e) => SearchFieldListItem(
                                   e,
@@ -742,7 +743,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                               selectionColor: ThemeColor.bgColor,
                               hoverColor: ThemeColor.darkColor.withOpacity(0.2),
                               color: ThemeColor.bgColor),
-                          suggestions: pemeriksaanFisik
+                          suggestions: ListConstants.pemeriksaanFisikAnus
                               .map(
                                 (e) => SearchFieldListItem(
                                   e,
@@ -777,7 +778,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                               selectionColor: ThemeColor.bgColor,
                               hoverColor: ThemeColor.darkColor.withOpacity(0.2),
                               color: ThemeColor.bgColor),
-                          suggestions: pemeriksaanFisik
+                          suggestions: ListConstants.pemeriksaanFisik
                               .map(
                                 (e) => SearchFieldListItem(
                                   e,
@@ -811,7 +812,7 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
                               selectionColor: ThemeColor.bgColor,
                               hoverColor: ThemeColor.darkColor.withOpacity(0.2),
                               color: ThemeColor.bgColor),
-                          suggestions: pemeriksaanFisik
+                          suggestions: ListConstants.pemeriksaanFisik
                               .map(
                                 (e) => SearchFieldListItem(
                                   e,
@@ -904,14 +905,3 @@ class _PemeriksaanFisikIGDDokterMethodistWidgetPageState
     );
   }
 }
-
-List<String> fisik = [
-  "KEPALA",
-  "LEHER",
-  "DADA",
-  "ABDOMEN",
-  "PINGGANG",
-  "EXTREMITAS"
-];
-
-List<String> pemeriksaanFisik = ["TAK", "NORMAL", "UPNORMAL"];

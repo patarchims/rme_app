@@ -1317,6 +1317,9 @@ abstract class DTO {
     required String gcsM,
     required String ddj,
     required String tfu,
+    required String kesadaran,
+    required String pupil,
+    required String akral,
   }) {
     return {
       "device_id": deviceID,
@@ -1334,6 +1337,9 @@ abstract class DTO {
       "gcs_v": gcsV,
       "gcs_m": gcsM,
       "tfu": tfu,
+      "kesadaran": kesadaran,
+      "pupil": pupil,
+      "akral": akral,
     };
   }
 

@@ -46,6 +46,8 @@ abstract class DTOKeperawatan {
     required String reaksiAlergi,
     required String riwayatPenyakitDahulu,
     required String tanggal,
+    required String imunisasi,
+    required String kelahiran,
   }) {
     return {
       'no_reg': noreg,
@@ -61,6 +63,8 @@ abstract class DTOKeperawatan {
       'reaksi_alergi': reaksiAlergi,
       'tanggal': tanggal,
       'rwyt_penyakit_dahulu': riwayatPenyakitDahulu,
+      'rwt_imunisasi': imunisasi,
+      "rwt_kelahiran": kelahiran
     };
   }
 
@@ -118,6 +122,7 @@ abstract class DTOKeperawatan {
     required String abdomen,
     required String punggung,
     required String nutrisiDanHidrasi,
+    required String peristaltik,
   }) {
     return {
       'device_id': deviceID,
@@ -132,6 +137,7 @@ abstract class DTOKeperawatan {
       'dada': dada,
       'abdomen': abdomen,
       'punggung': punggung,
+      'peristaltik': peristaltik,
       'nutrisi_dan_hidrasi': nutrisiDanHidrasi
     };
   }
@@ -268,7 +274,8 @@ abstract class DTOKeperawatan {
       "suara_napas": pengkajianKeperawatanPesistemModel.suaraNapas,
       "merokok": pengkajianKeperawatanPesistemModel.merokok,
       "penerjemah": pengkajianKeperawatanPesistemModel.penerjemah,
-      "nutrisi": pengkajianKeperawatanPesistemModel.nutrisi
+      "nutrisi": pengkajianKeperawatanPesistemModel.nutrisi,
+      "masalah_prostat": pengkajianKeperawatanPesistemModel.masalahProstat,
     };
   }
 
@@ -410,6 +417,9 @@ abstract class DTOKeperawatan {
       "spo2": tandaVitalIgdDokter.spo2,
       "tinggi_badan": tandaVitalIgdDokter.tinggiBadan,
       "berat_badan": tandaVitalIgdDokter.beratBadan,
+      "kesadaran": tandaVitalIgdDokter.kesadaran,
+      "akral": tandaVitalIgdDokter.akral,
+      "pupil": tandaVitalIgdDokter.pupil
     };
   }
 

@@ -11,6 +11,7 @@ class ResikoJatuhKebidananModel {
   String alatBantu2;
   String alatBantu3;
   int total;
+  String keterangan;
 
   ResikoJatuhKebidananModel({
     required this.noreg,
@@ -24,21 +25,23 @@ class ResikoJatuhKebidananModel {
     required this.alatBantu3,
     required this.terpasangInfuse,
     required this.total,
+    required this.keterangan,
   });
 
   factory ResikoJatuhKebidananModel.fromJson(Map<String, dynamic> json) =>
       ResikoJatuhKebidananModel(
-        terpasangInfuse: json["terpasang_infuse"],
-        noreg: json["noreg"],
-        insertPc: json["insert_pc"],
-        pelayanan: json["pelayanan"],
-        kategori: json["kategori"],
-        rJatuh: json["r_jatuh"],
-        diagnosis: json["diagnosis"],
-        alatBantu1: json["alat_bantu1"],
-        alatBantu2: json["alat_bantu2"],
-        alatBantu3: json["alat_bantu3"],
+        terpasangInfuse: json["terpasang_infuse"].toString(),
+        noreg: json["noreg"].toString(),
+        insertPc: json["insert_pc"].toString(),
+        pelayanan: json["pelayanan"].toString(),
+        kategori: json["kategori"].toString(),
+        rJatuh: json["r_jatuh"].toString(),
+        diagnosis: json["diagnosis"].toString(),
+        alatBantu1: json["alat_bantu1"].toString(),
+        alatBantu2: json["alat_bantu2"].toString(),
+        alatBantu3: json["alat_bantu3"].toString(),
         total: json["total"],
+        keterangan: json["keterangan"].toString(),
       );
 
   Map<String, dynamic> toJson() => {
@@ -66,6 +69,7 @@ class ResikoJatuhKebidananModel {
     String? alatBantu3,
     String? terpasangInfuse,
     int? total,
+    String? keterangan,
   }) {
     return ResikoJatuhKebidananModel(
       terpasangInfuse: terpasangInfuse ?? this.terpasangInfuse,
@@ -79,6 +83,7 @@ class ResikoJatuhKebidananModel {
       alatBantu2: alatBantu2 ?? this.alatBantu2,
       alatBantu3: alatBantu3 ?? this.alatBantu3,
       total: total ?? this.total,
+      keterangan: keterangan ?? this.keterangan,
     );
   }
 }

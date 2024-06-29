@@ -12,6 +12,7 @@ enum ResepStatus {
   isLoadingSaveResep,
   loadedSaveResep,
   isLoadingGet,
+  isLoadingGetHistoryResep,
 }
 
 class ResepState extends Equatable {
@@ -19,6 +20,7 @@ class ResepState extends Equatable {
   final String informasiResep;
   final List<KTaripObatModel> ktaripObat;
   final List<KTaripObatModel> ktaripObatSelection;
+  final List<HistoryResepObatModel> historyResep;
   final Option<Either<ApiFailureResult, ApiSuccessResult>>
       saveResultResepFailure;
   const ResepState({
@@ -27,13 +29,20 @@ class ResepState extends Equatable {
     required this.saveResultResepFailure,
     required this.ktaripObat,
     required this.ktaripObatSelection,
+    required this.historyResep,
   });
   @override
-  List<Object?> get props =>
-      [status, saveResultResepFailure, ktaripObat, ktaripObatSelection];
+  List<Object?> get props => [
+        status,
+        saveResultResepFailure,
+        ktaripObat,
+        ktaripObatSelection,
+        historyResep
+      ];
 
   static ResepState initial() => ResepState(
         informasiResep: "",
+        historyResep: const [],
         saveResultResepFailure: none(),
         ktaripObat: const [],
         ktaripObatSelection: const [],
@@ -45,9 +54,11 @@ class ResepState extends Equatable {
       List<KTaripObatModel>? ktaripObat,
       List<KTaripObatModel>? ktaripObatSelection,
       String? informasiResep,
+      List<HistoryResepObatModel>? historyResep,
       Option<Either<ApiFailureResult, ApiSuccessResult>>?
           saveResultResepFailure}) {
     return ResepState(
+      historyResep: historyResep ?? this.historyResep,
       saveResultResepFailure:
           saveResultResepFailure ?? this.saveResultResepFailure,
       ktaripObat: ktaripObat ?? this.ktaripObat,

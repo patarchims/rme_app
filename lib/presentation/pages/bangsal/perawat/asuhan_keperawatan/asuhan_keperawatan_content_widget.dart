@@ -32,7 +32,7 @@ class AsuhanKeperawatanContentWidget extends StatelessWidget {
 
           if (index == 2) {
             context.read<HasilAsuhanKeperawatanBloc>().add(
-                OnGetHasilAsuhanKeperawatanStatusClosedEvent(
+                OnGetResumeKeperawatanEvent(
                     noReg: singlePasien.first.noreg, status: "Closed"));
           }
 
@@ -41,6 +41,12 @@ class AsuhanKeperawatanContentWidget extends StatelessWidget {
                 OnGetHasilAsuhanKeperawatanEvent(
                     noReg: singlePasien.first.noreg, status: "Open"));
           }
+
+          // if (index == 2) {
+          //   context.read<HasilAsuhanKeperawatanBloc>().add(
+          //       OnGetHasilAsuhanKeperawatanEvent(
+          //           noReg: singlePasien.first.noreg, status: "Open"));
+          // }
         },
         children: menu.asMap().entries.map((e) {
           // ====== TAMPILKAN INFORMASI INDEX 1
@@ -69,4 +75,9 @@ class AsuhanKeperawatanContentWidget extends StatelessWidget {
   }
 }
 
-List<String> menu = ["Asuhan Keperawatan", "Pencapaian", "Resume"];
+List<String> menu = [
+  "Asuhan Keperawatan",
+  "Pencapaian",
+  // "Implementasi",
+  "Resume"
+];

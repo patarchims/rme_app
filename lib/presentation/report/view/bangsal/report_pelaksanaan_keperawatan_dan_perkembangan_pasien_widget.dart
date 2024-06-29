@@ -256,30 +256,63 @@ class _ReportPelaksanaanKeperawatanDanPerkembanganPasienWidgetPageState
                                         ),
                                         Container(
                                           color: Colors.white,
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(8),
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: e.siki
-                                                  .map((siki) => Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .all(2),
-                                                        child: Text(
-                                                          "⚫ ${siki.kategori} : ${siki.namaSiki}",
-                                                          style: blackTextStyle
-                                                              .copyWith(
-                                                                  fontSize:
-                                                                      6.sp),
-                                                          textAlign:
-                                                              TextAlign.left,
-                                                        ),
-                                                      ))
-                                                  .toList(),
-                                            ),
+                                          child: Column(
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8),
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: e.siki
+                                                      .map((siki) => Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(2),
+                                                            child: Text(
+                                                              "⚫ ${siki.kategori} : ${siki.namaSiki}",
+                                                              style: blackTextStyle
+                                                                  .copyWith(
+                                                                      fontSize:
+                                                                          6.sp),
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .left,
+                                                            ),
+                                                          ))
+                                                      .toList(),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8),
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: e.tindakan
+                                                      .map((siki) => Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(2),
+                                                            child: Text(
+                                                              "Tindakan :  \n${siki.insertDttm.substring(0, 10)}-${siki.insertDttm.substring(11, 19)} ${siki.deskripsi} :",
+                                                              style: blackTextStyle
+                                                                  .copyWith(
+                                                                      fontSize:
+                                                                          6.sp),
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .left,
+                                                            ),
+                                                          ))
+                                                      .toList(),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                         Container(
@@ -397,7 +430,7 @@ class _ReportPelaksanaanKeperawatanDanPerkembanganPasienWidgetPageState
                                   color: Colors.white,
                                   padding: const EdgeInsets.all(8),
                                   child: Text(
-                                    "Nama Pasien         :      ${singlePasien.first.namaPasien}  \nTanggal Lahir        :      ${(singlePasien.first.tglLahir.length > 10) ? tglIndo(singlePasien.first.tglLahir.substring(0, 10)) : singlePasien.first.tglLahir}",
+                                    "Nama Pasien         :      ${singlePasien.first.namaPasien}  \nTanggal Lahir        :    ${singlePasien.first.tglLahir} - ${(singlePasien.first.tglLahir.length > 10) ? tglIndo(singlePasien.first.tglLahir.substring(0, 10)) : singlePasien.first.tglLahir}",
                                     style:
                                         blackTextStyle.copyWith(fontSize: 6.sp),
                                     textAlign: TextAlign.left,

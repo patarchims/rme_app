@@ -45,6 +45,8 @@ class PengkajianAwalKeperawatanState extends Equatable {
             riwayatPenyakitKeluarga: [],
             riwayatTerdahulu: [],
             pengkajianAnak: PengkajianAnak(
+                rwtImunisasi: "",
+                rwtKelahiran: "",
                 noreg: "",
                 person: "",
                 kdDpjp: "",

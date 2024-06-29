@@ -99,6 +99,7 @@ class KebidananState extends Equatable {
       savePemeriksaanFisikResult: const None(),
       saveResultPengkajianFungsionalResult: const None(),
       pengkajianFungsional: PengkajianFungsional(
+          keterangan: "",
           nilaiF10: 0,
           nilaiF1: 0,
           nilaiF2: 0,
@@ -148,6 +149,9 @@ class KebidananState extends Equatable {
       kebidananStatus: KebidananStatus.initial,
       riwayaPengobatan: const [],
       vitalSignBidanModel: VitalSignBidanModel(
+          akral: "",
+          pupil: "",
+          kesadaran: "",
           tfu: "",
           ddj: "",
           tekananDarah: "",

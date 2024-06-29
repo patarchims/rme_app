@@ -11,6 +11,27 @@ class OnGetPengkajianFungsionalKebidanan extends KebidananEvent {
   });
 }
 
+class OnChangeTandaKebidananPupil extends KebidananEvent {
+  final String value;
+  OnChangeTandaKebidananPupil({
+    required this.value,
+  });
+}
+
+class OnChangedTandaKebidananKesadaran extends KebidananEvent {
+  final String value;
+  OnChangedTandaKebidananKesadaran({
+    required this.value,
+  });
+}
+
+class OnChangedTandaKebidananAkral extends KebidananEvent {
+  final String value;
+  OnChangedTandaKebidananAkral({
+    required this.value,
+  });
+}
+
 class OnGetPemeriksasanFisikKebidanan extends KebidananEvent {
   final String noReg;
   final String pelayanan;
@@ -431,6 +452,9 @@ class OnSaveTandaTandaVitalSignKebidanan extends KebidananEvent {
   final String gcsV;
   final String gcsM;
   final String tfu;
+  final String kesadaran;
+  final String akral;
+  final String pupil;
 
   OnSaveTandaTandaVitalSignKebidanan({
     required this.deviceID,
@@ -448,6 +472,9 @@ class OnSaveTandaTandaVitalSignKebidanan extends KebidananEvent {
     required this.gcsV,
     required this.gcsM,
     required this.tfu,
+    required this.kesadaran,
+    required this.akral,
+    required this.pupil,
   });
 }
 

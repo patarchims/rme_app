@@ -7,9 +7,12 @@ class VitalSignKeperawatanModel {
   String beratBadan;
   String tinggiBadan;
   String pernafasan;
+  String kesadaran;
   String spo2;
   String nadi;
   String suhu;
+  String pupil;
+  String akral;
 
   VitalSignKeperawatanModel({
     required this.gcsE,
@@ -19,9 +22,12 @@ class VitalSignKeperawatanModel {
     required this.beratBadan,
     required this.tinggiBadan,
     required this.pernafasan,
+    required this.kesadaran,
     required this.spo2,
     required this.nadi,
     required this.suhu,
+    required this.pupil,
+    required this.akral,
   });
 
   factory VitalSignKeperawatanModel.fromJson(Map<String, dynamic> json) =>
@@ -30,12 +36,15 @@ class VitalSignKeperawatanModel {
         gcsV: json["gcs_v"].toString(),
         gcsM: json["gcs_m"].toString(),
         td: json["td"].toString(),
+        kesadaran: json["kesadaran"].toString(),
         beratBadan: json["berat_badan"].toString(),
         tinggiBadan: json["tinggi_badan"].toString(),
         pernafasan: json["pernafasan"].toString(),
         spo2: json["spo2"].toString(),
         nadi: json["nadi"].toString(),
         suhu: json["suhu"].toString(),
+        pupil: json["pupil"].toString(),
+        akral: json["akral"].toString(),
       );
 
   Map<String, dynamic> toJson() => {
@@ -62,8 +71,14 @@ class VitalSignKeperawatanModel {
     String? spo2,
     String? nadi,
     String? suhu,
+    String? kesadaran,
+    String? pupil,
+    String? akral,
   }) {
     return VitalSignKeperawatanModel(
+      kesadaran: kesadaran ?? this.kesadaran,
+      pupil: pupil ?? this.pupil,
+      akral: akral ?? this.akral,
       gcsE: gcsE ?? this.gcsE,
       gcsV: gcsV ?? this.gcsV,
       gcsM: gcsM ?? this.gcsM,

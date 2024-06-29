@@ -196,9 +196,10 @@ class DeskripsiLuaranSlkiBloc
     }
 
     emit(state.copyWith(
-        onSaveData: none(),
-        status: DeskripsiLuaranSlkiStatus.loaded,
-        deskripsiLuaranSikiModel: newDeskripsi));
+      onSaveData: none(),
+      status: DeskripsiLuaranSlkiStatus.loaded,
+      deskripsiLuaranSikiModel: newDeskripsi,
+    ));
   }
 
   Future<void> _onSaveData(
@@ -207,7 +208,9 @@ class DeskripsiLuaranSlkiBloc
   ) async {
     // REPLACE LIST ON LIST
     emit(state.copyWith(
-        status: DeskripsiLuaranSlkiStatus.isLoadingSave, onSaveData: none()));
+      status: DeskripsiLuaranSlkiStatus.isLoadingSave,
+      onSaveData: none(),
+    ));
 
     final saveData = await libraryService.onSaveAsuhanKeperawatan(
       deskripsiLuaranSikiModel: state.deskripsiLuaranSikiModel,
@@ -229,7 +232,6 @@ class DeskripsiLuaranSlkiBloc
     OnSelectionWaktuEvent event,
     Emitter<DeskripsiLuaranSlkiState> emit,
   ) async {
-    // REPLACE LIST ON LIST
     emit(state.copyWith(
         status: DeskripsiLuaranSlkiStatus.initial,
         onSaveData: none(),

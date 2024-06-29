@@ -30,6 +30,7 @@ class PengkajianPersistemKeperawatanState extends Equatable {
       PengkajianPersistemKeperawatanState(
           pengkajianKeperawatanPesistemModel:
               PengkajianKeperawatanPesistemModel(
+                  masalahProstat: "",
                   nutrisi: "",
                   akral: "",
                   batuk: "",

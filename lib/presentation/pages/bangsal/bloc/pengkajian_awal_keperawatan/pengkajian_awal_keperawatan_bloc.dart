@@ -32,6 +32,9 @@ class PengkajianAwalKeperawatanBloc extends Bloc<PengkajianAwalKeperawatanEvent,
     on<OnChangedKeluhanUtamaAnak>(_onChangedKeluhanUtamaAnak);
     on<OnChangedReaksiAlergiAnak>(_onChangeReaksiAlergiAnak);
     on<OnSaveAssesmenAnakEvent>(_onSaveAssesmenAnak);
+    on<OnChangedRiwayatKelahiran>(_onChangedRiwayatKelahiran);
+    on<OnChangedRiwayatImunisasi>(_onChangedRiwayatImunisasi);
+    // on<OnChangedJenisAnamnesa>(_onSelectioJenisAnamesa);
     on<OnChangedRiwayatPenyakitSekarangAnak>(
         _onChangedRiwayatPenyakitSekarangAnak);
   }
@@ -87,6 +90,8 @@ class PengkajianAwalKeperawatanBloc extends Bloc<PengkajianAwalKeperawatanEvent,
           noreg: event.noReg,
           noRM: event.noRM,
           person: event.person,
+          rwtImunisasi: event.rwtImunisasi,
+          rwtKelahiran: event.rwtKelahiran,
           tanggal: event.tanggal);
 
       emit(state.copyWith(
@@ -103,6 +108,34 @@ class PengkajianAwalKeperawatanBloc extends Bloc<PengkajianAwalKeperawatanEvent,
         status: PengkajianAwalKeperawatanStatus.isLoadedAsesmenAnak,
       ));
     }
+  }
+
+  Future<void> _onChangedRiwayatImunisasi(
+    OnChangedRiwayatImunisasi event,
+    Emitter<PengkajianAwalKeperawatanState> emit,
+  ) async {
+    emit(state.copyWith(status: PengkajianAwalKeperawatanStatus.onSelected));
+
+    // == //
+    emit(state.copyWith(
+        status: PengkajianAwalKeperawatanStatus.loaded,
+        pengkajianAnak: state.pengkajianAnak.copyWith(
+            pengkajianAnak: state.pengkajianAnak.pengkajianAnak
+                .copyWith(rwtImunisasi: event.value))));
+  }
+
+  Future<void> _onChangedRiwayatKelahiran(
+    OnChangedRiwayatKelahiran event,
+    Emitter<PengkajianAwalKeperawatanState> emit,
+  ) async {
+    emit(state.copyWith(status: PengkajianAwalKeperawatanStatus.onSelected));
+
+    // == //
+    emit(state.copyWith(
+        status: PengkajianAwalKeperawatanStatus.loaded,
+        pengkajianAnak: state.pengkajianAnak.copyWith(
+            pengkajianAnak: state.pengkajianAnak.pengkajianAnak
+                .copyWith(rwtKelahiran: event.value))));
   }
 
   Future<void> _onChangedJenisAnamnesaAnak(
@@ -132,7 +165,7 @@ class PengkajianAwalKeperawatanBloc extends Bloc<PengkajianAwalKeperawatanEvent,
                     .copyWith(jenpel: event.value))));
   }
 
-  Future<void> _onSelectioJeisAnamesa(
+  Future<void> _onSelectioJenisAnamesa(
     OnChangedJenisAnamnesa event,
     Emitter<PengkajianAwalKeperawatanState> emit,
   ) async {

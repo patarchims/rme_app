@@ -9,6 +9,8 @@ class PengkajianNutrisiAnak {
   int nilaiN2;
   int nilaiN3;
   int nilaiN4;
+  int total;
+  String keterangan;
 
   PengkajianNutrisiAnak({
     required this.noreg,
@@ -17,25 +19,28 @@ class PengkajianNutrisiAnak {
     required this.n3,
     required this.n4,
     required this.nilai,
+    required this.total,
     required this.nilaiN1,
     required this.nilaiN2,
     required this.nilaiN3,
     required this.nilaiN4,
+    required this.keterangan,
   });
 
   factory PengkajianNutrisiAnak.fromJson(Map<String, dynamic> json) =>
       PengkajianNutrisiAnak(
-        noreg: json["noreg"].toString(),
-        n1: json["n1"].toString(),
-        n2: json["n2"].toString(),
-        n3: json["n3"].toString(),
-        n4: json["n4"].toString(),
-        nilai: json["nilai"] as int,
-        nilaiN1: json["nilai_n1"] as int,
-        nilaiN2: json["nilai_n2"] as int,
-        nilaiN3: json["nilai_n3"] as int,
-        nilaiN4: json["nilai_n4"] as int,
-      );
+          total: 0,
+          noreg: json["noreg"].toString(),
+          n1: json["n1"].toString(),
+          n2: json["n2"].toString(),
+          n3: json["n3"].toString(),
+          n4: json["n4"].toString(),
+          nilai: json["nilai"] as int,
+          nilaiN1: json["nilai_n1"] as int,
+          nilaiN2: json["nilai_n2"] as int,
+          nilaiN3: json["nilai_n3"] as int,
+          nilaiN4: json["nilai_n4"] as int,
+          keterangan: "-");
 
   Map<String, dynamic> toJson() => {
         "noreg": noreg,
@@ -61,18 +66,21 @@ class PengkajianNutrisiAnak {
     int? nilaiN2,
     int? nilaiN3,
     int? nilaiN4,
+    int? total,
+    String? keterangan,
   }) {
     return PengkajianNutrisiAnak(
-      noreg: noreg ?? this.noreg,
-      n1: n1 ?? this.n1,
-      n2: n2 ?? this.n2,
-      n3: n3 ?? this.n3,
-      n4: n4 ?? this.n4,
-      nilai: nilai ?? this.nilai,
-      nilaiN1: nilaiN1 ?? this.nilaiN1,
-      nilaiN2: nilaiN2 ?? this.nilaiN2,
-      nilaiN3: nilaiN3 ?? this.nilaiN3,
-      nilaiN4: nilaiN4 ?? this.nilaiN4,
-    );
+        total: total ?? this.total,
+        noreg: noreg ?? this.noreg,
+        n1: n1 ?? this.n1,
+        n2: n2 ?? this.n2,
+        n3: n3 ?? this.n3,
+        n4: n4 ?? this.n4,
+        nilai: nilai ?? this.nilai,
+        nilaiN1: nilaiN1 ?? this.nilaiN1,
+        nilaiN2: nilaiN2 ?? this.nilaiN2,
+        nilaiN3: nilaiN3 ?? this.nilaiN3,
+        nilaiN4: nilaiN4 ?? this.nilaiN4,
+        keterangan: keterangan ?? this.keterangan);
   }
 }

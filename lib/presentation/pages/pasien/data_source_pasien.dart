@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:hms_app/domain/models/response/list_antrean_model_response.dart';
 import 'package:hms_app/presentation/pages/asesmen/asesmen_content_widget.dart';
@@ -19,7 +17,8 @@ class PasienDataSource extends DataGridSource {
         .map((e) => DataGridRow(cells: [
               DataGridCell<int>(columnName: 'no', value: e.key + 1),
               DataGridCell<String>(
-                  columnName: 'antrean', value: e.value.noAntrean),
+                  columnName: 'antrean',
+                  value: "No : ${e.value.noAntrean} -\nKasur ${e.value.kasur}"),
               DataGridCell<String>(columnName: 'mrn', value: e.value.mrn),
               DataGridCell<String>(
                   columnName: 'nama', value: e.value.namaPasien),
@@ -76,27 +75,27 @@ class PasienDataSource extends DataGridSource {
               children: [
                 Text(e.value.toString(),
                     style: whiteTextStyle.copyWith(fontSize: 6.sp)),
-                SizedBox(
-                    width: 30,
-                    height: 30,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          elevation: 0,
-                          shape: const CircleBorder(),
-                          backgroundColor: Colors.transparent),
-                      child: const Icon(
-                        Icons.play_circle_fill,
-                        color: Colors.white,
-                      ),
-                      onPressed: () async {
-                        try {
-                          // TODO < PLAY audio // AssetsAudioPlayer().open(Audio("assets/sound/ONLINE.wav"));
-                        } catch (t) {
-                          //mp3 unreachable
-                          log(t.toString());
-                        }
-                      },
-                    ))
+                // SizedBox(
+                //     width: 30,
+                //     height: 30,
+                //     child: ElevatedButton(
+                //       style: ElevatedButton.styleFrom(
+                //           elevation: 0,
+                //           shape: const CircleBorder(),
+                //           backgroundColor: Colors.transparent),
+                //       child: const Icon(
+                //         Icons.play_circle_fill,
+                //         color: Colors.white,
+                //       ),
+                //       onPressed: () async {
+                //         try {
+                //           // TODO < PLAY audio // AssetsAudioPlayer().open(Audio("assets/sound/ONLINE.wav"));
+                //         } catch (t) {
+                //           //mp3 unreachable
+                //           log(t.toString());
+                //         }
+                //       },
+                //     ))
               ],
             );
           case "no":
@@ -107,6 +106,15 @@ class PasienDataSource extends DataGridSource {
               ),
             );
           case "dpjp":
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                e.value.toString(),
+                textAlign: TextAlign.left,
+                style: whiteCalibriTextStyle.copyWith(fontSize: 7.sp),
+              ),
+            );
+          case "debitur":
             return Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(

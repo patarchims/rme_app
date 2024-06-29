@@ -5,9 +5,9 @@ class HasilAsuhanKeperawatanModel {
   String insertDttm;
   String kodeDiagnosa;
   String noDaskep;
-  Diagnosa diagnosa;
-  Bagian bagian;
-  Perawat perawat;
+  DiagnosaAsu diagnosa;
+  BagianAsu bagian;
+  PerawatAsu perawat;
   List<DeskripsiSlki> deskripsiSlki;
   List<DeskripsiSiki> deskripsiSiki;
 
@@ -28,12 +28,12 @@ class HasilAsuhanKeperawatanModel {
       HasilAsuhanKeperawatanModel(
         tanggal: json["tanggal"].toString(),
         insertDttm: json["insert_dttm"].toString(),
-        perawat: Perawat.fromJson(json["perawat"]),
-        bagian: Bagian.fromJson(json["bagian"]),
+        perawat: PerawatAsu.fromJson(json["perawat"]),
+        bagian: BagianAsu.fromJson(json["bagian"]),
         hasil: json["hasil"].toString(),
         kodeDiagnosa: json["kode_diagnosa"].toString(),
         noDaskep: json["no_daskep"].toString(),
-        diagnosa: Diagnosa.fromJson(json["diagnosa"]),
+        diagnosa: DiagnosaAsu.fromJson(json["diagnosa"]),
         deskripsiSlki: List<DeskripsiSlki>.from(
             json["deskripsi_slki"].map((x) => DeskripsiSlki.fromJson(x))),
         deskripsiSiki: List<DeskripsiSiki>.from(
@@ -58,13 +58,14 @@ class HasilAsuhanKeperawatanModel {
     String? insertDttm,
     String? kodeDiagnosa,
     String? noDaskep,
-    Diagnosa? diagnosa,
-    Bagian? bagian,
-    Perawat? perawat,
+    DiagnosaAsu? diagnosa,
+    BagianAsu? bagian,
+    PerawatAsu? perawat,
     List<DeskripsiSlki>? deskripsiSlki,
     List<DeskripsiSiki>? deskripsiSiki,
   }) {
     return HasilAsuhanKeperawatanModel(
+      // tindakan: tindakan ?? this.tindakan,
       insertDttm: insertDttm ?? this.insertDttm,
       tanggal: tanggal ?? this.tanggal,
       bagian: bagian ?? this.bagian,
@@ -79,14 +80,14 @@ class HasilAsuhanKeperawatanModel {
   }
 }
 
-class Perawat {
+class PerawatAsu {
   String idPerawat;
   String nama;
   String alamat;
   String jenisKelamin;
   String status;
 
-  Perawat({
+  PerawatAsu({
     required this.idPerawat,
     required this.nama,
     required this.alamat,
@@ -94,7 +95,7 @@ class Perawat {
     required this.status,
   });
 
-  factory Perawat.fromJson(Map<String, dynamic> json) => Perawat(
+  factory PerawatAsu.fromJson(Map<String, dynamic> json) => PerawatAsu(
         idPerawat: json["id_perawat"].toString(),
         nama: json["nama"].toString(),
         alamat: json["alamat"].toString(),
@@ -229,7 +230,7 @@ class DeskripsiSlki {
   }
 }
 
-class Diagnosa {
+class DiagnosaAsu {
   String kode;
   String judul;
   String defenisi;
@@ -247,7 +248,7 @@ class Diagnosa {
   String mappingSlki;
   String mappingSiki;
 
-  Diagnosa({
+  DiagnosaAsu({
     required this.kode,
     required this.judul,
     required this.defenisi,
@@ -266,7 +267,7 @@ class Diagnosa {
     required this.mappingSiki,
   });
 
-  factory Diagnosa.fromJson(Map<String, dynamic> json) => Diagnosa(
+  factory DiagnosaAsu.fromJson(Map<String, dynamic> json) => DiagnosaAsu(
         kode: json["kode"],
         judul: json["judul"],
         defenisi: json["defenisi"],
@@ -305,18 +306,18 @@ class Diagnosa {
       };
 }
 
-class Bagian {
+class BagianAsu {
   String kdBag;
   String bagian;
   String pelayanan;
 
-  Bagian({
+  BagianAsu({
     required this.kdBag,
     required this.bagian,
     required this.pelayanan,
   });
 
-  factory Bagian.fromJson(Map<String, dynamic> json) => Bagian(
+  factory BagianAsu.fromJson(Map<String, dynamic> json) => BagianAsu(
         kdBag: json["kd_bag"],
         bagian: json["bagian"],
         pelayanan: json["pelayanan"],

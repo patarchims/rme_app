@@ -44,168 +44,174 @@ class _AsuhanWidgetContentState extends State<AsuhanWidgetContentValue> {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              // ====  ==== ====
-              SizedBox(
-                height: 100.sp,
-                width: Get.width,
-                child: Card(
-                  color: ThemeColor.bgColor,
-                  elevation: 1,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(2.sp)),
-                  child: ListView(
-                    children: deskripsi
-                        .map((e) => Card(
-                              elevation: 1,
-                              color: ThemeColor.primaryColor,
-                              child: ListTile(
-                                trailing: FloatingActionButton(
-                                  backgroundColor: ThemeColor.whiteColor,
-                                  onPressed: () {
-                                    setState(() {
-                                      deskripsi.remove(e);
-                                    });
-                                  },
-                                  child: const Icon(
-                                    FontAwesomeIcons.minus,
-                                    color: ThemeColor.primaryColor,
-                                  ),
-                                ),
-                                title: Text(e.deskripsi, style: whiteTextStyle),
-                              ),
-                            ))
-                        .toList(),
-                  ),
-                ),
-              ),
-              // ====
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // ===== ===== //
-
-                  SizedBox(
-                    height: 20.sp,
-                    width: Get.width - 170.sp,
-                    child: FormWidget.textForm(
-                        enable: true,
-                        onChanged: (value) {
-                          // KETIKA DI UBAH
-                          if (value != "") {
-                            setState(() {
-                              valueSearch = value;
-                              isHidden = true;
-                            });
-                          }
-
-                          if (value == "") {
-                            setState(() {
-                              isHidden = false;
-                            });
-                          }
-                        }),
-                  ),
-
-                  SizedBox(width: 10.sp),
-
-                  SizedBox(
-                      height: 20.sp,
-                      width: 20.sp,
-                      child: FloatingActionButton.small(
-                        backgroundColor: ThemeColor.primaryColor,
-                        onPressed: () {},
-                        child: const Icon(FontAwesomeIcons.plus),
-                      )),
-                ],
-              ),
-              // ====
-              SizedBox(height: 11.sp),
-              if (isHidden) ...[
-                // ================ // ================
+          child: Container(
+            margin: EdgeInsets.only(right: 15.sp),
+            child: Column(
+              children: [
+                // ====  ==== ====
                 SizedBox(
-                  height: 170.sp,
+                  height: 100.sp,
                   width: Get.width,
                   child: Card(
                     color: ThemeColor.bgColor,
+                    elevation: 1,
                     shape: RoundedRectangleBorder(
-                      side: const BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(2.sp),
-                    ),
-                    child: BlocBuilder<AsesmenKeperawatanBidanBloc,
-                        AsesmenKeperawatanBidanState>(
-                      builder: (context, state) {
-                        return ListView(
-                          children: state.deskripsiSiki
-                              .map((e) => Container(
-                                    padding: EdgeInsets.all(2.sp),
-                                    width: Get.width,
-                                    color: ThemeColor.primaryColor,
-                                    child: Column(
-                                      children: [
-                                        Text(e.judul,
-                                            textAlign: TextAlign.center,
-                                            style: whiteCalibriTextStyle),
-                                        // == none
-                                        SizedBox(
-                                          height: 150.sp,
-                                          width: Get.width,
-                                          child: ListView(
-                                            children: e.deskripsi
-                                                .where((element) => element
-                                                    .deskripsi
-                                                    .contains(valueSearch))
-                                                .map((e) => Card(
-                                                      color: ThemeColor.bgColor,
-                                                      child: ListTile(
-                                                        enabled: true,
-                                                        trailing:
-                                                            FloatingActionButton(
-                                                          onPressed: () {
-                                                            // ADD DESKRIPSI
-                                                            setState(() {
-                                                              final data = deskripsi
-                                                                  .where((element) =>
-                                                                      element
-                                                                          .id ==
-                                                                      e.id);
-
-                                                              log(e.id
-                                                                  .toString());
-
-                                                              if (data
-                                                                  .isEmpty) {
-                                                                deskripsi
-                                                                    .add(e);
-                                                              }
-                                                            });
-                                                          },
-                                                          child: const Icon(
-                                                              FontAwesomeIcons
-                                                                  .plus),
-                                                        ),
-                                                        title: Text(
-                                                          e.deskripsi,
-                                                          style: blackTextStyle,
-                                                        ),
-                                                      ),
-                                                    ))
-                                                .toList(),
-                                          ),
-                                        )
-                                      ],
+                        borderRadius: BorderRadius.circular(2.sp)),
+                    child: ListView(
+                      children: deskripsi
+                          .map((e) => Card(
+                                elevation: 1,
+                                color: ThemeColor.primaryColor,
+                                child: ListTile(
+                                  trailing: FloatingActionButton(
+                                    backgroundColor: ThemeColor.whiteColor,
+                                    onPressed: () {
+                                      setState(() {
+                                        deskripsi.remove(e);
+                                      });
+                                    },
+                                    child: const Icon(
+                                      FontAwesomeIcons.minus,
+                                      color: ThemeColor.primaryColor,
                                     ),
-                                  ))
-                              .toList(),
-                        );
-                      },
+                                  ),
+                                  title:
+                                      Text(e.deskripsi, style: whiteTextStyle),
+                                ),
+                              ))
+                          .toList(),
                     ),
                   ),
-                )
-              ]
-            ],
+                ),
+                // ====
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // ===== ===== //
+
+                    SizedBox(
+                      height: 20.sp,
+                      width: Get.width - 170.sp,
+                      child: FormWidget.textForm(
+                          enable: true,
+                          onChanged: (value) {
+                            // KETIKA DI UBAH
+                            if (value != "") {
+                              setState(() {
+                                valueSearch = value;
+                                isHidden = true;
+                              });
+                            }
+
+                            if (value == "") {
+                              setState(() {
+                                isHidden = false;
+                              });
+                            }
+                          }),
+                    ),
+
+                    SizedBox(width: 10.sp),
+
+                    SizedBox(
+                        height: 20.sp,
+                        width: 20.sp,
+                        child: FloatingActionButton.small(
+                          backgroundColor: ThemeColor.primaryColor,
+                          onPressed: () {},
+                          child: const Icon(FontAwesomeIcons.plus),
+                        )),
+                  ],
+                ),
+                // ====
+                SizedBox(height: 11.sp),
+                if (isHidden) ...[
+                  // ================ // ================
+                  SizedBox(
+                    height: 170.sp,
+                    width: Get.width,
+                    child: Card(
+                      color: ThemeColor.bgColor,
+                      shape: RoundedRectangleBorder(
+                        side: const BorderSide(color: Colors.black),
+                        borderRadius: BorderRadius.circular(2.sp),
+                      ),
+                      child: BlocBuilder<AsesmenKeperawatanBidanBloc,
+                          AsesmenKeperawatanBidanState>(
+                        builder: (context, state) {
+                          return ListView(
+                            children: state.deskripsiSiki
+                                .map((e) => Container(
+                                      padding: EdgeInsets.all(2.sp),
+                                      width: Get.width,
+                                      color: ThemeColor.primaryColor,
+                                      child: Column(
+                                        children: [
+                                          Text(e.judul,
+                                              textAlign: TextAlign.center,
+                                              style: whiteCalibriTextStyle),
+                                          // == none
+                                          SizedBox(
+                                            height: 150.sp,
+                                            width: Get.width,
+                                            child: ListView(
+                                              children: e.deskripsi
+                                                  .where((element) => element
+                                                      .deskripsi
+                                                      .contains(valueSearch))
+                                                  .map((e) => Card(
+                                                        color:
+                                                            ThemeColor.bgColor,
+                                                        child: ListTile(
+                                                          enabled: true,
+                                                          trailing:
+                                                              FloatingActionButton(
+                                                            onPressed: () {
+                                                              // ADD DESKRIPSI
+                                                              setState(() {
+                                                                final data = deskripsi.where(
+                                                                    (element) =>
+                                                                        element
+                                                                            .id ==
+                                                                        e.id);
+
+                                                                log(e.id
+                                                                    .toString());
+
+                                                                if (data
+                                                                    .isEmpty) {
+                                                                  deskripsi
+                                                                      .add(e);
+                                                                }
+                                                              });
+                                                            },
+                                                            child: const Icon(
+                                                                FontAwesomeIcons
+                                                                    .plus),
+                                                          ),
+                                                          title: Text(
+                                                            e.deskripsi,
+                                                            style:
+                                                                blackTextStyle,
+                                                          ),
+                                                        ),
+                                                      ))
+                                                  .toList(),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ))
+                                .toList(),
+                          );
+                        },
+                      ),
+                    ),
+                  )
+                ]
+              ],
+            ),
           ),
         ),
       ),

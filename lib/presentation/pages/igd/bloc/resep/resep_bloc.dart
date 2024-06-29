@@ -4,6 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hms_app/domain/network/api_failure_handler.dart';
 import 'package:hms_app/domain/network/api_success_handler.dart';
+import 'package:hms_app/presentation/pages/igd/repository/history_resep_repositori.dart';
 import 'package:hms_app/presentation/pages/igd/repository/ktaripobat_repository.dart';
 import 'package:hms_app/presentation/pages/igd/services/igd_services.dart';
 
@@ -19,6 +20,38 @@ class ResepBloc extends Bloc<ResepEvent, ResepState> {
     on<OnSaveResepObatEvent>(_onSaveResepObat);
     on<OnChangeInformasiResepEvent>(_onChangeInformasiResep);
     on<OnSaveResepObatEventV2>(_onSaveResepObatV2);
+    on<OnGetHistoryResepEvent>(_onGetHitoryResep);
+  }
+
+  Future<void> _onGetHitoryResep(
+    OnGetHistoryResepEvent event,
+    Emitter<ResepState> emit,
+  ) async {
+    emit(state.copyWith(
+        status: ResepStatus.isLoadingGetHistoryResep,
+        ktaripObat: state.ktaripObat,
+        ktaripObatSelection: [],
+        historyResep: [],
+        saveResultResepFailure: none()));
+    try {
+      final data = await igdServices.onGetHistoryResepObat(noRM: event.noRM);
+
+      List<HistoryResepObatModel> history = (data["response"] as Iterable)
+          .map((e) => HistoryResepObatModel.fromJson(e))
+          .toList();
+
+      emit(state.copyWith(
+        status: ResepStatus.loaded,
+        ktaripObat: state.ktaripObat,
+        ktaripObatSelection: [],
+        historyResep: history,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+          status: ResepStatus.loaded,
+          ktaripObat: state.ktaripObat,
+          ktaripObatSelection: []));
+    }
   }
 
   Future<void> _onGetKapersediaanObat(

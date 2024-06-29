@@ -13,6 +13,15 @@ class OnGetHasilAsuhanKeperawatanEvent extends HasilAsuhanKeperawatanEvent {
   });
 }
 
+class OnGetResumeKeperawatanEvent extends HasilAsuhanKeperawatanEvent {
+  final String noReg;
+  final String status;
+  OnGetResumeKeperawatanEvent({
+    required this.noReg,
+    required this.status,
+  });
+}
+
 class OnDeleteAsuhanKeperawatanEvent extends HasilAsuhanKeperawatanEvent {
   final String noDaskep;
   OnDeleteAsuhanKeperawatanEvent({
@@ -71,5 +80,21 @@ class OnSaveIntervensiEventV2 extends HasilAsuhanKeperawatanEvent {
   OnSaveIntervensiEventV2({
     required this.indexDiagnosa,
     required this.noReg,
+  });
+}
+
+class OnSaveActionKeperawatan extends HasilAsuhanKeperawatanEvent {
+  final String noAskep;
+  final String deskripsi;
+  OnSaveActionKeperawatan({
+    required this.noAskep,
+    required this.deskripsi,
+  });
+}
+
+class OnGetTindakanKeperawatan extends HasilAsuhanKeperawatanEvent {
+  final String noAskep;
+  OnGetTindakanKeperawatan({
+    required this.noAskep,
   });
 }

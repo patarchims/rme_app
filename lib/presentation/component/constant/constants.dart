@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 abstract class Constants {
   Constants._();
   static const String lainnya = 'Lainnya';
-  static const String tidakAdaKelainan = 'Tidak ada kelainan';
+  static const String tidakAdaKelainan = 'TAK';
   static const String kelainanCongenital = 'Kelainan Congenital';
 
   static const String applicationContactEmail = 'marionebiaj@gmail.com';

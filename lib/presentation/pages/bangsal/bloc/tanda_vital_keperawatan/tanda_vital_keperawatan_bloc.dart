@@ -28,6 +28,10 @@ class TandaVitalKeperawatanBloc
     on<OnChangedNadiEvent>(_onChangeNadi);
     on<OnChangedBeratBadanEvent>(_onChangedBeratBadan);
     on<OnChangedTinggiBadan>(_onChangedTinggiBadan);
+    on<OnChangedSPO2Event>(_onChangedSPO2Event);
+    on<OnChangedKesadaranEvent>(_onChangedKesadaranEvent);
+    on<OnChangedPupilEvent>(_onChangedPupilEvent);
+    on<OnChangedAkralEvent>(_onChangeAkralEvent);
   }
 
   Future<void> _onGetTandaVitalIGDDokter(
@@ -54,6 +58,9 @@ class TandaVitalKeperawatanBloc
       emit(state.copyWith(
           status: TandaVitalKeperawatanStatus.loaded,
           vitalSignKeperawatanModel: VitalSignKeperawatanModel(
+              akral: "",
+              pupil: "",
+              kesadaran: "",
               gcsE: "",
               gcsV: "",
               gcsM: "",
@@ -65,6 +72,51 @@ class TandaVitalKeperawatanBloc
               suhu: "",
               tinggiBadan: "")));
     }
+  }
+
+  Future<void> _onChangedKesadaranEvent(
+    OnChangedKesadaranEvent event,
+    Emitter<TandaVitalKeperawatanState> emit,
+  ) async {
+    emit(state.copyWith(status: TandaVitalKeperawatanStatus.isChanged));
+    emit(state.copyWith(
+        status: TandaVitalKeperawatanStatus.loaded,
+        vitalSignKeperawatanModel:
+            state.vitalSignKeperawatanModel.copyWith(kesadaran: event.value)));
+  }
+
+  Future<void> _onChangedPupilEvent(
+    OnChangedPupilEvent event,
+    Emitter<TandaVitalKeperawatanState> emit,
+  ) async {
+    emit(state.copyWith(status: TandaVitalKeperawatanStatus.isChanged));
+    emit(state.copyWith(
+        status: TandaVitalKeperawatanStatus.loaded,
+        vitalSignKeperawatanModel:
+            state.vitalSignKeperawatanModel.copyWith(pupil: event.value)));
+  }
+
+  Future<void> _onChangeAkralEvent(
+    OnChangedAkralEvent event,
+    Emitter<TandaVitalKeperawatanState> emit,
+  ) async {
+    emit(state.copyWith(status: TandaVitalKeperawatanStatus.isChanged));
+    emit(state.copyWith(
+        status: TandaVitalKeperawatanStatus.loaded,
+        vitalSignKeperawatanModel:
+            state.vitalSignKeperawatanModel.copyWith(akral: event.value)));
+  }
+
+  Future<void> _onChangedSPO2Event(
+    OnChangedSPO2Event event,
+    Emitter<TandaVitalKeperawatanState> emit,
+  ) async {
+    //=====//
+    emit(state.copyWith(status: TandaVitalKeperawatanStatus.isChanged));
+    emit(state.copyWith(
+        status: TandaVitalKeperawatanStatus.loaded,
+        vitalSignKeperawatanModel:
+            state.vitalSignKeperawatanModel.copyWith(spo2: event.value)));
   }
 
   Future<void> _onSaveTandaVital(

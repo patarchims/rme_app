@@ -78,6 +78,7 @@ class PengkajianFisikAnakBloc
               dada: event.pemeriksaanFisik.dada,
               abdomen: event.pemeriksaanFisik.abdomen,
               punggung: event.pemeriksaanFisik.punggung,
+              peristaltik: event.pemeriksaanFisik.peristaltik,
               nutrisiDanHidrasi: event.pemeriksaanFisik.nutrisiDanHidrasi);
 
       emit(state.copyWith(

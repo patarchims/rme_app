@@ -139,6 +139,14 @@ class LibraryService {
     );
   }
 
+  Future<dynamic> onGetResumeKeperawatan(
+      {required String noReg, required String status}) {
+    return MyDio().getAndToken(
+      endPoint: EndPoint.hasilAsuhanKeperawatanV3,
+      data: DTO.onGetAsuhanKeperawatan(noReg: noReg, status: status),
+    );
+  }
+
   // ON GET DESKRIPSI DIAGNOSA ASUHAN KEPERAWATAN
   Future<Either<ApiFailureResult, ApiSuccessResult>> onSaveAsuhanKeperawatan({
     required DeskripsiLuaranSikiModel deskripsiLuaranSikiModel,

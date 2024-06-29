@@ -43,6 +43,8 @@ class PengkajianAnak {
   String rwtPenyakit;
   String reaksiAlergi;
   String rwtPenyakitDahulu;
+  String rwtImunisasi;
+  String rwtKelahiran;
 
   PengkajianAnak({
     required this.noreg,
@@ -54,9 +56,13 @@ class PengkajianAnak {
     required this.rwtPenyakit,
     required this.reaksiAlergi,
     required this.rwtPenyakitDahulu,
+    required this.rwtImunisasi,
+    required this.rwtKelahiran,
   });
 
   factory PengkajianAnak.fromJson(Map<String, dynamic> json) => PengkajianAnak(
+        rwtImunisasi: json["rwt_imunisasi"].toString(),
+        rwtKelahiran: json["rwt_kelahiran"].toString(),
         noreg: json["noreg"].toString(),
         person: json["person"].toString(),
         kdDpjp: json["kd_dpjp"].toString(),
@@ -90,8 +96,12 @@ class PengkajianAnak {
     String? rwtPenyakit,
     String? reaksiAlergi,
     String? rwtPenyakitDahulu,
+    String? rwtImunisasi,
+    String? rwtKelahiran,
   }) {
     return PengkajianAnak(
+      rwtImunisasi: rwtImunisasi ?? this.rwtImunisasi,
+      rwtKelahiran: rwtKelahiran ?? this.rwtKelahiran,
       noreg: noreg ?? this.noreg,
       person: person ?? this.person,
       kdDpjp: kdDpjp ?? this.kdDpjp,

@@ -8,6 +8,7 @@ import 'package:hms_app/presentation/component/fonts/font_helper.dart';
 import 'package:hms_app/presentation/kebidanan/bloc/kebidanan/kebidanan_bloc.dart';
 import 'package:hms_app/presentation/kebidanan/presentation/asesmen/add_riwayat_pengobatan_widget.dart';
 import 'package:hms_app/presentation/kebidanan/presentation/asesmen/on_delete_pengobatan_dirumah_widget.dart';
+import 'package:hms_app/presentation/screens/emty_page.dart';
 import 'package:sizer/sizer.dart';
 import 'package:table_desk/table_desk.dart';
 
@@ -301,7 +302,6 @@ class RiwayatPengobatanPageWidget extends StatelessWidget {
                               columnWidths: const {
                                 0: FlexColumnWidth(0.5),
                                 6: FlexColumnWidth(0.6),
-                                // 1: FlexColumnWidth(0.5),
                               },
                               border:
                                   TableBorder.all(color: Colors.transparent),
@@ -407,6 +407,17 @@ class RiwayatPengobatanPageWidget extends StatelessWidget {
                     );
                   },
                 ),
+              ],
+            ));
+          }
+          if (state.riwayaPengobatan.isEmpty) {
+            return SingleChildScrollView(
+                child: Column(
+              children: [
+                SizedBox(
+                  height: 5.sp,
+                ),
+                const EmtyScren(subTitle: "Data kosong")
               ],
             ));
           }

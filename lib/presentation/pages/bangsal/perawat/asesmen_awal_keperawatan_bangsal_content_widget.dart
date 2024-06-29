@@ -63,7 +63,7 @@ class AsesmenKeperawatanContentWidget extends StatelessWidget {
             return const VitalSignKeperawatanBangsalWidget();
           }
 
-          if (e.value == "Assessment") {
+          if (e.value == "Asesmen") {
             return const AsesmenKeperawatanWidget();
           }
 
@@ -79,6 +79,6 @@ class AsesmenKeperawatanContentWidget extends StatelessWidget {
 List<String> menu = [
   "Keluhan Utama",
   "Tanda - Tanda Vital",
-  "Assessment",
+  "Asesmen",
   "Riwayat Pengobatan dirumah",
 ];

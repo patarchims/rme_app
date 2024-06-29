@@ -146,6 +146,53 @@ class _AsesmenMedisIGdContentWidgetState
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Container(
+                        width: Get.width,
+                        height: 25.sp,
+                        decoration:
+                            const BoxDecoration(color: ThemeColor.primaryColor),
+                        child: Row(
+                          children: [
+                            Container(
+                                height: 25.sp,
+                                width: 65.sp,
+                                padding: EdgeInsets.all(2.sp),
+                                decoration: BoxDecoration(
+                                  color: ThemeColor.bgColor,
+                                  borderRadius: BorderRadius.circular(1.sp),
+                                ),
+                                child: Center(
+                                    child: Text(
+                                  "Riwayat",
+                                  style: blackTextStyle.copyWith(
+                                      fontWeight: FontWeight.bold),
+                                ))),
+                            Expanded(
+                                child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              padding: EdgeInsets.all(5.sp),
+                              children: [
+                                TextButton(
+                                    style: TextButton.styleFrom(
+                                        elevation: 1,
+                                        backgroundColor: ThemeColor.bgColor,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(2.sp)),
+                                        foregroundColor: ThemeColor.bgColor),
+                                    onPressed: () {},
+                                    child: Text(
+                                      "Tanggal",
+                                      style: blackTextStyle,
+                                    ))
+                              ],
+                            ))
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5.sp,
+                      ),
                       TitleWidget.titleContainer(title: "Keluhan Utama"),
                       Padding(
                         padding: EdgeInsets.all(3.sp),

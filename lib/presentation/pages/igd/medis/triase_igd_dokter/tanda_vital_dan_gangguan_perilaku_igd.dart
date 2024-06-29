@@ -107,7 +107,6 @@ class TandaVitalDanGannguanPerilakuWidgetContent extends StatelessWidget {
                 child: ListView(
                   children: [
                     titleContainer(title: "Tanda Tanda Vital"),
-                    // ================================================
                     Container(
                       width: Get.width,
                       padding: EdgeInsets.symmetric(
@@ -375,7 +374,6 @@ class TandaVitalDanGannguanPerilakuWidgetContent extends StatelessWidget {
                             child: Column(
                               children: [
                                 SizedBox(
-                                    // width: 65.sp,
                                     child: Row(
                                   children: [
                                     Text(
@@ -508,16 +506,6 @@ class TandaVitalDanGannguanPerilakuWidgetContent extends StatelessWidget {
                                     ),
                                   ],
                                 )),
-                                // formBox(
-                                //   title: "Pupil",
-                                //   subTitle: "",
-                                //   value: state.tandaVitalIgdDokter.pupil,
-                                //   onChanged: (value) {
-                                //     context
-                                //         .read<TandaVitalIgdDokterBloc>()
-                                //         .add(OnChangedPupilEvent(value: value));
-                                //   },
-                                // ),
                               ],
                             ),
                           ),

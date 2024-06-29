@@ -22,12 +22,18 @@ class TandaVitalKeperawatanState extends Equatable {
     required this.saveResultFailure,
   });
   @override
-  List<Object?> get props =>
-      [status, vitalSignKeperawatanModel, saveResultFailure];
+  List<Object?> get props => [
+        status,
+        vitalSignKeperawatanModel,
+        saveResultFailure,
+      ];
 
   static TandaVitalKeperawatanState initial() => TandaVitalKeperawatanState(
         saveResultFailure: none(),
         vitalSignKeperawatanModel: VitalSignKeperawatanModel(
+            akral: "",
+            pupil: "",
+            kesadaran: "",
             gcsE: "",
             gcsV: "",
             gcsM: "",

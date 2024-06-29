@@ -29,6 +29,8 @@ class PengkajianNutrisiAnakState extends Equatable {
       saveResultFailure: none(),
       status: PengkajianNutrisiStatus.initial,
       pengkajianNutrisiAnak: PengkajianNutrisiAnak(
+          total: 0,
+          keterangan: "",
           n1: "",
           n2: "",
           n3: "",

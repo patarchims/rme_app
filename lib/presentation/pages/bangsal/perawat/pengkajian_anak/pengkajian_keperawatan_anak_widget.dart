@@ -8,6 +8,7 @@ import 'package:hms_app/domain/models/devices_info/device_info_model.dart';
 import 'package:hms_app/domain/models/meta/meta_model.dart';
 import 'package:hms_app/domain/models/users/user_model.dart';
 import 'package:hms_app/presentation/component/component.dart';
+import 'package:hms_app/presentation/component/constant/list_constants.dart';
 import 'package:hms_app/presentation/component/loading/loading.dart';
 import 'package:hms_app/presentation/pages/bangsal/bloc/pengkajian_fisik_anak/pengkajian_fisik_anak_bloc.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
@@ -102,7 +103,6 @@ class _PengkajianKeperawatanAnakWidgetPageState
                 (l) => l.maybeMap(
                     orElse: () {},
                     failure: (e) async {
-                      // log("ERROR FAILURE $e");
                       // TAMPILKAN PESAN KESALAHAN
                       final shouldPop = await Alert.warningMessage(context,
                           subTitle: e.meta.message.toString());
@@ -128,7 +128,6 @@ class _PengkajianKeperawatanAnakWidgetPageState
               // SIMPAN DATA
               dynamic data = await deviceInfo.initPlatformState();
               if (authState is Authenticated) {
-                // OnSavePengkajianFisikAnakEvent
                 // ignore: use_build_context_synchronously
                 context.read<PengkajianFisikAnakBloc>().add(
                     OnSavePengkajianFisikAnakEvent(
@@ -176,7 +175,7 @@ class _PengkajianKeperawatanAnakWidgetPageState
                                 marginColor: ThemeColor.whiteColor,
                                 itemHeight: 15.sp,
                                 suggestionStyle: blackTextStyle,
-                                suggestions: pilihanMata
+                                suggestions: ListConstants.pemeriksaanFisikMata
                                     .map(
                                       (e) => SearchFieldListItem(
                                         e,
@@ -221,7 +220,7 @@ class _PengkajianKeperawatanAnakWidgetPageState
                                 marginColor: ThemeColor.whiteColor,
                                 itemHeight: 15.sp,
                                 suggestionStyle: blackTextStyle,
-                                suggestions: pilihanMata
+                                suggestions: ListConstants.telinga
                                     .map(
                                       (e) => SearchFieldListItem(
                                         e,
@@ -267,7 +266,7 @@ class _PengkajianKeperawatanAnakWidgetPageState
                                 marginColor: ThemeColor.whiteColor,
                                 itemHeight: 15.sp,
                                 suggestionStyle: blackTextStyle,
-                                suggestions: pilihanMata
+                                suggestions: ListConstants.hidung
                                     .map(
                                       (e) => SearchFieldListItem(
                                         e,
@@ -313,7 +312,7 @@ class _PengkajianKeperawatanAnakWidgetPageState
                                 marginColor: ThemeColor.whiteColor,
                                 itemHeight: 15.sp,
                                 suggestionStyle: blackTextStyle,
-                                suggestions: pilihanMata
+                                suggestions: ListConstants.mulut
                                     .map(
                                       (e) => SearchFieldListItem(
                                         e,
@@ -358,7 +357,7 @@ class _PengkajianKeperawatanAnakWidgetPageState
                                 marginColor: ThemeColor.whiteColor,
                                 itemHeight: 15.sp,
                                 suggestionStyle: blackTextStyle,
-                                suggestions: pilihanMata
+                                suggestions: ListConstants.leher
                                     .map(
                                       (e) => SearchFieldListItem(
                                         e,
@@ -403,7 +402,7 @@ class _PengkajianKeperawatanAnakWidgetPageState
                                 marginColor: ThemeColor.whiteColor,
                                 itemHeight: 15.sp,
                                 suggestionStyle: blackTextStyle,
-                                suggestions: pilihanMata
+                                suggestions: ListConstants.dada
                                     .map(
                                       (e) => SearchFieldListItem(
                                         e,
@@ -447,7 +446,7 @@ class _PengkajianKeperawatanAnakWidgetPageState
                                 marginColor: ThemeColor.whiteColor,
                                 itemHeight: 15.sp,
                                 suggestionStyle: blackTextStyle,
-                                suggestions: pilihanMata
+                                suggestions: ListConstants.abdomen
                                     .map(
                                       (e) => SearchFieldListItem(
                                         e,
@@ -492,7 +491,7 @@ class _PengkajianKeperawatanAnakWidgetPageState
                                 marginColor: ThemeColor.whiteColor,
                                 itemHeight: 15.sp,
                                 suggestionStyle: blackTextStyle,
-                                suggestions: pilihanMata
+                                suggestions: ListConstants.pemeriksaanFisik
                                     .map(
                                       (e) => SearchFieldListItem(
                                         e,
@@ -537,7 +536,7 @@ class _PengkajianKeperawatanAnakWidgetPageState
                                 marginColor: ThemeColor.whiteColor,
                                 itemHeight: 15.sp,
                                 suggestionStyle: blackTextStyle,
-                                suggestions: pilihanMata
+                                suggestions: ListConstants.punggung
                                     .map(
                                       (e) => SearchFieldListItem(
                                         e,
@@ -582,7 +581,7 @@ class _PengkajianKeperawatanAnakWidgetPageState
                                 marginColor: ThemeColor.whiteColor,
                                 itemHeight: 15.sp,
                                 suggestionStyle: blackTextStyle,
-                                suggestions: pilihanMata
+                                suggestions: ListConstants.nutrisiHidrasi
                                     .map(
                                       (e) => SearchFieldListItem(
                                         e,
@@ -604,8 +603,8 @@ class _PengkajianKeperawatanAnakWidgetPageState
                                   return null;
                                 },
                                 controller: _nutrisiDanHidrasiController
-                                  ..text =
-                                      state.pemeriksaanFisikAnakModel.punggung,
+                                  ..text = state.pemeriksaanFisikAnakModel
+                                      .nutrisiDanHidrasi,
                                 onSubmit: (value) {},
                                 onSaved: (a) {},
                                 searchInputDecoration: InputDecoration(
@@ -630,27 +629,3 @@ class _PengkajianKeperawatanAnakWidgetPageState
     );
   }
 }
-
-List<String> pilihanMata = [
-  "TAK",
-  "DBN",
-  "Secret",
-  "Simetris Kanan Refleks berkedip",
-  "Simetris Kiri Refleks berkedip"
-];
-
-List<String> telinga = [
-  "TAK",
-  "DBN",
-  "Keluar Carian",
-  "Terdapat Septum di tengah",
-];
-
-List<String> hidung = ["TAK", "DBN", "Epitaksis", "Terdapat Septum di tengah"];
-
-List<String> mulut = ["TAK", "DBN", "Mucosa Lembab", "Refleks Menghisap"];
-
-List<String> leherDanBahu = [
-  "TAK",
-  "DBN",
-];

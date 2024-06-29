@@ -117,6 +117,30 @@ class _AgparScoreWidgetPageState extends State<AgparScoreWidgetPage> {
                                                 OnChangedWaktuEvent(
                                                     value: "5 Menit"));
                                           }),
+                                      TitleWidget.centerButtonBox(
+                                          title: "10 Menit",
+                                          backgroundColor: (state
+                                                  .socreModel.waktu
+                                                  .contains("10 Menit"))
+                                              ? ThemeColor.greenColor
+                                              : ThemeColor.darkColor,
+                                          onPressed: () {
+                                            context.read<ApgarScoreBloc>().add(
+                                                OnChangedWaktuEvent(
+                                                    value: "10 Menit"));
+                                          }),
+                                      TitleWidget.centerButtonBox(
+                                          title: "20 Menit",
+                                          backgroundColor: (state
+                                                  .socreModel.waktu
+                                                  .contains("20 Menit"))
+                                              ? ThemeColor.greenColor
+                                              : ThemeColor.darkColor,
+                                          onPressed: () {
+                                            context.read<ApgarScoreBloc>().add(
+                                                OnChangedWaktuEvent(
+                                                    value: "20 Menit"));
+                                          }),
                                     ]),
                                   ],
                                 ),

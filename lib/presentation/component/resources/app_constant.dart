@@ -16,11 +16,11 @@ String soundAssets = "assets/sound/";
 DateTime now = DateTime.now();
 
 class AppConstant {
-  static const AppSetup appSetup = AppSetup.rsTiara;
+  // static const AppSetup appSetup = AppSetup.rsTiara;
   // static const AppSetup appSetup = AppSetup.methodist;
   // static const AppSetup appSetup = AppSetup.rsVitaInSani;
   // static const AppSetup appSetup = AppSetup.rsHarapan;
-  // static const AppSetup appSetup = AppSetup.batuRaja;
+  static const AppSetup appSetup = AppSetup.batuRaja;
   static const String nameAPP = "Mobile RS Fatima";
   static const String csFatima = "Customer Services \nRS Fatima Ketapang";
 

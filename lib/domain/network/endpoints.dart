@@ -127,6 +127,7 @@ abstract class EndPoint {
   static String saveDeskripsiLuaran = '/v1/save-deskripsi-luaran-slki';
   static String hasilAsuhanKeperawatan = '/v1/asuhan-keperawatan';
   static String hasilAsuhanKeperawatanV2 = '/v2/asuhan-keperawatan';
+  static String hasilAsuhanKeperawatanV3 = '/v3/asuhan-keperawatan';
   static String saveDaskepSLKI = '/v1/daskep-slki';
   static String saveDaskepSLKIAll = '/v1/daskep-slki-all';
   static String onClosedSLKI = '/v1/closed-daskep-slki';
@@ -151,6 +152,8 @@ abstract class EndPoint {
       '/v1/pemeriksaan-fisik-perawat-igd';
   static String pemeriksaanFisikIGDDokterMethodist =
       '/v1/pemeriksaan-fisik-dokter-igd-methodist';
+  static String pemeriksaanFisikIGDDokterAntonio =
+      '/v1/pemeriksaan-fisik-dokter-igd-antonio';
   static String pemeriksaanFisikBangsal = '/v1/pemeriksaan-fisik-bangsal';
   static String resepObat = '/v1/resep-obat';
   static String resepObatV2 = '/v2/resep-obat';
@@ -171,4 +174,10 @@ abstract class EndPoint {
   static String asesmenAwalIGD = '/v1/asesmen-awal-igd';
   static String cpptBangsal = '/v1/cppt-sbar-bangsal';
   static String tandaVitalAnak = '/v1/tanda-vital-bangsal-anak';
+
+  // ACTION CPPT ===============================
+  static String actionCPPT = '/v1/add-action';
+  static String actionTindakanKeperawatan =
+      '/v1/implementasi-tindakan-keperawatan';
+  static String viewTindakan = '/v1/tindakan-keperawatan';
 }

@@ -75,83 +75,27 @@ class _PengkajianNutrisiAnakPageWidgetState
               // ON SAVE DATA
               dynamic data = await deviceInfo.initPlatformState();
               // ignore: use_build_context_synchronously
-              context.read<PengkajianNutrisiAnakBloc>().add(
-                  OnSavePengkajianNutrisiAnakEvent(
-                      noReg: singlePasien.first.noreg,
-                      deviceID: "ID-${data['id']}-${data['device']}",
-                      nilai1: state.pengkajianNutrisiAnak.n1,
-                      nilai2: state.pengkajianNutrisiAnak.n2,
-                      nilai3: state.pengkajianNutrisiAnak.n3,
-                      nilai4: state.pengkajianNutrisiAnak.n4,
-                      nilai: state.pengkajianNutrisiAnak.nilai));
+              context
+                  .read<PengkajianNutrisiAnakBloc>()
+                  .add(OnSavePengkajianNutrisiAnakEvent(
+                    noReg: singlePasien.first.noreg,
+                    deviceID: "ID-${data['id']}-${data['device']}",
+                    nilai1: state.pengkajianNutrisiAnak.n1,
+                    nilai2: state.pengkajianNutrisiAnak.n2,
+                    nilai3: state.pengkajianNutrisiAnak.n3,
+                    nilai4: state.pengkajianNutrisiAnak.n4,
+                    nilai: state.pengkajianNutrisiAnak.nilai,
+                  ));
             },
             title: "SIMPAN",
             widget: SingleChildScrollView(
               controller: _scrollController,
               child: Column(
                 children: [
+                  TitleWidget.titleContainer(
+                      title:
+                          "Pengkajian Nutrisi Berdasar Strong Kids \n(Untuk anak usia 0 bulan 17 tahun)"),
                   SizedBox(height: 5.sp),
-                  // Container(
-                  //   color: Colors.white,
-                  //   padding: EdgeInsets.symmetric(horizontal: 5.sp),
-                  //   child: TableDesk(
-                  //     shape: const RoundedRectangleBorder(
-                  //       side: BorderSide(color: Colors.black, width: 1),
-                  //     ),
-                  //     child: TableDeskRow(
-                  //       border: const BorderSide(width: 1, color: Colors.black),
-                  //       gaps: [
-                  //         TableGap.weight(),
-                  //         TableGap.width(220),
-                  //         TableGap.width(220),
-                  //       ],
-                  //       children: [
-                  //         Container(
-                  //           color: ThemeColor.primaryColor,
-                  //           child: Padding(
-                  //             padding: EdgeInsets.all(5.sp),
-                  //             child: Center(
-                  //               child: Text(
-                  //                 "PARAMETER",
-                  //                 style:
-                  //                     whiteTextStyle.copyWith(fontSize: 5.sp),
-                  //                 textAlign: TextAlign.center,
-                  //               ),
-                  //             ),
-                  //           ),
-                  //         ),
-                  //         Container(
-                  //           color: ThemeColor.primaryColor,
-                  //           child: Padding(
-                  //             padding: EdgeInsets.all(5.sp),
-                  //             child: Center(
-                  //               child: Text(
-                  //                 "PILIHAN",
-                  //                 style:
-                  //                     whiteTextStyle.copyWith(fontSize: 5.sp),
-                  //                 textAlign: TextAlign.center,
-                  //               ),
-                  //             ),
-                  //           ),
-                  //         ),
-                  //         Container(
-                  //           color: ThemeColor.primaryColor,
-                  //           child: Padding(
-                  //             padding: EdgeInsets.all(5.sp),
-                  //             child: Center(
-                  //               child: Text(
-                  //                 "NILAI",
-                  //                 style:
-                  //                     whiteTextStyle.copyWith(fontSize: 5.sp),
-                  //                 textAlign: TextAlign.center,
-                  //               ),
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
                   Table(
                     columnWidths: const {
                       0: FlexColumnWidth(10),
@@ -238,6 +182,11 @@ class _PengkajianNutrisiAnakPageWidgetState
                               textAlign: TextAlign.left,
                             )),
                       ]),
+                      const TableRow(children: [
+                        Divider(),
+                        Divider(),
+                        Divider(),
+                      ]),
                       TableRow(children: [
                         Container(
                             padding: EdgeInsets.all(5.sp),
@@ -316,6 +265,11 @@ class _PengkajianNutrisiAnakPageWidgetState
                                   fontSize: 10.sp, fontWeight: FontWeight.bold),
                               textAlign: TextAlign.left,
                             )),
+                      ]),
+                      const TableRow(children: [
+                        Divider(),
+                        Divider(),
+                        Divider(),
                       ]),
                       TableRow(children: [
                         Container(
@@ -396,11 +350,16 @@ class _PengkajianNutrisiAnakPageWidgetState
                               textAlign: TextAlign.left,
                             )),
                       ]),
+                      const TableRow(children: [
+                        Divider(),
+                        Divider(),
+                        Divider(),
+                      ]),
                       TableRow(children: [
                         Container(
                             padding: EdgeInsets.all(5.sp),
                             child: Text(
-                              "Apakah teradapat penyakit atau keadaan yang mengakibatkan pasien beresiko mengalami malnutrisi? (lihat label)",
+                              "Diagnosis khusus (gizi kurang / TB anak / HIV-AIDS / gangguan makan / obesitas / gangguan perkembagnan / penyakit ginjal kronik / sindorome nefrotik / diabetes mellitus / hepatitis / kanker / kelainan jantung / alergi makan / hiperlipidemia",
                               style: blackTextStyle.copyWith(
                                 fontSize: 5.sp,
                               ),
@@ -475,7 +434,22 @@ class _PengkajianNutrisiAnakPageWidgetState
                               textAlign: TextAlign.left,
                             )),
                       ]),
+                      const TableRow(children: [
+                        Divider(),
+                        Divider(),
+                        Divider(),
+                      ]),
                     ],
+                  ),
+                  SizedBox(height: 15.sp),
+                  TitleWidget.titleContainer(
+                      textStyle:
+                          whiteTextStyle.copyWith(fontWeight: FontWeight.bold),
+                      color: Colors.green,
+                      title:
+                          "Jika skor >= 1 dan atau ada diagnosis khusus dilakukan asesmen lanjut oleh Nutrisionis/Diestisien"),
+                  SizedBox(
+                    height: 10.sp,
                   ),
                 ],
               ),

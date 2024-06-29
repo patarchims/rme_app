@@ -310,6 +310,63 @@ class _VitalSignKeperawatanBangsalWidgetState
                                   },
                                   value: state
                                       .vitalSignKeperawatanModel.pernafasan),
+                              TitleWidget.formBox(
+                                  title: "SPO 2",
+                                  subTitle: "%",
+                                  onChanged: (e) {
+                                    context
+                                        .read<TandaVitalKeperawatanBloc>()
+                                        .add(OnChangedSPO2Event(value: e));
+                                  },
+                                  value: state.vitalSignKeperawatanModel.spo2),
+                              Container(
+                                  margin: EdgeInsets.only(left: 10.sp),
+                                  child: Row(
+                                    children: [
+                                      Text("Akral :",
+                                          style: blackTextStyle.copyWith(
+                                              fontWeight: FontWeight.bold)),
+                                      SizedBox(width: 5.sp),
+                                      Container(
+                                        margin: EdgeInsets.symmetric(
+                                            horizontal: 2.sp),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 10, vertical: 5),
+                                        decoration: BoxDecoration(
+                                            color: ThemeColor.primaryColor,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: DropdownButton<String>(
+                                          dropdownColor: ThemeColor.darkColor,
+                                          value: state
+                                              .vitalSignKeperawatanModel.akral,
+                                          onChanged: (value) {
+                                            context
+                                                .read<
+                                                    TandaVitalKeperawatanBloc>()
+                                                .add(OnChangedAkralEvent(
+                                                    value: value.toString()));
+                                          },
+                                          items: ListConstants.akralChoose
+                                              .map<DropdownMenuItem<String>>(
+                                                  (String value) =>
+                                                      DropdownMenuItem<String>(
+                                                        value: value,
+                                                        child: Text(value,
+                                                            style:
+                                                                whiteTextStyle),
+                                                      ))
+                                              .toList(),
+                                          icon: const Icon(
+                                            Icons.arrow_drop_down,
+                                            color: ThemeColor.primaryColor,
+                                          ),
+                                          iconSize: 42,
+                                          underline: const SizedBox(),
+                                        ),
+                                      ),
+                                    ],
+                                  )),
                             ],
                           ),
                         ),
@@ -319,6 +376,56 @@ class _VitalSignKeperawatanBangsalWidgetState
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                SizedBox(
+                                    child: Row(
+                                  children: [
+                                    Text(
+                                      "Kesadaran :",
+                                      style: blackTextStyle.copyWith(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SizedBox(
+                                      width: 5.sp,
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.symmetric(
+                                          horizontal: 2.sp),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10, vertical: 5),
+                                      decoration: BoxDecoration(
+                                          color: ThemeColor.primaryColor,
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: DropdownButton<String>(
+                                        dropdownColor: ThemeColor.darkColor,
+                                        value: state.vitalSignKeperawatanModel
+                                            .kesadaran,
+                                        onChanged: (value) {
+                                          context
+                                              .read<TandaVitalKeperawatanBloc>()
+                                              .add(OnChangedKesadaranEvent(
+                                                  value: value.toString()));
+                                        },
+                                        items: ListConstants.kesadaranManusia
+                                            .map<DropdownMenuItem<String>>(
+                                                (String value) =>
+                                                    DropdownMenuItem<String>(
+                                                      value: value,
+                                                      child: Text(value,
+                                                          style:
+                                                              whiteTextStyle),
+                                                    ))
+                                            .toList(),
+                                        icon: const Icon(
+                                          Icons.arrow_drop_down,
+                                          color: ThemeColor.primaryColor,
+                                        ),
+                                        iconSize: 42,
+                                        underline: const SizedBox(),
+                                      ),
+                                    ),
+                                  ],
+                                )),
                                 TitleWidget.formBox(
                                     title: "Nadi",
                                     subTitle: "x/menit",
@@ -347,6 +454,56 @@ class _VitalSignKeperawatanBangsalWidgetState
                                           .read<TandaVitalKeperawatanBloc>()
                                           .add(OnChangedTinggiBadan(value: e));
                                     }),
+                                SizedBox(
+                                    child: Row(
+                                  children: [
+                                    Text(
+                                      "Pupil :",
+                                      style: blackTextStyle.copyWith(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SizedBox(
+                                      width: 5.sp,
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.symmetric(
+                                          horizontal: 2.sp),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10, vertical: 5),
+                                      decoration: BoxDecoration(
+                                          color: ThemeColor.primaryColor,
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: DropdownButton<String>(
+                                        dropdownColor: ThemeColor.darkColor,
+                                        value: state
+                                            .vitalSignKeperawatanModel.pupil,
+                                        onChanged: (value) {
+                                          context
+                                              .read<TandaVitalKeperawatanBloc>()
+                                              .add(OnChangedPupilEvent(
+                                                  value: value.toString()));
+                                        },
+                                        items: ListConstants.pupilChoose
+                                            .map<DropdownMenuItem<String>>(
+                                                (String value) =>
+                                                    DropdownMenuItem<String>(
+                                                      value: value,
+                                                      child: Text(value,
+                                                          style:
+                                                              whiteTextStyle),
+                                                    ))
+                                            .toList(),
+                                        icon: const Icon(
+                                          Icons.arrow_drop_down,
+                                          color: ThemeColor.primaryColor,
+                                        ),
+                                        iconSize: 42,
+                                        underline: const SizedBox(),
+                                      ),
+                                    ),
+                                  ],
+                                )),
                               ],
                             ),
                           ),

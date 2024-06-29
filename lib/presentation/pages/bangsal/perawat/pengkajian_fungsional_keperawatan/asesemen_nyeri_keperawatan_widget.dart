@@ -225,6 +225,24 @@ class _AsesmenAwalNyeriKeperawatanWidgetPageState
                         ],
                       ),
                     ),
+
+                    SizedBox(
+                      height: 10.sp,
+                    ),
+                    Container(
+                      height: 45.sp,
+                      width: Get.width,
+                      margin: EdgeInsets.symmetric(horizontal: 15.sp),
+                      padding: EdgeInsets.all(5.sp),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5.sp),
+                        color: ThemeColor.lightGrey,
+                      ),
+                      child: Text(
+                        "0        :  (Tidak Nyeri)\n1-3     :  (Ringan)\n4-6    :  (Sedang)\n7-10    : (Berat)",
+                        style: blackTextStyle,
+                      ),
+                    )
                   ],
                 ),
               ),

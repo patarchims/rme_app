@@ -87,664 +87,762 @@ class _ResikoJatuhWidgetState extends State<ResikoJatuhWidget> {
               radius: Radius.circular(5.sp),
               child: SingleChildScrollView(
                 controller: _scrollController,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 5.sp,
-                    ),
-                    Container(
-                      color: Colors.white,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 5.sp,
+                child: Container(
+                  margin: EdgeInsets.only(right: 10.sp),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 5.sp,
                       ),
-                      child: TableDesk(
-                        shape: const RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.black, width: 1),
+                      Container(
+                        color: Colors.white,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 5.sp,
                         ),
-                        child: TableDeskRow(
-                          border:
-                              const BorderSide(width: 1, color: Colors.black),
-                          gaps: [
-                            TableGap.width(60),
-                            TableGap.weight(),
-                            TableGap.width(420),
-                            TableGap.width(220),
-                          ],
-                          children: [
-                            Container(
-                              color: ThemeColor.primaryColor,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8),
-                                child: Center(
-                                  child: Text(
-                                    "NO.",
-                                    style:
-                                        whiteTextStyle.copyWith(fontSize: 4.sp),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              color: ThemeColor.primaryColor,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8),
-                                child: Center(
-                                  child: Text(
-                                    "PENGKAJIAN",
-                                    style:
-                                        whiteTextStyle.copyWith(fontSize: 4.sp),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            TableDeskColumn(
-                              border: const BorderSide(
-                                  width: 1, color: Colors.black),
-                              children: [
-                                Container(
-                                  color: ThemeColor.primaryColor,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8),
+                        child: TableDesk(
+                          shape: const RoundedRectangleBorder(
+                            side: BorderSide(color: Colors.black, width: 1),
+                          ),
+                          child: TableDeskRow(
+                            border:
+                                const BorderSide(width: 1, color: Colors.black),
+                            gaps: [
+                              TableGap.width(60),
+                              TableGap.weight(),
+                              TableGap.width(420),
+                              TableGap.width(220),
+                            ],
+                            children: [
+                              Container(
+                                color: ThemeColor.primaryColor,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8),
+                                  child: Center(
                                     child: Text(
-                                      "SKALA",
+                                      "NO.",
                                       style: whiteTextStyle.copyWith(
                                           fontSize: 4.sp),
                                       textAlign: TextAlign.center,
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  color: ThemeColor.primaryColor,
-                                  child: TableDeskRow(
-                                    border: const BorderSide(
-                                        width: 1, color: Colors.black),
-                                    gaps: [
-                                      TableGap.weight(),
-                                      TableGap.weight(),
-                                    ],
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          "YA",
-                                          style: whiteTextStyle.copyWith(
-                                              fontSize: 4.sp),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          "TIDAK",
-                                          style: whiteTextStyle.copyWith(
-                                              fontSize: 4.sp),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Container(
-                              color: ThemeColor.primaryColor,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8),
-                                child: Center(
-                                  child: Text(
-                                    "NILAI",
-                                    style:
-                                        whiteTextStyle.copyWith(fontSize: 4.sp),
-                                    textAlign: TextAlign.center,
+                              ),
+                              Container(
+                                color: ThemeColor.primaryColor,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8),
+                                  child: Center(
+                                    child: Text(
+                                      "PENGKAJIAN",
+                                      style: whiteTextStyle.copyWith(
+                                          fontSize: 4.sp),
+                                      textAlign: TextAlign.center,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                              TableDeskColumn(
+                                border: const BorderSide(
+                                    width: 1, color: Colors.black),
+                                children: [
+                                  Container(
+                                    color: ThemeColor.primaryColor,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8),
+                                      child: Text(
+                                        "SKALA",
+                                        style: whiteTextStyle.copyWith(
+                                            fontSize: 4.sp),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    color: ThemeColor.primaryColor,
+                                    child: TableDeskRow(
+                                      border: const BorderSide(
+                                          width: 1, color: Colors.black),
+                                      gaps: [
+                                        TableGap.weight(),
+                                        TableGap.weight(),
+                                      ],
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            "YA",
+                                            style: whiteTextStyle.copyWith(
+                                                fontSize: 4.sp),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            "TIDAK",
+                                            style: whiteTextStyle.copyWith(
+                                                fontSize: 4.sp),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                color: ThemeColor.primaryColor,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8),
+                                  child: Center(
+                                    child: Text(
+                                      "NILAI",
+                                      style: whiteTextStyle.copyWith(
+                                          fontSize: 4.sp),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 5.sp,
-                      ),
-                      child: Table(
-                        border: TableBorder.all(color: ThemeColor.bgColor),
-                        columnWidths: const {
-                          0: FlexColumnWidth(0.1),
-                          1: FlexColumnWidth(2),
-                          2: FlexColumnWidth(0.6),
-                          3: FlexColumnWidth(0.6),
-                          4: FlexColumnWidth(0.6),
-                        },
-                        children: [
-                          TableRow(children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "1.",
-                                textAlign: TextAlign.center,
-                                style: blackTextStyle.copyWith(fontSize: 5.sp),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "Riwayat jatuh yang baru atau dalam 3 bulan terakhir",
-                                textAlign: TextAlign.left,
-                                style: blackTextStyle.copyWith(fontSize: 5.sp),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.all(5.sp),
-                              height: 15.sp,
-                              width: 25.sp,
-                              child: IconButton(
-                                  onPressed: () {
-                                    context
-                                        .read<ResikoJatuhKebidananBloc>()
-                                        .add(
-                                            OnChangedRiwayatJatuh(value: "Ya"));
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: (state
-                                              .resikoJatuhKebidananModel.rJatuh
-                                              .contains("Ya"))
-                                          ? ThemeColor.greenColor
-                                          : ThemeColor.primaryColor,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(2.sp))),
-                                  color: ThemeColor.whiteColor,
-                                  icon: Text(
-                                    "YA",
-                                    style:
-                                        whiteTextStyle.copyWith(fontSize: 6.sp),
-                                    textAlign: TextAlign.center,
-                                  )),
-                            ),
-                            Container(
-                              margin: EdgeInsets.all(5.sp),
-                              height: 15.sp,
-                              width: 25.sp,
-                              child: IconButton(
-                                  onPressed: () {
-                                    context
-                                        .read<ResikoJatuhKebidananBloc>()
-                                        .add(OnChangedRiwayatJatuh(
-                                            value: "Tidak"));
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: (state
-                                              .resikoJatuhKebidananModel.rJatuh
-                                              .contains("Tidak"))
-                                          ? ThemeColor.greenColor
-                                          : ThemeColor.primaryColor,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(2.sp))),
-                                  color: ThemeColor.whiteColor,
-                                  icon: Text(
-                                    "TIDAK",
-                                    style:
-                                        whiteTextStyle.copyWith(fontSize: 6.sp),
-                                    textAlign: TextAlign.center,
-                                  )),
-                            ),
-                            Center(
-                              child: Text(
-                                toNilai(
-                                    resikoJatuhKebidananState: state,
-                                    jatuh: Jatuh.rJatuh),
-                                textAlign: TextAlign.center,
-                                style: blackTextStyle.copyWith(
-                                    fontSize: 7.sp,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            )
-                          ]),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 5.sp,
-                      ),
-                      child: const Divider(),
-                    ),
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 5.sp,
-                      ),
-                      child: Table(
-                        border: TableBorder.all(color: ThemeColor.bgColor),
-                        columnWidths: const {
-                          0: FlexColumnWidth(0.1),
-                          1: FlexColumnWidth(2),
-                          2: FlexColumnWidth(0.6),
-                          3: FlexColumnWidth(0.6),
-                          4: FlexColumnWidth(0.6),
-                        },
-                        children: [
-                          TableRow(children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "2.",
-                                textAlign: TextAlign.center,
-                                style: blackTextStyle.copyWith(fontSize: 5.sp),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "Diagnosa medis sekunder > 1",
-                                textAlign: TextAlign.left,
-                                style: blackTextStyle.copyWith(fontSize: 5.sp),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.all(5.sp),
-                              height: 15.sp,
-                              width: 25.sp,
-                              child: IconButton(
-                                  onPressed: () {
-                                    context
-                                        .read<ResikoJatuhKebidananBloc>()
-                                        .add(OnChangedDiagnosa(value: "Ya"));
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: (state
-                                              .resikoJatuhKebidananModel
-                                              .diagnosis
-                                              .contains("Ya"))
-                                          ? ThemeColor.greenColor
-                                          : ThemeColor.primaryColor,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(2.sp))),
-                                  color: ThemeColor.whiteColor,
-                                  icon: Text(
-                                    "YA",
-                                    style:
-                                        whiteTextStyle.copyWith(fontSize: 6.sp),
-                                    textAlign: TextAlign.center,
-                                  )),
-                            ),
-                            Container(
-                              margin: EdgeInsets.all(5.sp),
-                              height: 15.sp,
-                              width: 25.sp,
-                              child: IconButton(
-                                  onPressed: () {
-                                    context
-                                        .read<ResikoJatuhKebidananBloc>()
-                                        .add(OnChangedDiagnosa(value: "Tidak"));
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: (state
-                                              .resikoJatuhKebidananModel
-                                              .diagnosis
-                                              .contains("Tidak"))
-                                          ? ThemeColor.greenColor
-                                          : ThemeColor.primaryColor,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(2.sp))),
-                                  color: ThemeColor.whiteColor,
-                                  icon: Text(
-                                    "TIDAK",
-                                    style:
-                                        whiteTextStyle.copyWith(fontSize: 6.sp),
-                                    textAlign: TextAlign.center,
-                                  )),
-                            ),
-                            Center(
-                              child: Text(
-                                toNilai(
-                                    resikoJatuhKebidananState: state,
-                                    jatuh: Jatuh.diagnosis),
-                                textAlign: TextAlign.center,
-                                style: blackTextStyle.copyWith(
-                                    fontSize: 7.sp,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            )
-                          ]),
-                        ],
-                      ),
-                    ),
-                    Container(
+                      Container(
                         padding: EdgeInsets.symmetric(
                           horizontal: 5.sp,
                         ),
-                        child: const Divider()),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 8.sp),
-                        child: Text(
-                          "3. Alat bantu jalan",
-                          textAlign: TextAlign.left,
-                          style: blackTextStyle.copyWith(fontSize: 5.sp),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 5.sp,
-                      ),
-                      child: Column(
-                        children: [
-                          // =============== ALAT BANTU 1
-                          tableChanged(
-                              nilai: toNilai(
-                                  resikoJatuhKebidananState: state,
-                                  jatuh: Jatuh.alatBantu1),
-                              icon2: Text(
-                                "TIDAK",
-                                style: whiteTextStyle.copyWith(fontSize: 6.sp),
-                                textAlign: TextAlign.center,
-                              ),
-                              icon1: Text(
-                                "YA",
-                                style: whiteTextStyle.copyWith(fontSize: 6.sp),
-                                textAlign: TextAlign.center,
-                              ),
-                              onPressed1: () {
-                                context
-                                    .read<ResikoJatuhKebidananBloc>()
-                                    .add(OnChangedAlatBantu1(value: "Ya"));
-                              },
-                              title: "Penopang / Tongkat / Walker",
-                              style2: ElevatedButton.styleFrom(
-                                  backgroundColor: (state
-                                          .resikoJatuhKebidananModel.alatBantu1
-                                          .contains("Tidak"))
-                                      ? ThemeColor.greenColor
-                                      : ThemeColor.primaryColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(2.sp))),
-                              style1: ElevatedButton.styleFrom(
-                                  backgroundColor: (state
-                                          .resikoJatuhKebidananModel.alatBantu1
-                                          .contains("Ya"))
-                                      ? ThemeColor.greenColor
-                                      : ThemeColor.primaryColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(2.sp))),
-                              context,
-                              onPressed2: () {
-                                context
-                                    .read<ResikoJatuhKebidananBloc>()
-                                    .add(OnChangedAlatBantu1(value: "Tidak"));
-                              },
-                              state),
-
-                          // =============== ALAT BANTU 2
-                          tableChanged(
-                              nilai: toNilai(
-                                  resikoJatuhKebidananState: state,
-                                  jatuh: Jatuh.alatBantu2),
-                              icon2: Text(
-                                "TIDAK",
-                                style: whiteTextStyle.copyWith(fontSize: 6.sp),
-                                textAlign: TextAlign.center,
-                              ),
-                              icon1: Text(
-                                "YA",
-                                style: whiteTextStyle.copyWith(fontSize: 6.sp),
-                                textAlign: TextAlign.center,
-                              ),
-                              onPressed1: () {
-                                context
-                                    .read<ResikoJatuhKebidananBloc>()
-                                    .add(OnChangedAlatBantu2(value: "Ya"));
-                              },
-                              title: "Penopang / Tongkat / Walker",
-                              style2: ElevatedButton.styleFrom(
-                                  backgroundColor: (state
-                                          .resikoJatuhKebidananModel.alatBantu2
-                                          .contains("Tidak"))
-                                      ? ThemeColor.greenColor
-                                      : ThemeColor.primaryColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(2.sp))),
-                              style1: ElevatedButton.styleFrom(
-                                  backgroundColor: (state
-                                          .resikoJatuhKebidananModel.alatBantu2
-                                          .contains("Ya"))
-                                      ? ThemeColor.greenColor
-                                      : ThemeColor.primaryColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(2.sp))),
-                              context,
-                              onPressed2: () {
-                                context
-                                    .read<ResikoJatuhKebidananBloc>()
-                                    .add(OnChangedAlatBantu2(value: "Tidak"));
-                              },
-                              state),
-
-                          // ========= ON PRESSS 3
-                          tableChanged(
-                              nilai: toNilai(
-                                  resikoJatuhKebidananState: state,
-                                  jatuh: Jatuh.alatBantu3),
-                              style1: ElevatedButton.styleFrom(
-                                  backgroundColor: (state
-                                          .resikoJatuhKebidananModel.alatBantu3
-                                          .contains("Ya"))
-                                      ? ThemeColor.greenColor
-                                      : ThemeColor.primaryColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(2.sp))),
-                              style2: ElevatedButton.styleFrom(
-                                  backgroundColor: (state
-                                          .resikoJatuhKebidananModel.alatBantu3
-                                          .contains("Tidak"))
-                                      ? ThemeColor.greenColor
-                                      : ThemeColor.primaryColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(2.sp))),
-                              icon2: Text(
-                                "TIDAK",
-                                style: whiteTextStyle.copyWith(fontSize: 6.sp),
-                                textAlign: TextAlign.center,
-                              ),
-                              icon1: Text(
-                                "YA",
-                                style: whiteTextStyle.copyWith(fontSize: 6.sp),
-                                textAlign: TextAlign.center,
-                              ), onPressed1: () {
-                            context
-                                .read<ResikoJatuhKebidananBloc>()
-                                .add(OnChangedAlatBantu3(value: "Ya"));
-                          }, onPressed2: () {
-                            context
-                                .read<ResikoJatuhKebidananBloc>()
-                                .add(OnChangedAlatBantu3(value: "Tidak"));
-                          }, title: "Berpegangan pada benda - benda di\n        sekitar(Meja, Kursi, Lemari)", context, state),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 5.sp,
-                      ),
-                      child: const Divider(),
-                    ),
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 5.sp,
-                      ),
-                      child: Table(
-                        border: TableBorder.all(color: ThemeColor.bgColor),
-                        columnWidths: const {
-                          0: FlexColumnWidth(0.1),
-                          1: FlexColumnWidth(2),
-                          2: FlexColumnWidth(0.6),
-                          3: FlexColumnWidth(0.6),
-                          4: FlexColumnWidth(0.6),
-                        },
-                        children: [
-                          TableRow(children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "4.",
-                                textAlign: TextAlign.center,
-                                style: blackTextStyle.copyWith(fontSize: 5.sp),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "Menggunakan infus",
-                                textAlign: TextAlign.left,
-                                style: blackTextStyle.copyWith(fontSize: 5.sp),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.all(5.sp),
-                              height: 15.sp,
-                              width: 25.sp,
-                              child: IconButton(
-                                  onPressed: () {
-                                    context
-                                        .read<ResikoJatuhKebidananBloc>()
-                                        .add(OnChangedInfuse(value: "Ya"));
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: (state
-                                              .resikoJatuhKebidananModel
-                                              .terpasangInfuse
-                                              .contains("Ya"))
-                                          ? ThemeColor.greenColor
-                                          : ThemeColor.primaryColor,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(2.sp))),
-                                  color: ThemeColor.whiteColor,
-                                  icon: Text(
-                                    "YA",
-                                    style:
-                                        whiteTextStyle.copyWith(fontSize: 6.sp),
-                                    textAlign: TextAlign.center,
-                                  )),
-                            ),
-                            Container(
-                              margin: EdgeInsets.all(5.sp),
-                              height: 15.sp,
-                              width: 25.sp,
-                              child: IconButton(
-                                  onPressed: () {
-                                    context
-                                        .read<ResikoJatuhKebidananBloc>()
-                                        .add(OnChangedInfuse(value: "Tidak"));
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: (state
-                                              .resikoJatuhKebidananModel
-                                              .terpasangInfuse
-                                              .contains("Tidak"))
-                                          ? ThemeColor.greenColor
-                                          : ThemeColor.primaryColor,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(2.sp))),
-                                  color: ThemeColor.whiteColor,
-                                  icon: Text(
-                                    "TIDAK",
-                                    style:
-                                        whiteTextStyle.copyWith(fontSize: 6.sp),
-                                    textAlign: TextAlign.center,
-                                  )),
-                            ),
-                            Center(
-                              child: Text(
-                                toNilai(
-                                    resikoJatuhKebidananState: state,
-                                    jatuh: Jatuh.terpasangInfus),
-                                textAlign: TextAlign.center,
-                                style: blackTextStyle.copyWith(
-                                    fontSize: 7.sp,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            )
-                          ]),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 5.sp,
-                      ),
-                      child: const Divider(),
-                    ),
-                    Container(
-                      color: Colors.white,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 5.sp,
-                      ),
-                      child: TableDesk(
-                        shape: const RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.black, width: 1),
-                        ),
-                        child: TableDeskRow(
-                          border:
-                              const BorderSide(width: 1, color: Colors.black),
-                          gaps: [
-                            TableGap.weight(),
-                            TableGap.width(220),
-                          ],
+                        child: Table(
+                          border: TableBorder.all(color: ThemeColor.bgColor),
+                          columnWidths: const {
+                            0: FlexColumnWidth(0.1),
+                            1: FlexColumnWidth(2),
+                            2: FlexColumnWidth(0.6),
+                            3: FlexColumnWidth(0.6),
+                            4: FlexColumnWidth(0.6),
+                          },
                           children: [
-                            Container(
-                              color: ThemeColor.primaryColor,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8),
-                                child: Center(
-                                  child: Text(
-                                    "TOTAL",
-                                    style:
-                                        whiteTextStyle.copyWith(fontSize: 4.sp),
-                                    textAlign: TextAlign.center,
-                                  ),
+                            TableRow(children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "1.",
+                                  textAlign: TextAlign.center,
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 5.sp),
                                 ),
                               ),
-                            ),
-                            Container(
-                              color: ThemeColor.primaryColor,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8),
-                                child: Center(
-                                  child: Text(
-                                    state.resikoJatuhKebidananModel.total
-                                        .toString(),
-                                    style: whiteTextStyle.copyWith(
-                                        fontSize: 12.sp,
-                                        fontWeight: FontWeight.bold),
-                                    textAlign: TextAlign.center,
-                                  ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "Riwayat jatuh yang baru atau dalam 3 bulan terakhir",
+                                  textAlign: TextAlign.left,
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 5.sp),
                                 ),
                               ),
-                            ),
+                              Container(
+                                margin: EdgeInsets.all(5.sp),
+                                height: 15.sp,
+                                width: 25.sp,
+                                child: IconButton(
+                                    onPressed: () {
+                                      context
+                                          .read<ResikoJatuhKebidananBloc>()
+                                          .add(OnChangedRiwayatJatuh(
+                                              value: "Ya"));
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: (state
+                                                .resikoJatuhKebidananModel
+                                                .rJatuh
+                                                .contains("Ya"))
+                                            ? ThemeColor.greenColor
+                                            : ThemeColor.primaryColor,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(2.sp))),
+                                    color: ThemeColor.whiteColor,
+                                    icon: Text(
+                                      "YA",
+                                      style: whiteTextStyle.copyWith(
+                                          fontSize: 6.sp),
+                                      textAlign: TextAlign.center,
+                                    )),
+                              ),
+                              Container(
+                                margin: EdgeInsets.all(5.sp),
+                                height: 15.sp,
+                                width: 25.sp,
+                                child: IconButton(
+                                    onPressed: () {
+                                      context
+                                          .read<ResikoJatuhKebidananBloc>()
+                                          .add(OnChangedRiwayatJatuh(
+                                              value: "Tidak"));
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: (state
+                                                .resikoJatuhKebidananModel
+                                                .rJatuh
+                                                .contains("Tidak"))
+                                            ? ThemeColor.greenColor
+                                            : ThemeColor.primaryColor,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(2.sp))),
+                                    color: ThemeColor.whiteColor,
+                                    icon: Text(
+                                      "TIDAK",
+                                      style: whiteTextStyle.copyWith(
+                                          fontSize: 6.sp),
+                                      textAlign: TextAlign.center,
+                                    )),
+                              ),
+                              Center(
+                                child: Text(
+                                  toNilai(
+                                      resikoJatuhKebidananState: state,
+                                      jatuh: Jatuh.rJatuh),
+                                  textAlign: TextAlign.center,
+                                  style: blackTextStyle.copyWith(
+                                      fontSize: 7.sp,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              )
+                            ]),
                           ],
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 35.sp,
-                    ),
-                  ],
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 5.sp,
+                        ),
+                        child: const Divider(),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 5.sp,
+                        ),
+                        child: Table(
+                          border: TableBorder.all(color: ThemeColor.bgColor),
+                          columnWidths: const {
+                            0: FlexColumnWidth(0.1),
+                            1: FlexColumnWidth(2),
+                            2: FlexColumnWidth(0.6),
+                            3: FlexColumnWidth(0.6),
+                            4: FlexColumnWidth(0.6),
+                          },
+                          children: [
+                            TableRow(children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "2.",
+                                  textAlign: TextAlign.center,
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 5.sp),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "Diagnosa medis sekunder > 1",
+                                  textAlign: TextAlign.left,
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 5.sp),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.all(5.sp),
+                                height: 15.sp,
+                                width: 25.sp,
+                                child: IconButton(
+                                    onPressed: () {
+                                      context
+                                          .read<ResikoJatuhKebidananBloc>()
+                                          .add(OnChangedDiagnosa(value: "Ya"));
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: (state
+                                                .resikoJatuhKebidananModel
+                                                .diagnosis
+                                                .contains("Ya"))
+                                            ? ThemeColor.greenColor
+                                            : ThemeColor.primaryColor,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(2.sp))),
+                                    color: ThemeColor.whiteColor,
+                                    icon: Text(
+                                      "YA",
+                                      style: whiteTextStyle.copyWith(
+                                          fontSize: 6.sp),
+                                      textAlign: TextAlign.center,
+                                    )),
+                              ),
+                              Container(
+                                margin: EdgeInsets.all(5.sp),
+                                height: 15.sp,
+                                width: 25.sp,
+                                child: IconButton(
+                                    onPressed: () {
+                                      context
+                                          .read<ResikoJatuhKebidananBloc>()
+                                          .add(OnChangedDiagnosa(
+                                              value: "Tidak"));
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: (state
+                                                .resikoJatuhKebidananModel
+                                                .diagnosis
+                                                .contains("Tidak"))
+                                            ? ThemeColor.greenColor
+                                            : ThemeColor.primaryColor,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(2.sp))),
+                                    color: ThemeColor.whiteColor,
+                                    icon: Text(
+                                      "TIDAK",
+                                      style: whiteTextStyle.copyWith(
+                                          fontSize: 6.sp),
+                                      textAlign: TextAlign.center,
+                                    )),
+                              ),
+                              Center(
+                                child: Text(
+                                  toNilai(
+                                      resikoJatuhKebidananState: state,
+                                      jatuh: Jatuh.diagnosis),
+                                  textAlign: TextAlign.center,
+                                  style: blackTextStyle.copyWith(
+                                      fontSize: 7.sp,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              )
+                            ]),
+                          ],
+                        ),
+                      ),
+                      Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 5.sp,
+                          ),
+                          child: const Divider()),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 8.sp),
+                          child: Text(
+                            "3. Alat bantu jalan",
+                            textAlign: TextAlign.left,
+                            style: blackTextStyle.copyWith(fontSize: 5.sp),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 5.sp,
+                        ),
+                        child: Column(
+                          children: [
+                            // =============== ALAT BANTU 1
+                            tableChanged(
+                                nilai: toNilai(
+                                    resikoJatuhKebidananState: state,
+                                    jatuh: Jatuh.alatBantu1),
+                                icon2: Text(
+                                  "TIDAK",
+                                  style:
+                                      whiteTextStyle.copyWith(fontSize: 6.sp),
+                                  textAlign: TextAlign.center,
+                                ),
+                                icon1: Text(
+                                  "YA",
+                                  style:
+                                      whiteTextStyle.copyWith(fontSize: 6.sp),
+                                  textAlign: TextAlign.center,
+                                ),
+                                onPressed1: () {
+                                  context
+                                      .read<ResikoJatuhKebidananBloc>()
+                                      .add(OnChangedAlatBantu1(value: "Ya"));
+                                },
+                                title: "Bed rest/ dibantu perawat",
+                                style2: ElevatedButton.styleFrom(
+                                    backgroundColor: (state
+                                            .resikoJatuhKebidananModel
+                                            .alatBantu1
+                                            .contains("Tidak"))
+                                        ? ThemeColor.greenColor
+                                        : ThemeColor.primaryColor,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(2.sp))),
+                                style1: ElevatedButton.styleFrom(
+                                    backgroundColor: (state
+                                            .resikoJatuhKebidananModel
+                                            .alatBantu1
+                                            .contains("Ya"))
+                                        ? ThemeColor.greenColor
+                                        : ThemeColor.primaryColor,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(2.sp))),
+                                context,
+                                onPressed2: () {
+                                  context
+                                      .read<ResikoJatuhKebidananBloc>()
+                                      .add(OnChangedAlatBantu1(value: "Tidak"));
+                                },
+                                state),
+
+                            // =============== ALAT BANTU 2
+                            tableChanged(
+                                nilai: toNilai(
+                                    resikoJatuhKebidananState: state,
+                                    jatuh: Jatuh.alatBantu2),
+                                icon2: Text(
+                                  "TIDAK",
+                                  style:
+                                      whiteTextStyle.copyWith(fontSize: 6.sp),
+                                  textAlign: TextAlign.center,
+                                ),
+                                icon1: Text(
+                                  "YA",
+                                  style:
+                                      whiteTextStyle.copyWith(fontSize: 6.sp),
+                                  textAlign: TextAlign.center,
+                                ),
+                                onPressed1: () {
+                                  context
+                                      .read<ResikoJatuhKebidananBloc>()
+                                      .add(OnChangedAlatBantu2(value: "Ya"));
+                                },
+                                title: "Penopang / Tongkat / Walker",
+                                style2: ElevatedButton.styleFrom(
+                                    backgroundColor: (state
+                                            .resikoJatuhKebidananModel
+                                            .alatBantu2
+                                            .contains("Tidak"))
+                                        ? ThemeColor.greenColor
+                                        : ThemeColor.primaryColor,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(2.sp))),
+                                style1: ElevatedButton.styleFrom(
+                                    backgroundColor: (state
+                                            .resikoJatuhKebidananModel
+                                            .alatBantu2
+                                            .contains("Ya"))
+                                        ? ThemeColor.greenColor
+                                        : ThemeColor.primaryColor,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(2.sp))),
+                                context,
+                                onPressed2: () {
+                                  context
+                                      .read<ResikoJatuhKebidananBloc>()
+                                      .add(OnChangedAlatBantu2(value: "Tidak"));
+                                },
+                                state),
+
+                            // ========= ON PRESSS 3
+                            tableChanged(
+                                nilai: toNilai(
+                                    resikoJatuhKebidananState: state,
+                                    jatuh: Jatuh.alatBantu3),
+                                style1: ElevatedButton.styleFrom(
+                                    backgroundColor: (state
+                                            .resikoJatuhKebidananModel
+                                            .alatBantu3
+                                            .contains("Ya"))
+                                        ? ThemeColor.greenColor
+                                        : ThemeColor.primaryColor,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(2.sp))),
+                                style2: ElevatedButton.styleFrom(
+                                    backgroundColor: (state
+                                            .resikoJatuhKebidananModel
+                                            .alatBantu3
+                                            .contains("Tidak"))
+                                        ? ThemeColor.greenColor
+                                        : ThemeColor.primaryColor,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(2.sp))),
+                                icon2: Text(
+                                  "TIDAK",
+                                  style:
+                                      whiteTextStyle.copyWith(fontSize: 6.sp),
+                                  textAlign: TextAlign.center,
+                                ),
+                                icon1: Text(
+                                  "YA",
+                                  style:
+                                      whiteTextStyle.copyWith(fontSize: 6.sp),
+                                  textAlign: TextAlign.center,
+                                ), onPressed1: () {
+                              context
+                                  .read<ResikoJatuhKebidananBloc>()
+                                  .add(OnChangedAlatBantu3(value: "Ya"));
+                            }, onPressed2: () {
+                              context
+                                  .read<ResikoJatuhKebidananBloc>()
+                                  .add(OnChangedAlatBantu3(value: "Tidak"));
+                            }, title: "Berpegangan pada benda - benda di\n        sekitar(Meja, Kursi, Lemari)", context, state),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 5.sp,
+                        ),
+                        child: const Divider(),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 5.sp,
+                        ),
+                        child: Table(
+                          border: TableBorder.all(color: ThemeColor.bgColor),
+                          columnWidths: const {
+                            0: FlexColumnWidth(0.1),
+                            1: FlexColumnWidth(2),
+                            2: FlexColumnWidth(0.6),
+                            3: FlexColumnWidth(0.6),
+                            4: FlexColumnWidth(0.6),
+                          },
+                          children: [
+                            TableRow(children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "4.",
+                                  textAlign: TextAlign.center,
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 5.sp),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "Menggunakan infus",
+                                  textAlign: TextAlign.left,
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 5.sp),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.all(5.sp),
+                                height: 15.sp,
+                                width: 25.sp,
+                                child: IconButton(
+                                    onPressed: () {
+                                      context
+                                          .read<ResikoJatuhKebidananBloc>()
+                                          .add(OnChangedInfuse(value: "Ya"));
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: (state
+                                                .resikoJatuhKebidananModel
+                                                .terpasangInfuse
+                                                .contains("Ya"))
+                                            ? ThemeColor.greenColor
+                                            : ThemeColor.primaryColor,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(2.sp))),
+                                    color: ThemeColor.whiteColor,
+                                    icon: Text(
+                                      "YA",
+                                      style: whiteTextStyle.copyWith(
+                                          fontSize: 6.sp),
+                                      textAlign: TextAlign.center,
+                                    )),
+                              ),
+                              Container(
+                                margin: EdgeInsets.all(5.sp),
+                                height: 15.sp,
+                                width: 25.sp,
+                                child: IconButton(
+                                    onPressed: () {
+                                      context
+                                          .read<ResikoJatuhKebidananBloc>()
+                                          .add(OnChangedInfuse(value: "Tidak"));
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: (state
+                                                .resikoJatuhKebidananModel
+                                                .terpasangInfuse
+                                                .contains("Tidak"))
+                                            ? ThemeColor.greenColor
+                                            : ThemeColor.primaryColor,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(2.sp))),
+                                    color: ThemeColor.whiteColor,
+                                    icon: Text(
+                                      "TIDAK",
+                                      style: whiteTextStyle.copyWith(
+                                          fontSize: 6.sp),
+                                      textAlign: TextAlign.center,
+                                    )),
+                              ),
+                              Center(
+                                child: Text(
+                                  toNilai(
+                                      resikoJatuhKebidananState: state,
+                                      jatuh: Jatuh.terpasangInfus),
+                                  textAlign: TextAlign.center,
+                                  style: blackTextStyle.copyWith(
+                                      fontSize: 7.sp,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              )
+                            ]),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 5.sp,
+                        ),
+                        child: const Divider(),
+                      ),
+                      Container(
+                        color: Colors.white,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 5.sp,
+                        ),
+                        child: TableDesk(
+                          shape: const RoundedRectangleBorder(
+                            side: BorderSide(color: Colors.black, width: 1),
+                          ),
+                          child: TableDeskRow(
+                            border:
+                                const BorderSide(width: 1, color: Colors.black),
+                            gaps: [
+                              TableGap.weight(),
+                              TableGap.width(220),
+                            ],
+                            children: [
+                              Container(
+                                color: ThemeColor.primaryColor,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8),
+                                  child: Center(
+                                    child: Text(
+                                      "TOTAL",
+                                      style: whiteTextStyle.copyWith(
+                                          fontSize: 4.sp),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                color: ThemeColor.primaryColor,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8),
+                                  child: Center(
+                                    child: Text(
+                                      state.resikoJatuhKebidananModel.total
+                                          .toString(),
+                                      style: whiteTextStyle.copyWith(
+                                          fontSize: 12.sp,
+                                          fontWeight: FontWeight.bold),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5.sp,
+                      ),
+                      Container(
+                        color: Colors.white,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 5.sp,
+                        ),
+                        child: TableDesk(
+                          shape: const RoundedRectangleBorder(
+                            side: BorderSide(color: Colors.black, width: 1),
+                          ),
+                          child: TableDeskRow(
+                            border:
+                                const BorderSide(width: 1, color: Colors.black),
+                            gaps: [
+                              TableGap.weight(),
+                            ],
+                            children: [
+                              Container(
+                                color: ThemeColor.orangeColor,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8),
+                                  child: Center(
+                                    child: Text(
+                                      state.resikoJatuhKebidananModel.keterangan
+                                          .toString(),
+                                      style: blackCalibriTextStyle.copyWith(
+                                          fontSize: 12.sp,
+                                          fontWeight: FontWeight.bold),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5.sp,
+                      ),
+                      Container(
+                        color: Colors.white,
+                        padding: EdgeInsets.symmetric(horizontal: 5.sp),
+                        child: TableDesk(
+                          shape: const RoundedRectangleBorder(
+                              side: BorderSide(color: Colors.black, width: 1)),
+                          child: TableDeskRow(
+                            border:
+                                const BorderSide(width: 1, color: Colors.black),
+                            gaps: [
+                              TableGap.weight(),
+                            ],
+                            children: [
+                              Container(
+                                color: ThemeColor.greyColor,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8),
+                                  child: Center(
+                                    child: Text(
+                                      "Keterangan  :\n0-24 : Tidak beresiko/resiko rendah\n25-44 : Resiko Sedang -> dipasang gelang kuning\n>=45   : Resiko tinggi -> dipasang gelang kuning",
+                                      style: blackTextStyle.copyWith(
+                                          fontSize: 9.sp,
+                                          fontWeight: FontWeight.bold),
+                                      textAlign: TextAlign.left,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 35.sp,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ));

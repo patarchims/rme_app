@@ -241,7 +241,7 @@ class MenuAsesmen {
     //====================== PENMEDIK PERAWAT ============================//
     if (poliklinik == Poliklinik.penMedik && person == Person.perawat) {
       return [
-        "Asesmen Keperawatan",
+        "Asesmen Keperawatan Dewasa",
         "Asuhan Keperawatan",
         "Catatan Medik",
         "Implementasi Keperawatan",
@@ -360,7 +360,7 @@ class MenuAsesmen {
       if (poliklinik == Poliklinik.bangsal && person == Person.perawat) {
         return [
           "Catatan Perkembangan\nPasien Terintegrasi",
-          "Asesmen Keperawatan",
+          "Asesmen Keperawatan Dewasa",
           "Resiko Jatuh",
           "Asuhan Keperawatan",
         ];
@@ -368,7 +368,7 @@ class MenuAsesmen {
     } else if (AppConstant.appSetup == AppSetup.rsTiara) {
       if (poliklinik == Poliklinik.bangsal && person == Person.perawat) {
         return [
-          "Asesmen Keperawatan",
+          "Asesmen Keperawatan Dewasa",
           "Asesmen Awal Anak",
           "Resiko Jatuh",
           "Asuhan Keperawatan",
@@ -384,7 +384,7 @@ class MenuAsesmen {
       if (poliklinik == Poliklinik.bangsal && person == Person.perawat) {
         return [
           "Catatan Perkembangan\nPasien Terintegrasi",
-          "Asesmen Keperawatan",
+          "Asesmen Keperawatan Dewasa",
           "Asesmen Awal Anak",
           "Resiko Jatuh",
           "Asuhan Keperawatan",
@@ -919,18 +919,15 @@ class MenuAsesmen {
             return const AsesmenKeperawatanContentWidget();
           }
 
-          // ASESMEN AWAL ANAK
           if (MenuAsesmen.medis(poliklinik: poliklinik, person: person)[1] ==
               menu) {
             // ==== //
-            // if (authState is Authenticated) {
             context.read<PengkajianAwalKeperawatanBloc>().add(
                 OnGetAsesmenAnakEvent(
                     noReg: singlePasien.first.noreg,
                     noRM: singlePasien.first.mrn,
                     person: "Anak",
                     tanggal: DateTime.now().toString().substring(0, 10)));
-            // }
             return const PengkajianAwalAnakRawatInapPageWidget();
           }
 
@@ -969,6 +966,7 @@ class MenuAsesmen {
                 .add(CpptEvent.onGetCPPTPasien(noRM: singlePasien.first.mrn));
             context.read<CpptSbarBangsalBloc>().add(
                 OnGetCatatanKeperawatanEvent(noReg: singlePasien.first.noreg));
+
             return const CpptContentWidgetPage();
           }
 
@@ -1062,7 +1060,6 @@ class MenuAsesmen {
             return const PengkajianAwalAnakRawatInapPageWidget();
           }
 
-          //=================== ASESMEN AWAL ANAK
           if (MenuAsesmen.medis(poliklinik: poliklinik, person: person)[3] ==
               menu) {
             return const IntervensiRisikoJatuhContentWidget();
@@ -1111,7 +1108,6 @@ class MenuAsesmen {
           if (MenuAsesmen.medis(poliklinik: poliklinik, person: person)[8] ==
               menu) {
             return const FormulirSourvilnPage();
-            // return const DoubleCheckHightAlertPageWidget();
           }
 
           if (MenuAsesmen.medis(poliklinik: poliklinik, person: person)[9] ==
@@ -1869,6 +1865,7 @@ class MenuAsesmen {
                   noReg: singlePasien.first.noreg,
                   noRM: singlePasien.first.mrn,
                   tanggal: DateTime.now().toString().substring(0, 10)));
+
           return const FormulirIGDContentWidget();
         }
 

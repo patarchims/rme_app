@@ -31,6 +31,7 @@ class MyDio {
     );
     dio = Dio(baseOptions);
   }
+  
   Future<Either<ApiFailureResult, ApiSuccessResult>> formData({
     required String endPoint,
     Object? data,

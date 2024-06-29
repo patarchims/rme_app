@@ -5,6 +5,8 @@ import 'package:hms_app/domain/bloc/user/auth/auth_bloc.dart';
 import 'package:hms_app/domain/models/users/user_model.dart';
 import 'package:hms_app/presentation/component/component.dart';
 import 'package:hms_app/presentation/component/header/tabbar_without_expanded_widget.dart';
+import 'package:hms_app/presentation/component/resources/app_config.dart';
+import 'package:hms_app/presentation/component/resources/app_constant.dart';
 import 'package:hms_app/presentation/kebidanan/bloc/kebidanan/kebidanan_bloc.dart';
 import 'package:hms_app/presentation/kebidanan/bloc/pengkajian_nutrisi/pengkajian_nutrisi_bloc.dart';
 import 'package:hms_app/presentation/kebidanan/bloc/resiko_jatuh_kebidanan/resiko_jatuh_kebidanan_bloc.dart';
@@ -12,7 +14,6 @@ import 'package:hms_app/presentation/pages/bangsal/bloc/asesmen_nyeri/asesmen_ny
 import 'package:hms_app/presentation/pages/bangsal/bloc/pengkajian_persistem_keperawatan/pengkajian_persistem_keperawatan_bloc.dart';
 import 'package:hms_app/presentation/pages/bangsal/perawat/pengkajian_fungsional_keperawatan/asesemen_nyeri_keperawatan_widget.dart';
 import 'package:hms_app/presentation/pages/bangsal/perawat/pengkajian_fungsional_keperawatan/fungsional_content_widget.dart';
-import 'package:hms_app/presentation/pages/bangsal/perawat/pengkajian_fungsional_keperawatan/pemeriksaan_fisik_keperawatan_widget_page.dart';
 import 'package:hms_app/presentation/pages/bangsal/perawat/pengkajian_nutrisi_keperawatan/pengkajian__keperawtan_nutrisi_widget.dart';
 import 'package:hms_app/presentation/pages/bangsal/perawat/pengkajian_persistem_keperawatan/pengkajian_persistem_page_widget.dart';
 import 'package:hms_app/presentation/pages/bangsal/perawat/resiko_jatuh/resiko_jatuh_keperawatan_widget.dart';
@@ -65,15 +66,23 @@ class AsesmenKeperawatanWidget extends StatelessWidget {
           // ====== //
           if (index == 4) {
             if (authState is Authenticated) {
-              context.read<PemeriksaanFisikIgdBloc>().add(
-                  OnGetPemeriksaanFisikMethodist(
-                      noReg: singlePasien.first.noreg,
-                      person: toPerson(person: authState.user.person)));
-
-              context.read<PemeriksaanFisikIgdBloc>().add(
-                  OnGetPemeriksaanFisikBangsalEvent(
-                      person: toPerson(person: authState.user.person),
-                      noReg: singlePasien.first.noreg));
+              if (AppConstant.appSetup == AppSetup.methodist ||
+                  AppConstant.appSetup == AppSetup.rsTiara) {
+                context.read<PemeriksaanFisikIgdBloc>().add(
+                    OnGetPemeriksaanFisikMethodist(
+                        noReg: singlePasien.first.noreg,
+                        person: toPerson(person: authState.user.person)));
+              } else if (AppConstant.appSetup == AppSetup.batuRaja) {
+                context.read<PemeriksaanFisikIgdBloc>().add(
+                    OnGetPemeriksaanFisikAntonio(
+                        noReg: singlePasien.first.noreg,
+                        person: toPerson(person: authState.user.person)));
+              } else {
+                context.read<PemeriksaanFisikIgdBloc>().add(
+                    OnGetPemeriksaanFisikBangsalEvent(
+                        person: toPerson(person: authState.user.person),
+                        noReg: singlePasien.first.noreg));
+              }
             }
           }
 
@@ -104,9 +113,7 @@ class AsesmenKeperawatanWidget extends StatelessWidget {
             return const PengkajianFungsionalKeperawatanWidget();
           }
           if (e.value == "Pemeriksaan\nFisik") {
-            // =========== UBAH PEMERIKSAAN FISIK
             return const PemeriksaanFisikIGDDokterMethodistWidgetPage();
-            // return const PemeriksaanFisikKeperawatanWidgetPage();
           }
 
           if (e.key == 5) {

@@ -8,9 +8,9 @@ import 'package:hms_app/domain/models/devices_info/device_info_model.dart';
 import 'package:hms_app/domain/models/meta/meta_model.dart';
 import 'package:hms_app/domain/models/users/user_model.dart';
 import 'package:hms_app/presentation/component/component.dart';
+import 'package:hms_app/presentation/component/constant/list_constants.dart';
 import 'package:hms_app/presentation/component/shimer/shimer_loading.dart';
 import 'package:hms_app/presentation/kebidanan/presentation/asesmen/pemeriksaan_fisik_kebidanan_content_widget.dart';
-import 'package:hms_app/presentation/pages/bangsal/perawat/pengkajian_persistem_keperawatan/pengkajian_persistem_page_widget.dart';
 import 'package:hms_app/presentation/pages/icu/bloc/pemeriksaan_fisik_icu/pemeriksaan_fisik_icu_bloc.dart';
 import 'package:hms_app/presentation/pages/icu/repository/pengkajian_persistem_icu_repository.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
@@ -1318,7 +1318,7 @@ class _PengkajianICUPersistemPageWidgetState
                             marginColor: ThemeColor.whiteColor,
                             itemHeight: 15.sp,
                             suggestionStyle: blackTextStyle,
-                            suggestions: perfusiSecebral
+                            suggestions: ListConstants.perfusiSecebral
                                 .map(
                                   (e) => SearchFieldListItem(
                                     e,

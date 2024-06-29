@@ -17,6 +17,13 @@ class IGDServices {
     return MyDio().getAndToken(endPoint: "/v1/resep-obat");
   }
 
+  Future<dynamic> onGetHistoryResepObat({required String noRM}) {
+    return MyDio().getAndToken(
+      endPoint: "/v1/history-resep-obat",
+      data: DTO.noRM(noRM: noRM),
+    );
+  }
+
   // SAVE ASESMEN IGD DOKTER
   Future<Either<ApiFailureResult, ApiSuccessResult>> saveAsesmenIGD({
     required String keluhanUtama,
@@ -446,6 +453,19 @@ class IGDServices {
   }) {
     return MyDio().getAndToken(
       endPoint: EndPoint.pemeriksaanFisikIGDDokterMethodist,
+      data: DTO.onGetPemeriksaanFisikIGDDokter(
+        noReg: noReg,
+        person: person,
+      ),
+    );
+  }
+
+  Future<dynamic> onGetPemeriksaanFisikAntonio({
+    required String person,
+    required String noReg,
+  }) {
+    return MyDio().getAndToken(
+      endPoint: EndPoint.pemeriksaanFisikIGDDokterAntonio,
       data: DTO.onGetPemeriksaanFisikIGDDokter(
         noReg: noReg,
         person: person,

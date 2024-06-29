@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'tanda_vital_keperawatan_bloc.dart';
 
 @immutable
@@ -79,6 +80,27 @@ class OnChangedKesadaranEvent extends TandaVitalKeperawatanEvent {
 class OnChangedPernapasanEvent extends TandaVitalKeperawatanEvent {
   final String value;
   OnChangedPernapasanEvent({
+    required this.value,
+  });
+}
+
+class OnChangedPupilEvent extends TandaVitalKeperawatanEvent {
+  final String value;
+  OnChangedPupilEvent({
+    required this.value,
+  });
+}
+
+class OnChangedAkralEvent extends TandaVitalKeperawatanEvent {
+  final String value;
+  OnChangedAkralEvent({
+    required this.value,
+  });
+}
+
+class OnChangedSPO2Event extends TandaVitalKeperawatanEvent {
+  final String value;
+  OnChangedSPO2Event({
     required this.value,
   });
 }

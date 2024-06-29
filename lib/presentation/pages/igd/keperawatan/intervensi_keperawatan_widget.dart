@@ -149,7 +149,7 @@ class IntervensiKeperawatanWidget extends StatelessWidget {
 
                           return Positioned.fill(
                               child: Container(
-                            margin: EdgeInsets.only(top: 25.sp),
+                            margin: EdgeInsets.only(top: 25.sp, right: 15.sp),
                             child: ListView(
                               children: data
                                   .asMap()

@@ -27,6 +27,7 @@ class _AddRiwayatPengobatanWidgetState
   late TextEditingController _dosisController;
   late TextEditingController _caraPemberianController;
   late TextEditingController _frekuensiController;
+  late TextEditingController _waktuController;
   String waktu = "";
 
   @override
@@ -35,6 +36,7 @@ class _AddRiwayatPengobatanWidgetState
     _dosisController = TextEditingController();
     _caraPemberianController = TextEditingController();
     _frekuensiController = TextEditingController();
+    _waktuController = TextEditingController();
     super.initState();
   }
 
@@ -44,6 +46,7 @@ class _AddRiwayatPengobatanWidgetState
     _dosisController.clear();
     _caraPemberianController.clear();
     _frekuensiController.clear();
+    _waktuController.clear();
     super.dispose();
   }
 
@@ -68,7 +71,13 @@ class _AddRiwayatPengobatanWidgetState
         state.saveResult.fold(
             () => null,
             (a) => a.fold(
-                (l) => null,
+                (l) => l.maybeMap(
+                    orElse: () {},
+                    failure: (e) async {
+                      final shouldPop = await Alert.loaded(context,
+                          subTitle: "Data gagal disimpan", title: "Pesan");
+                      return shouldPop ?? false;
+                    }),
                 (r) => r.maybeMap(
                       orElse: () {},
                       loaded: (value) async {
@@ -114,16 +123,18 @@ class _AddRiwayatPengobatanWidgetState
                     dynamic data = await deviceInfo.initPlatformState();
 
                     // ignore: use_build_context_synchronously
-                    context.read<KebidananBloc>().add(
-                        OnSaveRiwayatPengobatanDirumah(
-                            noReg: singlePasien.first.noreg,
-                            deviceID: "ID-${data['id']}-${data['device']}",
-                            userID: authState.user.userId,
-                            namaObat: _namaObatController.text,
-                            dosis: _dosisController.text,
-                            caraPemberian: _caraPemberianController.text,
-                            frekuensi: _frekuensiController.text,
-                            waktuPemberian: waktu));
+                    context
+                        .read<KebidananBloc>()
+                        .add(OnSaveRiwayatPengobatanDirumah(
+                          noReg: singlePasien.first.noreg,
+                          deviceID: "ID-${data['id']}-${data['device']}",
+                          userID: authState.user.userId,
+                          namaObat: _namaObatController.text,
+                          dosis: _dosisController.text,
+                          caraPemberian: _caraPemberianController.text,
+                          frekuensi: _frekuensiController.text,
+                          waktuPemberian: _waktuController.text,
+                        ));
 
                     Get.back();
                   }
@@ -185,27 +196,11 @@ class _AddRiwayatPengobatanWidgetState
                     ),
                     TitleWidget.titleContainer(
                         title: "Waktu Terakhir Pemberian"),
-                    Container(
+                    Padding(
                       padding: EdgeInsets.all(5.sp),
-                      color: Colors.white,
-                      child: FormBuilderDateTimePicker(
-                        format: DateFormat('dd/MM/yyyy'),
-                        name: 'date',
-                        inputType: InputType.date,
-                        initialDate: DateTime.now(),
-                        decoration: InputDecoration(
-                          labelText: 'Waktu Terakhir Pemberian',
-                          enabled: true,
-                          fillColor: ThemeColor.bgColor,
-                        ),
-                        onChanged: (value) {
-                          setState(() {
-                            waktu = value.toString();
-                          });
-                        },
-                        initialTime: const TimeOfDay(hour: 8, minute: 0),
-                        initialValue: DateTime.now(),
-                        enabled: true,
+                      child: FormWidget.textForm(
+                        controller: _waktuController,
+                        enable: true,
                       ),
                     ),
                   ],

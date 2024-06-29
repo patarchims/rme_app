@@ -44,6 +44,7 @@ class PengkajianKeperawatanPesistemModel {
   final String suaraNapas;
   final String merokok;
   final String nutrisi;
+  final String masalahProstat;
 
   PengkajianKeperawatanPesistemModel({
     required this.eliminasiBak,
@@ -90,12 +91,14 @@ class PengkajianKeperawatanPesistemModel {
     required this.batuk,
     required this.suaraNapas,
     required this.merokok,
+    required this.masalahProstat,
     required this.nutrisi,
   });
 
   factory PengkajianKeperawatanPesistemModel.fromJson(
           Map<String, dynamic> json) =>
       PengkajianKeperawatanPesistemModel(
+          masalahProstat: json["masalah_prostat"].toString(),
           nutrisi: json["nutrisi"].toString(),
           akral: json["akral"].toString(),
           batuk: json["batuk"].toString(),

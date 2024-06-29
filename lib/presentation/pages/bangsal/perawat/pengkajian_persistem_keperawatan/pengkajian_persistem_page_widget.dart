@@ -9,6 +9,7 @@ import 'package:hms_app/domain/models/devices_info/device_info_model.dart';
 import 'package:hms_app/domain/models/meta/meta_model.dart';
 import 'package:hms_app/domain/models/users/user_model.dart';
 import 'package:hms_app/presentation/component/component.dart';
+import 'package:hms_app/presentation/component/constant/list_constants.dart';
 import 'package:hms_app/presentation/component/loading/loading.dart';
 import 'package:hms_app/presentation/pages/bangsal/bloc/pengkajian_persistem_keperawatan/pengkajian_persistem_keperawatan_bloc.dart';
 import 'package:hms_app/presentation/pages/bangsal/repository/pengkajian_keperawatan_persistem_repository.dart';
@@ -50,6 +51,7 @@ class _PengkajianPersistemPageWidgetState
   late TextEditingController _statusMentalController;
   late TextEditingController _papsSmerController;
   late TextEditingController _hamilController;
+  late TextEditingController _masalahProstatController;
   late TextEditingController _pendarahanController;
   late TextEditingController _hambatanBahasaController;
   late TextEditingController _caraBelajaryangDisukasiController;
@@ -122,6 +124,7 @@ class _PengkajianPersistemPageWidgetState
     _batukController = TextEditingController();
     _suaraNapasController = TextEditingController();
     _merokokController = TextEditingController();
+    _masalahProstatController = TextEditingController();
     super.initState();
   }
 
@@ -136,6 +139,7 @@ class _PengkajianPersistemPageWidgetState
     _riwayatHipertensiController.clear();
     _kekuatanOtotController.clear();
     _nutrisiController.clear();
+    _masalahProstatController.clear();
 
     _perubahanStatusMentalController.clear();
     _sakitKepalaController.clear();
@@ -185,6 +189,7 @@ class _PengkajianPersistemPageWidgetState
     _sakitKepalaController.dispose();
     _eliminasiBABController.dispose();
     _perluPenerjemahController.dispose();
+    _masalahProstatController.dispose();
 
     _tidurAtauIstirahatController.dispose();
     _aktivitasController.dispose();
@@ -296,6 +301,7 @@ class _PengkajianPersistemPageWidgetState
                   OnSavePengkajianPersistemKeperawatan(
                       pengkajianKeperawatanPesistemModel:
                           PengkajianKeperawatanPesistemModel(
+                              masalahProstat: _masalahProstatController.text,
                               nutrisi: _nutrisiController.text,
                               akral: _akralController.text,
                               batuk: _batukController.text,
@@ -374,48 +380,45 @@ class _PengkajianPersistemPageWidgetState
                   TitleWidget.boxPemeriksaanFisikSugestion(
                     width: 100.sp,
                     widget: SearchField(
-                      searchStyle: blackTextStyle,
-                      enabled: true,
-                      marginColor: ThemeColor.whiteColor,
-                      itemHeight: 15.sp,
-                      suggestionStyle: blackTextStyle,
-                      suggestions: nutrisiHidrasi
-                          .map(
-                            (e) => SearchFieldListItem(
-                              e,
-                              item: e.toUpperCase(),
-                              child: Container(
-                                width: Get.width,
-                                color: ThemeColor.whiteColor,
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  e,
-                                  style:
-                                      blackTextStyle.copyWith(fontSize: 6.sp),
+                        searchStyle: blackTextStyle,
+                        enabled: true,
+                        marginColor: ThemeColor.whiteColor,
+                        itemHeight: 15.sp,
+                        suggestionStyle: blackTextStyle,
+                        suggestions: ListConstants.nutrisiHidrasi
+                            .map(
+                              (e) => SearchFieldListItem(
+                                e,
+                                item: e.toUpperCase(),
+                                child: Container(
+                                  width: Get.width,
+                                  color: ThemeColor.whiteColor,
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    e,
+                                    style:
+                                        blackTextStyle.copyWith(fontSize: 6.sp),
+                                  ),
                                 ),
                               ),
+                            )
+                            .toList(),
+                        validator: (x) {
+                          return null;
+                        },
+                        controller: _nutrisiController
+                          ..text =
+                              state.pengkajianKeperawatanPesistemModel.nutrisi,
+                        onSubmit: (value) {},
+                        onSaved: (a) {},
+                        searchInputDecoration: InputDecoration(
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Colors.black.withOpacity(0.8)),
                             ),
-                          )
-                          .toList(),
-                      validator: (x) {
-                        return null;
-                      },
-                      // CONTROLLER
-                      controller: _nutrisiController
-                        ..text =
-                            state.pengkajianKeperawatanPesistemModel.nutrisi,
-                      onSubmit: (value) {},
-                      onSaved: (a) {},
-                      searchInputDecoration: InputDecoration(
-                        focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Colors.black.withOpacity(0.8)),
-                        ),
-                        border: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
-                      ),
-                    ),
+                            border: const OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red),
+                            ))),
                     title: "NUTRISI",
                   ),
                   const Divider(),
@@ -430,7 +433,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: eliminasiBAK
+                      suggestions: ListConstants.eliminasiBAK
                           .map(
                             (e) => SearchFieldListItem(
                               e,
@@ -451,7 +454,6 @@ class _PengkajianPersistemPageWidgetState
                       validator: (x) {
                         return null;
                       },
-                      // CONTROLLER
                       controller: _eliminasiBAKController
                         ..text = state
                             .pengkajianKeperawatanPesistemModel.eliminasiBak,
@@ -480,7 +482,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: eliminasiBAB
+                      suggestions: ListConstants.eliminasiBAB
                           .map(
                             (e) => SearchFieldListItem(
                               e,
@@ -531,7 +533,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: aktivitasIstirahat
+                      suggestions: ListConstants.aktivitasIstirahat
                           .map(
                             (e) => SearchFieldListItem(
                               e,
@@ -582,7 +584,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: aktivitas
+                      suggestions: ListConstants.aktivitas
                           .map(
                             (e) => SearchFieldListItem(
                               e,
@@ -624,6 +626,22 @@ class _PengkajianPersistemPageWidgetState
                   ),
 
                   const Divider(),
+                  // TODO : BERIKAN NARASI
+                  Container(
+                    margin: EdgeInsets.only(
+                        bottom: 10.sp, left: 10.sp, right: 10.sp),
+                    padding: EdgeInsets.only(
+                        left: 15.sp, top: 5.sp, bottom: 5.sp, right: 5.sp),
+                    decoration: BoxDecoration(
+                        color: ThemeColor.orangeColor,
+                        borderRadius: BorderRadius.circular(2.sp)),
+                    child: Text(
+                      "Keterangan :\n0 :Mampu merawat diri sendiri secara penuh. ,1 : Memerlukan penggunaan alat. ,2 : Memerlukan bantuan atau pengawasan orang lain. ,3: Memerlukan bantuan atau pengawasan orang lain dan peralatan ,4: Sangat tergantung dan tidak dapat melakukan atau berpartisipasi dalam perawatan",
+                      style:
+                          blackTextStyle.copyWith(fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
                   TitleWidget.boxPemeriksaanFisikSugestion(
                     width: 100.sp,
                     widget: SearchField(
@@ -632,7 +650,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: skorAktivitas
+                      suggestions: ListConstants.skorAktivitasMandi
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -680,7 +698,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: skorAktivitas
+                      suggestions: ListConstants.skorAktivitasMandi
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -730,7 +748,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: skorAktivitas
+                      suggestions: ListConstants.skorAktivitasMandi
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -766,7 +784,7 @@ class _PengkajianPersistemPageWidgetState
                             borderSide: BorderSide(color: Colors.red)),
                       ),
                     ),
-                    title: "Makan/mandi",
+                    title: "Makan/Minum",
                   ),
 
                   // === //
@@ -778,7 +796,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: skorAktivitas
+                      suggestions: ListConstants.skorAktivitasMandi
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -826,7 +844,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: skorAktivitas
+                      suggestions: ListConstants.skorAktivitasMandi
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -847,7 +865,6 @@ class _PengkajianPersistemPageWidgetState
                       validator: (x) {
                         return null;
                       },
-                      // CONTROLLER
                       controller: _mobilisasiController
                         ..text =
                             state.pengkajianKeperawatanPesistemModel.mobilisasi,
@@ -878,7 +895,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: kardiovaSkuler
+                      suggestions: ListConstants.kardiovaSkuler
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -928,55 +945,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: akral
-                          .map(
-                            (e) => SearchFieldListItem(
-                              e.toString(),
-                              item: e.toString().toUpperCase(),
-                              child: Container(
-                                width: Get.width,
-                                color: ThemeColor.whiteColor,
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  e.toString(),
-                                  style:
-                                      blackTextStyle.copyWith(fontSize: 6.sp),
-                                ),
-                              ),
-                            ),
-                          )
-                          .toList(),
-                      validator: (x) {
-                        return null;
-                      },
-                      // CONTROLLER
-                      controller: _akralController
-                        ..text = state.pengkajianKeperawatanPesistemModel.akral,
-                      onSubmit: (value) {},
-                      onSaved: (a) {},
-                      searchInputDecoration: InputDecoration(
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.black.withOpacity(0.8),
-                          ),
-                        ),
-                        border: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
-                      ),
-                    ),
-                    title: "AKRAL",
-                  ),
-                  const Divider(),
-                  TitleWidget.boxPemeriksaanFisikSugestion(
-                    width: 100.sp,
-                    widget: SearchField(
-                      searchStyle: blackTextStyle,
-                      enabled: true,
-                      marginColor: ThemeColor.whiteColor,
-                      itemHeight: 15.sp,
-                      suggestionStyle: blackTextStyle,
-                      suggestions: kardiovaSkuler
+                      suggestions: ListConstants.batukPilihan
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -1024,7 +993,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: suaraNapas
+                      suggestions: ListConstants.suaraNapas
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -1073,7 +1042,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: merokok
+                      suggestions: ListConstants.merokok
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -1094,7 +1063,6 @@ class _PengkajianPersistemPageWidgetState
                       validator: (x) {
                         return null;
                       },
-                      // CONTROLLER
                       controller: _merokokController
                         ..text =
                             state.pengkajianKeperawatanPesistemModel.merokok,
@@ -1123,7 +1091,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: respiratori
+                      suggestions: ListConstants.respiratori
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -1175,7 +1143,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: perfusiSecebral
+                      suggestions: ListConstants.perfusiSecebral
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -1225,7 +1193,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: sakitKepala
+                      suggestions: ListConstants.sakitKepala
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -1275,7 +1243,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: sakitKepala
+                      suggestions: ListConstants.perubahanStatusMental
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -1324,7 +1292,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: sakitKepala
+                      suggestions: ListConstants.anggotaGerak
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -1373,7 +1341,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: bicara
+                      suggestions: ListConstants.bicara
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -1414,53 +1382,20 @@ class _PengkajianPersistemPageWidgetState
                     title: "BICARA",
                   ),
 
-                  TitleWidget.boxPemeriksaanFisikSugestion(
-                    width: 100.sp,
-                    widget: SearchField(
-                      searchStyle: blackTextStyle,
-                      enabled: true,
-                      marginColor: ThemeColor.whiteColor,
-                      itemHeight: 15.sp,
-                      suggestionStyle: blackTextStyle,
-                      suggestions: riwayatHipertensi
-                          .map(
-                            (e) => SearchFieldListItem(
-                              e.toString(),
-                              item: e.toString().toUpperCase(),
-                              child: Container(
-                                width: Get.width,
-                                color: ThemeColor.whiteColor,
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  e.toString(),
-                                  style:
-                                      blackTextStyle.copyWith(fontSize: 6.sp),
-                                ),
-                              ),
-                            ),
-                          )
-                          .toList(),
-                      validator: (x) {
-                        return null;
-                      },
-                      // CONTROLLER
-                      controller: _riwayatHipertensiController
-                        ..text = state.pengkajianKeperawatanPesistemModel
-                            .riwayatHipertensi,
-                      onSubmit: (value) {},
-                      onSaved: (a) {},
-                      searchInputDecoration: InputDecoration(
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.black.withOpacity(0.8),
-                          ),
-                        ),
-                        border: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
-                      ),
+                  Container(
+                    margin: EdgeInsets.only(
+                        bottom: 10.sp, left: 10.sp, right: 10.sp),
+                    padding: EdgeInsets.only(
+                        left: 15.sp, top: 5.sp, bottom: 5.sp, right: 5.sp),
+                    decoration: BoxDecoration(
+                        color: ThemeColor.orangeColor,
+                        borderRadius: BorderRadius.circular(2.sp)),
+                    child: Text(
+                      "Keterangan :\n0:   Tidak ada kontraksi otot yang terlihat. Pasien tidak mampu menggerakkan otot. Biasanya dialami pasien paralisis otot. Terkadang nyeri dapat mencegah otot untuk berkontraksi.\n1: Ada kontraksi otot, tetapi tidak ada gerakan.\n2: Otot dapat berkontraksi, tetapi tidak dapat sepenuhnya menggerakkan bagian tubuh melawan gravitasi.\n3: Otot dapat berkontraksi sepenuhnya dan menggerakkan bagian tubuh ke segala arah melawan gravitasi. Tetapi ketika diberi tahanan, otot tidak mampu mempertahankan kontraksi.\n4: Otot dapat berkontraksi dan memberikan tahanan, akan tetapi  ketika diberi tahanan maksimal, otot tidak mampu mempertahankan kontraksi.\n5: Otot berfungsi normal dan dapat mempertahankan posisinya ketika diberi tahanan maksimal",
+                      style:
+                          blackTextStyle.copyWith(fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.left,
                     ),
-                    title: "RIWAYAT HIPERTENSI",
                   ),
 
                   TitleWidget.boxPemeriksaanFisikSugestion(
@@ -1471,7 +1406,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: kekuatanOTOT
+                      suggestions: ListConstants.kekuatanOTOT
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -1521,7 +1456,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: thermoregulasi
+                      suggestions: ListConstants.thermoregulasi
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -1572,7 +1507,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: sistemPerfusiPerifer
+                      suggestions: ListConstants.sistemPerfusiPerifer
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -1624,7 +1559,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: sistemPencernaan
+                      suggestions: ListConstants.sistemPencernaan
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -1673,7 +1608,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: sistemUsus
+                      suggestions: ListConstants.sistemUsus
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -1723,7 +1658,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: integumen
+                      suggestions: ListConstants.integumen
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -1774,7 +1709,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: kenyamanan
+                      suggestions: ListConstants.kenyamanan
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -1824,7 +1759,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: statusMental
+                      suggestions: ListConstants.statusMental
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -1865,155 +1800,212 @@ class _PengkajianPersistemPageWidgetState
                     title: "STATUS MENTAL",
                   ),
 
-                  TitleWidget.headerTitle(title: "SEKSUAL & REPRODUKSI"),
-                  TitleWidget.boxPemeriksaanFisikSugestion(
-                    width: 100.sp,
-                    widget: SearchField(
-                      searchStyle: blackTextStyle,
-                      enabled: true,
-                      marginColor: ThemeColor.whiteColor,
-                      itemHeight: 15.sp,
-                      suggestionStyle: blackTextStyle,
-                      suggestions: pAPSSMER
-                          .map(
-                            (e) => SearchFieldListItem(
-                              e.toString(),
-                              item: e.toString().toUpperCase(),
-                              child: Container(
-                                width: Get.width,
-                                color: ThemeColor.whiteColor,
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  e.toString(),
-                                  style:
-                                      blackTextStyle.copyWith(fontSize: 6.sp),
+                  if (singlePasien.first.jenisKelamin == "Perempuan") ...[
+                    TitleWidget.headerTitle(
+                        title:
+                            "SEKSUAL & REPRODUKSI ${singlePasien.first.jenisKelamin.toUpperCase()}"),
+                    TitleWidget.boxPemeriksaanFisikSugestion(
+                      width: 100.sp,
+                      widget: SearchField(
+                        searchStyle: blackTextStyle,
+                        enabled: true,
+                        marginColor: ThemeColor.whiteColor,
+                        itemHeight: 15.sp,
+                        suggestionStyle: blackTextStyle,
+                        suggestions: ListConstants.masalahProstat
+                            .map(
+                              (e) => SearchFieldListItem(
+                                e.toString(),
+                                item: e.toString().toUpperCase(),
+                                child: Container(
+                                  width: Get.width,
+                                  color: ThemeColor.whiteColor,
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    e.toString(),
+                                    style:
+                                        blackTextStyle.copyWith(fontSize: 6.sp),
+                                  ),
                                 ),
                               ),
+                            )
+                            .toList(),
+                        validator: (x) {
+                          return null;
+                        },
+                        // CONTROLLER
+                        controller: _masalahProstatController
+                          ..text = state.pengkajianKeperawatanPesistemModel
+                              .masalahProstat,
+                        onSubmit: (value) {},
+                        onSaved: (a) {},
+                        searchInputDecoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.black.withOpacity(0.8),
                             ),
-                          )
-                          .toList(),
-                      validator: (x) {
-                        return null;
-                      },
-                      // CONTROLLER
-                      controller: _papsSmerController
-                        ..text =
-                            state.pengkajianKeperawatanPesistemModel.papsSmer,
-                      onSubmit: (value) {},
-                      onSaved: (a) {},
-                      searchInputDecoration: InputDecoration(
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.black.withOpacity(0.8),
+                          ),
+                          border: const OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.red),
                           ),
                         ),
-                        border: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
                       ),
+                      title: "PAPS SMER",
                     ),
-                    title: "PAPS SMER",
-                  ),
-
-                  const Divider(),
-                  TitleWidget.boxPemeriksaanFisikSugestion(
-                    width: 100.sp,
-                    widget: SearchField(
-                      searchStyle: blackTextStyle,
-                      enabled: true,
-                      marginColor: ThemeColor.whiteColor,
-                      itemHeight: 15.sp,
-                      suggestionStyle: blackTextStyle,
-                      suggestions: hamil
-                          .map(
-                            (e) => SearchFieldListItem(
-                              e.toString(),
-                              item: e.toString().toUpperCase(),
-                              child: Container(
-                                width: Get.width,
-                                color: ThemeColor.whiteColor,
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  e.toString(),
-                                  style:
-                                      blackTextStyle.copyWith(fontSize: 6.sp),
+                    const Divider(),
+                    TitleWidget.boxPemeriksaanFisikSugestion(
+                      width: 100.sp,
+                      widget: SearchField(
+                        searchStyle: blackTextStyle,
+                        enabled: true,
+                        marginColor: ThemeColor.whiteColor,
+                        itemHeight: 15.sp,
+                        suggestionStyle: blackTextStyle,
+                        suggestions: ListConstants.hamil
+                            .map(
+                              (e) => SearchFieldListItem(
+                                e.toString(),
+                                item: e.toString().toUpperCase(),
+                                child: Container(
+                                  width: Get.width,
+                                  color: ThemeColor.whiteColor,
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    e.toString(),
+                                    style:
+                                        blackTextStyle.copyWith(fontSize: 6.sp),
+                                  ),
                                 ),
                               ),
+                            )
+                            .toList(),
+                        validator: (x) {
+                          return null;
+                        },
+                        // CONTROLLER
+                        controller: _hamilController
+                          ..text =
+                              state.pengkajianKeperawatanPesistemModel.hamil,
+                        onSubmit: (value) {},
+                        onSaved: (a) {},
+                        searchInputDecoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.black.withOpacity(0.8),
                             ),
-                          )
-                          .toList(),
-                      validator: (x) {
-                        return null;
-                      },
-                      // CONTROLLER
-                      controller: _hamilController
-                        ..text = state.pengkajianKeperawatanPesistemModel.hamil,
-                      onSubmit: (value) {},
-                      onSaved: (a) {},
-                      searchInputDecoration: InputDecoration(
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.black.withOpacity(0.8),
+                          ),
+                          border: const OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.red),
                           ),
                         ),
-                        border: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red),
-                        ),
                       ),
+                      title: "HAMIL",
                     ),
-                    title: "HAMIL",
-                  ),
-
-                  const Divider(),
-
-                  TitleWidget.boxPemeriksaanFisikSugestion(
-                    width: 100.sp,
-                    widget: SearchField(
-                      searchStyle: blackTextStyle,
-                      enabled: true,
-                      marginColor: ThemeColor.whiteColor,
-                      itemHeight: 15.sp,
-                      suggestionStyle: blackTextStyle,
-                      suggestions: pendarahan
-                          .map(
-                            (e) => SearchFieldListItem(
-                              e.toString(),
-                              item: e.toString().toUpperCase(),
-                              child: Container(
-                                width: Get.width,
-                                color: ThemeColor.whiteColor,
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  e.toString(),
-                                  style:
-                                      blackTextStyle.copyWith(fontSize: 6.sp),
+                    const Divider(),
+                    TitleWidget.boxPemeriksaanFisikSugestion(
+                      width: 100.sp,
+                      widget: SearchField(
+                        searchStyle: blackTextStyle,
+                        enabled: true,
+                        marginColor: ThemeColor.whiteColor,
+                        itemHeight: 15.sp,
+                        suggestionStyle: blackTextStyle,
+                        suggestions: ListConstants.pendarahan
+                            .map(
+                              (e) => SearchFieldListItem(
+                                e.toString(),
+                                item: e.toString().toUpperCase(),
+                                child: Container(
+                                  width: Get.width,
+                                  color: ThemeColor.whiteColor,
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    e.toString(),
+                                    style:
+                                        blackTextStyle.copyWith(fontSize: 6.sp),
+                                  ),
                                 ),
                               ),
+                            )
+                            .toList(),
+                        validator: (x) {
+                          return null;
+                        },
+                        // CONTROLLER
+                        controller: _pendarahanController
+                          ..text = state
+                              .pengkajianKeperawatanPesistemModel.pendarahan,
+                        onSubmit: (value) {},
+                        onSaved: (a) {},
+                        searchInputDecoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.black.withOpacity(0.8),
                             ),
-                          )
-                          .toList(),
-                      validator: (x) {
-                        return null;
-                      },
-                      // CONTROLLER
-                      controller: _pendarahanController
-                        ..text =
-                            state.pengkajianKeperawatanPesistemModel.pendarahan,
-                      onSubmit: (value) {},
-                      onSaved: (a) {},
-                      searchInputDecoration: InputDecoration(
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.black.withOpacity(0.8),
+                          ),
+                          border: const OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.red),
                           ),
                         ),
-                        border: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red),
+                      ),
+                      title: "MENSTRUASI",
+                    ),
+                  ],
+
+                  if (singlePasien.first.jenisKelamin == "Laki-Laki") ...[
+                    TitleWidget.headerTitle(
+                        title:
+                            "SEKSUAL & REPRODUKSI ${singlePasien.first.jenisKelamin.toUpperCase()}"),
+                    const Divider(),
+                    TitleWidget.boxPemeriksaanFisikSugestion(
+                      width: 100.sp,
+                      widget: SearchField(
+                        searchStyle: blackTextStyle,
+                        enabled: true,
+                        marginColor: ThemeColor.whiteColor,
+                        itemHeight: 15.sp,
+                        suggestionStyle: blackTextStyle,
+                        suggestions: ListConstants.masalahProstat
+                            .map(
+                              (e) => SearchFieldListItem(
+                                e.toString(),
+                                item: e.toString().toUpperCase(),
+                                child: Container(
+                                  width: Get.width,
+                                  color: ThemeColor.whiteColor,
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    e.toString(),
+                                    style:
+                                        blackTextStyle.copyWith(fontSize: 6.sp),
+                                  ),
+                                ),
+                              ),
+                            )
+                            .toList(),
+                        validator: (x) {
+                          return null;
+                        },
+                        // CONTROLLER
+                        controller: _hamilController
+                          ..text =
+                              state.pengkajianKeperawatanPesistemModel.hamil,
+                        onSubmit: (value) {},
+                        onSaved: (a) {},
+                        searchInputDecoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.black.withOpacity(0.8),
+                            ),
+                          ),
+                          border: const OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.red),
+                          ),
                         ),
                       ),
+                      title: "Masalah prostat",
                     ),
-                    title: "PENDARAHAN",
-                  ),
+                  ],
 
                   TitleWidget.headerTitle(
                       title: "KOMUNIKASI / PENDIDIKAN PENGAJARAN"),
@@ -2026,7 +2018,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: hambatanBahasa
+                      suggestions: ListConstants.hambatanBahasa
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -2075,7 +2067,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: caraBelajarYangDisukai
+                      suggestions: ListConstants.caraBelajarYangDisukai
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -2124,7 +2116,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: bahasaSehariHari
+                      suggestions: ListConstants.bahasaSehariHari
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -2172,7 +2164,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: perluPenerjemah
+                      suggestions: ListConstants.perluPenerjemah
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -2224,7 +2216,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: spikologis
+                      suggestions: ListConstants.spikologis
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -2274,7 +2266,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: hambatanSosial
+                      suggestions: ListConstants.hambatanSosial
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -2325,7 +2317,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: hambatanEkonomi
+                      suggestions: ListConstants.hambatanEkonomi
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -2376,7 +2368,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: hambatanSpiritual
+                      suggestions: ListConstants.hambatanSpiritual
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -2427,7 +2419,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: responseEmosi
+                      suggestions: ListConstants.responseEmosi
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -2477,7 +2469,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: menjalankanIbadah
+                      suggestions: ListConstants.menjalankanIbadah
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -2528,7 +2520,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: presepsiTerhadapSakit
+                      suggestions: ListConstants.presepsiTerhadapSakit
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -2579,7 +2571,7 @@ class _PengkajianPersistemPageWidgetState
                       marginColor: ThemeColor.whiteColor,
                       itemHeight: 15.sp,
                       suggestionStyle: blackTextStyle,
-                      suggestions: nilaiKepercayaan
+                      suggestions: ListConstants.nilaiKepercayaan
                           .map(
                             (e) => SearchFieldListItem(
                               e.toString(),
@@ -2654,7 +2646,7 @@ class _PengkajianPersistemPageWidgetState
               width: Get.width,
               decoration: BoxDecoration(color: ThemeColor.bgColor),
               child: Wrap(
-                children: skorAktivitas.asMap().entries.map((e) {
+                children: ListConstants.skorAktivitas.asMap().entries.map((e) {
                   return TitleWidget.boxChoose(
                     width: 50.sp,
                     onPressed: () {},
@@ -2673,170 +2665,3 @@ class _PengkajianPersistemPageWidgetState
     );
   }
 }
-
-List<String> eliminasiBAK = [
-  "TAK",
-  "Sering BAK",
-];
-List<String> eliminasiBAB = [
-  "TAK",
-  "Konstipasi",
-];
-List<String> aktivitasIstirahat = [
-  "TAK",
-  "Susah Tidur",
-];
-List<String> aktivitas = [
-  "Mandiri",
-  "Bantuan Sebagian",
-];
-List<String> kardiovaSkuler = [
-  "TAK",
-  "Nyeri Dada",
-  "Tidak",
-  "Ya",
-];
-List<String> respiratori = [
-  "TAK",
-  "Sesak Napas",
-  "Tidak",
-  "Ya",
-];
-List<String> perfusiSecebral = [
-  "TAK",
-  "Kejang",
-  "Riwayat Kejang",
-  "Sakit Kepala",
-];
-List<String> thermoregulasi = [
-  "TAK",
-  "Demam",
-  "Riwayat Demam",
-];
-List<String> sistemPerfusiPerifer = [
-  "TAK",
-  "Odema",
-  "Kesemutan/Kebas",
-];
-List<String> sistemPencernaan = [
-  "TAK",
-  "Perut Kembung",
-  "Distensi Abdomen",
-];
-List<String> sistemUsus = [
-  "YA",
-  "TIDAK",
-];
-List<String> integumen = [
-  "TAK",
-  "Luka/Abses",
-];
-List<String> itegumen = [
-  "TAK",
-  "Luka",
-];
-List<String> odema = [
-  "Tidak",
-  "Ya",
-];
-List<String> kenyamanan = [
-  "TAK",
-];
-List<String> statusMental = [
-  "Orientasi",
-  "Agitasi",
-  "Menyerang",
-  "Tak Ada Response",
-  "Letargi",
-  "Kooperatif",
-  "Disorientasi"
-];
-List<String> pAPSSMER = [
-  "Tidak",
-  "Ya",
-];
-List<String> hambatanBahasa = ["Tidak", "Ya"];
-
-List<String> caraBelajarYangDisukai = [
-  "Demontrasi",
-  "Diskusi",
-  "Menulis",
-];
-List<String> bahasaSehariHari = [
-  "Indonesia",
-  "Bahasa Daerah",
-];
-List<String> perluPenerjemah = ["Tidak", "Ya", "Bahasa"];
-List<String> spikologis = [
-  "Stabil/Tenang",
-  "Cemas/Takut",
-  "Marah",
-  "Sedih",
-];
-List<String> hambatanSosial = [
-  "Tidak Ada",
-];
-List<String> hambatanEkonomi = [
-  "Tidak Ada",
-];
-List<String> hambatanSpiritual = [
-  "Tidak Ada",
-];
-List<String> responseEmosi = [
-  "TAK",
-  "Takut Terhadap Lingkungan/Tindakan di RS",
-  "Sedih",
-  "Marah",
-  "Menangis",
-  "Rendah Diri",
-  "Cemas",
-];
-List<String> menjalankanIbadah = [
-  "Selalu/Taat",
-  "Kadang-kadang",
-  "Tidak Pernah",
-  "Sedih",
-  "Marah",
-  "Menangis",
-  "Rendah Diri",
-  "Cemas",
-];
-List<String> hamil = [
-  "Tidak",
-  "Ya",
-];
-List<String> nilaiKepercayaan = [
-  "Tidak Ada",
-  "Jelaskan",
-];
-List<String> presepsiTerhadapSakit = [
-  "Perasaan Bersalah",
-  "Perasaan Ditinggal Tuhan Nilai/aturan Khusus dalam kepercayaan",
-  "Tidak Ada ",
-  "Jelaskan"
-];
-List<String> pendarahan = [
-  "Tidak",
-  "Ya",
-];
-List<String> riwayatHipertensi = [
-  "Tidak",
-  "Ya",
-];
-List<int> skorAktivitas = [1, 2, 3, 4, 5];
-
-List<String> sakitKepala = ["Tidak", "Ya", "Muntah", "Pusing"];
-List<String> kekuatanOTOT = ["0", "1", "2", "3", "4", "5"];
-
-List<String> akral = ["Hangat", "Dingin", "Cyanotik"];
-List<String> nutrisiHidrasi = [
-  "TAK",
-  "Mual",
-  "Muntah",
-  "Mulas",
-  "Tak Nafsu Makan"
-];
-List<String> batuk = ["Tidak", "Berdahak/Darah", "Ya"];
-List<String> suaraNapas = ["Wheezing", "Ronchi", "Stridor", "Vesikuler"];
-List<String> merokok = ["Tidak", "Ya", "Riwayat Perokok"];
-List<String> bicara = ["Tak", "Pelo", "Tidak Bisa Bicara"];

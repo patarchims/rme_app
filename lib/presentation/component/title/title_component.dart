@@ -92,21 +92,21 @@ class TitleWidget {
     );
   }
 
-  static Container titleContainer({
-    required String title,
-  }) {
+  static Container titleContainer(
+      {required String title, Color? color, TextStyle? textStyle}) {
     return Container(
       width: Get.width,
       height: 20.sp,
       decoration: BoxDecoration(
-        color: ThemeColor.blueColor.withOpacity(0.5),
+        color: color ?? ThemeColor.blueColor.withOpacity(0.5),
       ),
       child: Center(
         child: Text(
           title,
-          style: blackTextStyle.copyWith(
-            fontWeight: FontWeight.bold,
-          ),
+          style: textStyle ??
+              blackTextStyle.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
         ),
       ),
     );

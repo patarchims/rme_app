@@ -78,6 +78,9 @@ class KebidananBloc extends Bloc<KebidananEvent, KebidananState> {
     on<OnChangedMucosaMulutLainnya>(_onChangedMucosaLainnya);
     on<OnChangedGigiLainnya>(_onChangedGigiLainnya);
     on<OnChangeTFU>(_onChangedTFU);
+    on<OnChangeTandaKebidananPupil>(_onChangedKebidananPupil);
+    on<OnChangedTandaKebidananKesadaran>(_onChangedKesadaran);
+    on<OnChangedTandaKebidananAkral>(_onChangedAkral);
   }
 
   void updateTotal({required Emitter<KebidananState> emit}) {
@@ -93,6 +96,18 @@ class KebidananBloc extends Bloc<KebidananEvent, KebidananState> {
                 state.pengkajianFungsional.nilaiF8 +
                 state.pengkajianFungsional.nilaiF9 +
                 state.pengkajianFungsional.nilaiF10)));
+  }
+
+  void updateKeterangan({required Emitter<KebidananState> emit}) {
+    emit(state.copyWith(
+        pengkajianFungsional: state.pengkajianFungsional.copyWith(
+            keterangan: (state.pengkajianFungsional.nilai <= 20)
+                ? "Ketergantungan Total"
+                : (state.pengkajianFungsional.nilai <= 60)
+                    ? "Ketergantungan Parah"
+                    : (state.pengkajianFungsional.nilai <= 90)
+                        ? "Ketergantungan Sedang"
+                        : "Ketergantungan Rendah")));
   }
 
   Future<void> _onSaveRiwayatPengobatanDirumah(
@@ -182,6 +197,7 @@ class KebidananBloc extends Bloc<KebidananEvent, KebidananState> {
                     ? 5
                     : 0)));
     updateTotal(emit: emit);
+    updateKeterangan(emit: emit);
   }
 
   Future<void> _onGetPemeriksaanFisikEvent(
@@ -232,6 +248,7 @@ class KebidananBloc extends Bloc<KebidananEvent, KebidananState> {
   ) async {
     // REPLACE LIST ON LIST
     updateTotal(emit: emit);
+    updateKeterangan(emit: emit);
     emit(state.copyWith(
         kebidananStatus: KebidananStatus.loadedPengkajianFungsional,
         pengkajianFungsional: state.pengkajianFungsional.copyWith(
@@ -259,6 +276,7 @@ class KebidananBloc extends Bloc<KebidananEvent, KebidananState> {
                     ? 10
                     : 0)));
     updateTotal(emit: emit);
+    updateKeterangan(emit: emit);
   }
 
   Future<void> _onChangeFungsionalF4(
@@ -277,6 +295,7 @@ class KebidananBloc extends Bloc<KebidananEvent, KebidananState> {
                     ? 0
                     : 0)));
     updateTotal(emit: emit);
+    updateKeterangan(emit: emit);
   }
 
   Future<void> _onChangeFungsionalF5(
@@ -295,6 +314,7 @@ class KebidananBloc extends Bloc<KebidananEvent, KebidananState> {
                     ? 0
                     : 0)));
     updateTotal(emit: emit);
+    updateKeterangan(emit: emit);
   }
 
   Future<void> _onChangeFungsionalF6(
@@ -313,6 +333,7 @@ class KebidananBloc extends Bloc<KebidananEvent, KebidananState> {
                     ? 10
                     : 0)));
     updateTotal(emit: emit);
+    updateKeterangan(emit: emit);
   }
 
   Future<void> _onChangeFungsionalF7(
@@ -331,6 +352,7 @@ class KebidananBloc extends Bloc<KebidananEvent, KebidananState> {
                     ? 5
                     : 0)));
     updateTotal(emit: emit);
+    updateKeterangan(emit: emit);
   }
 
   Future<void> _onChangeFungsionalF8(
@@ -349,6 +371,7 @@ class KebidananBloc extends Bloc<KebidananEvent, KebidananState> {
                     ? 5
                     : 0)));
     updateTotal(emit: emit);
+    updateKeterangan(emit: emit);
   }
 
   Future<void> _onChangeFungsionalF9(
@@ -367,6 +390,7 @@ class KebidananBloc extends Bloc<KebidananEvent, KebidananState> {
                     ? 5
                     : 0)));
     updateTotal(emit: emit);
+    updateKeterangan(emit: emit);
   }
 
   Future<void> _onChangeFungsionalF10(
@@ -383,6 +407,7 @@ class KebidananBloc extends Bloc<KebidananEvent, KebidananState> {
                     ? 5
                     : 0)));
     updateTotal(emit: emit);
+    updateKeterangan(emit: emit);
   }
 
   Future<void> _onGetPengkajianFungsional(
@@ -408,6 +433,8 @@ class KebidananBloc extends Bloc<KebidananEvent, KebidananState> {
       emit(state.copyWith(
         kebidananStatus: KebidananStatus.loadedPengkajianFungsional,
       ));
+
+      updateKeterangan(emit: emit);
     } catch (e) {
       emit(state.copyWith(
           kebidananStatus: KebidananStatus.error, saveResult: none()));
@@ -438,6 +465,9 @@ class KebidananBloc extends Bloc<KebidananEvent, KebidananState> {
       log(e.toString());
       emit(state.copyWith(
           vitalSignBidanModel: VitalSignBidanModel(
+              pupil: "",
+              kesadaran: "",
+              akral: "",
               tfu: "",
               ddj: "",
               tekananDarah: "",
@@ -563,6 +593,9 @@ class KebidananBloc extends Bloc<KebidananEvent, KebidananState> {
     // GET DATA
     try {
       final data = await kebidananService.onSaveTandaVitalKebidanan(
+          akral: event.akral,
+          kesadaran: event.kesadaran,
+          pupil: event.pupil,
           beratBadan: event.beratBadan,
           tfu: event.tfu,
           deviceID: event.deviceID,
@@ -610,6 +643,48 @@ class KebidananBloc extends Bloc<KebidananEvent, KebidananState> {
     emit(state.copyWith(
         vitalSignBidanModel:
             state.vitalSignBidanModel.copyWith(tekananDarah: event.value)));
+  }
+
+  Future<void> _onChangedKebidananPupil(
+    OnChangeTandaKebidananPupil event,
+    Emitter<KebidananState> emit,
+  ) async {
+    // REPLACE LIST ON LIST
+    emit(state.copyWith(
+        kebidananStatus: KebidananStatus.loaded, riwayaPengobatan: []));
+
+    // GET DATA
+    emit(state.copyWith(
+        vitalSignBidanModel:
+            state.vitalSignBidanModel.copyWith(pupil: event.value)));
+  }
+
+  Future<void> _onChangedKesadaran(
+    OnChangedTandaKebidananKesadaran event,
+    Emitter<KebidananState> emit,
+  ) async {
+    // REPLACE LIST ON LIST
+    emit(state.copyWith(
+        kebidananStatus: KebidananStatus.loaded, riwayaPengobatan: []));
+
+    // GET DATA
+    emit(state.copyWith(
+        vitalSignBidanModel:
+            state.vitalSignBidanModel.copyWith(kesadaran: event.value)));
+  }
+
+  Future<void> _onChangedAkral(
+    OnChangedTandaKebidananAkral event,
+    Emitter<KebidananState> emit,
+  ) async {
+    // REPLACE LIST ON LIST
+    emit(state.copyWith(
+        kebidananStatus: KebidananStatus.loaded, riwayaPengobatan: []));
+
+    // GET DATA
+    emit(state.copyWith(
+        vitalSignBidanModel:
+            state.vitalSignBidanModel.copyWith(akral: event.value)));
   }
 
   Future<void> _onSelectionKepala(

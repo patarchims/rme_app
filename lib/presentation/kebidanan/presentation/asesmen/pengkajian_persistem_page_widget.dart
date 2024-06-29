@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hms_app/domain/bloc/dashboard/pasien/pasien_bloc.dart';
 import 'package:hms_app/domain/bloc/user/auth/auth_bloc.dart';
@@ -9,10 +8,11 @@ import 'package:hms_app/domain/models/devices_info/device_info_model.dart';
 import 'package:hms_app/domain/models/meta/meta_model.dart';
 import 'package:hms_app/domain/models/users/user_model.dart';
 import 'package:hms_app/presentation/component/component.dart';
+import 'package:hms_app/presentation/component/constant/list_constants.dart';
 import 'package:hms_app/presentation/component/loading/loading.dart';
 import 'package:hms_app/presentation/kebidanan/bloc/pengkajian_persistem/pengkajian_persistem_bloc.dart';
-import 'package:hms_app/presentation/kebidanan/component/pengkajian_persistem.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
+import 'package:searchfield/searchfield.dart';
 import 'package:sizer/sizer.dart';
 
 class PengkajianPersistemPageWidget extends StatefulWidget {
@@ -26,46 +26,39 @@ class PengkajianPersistemPageWidget extends StatefulWidget {
 class _PengkajianPersistemPageWidgetState
     extends State<PengkajianPersistemPageWidget> {
   final ScrollController _scrollController = ScrollController();
-  // final TextEditingController _eliminasiBAKController = TextEditingController();
-  // final TextEditingController _eliminasiBABController = TextEditingController();
-  // final TextEditingController _istirahatController = TextEditingController();
-  // final TextEditingController _aktivitasController = TextEditingController();
-  // final TextEditingController _kardiovaskulerController =
-  //     TextEditingController();
-  // final TextEditingController _respiratoriController = TextEditingController();
-  // final TextEditingController _secebralController = TextEditingController();
-  // final TextEditingController _thermoregulasiController =
-  //     TextEditingController();
-  // final TextEditingController _sistemPerfusiController =
-  //     TextEditingController();
-  // final TextEditingController _sistemPencernaanController =
-  //     TextEditingController();
-  // final TextEditingController _integumenController = TextEditingController();
-  // final TextEditingController _kenyamananController = TextEditingController();
-  // final TextEditingController _statusMentalController = TextEditingController();
-  // final TextEditingController _papsSmerController = TextEditingController();
-  // final TextEditingController _pendarahanController = TextEditingController();
-  // final TextEditingController _hambatanBahasaController =
-  //     TextEditingController();
-  // final TextEditingController _caraBelajarYangdisukaiController =
-  //     TextEditingController();
-  // final TextEditingController _bahasaSehariHariControler =
-  //     TextEditingController();
-  // final TextEditingController _spikologisController = TextEditingController();
-  // final TextEditingController _hambatanSosialController =
-  //     TextEditingController();
-  // final TextEditingController _hambatanEkonomiController =
-  //     TextEditingController();
-  // final TextEditingController _hambatanSpiritualController =
-  //     TextEditingController();
-  // final TextEditingController _responseEmosiController =
-  //     TextEditingController();
-  // final TextEditingController _menjalankanIbadahController =
-  //     TextEditingController();
-  // final TextEditingController _persepsiTerhadapSakitController =
-  //     TextEditingController();
-  // final TextEditingController _nilaiKepercayaanController =
-  //     TextEditingController();
+  //========================
+  late TextEditingController _eliminasiBAKController;
+  late TextEditingController _eliminasiBABController;
+  late TextEditingController _tidurAtauIstirahatController;
+
+  late TextEditingController _aktvitasController;
+  late TextEditingController _kardiovaskulerController;
+  late TextEditingController _respiratoriController;
+  late TextEditingController _perfusiSecebralController;
+  late TextEditingController _thermoregulasiController;
+  late TextEditingController _sistemPerfusiPerfierController;
+  late TextEditingController _sistemPencernaanController;
+  late TextEditingController _integumenController;
+  late TextEditingController _kenyamananController;
+  late TextEditingController _statusMentalController;
+  late TextEditingController _papsSmerController;
+  late TextEditingController _pendarahanController;
+  late TextEditingController _hambatanBahasaController;
+  late TextEditingController _caraBelajardisukaiController;
+  late TextEditingController _bahasaSehariHariController;
+  late TextEditingController _psikologisController;
+  late TextEditingController _hambatanSosialController;
+  late TextEditingController _hambatanEkonomiController;
+  late TextEditingController _hambatanSpiritualController;
+  late TextEditingController _responseEmosiController;
+  late TextEditingController _menjalankanIbadahController;
+  late TextEditingController _presepsiTerhadapSakitController;
+  late TextEditingController _nilaiKepercayaanController;
+  late TextEditingController _mandiController;
+  late TextEditingController _berpakaianController;
+  late TextEditingController _makanMinumController;
+  late TextEditingController _eliminasiController;
+  late TextEditingController _mobilisasiController;
 
   String mandi = "";
   String berpakaian = "";
@@ -75,13 +68,113 @@ class _PengkajianPersistemPageWidgetState
 
   @override
   void initState() {
+    _eliminasiBAKController = TextEditingController();
+    _eliminasiBABController = TextEditingController();
+    _tidurAtauIstirahatController = TextEditingController();
+
+    _aktvitasController = TextEditingController();
+    _kardiovaskulerController = TextEditingController();
+    _respiratoriController = TextEditingController();
+    _perfusiSecebralController = TextEditingController();
+    _thermoregulasiController = TextEditingController();
+    _sistemPerfusiPerfierController = TextEditingController();
+    _sistemPencernaanController = TextEditingController();
+    _integumenController = TextEditingController();
+    _kenyamananController = TextEditingController();
+    _statusMentalController = TextEditingController();
+    _papsSmerController = TextEditingController();
+    _pendarahanController = TextEditingController();
+    _hambatanBahasaController = TextEditingController();
+    _caraBelajardisukaiController = TextEditingController();
+    _bahasaSehariHariController = TextEditingController();
+    _psikologisController = TextEditingController();
+    _hambatanSosialController = TextEditingController();
+    _hambatanEkonomiController = TextEditingController();
+    _hambatanSpiritualController = TextEditingController();
+    _responseEmosiController = TextEditingController();
+    _menjalankanIbadahController = TextEditingController();
+    _presepsiTerhadapSakitController = TextEditingController();
+    _nilaiKepercayaanController = TextEditingController();
+
+    _mandiController = TextEditingController();
+    _berpakaianController = TextEditingController();
+    _makanMinumController = TextEditingController();
+    _eliminasiController = TextEditingController();
+    _mobilisasiController = TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
-    // _scrollController.dispose();
     _scrollController.dispose();
+    _eliminasiBAKController.clear();
+    _eliminasiBABController.clear();
+    _tidurAtauIstirahatController.clear();
+
+    _aktvitasController.clear();
+    _kardiovaskulerController.clear();
+    _respiratoriController.clear();
+    _perfusiSecebralController.clear();
+    _thermoregulasiController.clear();
+    _sistemPerfusiPerfierController.clear();
+    _sistemPencernaanController.clear();
+    _integumenController.clear();
+    _kenyamananController.clear();
+    _statusMentalController.clear();
+    _papsSmerController.clear();
+    _pendarahanController.clear();
+    _hambatanBahasaController.clear();
+    _caraBelajardisukaiController.clear();
+    _bahasaSehariHariController.clear();
+    _psikologisController.clear();
+    _hambatanSosialController.clear();
+    _hambatanEkonomiController.clear();
+    _hambatanSpiritualController.clear();
+    _responseEmosiController.clear();
+    _menjalankanIbadahController.clear();
+    _presepsiTerhadapSakitController.clear();
+    _nilaiKepercayaanController.clear();
+
+    _mandiController.clear();
+    _berpakaianController.clear();
+    _makanMinumController.clear();
+    _eliminasiController.clear();
+    _mobilisasiController.clear();
+
+    _eliminasiBAKController.dispose();
+    _eliminasiBABController.dispose();
+    _tidurAtauIstirahatController.dispose();
+
+    _aktvitasController.dispose();
+    _kardiovaskulerController.dispose();
+    _respiratoriController.dispose();
+    _perfusiSecebralController.dispose();
+    _thermoregulasiController.dispose();
+    _sistemPerfusiPerfierController.dispose();
+    _sistemPencernaanController.dispose();
+    _integumenController.dispose();
+    _kenyamananController.dispose();
+    _statusMentalController.dispose();
+    _papsSmerController.dispose();
+    _pendarahanController.dispose();
+    _hambatanBahasaController.dispose();
+    _caraBelajardisukaiController.dispose();
+    _bahasaSehariHariController.dispose();
+    _psikologisController.dispose();
+    _hambatanSosialController.dispose();
+    _hambatanEkonomiController.dispose();
+    _hambatanSpiritualController.dispose();
+    _responseEmosiController.dispose();
+    _menjalankanIbadahController.dispose();
+    _presepsiTerhadapSakitController.dispose();
+    _nilaiKepercayaanController.dispose();
+
+    _mandiController.dispose();
+    _berpakaianController.dispose();
+    _makanMinumController.dispose();
+    _eliminasiController.dispose();
+    _mobilisasiController.dispose();
+
     super.dispose();
   }
 
@@ -111,9 +204,6 @@ class _PengkajianPersistemPageWidgetState
                       orElse: () {},
                       loaded: (value) async {
                         // LOADED
-                        // context.read<KebidananBloc>().add(
-                        //     OnGetRiwayatPengobatanDirumah(
-                        //         noReg: singlePasien.first.noreg));
                         MetaModel meta =
                             MetaModel.fromJson(value.value["metadata"]);
                         final shouldPop = await Alert.loaded(context,
@@ -142,40 +232,37 @@ class _PengkajianPersistemPageWidgetState
                           toPelayanan(poliklinik: authState.user.poliklinik),
                       deviceID: "ID - ${data['id']} - ${data['device']}",
                       pengkajian: state.penkajianKebidanan.copyWith(
-                        aktivitas: state.penkajianKebidanan.aktivitas,
-                        bahasaSehari: state.penkajianKebidanan.bahasaSehari,
-                        berpakaian: state.penkajianKebidanan.berpakaian,
-                        caraBelajar: state.penkajianKebidanan.caraBelajar,
-                        eliminasi: state.penkajianKebidanan.eliminasi,
-                        eliminasiBab: state.penkajianKebidanan.eliminasiBab,
-                        eliminasiBak: state.penkajianKebidanan.eliminasiBak,
-                        hambatanBahasa: state.penkajianKebidanan.hambatanBahasa,
-                        hambatanEkonomi:
-                            state.penkajianKebidanan.hambatanEkonomi,
-                        hambatanSosial:
-                            state.penkajianKebidanan.hambatanEkonomi,
-                        integumen: state.penkajianKebidanan.integumen,
-                        istirahat: state.penkajianKebidanan.istirahat,
-                        kardiovaskuler: state.penkajianKebidanan.kardiovaskuler,
-                        kenyamanan: state.penkajianKebidanan.kenyamanan,
-                        khususKepercayaan:
-                            state.penkajianKebidanan.khususKepercayaan,
-                        makan: state.penkajianKebidanan.makan,
-                        mandi: state.penkajianKebidanan.mandi,
-                        mobilisasi: state.penkajianKebidanan.mobilisasi,
-                        nilaiKepercayaan:
-                            state.penkajianKebidanan.nilaiKepercayaan,
-                        papsSmer: state.penkajianKebidanan.papsSmer,
-                        pencernaan: state.penkajianKebidanan.pencernaan,
-                        pendarahan: state.penkajianKebidanan.pendarahan,
-                        perfusiPerifer: state.penkajianKebidanan.perfusiPerifer,
-                        spiritual: state.penkajianKebidanan.spiritual,
-                        presepsiSakit: state.penkajianKebidanan.presepsiSakit,
-                        secebral: state.penkajianKebidanan.secebral,
-                        responseEmosi: state.penkajianKebidanan.responseEmosi,
-                        respiratori: state.penkajianKebidanan.respiratori,
-                        spikologis: state.penkajianKebidanan.spikologis,
-                        proteksi: state.penkajianKebidanan.proteksi,
+                        aktivitas: _aktvitasController.text,
+                        bahasaSehari: _bahasaSehariHariController.text,
+                        berpakaian: _berpakaianController.text,
+                        caraBelajar: _caraBelajardisukaiController.text,
+                        eliminasi: _eliminasiController.text,
+                        thermoregulasi: _thermoregulasiController.text,
+                        eliminasiBab: _eliminasiBABController.text,
+                        eliminasiBak: _eliminasiBAKController.text,
+                        hambatanBahasa: _hambatanBahasaController.text,
+                        hambatanEkonomi: _hambatanEkonomiController.text,
+                        hambatanSosial: _hambatanSosialController.text,
+                        integumen: _integumenController.text,
+                        istirahat: _tidurAtauIstirahatController.text,
+                        kardiovaskuler: _kardiovaskulerController.text,
+                        kenyamanan: _kenyamananController.text,
+                        khususKepercayaan: _nilaiKepercayaanController.text,
+                        makan: _makanMinumController.text,
+                        mandi: _mandiController.text,
+                        mobilisasi: _mobilisasiController.text,
+                        nilaiKepercayaan: _menjalankanIbadahController.text,
+                        papsSmer: _papsSmerController.text,
+                        pencernaan: _sistemPencernaanController.text,
+                        pendarahan: _pendarahanController.text,
+                        perfusiPerifer: _perfusiSecebralController.text,
+                        spiritual: _hambatanSpiritualController.text,
+                        presepsiSakit: _presepsiTerhadapSakitController.text,
+                        secebral: _perfusiSecebralController.text,
+                        responseEmosi: _responseEmosiController.text,
+                        respiratori: _respiratoriController.text,
+                        spikologis: _psikologisController.text,
+                        proteksi: _statusMentalController.text,
                       )));
             }
           },
@@ -188,1535 +275,1503 @@ class _PengkajianPersistemPageWidgetState
             controller: _scrollController,
             trackVisibility: false,
             radius: Radius.circular(5.sp),
-            child: ListView(
-              controller: _scrollController,
-              children: [
-                // PERLEPASAN
-                TitleWidget.headerTitle(title: "ELIMINASI DAN PELEPASAN"),
-                //
-                ComponenPengkajian.selectionPengkajian(
+            child: Container(
+              margin: EdgeInsets.only(
+                right: 15.sp,
+                left: 10.sp,
+              ),
+              child: ListView(
+                controller: _scrollController,
+                children: [
+                  TitleWidget.headerTitle(title: "ELIMINASI DAN PELEPASAN"),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.eliminasiBAK
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
+                                ),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _eliminasiBAKController
+                        ..text = state.penkajianKebidanan.eliminasiBak,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
+                          ),
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
+                      ),
+                    ),
                     title: "Eliminasi BAK",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children: eliminasiBAK.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.eliminasiBak ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedEliminasiBAK(value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context.read<PengkajianPersistemBloc>().add(
-                                      OnChangedEliminasiBAK(value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  const Divider(),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.eliminasiBAB
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _eliminasiBABController
+                        ..text = state.penkajianKebidanan.eliminasiBab,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-
-                const Divider(),
-
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "Eliminasi BAB",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children: eliminasiBAB.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.eliminasiBab ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedEliminasiBAB(value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context.read<PengkajianPersistemBloc>().add(
-                                      OnChangedEliminasiBAB(value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  TitleWidget.headerTitle(title: "AKTIVITAS / ISTIRAHAT"),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.aktivitasIstirahat
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _tidurAtauIstirahatController
+                        ..text = state.penkajianKebidanan.istirahat,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-
-                TitleWidget.headerTitle(title: "AKTIVITAS / ISTIRAHAT"),
-
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "Tidur / Istirahat",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children:
-                                aktivitasIstirahat.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.istirahat ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedIstirahat(value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context
-                                      .read<PengkajianPersistemBloc>()
-                                      .add(OnChangedIstirahat(value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  const Divider(),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.aktivitas
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _aktvitasController
+                        ..text = state.penkajianKebidanan.aktivitas,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-
-                const Divider(),
-
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "Aktivitas",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children: aktivitas.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.aktivitas ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedAktivitas(value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context
-                                      .read<PengkajianPersistemBloc>()
-                                      .add(OnChangedAktivitas(value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  const Divider(),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.skorAktivitasMandi
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _mandiController
+                        ..text = state.penkajianKebidanan.mandi,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-
-                const Divider(),
-
-                skorAktifivas(
-                  title: "Mandi",
-                  widget: Container(
-                    width: Get.width,
-                    decoration: BoxDecoration(color: ThemeColor.bgColor),
-                    child: Wrap(
-                      children: skorAktivitas.asMap().entries.map((e) {
-                        if (state.penkajianKebidanan.mandi ==
-                            e.value.toString()) {
-                          return TitleWidget.boxChoose(
-                            backgroundColor: ThemeColor.greenColor,
-                            width: 50.sp,
-                            onPressed: () {
-                              context.read<PengkajianPersistemBloc>().add(
-                                  OnChangedMandi(value: e.value.toString()));
-                            },
-                            icon: const Icon(
-                              FontAwesomeIcons.check,
-                              color: Colors.white,
-                            ),
-                            title: e.value.toString(),
-                          );
-                        }
-                        return TitleWidget.boxChoose(
-                          backgroundColor: ThemeColor.primaryColor,
-                          width: 50.sp,
-                          onPressed: () {
-                            context
-                                .read<PengkajianPersistemBloc>()
-                                .add(OnChangedMandi(value: e.value.toString()));
-                          },
-                          icon: const Icon(
-                            FontAwesomeIcons.check,
-                            color: Colors.white,
-                          ),
-                          title: e.value.toString(),
-                        );
-                      }).toList(),
                     ),
+                    title: "Mandi",
                   ),
-                ),
-                skorAktifivas(
-                  title: "Berpakaian",
-                  widget: Container(
-                    width: Get.width,
-                    decoration: BoxDecoration(color: ThemeColor.bgColor),
-                    child: Wrap(
-                      children: skorAktivitas.asMap().entries.map((e) {
-                        if (state.penkajianKebidanan.berpakaian ==
-                            e.value.toString()) {
-                          return TitleWidget.boxChoose(
-                            backgroundColor: ThemeColor.greenColor,
-                            width: 50.sp,
-                            onPressed: () {
-                              context.read<PengkajianPersistemBloc>().add(
-                                  OnChangedBerpakaian(
-                                      value: e.value.toString()));
-                            },
-                            icon: const Icon(
-                              FontAwesomeIcons.check,
-                              color: Colors.white,
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.skorAktivitasMandi
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
+                                ),
+                              ),
                             ),
-                            title: e.value.toString(),
-                          );
-                        }
-                        return TitleWidget.boxChoose(
-                          backgroundColor: ThemeColor.primaryColor,
-                          width: 50.sp,
-                          onPressed: () {
-                            context.read<PengkajianPersistemBloc>().add(
-                                OnChangedBerpakaian(value: e.value.toString()));
-                          },
-                          icon: const Icon(
-                            FontAwesomeIcons.check,
-                            color: Colors.white,
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _berpakaianController
+                        ..text = state.penkajianKebidanan.berpakaian,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                          title: e.value.toString(),
-                        );
-                      }).toList(),
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
+                      ),
                     ),
+                    title: "Berpakaian",
                   ),
-                ),
-                skorAktifivas(
-                  title: "Makan/Mandi",
-                  widget: Container(
-                    width: Get.width,
-                    decoration: BoxDecoration(color: ThemeColor.bgColor),
-                    child: Wrap(
-                      children: skorAktivitas.asMap().entries.map((e) {
-                        if (state.penkajianKebidanan.makan ==
-                            e.value.toString()) {
-                          return TitleWidget.boxChoose(
-                            backgroundColor: ThemeColor.greenColor,
-                            width: 50.sp,
-                            onPressed: () {
-                              context.read<PengkajianPersistemBloc>().add(
-                                  OnChangedMakan(value: e.value.toString()));
-                            },
-                            icon: const Icon(
-                              FontAwesomeIcons.check,
-                              color: Colors.white,
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.skorAktivitasMandi
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
+                                ),
+                              ),
                             ),
-                            title: e.value.toString(),
-                          );
-                        }
-                        return TitleWidget.boxChoose(
-                          backgroundColor: ThemeColor.primaryColor,
-                          width: 50.sp,
-                          onPressed: () {
-                            context
-                                .read<PengkajianPersistemBloc>()
-                                .add(OnChangedMakan(value: e.value.toString()));
-                          },
-                          icon: const Icon(
-                            FontAwesomeIcons.check,
-                            color: Colors.white,
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _makanMinumController
+                        ..text = state.penkajianKebidanan.makan,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                          title: e.value.toString(),
-                        );
-                      }).toList(),
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
+                      ),
                     ),
+                    title: "Makan/Minum",
                   ),
-                ),
-                skorAktifivas(
-                  title: "Eliminasi",
-                  widget: Container(
-                    width: Get.width,
-                    decoration: BoxDecoration(color: ThemeColor.bgColor),
-                    child: Wrap(
-                      children: skorAktivitas.asMap().entries.map((e) {
-                        if (state.penkajianKebidanan.eliminasi ==
-                            e.value.toString()) {
-                          return TitleWidget.boxChoose(
-                            backgroundColor: ThemeColor.greenColor,
-                            width: 50.sp,
-                            onPressed: () {
-                              context.read<PengkajianPersistemBloc>().add(
-                                  OnChangedEliminasi(
-                                      value: e.value.toString()));
-                            },
-                            icon: const Icon(
-                              FontAwesomeIcons.check,
-                              color: Colors.white,
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.skorAktivitasMandi
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
+                                ),
+                              ),
                             ),
-                            title: e.value.toString(),
-                          );
-                        }
-                        return TitleWidget.boxChoose(
-                          backgroundColor: ThemeColor.primaryColor,
-                          width: 50.sp,
-                          onPressed: () {
-                            context.read<PengkajianPersistemBloc>().add(
-                                OnChangedEliminasi(value: e.value.toString()));
-                          },
-                          icon: const Icon(
-                            FontAwesomeIcons.check,
-                            color: Colors.white,
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _eliminasiController
+                        ..text = state.penkajianKebidanan.eliminasi,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                          title: e.value.toString(),
-                        );
-                      }).toList(),
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
+                      ),
                     ),
+                    title: "Eliminasi",
                   ),
-                ),
-                skorAktifivas(
-                  title: "Mobilisasi",
-                  widget: Container(
-                    width: Get.width,
-                    decoration: BoxDecoration(color: ThemeColor.bgColor),
-                    child: Wrap(
-                      children: skorAktivitas.asMap().entries.map((e) {
-                        if (state.penkajianKebidanan.mobilisasi ==
-                            e.value.toString()) {
-                          return TitleWidget.boxChoose(
-                            backgroundColor: ThemeColor.greenColor,
-                            width: 50.sp,
-                            onPressed: () {
-                              context.read<PengkajianPersistemBloc>().add(
-                                  OnChangedMobilisasi(
-                                      value: e.value.toString()));
-                            },
-                            icon: const Icon(
-                              FontAwesomeIcons.check,
-                              color: Colors.white,
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.skorAktivitasMandi
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
+                                ),
+                              ),
                             ),
-                            title: e.value.toString(),
-                          );
-                        }
-                        return TitleWidget.boxChoose(
-                          backgroundColor: ThemeColor.primaryColor,
-                          width: 50.sp,
-                          onPressed: () {
-                            context.read<PengkajianPersistemBloc>().add(
-                                OnChangedMobilisasi(value: e.value.toString()));
-                          },
-                          icon: const Icon(
-                            FontAwesomeIcons.check,
-                            color: Colors.white,
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _mobilisasiController
+                        ..text = state.penkajianKebidanan.mobilisasi,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                          title: e.value.toString(),
-                        );
-                      }).toList(),
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
+                      ),
                     ),
+                    title: "Mobilisasi",
                   ),
-                ),
-
-                TitleWidget.headerTitle(title: "SISTEM KARDIO-RESPIRATORI"),
-
-                ComponenPengkajian.selectionPengkajian(
+                  TitleWidget.headerTitle(title: "SISTEM KARDIO-RESPIRATORI"),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.kardiovaSkuler
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
+                                ),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _kardiovaskulerController
+                        ..text = state.penkajianKebidanan.kardiovaskuler,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
+                          ),
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
+                      ),
+                    ),
                     title: "KARDIOVASKULER",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children: kardiovaSkuler.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.kardiovaskuler ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedKardiovaskuler(
-                                            value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context.read<PengkajianPersistemBloc>().add(
-                                      OnChangedKardiovaskuler(value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  const Divider(),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.respiratori
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _respiratoriController
+                        ..text = state.penkajianKebidanan.respiratori,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-                // ComponenPengkajian.penkajian(
-                //     pilihan: aktivitas,
-                //     controller: _aktivitasController,
-                //     value: state.penkajianKebidanan.aktivitas,
-                //     title: "KARDIOVASKULER"),
-
-                const Divider(),
-
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "RESPIRATORI",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children: respiratori.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.respiratori ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedRespiratori(value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context.read<PengkajianPersistemBloc>().add(
-                                      OnChangedRespiratori(value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  TitleWidget.headerTitle(title: "SISTEM PERFUSI SECEBRAL"),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.perfusiSecebral
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _perfusiSecebralController
+                        ..text = state.penkajianKebidanan.secebral,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-
-                // ComponenPengkajian.selectionPengkajian(
-                //     title: "RESPIRATORI",
-                //     widget: Container(
-                //       width: Get.width,
-                //       decoration: BoxDecoration(color: ThemeColor.bgColor),
-                //       child: Column(
-                //         children: [
-                //           Wrap(
-                //             children: respiratori.asMap().entries.map((e) {
-                //               if (state.penkajianKebidanan.respiratori ==
-                //                   e.value) {
-                //                 return TitleWidget.boxChoose(
-                //                   backgroundColor: ThemeColor.greenColor,
-                //                   onPressed: () {
-                //                     context.read<PengkajianPersistemBloc>().add(
-                //                         OnChangedRespiratori(value: e.value));
-                //                   },
-                //                   icon: const Icon(
-                //                     FontAwesomeIcons.check,
-                //                     color: Colors.white,
-                //                   ),
-                //                   title: e.value,
-                //                 );
-                //               }
-                //               return TitleWidget.boxChoose(
-                //                 backgroundColor: ThemeColor.primaryColor,
-                //                 onPressed: () {
-                //                   context.read<PengkajianPersistemBloc>().add(
-                //                       OnChangedRespiratori(value: e.value));
-                //                 },
-                //                 icon: const Icon(
-                //                   FontAwesomeIcons.check,
-                //                   color: Colors.white,
-                //                 ),
-                //                 title: e.value,
-                //               );
-                //             }).toList(),
-                //           ),
-                //         ],
-                //       ),
-                //     )),
-                // ComponenPengkajian.penkajian(
-                //     pilihan: aktivitas,
-                //     controller: _aktivitasController,
-                //     value: state.penkajianKebidanan.aktivitas,
-                //     title: "RESPIRATORI"),
-
-                TitleWidget.headerTitle(title: "SISTEM PERFUSI SECEBRAL"),
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "PERFUSI SECEBRAL",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children: perfusiSecebral.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.secebral ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedPerusiSecebral(
-                                            value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context.read<PengkajianPersistemBloc>().add(
-                                      OnChangedPerusiSecebral(value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  TitleWidget.headerTitle(title: "THERMOREGULASI"),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.thermoregulasi
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _thermoregulasiController
+                        ..text = state.penkajianKebidanan.thermoregulasi,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-
-                // ComponenPengkajian.penkajian(
-                //     pilihan: perfusiSecebral,
-                //     controller: _aktivitasController,
-                //     value: state.penkajianKebidanan.aktivitas,
-                //     title: "RESPIRATORI"),
-
-                TitleWidget.headerTitle(title: "THERMOREGULASI"),
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "THERMOREGULASI",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children: thermoregulasi.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.thermoregulasi ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedThermoregulasi(
-                                            value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context.read<PengkajianPersistemBloc>().add(
-                                      OnChangedThermoregulasi(value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  TitleWidget.headerTitle(title: "SISTEM PERFUSI PERIFER"),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.sistemPerfusiPerifer
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _sistemPerfusiPerfierController
+                        ..text = state.penkajianKebidanan.perfusiPerifer,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-                // ComponenPengkajian.penkajian(
-                //     pilihan: perfusiSecebral,
-                //     controller: _aktivitasController,
-                //     value: state.penkajianKebidanan.aktivitas,
-                //     title: "THERMOREGULASI"),
-
-                TitleWidget.headerTitle(title: "SISTEM PERFUSI PERIFER"),
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "SISTEM PERFUSI PERIFER",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children:
-                                sistemPerfusiPerifer.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.perfusiPerifer ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedPerfusiPefifer(
-                                            value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context.read<PengkajianPersistemBloc>().add(
-                                      OnChangedPerfusiPefifer(value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  TitleWidget.headerTitle(title: "SISTEM PENCERNAAN"),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.sistemPencernaan
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _sistemPencernaanController
+                        ..text = state.penkajianKebidanan.pencernaan,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-                // ComponenPengkajian.penkajian(
-                //     pilihan: perfusiSecebral,
-                //     controller: _aktivitasController,
-                //     value: state.penkajianKebidanan.aktivitas,
-                //     title: "SISTEM PERFUSI PERIFER"),
-
-                TitleWidget.headerTitle(title: "SISTEM PENCERNAAN"),
-
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "SISTEM PENCERNAAN",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children: sistemPencernaan.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.pencernaan ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedSistemPencernaan(
-                                            value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context.read<PengkajianPersistemBloc>().add(
-                                      OnChangedSistemPencernaan(
-                                          value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  TitleWidget.headerTitle(title: "INTEGUMEN"),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.integumen
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _integumenController
+                        ..text = state.penkajianKebidanan.integumen,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-
-                // ComponenPengkajian.penkajian(
-                //     pilihan: perfusiSecebral,
-                //     controller: _aktivitasController,
-                //     value: state.penkajianKebidanan.aktivitas,
-                //     title: "SISTEM PENCERNAAN"),
-
-                TitleWidget.headerTitle(title: "INTEGUMEN"),
-
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "INTEGUMEN",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children: integumen.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.integumen ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedIntegumen(value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context
-                                      .read<PengkajianPersistemBloc>()
-                                      .add(OnChangedIntegumen(value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  TitleWidget.headerTitle(title: "KENYAMANAN"),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.kenyamanan
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _kenyamananController
+                        ..text = state.penkajianKebidanan.kenyamanan,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-                // ComponenPengkajian.penkajian(
-                //     pilihan: perfusiSecebral,
-                //     controller: _aktivitasController,
-                //     value: state.penkajianKebidanan.aktivitas,
-                //     title: "INTEGUMEN"),
-
-                TitleWidget.headerTitle(title: "KENYAMANAN"),
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "KENYAMANAN",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children: kenyamanan.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.kenyamanan ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedKenyamanan(value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context
-                                      .read<PengkajianPersistemBloc>()
-                                      .add(OnChangedKenyamanan(value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  TitleWidget.headerTitle(title: "PROTEKSI"),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.statusMental
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _statusMentalController
+                        ..text = state.penkajianKebidanan.proteksi,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-                // ComponenPengkajian.penkajian(
-                //     pilihan: perfusiSecebral,
-                //     controller: _aktivitasController,
-                //     value: state.penkajianKebidanan.aktivitas,
-                //     title: "KENYAMANAN"),
-
-                TitleWidget.headerTitle(title: "PROTEKSI"),
-
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "STATUS MENTAL",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children: statusMental.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.proteksi ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context
-                                        .read<PengkajianPersistemBloc>()
-                                        .add(OnChangedProteksi(value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context
-                                      .read<PengkajianPersistemBloc>()
-                                      .add(OnChangedProteksi(value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  TitleWidget.headerTitle(title: "SEKSUAL & REPRODUKSI"),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.pAPSSMER
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _papsSmerController
+                        ..text = state.penkajianKebidanan.papsSmer,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-                // ComponenPengkajian.penkajian(
-                //     pilihan: perfusiSecebral,
-                //     controller: _aktivitasController,
-                //     value: state.penkajianKebidanan.aktivitas,
-                //     title: "STATUS MENTAL"),
-
-                TitleWidget.headerTitle(title: "SEKSUAL & REPRODUKSI"),
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "PAPS SMER",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children: pAPSSMER.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.papsSmer ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context
-                                        .read<PengkajianPersistemBloc>()
-                                        .add(OnChangedPapsSmer(value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context
-                                      .read<PengkajianPersistemBloc>()
-                                      .add(OnChangedPapsSmer(value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  const Divider(),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.pendarahan
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _pendarahanController
+                        ..text = state.penkajianKebidanan.pendarahan,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-                // ComponenPengkajian.penkajian(
-                //     pilihan: perfusiSecebral,
-                //     controller: _aktivitasController,
-                //     value: state.penkajianKebidanan.aktivitas,
-                //     title: "PAPS SMER"),
-
-                const Divider(),
-
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "PENDARAHAN",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children: pAPSSMER.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.pendarahan ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedPendaharan(value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context
-                                      .read<PengkajianPersistemBloc>()
-                                      .add(OnChangedPendaharan(value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  TitleWidget.headerTitle(
+                      title: "KOMUNIKASI / PENDIDIKAN PENGAJARAN"),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.hambatanBahasa
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _hambatanBahasaController
+                        ..text = state.penkajianKebidanan.hambatanBahasa,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-                // ComponenPengkajian.penkajian(
-                //     pilihan: aktivitas,
-                //     controller: _aktivitasController,
-                //     value: state.penkajianKebidanan.aktivitas,
-                //     title: "PENDARAHAN"),
-
-                TitleWidget.headerTitle(
-                    title: "KOMUNIKASI / PENDIDIKAN PENGAJARAN"),
-
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "Hambatan Bahasa",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children: hambatanBahasa.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.hambatanBahasa ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedHambatanBahasa(
-                                            value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context.read<PengkajianPersistemBloc>().add(
-                                      OnChangedHambatanBahasa(value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.caraBelajarYangDisukai
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _caraBelajardisukaiController
+                        ..text = state.penkajianKebidanan.caraBelajar,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-
-                // ComponenPengkajian.penkajian(
-                //     pilihan: aktivitas,
-                //     controller: _aktivitasController,
-                //     value: state.penkajianKebidanan.aktivitas,
-                //     title: "Hambatan Bahasa"),
-
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "Cara Belajar Yang Disukai",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children:
-                                caraBelajarYangDisukai.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.caraBelajar ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedCaraBelajar(value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context.read<PengkajianPersistemBloc>().add(
-                                      OnChangedCaraBelajar(value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.bahasaSehariHari
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _bahasaSehariHariController
+                        ..text = state.penkajianKebidanan.bahasaSehari,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-                // ComponenPengkajian.penkajian(
-                //     pilihan: aktivitas,
-                //     controller: _aktivitasController,
-                //     value: state.penkajianKebidanan.aktivitas,
-                //     title: "Cara Belajar Yang Disukai"),
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "Bahasa Sehari Hari",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children: bahasaSehariHari.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.bahasaSehari ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedBahasaSehari(value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context.read<PengkajianPersistemBloc>().add(
-                                      OnChangedBahasaSehari(value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  TitleWidget.headerTitle(
+                      title: "DATA PSIKOLOGIS, SOSIAL , EKONOMI DAN SPIRITUAL"),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.spikologis
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _psikologisController
+                        ..text = state.penkajianKebidanan.spikologis,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-                // ComponenPengkajian.penkajian(
-                //     pilihan: aktivitas,
-                //     controller: _aktivitasController,
-                //     value: state.penkajianKebidanan.aktivitas,
-                //     title: "Bahasa Sehari Hari"),
-
-                TitleWidget.headerTitle(
-                    title: "DATA PSIKOLOGIS, SOSIAL , EKONOMI DAN SPIRITUAL"),
-
-                ComponenPengkajian.selectionPengkajian(
-                    title: "Spikologis",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children: spikologis.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.spikologis ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedSpikologis(value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context
-                                      .read<PengkajianPersistemBloc>()
-                                      .add(OnChangedSpikologis(value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                    ),
+                    title: "Psikologis",
+                  ),
+                  const Divider(),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.hambatanSosial
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _hambatanSosialController
+                        ..text = state.penkajianKebidanan.hambatanSosial,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-                // ComponenPengkajian.penkajian(
-                //     pilihan: aktivitas,
-                //     controller: _aktivitasController,
-                //     value: state.penkajianKebidanan.aktivitas,
-                //     title: "Spikologis"),
-
-                const Divider(),
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "Hambatan Sosial",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children: hambatanSosial.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.hambatanSosial ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedHambatanSosial(
-                                            value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context.read<PengkajianPersistemBloc>().add(
-                                      OnChangedHambatanSosial(value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  const Divider(),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.hambatanSosial
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _hambatanEkonomiController
+                        ..text = state.penkajianKebidanan.hambatanEkonomi,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-                // ComponenPengkajian.penkajian(
-                //     pilihan: aktivitas,
-                //     controller: _aktivitasController,
-                //     value: state.penkajianKebidanan.aktivitas,
-                //     title: "Hambatan Sosial"),
-
-                const Divider(),
-
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "Hambatan Ekonomi",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children: hambatanEkonomi.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.hambatanEkonomi ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedHambatanEkomoni(
-                                            value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context.read<PengkajianPersistemBloc>().add(
-                                      OnChangedHambatanEkomoni(value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  const Divider(),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.hambatanSpiritual
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _hambatanSpiritualController
+                        ..text = state.penkajianKebidanan.spiritual,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-
-                // ComponenPengkajian.penkajian(
-                //     pilihan: aktivitas,
-                //     controller: _aktivitasController,
-                //     value: state.penkajianKebidanan.aktivitas,
-                //     title: "Hambatan Ekonomi"),
-
-                const Divider(),
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "Hambatan Spiritual",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children:
-                                hambatanSpiritual.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.spiritual ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedHambatanSpiritual(
-                                            value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context.read<PengkajianPersistemBloc>().add(
-                                      OnChangedHambatanSpiritual(
-                                          value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  TitleWidget.headerTitle(title: "RESPONSE EMOSI"),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.responseEmosi
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _responseEmosiController
+                        ..text = state.penkajianKebidanan.responseEmosi,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-                // ComponenPengkajian.penkajian(
-                //     pilihan: aktivitas,
-                //     controller: _aktivitasController,
-                //     value: state.penkajianKebidanan.aktivitas,
-                //     title: "Hambatan Spiritual"),
-
-                TitleWidget.headerTitle(title: "RESPONSE EMOSI"),
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "Response Emosi",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children: responseEmosi.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.responseEmosi ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedResponseEmosi(value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context.read<PengkajianPersistemBloc>().add(
-                                      OnChangedResponseEmosi(value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  TitleWidget.headerTitle(title: "NILAI KEPERCAYAAN"),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.menjalankanIbadah
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _menjalankanIbadahController
+                        ..text = state.penkajianKebidanan.nilaiKepercayaan,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-                // ComponenPengkajian.penkajian(
-                //     pilihan: aktivitas,
-                //     controller: _aktivitasController,
-                //     value: state.penkajianKebidanan.aktivitas,
-                //     title: "Response Emosi"),
-
-                TitleWidget.headerTitle(title: "NILAI KEPERCAYAAN"),
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "Menjalankan Ibadah",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children:
-                                menjalankanIbadah.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.nilaiKepercayaan ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedNilaiKepercayaaan(
-                                            value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context.read<PengkajianPersistemBloc>().add(
-                                      OnChangedNilaiKepercayaaan(
-                                          value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  const Divider(),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.presepsiTerhadapSakit
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _presepsiTerhadapSakitController
+                        ..text = state.penkajianKebidanan.presepsiSakit,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-                // ComponenPengkajian.penkajian(
-                //     pilihan: aktivitas,
-                //     controller: _aktivitasController,
-                //     value: state.penkajianKebidanan.aktivitas,
-                //     title: "Menjalankan Ibadah"),
-
-                const Divider(),
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "Persepsi Terhadap Sakit",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children:
-                                presepsiTerhadapSakit.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.presepsiSakit ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedPresepsiSakit(value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context.read<PengkajianPersistemBloc>().add(
-                                      OnChangedPresepsiSakit(value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
+                  ),
+                  const Divider(),
+                  TitleWidget.boxPemeriksaanFisikSugestion(
+                    width: 100.sp,
+                    widget: SearchField(
+                      searchStyle: blackTextStyle,
+                      enabled: true,
+                      marginColor: ThemeColor.whiteColor,
+                      itemHeight: 15.sp,
+                      suggestionStyle: blackTextStyle,
+                      suggestions: ListConstants.nilaiKepercayaan
+                          .map(
+                            (e) => SearchFieldListItem(
+                              e.toString(),
+                              item: e.toString().toUpperCase(),
+                              child: Container(
+                                width: Get.width,
+                                color: ThemeColor.whiteColor,
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  e.toString(),
+                                  style:
+                                      blackTextStyle.copyWith(fontSize: 6.sp),
                                 ),
-                                title: e.value,
-                              );
-                            }).toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      validator: (x) {
+                        return null;
+                      },
+                      // CONTROLLER
+                      controller: _nilaiKepercayaanController
+                        ..text = state.penkajianKebidanan.nilaiKepercayaan,
+                      onSubmit: (value) {},
+                      onSaved: (a) {},
+                      searchInputDecoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black.withOpacity(0.8),
                           ),
-                        ],
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                        ),
                       ),
-                    )),
-                // ComponenPengkajian.penkajian(
-                //     pilihan: aktivitas,
-                //     controller: _aktivitasController,
-                //     value: state.penkajianKebidanan.aktivitas,
-                //     title: "Persepsi Terhadap Sakit"),
-
-                const Divider(),
-                ComponenPengkajian.selectionPengkajian(
+                    ),
                     title: "Nilai/aturan Khusus dalam kepercayaan",
-                    widget: Container(
-                      width: Get.width,
-                      decoration: BoxDecoration(color: ThemeColor.bgColor),
-                      child: Column(
-                        children: [
-                          Wrap(
-                            children: nilaiKepercayaan.asMap().entries.map((e) {
-                              if (state.penkajianKebidanan.khususKepercayaan ==
-                                  e.value) {
-                                return TitleWidget.boxChoose(
-                                  backgroundColor: ThemeColor.greenColor,
-                                  onPressed: () {
-                                    context.read<PengkajianPersistemBloc>().add(
-                                        OnChangedKhususKepercayaan(
-                                            value: e.value));
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.check,
-                                    color: Colors.white,
-                                  ),
-                                  title: e.value,
-                                );
-                              }
-                              return TitleWidget.boxChoose(
-                                backgroundColor: ThemeColor.primaryColor,
-                                onPressed: () {
-                                  context.read<PengkajianPersistemBloc>().add(
-                                      OnChangedKhususKepercayaan(
-                                          value: e.value));
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.check,
-                                  color: Colors.white,
-                                ),
-                                title: e.value,
-                              );
-                            }).toList(),
-                          ),
-                        ],
-                      ),
-                    )),
-                // ComponenPengkajian.penkajian(
-                //     pilihan: aktivitas,
-                //     controller: _aktivitasController,
-                //     value: state.penkajianKebidanan.aktivitas,
-                //     title: "Nilai/aturan Khusus dalam kepercayaan"),
-              ],
+                  ),
+                  SizedBox(
+                    height: 25.sp,
+                  ),
+                ],
+              ),
             ),
           ),
         );
@@ -1754,87 +1809,3 @@ class _PengkajianPersistemPageWidgetState
     );
   }
 }
-
-List<String> eliminasiBAKPilihan = ["TAK", "NORMAL"];
-List<String> eliminasiBABPilihan = ["TAK", "Konstipasi"];
-List<String> aktivitasIstirahatPilihan = ["TAK", "Susah Tidur"];
-List<String> aktivitasPilihan = ["Mandiri", "Bantuan Sebagian"];
-
-List<String> eliminasiBAK = ["TAK", "Sering BAK"];
-List<String> eliminasiBAB = ["TAK", "Konstipasi"];
-List<String> aktivitasIstirahat = ["TAK", "Susah Tidur"];
-List<String> aktivitas = ["Mandiri", "Bantuan Sebagian"];
-List<String> kardiovaSkuler = ["TAK", "Nyeri Dada", "Tidak", "Ya"];
-List<String> respiratori = ["TAK", "Sesak Napas", "Tidak", "Ya"];
-List<String> perfusiSecebral = [
-  "TAK",
-  "Kejang",
-  "Riwayat Kejang",
-  "Sakit Kepala",
-];
-List<String> thermoregulasi = ["TAK", "Demam", "Riwayat Demam"];
-List<String> sistemPerfusiPerifer = [
-  "TAK",
-  "Odema",
-  "Kesemutan/Kebas",
-];
-List<String> sistemPencernaan = [
-  "TAK",
-  "Perut Kembung",
-  "Distensi Abdomen",
-];
-List<String> integumen = ["TAK", "Luka/Abses"];
-List<String> itegumen = ["TAK", "Luka"];
-List<String> odema = ["Tidak", "Ya"];
-List<String> kenyamanan = ["TAK", "Tidak Nyaman", "Gelisah"];
-List<String> statusMental = ["Orientasi", "Agitasi"];
-List<String> pAPSSMER = ["Tidak", "Ya"];
-List<String> hambatanBahasa = ["Tidak", "Ya"];
-List<String> perluPenerjemah = ["Tidak", "Ya"];
-List<String> caraBelajarYangDisukai = [
-  "Demontrasi",
-  "Diskusi",
-  "Menulis",
-];
-List<String> bahasaSehariHari = ["Indonesia", "Bahasa Daerah"];
-List<String> spikologis = [
-  "Stabil/Tenan",
-  "Cemas/Takut",
-  "Marah",
-  "Sedih",
-];
-List<String> hambatanSosial = ["Tidak Ada"];
-List<String> hambatanEkonomi = ["Tidak Ada"];
-List<String> hambatanSpiritual = ["Tidak Ada"];
-List<String> responseEmosi = [
-  "TAK",
-  "Takut Terhadap Lingkungan/Tindakan di RS",
-  "Sedih",
-  "Marah",
-  "Menangis",
-  "Rendah Diri",
-  "Cemas",
-];
-List<String> menjalankanIbadah = [
-  "Selalu/Taat",
-  "Kadang-kadang",
-  "Tidak Pernah",
-  "Sedih",
-  "Marah",
-  "Menangis",
-  "Rendah Diri",
-  "Cemas",
-];
-List<String> hamil = ["Tidak", "Ya"];
-List<String> nilaiKepercayaan = [
-  "Tidak Ada",
-  "Jelaskan",
-];
-List<String> presepsiTerhadapSakit = [
-  "Perasaan Bersalah",
-  "Perasaan Ditinggal Tuhan Nilai/aturan Khusus dalam kepercayaan",
-  "Tidak Ada ",
-  "Jelaskan"
-];
-List<String> pendarahan = ["Tidak", "Ya"];
-List<int> skorAktivitas = [1, 2, 3, 4, 5];

@@ -78,5 +78,5 @@ class PengkajianAwalAnakRawatInapPageWidget extends StatelessWidget {
 List<String> menu = [
   "Keluhan Utama",
   "Vital Sign",
-  "Pengkajian Persistem",
+  "Asesmen",
 ];

@@ -582,6 +582,9 @@ class KebidananService {
     required String gcsM,
     required String ddj,
     required String tfu,
+    required String akral,
+    required String pupil,
+    required String kesadaran,
   }) {
     return MyDio().postDataWithToken(
         data: DTO.onSaveTandaVitalKebidanan(
@@ -599,7 +602,10 @@ class KebidananService {
             person: person,
             suhu: suhu,
             tekananDarah: tekananDarah,
-            tinggiBadan: tinggiBadan),
+            tinggiBadan: tinggiBadan,
+            akral: akral,
+            kesadaran: kesadaran,
+            pupil: pupil),
         endPoint: "/v1/dvital-sign-bidan");
   }
 

@@ -148,10 +148,18 @@ class PengkajianPersistemBloc
         saveResult: optionOf(saveData),
         status: PengkajianPersistemStatus.loaded,
       ));
+
+      final getData = await kebidananService.onGetPengkajianPersistem(
+          noReg: event.noReg, person: event.person);
+
+      PengkajianPersistemKebidananResponse data =
+          PengkajianPersistemKebidananResponse.fromJson(getData["response"]);
+
+      // PengkajianPersistemKebidananResponse
       emit(state.copyWith(
-        saveResult: none(),
-        status: PengkajianPersistemStatus.loaded,
-      ));
+          saveResult: none(),
+          status: PengkajianPersistemStatus.loaded,
+          penkajianKebidanan: data));
     } catch (e) {
       emit(state.copyWith(
           saveResult: none(),

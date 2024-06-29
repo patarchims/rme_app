@@ -102,7 +102,7 @@ abstract class ListConstants {
     "24",
   ];
   static const List<String> gcsM = [
-    "0",
+    " ",
     "1",
     "2",
     "3",
@@ -112,14 +112,14 @@ abstract class ListConstants {
   ];
 
   static const List<String> gcsE = [
-    "0",
+    " ",
     "1",
     "2",
     "3",
     "4",
   ];
 
-  static const List<String> gcsV = ["0", "1", "2", "3", "4", "5"];
+  static const List<String> gcsV = [" ", "1", "2", "3", "4", "5"];
 
   static const List<String> kesadaranManusia = [
     "",
@@ -177,9 +177,9 @@ abstract class ListConstants {
   ];
   static const List<String> pendidikanSaatPulang = [
     "Makan/Minum Obat Teratur",
-    " Jaga Kebersihan Luka",
+    "Jaga Kebersihan Luka",
     "Diet",
-    "Lain-Lain"
+    Constants.lainnya
   ];
 
   // ====================== END PILIHAN FREKUSI NYERI
@@ -273,7 +273,7 @@ abstract class ListConstants {
     "Simetris",
     "Asimetris",
     "Benjolan",
-    "Hamaton",
+    "Hematom",
     Constants.tidakAdaKelainan,
     Constants.lainnya
   ];
@@ -364,9 +364,9 @@ abstract class ListConstants {
   ];
 
   static const List<String> leher = [
-    "Pembesaran Tirod",
+    "Pembesaran Tiroid",
     "Retraksi",
-    "Kaku kudu",
+    "Kaku kuduk",
     "Keterbatansan gerak",
     Constants.tidakAdaKelainan,
     Constants.lainnya
@@ -375,7 +375,6 @@ abstract class ListConstants {
   static const List<String> dada = [
     "Asimetris",
     "Tracheostomy",
-    "Tidak ada kesulitan",
     Constants.tidakAdaKelainan,
     Constants.lainnya
   ];
@@ -423,12 +422,15 @@ abstract class ListConstants {
   ];
 
   static const List<String> abdomen = [
-    "Normal",
-    "Abnormal",
-    "Peristaltik",
+    "Supel",
+    "Kembung",
+    "Acites",
     "Pulsasi",
-    "Umbillikus:",
-    "Tidak ada masalah",
+    "Umbillikus menonjol:",
+    "Perut membesar",
+    "Tugor kulit lembek",
+    "Distensi Abdomen",
+    "Memapan",
     Constants.lainnya
   ];
 
@@ -484,4 +486,312 @@ abstract class ListConstants {
     "Ekstremitas",
     "Motorik"
   ];
+
+  // =========================================== PEMERIKSAAN   static const FISIK
+
+  static const List<String> eliminasiBAK = [
+    "TAK",
+    "Sering BAK",
+    "BAK Nyeri",
+    "Volume BAK Sedikit",
+    "Hematuri"
+  ];
+  static const List<String> eliminasiBAB = [
+    "TAK",
+    "Konstipasi",
+    "Diare",
+    "Melena",
+  ];
+  static const List<String> aktivitasIstirahat = [
+    "TAK",
+    "Susah Tidur",
+  ];
+  static const List<String> aktivitas = [
+    "Mandiri",
+    "Bantuan Sebagian",
+  ];
+
+  static const List<String> batuk = [
+    "TAK",
+    "Berdahak",
+    "Tidak Berdahak",
+    Constants.lainnya
+  ];
+  static const List<String> kardiovaSkuler = [
+    "TAK",
+    "Nyeri Dada",
+    Constants.lainnya
+  ];
+
+  static const List<String> batukPilihan = [
+    "TAK",
+    "Berdahak",
+    "Tidak Berdahak",
+    Constants.lainnya
+  ];
+  static const List<String> respiratori = ["TAK", "Sesak Napas"];
+  static const List<String> perfusiSecebral = [
+    "TAK",
+    "Kejang",
+    "Riwayat Kejang",
+  ];
+  static const List<String> thermoregulasi = [
+    "TAK",
+    "Demam",
+    "Riwayat Demam",
+  ];
+  static const List<String> sistemPerfusiPerifer = [
+    "TAK",
+    "Odema",
+    "Kesemutan/Kebas",
+  ];
+  static const List<String> sistemPencernaan = [
+    "TAK",
+    "Perut Kembung",
+    "Distensi Abdomen",
+    Constants.lainnya
+  ];
+  static const List<String> sistemUsus = [
+    "YA",
+    "TIDAK",
+  ];
+  static const List<String> integumen = [
+    "TAK",
+    "Luka",
+    "Abses",
+    Constants.lainnya
+  ];
+
+  static const List<String> odema = [
+    "Tidak",
+    "Ya",
+  ];
+
+  static const List<String> statusMental = [
+    "Orientasi",
+    "Agitasi",
+    "Menyerang",
+    "Tak Ada Response",
+    "Letargi",
+    "Kooperatif",
+    "Disorientasi"
+  ];
+  static const List<String> pAPSSMER = [
+    "Tidak",
+    "Ya",
+  ];
+
+  static const List<String> masalahProstat = ["Tidak", "Ya"];
+
+  static const List<String> hambatanBahasa = [
+    "Tidak",
+    "Tuna rungu",
+    "Tuna wicara",
+    "Retardasi mental",
+    "Gangguan mental",
+    Constants.lainnya
+  ];
+
+  static const List<String> caraBelajarYangDisukai = [
+    "Demontrasi",
+    "Diskusi",
+    "Menulis",
+  ];
+  static const List<String> bahasaSehariHari = [
+    "Indonesia",
+    "Bahasa Daerah",
+  ];
+  static const List<String> perluPenerjemah = ["Tidak", "Ya, Bahasa"];
+  static const List<String> spikologis = [
+    "Stabil/Tenang",
+    "Cemas/Takut",
+    "Marah",
+    "Sedih",
+  ];
+  static const List<String> hambatanSosial = ["Tidak Ada", "Ada, Sebutkan"];
+  static const List<String> hambatanEkonomi = ["Tidak Ada", "Ada, Sebutkan"];
+  static const List<String> hambatanSpiritual = ["Tidak Ada", "Ada, Sebutkan"];
+  static const List<String> responseEmosi = [
+    "TAK",
+    "Takut Terhadap Lingkungan/Tindakan di RS",
+    "Mudah Marah",
+    "Sedih",
+    "Menangis",
+    "Rendah Diri",
+    "Cemas",
+  ];
+  static const List<String> menjalankanIbadah = [
+    "Selalu/Taat",
+    "Kadang-kadang",
+    "Tidak Pernah",
+  ];
+
+  static const List<String> hamil = [
+    "Tidak",
+    "Ya",
+  ];
+
+  static const List<String> nilaiKepercayaan = [
+    "Tidak ada",
+    "Ada, jelaskan",
+  ];
+  static const List<String> presepsiTerhadapSakit = [
+    "Perasaan Bersalah",
+    "Perasaan Ditinggal Tuhan",
+    "Pasrah",
+    Constants.lainnya
+  ];
+  static const List<String> pendarahan = [
+    "Belum menstruasi",
+    "Menstruasi tidak teratur",
+    "Sedang menstruasi hari ke",
+    "Tidak menstruasi",
+    "Menometroragia",
+    "Amenorhoe selama……………",
+    Constants.lainnya
+  ];
+  static const List<String> riwayatHipertensi = [
+    "Tidak",
+    "Ya",
+  ];
+  static const List<int> skorAktivitas = [1, 2, 3, 4, 5];
+
+  static const List<String> sakitKepala = ["Tidak", "Ya, Jelaskan"];
+
+  static const List<String> anggotaGerak = ["Tidak", "Ya, Lokasi"];
+
+  static const List<String> perubahanStatusMental = ["TAK", "Gelisah", "Cemas"];
+
+  static const List<String> kekuatanOTOT = ["0", "1", "2", "3", "4", "5"];
+
+  static const List<String> akral = ["Hangat", "Dingin", "Cyanotik"];
+
+  static const List<String> nutrisiHidrasi = [
+    "TAK",
+    "Mual",
+    "Muntah",
+    "Mulas",
+    "Tak Nafsu Makan",
+    Constants.lainnya
+  ];
+//   static const List<String> batuk = ["Tidak", "Berdahak/Darah", "Ya"];
+  static const List<String> suaraNapas = [
+    "Wheezing",
+    "Ronchi",
+    "Stridor",
+    "Vesikuler",
+    "Bronchoveresikuler"
+  ];
+  static const List<String> merokok = [
+    "Tidak",
+    "Riwayat Perokok",
+    "Ya",
+  ];
+  static const List<int> skorAktivitasMandi = [0, 1, 2, 3, 4];
+  static const List<String> bicara = ["Tak", "Pelo", "Tidak Bisa Bicara"];
+  static const List<String> kenyamanan = ["TAK", "Tidak Nyaman", "Gelisah"];
+
+  // ================= PEMERIKSAAN FISIK IGD
+
+  static const List<String> fisik = [
+    "KEPALA",
+    "LEHER",
+    "DADA",
+    "ABDOMEN",
+    "PINGGANG",
+    "EXTREMITAS"
+  ];
+
+  static const List<String> pemeriksaanFisikPilihan = ["DBN", "ABNORMAL"];
+  static const List<String> pemeriksaanFisikJantung = [
+    "DBN",
+    "ABNORMAL",
+    "Murmur",
+    "Gallop",
+    "Aritmia",
+    "Takikardia",
+    "Bradikardi",
+    "Palpitasi",
+    "Pracemaker"
+  ];
+
+  static const List<String> pemeriksaanFisikLeher = [
+    "DBN",
+    "Pembesaran Tiroid",
+    "Pembesaran vena jugularis",
+    "Kaku kuduk",
+    "Keterbatasan gerak"
+  ];
+
+  static const List<String> pemeriksaanFisikAnus = [
+    "DBN",
+    "Hemoroid",
+    Constants.lainnya
+  ];
+
+  static const List<String> pemeriksaanFisikGinjal = [
+    "DBN",
+    "Nyeri Ketuk CVA, lokasi",
+    Constants.lainnya
+  ];
+
+  static const List<String> pemeriksaanFisikMata = [
+    "DBN",
+    "Secret",
+    "Refleks berkedip",
+    "Mata Cekung",
+    "Sclera icteric",
+    "Simetris Kanan Refleks berkedip",
+    "Simetris Kiri Refleks berkedip",
+    Constants.lainnya
+  ];
+  static const List<String> pemeriksaanFisikDada = [
+    "DBN",
+    "Retraksi Dada",
+    "Faktur Clavikula",
+    Constants.lainnya
+  ];
+  static const List<String> pemeriksaanFisikHati = [
+    "DBN",
+    "Teraba membesar",
+    Constants.lainnya
+  ];
+  static const List<String> pemeriksaanFisikPerut = [
+    "DBN",
+    "Perut membesar",
+    "Tugor kulit lembek",
+    "Distensi Abdomen",
+    "Acites",
+    "Memapan",
+    Constants.lainnya
+  ];
+  static const List<String> pemeriksaanFisikTHT = [
+    "DBN",
+    "Keluar Cairan",
+    Constants.lainnya
+  ];
+
+  static const List<String> pemeriksaanFisikUsus = [
+    "DBN",
+    "Terdengar Lambat",
+    "Terdengar Cepat",
+    "Tidak terdengar",
+    Constants.lainnya
+  ];
+
+  static const List<String> pemeriksaanFisikMulut = [
+    "DBN",
+    "Sariawan",
+    "Refleks Menelan Menurun",
+    Constants.lainnya
+  ];
+
+  // LOKASI NYERI
+  static const List<String> frekuensiNyeri = [
+    "Jarang",
+    "Hilang Timbul",
+    "Menetap"
+  ];
+  static const List<String> lokasiNyeri = [];
+  static const List<String> menjalar = ["Tidak", "Ya, ke"];
 }

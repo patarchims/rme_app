@@ -35,6 +35,7 @@ class ResikoJatuhKebidananState extends Equatable {
 
   static ResikoJatuhKebidananState initial() => ResikoJatuhKebidananState(
       resikoJatuhKebidananModel: ResikoJatuhKebidananModel(
+          keterangan: "",
           terpasangInfuse: "",
           noreg: "",
           insertPc: "",

@@ -11,10 +11,10 @@ import 'package:hms_app/domain/models/meta/meta_model.dart';
 import 'package:hms_app/domain/models/users/user_model.dart';
 import 'package:hms_app/presentation/component/alert/mesage_alert.dart';
 import 'package:hms_app/presentation/component/component.dart';
+import 'package:hms_app/presentation/component/constant/list_constants.dart';
 import 'package:hms_app/presentation/component/loading/loading.dart';
 import 'package:hms_app/presentation/pages/bangsal/bloc/asesmen_intensive/asesmen_intensive_bloc.dart';
 import 'package:hms_app/presentation/pages/bangsal/bloc/pengkajian_awal_keperawatan/pengkajian_awal_keperawatan_bloc.dart';
-import 'package:hms_app/presentation/pages/bangsal/perawat/pengkajian_persistem_keperawatan/pengkajian_persistem_page_widget.dart';
 import 'package:hms_app/presentation/pages/bangsal/perawat/riwayat_alergi_keperawatan/riwayat_alergi_keperawatan_widget_content.dart';
 import 'package:hms_app/presentation/pages/bangsal/perawat/riwayat_pengobatan_dirumah/riwayat_pengobatan_dirumah_keperawatan_widget.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
@@ -650,7 +650,7 @@ class _RiwayatKeperawatanIntensiveWidgetPageState
                             marginColor: ThemeColor.whiteColor,
                             itemHeight: 15.sp,
                             suggestionStyle: blackTextStyle,
-                            suggestions: merokok
+                            suggestions: ListConstants.merokok
                                 .map(
                                   (e) => SearchFieldListItem(
                                     e,

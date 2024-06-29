@@ -15,24 +15,34 @@ enum HasilAsuhanStatus {
   isLoadingSaveAll,
   loadedStatus,
   changedShift,
+  isLoadingAction,
+  isLoadingGetTindakan,
+  isLoadingGetResume,
 }
 
 class HasilAsuhanKeperawatanState extends Equatable {
   final HasilAsuhanStatus status;
+  final List<TindakanModel> listTindakanModel;
   final List<HasilAsuhanKeperawatanModel> hasilAsuhanKeperawatanModel;
+  final List<ResumeKeperawatan> resumeKeperawatan;
   final Option<Either<ApiFailureResult, ApiSuccessResult>> getData;
   final Option<Either<ApiFailureResult, ApiSuccessResult>> saveData;
   final Option<Either<ApiFailureResult, ApiSuccessResult>> saveAllDaskep;
   final Option<Either<ApiFailureResult, ApiSuccessResult>> onUpdate;
   final Option<Either<ApiFailureResult, ApiSuccessResult>> deleteData;
+  final Option<Either<ApiFailureResult, ApiSuccessResult>>
+      onSaveActionKeperawatan;
   const HasilAsuhanKeperawatanState({
     required this.status,
-    required this.deleteData,
+    required this.listTindakanModel,
     required this.hasilAsuhanKeperawatanModel,
     required this.getData,
     required this.saveData,
     required this.saveAllDaskep,
     required this.onUpdate,
+    required this.onSaveActionKeperawatan,
+    required this.deleteData,
+    required this.resumeKeperawatan,
   });
 
   @override
@@ -42,36 +52,50 @@ class HasilAsuhanKeperawatanState extends Equatable {
         getData,
         saveData,
         onUpdate,
-        saveAllDaskep
+        onSaveActionKeperawatan,
+        saveAllDaskep,
+        listTindakanModel,
+        resumeKeperawatan
       ];
 
   static HasilAsuhanKeperawatanState initial() => HasilAsuhanKeperawatanState(
-      deleteData: none(),
-      onUpdate: none(),
-      getData: none(),
-      saveAllDaskep: none(),
-      hasilAsuhanKeperawatanModel: const [],
-      saveData: none(),
-      status: HasilAsuhanStatus.initial);
+        resumeKeperawatan: const [],
+        listTindakanModel: const [],
+        deleteData: none(),
+        onUpdate: none(),
+        getData: none(),
+        onSaveActionKeperawatan: none(),
+        saveAllDaskep: none(),
+        hasilAsuhanKeperawatanModel: const [],
+        saveData: none(),
+        status: HasilAsuhanStatus.initial,
+      );
 
   HasilAsuhanKeperawatanState copyWith({
     HasilAsuhanStatus? status,
+    List<TindakanModel>? listTindakanModel,
+    List<ResumeKeperawatan>? resumeKeperawatan,
     List<HasilAsuhanKeperawatanModel>? hasilAsuhanKeperawatanModel,
     Option<Either<ApiFailureResult, ApiSuccessResult>>? getData,
     Option<Either<ApiFailureResult, ApiSuccessResult>>? saveData,
-    Option<Either<ApiFailureResult, ApiSuccessResult>>? deleteData,
-    Option<Either<ApiFailureResult, ApiSuccessResult>>? onUpdate,
     Option<Either<ApiFailureResult, ApiSuccessResult>>? saveAllDaskep,
+    Option<Either<ApiFailureResult, ApiSuccessResult>>? onUpdate,
+    Option<Either<ApiFailureResult, ApiSuccessResult>>? deleteData,
+    Option<Either<ApiFailureResult, ApiSuccessResult>>? onSaveActionKeperawatan,
   }) {
     return HasilAsuhanKeperawatanState(
-      saveAllDaskep: saveAllDaskep ?? this.saveAllDaskep,
-      deleteData: deleteData ?? this.deleteData,
-      onUpdate: onUpdate ?? this.onUpdate,
+      resumeKeperawatan: resumeKeperawatan ?? this.resumeKeperawatan,
+      onSaveActionKeperawatan:
+          onSaveActionKeperawatan ?? this.onSaveActionKeperawatan,
       status: status ?? this.status,
+      listTindakanModel: listTindakanModel ?? this.listTindakanModel,
       hasilAsuhanKeperawatanModel:
           hasilAsuhanKeperawatanModel ?? this.hasilAsuhanKeperawatanModel,
       getData: getData ?? this.getData,
       saveData: saveData ?? this.saveData,
+      saveAllDaskep: saveAllDaskep ?? this.saveAllDaskep,
+      onUpdate: onUpdate ?? this.onUpdate,
+      deleteData: deleteData ?? this.deleteData,
     );
   }
 }

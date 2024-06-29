@@ -226,7 +226,6 @@ class _DeskripsiLuaranSlkiContentWidgetState
                             height: Get.height,
                             child: ErrorWidgetPage(
                               onPressed: () {
-                                // BACK SISTEM
                                 context.read<AsesmenKeperawatanBidanBloc>().add(
                                     const AsesmenKeperawatanBidanEvent
                                         .pilihDiagnosa(
@@ -238,7 +237,6 @@ class _DeskripsiLuaranSlkiContentWidgetState
                         : Column(
                             children: [
                               Container(
-                                // height: 25.sp,
                                 width: Get.width,
                                 padding: EdgeInsets.all(5.sp),
                                 decoration: const BoxDecoration(
@@ -303,7 +301,6 @@ class _DeskripsiLuaranSlkiContentWidgetState
                                             borderRadius:
                                                 BorderRadius.circular(2.sp))),
                                     onPressed: () {
-                                      // TAMPILKAN INTERVENSI
                                       CustomDialogWidget.getDialog(
                                           widget:
                                               const IntervensiSelectioinContentWidget(),
@@ -350,8 +347,9 @@ class _DeskripsiLuaranSlkiContentWidgetState
 
                                           // ======================== // TAMPILKAN DEFINISI
                                           TitleWidget.deskripsiContainer(
-                                              title2: "",
-                                              title: "Kriteria Hasil "),
+                                            title2: "",
+                                            title: "Kriteria Hasil ",
+                                          ),
 
                                           SizedBox(
                                             height: 4.sp,
@@ -485,16 +483,18 @@ class _DeskripsiLuaranSlkiContentWidgetState
                                         dropdownColor: ThemeColor.darkColor,
                                         value: list.value.waktu.toString(),
                                         onChanged: (e) {
+                                          log(e.toString());
                                           context
                                               .read<DeskripsiLuaranSlkiBloc>()
                                               .add(OnSelectionWaktuEvent(
-                                                  jam: e!,
-                                                  indexSLKI: indexSlki.key,
-                                                  kategori: kategori,
-                                                  kriteriaSlki: list.value
-                                                      .copyWith(
-                                                          waktu: int.parse(e)),
-                                                  indexKriteriaSlki: list.key));
+                                                jam: e!,
+                                                indexSLKI: indexSlki.key,
+                                                kategori: kategori,
+                                                kriteriaSlki: list.value
+                                                    .copyWith(
+                                                        waktu: int.parse(e)),
+                                                indexKriteriaSlki: list.key,
+                                              ));
                                         },
                                         items: ListConstants.waktu
                                             .map<DropdownMenuItem<String>>(
@@ -586,18 +586,19 @@ class _DeskripsiLuaranSlkiContentWidgetState
                                                   context
                                                       .read<
                                                           DeskripsiLuaranSlkiBloc>()
-                                                      .add(OnSelectionTargetEvent(
+                                                      .add(
+                                                          OnSelectionTargetEvent(
+                                                        target: waktu,
+                                                        indexSLKI:
+                                                            indexSlki.key,
+                                                        kategori: kategori,
+                                                        kriteriaSlki:
+                                                            list.value.copyWith(
                                                           target: waktu,
-                                                          indexSLKI:
-                                                              indexSlki.key,
-                                                          kategori: kategori,
-                                                          kriteriaSlki: list
-                                                              .value
-                                                              .copyWith(
-                                                                  target:
-                                                                      waktu),
-                                                          indexKriteriaSlki:
-                                                              list.key));
+                                                        ),
+                                                        indexKriteriaSlki:
+                                                            list.key,
+                                                      ));
                                                 }
                                               : null,
                                           style: ElevatedButton.styleFrom(

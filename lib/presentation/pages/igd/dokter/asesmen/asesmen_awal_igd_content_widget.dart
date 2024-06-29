@@ -74,6 +74,16 @@ class _PasienAwalIGDWidgetState extends State<PasienAwalIGDWidget> {
                     OnGetPemeriksaanFisikMethodist(
                         noReg: singlePasien.first.noreg,
                         person: toPerson(person: authState.user.person)));
+              } else if (AppConstant.appSetup == AppSetup.batuRaja) {
+                context.read<PemeriksaanFisikIgdBloc>().add(
+                    OnGetPemeriksaanFisikMethodist(
+                        noReg: singlePasien.first.noreg,
+                        person: toPerson(person: authState.user.person)));
+              } else if (AppConstant.appSetup == AppSetup.rsTiara) {
+                context.read<PemeriksaanFisikIgdBloc>().add(
+                    OnGetPemeriksaanFisikMethodist(
+                        noReg: singlePasien.first.noreg,
+                        person: toPerson(person: authState.user.person)));
               } else {
                 context.read<PemeriksaanFisikIgdBloc>().add(
                     OnGetPemeriksaanFisik(
@@ -121,6 +131,8 @@ class _PasienAwalIGDWidgetState extends State<PasienAwalIGDWidget> {
             if (AppConstant.appSetup == AppSetup.methodist) {
               return const PemeriksaanFisikIGDDokterMethodistWidgetPage();
             } else if (AppConstant.appSetup == AppSetup.rsTiara) {
+              return const PemeriksaanFisikIGDDokterMethodistWidgetPage();
+            } else if (AppConstant.appSetup == AppSetup.batuRaja) {
               return const PemeriksaanFisikIGDDokterMethodistWidgetPage();
             } else {
               return const PemeriksaanFisikIGDDokterWidget(isENableAdd: true);

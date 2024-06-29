@@ -8,6 +8,7 @@ import 'package:hms_app/domain/models/devices_info/device_info_model.dart';
 import 'package:hms_app/domain/models/meta/meta_model.dart';
 import 'package:hms_app/domain/models/users/user_model.dart';
 import 'package:hms_app/presentation/component/component.dart';
+import 'package:hms_app/presentation/component/constant/list_constants.dart';
 import 'package:hms_app/presentation/component/loading/loading.dart';
 import 'package:hms_app/presentation/pages/bangsal/bloc/nyeri_anak/asesmen_nyeri_anak_bloc.dart';
 import 'package:hms_app/presentation/pages/igd/dokter/asesmen/triase_igd_dokter_widget.dart';
@@ -498,6 +499,11 @@ class _PengkajianNyeriAnakWigetPageState
                                 height: 5.sp,
                               ),
 
+                              // TODO : NYERI
+                              TitleWidget.titleContainer(
+                                  title:
+                                      "Keterangan :Skor 0-2: Nyeri ringan tidak nyeri\nSkor >4 Nyeri sedang-nyeri ringan skor: 3-4"),
+
                               Slider(
                                 value: state.penkajianNyeri.nyeri.toDouble(),
                                 max: 10,
@@ -568,9 +574,6 @@ class _PengkajianNyeriAnakWigetPageState
                                             .read<AsesmenNyeriAnakBloc>()
                                             .add(OnChangedSkalaNyeriEvent(
                                                 skalaNyeri: 7));
-                                        // context
-                                        //     .read<AsesmenNyeriBloc>()
-                                        //     .add(OnCHangedAsesmenNyeri(skalaNyeri: 7));
                                       },
                                       child: SizedBox(
                                           height: 20.sp,
@@ -583,9 +586,6 @@ class _PengkajianNyeriAnakWigetPageState
                                             .read<AsesmenNyeriAnakBloc>()
                                             .add(OnChangedSkalaNyeriEvent(
                                                 skalaNyeri: 8));
-                                        // context
-                                        //     .read<AsesmenNyeriBloc>()
-                                        //     .add(OnCHangedAsesmenNyeri(skalaNyeri: 8));
                                       },
                                       child: SizedBox(
                                           height: 20.sp,
@@ -598,9 +598,6 @@ class _PengkajianNyeriAnakWigetPageState
                                             .read<AsesmenNyeriAnakBloc>()
                                             .add(OnChangedSkalaNyeriEvent(
                                                 skalaNyeri: 10));
-                                        // context
-                                        //     .read<AsesmenNyeriBloc>()
-                                        //     .add(OnCHangedAsesmenNyeri(skalaNyeri: 10));
                                       },
                                       child: SizedBox(
                                           height: 20.sp,
@@ -659,7 +656,7 @@ class _PengkajianNyeriAnakWigetPageState
                                     selectionColor: Colors.grey.shade100,
                                     hoverColor: Colors.black,
                                   ),
-                                  suggestions: kualitasNyeri
+                                  suggestions: ListConstants.kualitasNyeri
                                       .map(
                                         (e) => SearchFieldListItem(
                                           e,
@@ -680,16 +677,12 @@ class _PengkajianNyeriAnakWigetPageState
                                   validator: (x) {
                                     return null;
                                   },
-                                  // CONTROLLER
-                                  // controller: _mataController
-                                  //   ..text = state.pemeriksaanFisikIgdDokter.mata,
                                   controller: _frekuensiNyeri
                                     ..text =
                                         state.penkajianNyeri.frekuensiNyeri,
                                   onSubmit: (value) {},
                                   suggestionState: Suggestion.expand,
                                   onSaved: (a) {},
-
                                   searchInputDecoration: InputDecoration(
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -715,7 +708,7 @@ class _PengkajianNyeriAnakWigetPageState
                                     selectionColor: Colors.grey.shade100,
                                     hoverColor: Colors.black,
                                   ),
-                                  suggestions: kualitasNyeri
+                                  suggestions: ListConstants.lokasiNyeri
                                       .map(
                                         (e) => SearchFieldListItem(
                                           e,
@@ -769,7 +762,7 @@ class _PengkajianNyeriAnakWigetPageState
                                     selectionColor: Colors.grey.shade100,
                                     hoverColor: Colors.black,
                                   ),
-                                  suggestions: frekuensiNyeri
+                                  suggestions: ListConstants.kualitasNyeri
                                       .map(
                                         (e) => SearchFieldListItem(
                                           e,
@@ -790,15 +783,11 @@ class _PengkajianNyeriAnakWigetPageState
                                   validator: (x) {
                                     return null;
                                   },
-                                  // CONTROLLER
-                                  // controller: _mataController
-                                  //   ..text = state.pemeriksaanFisikIgdDokter.mata,
                                   controller: _kualitasNyeri
                                     ..text = state.penkajianNyeri.kualitasNyeri,
                                   onSubmit: (value) {},
                                   suggestionState: Suggestion.expand,
                                   onSaved: (a) {},
-
                                   searchInputDecoration: InputDecoration(
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -824,7 +813,7 @@ class _PengkajianNyeriAnakWigetPageState
                                     selectionColor: Colors.grey.shade100,
                                     hoverColor: Colors.black,
                                   ),
-                                  suggestions: menjalar
+                                  suggestions: ListConstants.menjalar
                                       .map(
                                         (e) => SearchFieldListItem(
                                           e,
@@ -913,8 +902,3 @@ class _PengkajianNyeriAnakWigetPageState
     );
   }
 }
-
-List<String> frekuensiNyeri = ["Jarang", "Hilang Timbul", "Menetap"];
-List<String> kualitasNyeri = ["Tumpul", "Tajam", "Panas/Terbakar"];
-List<String> lokasiNyeri = ["Tidak", "Ya ke"];
-List<String> menjalar = ["Tidak", "Ya ke"];

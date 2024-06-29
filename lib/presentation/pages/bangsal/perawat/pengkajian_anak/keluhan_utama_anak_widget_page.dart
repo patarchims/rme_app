@@ -128,6 +128,10 @@ class _KeluhanUtamaKeperawatanWidgetState
                 // ignore: use_build_context_synchronously
                 context.read<PengkajianAwalKeperawatanBloc>().add(
                     OnSaveAssesmenAnakEvent(
+                        rwtImunisasi:
+                            state.pengkajianAnak.pengkajianAnak.rwtImunisasi,
+                        rwtKelahiran:
+                            state.pengkajianAnak.pengkajianAnak.rwtKelahiran,
                         noReg: singlePasien.first.noreg,
                         noRM: singlePasien.first.mrn,
                         person: toPerson(person: authState.user.person),
@@ -291,6 +295,7 @@ class _KeluhanUtamaKeperawatanWidgetState
                             ],
                           ),
                         ),
+
                         TitleWidget.titleContainer(title: "Keluhan Utama"),
                         Padding(
                           padding: EdgeInsets.all(5.sp),
@@ -570,6 +575,36 @@ class _KeluhanUtamaKeperawatanWidgetState
                                 context
                                     .read<PengkajianAwalKeperawatanBloc>()
                                     .add(OnChangedReaksiAlergiAnak(
+                                        value: value));
+                              }),
+                        ),
+                        TitleWidget.titleContainer(title: "Riwayat Imunisasi"),
+                        Padding(
+                          padding: EdgeInsets.all(5.sp),
+                          child: FormWidget.textArea(
+                              value: state
+                                  .pengkajianAnak.pengkajianAnak.rwtImunisasi,
+                              enabled: true,
+                              maxLines: 3,
+                              onChanged: (value) {
+                                context
+                                    .read<PengkajianAwalKeperawatanBloc>()
+                                    .add(OnChangedRiwayatImunisasi(
+                                        value: value));
+                              }),
+                        ),
+                        TitleWidget.titleContainer(title: "Riwayat Kelahiran"),
+                        Padding(
+                          padding: EdgeInsets.all(5.sp),
+                          child: FormWidget.textArea(
+                              value: state
+                                  .pengkajianAnak.pengkajianAnak.rwtKelahiran,
+                              enabled: true,
+                              maxLines: 3,
+                              onChanged: (value) {
+                                context
+                                    .read<PengkajianAwalKeperawatanBloc>()
+                                    .add(OnChangedRiwayatKelahiran(
                                         value: value));
                               }),
                         ),

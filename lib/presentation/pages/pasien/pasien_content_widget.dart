@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:animate_gradient/animate_gradient.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -158,7 +157,7 @@ class _PasienContentWidgetState extends State<PasienContentWidget> {
                                 selectionMode: SelectionMode.single,
                                 allowSorting: false,
                                 onCellSecondaryTap: ((details) {
-                                  log(details.toString());
+                                  // log(details.toString());
                                 }),
                                 onCellTap: ((detail) {
                                   if (detail.rowColumnIndex.rowIndex != 0) {}

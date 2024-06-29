@@ -55,9 +55,7 @@ class _IntervensiKeperawatanPageState extends State<IntervensiKeperawatanPage> {
         body: BlocConsumer<AsesmenKeperawatanBidanBloc,
             AsesmenKeperawatanBidanState>(
           listener: (context, state) {
-            state.intervensiSelectionModel.map((e) {
-              // log("SELECTION $e");
-            });
+            state.intervensiSelectionModel.map((e) {});
 
             state.getFailOrScuccessCariIntervensi.fold(
                 () => null,

@@ -10,7 +10,6 @@ import 'package:hms_app/domain/models/meta/meta_model.dart';
 import 'package:hms_app/presentation/component/component.dart';
 import 'package:hms_app/presentation/component/res/colors.dart';
 import 'package:hms_app/presentation/kebidanan/bloc/kebidanan/kebidanan_bloc.dart';
-import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
 
 class AddRiwayatPengobatanWidget extends StatefulWidget {
@@ -26,12 +25,14 @@ class _AddRiwayatPengobatanWidgetState
   late TextEditingController _namaObatController;
   late TextEditingController _dosisController;
   late TextEditingController _caraPemberianController;
+  late TextEditingController _waktuPemberianController;
   late TextEditingController _frekuensiController;
   String waktu = "";
 
   @override
   void initState() {
     _namaObatController = TextEditingController();
+    _waktuPemberianController = TextEditingController();
     _dosisController = TextEditingController();
     _caraPemberianController = TextEditingController();
     _frekuensiController = TextEditingController();
@@ -41,9 +42,16 @@ class _AddRiwayatPengobatanWidgetState
   @override
   void dispose() {
     _namaObatController.clear();
+    _waktuPemberianController.clear();
     _dosisController.clear();
     _caraPemberianController.clear();
     _frekuensiController.clear();
+
+    _waktuPemberianController.dispose();
+    _waktuPemberianController.dispose();
+    _dosisController.dispose();
+    _caraPemberianController.dispose();
+    _frekuensiController.dispose();
     super.dispose();
   }
 
@@ -68,7 +76,13 @@ class _AddRiwayatPengobatanWidgetState
         state.saveResult.fold(
             () => null,
             (a) => a.fold(
-                (l) => null,
+                (l) => l.maybeMap(
+                    orElse: () {},
+                    failure: (fa) async {
+                      final shouldPop = await Alert.loaded(context,
+                          subTitle: "Data gagal disimpan", title: "Pesan");
+                      return shouldPop ?? false;
+                    }),
                 (r) => r.maybeMap(
                       orElse: () {},
                       loaded: (value) async {
@@ -114,16 +128,18 @@ class _AddRiwayatPengobatanWidgetState
                     dynamic data = await deviceInfo.initPlatformState();
 
                     // ignore: use_build_context_synchronously
-                    context.read<KebidananBloc>().add(
-                        OnSaveRiwayatPengobatanDirumah(
-                            noReg: singlePasien.first.noreg,
-                            deviceID: "ID - ${data['id']} - ${data['device']}",
-                            userID: authState.user.userId,
-                            namaObat: _namaObatController.text,
-                            dosis: _dosisController.text,
-                            caraPemberian: _caraPemberianController.text,
-                            frekuensi: _frekuensiController.text,
-                            waktuPemberian: waktu));
+                    context
+                        .read<KebidananBloc>()
+                        .add(OnSaveRiwayatPengobatanDirumah(
+                          noReg: singlePasien.first.noreg,
+                          deviceID: "ID - ${data['id']} - ${data['device']}",
+                          userID: authState.user.userId,
+                          namaObat: _namaObatController.text,
+                          dosis: _dosisController.text,
+                          caraPemberian: _caraPemberianController.text,
+                          frekuensi: _frekuensiController.text,
+                          waktuPemberian: _waktuPemberianController.text,
+                        ));
 
                     Get.back();
                   }
@@ -185,27 +201,11 @@ class _AddRiwayatPengobatanWidgetState
                     ),
                     TitleWidget.titleContainer(
                         title: "Waktu Terakhir Pemberian"),
-                    Container(
+                    Padding(
                       padding: EdgeInsets.all(5.sp),
-                      color: Colors.white,
-                      child: FormBuilderDateTimePicker(
-                        format: DateFormat('dd/MM/yyyy'),
-                        name: 'date',
-                        inputType: InputType.date,
-                        initialDate: DateTime.now(),
-                        decoration: InputDecoration(
-                          labelText: 'Waktu Terakhir Pemberian',
-                          enabled: true,
-                          fillColor: ThemeColor.bgColor,
-                        ),
-                        onChanged: (value) {
-                          setState(() {
-                            waktu = value.toString();
-                          });
-                        },
-                        initialTime: const TimeOfDay(hour: 8, minute: 0),
-                        initialValue: DateTime.now(),
-                        enabled: true,
+                      child: FormWidget.textForm(
+                        controller: _waktuPemberianController,
+                        enable: true,
                       ),
                     ),
                   ],

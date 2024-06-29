@@ -15,6 +15,7 @@ import 'package:hms_app/presentation/component/component.dart';
 import 'package:hms_app/presentation/component/resources/app_config.dart';
 import 'package:hms_app/presentation/component/resources/app_constant.dart';
 import 'package:hms_app/presentation/pages/igd/bloc/resep/resep_bloc.dart';
+import 'package:hms_app/presentation/pages/igd/dokter/pemeriksaaan_penunjang/peresepan_pasien/riwayat_resep_pasien_widget.dart';
 import 'package:hms_app/presentation/pages/igd/dokter/pemeriksaaan_penunjang/peresepan_pasien/tambah_resep_obat_widget.dart';
 import 'package:hms_app/presentation/pages/widget/header_content_widget.dart';
 import 'package:lottie/lottie.dart';
@@ -64,7 +65,6 @@ class _PeresepanPasienWidgetState extends State<PeresepanPasienWidget> {
                     orElse: () {},
                     failure: (e) async {
                       // FAILURE
-                      log(e.toString());
 
                       if (e.meta.code == 201) {
                         final shouldPop = await Alert.warningMessage(context,
@@ -136,6 +136,48 @@ class _PeresepanPasienWidgetState extends State<PeresepanPasienWidget> {
                 controller: _scrollController,
                 child: Column(
                   children: [
+                    Container(
+                        width: Get.width,
+                        margin:
+                            EdgeInsets.only(left: 7.sp, right: 7.sp, top: 7.sp),
+                        height: 20.sp,
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              elevation: 1,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(1.sp)),
+                              backgroundColor: ThemeColor.blackColor,
+                            ),
+                            onPressed: () {
+                              // TAMBAHKAN RESEP
+                              // RIWAYAT RESEP
+                              context.read<ResepBloc>().add(
+                                  OnGetHistoryResepEvent(
+                                      noRM: singlePasien.first.mrn));
+
+                              CustomDialogWidget.getDialog(
+                                  widget: const RiwayatResepPasienWidget());
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const Icon(
+                                  FontAwesomeIcons.pills,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 5.sp,
+                                ),
+                                Text(
+                                  "Riwayat Resep",
+                                  style: whiteTextStyle.copyWith(
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ))),
+                  
+                  
                     Container(
                         width: Get.width,
                         margin: EdgeInsets.all(7.sp),

@@ -21,6 +21,33 @@ class PengkajianNutrisiAnakBloc
     on<OnChangedNilai4Event>(_onChangedNilai4Event);
   }
 
+  void toKeterangan({required Emitter<PengkajianNutrisiAnakState> emit}) {
+    emit(state.copyWith(
+        pengkajianNutrisiAnak: state.pengkajianNutrisiAnak.copyWith(
+      keterangan: (state.pengkajianNutrisiAnak.total == 0)
+          ? "Gizi Normal"
+          : (state.pengkajianNutrisiAnak.total < 2)
+              ? "Gizi Kurang"
+              : (state.pengkajianNutrisiAnak.total < 3)
+                  ? "Gizi Buruk"
+                  : (state.pengkajianNutrisiAnak.total == 2)
+                      ? "Gizi Lebih"
+                      : (state.pengkajianNutrisiAnak.total == 3)
+                          ? "Obesitas"
+                          : "Obesitas",
+    )));
+  }
+
+  void toTotal({required Emitter<PengkajianNutrisiAnakState> emit}) {
+    emit(state.copyWith(
+        pengkajianNutrisiAnak: state.pengkajianNutrisiAnak.copyWith(
+      total: state.pengkajianNutrisiAnak.nilaiN1 +
+          state.pengkajianNutrisiAnak.nilaiN2 +
+          state.pengkajianNutrisiAnak.nilaiN3 +
+          state.pengkajianNutrisiAnak.nilaiN4,
+    )));
+  }
+
   Future<void> _onChangedNilai1Event(
     OnChangedNilai1Event event,
     Emitter<PengkajianNutrisiAnakState> emit,
@@ -29,8 +56,10 @@ class PengkajianNutrisiAnakBloc
 
     emit(state.copyWith(
         pengkajianNutrisiAnak: state.pengkajianNutrisiAnak.copyWith(
-      n1: event.value,
-    )));
+            n1: event.value, nilaiN1: (event.value == "Ya") ? 1 : 0)));
+
+    toTotal(emit: emit);
+    toKeterangan(emit: emit);
   }
 
   Future<void> _onChangedNilai2Event(
@@ -39,8 +68,11 @@ class PengkajianNutrisiAnakBloc
   ) async {
     emit(state.copyWith(status: PengkajianNutrisiStatus.isChanged));
     emit(state.copyWith(
-        pengkajianNutrisiAnak:
-            state.pengkajianNutrisiAnak.copyWith(n2: event.value)));
+        pengkajianNutrisiAnak: state.pengkajianNutrisiAnak.copyWith(
+            n2: event.value, nilaiN2: (event.value == "Ya") ? 1 : 0)));
+
+    toTotal(emit: emit);
+    toKeterangan(emit: emit);
   }
 
   Future<void> _onChangedNilai3Event(
@@ -49,8 +81,11 @@ class PengkajianNutrisiAnakBloc
   ) async {
     emit(state.copyWith(status: PengkajianNutrisiStatus.isChanged));
     emit(state.copyWith(
-        pengkajianNutrisiAnak:
-            state.pengkajianNutrisiAnak.copyWith(n3: event.value)));
+        pengkajianNutrisiAnak: state.pengkajianNutrisiAnak.copyWith(
+            n3: event.value, nilaiN3: (event.value == "Ya") ? 1 : 0)));
+
+    toTotal(emit: emit);
+    toKeterangan(emit: emit);
   }
 
   Future<void> _onChangedNilai4Event(
@@ -58,9 +93,13 @@ class PengkajianNutrisiAnakBloc
     Emitter<PengkajianNutrisiAnakState> emit,
   ) async {
     emit(state.copyWith(status: PengkajianNutrisiStatus.isChanged));
+
     emit(state.copyWith(
-        pengkajianNutrisiAnak:
-            state.pengkajianNutrisiAnak.copyWith(n4: event.value)));
+        pengkajianNutrisiAnak: state.pengkajianNutrisiAnak.copyWith(
+            n4: event.value, nilaiN4: (event.value == "Ya") ? 2 : 0)));
+
+    toTotal(emit: emit);
+    toKeterangan(emit: emit);
   }
 
   Future<void> _onGetPengkajianNutrisiAnak(
@@ -82,17 +121,23 @@ class PengkajianNutrisiAnakBloc
       emit(state.copyWith(
         status: PengkajianNutrisiStatus.loaded,
         pengkajianNutrisiAnak: PengkajianNutrisiAnak(
-            n1: "",
-            n2: "",
-            n3: "",
-            n4: "",
-            nilai: 0,
-            nilaiN1: 0,
-            nilaiN2: 0,
-            nilaiN3: 0,
-            nilaiN4: 0,
-            noreg: ""),
+          total: 0,
+          keterangan: "",
+          n1: "",
+          n2: "",
+          n3: "",
+          n4: "",
+          nilai: 0,
+          nilaiN1: 0,
+          nilaiN2: 0,
+          nilaiN3: 0,
+          nilaiN4: 0,
+          noreg: "",
+        ),
       ));
+
+      toTotal(emit: emit);
+      toKeterangan(emit: emit);
     }
 
     emit(state.copyWith(status: PengkajianNutrisiStatus.loaded));
@@ -109,26 +154,41 @@ class PengkajianNutrisiAnakBloc
     try {
       // ON SAVE DATA
       final data = await keperawatanBangsalService.onSavePengkajianNutrisiAnak(
-          noReg: event.noReg,
-          devicesID: event.deviceID,
-          nilai1: event.nilai1,
-          nilai2: event.nilai2,
-          nilai3: event.nilai3,
-          nilai4: event.nilai4,
-          nilai: event.nilai);
+        noReg: event.noReg,
+        devicesID: event.deviceID,
+        nilai1: event.nilai1,
+        nilai2: event.nilai2,
+        nilai3: event.nilai3,
+        nilai4: event.nilai4,
+        nilai: event.nilai,
+      );
       //====//
       emit(state.copyWith(
           status: PengkajianNutrisiStatus.loaded,
           saveResultFailure: optionOf(data)));
       emit(state.copyWith(
-          status: PengkajianNutrisiStatus.loaded, saveResultFailure: none()));
+        status: PengkajianNutrisiStatus.loaded,
+        saveResultFailure: none(),
+      ));
+
+      toTotal(emit: emit);
+      toKeterangan(emit: emit);
     } catch (e) {
       // ON SAVE DATA
       emit(state.copyWith(
-          status: PengkajianNutrisiStatus.loaded, saveResultFailure: none()));
+        status: PengkajianNutrisiStatus.loaded,
+        saveResultFailure: none(),
+      ));
+
+      toTotal(emit: emit);
+      toKeterangan(emit: emit);
     }
 
     emit(state.copyWith(
-        status: PengkajianNutrisiStatus.loaded, saveResultFailure: none()));
+      status: PengkajianNutrisiStatus.loaded,
+      saveResultFailure: none(),
+    ));
+
+    toTotal(emit: emit);
   }
 }

@@ -32,6 +32,8 @@ class OnSaveAssesmenAnakEvent extends PengkajianAwalKeperawatanEvent {
   final String riwayatPenyakitDahulu;
   final String tanggal;
   final String reaksiAlergi;
+  final String rwtImunisasi;
+  final String rwtKelahiran;
 
   OnSaveAssesmenAnakEvent({
     required this.noReg,
@@ -47,6 +49,9 @@ class OnSaveAssesmenAnakEvent extends PengkajianAwalKeperawatanEvent {
     required this.riwayatPenyakit,
     required this.tanggal,
     required this.reaksiAlergi,
+      required this. rwtImunisasi,
+  required this. rwtKelahiran,
+
   });
 }
 
@@ -183,6 +188,20 @@ class OnChangedReaksiAlergi extends PengkajianAwalKeperawatanEvent {
 class OnChangedReaksiAlergiAnak extends PengkajianAwalKeperawatanEvent {
   final String value;
   OnChangedReaksiAlergiAnak({
+    required this.value,
+  });
+}
+
+class OnChangedRiwayatImunisasi extends PengkajianAwalKeperawatanEvent {
+  final String value;
+  OnChangedRiwayatImunisasi({
+    required this.value,
+  });
+}
+
+class OnChangedRiwayatKelahiran extends PengkajianAwalKeperawatanEvent {
+  final String value;
+  OnChangedRiwayatKelahiran({
     required this.value,
   });
 }

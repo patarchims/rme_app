@@ -31,8 +31,6 @@ class _AsesmenPengkajianNutrisiKeperawatanWidgetState
     final singlePasien = pasienState.listPasienModel
         .where((element) => element.mrn == pasienState.normSelected);
 
-    // AuthState authState = context.watch<AuthBloc>().state;
-
     return BlocConsumer<PengkajianNutrisiBloc, PengkajianNutrisiState>(
       listener: (context, state) {
         if (state.status == PengkajianNutrisiStatus.isLoadingSavePengkajian) {
@@ -92,912 +90,976 @@ class _AsesmenPengkajianNutrisiKeperawatanWidgetState
             trackVisibility: false,
             child: SingleChildScrollView(
               controller: _scrollController,
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 5.sp,
-                  ),
-                  // ======================= START HEADER
-                  Container(
-                    color: Colors.white,
-                    padding: EdgeInsets.symmetric(horizontal: 5.sp),
-                    child: TableDesk(
-                      shape: const RoundedRectangleBorder(
-                        side: BorderSide(color: Colors.black, width: 1),
-                      ),
-                      child: TableDeskRow(
-                        border: const BorderSide(width: 1, color: Colors.black),
-                        gaps: [
-                          TableGap.width(60),
-                          TableGap.weight(),
-                          TableGap.width(420),
-                          TableGap.width(220),
-                        ],
-                        children: [
-                          Container(
-                            color: ThemeColor.primaryColor,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8),
-                              child: Center(
-                                child: Text(
-                                  "NO.",
-                                  style:
-                                      whiteTextStyle.copyWith(fontSize: 4.sp),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            color: ThemeColor.primaryColor,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8),
-                              child: Center(
-                                child: Text(
-                                  "PARAMETER",
-                                  style:
-                                      whiteTextStyle.copyWith(fontSize: 4.sp),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                            ),
-                          ),
-                          TableDeskColumn(
-                            border:
-                                const BorderSide(width: 1, color: Colors.black),
-                            children: [
-                              Container(
-                                color: ThemeColor.primaryColor,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8),
+              child: Container(
+                margin: EdgeInsets.only(right: 10.sp),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 5.sp,
+                    ),
+                    // ======================= START HEADER
+                    Container(
+                      color: Colors.white,
+                      padding: EdgeInsets.symmetric(horizontal: 5.sp),
+                      child: TableDesk(
+                        shape: const RoundedRectangleBorder(
+                          side: BorderSide(color: Colors.black, width: 1),
+                        ),
+                        child: TableDeskRow(
+                          border:
+                              const BorderSide(width: 1, color: Colors.black),
+                          gaps: [
+                            TableGap.width(60),
+                            TableGap.weight(),
+                            TableGap.width(420),
+                            TableGap.width(220),
+                          ],
+                          children: [
+                            Container(
+                              color: ThemeColor.primaryColor,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: Center(
                                   child: Text(
-                                    "SKALA",
+                                    "NO.",
                                     style:
                                         whiteTextStyle.copyWith(fontSize: 4.sp),
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
                               ),
-                              Container(
-                                color: ThemeColor.primaryColor,
-                                child: TableDeskRow(
-                                  border: const BorderSide(
-                                      width: 1, color: Colors.black),
-                                  gaps: [
-                                    TableGap.weight(),
-                                    TableGap.weight(),
-                                  ],
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        "YA",
-                                        style: whiteTextStyle.copyWith(
-                                            fontSize: 4.sp),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        "TIDAK",
-                                        style: whiteTextStyle.copyWith(
-                                            fontSize: 4.sp),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          Container(
-                            color: ThemeColor.primaryColor,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8),
-                              child: Center(
-                                child: Text(
-                                  "NILAI",
-                                  style:
-                                      whiteTextStyle.copyWith(fontSize: 4.sp),
-                                  textAlign: TextAlign.center,
+                            ),
+                            Container(
+                              color: ThemeColor.primaryColor,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: Center(
+                                  child: Text(
+                                    "PARAMETER",
+                                    style:
+                                        whiteTextStyle.copyWith(fontSize: 4.sp),
+                                    textAlign: TextAlign.center,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                            TableDeskColumn(
+                              border: const BorderSide(
+                                  width: 1, color: Colors.black),
+                              children: [
+                                Container(
+                                  color: ThemeColor.primaryColor,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8),
+                                    child: Text(
+                                      "SKALA",
+                                      style: whiteTextStyle.copyWith(
+                                          fontSize: 4.sp),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  color: ThemeColor.primaryColor,
+                                  child: TableDeskRow(
+                                    border: const BorderSide(
+                                        width: 1, color: Colors.black),
+                                    gaps: [
+                                      TableGap.weight(),
+                                      TableGap.weight(),
+                                    ],
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "YA",
+                                          style: whiteTextStyle.copyWith(
+                                              fontSize: 4.sp),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "TIDAK",
+                                          style: whiteTextStyle.copyWith(
+                                              fontSize: 4.sp),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Container(
+                              color: ThemeColor.primaryColor,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: Center(
+                                  child: Text(
+                                    "NILAI",
+                                    style:
+                                        whiteTextStyle.copyWith(fontSize: 4.sp),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
 
-                  // ======================= END HEADER
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 5.sp,
-                    ),
-                    child: Table(
-                      border: TableBorder.all(color: ThemeColor.bgColor),
-                      columnWidths: const {
-                        0: FlexColumnWidth(0.1),
-                        1: FlexColumnWidth(2),
-                        4: FlexColumnWidth(0.6),
-                      },
-                      children: [
-                        TableRow(children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "1. ",
-                              textAlign: TextAlign.center,
-                              style: blackTextStyle.copyWith(fontSize: 5.sp),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(12),
-                            child: Text(
-                              "Apakah pasien mengalami penurunan\nBB yang tidak diinginkan dalam 6 bulan terakhir ?",
-                              textAlign: TextAlign.left,
-                              style: blackTextStyle.copyWith(
-                                  fontSize: 5.sp, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          Center(
-                            child: Text(
-                              "",
-                              textAlign: TextAlign.center,
-                              style: blackTextStyle.copyWith(
-                                  fontSize: 10.sp, fontWeight: FontWeight.bold),
-                            ),
-                          )
-                        ]),
-                      ],
-                    ),
-                  ),
-
-                  // END TITLE
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 5.sp,
-                    ),
-                    child: Table(
-                      border: TableBorder.all(color: ThemeColor.bgColor),
-                      columnWidths: const {
-                        0: FlexColumnWidth(0.1),
-                        1: FlexColumnWidth(2),
-                        2: FlexColumnWidth(0.6),
-                        3: FlexColumnWidth(0.6),
-                        4: FlexColumnWidth(0.6),
-                      },
-                      children: [
-                        TableRow(children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              " ",
-                              textAlign: TextAlign.center,
-                              style: blackTextStyle.copyWith(fontSize: 5.sp),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Text(
-                              "a. Tidak ada penurunan BB",
-                              textAlign: TextAlign.left,
-                              style: blackTextStyle.copyWith(
-                                  fontSize: 5.sp, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(5.sp),
-                            height: 15.sp,
-                            width: 25.sp,
-                            child: IconButton(
-                              onPressed: () {
-                                context.read<PengkajianNutrisiBloc>().add(
-                                    OnChangedN1(
-                                        value: "Tidak ada penurunan BB"));
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: (state
-                                              .pengkajianNutrisiResponseModel
-                                              .n1 ==
-                                          "Tidak ada penurunan BB")
-                                      ? ThemeColor.greenColor
-                                      : ThemeColor.primaryColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(2.sp))),
-                              color: ThemeColor.whiteColor,
-                              icon: (state.pengkajianNutrisiResponseModel.n1 ==
-                                      "Tidak ada penurunan BB")
-                                  ? Text(
-                                      "YA",
-                                      style: whiteTextStyle,
-                                    )
-                                  : Text(
-                                      "TIDAK",
-                                      style: whiteTextStyle,
-                                    ),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(5.sp),
-                            height: 15.sp,
-                            width: 25.sp,
-                          ),
-                          Center(
-                            child: Text(
-                              state.pengkajianNutrisiResponseModel.nilaiN1
-                                  .toString(),
-                              textAlign: TextAlign.center,
-                              style: blackTextStyle.copyWith(
-                                  fontSize: 10.sp, fontWeight: FontWeight.bold),
-                            ),
-                          )
-                        ]),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 5.sp,
-                    ),
-                    child: Table(
-                      border: TableBorder.all(color: ThemeColor.bgColor),
-                      columnWidths: const {
-                        0: FlexColumnWidth(0.1),
-                        1: FlexColumnWidth(2),
-                        2: FlexColumnWidth(0.6),
-                        3: FlexColumnWidth(0.6),
-                        4: FlexColumnWidth(0.6),
-                      },
-                      children: [
-                        TableRow(children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "",
-                              textAlign: TextAlign.center,
-                              style: blackTextStyle.copyWith(fontSize: 5.sp),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Text(
-                              "b. Tidak yakin / Tidak tahu / Baju terasa Longgar",
-                              textAlign: TextAlign.left,
-                              style: blackTextStyle.copyWith(
-                                  fontSize: 5.sp, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(5.sp),
-                            height: 15.sp,
-                            width: 25.sp,
-                            child: IconButton(
-                              onPressed: () {
-                                context.read<PengkajianNutrisiBloc>().add(
-                                    OnChangedN1(
-                                        value:
-                                            "Tidak yakin / Tidak tahu / Baju terasa Longgar"));
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: (state
-                                          .pengkajianNutrisiResponseModel.n1
-                                          .contains(
-                                              "Tidak yakin / Tidak tahu / Baju terasa Longgar"))
-                                      ? ThemeColor.greenColor
-                                      : ThemeColor.primaryColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(2.sp))),
-                              color: ThemeColor.whiteColor,
-                              icon: (state.pengkajianNutrisiResponseModel.n1
-                                      .contains(
-                                          "Tidak yakin / Tidak tahu / Baju terasa Longgar"))
-                                  ? Text(
-                                      "YA",
-                                      style: whiteTextStyle,
-                                    )
-                                  : Text(
-                                      "TIDAK",
-                                      style: whiteTextStyle,
-                                    ),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(5.sp),
-                            height: 15.sp,
-                            width: 25.sp,
-                          ),
-                          Center(
-                            child: Text(
-                              "",
-                              textAlign: TextAlign.center,
-                              style: blackTextStyle.copyWith(
-                                  fontSize: 7.sp, fontWeight: FontWeight.bold),
-                            ),
-                          )
-                        ]),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 5.sp,
-                    ),
-                    child: Table(
-                      border: TableBorder.all(color: ThemeColor.bgColor),
-                      columnWidths: const {
-                        0: FlexColumnWidth(0.1),
-                        1: FlexColumnWidth(2),
-                        2: FlexColumnWidth(0.6),
-                        3: FlexColumnWidth(0.6),
-                        4: FlexColumnWidth(0.6),
-                      },
-                      children: [
-                        TableRow(children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "",
-                              textAlign: TextAlign.center,
-                              style: blackTextStyle.copyWith(fontSize: 5.sp),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Text(
-                              "c. Ya, Berapa penurunan BB Tersebut ?",
-                              textAlign: TextAlign.left,
-                              style: blackTextStyle.copyWith(
-                                  fontSize: 5.sp, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(5.sp),
-                            height: 15.sp,
-                            width: 25.sp,
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(5.sp),
-                            height: 15.sp,
-                            width: 25.sp,
-                          ),
-                          Center(
-                            child: Text(
-                              "",
-                              textAlign: TextAlign.center,
-                              style: blackTextStyle.copyWith(
-                                  fontSize: 7.sp, fontWeight: FontWeight.bold),
-                            ),
-                          )
-                        ]),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 5.sp,
-                    ),
-                    child: Table(
-                      border: TableBorder.all(color: ThemeColor.bgColor),
-                      columnWidths: const {
-                        0: FlexColumnWidth(0.1),
-                        1: FlexColumnWidth(2),
-                        2: FlexColumnWidth(0.6),
-                        3: FlexColumnWidth(0.6),
-                        4: FlexColumnWidth(0.6),
-                      },
-                      children: [
-                        TableRow(children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "",
-                              textAlign: TextAlign.center,
-                              style: blackTextStyle.copyWith(fontSize: 5.sp),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Text(
-                              "               • 1-5 Kg",
-                              textAlign: TextAlign.left,
-                              style: blackTextStyle.copyWith(
-                                  fontSize: 5.sp, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(5.sp),
-                            height: 15.sp,
-                            width: 25.sp,
-                            child: IconButton(
-                              onPressed: () {
-                                context
-                                    .read<PengkajianNutrisiBloc>()
-                                    .add(OnChangedN1(value: "1-5 Kg"));
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: (state
-                                              .pengkajianNutrisiResponseModel
-                                              .n1 ==
-                                          "1-5 Kg")
-                                      ? ThemeColor.greenColor
-                                      : ThemeColor.primaryColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(2.sp))),
-                              color: ThemeColor.whiteColor,
-                              icon: (state.pengkajianNutrisiResponseModel.n1 ==
-                                      "1-5 Kg")
-                                  ? Text(
-                                      "YA",
-                                      style: whiteTextStyle,
-                                    )
-                                  : Text(
-                                      "TIDAK",
-                                      style: whiteTextStyle,
-                                    ),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(5.sp),
-                            height: 15.sp,
-                            width: 25.sp,
-                          ),
-                          Center(
-                            child: Text(
-                              "",
-                              textAlign: TextAlign.center,
-                              style: blackTextStyle.copyWith(
-                                  fontSize: 7.sp, fontWeight: FontWeight.bold),
-                            ),
-                          )
-                        ]),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 5.sp,
-                    ),
-                    child: Table(
-                      border: TableBorder.all(color: ThemeColor.bgColor),
-                      columnWidths: const {
-                        0: FlexColumnWidth(0.1),
-                        1: FlexColumnWidth(2),
-                        2: FlexColumnWidth(0.6),
-                        3: FlexColumnWidth(0.6),
-                        4: FlexColumnWidth(0.6),
-                      },
-                      children: [
-                        TableRow(children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "",
-                              textAlign: TextAlign.center,
-                              style: blackTextStyle.copyWith(fontSize: 5.sp),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Text(
-                              "               • 6-10 Kg",
-                              textAlign: TextAlign.left,
-                              style: blackTextStyle.copyWith(
-                                  fontSize: 5.sp, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(5.sp),
-                            height: 15.sp,
-                            width: 25.sp,
-                            child: IconButton(
-                              onPressed: () {
-                                context
-                                    .read<PengkajianNutrisiBloc>()
-                                    .add(OnChangedN1(value: "6-10 Kg"));
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: (state
-                                              .pengkajianNutrisiResponseModel
-                                              .n1 ==
-                                          "6-10 Kg")
-                                      ? ThemeColor.greenColor
-                                      : ThemeColor.primaryColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(2.sp))),
-                              color: ThemeColor.whiteColor,
-                              icon: (state.pengkajianNutrisiResponseModel.n1 ==
-                                      "6-10 Kg")
-                                  ? Text(
-                                      "YA",
-                                      style: whiteTextStyle,
-                                    )
-                                  : Text(
-                                      "TIDAK",
-                                      style: whiteTextStyle,
-                                    ),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(5.sp),
-                            height: 15.sp,
-                            width: 25.sp,
-                          ),
-                          Center(
-                            child: Text(
-                              "",
-                              textAlign: TextAlign.center,
-                              style: blackTextStyle.copyWith(
-                                  fontSize: 7.sp, fontWeight: FontWeight.bold),
-                            ),
-                          )
-                        ]),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 5.sp,
-                    ),
-                    child: Table(
-                      border: TableBorder.all(color: ThemeColor.bgColor),
-                      columnWidths: const {
-                        0: FlexColumnWidth(0.1),
-                        1: FlexColumnWidth(2),
-                        2: FlexColumnWidth(0.6),
-                        3: FlexColumnWidth(0.6),
-                        4: FlexColumnWidth(0.6),
-                      },
-                      children: [
-                        TableRow(children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "",
-                              textAlign: TextAlign.center,
-                              style: blackTextStyle.copyWith(fontSize: 5.sp),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Text(
-                              "               • 11-15 Kg",
-                              textAlign: TextAlign.left,
-                              style: blackTextStyle.copyWith(
-                                  fontSize: 5.sp, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(5.sp),
-                            height: 15.sp,
-                            width: 25.sp,
-                            child: IconButton(
-                              onPressed: () {
-                                context
-                                    .read<PengkajianNutrisiBloc>()
-                                    .add(OnChangedN1(value: "11-15 Kg"));
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: (state
-                                              .pengkajianNutrisiResponseModel
-                                              .n1 ==
-                                          "11-15 Kg")
-                                      ? ThemeColor.greenColor
-                                      : ThemeColor.primaryColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(2.sp))),
-                              color: ThemeColor.whiteColor,
-                              icon: (state.pengkajianNutrisiResponseModel.n1 ==
-                                      "11-15 Kg")
-                                  ? Text(
-                                      "YA",
-                                      style: whiteTextStyle,
-                                    )
-                                  : Text(
-                                      "TIDAK",
-                                      style: whiteTextStyle,
-                                    ),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(5.sp),
-                            height: 15.sp,
-                            width: 25.sp,
-                          ),
-                          Center(
-                            child: Text(
-                              "",
-                              textAlign: TextAlign.center,
-                              style: blackTextStyle.copyWith(
-                                  fontSize: 7.sp, fontWeight: FontWeight.bold),
-                            ),
-                          )
-                        ]),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 5.sp,
-                    ),
-                    child: Table(
-                      border: TableBorder.all(color: ThemeColor.bgColor),
-                      columnWidths: const {
-                        0: FlexColumnWidth(0.1),
-                        1: FlexColumnWidth(2),
-                        2: FlexColumnWidth(0.6),
-                        3: FlexColumnWidth(0.6),
-                        4: FlexColumnWidth(0.6),
-                      },
-                      children: [
-                        TableRow(children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "",
-                              textAlign: TextAlign.center,
-                              style: blackTextStyle.copyWith(fontSize: 5.sp),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Text(
-                              "               • > 15 Kg",
-                              textAlign: TextAlign.left,
-                              style: blackTextStyle.copyWith(
-                                  fontSize: 5.sp, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(5.sp),
-                            height: 15.sp,
-                            width: 25.sp,
-                            child: IconButton(
-                              onPressed: () {
-                                context
-                                    .read<PengkajianNutrisiBloc>()
-                                    .add(OnChangedN1(value: "> 15 Kg"));
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: (state
-                                              .pengkajianNutrisiResponseModel
-                                              .n1 ==
-                                          "> 15 Kg")
-                                      ? ThemeColor.greenColor
-                                      : ThemeColor.primaryColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(2.sp))),
-                              color: ThemeColor.whiteColor,
-                              icon: (state.pengkajianNutrisiResponseModel.n1 ==
-                                      "> 15 Kg")
-                                  ? Text(
-                                      "YA",
-                                      style: whiteTextStyle,
-                                    )
-                                  : Text(
-                                      "TIDAK",
-                                      style: whiteTextStyle,
-                                    ),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(5.sp),
-                            height: 15.sp,
-                            width: 25.sp,
-                          ),
-                          Center(
-                            child: Text(
-                              "",
-                              textAlign: TextAlign.center,
-                              style: blackTextStyle.copyWith(
-                                  fontSize: 7.sp, fontWeight: FontWeight.bold),
-                            ),
-                          )
-                        ]),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(5.sp),
-                    child: const Divider(),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 5.sp,
-                    ),
-                    child: Table(
-                      border: TableBorder.all(color: ThemeColor.bgColor),
-                      columnWidths: const {
-                        0: FlexColumnWidth(0.1),
-                        1: FlexColumnWidth(2),
-                        2: FlexColumnWidth(0.6),
-                        3: FlexColumnWidth(0.6),
-                        4: FlexColumnWidth(0.6),
-                      },
-                      children: [
-                        TableRow(children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "2. ",
-                              textAlign: TextAlign.center,
-                              style: blackTextStyle.copyWith(fontSize: 5.sp),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Text(
-                              "Apakah asupan makan berkurang \nkarena tidak nafsu makan ?",
-                              textAlign: TextAlign.left,
-                              style: blackTextStyle.copyWith(
-                                  fontSize: 5.sp, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(5.sp),
-                            height: 15.sp,
-                            width: 25.sp,
-                            child: IconButton(
-                              onPressed: () {
-                                context
-                                    .read<PengkajianNutrisiBloc>()
-                                    .add(OnChangedN2(value: "Ya"));
-
-                                log(state.pengkajianNutrisiResponseModel.n2);
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: (state
-                                              .pengkajianNutrisiResponseModel
-                                              .n2 ==
-                                          "Ya")
-                                      ? ThemeColor.greenColor
-                                      : ThemeColor.primaryColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(2.sp))),
-                              color: ThemeColor.whiteColor,
-                              icon: (state.pengkajianNutrisiResponseModel.n2 ==
-                                      "Ya")
-                                  ? Text(
-                                      "YA",
-                                      style: whiteTextStyle,
-                                    )
-                                  : Text(
-                                      "YA",
-                                      style: whiteTextStyle,
-                                    ),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(5.sp),
-                            height: 15.sp,
-                            width: 25.sp,
-                            child: IconButton(
-                              onPressed: () {
-                                context
-                                    .read<PengkajianNutrisiBloc>()
-                                    .add(OnChangedN2(value: "Tidak"));
-
-                                log(state.pengkajianNutrisiResponseModel.n2);
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: (state
-                                              .pengkajianNutrisiResponseModel
-                                              .n2 ==
-                                          "Tidak")
-                                      ? ThemeColor.greenColor
-                                      : ThemeColor.primaryColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(2.sp))),
-                              color: ThemeColor.whiteColor,
-                              icon: (state.pengkajianNutrisiResponseModel.n2 ==
-                                      "Tidak")
-                                  ? Text(
-                                      "TIDAK",
-                                      style: whiteTextStyle,
-                                    )
-                                  : Text(
-                                      "TIDAK",
-                                      style: whiteTextStyle,
-                                    ),
-                            ),
-                          ),
-                          Center(
-                            child: Text(
-                              state.pengkajianNutrisiResponseModel.nilaiN2
-                                  .toString(),
-                              textAlign: TextAlign.center,
-                              style: blackTextStyle.copyWith(
-                                  fontSize: 10.sp, fontWeight: FontWeight.bold),
-                            ),
-                          )
-                        ]),
-                      ],
-                    ),
-                  ),
-
-                  //====================//
-                  Container(
-                    color: Colors.white,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 5.sp,
-                    ),
-                    child: TableDesk(
-                      shape: const RoundedRectangleBorder(
-                        side: BorderSide(color: Colors.black, width: 1),
+                    // ======================= END HEADER
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 5.sp,
                       ),
-                      child: TableDeskRow(
-                        border: const BorderSide(width: 1, color: Colors.black),
-                        gaps: [
-                          TableGap.weight(),
-                          TableGap.width(420),
-                          TableGap.width(20),
-                        ],
+                      child: Table(
+                        border: TableBorder.all(color: ThemeColor.bgColor),
+                        columnWidths: const {
+                          0: FlexColumnWidth(0.1),
+                          1: FlexColumnWidth(2),
+                          4: FlexColumnWidth(0.6),
+                        },
                         children: [
-                          Container(
-                            color: ThemeColor.primaryColor,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8),
-                              child: Center(
-                                child: Text(
-                                  "TOTAL",
-                                  style:
-                                      whiteTextStyle.copyWith(fontSize: 4.sp),
-                                  textAlign: TextAlign.center,
-                                ),
+                          TableRow(children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "1. ",
+                                textAlign: TextAlign.center,
+                                style: blackTextStyle.copyWith(fontSize: 5.sp),
                               ),
                             ),
-                          ),
-                          Container(
-                            color: ThemeColor.primaryColor,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8),
-                              child: Center(
-                                child: Text(
-                                  (state.pengkajianNutrisiResponseModel
-                                              .nilaiN1 +
-                                          state.pengkajianNutrisiResponseModel
-                                              .nilaiN2)
-                                      .toString(),
-                                  style: whiteTextStyle.copyWith(
-                                      fontSize: 10.sp,
-                                      fontWeight: FontWeight.bold),
-                                  textAlign: TextAlign.center,
-                                ),
+                            Padding(
+                              padding: const EdgeInsets.all(12),
+                              child: Text(
+                                "Apakah pasien mengalami penurunan\nBB yang tidak diinginkan dalam 6 bulan terakhir ?",
+                                textAlign: TextAlign.left,
+                                style: blackTextStyle.copyWith(
+                                    fontSize: 5.sp,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ),
-                          ),
-                          Container(
-                            color: ThemeColor.primaryColor,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8),
-                              child: Center(
-                                child: Text(
-                                  "",
-                                  style: whiteTextStyle.copyWith(
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.bold),
-                                  textAlign: TextAlign.center,
-                                ),
+                            Center(
+                              child: Text(
+                                "",
+                                textAlign: TextAlign.center,
+                                style: blackTextStyle.copyWith(
+                                    fontSize: 10.sp,
+                                    fontWeight: FontWeight.bold),
                               ),
-                            ),
-                          ),
+                            )
+                          ]),
                         ],
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 5.sp,
-                  )
-                ],
+
+                    // END TITLE
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 5.sp,
+                      ),
+                      child: Table(
+                        border: TableBorder.all(color: ThemeColor.bgColor),
+                        columnWidths: const {
+                          0: FlexColumnWidth(0.1),
+                          1: FlexColumnWidth(2),
+                          2: FlexColumnWidth(0.6),
+                          3: FlexColumnWidth(0.6),
+                          4: FlexColumnWidth(0.6),
+                        },
+                        children: [
+                          TableRow(children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                " ",
+                                textAlign: TextAlign.center,
+                                style: blackTextStyle.copyWith(fontSize: 5.sp),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Text(
+                                "a. Tidak ada penurunan BB",
+                                textAlign: TextAlign.left,
+                                style: blackTextStyle.copyWith(
+                                    fontSize: 5.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.all(5.sp),
+                              height: 15.sp,
+                              width: 25.sp,
+                              child: IconButton(
+                                onPressed: () {
+                                  context.read<PengkajianNutrisiBloc>().add(
+                                      OnChangedN1(
+                                          value: "Tidak ada penurunan BB"));
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: (state
+                                                .pengkajianNutrisiResponseModel
+                                                .n1 ==
+                                            "Tidak ada penurunan BB")
+                                        ? ThemeColor.greenColor
+                                        : ThemeColor.primaryColor,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(2.sp))),
+                                color: ThemeColor.whiteColor,
+                                icon:
+                                    (state.pengkajianNutrisiResponseModel.n1 ==
+                                            "Tidak ada penurunan BB")
+                                        ? Text(
+                                            "YA",
+                                            style: whiteTextStyle,
+                                          )
+                                        : Text(
+                                            "TIDAK",
+                                            style: whiteTextStyle,
+                                          ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.all(5.sp),
+                              height: 15.sp,
+                              width: 25.sp,
+                            ),
+                            Center(
+                              child: Text(
+                                state.pengkajianNutrisiResponseModel.nilaiN1
+                                    .toString(),
+                                textAlign: TextAlign.center,
+                                style: blackTextStyle.copyWith(
+                                    fontSize: 10.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            )
+                          ]),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 5.sp,
+                      ),
+                      child: Table(
+                        border: TableBorder.all(color: ThemeColor.bgColor),
+                        columnWidths: const {
+                          0: FlexColumnWidth(0.1),
+                          1: FlexColumnWidth(2),
+                          2: FlexColumnWidth(0.6),
+                          3: FlexColumnWidth(0.6),
+                          4: FlexColumnWidth(0.6),
+                        },
+                        children: [
+                          TableRow(children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "",
+                                textAlign: TextAlign.center,
+                                style: blackTextStyle.copyWith(fontSize: 5.sp),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Text(
+                                "b. Tidak yakin / Tidak tahu / Baju terasa Longgar",
+                                textAlign: TextAlign.left,
+                                style: blackTextStyle.copyWith(
+                                    fontSize: 5.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.all(5.sp),
+                              height: 15.sp,
+                              width: 25.sp,
+                              child: IconButton(
+                                onPressed: () {
+                                  context.read<PengkajianNutrisiBloc>().add(
+                                      OnChangedN1(
+                                          value:
+                                              "Tidak yakin / Tidak tahu / Baju terasa Longgar"));
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: (state
+                                            .pengkajianNutrisiResponseModel.n1
+                                            .contains(
+                                                "Tidak yakin / Tidak tahu / Baju terasa Longgar"))
+                                        ? ThemeColor.greenColor
+                                        : ThemeColor.primaryColor,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(2.sp))),
+                                color: ThemeColor.whiteColor,
+                                icon: (state.pengkajianNutrisiResponseModel.n1
+                                        .contains(
+                                            "Tidak yakin / Tidak tahu / Baju terasa Longgar"))
+                                    ? Text(
+                                        "YA",
+                                        style: whiteTextStyle,
+                                      )
+                                    : Text(
+                                        "TIDAK",
+                                        style: whiteTextStyle,
+                                      ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.all(5.sp),
+                              height: 15.sp,
+                              width: 25.sp,
+                            ),
+                            Center(
+                              child: Text(
+                                "",
+                                textAlign: TextAlign.center,
+                                style: blackTextStyle.copyWith(
+                                    fontSize: 7.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            )
+                          ]),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 5.sp,
+                      ),
+                      child: Table(
+                        border: TableBorder.all(color: ThemeColor.bgColor),
+                        columnWidths: const {
+                          0: FlexColumnWidth(0.1),
+                          1: FlexColumnWidth(2),
+                          2: FlexColumnWidth(0.6),
+                          3: FlexColumnWidth(0.6),
+                          4: FlexColumnWidth(0.6),
+                        },
+                        children: [
+                          TableRow(children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "",
+                                textAlign: TextAlign.center,
+                                style: blackTextStyle.copyWith(fontSize: 5.sp),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Text(
+                                "c. Ya, Berapa penurunan BB Tersebut ?",
+                                textAlign: TextAlign.left,
+                                style: blackTextStyle.copyWith(
+                                    fontSize: 5.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.all(5.sp),
+                              height: 15.sp,
+                              width: 25.sp,
+                            ),
+                            Container(
+                              margin: EdgeInsets.all(5.sp),
+                              height: 15.sp,
+                              width: 25.sp,
+                            ),
+                            Center(
+                              child: Text(
+                                "",
+                                textAlign: TextAlign.center,
+                                style: blackTextStyle.copyWith(
+                                    fontSize: 7.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            )
+                          ]),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 5.sp,
+                      ),
+                      child: Table(
+                        border: TableBorder.all(color: ThemeColor.bgColor),
+                        columnWidths: const {
+                          0: FlexColumnWidth(0.1),
+                          1: FlexColumnWidth(2),
+                          2: FlexColumnWidth(0.6),
+                          3: FlexColumnWidth(0.6),
+                          4: FlexColumnWidth(0.6),
+                        },
+                        children: [
+                          TableRow(children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "",
+                                textAlign: TextAlign.center,
+                                style: blackTextStyle.copyWith(fontSize: 5.sp),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Text(
+                                "               • 1-5 Kg",
+                                textAlign: TextAlign.left,
+                                style: blackTextStyle.copyWith(
+                                    fontSize: 5.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.all(5.sp),
+                              height: 15.sp,
+                              width: 25.sp,
+                              child: IconButton(
+                                onPressed: () {
+                                  context
+                                      .read<PengkajianNutrisiBloc>()
+                                      .add(OnChangedN1(value: "1-5 Kg"));
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: (state
+                                                .pengkajianNutrisiResponseModel
+                                                .n1 ==
+                                            "1-5 Kg")
+                                        ? ThemeColor.greenColor
+                                        : ThemeColor.primaryColor,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(2.sp))),
+                                color: ThemeColor.whiteColor,
+                                icon:
+                                    (state.pengkajianNutrisiResponseModel.n1 ==
+                                            "1-5 Kg")
+                                        ? Text(
+                                            "YA",
+                                            style: whiteTextStyle,
+                                          )
+                                        : Text(
+                                            "TIDAK",
+                                            style: whiteTextStyle,
+                                          ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.all(5.sp),
+                              height: 15.sp,
+                              width: 25.sp,
+                            ),
+                            Center(
+                              child: Text(
+                                "",
+                                textAlign: TextAlign.center,
+                                style: blackTextStyle.copyWith(
+                                    fontSize: 7.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            )
+                          ]),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 5.sp,
+                      ),
+                      child: Table(
+                        border: TableBorder.all(color: ThemeColor.bgColor),
+                        columnWidths: const {
+                          0: FlexColumnWidth(0.1),
+                          1: FlexColumnWidth(2),
+                          2: FlexColumnWidth(0.6),
+                          3: FlexColumnWidth(0.6),
+                          4: FlexColumnWidth(0.6),
+                        },
+                        children: [
+                          TableRow(children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "",
+                                textAlign: TextAlign.center,
+                                style: blackTextStyle.copyWith(fontSize: 5.sp),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Text(
+                                "               • 6-10 Kg",
+                                textAlign: TextAlign.left,
+                                style: blackTextStyle.copyWith(
+                                    fontSize: 5.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.all(5.sp),
+                              height: 15.sp,
+                              width: 25.sp,
+                              child: IconButton(
+                                onPressed: () {
+                                  context
+                                      .read<PengkajianNutrisiBloc>()
+                                      .add(OnChangedN1(value: "6-10 Kg"));
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: (state
+                                                .pengkajianNutrisiResponseModel
+                                                .n1 ==
+                                            "6-10 Kg")
+                                        ? ThemeColor.greenColor
+                                        : ThemeColor.primaryColor,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(2.sp))),
+                                color: ThemeColor.whiteColor,
+                                icon:
+                                    (state.pengkajianNutrisiResponseModel.n1 ==
+                                            "6-10 Kg")
+                                        ? Text(
+                                            "YA",
+                                            style: whiteTextStyle,
+                                          )
+                                        : Text(
+                                            "TIDAK",
+                                            style: whiteTextStyle,
+                                          ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.all(5.sp),
+                              height: 15.sp,
+                              width: 25.sp,
+                            ),
+                            Center(
+                              child: Text(
+                                "",
+                                textAlign: TextAlign.center,
+                                style: blackTextStyle.copyWith(
+                                    fontSize: 7.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            )
+                          ]),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 5.sp,
+                      ),
+                      child: Table(
+                        border: TableBorder.all(color: ThemeColor.bgColor),
+                        columnWidths: const {
+                          0: FlexColumnWidth(0.1),
+                          1: FlexColumnWidth(2),
+                          2: FlexColumnWidth(0.6),
+                          3: FlexColumnWidth(0.6),
+                          4: FlexColumnWidth(0.6),
+                        },
+                        children: [
+                          TableRow(children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "",
+                                textAlign: TextAlign.center,
+                                style: blackTextStyle.copyWith(fontSize: 5.sp),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Text(
+                                "               • 11-15 Kg",
+                                textAlign: TextAlign.left,
+                                style: blackTextStyle.copyWith(
+                                    fontSize: 5.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.all(5.sp),
+                              height: 15.sp,
+                              width: 25.sp,
+                              child: IconButton(
+                                onPressed: () {
+                                  context
+                                      .read<PengkajianNutrisiBloc>()
+                                      .add(OnChangedN1(value: "11-15 Kg"));
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: (state
+                                                .pengkajianNutrisiResponseModel
+                                                .n1 ==
+                                            "11-15 Kg")
+                                        ? ThemeColor.greenColor
+                                        : ThemeColor.primaryColor,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(2.sp))),
+                                color: ThemeColor.whiteColor,
+                                icon:
+                                    (state.pengkajianNutrisiResponseModel.n1 ==
+                                            "11-15 Kg")
+                                        ? Text(
+                                            "YA",
+                                            style: whiteTextStyle,
+                                          )
+                                        : Text(
+                                            "TIDAK",
+                                            style: whiteTextStyle,
+                                          ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.all(5.sp),
+                              height: 15.sp,
+                              width: 25.sp,
+                            ),
+                            Center(
+                              child: Text(
+                                "",
+                                textAlign: TextAlign.center,
+                                style: blackTextStyle.copyWith(
+                                    fontSize: 7.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            )
+                          ]),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 5.sp,
+                      ),
+                      child: Table(
+                        border: TableBorder.all(color: ThemeColor.bgColor),
+                        columnWidths: const {
+                          0: FlexColumnWidth(0.1),
+                          1: FlexColumnWidth(2),
+                          2: FlexColumnWidth(0.6),
+                          3: FlexColumnWidth(0.6),
+                          4: FlexColumnWidth(0.6),
+                        },
+                        children: [
+                          TableRow(children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "",
+                                textAlign: TextAlign.center,
+                                style: blackTextStyle.copyWith(fontSize: 5.sp),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Text(
+                                "               • > 15 Kg",
+                                textAlign: TextAlign.left,
+                                style: blackTextStyle.copyWith(
+                                    fontSize: 5.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.all(5.sp),
+                              height: 15.sp,
+                              width: 25.sp,
+                              child: IconButton(
+                                onPressed: () {
+                                  context
+                                      .read<PengkajianNutrisiBloc>()
+                                      .add(OnChangedN1(value: "> 15 Kg"));
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: (state
+                                                .pengkajianNutrisiResponseModel
+                                                .n1 ==
+                                            "> 15 Kg")
+                                        ? ThemeColor.greenColor
+                                        : ThemeColor.primaryColor,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(2.sp))),
+                                color: ThemeColor.whiteColor,
+                                icon:
+                                    (state.pengkajianNutrisiResponseModel.n1 ==
+                                            "> 15 Kg")
+                                        ? Text(
+                                            "YA",
+                                            style: whiteTextStyle,
+                                          )
+                                        : Text(
+                                            "TIDAK",
+                                            style: whiteTextStyle,
+                                          ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.all(5.sp),
+                              height: 15.sp,
+                              width: 25.sp,
+                            ),
+                            Center(
+                              child: Text(
+                                "",
+                                textAlign: TextAlign.center,
+                                style: blackTextStyle.copyWith(
+                                    fontSize: 7.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            )
+                          ]),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(5.sp),
+                      child: const Divider(),
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 5.sp,
+                      ),
+                      child: Table(
+                        border: TableBorder.all(color: ThemeColor.bgColor),
+                        columnWidths: const {
+                          0: FlexColumnWidth(0.1),
+                          1: FlexColumnWidth(2),
+                          2: FlexColumnWidth(0.6),
+                          3: FlexColumnWidth(0.6),
+                          4: FlexColumnWidth(0.6),
+                        },
+                        children: [
+                          TableRow(children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "2. ",
+                                textAlign: TextAlign.center,
+                                style: blackTextStyle.copyWith(fontSize: 5.sp),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Text(
+                                "Apakah asupan makan berkurang \nkarena tidak nafsu makan ?",
+                                textAlign: TextAlign.left,
+                                style: blackTextStyle.copyWith(
+                                    fontSize: 5.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.all(5.sp),
+                              height: 15.sp,
+                              width: 25.sp,
+                              child: IconButton(
+                                onPressed: () {
+                                  context
+                                      .read<PengkajianNutrisiBloc>()
+                                      .add(OnChangedN2(value: "Ya"));
+
+                                  log(state.pengkajianNutrisiResponseModel.n2);
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: (state
+                                                .pengkajianNutrisiResponseModel
+                                                .n2 ==
+                                            "Ya")
+                                        ? ThemeColor.greenColor
+                                        : ThemeColor.primaryColor,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(2.sp))),
+                                color: ThemeColor.whiteColor,
+                                icon:
+                                    (state.pengkajianNutrisiResponseModel.n2 ==
+                                            "Ya")
+                                        ? Text(
+                                            "YA",
+                                            style: whiteTextStyle,
+                                          )
+                                        : Text(
+                                            "YA",
+                                            style: whiteTextStyle,
+                                          ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.all(5.sp),
+                              height: 15.sp,
+                              width: 25.sp,
+                              child: IconButton(
+                                onPressed: () {
+                                  context
+                                      .read<PengkajianNutrisiBloc>()
+                                      .add(OnChangedN2(value: "Tidak"));
+
+                                  log(state.pengkajianNutrisiResponseModel.n2);
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: (state
+                                                .pengkajianNutrisiResponseModel
+                                                .n2 ==
+                                            "Tidak")
+                                        ? ThemeColor.greenColor
+                                        : ThemeColor.primaryColor,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(2.sp))),
+                                color: ThemeColor.whiteColor,
+                                icon:
+                                    (state.pengkajianNutrisiResponseModel.n2 ==
+                                            "Tidak")
+                                        ? Text(
+                                            "TIDAK",
+                                            style: whiteTextStyle,
+                                          )
+                                        : Text(
+                                            "TIDAK",
+                                            style: whiteTextStyle,
+                                          ),
+                              ),
+                            ),
+                            Center(
+                              child: Text(
+                                state.pengkajianNutrisiResponseModel.nilaiN2
+                                    .toString(),
+                                textAlign: TextAlign.center,
+                                style: blackTextStyle.copyWith(
+                                    fontSize: 10.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            )
+                          ]),
+                        ],
+                      ),
+                    ),
+
+                    //====================//
+                    Container(
+                      color: Colors.white,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 5.sp,
+                      ),
+                      child: TableDesk(
+                        shape: const RoundedRectangleBorder(
+                          side: BorderSide(color: Colors.black, width: 1),
+                        ),
+                        child: TableDeskRow(
+                          border:
+                              const BorderSide(width: 1, color: Colors.black),
+                          gaps: [
+                            TableGap.weight(),
+                            TableGap.width(420),
+                            TableGap.width(20),
+                          ],
+                          children: [
+                            Container(
+                              color: ThemeColor.primaryColor,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: Center(
+                                  child: Text(
+                                    "TOTAL",
+                                    style:
+                                        whiteTextStyle.copyWith(fontSize: 4.sp),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              color: ThemeColor.primaryColor,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: Center(
+                                  child: Text(
+                                    (state.pengkajianNutrisiResponseModel
+                                                .nilaiN1 +
+                                            state.pengkajianNutrisiResponseModel
+                                                .nilaiN2)
+                                        .toString(),
+                                    style: whiteTextStyle.copyWith(
+                                        fontSize: 10.sp,
+                                        fontWeight: FontWeight.bold),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              color: ThemeColor.primaryColor,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: Center(
+                                  child: Text(
+                                    "",
+                                    style: whiteTextStyle.copyWith(
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.bold),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10.sp),
+                    Container(
+                      color: Colors.white,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 5.sp,
+                      ),
+                      child: TableDesk(
+                        shape: const RoundedRectangleBorder(
+                          side: BorderSide(color: Colors.black, width: 1),
+                        ),
+                        child: TableDeskRow(
+                          border:
+                              const BorderSide(width: 1, color: Colors.black),
+                          gaps: [
+                            TableGap.weight(),
+                          ],
+                          children: [
+                            Container(
+                              color: ThemeColor.lightGrey,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: Center(
+                                  child: Text(
+                                    "Bila skor >= 2 Konsultasi ke ahli gizi",
+                                    style: blackTextStyle.copyWith(
+                                        fontSize: 10.sp),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(height: 15.sp),
+                  ],
+                ),
               ),
             ),
           ),

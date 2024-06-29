@@ -3,7 +3,7 @@ import 'package:hms_app/domain/bloc/dashboard/pasien/pasien_bloc.dart';
 import 'package:hms_app/domain/bloc/user/auth/auth_bloc.dart';
 import 'package:hms_app/domain/models/users/user_model.dart';
 import 'package:hms_app/presentation/component/component.dart';
-import 'package:hms_app/presentation/component/header/tabbar_header_content_widget.dart';
+import 'package:hms_app/presentation/component/header/tabbar_without_expanded_widget.dart';
 import 'package:hms_app/presentation/pages/bangsal/bloc/pengkajian_nutrisi_anak/pengkajian_nutrisi_anak_bloc.dart';
 import 'package:hms_app/presentation/pages/bangsal/perawat/pengkajian_nutrisi_keperawatan/pengkajian__keperawtan_nutrisi_widget.dart';
 import 'package:hms_app/presentation/pages/icu/bloc/asesmen_nyeri_icu/asesmen_nyeri_icu_bloc.dart';
@@ -22,7 +22,7 @@ class PengkajianPersistemWidgetPage extends StatelessWidget {
         .where((element) => element.mrn == pasienState.normSelected);
     AuthState authState = context.watch<AuthBloc>().state;
 
-    return TabbarHeaderContentWidget(
+    return TabbarWithoutExpandexWidget(
       backgroundColor: ThemeColor.bgColor,
       menu: menu,
       onTap: (index) {

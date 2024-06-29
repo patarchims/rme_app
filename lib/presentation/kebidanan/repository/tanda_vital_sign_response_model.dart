@@ -6,11 +6,14 @@ class VitalSignBidanModel {
   final String suhu;
   final String tinggiBadan;
   final String beratBadan;
+  final String kesadaran;
   final String ddj;
   final String gcsE;
   final String gcsV;
   final String gcsM;
   final String tfu;
+  final String akral;
+  final String pupil;
 
   VitalSignBidanModel({
     required this.ddj,
@@ -20,25 +23,31 @@ class VitalSignBidanModel {
     required this.suhu,
     required this.tinggiBadan,
     required this.beratBadan,
+    required this.kesadaran,
     required this.gcsE,
     required this.gcsV,
     required this.gcsM,
     required this.tfu,
+    required this.akral,
+    required this.pupil,
   });
 
   factory VitalSignBidanModel.fromJson(Map<String, dynamic> json) =>
       VitalSignBidanModel(
-          ddj: json["ddj"],
-          tekananDarah: json["tekanan_darah"],
-          nadi: json["nadi"],
-          pernapasan: json["pernapasan"],
-          suhu: json["suhu"],
-          tinggiBadan: json["tinggi_badan"],
-          beratBadan: json["berat_badan"],
-          gcsE: json["gcs_e"],
-          gcsV: json["gcs_v"],
-          gcsM: json["gcs_m"],
-          tfu: json["tfu"]);
+          akral: json["akral"].toString(),
+          pupil: json["pupil"].toString(),
+          ddj: json["ddj"].toString(),
+          tekananDarah: json["tekanan_darah"].toString(),
+          nadi: json["nadi"].toString(),
+          pernapasan: json["pernapasan"].toString(),
+          suhu: json["suhu"].toString(),
+          kesadaran: json["kesadaran"].toString(),
+          tinggiBadan: json["tinggi_badan"].toString(),
+          beratBadan: json["berat_badan"].toString(),
+          gcsE: json["gcs_e"].toString(),
+          gcsV: json["gcs_v"].toString(),
+          gcsM: json["gcs_m"].toString(),
+          tfu: json["tfu"].toString());
 
   Map<String, dynamic> toJson() => {
         "ddj": ddj,
@@ -62,12 +71,18 @@ class VitalSignBidanModel {
     String? suhu,
     String? tinggiBadan,
     String? beratBadan,
+    String? kesadaran,
     String? gcsE,
     String? gcsV,
     String? gcsM,
     String? tfu,
+    String? akral,
+    String? pupil,
   }) {
     return VitalSignBidanModel(
+      akral: akral ?? this.akral,
+      pupil: pupil ?? this.pupil,
+      kesadaran: kesadaran ?? this.kesadaran,
       tfu: tfu ?? this.tfu,
       ddj: ddj ?? this.ddj,
       tekananDarah: tekananDarah ?? this.tekananDarah,

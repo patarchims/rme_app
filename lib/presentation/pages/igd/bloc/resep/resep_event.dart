@@ -13,6 +13,13 @@ class OnAddResepObatEvent extends ResepEvent {
   });
 }
 
+class OnGetHistoryResepEvent extends ResepEvent {
+  final String noRM;
+  OnGetHistoryResepEvent({
+    required this.noRM,
+  });
+}
+
 class OnDeleteResepObatEvent extends ResepEvent {
   final KTaripObatModel kTaripObatModel;
   OnDeleteResepObatEvent({

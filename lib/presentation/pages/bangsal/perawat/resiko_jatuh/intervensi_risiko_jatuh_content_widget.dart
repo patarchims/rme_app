@@ -58,7 +58,6 @@ class IntervensiRisikoJatuhContentWidget extends StatelessWidget {
 List<String> menuBangsalPerawat = [
   "Intervensi Risiko\nJatuh Pasien",
   "Re Assesmen Resiko\nJatuh Dewasa ( Skala Jatuh Morse)",
-  "Re-Assesmen Resiko\nJatuh Pada Pasien Dewasa",
+  "Re-Assesmen Resiko\nJatuh Pada Pasien Geriatri",
   "Assesmen Pasien\nResiko Jatuh Pada Anak",
-  // "Re-Assesmen\nResiko Jatuh Pada Anak"
 ];

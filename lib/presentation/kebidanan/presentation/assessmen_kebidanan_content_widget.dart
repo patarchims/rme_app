@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hms_app/domain/bloc/dashboard/pasien/pasien_bloc.dart';
@@ -43,7 +41,6 @@ class AssesmenKebidananContentWidget extends StatelessWidget {
             }
           }
 
-          // GET ASESMEN KEBIDANAN
           if (index == 1) {
             if (authState is Authenticated) {
               context.read<kebidanan.PengkajianKebidananBloc>().add(
@@ -54,7 +51,6 @@ class AssesmenKebidananContentWidget extends StatelessWidget {
           }
 
           if (index == 2) {
-            log("GET TANDA VITAL KEBIDANAN");
             if (authState is Authenticated) {
               context.read<KebidananBloc>().add(OnGetVitalSignKebidanan(
                   noReg: singlePasien.first.noreg,
@@ -66,7 +62,6 @@ class AssesmenKebidananContentWidget extends StatelessWidget {
             context
                 .read<KebidananBloc>()
                 .add(OnGetRiwayatKebidanan(noReg: singlePasien.first.noreg));
-            log("GET RIWAYAT KEBIDANAN");
           }
 
           if (index == 4) {
@@ -82,13 +77,11 @@ class AssesmenKebidananContentWidget extends StatelessWidget {
           if (index == 6) {
             context.read<IndentiasBayiBloc>().add(OnGetIdentitasBayi(
                 noReg: singlePasien.first.noreg, noRM: singlePasien.first.mrn));
-            log("GET IDENTITAS BAYI KEBIDANAN");
           }
 
           if (index == 6) {
             context.read<IndentiasBayiBloc>().add(OnGetIdentitasBayi(
                 noReg: singlePasien.first.noreg, noRM: singlePasien.first.mrn));
-            log("GET IDENTITAS BAYI KEBIDANAN");
           }
         },
         menu: menu,
@@ -96,7 +89,7 @@ class AssesmenKebidananContentWidget extends StatelessWidget {
           if (e.value == "Keluhan Utama") {
             return const KeluhanUtamaKebidananWidget();
           }
-          if (e.value == "Assessment") {
+          if (e.value == "Asesmen") {
             return const AsessmenKebidananWidget();
           }
 
@@ -125,7 +118,7 @@ class AssesmenKebidananContentWidget extends StatelessWidget {
 
 List<String> menu = [
   "Keluhan Utama",
-  "Assessment",
+  "Asesmen",
   "Tanda - Tanda Vital",
   "Riwayat Kehamilan",
   "Riwayat Pengobatan dirumah",

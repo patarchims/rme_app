@@ -102,155 +102,158 @@ class _ReAsessmenResikoJatuhPadaPasienDewasaState
             radius: Radius.circular(5.sp),
             child: SingleChildScrollView(
               controller: _scrollController,
-              child: Column(
-                children: [
-                  TitleWidget.titleContainer(
-                      title: "RE-ASSESMEN RISIKO JATUH PADA PASIEN DEWASA"),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: RichText(
+              child: Container(
+                margin: EdgeInsets.only(right: 15.sp, bottom: 10.sp),
+                child: Column(
+                  children: [
+                    TitleWidget.titleContainer(
+                        title: "RE-ASSESMEN RISIKO JATUH PADA PASIEN DEWASA"),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: RichText(
+                          text: TextSpan(
+                              text:
+                                  'Lakukan pengkajian ( skoring ) risiko jatuh pada saat terjadi perubahan kondisi pasien/therapi, saat pasien pindah ruangan lain, pasien risiko tinggi dikasi setiap 24 jam atau sesaat setelah terjadi kasus jatuh.',
+                              style: blackTextStyle)),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(5.sp),
+                      width: Get.width,
+                      height: 20.sp,
+                      decoration: BoxDecoration(
+                        color: ThemeColor.greenColor.withOpacity(0.5),
+                      ),
+                      child: RichText(
                         text: TextSpan(
-                            text:
-                                'Lakukan pengkajian ( skoring ) risiko jatuh pada saat terjadi perubahan kondisi pasien/therapi, saat pasien pindah ruangan lain, pasien risiko tinggi dikasi setiap 24 jam atau sesaat setelah terjadi kasus jatuh.',
-                            style: blackTextStyle)),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(5.sp),
-                    width: Get.width,
-                    height: 20.sp,
-                    decoration: BoxDecoration(
-                      color: ThemeColor.greenColor.withOpacity(0.5),
-                    ),
-                    child: RichText(
-                      text: TextSpan(
-                          text: "Total Skor : ${state.total.toString()}",
-                          style: blackTextStyle.copyWith(
-                              fontWeight: FontWeight.bold),
-                          children: [
-                            TextSpan(
-                                text:
-                                    '   Kategori Resiko : ${(state.total <= 5) ? "Resiko Rendah ( RR )" : (state.total <= 13) ? "Resiko Sedang ( RS )" : "Resiko Tinggi  ( RT )"}',
-                                style: blackTextStyle.copyWith(
-                                    fontWeight: FontWeight.bold)),
-                          ]),
-                    ),
-                  ),
-                  // =================== //
-                  if (state.resikoJatuh.isNotEmpty) ...[
-                    SizedBox(
-                      child: Column(
-                        children: state.resikoJatuh.map((resiko) {
-                          return SizedBox(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.all(5.sp),
-                                  width: Get.width,
-                                  height: 20.sp,
-                                  decoration: BoxDecoration(
-                                    color:
-                                        ThemeColor.yellowColor.withOpacity(0.5),
-                                  ),
-                                  child: Text(
-                                    resiko.namaFaktor,
-                                    textAlign: TextAlign.start,
-                                    style: blackTextStyle.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: resiko.resikoJatuh
-                                        .map((e) => Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceAround,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceAround,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Container(
-                                                      width: Get.width / 2,
-                                                      padding:
-                                                          EdgeInsets.all(5.sp),
-                                                      child: Text(
-                                                        e.kategoriFaktor,
-                                                        style: blackTextStyle,
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      height: 15.sp,
-                                                      width: 20.sp,
-                                                      child: ElevatedButton(
-                                                        onPressed: () {
-                                                          // ONN PRESS
-                                                          context
-                                                              .read<
-                                                                  ResikoJatuhDewasaBloc>()
-                                                              .add(OnCheckIntervensiResikoJatuhDewasa(
-                                                                  faktorIndex:
-                                                                      resiko
-                                                                          .noUrut,
-                                                                  resikoJatuhIndex:
-                                                                      e.noUrut,
-                                                                  resikoJatuh: e
-                                                                      .copyWith(
-                                                                          isEnable:
-                                                                              !e.isEnable)));
-                                                        },
-                                                        style: ElevatedButton
-                                                            .styleFrom(
-                                                          backgroundColor: (e
-                                                                  .isEnable)
-                                                              ? Colors.green
-                                                              : ThemeColor
-                                                                  .primaryColor,
-                                                          shape:
-                                                              RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        5.sp),
-                                                          ),
-                                                        ),
-                                                        child: Text(
-                                                          e.skor.toString(),
-                                                          style: whiteTextStyle,
-                                                        ),
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                                const Divider()
-                                              ],
-                                            ))
-                                        .toList(),
-                                  ),
-                                )
-                              ],
-                            ),
-                          );
-                        }).toList(),
+                            text: "Total Skor : ${state.total.toString()}",
+                            style: blackTextStyle.copyWith(
+                                fontWeight: FontWeight.bold),
+                            children: [
+                              TextSpan(
+                                  text:
+                                      '   Kategori Resiko : ${(state.total <= 5) ? "Resiko Rendah ( RR )" : (state.total <= 13) ? "Resiko Sedang ( RS )" : "Resiko Tinggi  ( RT )"}',
+                                  style: blackTextStyle.copyWith(
+                                      fontWeight: FontWeight.bold)),
+                            ]),
                       ),
                     ),
-                  ],
+                    // =================== //
+                    if (state.resikoJatuh.isNotEmpty) ...[
+                      SizedBox(
+                        child: Column(
+                          children: state.resikoJatuh.map((resiko) {
+                            return SizedBox(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.all(5.sp),
+                                    width: Get.width,
+                                    height: 20.sp,
+                                    decoration: BoxDecoration(
+                                      color: ThemeColor.yellowColor
+                                          .withOpacity(0.5),
+                                    ),
+                                    child: Text(
+                                      resiko.namaFaktor,
+                                      textAlign: TextAlign.start,
+                                      style: blackTextStyle.copyWith(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: resiko.resikoJatuh
+                                          .map((e) => Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceAround,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Container(
+                                                        width: Get.width / 2,
+                                                        padding: EdgeInsets.all(
+                                                            5.sp),
+                                                        child: Text(
+                                                          e.kategoriFaktor,
+                                                          style: blackTextStyle,
+                                                        ),
+                                                      ),
+                                                      SizedBox(
+                                                        height: 15.sp,
+                                                        width: 20.sp,
+                                                        child: ElevatedButton(
+                                                          onPressed: () {
+                                                            // ONN PRESS
+                                                            context.read<ResikoJatuhDewasaBloc>().add(OnCheckIntervensiResikoJatuhDewasa(
+                                                                faktorIndex:
+                                                                    resiko
+                                                                        .noUrut,
+                                                                resikoJatuhIndex:
+                                                                    e.noUrut,
+                                                                resikoJatuh:
+                                                                    e.copyWith(
+                                                                        isEnable:
+                                                                            !e.isEnable)));
+                                                          },
+                                                          style: ElevatedButton
+                                                              .styleFrom(
+                                                            backgroundColor: (e
+                                                                    .isEnable)
+                                                                ? Colors.green
+                                                                : ThemeColor
+                                                                    .primaryColor,
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          5.sp),
+                                                            ),
+                                                          ),
+                                                          child: Text(
+                                                            e.skor.toString(),
+                                                            style:
+                                                                whiteTextStyle,
+                                                          ),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                  const Divider()
+                                                ],
+                                              ))
+                                          .toList(),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    ],
 
-                  SizedBox(
-                    height: 20.sp,
-                  )
-                ],
+                    SizedBox(
+                      height: 20.sp,
+                    )
+                  ],
+                ),
               ),
             ),
           ),

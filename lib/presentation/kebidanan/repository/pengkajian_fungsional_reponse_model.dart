@@ -22,6 +22,7 @@ class PengkajianFungsional {
   String f10;
   int nilaiF10;
   int nilai;
+  String keterangan;
 
   PengkajianFungsional({
     required this.noreg,
@@ -46,30 +47,32 @@ class PengkajianFungsional {
     required this.f10,
     required this.nilaiF10,
     required this.nilai,
+    required this.keterangan,
   });
 
   factory PengkajianFungsional.fromJson(Map<String, dynamic> json) =>
       PengkajianFungsional(
-        noreg: json["noreg"],
-        f1: json["f1"],
+        keterangan: json["keterangan"].toString(),
+        noreg: json["noreg"].toString(),
+        f1: json["f1"].toString(),
         nilaiF1: json["nilai_f1"],
-        f2: json["f2"],
+        f2: json["f2"].toString(),
         nilaiF2: json["nilai_f2"],
-        f3: json["f3"],
+        f3: json["f3"].toString(),
         nilaiF3: json["nilai_f3"],
-        f4: json["f4"],
+        f4: json["f4"].toString(),
         nilaiF4: json["nilai_f4"],
-        f5: json["f5"],
+        f5: json["f5"].toString(),
         nilaiF5: json["nilai_f5"],
-        f6: json["f6"],
+        f6: json["f6"].toString(),
         nilaiF6: json["nilai_f6"],
-        f7: json["f7"],
+        f7: json["f7"].toString(),
         nilaiF7: json["nilai_f7"],
-        f8: json["f8"],
+        f8: json["f8"].toString(),
         nilaiF8: json["nilai_f8"],
-        f9: json["f9"],
+        f9: json["f9"].toString(),
         nilaiF9: json["nilai_f9"],
-        f10: json["f10"],
+        f10: json["f10"].toString(),
         nilaiF10: json["nilai_f10"],
         nilai: json["nilai"],
       );
@@ -122,8 +125,10 @@ class PengkajianFungsional {
     String? f10,
     int? nilaiF10,
     int? nilai,
+    String? keterangan,
   }) {
     return PengkajianFungsional(
+      keterangan: keterangan ?? this.keterangan,
       noreg: noreg ?? this.noreg,
       f1: f1 ?? this.f1,
       nilaiF1: nilaiF1 ?? this.nilaiF1,

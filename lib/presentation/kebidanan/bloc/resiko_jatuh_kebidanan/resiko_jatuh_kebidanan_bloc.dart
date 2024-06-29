@@ -36,6 +36,16 @@ class ResikoJatuhKebidananBloc
             .copyWith(total: no + n1 + n2 + n3 + n4 + n5)));
   }
 
+  void setKetearngan({required Emitter<ResikoJatuhKebidananState> emit}) {
+    emit(state.copyWith(
+        resikoJatuhKebidananModel: state.resikoJatuhKebidananModel.copyWith(
+            keterangan: (state.resikoJatuhKebidananModel.total) < 25
+                ? "Tidak beresiko/resiko rendah"
+                : (state.resikoJatuhKebidananModel.total) <= 44
+                    ? "Resiko Sedang - Dipasang gelang kuning"
+                    : "Resiko Tinggi - Dipasang gelang kuning")));
+  }
+
   Future<void> _onSaveResikoJatuh(
     OnSaveResikoJatuhKebidanan event,
     Emitter<ResikoJatuhKebidananState> emit,
@@ -78,6 +88,7 @@ class ResikoJatuhKebidananBloc
           saveResult: none()));
 
       emit(state.copyWith(status: ResikoStatus.loaded, saveResult: none()));
+      setKetearngan(emit: emit);
     } catch (e) {
       emit(state.copyWith(status: ResikoStatus.loaded, saveResult: none()));
     }
@@ -93,6 +104,7 @@ class ResikoJatuhKebidananBloc
             state.resikoJatuhKebidananModel.copyWith(rJatuh: event.value)));
 
     updateTotal(emit: emit);
+    setKetearngan(emit: emit);
   }
 
   Future<void> _onChangedDianosa(
@@ -104,6 +116,7 @@ class ResikoJatuhKebidananBloc
         resikoJatuhKebidananModel:
             state.resikoJatuhKebidananModel.copyWith(diagnosis: event.value)));
     updateTotal(emit: emit);
+    setKetearngan(emit: emit);
   }
 
   Future<void> _onChangedAlatBantu1(
@@ -116,6 +129,7 @@ class ResikoJatuhKebidananBloc
       alatBantu1: event.value,
     )));
     updateTotal(emit: emit);
+    setKetearngan(emit: emit);
   }
 
   Future<void> _onChangedAlatBantu2(
@@ -128,6 +142,7 @@ class ResikoJatuhKebidananBloc
       alatBantu2: event.value,
     )));
     updateTotal(emit: emit);
+    setKetearngan(emit: emit);
   }
 
   Future<void> _onChangedAlatBantu3(
@@ -140,6 +155,7 @@ class ResikoJatuhKebidananBloc
       alatBantu3: event.value,
     )));
     updateTotal(emit: emit);
+    setKetearngan(emit: emit);
   }
 
   Future<void> _onChangedMenggunakanInfuse(
@@ -153,5 +169,6 @@ class ResikoJatuhKebidananBloc
       terpasangInfuse: event.value,
     )));
     updateTotal(emit: emit);
+    setKetearngan(emit: emit);
   }
 }
